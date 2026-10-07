@@ -1,0 +1,32 @@
+# Local files and original checkouts
+_local_archive/
+.agents/
+.codex/
+**/.git/
+# Secrets and certificates
+.env
+.env.*
+!.env.example
+!**/.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+*.csr
+*.srl
+**/certs/
+# Dependencies and generated files
+node_modules/
+.venv/
+venv/
+dist/
+build/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
+~$*
+.DS_Store
+Thumbs.db
