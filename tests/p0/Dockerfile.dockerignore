@@ -1,0 +1,16 @@
+**
+!backend/
+!backend/**
+!tests/
+!tests/p0/
+!tests/p0/**
+**/.env
+**/.env.*
+**/__pycache__/
+**/*.pyc
+**/*.key
+**/*.pem
+**/*.p12
+**/*.pfx
+**/certs/
+tests/p0/artifacts/

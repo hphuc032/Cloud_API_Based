@@ -1,0 +1,66 @@
+# Isolated P0 fixture. Never use production env files or volumes here.
+x-app-env: &app-env
+  APP_ENV: test
+  DEBUG: "false"
+  DATABASE_URL: postgresql://postgres:${P0_DB_PASSWORD:?Run tests/p0/run.py}@postgres:5432/p0_baseline
+  SECRET_KEY: ${P0_JWT_SECRET:?Run tests/p0/run.py}
+  WEBHOOK_SECRET: ${P0_WEBHOOK_SECRET:?Run tests/p0/run.py}
+
+services:
+  postgres:
+    image: postgres:16-bookworm
+    environment:
+      POSTGRES_DB: p0_baseline
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${P0_DB_PASSWORD:?Run tests/p0/run.py}
+    tmpfs:
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d p0_baseline"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+  backend:
+    build: ../../backend
+    environment: *app-env
+    command: ["sh", "-c", "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port 8000"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 2s
+      timeout: 3s
+      retries: 40
+  kong:
+    image: kong:3.8
+    environment:
+      KONG_DATABASE: "off"
+      KONG_DECLARATIVE_CONFIG: /opt/kong/kong.yml
+      KONG_ADMIN_LISTEN: "off"
+      KONG_PROXY_ACCESS_LOG: "off"
+      KONG_PROXY_ERROR_LOG: /dev/stderr
+    volumes:
+      - ../../gateway/kong.yml:/opt/kong/kong.yml:ro
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "kong", "health"]
+      interval: 2s
+      timeout: 5s
+      retries: 40
+  tests:
+    build:
+      context: ../..
+      dockerfile: tests/p0/Dockerfile
+    environment:
+      <<: *app-env
+      P0_ISOLATED: "1"
+      GATEWAY_URL: http://kong:8000
+      BACKEND_URL: http://backend:8000
+    volumes:
+      - ./artifacts:/results
+    depends_on:
+      kong:
+        condition: service_healthy

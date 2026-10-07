@@ -24,6 +24,7 @@ build/
 __pycache__/
 *.py[cod]
 .pytest_cache/
+tests/p0/artifacts/
 .coverage
 htmlcov/
 *.log
