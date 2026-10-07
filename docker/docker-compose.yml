@@ -1,38 +1,108 @@
+x-app-environment: &app-environment
+  APP_ENV: ${APP_ENV:-production}
+  DEBUG: "false"
+  APP_DB_NAME: ${APP_DB_NAME:-appdb}
+  DB_HOST: postgres
+  ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-["http://localhost:3000","http://localhost:5173"]}
+
+x-logging: &logging
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "3"
+    labels: "com.docker.compose.service,com.docker.compose.project"
+
 services:
   postgres:
     image: postgres:16
     environment:
-      POSTGRES_DB: appdb
+      POSTGRES_DB: ${APP_DB_NAME:-appdb}
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in docker/.env}
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+    secrets: [postgres_password]
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks: [app_data]
     healthcheck:
-      test: [CMD-SHELL, 'pg_isready -U postgres -d appdb']
+      test: [CMD-SHELL, 'pg_isready -U postgres -d "$$POSTGRES_DB"']
       interval: 5s
       timeout: 5s
-      retries: 10
+      retries: 20
+    logging: *logging
 
-  backend:
+  db-bootstrap:
     build: ../backend
-    env_file: ../backend/.env
+    command: [python, -m, deployment.bootstrap]
     environment:
-      DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}@postgres:5432/appdb
-    command: sh -c "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port 8000"
+      APP_DB_NAME: ${APP_DB_NAME:-appdb}
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+      MIGRATION_PASSWORD_FILE: /run/secrets/migration_password
+      RUNTIME_PASSWORD_FILE: /run/secrets/runtime_password
+    secrets: [postgres_password, migration_password, runtime_password]
+    networks: [app_data]
     depends_on:
       postgres:
         condition: service_healthy
+    restart: "no"
+    logging: *logging
+
+  migrate:
+    build: ../backend
+    command: [python, -m, deployment.migrate]
+    environment:
+      <<: *app-environment
+      DB_PASSWORD_FILE: /run/secrets/migration_password
+    secrets: [migration_password]
+    networks: [app_data]
+    depends_on:
+      db-bootstrap:
+        condition: service_completed_successfully
+    restart: "no"
+    logging: *logging
+
+  backend:
+    build: ../backend
+    environment:
+      <<: *app-environment
+      DB_PASSWORD_FILE: /run/secrets/runtime_password
+      SECRET_KEY_FILE: /run/secrets/jwt_secret
+      WEBHOOK_SECRET_FILE: /run/secrets/webhook_secret
+    secrets: [runtime_password, jwt_secret, webhook_secret]
+    command: [python, -m, deployment.serve]
+    networks: [api_transport, app_data]
+    depends_on:
+      postgres:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://localhost:8000/health/ready', timeout=4)"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+    logging: *logging
 
   keycloak:
     image: quay.io/keycloak/keycloak:26.2
-    command: start-dev
+    entrypoint: [/bin/bash, /opt/p1-entrypoint.sh]
     environment:
       KC_BOOTSTRAP_ADMIN_USERNAME: admin
-      KC_BOOTSTRAP_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD:?Set KEYCLOAK_ADMIN_PASSWORD}
+      KC_HEALTH_ENABLED: "true"
+    secrets: [keycloak_admin_password]
     ports:
       - '127.0.0.1:8080:8080'
     volumes:
       - keycloak_data:/opt/keycloak/data
+      - ./keycloak-entrypoint.sh:/opt/p1-entrypoint.sh:ro
+    networks: [identity_transport]
+    healthcheck:
+      test: [CMD, /bin/bash, -c, "{ printf 'HEAD /health/ready HTTP/1.0\r\n\r\n' >&0; grep 'HTTP/1.0 200'; } 0<>/dev/tcp/localhost/9000"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 40s
+    logging: *logging
 
   kong:
     image: kong:3.8
@@ -46,8 +116,16 @@ services:
       - '127.0.0.1:8000:8000'
     volumes:
       - ../gateway/kong.yml:/opt/kong/kong.yml:ro
+    networks: [edge, api_transport]
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, kong, health]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    logging: *logging
 
   loki:
     image: grafana/loki:2.9.8
@@ -55,31 +133,82 @@ services:
     volumes:
       - ../monitoring/loki/loki-config.yml:/etc/loki/loki-config.yml:ro
       - loki_data:/loki
+    networks: [observability]
+    healthcheck:
+      test: [CMD, wget, -q, -O, /dev/null, http://localhost:3100/ready]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+    logging: *logging
 
   promtail:
     image: grafana/promtail:2.9.8
-    command: -config.file=/etc/promtail/promtail-config.yml
+    command: -config.file=/etc/promtail/promtail-config.yml -config.expand-env=true
+    environment:
+      LOG_PROJECT: ${COMPOSE_PROJECT_NAME}
     volumes:
       - ../monitoring/promtail/promtail-config.yml:/etc/promtail/promtail-config.yml:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ${DOCKER_LOG_ROOT:-/var/lib/docker/containers}:/var/log/docker:ro
+      - promtail_positions:/positions
+    networks: [observability]
     depends_on:
-      - loki
+      loki:
+        condition: service_healthy
+    logging: *logging
 
   grafana:
     image: grafana/grafana:10.4.2
     environment:
       GF_SECURITY_ADMIN_USER: admin
-      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:?Set GRAFANA_ADMIN_PASSWORD}
+      GF_SECURITY_ADMIN_PASSWORD__FILE: /run/secrets/grafana_admin_password
+    secrets: [grafana_admin_password]
     ports:
       - '127.0.0.1:3001:3000'
     volumes:
       - grafana_data:/var/lib/grafana
       - ../monitoring/grafana/provisioning:/etc/grafana/provisioning:ro
+    networks: [observability]
     depends_on:
-      - loki
+      loki:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, wget, -q, -O, /dev/null, http://localhost:3000/api/health]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+    logging: *logging
+
+networks:
+  edge: {}
+  # Standard bridge preserves DNS used by the current SSRF validator.
+  # This permits outbound egress; it is not an egress firewall.
+  api_transport: {}
+  app_data:
+    internal: true
+  identity_transport: {}
+  observability:
+    internal: true
+
+secrets:
+  postgres_password:
+    file: ${SECRETS_DIR:-./.secrets}/postgres_password
+  migration_password:
+    file: ${SECRETS_DIR:-./.secrets}/migration_password
+  runtime_password:
+    file: ${SECRETS_DIR:-./.secrets}/runtime_password
+  jwt_secret:
+    file: ${SECRETS_DIR:-./.secrets}/jwt_secret
+  webhook_secret:
+    file: ${SECRETS_DIR:-./.secrets}/webhook_secret
+  keycloak_admin_password:
+    file: ${SECRETS_DIR:-./.secrets}/keycloak_admin_password
+  grafana_admin_password:
+    file: ${SECRETS_DIR:-./.secrets}/grafana_admin_password
 
 volumes:
   postgres_data:
   keycloak_data:
   loki_data:
   grafana_data:
+  promtail_positions:

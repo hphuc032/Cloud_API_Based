@@ -3,6 +3,8 @@ import uuid
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from app.readiness import database_ready
 
 from app.config import settings
 from app.routes import (
@@ -73,6 +75,14 @@ app.include_router(security_router, prefix=PREFIX)
 @app.get("/health", tags=["Health"])
 def health_check():
     return {"status": "ok", "version": "1.0.0"}
+
+
+@app.get("/health/ready", tags=["Health"])
+def readiness_check():
+    """Readiness requires a reachable DB at the image's migration head(s)."""
+    if not database_ready():
+        return JSONResponse(status_code=503, content={"status": "not_ready"})
+    return {"status": "ready"}
 
 
 @app.get("/", tags=["Root"])

@@ -5,7 +5,7 @@ from urllib.parse import urlparse
 
 import pytest
 from fastapi.testclient import TestClient
-from sqlalchemy import text
+from sqlalchemy import text, create_engine
 
 # Destructive fixtures must never be pointed at an application database.
 url = urlparse(os.environ.get("DATABASE_URL", ""))
@@ -31,11 +31,16 @@ def password_hash(password):
 
 @pytest.fixture(autouse=True)
 def clean_database():
-    with engine.begin() as connection:
+    # P1 runs application requests as app_runtime; fixture cleanup is privileged test tooling.
+    admin_url = os.environ.get("P0_ADMIN_DATABASE_URL")
+    cleanup_engine = create_engine(admin_url) if admin_url else engine
+    with cleanup_engine.begin() as connection:
         assert connection.scalar(text("select current_database()")) == "p0_baseline"
         connection.execute(text(
             "TRUNCATE audit_logs, order_items, orders, refresh_tokens, products, "
             "categories, users RESTART IDENTITY CASCADE"))
+    if admin_url:
+        cleanup_engine.dispose()
     yield
 
 

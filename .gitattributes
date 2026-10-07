@@ -1,0 +1,2 @@
+# Shell entry points are bind-mounted into Linux containers from Windows checkouts.
+*.sh text eol=lf

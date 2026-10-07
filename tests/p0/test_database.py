@@ -12,11 +12,16 @@ import pytest
 TABLES = ["users", "refresh_tokens", "categories", "products", "orders", "order_items", "audit_logs"]
 
 
+def admin_url():
+    # Database creation/backup is test administration, never a runtime privilege.
+    return os.environ.get("P0_ADMIN_DATABASE_URL", os.environ["DATABASE_URL"])
+
+
 @pytest.fixture
 def isolated_database():
-    parsed = urlparse(os.environ["DATABASE_URL"])
+    parsed = urlparse(admin_url())
     name = "p0_verify_" + uuid4().hex
-    admin = psycopg2.connect(os.environ["DATABASE_URL"])
+    admin = psycopg2.connect(admin_url())
     admin.autocommit = True
     with admin.cursor() as cur:
         cur.execute(sql.SQL("CREATE DATABASE {}").format(sql.Identifier(name)))
@@ -92,11 +97,11 @@ def snapshot(url):
 def test_pg_dump_restore_preserves_ids_relationships_and_data(isolated_database, tmp_path, orders, login):
     login()  # Include hashed refresh-token data as well as users/products/orders/items.
     name, restored_url = isolated_database
-    parsed = urlparse(os.environ["DATABASE_URL"])
+    parsed = urlparse(admin_url())
     env = dict(os.environ, PGPASSWORD=parsed.password)
     archive = tmp_path / "p0.dump"
     common = ["-h", "postgres", "-U", "postgres"]
-    before = snapshot(os.environ["DATABASE_URL"])
+    before = snapshot(admin_url())
     for command in (["pg_dump", *common, "-d", "p0_baseline", "-Fc", "-f", str(archive)],
                     ["pg_restore", *common, "-d", name, "--exit-on-error", str(archive)]):
         proc = subprocess.run(command, env=env, capture_output=True, text=True)

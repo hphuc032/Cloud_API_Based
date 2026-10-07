@@ -1,0 +1,29 @@
+# Overlay on the actual deployment, with random project/secrets and disposable data.
+# No production network memberships are changed by this test overlay.
+services:
+  # Use the deployment's project-scoped PostgreSQL volume: stop/start must retain data.
+  # The runner deletes only its randomly named project's volumes in finally.
+  kong:
+    ports: !reset []
+  keycloak:
+    ports: !reset []
+  grafana:
+    ports: !reset []
+  tests:
+    build:
+      context: ..
+      dockerfile: tests/p1/Dockerfile
+    environment:
+      APP_ENV: test
+      DEBUG: "false"
+      APP_DB_NAME: p0_baseline
+      DB_PASSWORD_FILE: /run/secrets/runtime_password
+      SECRET_KEY_FILE: /run/secrets/jwt_secret
+      WEBHOOK_SECRET_FILE: /run/secrets/webhook_secret
+      P0_ISOLATED: "1"
+      GATEWAY_URL: http://kong:8000
+      BACKEND_URL: http://backend:8000
+    secrets: [postgres_password, migration_password, runtime_password, jwt_secret, webhook_secret]
+    networks: [api_transport, app_data]
+    volumes:
+      - ../tests/p1/artifacts:/results

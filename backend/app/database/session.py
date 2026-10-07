@@ -9,6 +9,8 @@ engine = create_engine(
     pool_pre_ping=True,          # Verify connections before use
     pool_size=10,
     max_overflow=20,
+    pool_timeout=3,
+    connect_args={"connect_timeout": 3},
     echo=settings.DEBUG,         # Log SQL only in debug mode
 )
 

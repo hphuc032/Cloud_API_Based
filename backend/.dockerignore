@@ -5,3 +5,10 @@
 __pycache__
 *.pyc
 certs
+**/.env
+**/.env.*
+**/.secrets
+**/*.key
+**/*.pem
+**/*.p12
+**/*.pfx
