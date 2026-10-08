@@ -28,6 +28,10 @@ def main():
             path = secret_dir / name
             path.write_text(path.read_text().strip() + "@:%/+\n")
         env.update(SECRETS_DIR=str(secret_dir), APP_DB_NAME="p0_baseline", APP_ENV="test")
+        pki_dir = Path(temp) / 'certs'
+        subprocess.run([sys.executable, str(ROOT / 'docker/pki.py'), '--development-only',
+                        '--directory', str(pki_dir)], check=True)
+        env['PKI_DIR'] = str(pki_dir)
         compose = ["docker", "compose", "--env-file", os.devnull, "-p", project,
                    "-f", str(ROOT / "docker/docker-compose.yml"),
                    "-f", str(ROOT / "tests/p1/compose.yml")]

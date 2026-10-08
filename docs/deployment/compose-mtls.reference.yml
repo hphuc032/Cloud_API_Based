@@ -1,3 +1,6 @@
+# HISTORICAL pre-P1/P2 lab example; NOT an overlay or deployable P2 alternative.
+# Conflicts with current network/DB privileges and uses Nginx instead of Kong.
+# Use docker/docker-compose.yml and docs/deployment/p2-tls.md instead.
 version: "3.9"
 
 services:

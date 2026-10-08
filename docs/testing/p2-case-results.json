@@ -1,0 +1,1194 @@
+{
+  "run": {
+    "project": "cloud-api-p2-3f6e70061a6e",
+    "exit_code": 0,
+    "cleanup_completed": true,
+    "started_utc": "2026-10-08T00:01:17.694848+00:00",
+    "finished_utc": "2026-10-08T00:10:16.292954+00:00"
+  },
+  "tests": 227,
+  "passed": 214,
+  "expected_failure_executions": 13,
+  "unique_existing_defects": 7,
+  "unexpected_failures": 0,
+  "cases": [
+    {
+      "suite": "P0",
+      "name": "test_rejected_access_tokens[missing]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_rejected_access_tokens[garbage]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_rejected_access_tokens[wrong_key]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_rejected_access_tokens[expired]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_rejected_access_tokens[wrong_type]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_rejected_access_tokens[no_sub]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_rejected_access_tokens[unknown_user]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_current_login_claims_and_refresh_hash[customer]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_current_login_claims_and_refresh_hash[staff]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_current_login_claims_and_refresh_hash[admin]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_refresh_rotation_and_reuse",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_refresh_rejection[unknown]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_refresh_rejection[expired]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_refresh_rejection[revoked]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_refresh_rejection[disabled]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_refresh_rejection[short]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_logout_revokes_only_owned_refresh_and_keeps_access",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_registration_cannot_assign_admin",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_login_lockout",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_defect_jwt_requires_exp",
+      "result": "expected_failure",
+      "defect": "P0-D01: signed access JWT without exp is accepted"
+    },
+    {
+      "suite": "P0",
+      "name": "test_defect_malformed_subject_is_401",
+      "result": "expected_failure",
+      "defect": "P0-D02: signed non-UUID subject causes HTTP 500"
+    },
+    {
+      "suite": "P0",
+      "name": "test_product_crud_authorization[anonymous]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_product_crud_authorization[customer]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_product_crud_authorization[staff]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_product_crud_authorization[admin]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_order_create_authorization_and_server_ownership[anonymous]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_order_create_authorization_and_server_ownership[customer]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_order_create_authorization_and_server_ownership[staff]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_order_create_authorization_and_server_ownership[admin]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_order_list_read_status_authorization[anonymous]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_order_list_read_status_authorization[customer]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_order_list_read_status_authorization[staff]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_order_list_read_status_authorization[admin]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_user_self_vs_admin_authorization[anonymous]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_user_self_vs_admin_authorization[customer]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_user_self_vs_admin_authorization[staff]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_user_self_vs_admin_authorization[admin]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_admin_self_protection_and_db_role_active_authority",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_invalid_orders_do_not_deduct_stock",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_current_order_status_policy[staff]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_current_order_status_policy[admin]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_defect_product_null_field",
+      "result": "expected_failure",
+      "defect": "P0-D06: explicit null product price causes HTTP 500"
+    },
+    {
+      "suite": "P0",
+      "name": "test_defect_user_null_field",
+      "result": "expected_failure",
+      "defect": "P0-D07: explicit null user role causes HTTP 500"
+    },
+    {
+      "suite": "P0",
+      "name": "test_clean_database_migrations_and_downgrade",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_migration_template_generates_executable_revision",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_pg_dump_restore_preserves_ids_relationships_and_data",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_live_kong_route_and_rate_limit",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_webhook_hmac_timestamp[valid-200]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_webhook_hmac_timestamp[missing_timestamp-401]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_webhook_hmac_timestamp[bad_timestamp-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_webhook_hmac_timestamp[old-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_webhook_hmac_timestamp[future-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_webhook_hmac_timestamp[missing_signature-401]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_webhook_hmac_timestamp[wrong_signature-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_webhook_hmac_timestamp[wrong_prefix-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_webhook_hmac_timestamp[tampered_body-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_webhook_hmac_timestamp[tampered_timestamp-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_webhook_hmac_timestamp[invalid_json-400]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_webhook_exact_timestamp_boundary[-301-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_webhook_exact_timestamp_boundary[-300-200]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_webhook_exact_timestamp_boundary[300-200]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_webhook_exact_timestamp_boundary[301-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_webhook_debug_helper_disabled",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_defect_webhook_json_shape",
+      "result": "expected_failure",
+      "defect": "P0-D03: signed non-object JSON causes HTTP 500"
+    },
+    {
+      "suite": "P0",
+      "name": "test_defect_webhook_replay",
+      "result": "expected_failure",
+      "defect": "P0-D04: identical signed webhook is accepted twice"
+    },
+    {
+      "suite": "P0",
+      "name": "test_ssrf_role_access[anonymous-401]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_ssrf_role_access[customer-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_ssrf_role_access[staff-200]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_ssrf_role_access[admin-200]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_ssrf_url_validation[https://example.com-ips0-200]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_ssrf_url_validation[https://sub.example.com-ips1-200]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_ssrf_url_validation[https://example.com.evil.test-ips2-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_ssrf_url_validation[https://evilexample.com-ips3-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_ssrf_url_validation[http://localhost-ips4-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_ssrf_url_validation[http://169.254.169.254-ips5-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_ssrf_url_validation[ftp://example.com/file-ips6-422]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_ssrf_url_validation[https://example.com-ips7-400]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_ssrf_url_validation[https://example.com-ips8-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_ssrf_url_validation[https://example.com-ips9-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_ssrf_url_validation[https://example.com-ips10-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_ssrf_url_validation[https://example.com-ips11-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_ssrf_url_validation[https://example.com-ips12-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_ssrf_url_validation[https://example.com-ips13-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_ssrf_url_validation[https://example.com-ips14-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_ssrf_url_validation[https://example.com-ips15-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_ssrf_url_validation[https://example.com-ips16-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_ssrf_url_validation[https://example.com-ips17-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_ssrf_dns_failure",
+      "result": "pass"
+    },
+    {
+      "suite": "P0",
+      "name": "test_defect_ssrf_ipv4_mapped_loopback",
+      "result": "expected_failure",
+      "defect": "P0-D05: IPv4-mapped IPv6 loopback bypasses IP denylist"
+    },
+    {
+      "suite": "P1",
+      "name": "test_runtime_privilege_denials[CREATE TABLE public.p1_forbidden (id int)]",
+      "result": "pass"
+    },
+    {
+      "suite": "P1",
+      "name": "test_runtime_privilege_denials[ALTER TABLE public.products ADD COLUMN p1_forbidden int]",
+      "result": "pass"
+    },
+    {
+      "suite": "P1",
+      "name": "test_runtime_privilege_denials[DROP TABLE public.order_items]",
+      "result": "pass"
+    },
+    {
+      "suite": "P1",
+      "name": "test_runtime_privilege_denials[CREATE SCHEMA p1_forbidden]",
+      "result": "pass"
+    },
+    {
+      "suite": "P1",
+      "name": "test_runtime_privilege_denials[CREATE TEMP TABLE p1_forbidden (id int)]",
+      "result": "pass"
+    },
+    {
+      "suite": "P1",
+      "name": "test_runtime_privilege_denials[CREATE FUNCTION public.p1_forbidden() RETURNS int LANGUAGE sql AS 'SELECT 1']",
+      "result": "pass"
+    },
+    {
+      "suite": "P1",
+      "name": "test_runtime_privilege_denials[ALTER ROLE app_runtime SUPERUSER]",
+      "result": "pass"
+    },
+    {
+      "suite": "P1",
+      "name": "test_runtime_privilege_denials[SET ROLE app_migrator]",
+      "result": "pass"
+    },
+    {
+      "suite": "P1",
+      "name": "test_runtime_privilege_denials[SET ROLE postgres]",
+      "result": "pass"
+    },
+    {
+      "suite": "P1",
+      "name": "test_runtime_privilege_denials[TRUNCATE public.users CASCADE]",
+      "result": "pass"
+    },
+    {
+      "suite": "P1",
+      "name": "test_runtime_privilege_denials[DELETE FROM public.products]",
+      "result": "pass"
+    },
+    {
+      "suite": "P1",
+      "name": "test_runtime_privilege_denials[UPDATE public.alembic_version SET version_num='forbidden']",
+      "result": "pass"
+    },
+    {
+      "suite": "P1",
+      "name": "test_runtime_privilege_denials[SELECT * FROM public.audit_logs]",
+      "result": "pass"
+    },
+    {
+      "suite": "P1",
+      "name": "test_runtime_privilege_denials[INSERT INTO public.categories(name,slug) VALUES ('forbidden','forbidden')]",
+      "result": "pass"
+    },
+    {
+      "suite": "P1",
+      "name": "test_runtime_role_attributes",
+      "result": "pass"
+    },
+    {
+      "suite": "P1",
+      "name": "test_required_runtime_dml",
+      "result": "pass"
+    },
+    {
+      "suite": "P1",
+      "name": "test_migration_role_owns_schema_objects_and_can_ddl",
+      "result": "pass"
+    },
+    {
+      "suite": "P1",
+      "name": "test_password_file_supports_url_encoding",
+      "result": "pass"
+    },
+    {
+      "suite": "P1",
+      "name": "test_existing_p0_database_adoption_preserves_data",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS socket/certificate",
+      "name": "test_valid_mtls_is_http_200[771]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS socket/certificate",
+      "name": "test_valid_mtls_is_http_200[772]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS socket/certificate",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[771-None]",
+      "result": "pass",
+      "evidence": {
+        "tls_rejection": "SSLZeroReturnError: TLS/SSL connection has been closed (EOF) (_ssl.c:992)"
+      }
+    },
+    {
+      "suite": "P2 TLS socket/certificate",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[771-negative/untrusted]",
+      "result": "pass",
+      "evidence": {
+        "tls_rejection": "SSLZeroReturnError: TLS/SSL connection has been closed (EOF) (_ssl.c:992)"
+      }
+    },
+    {
+      "suite": "P2 TLS socket/certificate",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[771-negative/expired]",
+      "result": "pass",
+      "evidence": {
+        "tls_rejection": "SSLZeroReturnError: TLS/SSL connection has been closed (EOF) (_ssl.c:992)"
+      }
+    },
+    {
+      "suite": "P2 TLS socket/certificate",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[771-negative/unenrolled]",
+      "result": "pass",
+      "evidence": {
+        "tls_rejection": "SSLZeroReturnError: TLS/SSL connection has been closed (EOF) (_ssl.c:992)"
+      }
+    },
+    {
+      "suite": "P2 TLS socket/certificate",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[771-negative/wrong-client-eku]",
+      "result": "pass",
+      "evidence": {
+        "tls_rejection": "SSLZeroReturnError: TLS/SSL connection has been closed (EOF) (_ssl.c:992)"
+      }
+    },
+    {
+      "suite": "P2 TLS socket/certificate",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[772-None]",
+      "result": "pass",
+      "evidence": {
+        "tls_rejection": "closed before HTTP; no HTTP status"
+      }
+    },
+    {
+      "suite": "P2 TLS socket/certificate",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[772-negative/untrusted]",
+      "result": "pass",
+      "evidence": {
+        "tls_rejection": "closed before HTTP; no HTTP status"
+      }
+    },
+    {
+      "suite": "P2 TLS socket/certificate",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[772-negative/expired]",
+      "result": "pass",
+      "evidence": {
+        "tls_rejection": "closed before HTTP; no HTTP status"
+      }
+    },
+    {
+      "suite": "P2 TLS socket/certificate",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[772-negative/unenrolled]",
+      "result": "pass",
+      "evidence": {
+        "tls_rejection": "closed before HTTP; no HTTP status"
+      }
+    },
+    {
+      "suite": "P2 TLS socket/certificate",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[772-negative/wrong-client-eku]",
+      "result": "pass",
+      "evidence": {
+        "tls_rejection": "closed before HTTP; no HTTP status"
+      }
+    },
+    {
+      "suite": "P2 TLS socket/certificate",
+      "name": "test_client_rejects_wrong_server_hostname",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS socket/certificate",
+      "name": "test_plain_http_cannot_reach_backend_or_gateway[backend-8443]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS socket/certificate",
+      "name": "test_plain_http_cannot_reach_backend_or_gateway[backend-8000]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS socket/certificate",
+      "name": "test_plain_http_cannot_reach_backend_or_gateway[kong-8000]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_gateway_health_and_http_401_are_distinct_from_tls_failure",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS socket/certificate",
+      "name": "test_certificate_san_usage_and_leaf_constraints[backend/server.pem-names0-purpose0]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS socket/certificate",
+      "name": "test_certificate_san_usage_and_leaf_constraints[kong/client.pem-names1-purpose1]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS socket/certificate",
+      "name": "test_certificate_san_usage_and_leaf_constraints[backend/health.pem-names2-purpose2]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS socket/certificate",
+      "name": "test_certificate_san_usage_and_leaf_constraints[kong/edge.pem-names3-purpose3]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS socket/certificate",
+      "name": "test_client_pin_store_enrolls_exactly_two_leaf_identities",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_product_crud_authorization[anonymous]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_product_crud_authorization[customer]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_product_crud_authorization[staff]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_product_crud_authorization[admin]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_order_create[anonymous]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_order_create[customer]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_order_create[staff]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_order_create[admin]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_order_list_read_status[anonymous]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_order_list_read_status[customer]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_order_list_read_status[staff]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_order_list_read_status[admin]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_user_access[anonymous]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_user_access[customer]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_user_access[staff]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_user_access[admin]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_db_authority",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_invalid_orders",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_order_status_policy[staff]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_order_status_policy[admin]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_defect_product_null",
+      "result": "expected_failure",
+      "defect": "P0-D06: explicit null product price causes HTTP 500"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_defect_user_null",
+      "result": "expected_failure",
+      "defect": "P0-D07: explicit null user role causes HTTP 500"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_bad_jwt[missing]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_bad_jwt[garbage]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_bad_jwt[wrong_key]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_bad_jwt[expired]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_bad_jwt[wrong_type]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_bad_jwt[no_sub]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_bad_jwt[unknown_user]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_login[customer]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_login[staff]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_login[admin]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_refresh_rotation",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_refresh_rejection[unknown]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_refresh_rejection[expired]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_refresh_rejection[revoked]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_refresh_rejection[disabled]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_refresh_rejection[short]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_logout",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_registration",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_login_lockout",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_defect_exp",
+      "result": "expected_failure",
+      "defect": "P0-D01: signed access JWT without exp is accepted"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_defect_sub",
+      "result": "expected_failure",
+      "defect": "P0-D02: signed non-UUID subject causes HTTP 500"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_webhook[valid-200]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_webhook[missing_timestamp-401]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_webhook[bad_timestamp-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_webhook[old-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_webhook[future-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_webhook[missing_signature-401]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_webhook[wrong_signature-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_webhook[wrong_prefix-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_webhook[tampered_body-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_webhook[tampered_timestamp-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_webhook[invalid_json-400]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_debug_helper",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_defect_webhook_shape",
+      "result": "expected_failure",
+      "defect": "P0-D03: signed non-object JSON causes HTTP 500"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_defect_webhook_replay",
+      "result": "expected_failure",
+      "defect": "P0-D04: identical signed webhook is accepted twice"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_ssrf_uses_real_dns_and_preserves_roles[anonymous-401]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_ssrf_uses_real_dns_and_preserves_roles[customer-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_ssrf_uses_real_dns_and_preserves_roles[staff-200]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_ssrf_uses_real_dns_and_preserves_roles[admin-200]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_ssrf_denies_invalid_targets[http://169.254.169.254-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_ssrf_denies_invalid_targets[http://localhost-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_ssrf_denies_invalid_targets[https://example.com.evil.test-403]",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 HTTPS business",
+      "name": "test_https_ssrf_denies_invalid_targets[ftp://example.com/file-422]",
+      "result": "pass"
+    },
+    {
+      "suite": "P1 deployment host",
+      "name": "test_backend_restart_does_not_run_migrations",
+      "result": "pass"
+    },
+    {
+      "suite": "P1 deployment host",
+      "name": "test_db_reachability_backend",
+      "result": "pass"
+    },
+    {
+      "suite": "P1 deployment host",
+      "name": "test_db_reachability_grafana",
+      "result": "pass"
+    },
+    {
+      "suite": "P1 deployment host",
+      "name": "test_db_reachability_keycloak",
+      "result": "pass"
+    },
+    {
+      "suite": "P1 deployment host",
+      "name": "test_db_reachability_kong",
+      "result": "pass"
+    },
+    {
+      "suite": "P1 deployment host",
+      "name": "test_db_reachability_loki",
+      "result": "pass"
+    },
+    {
+      "suite": "P1 deployment host",
+      "name": "test_db_reachability_promtail",
+      "result": "pass"
+    },
+    {
+      "suite": "P1 deployment host",
+      "name": "test_exact_network_memberships",
+      "result": "pass"
+    },
+    {
+      "suite": "P1 deployment host",
+      "name": "test_migration_jobs_completed_before_backend",
+      "result": "pass"
+    },
+    {
+      "suite": "P1 deployment host",
+      "name": "test_no_runtime_secrets_in_built_image_layers",
+      "result": "pass"
+    },
+    {
+      "suite": "P1 deployment host",
+      "name": "test_observability_readiness_and_backend_ingestion",
+      "result": "pass"
+    },
+    {
+      "suite": "P1 deployment host",
+      "name": "test_postgres_no_published_port",
+      "result": "pass"
+    },
+    {
+      "suite": "P1 deployment host",
+      "name": "test_public_dns_for_current_ssrf_validation",
+      "result": "pass"
+    },
+    {
+      "suite": "P1 deployment host",
+      "name": "test_readiness_database_outage_and_recovery",
+      "result": "pass"
+    },
+    {
+      "suite": "P1 deployment host",
+      "name": "test_readiness_migration_mismatch",
+      "result": "pass"
+    },
+    {
+      "suite": "P1 deployment host",
+      "name": "test_secret_mounts_and_docker_api_absence",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS host/rotation",
+      "name": "test_actual_kong_bad_client_expired",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS host/rotation",
+      "name": "test_actual_kong_bad_client_untrusted",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS host/rotation",
+      "name": "test_ca_and_leaf_rotation_overlap_retirement_and_rollback",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS host/rotation",
+      "name": "test_enrolled_server_only_client_eku_rejected_during_handshake",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS host/rotation",
+      "name": "test_enrollment_configuration_fails_closed_for_ca_wrong_san_and_issuer",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS host/rotation",
+      "name": "test_expired_enrolled_client_rejected_during_handshake",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS host/rotation",
+      "name": "test_external_published_https_with_verified_local_trust",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS host/rotation",
+      "name": "test_kong_rejects_expired_server",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS host/rotation",
+      "name": "test_kong_rejects_wrong_chain",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS host/rotation",
+      "name": "test_kong_rejects_wrong_san",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS host/rotation",
+      "name": "test_kong_rejects_wrong_server_eku",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS host/rotation",
+      "name": "test_kong_requires_upstream_validation_in_generated_nginx",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS host/rotation",
+      "name": "test_leaf_renewal_reuses_issuers_and_refuses_overwrite",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS host/rotation",
+      "name": "test_runtime_logs_do_not_contain_keys_credentials_or_complete_jwt",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS host/rotation",
+      "name": "test_runtime_mounts_exclude_offline_issuers_and_peer_private_keys",
+      "result": "pass"
+    },
+    {
+      "suite": "P2 TLS host/rotation",
+      "name": "test_vite_proxy_uses_verified_https_and_rejects_wrong_ca",
+      "result": "pass"
+    }
+  ]
+}

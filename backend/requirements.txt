@@ -9,6 +9,8 @@ psycopg2-binary==2.9.9
 
 # Auth & Security
 python-jose[cryptography]==3.3.0
+# Explicit TLS enrollment validation API, shared with the development PKI tool.
+cryptography==46.0.5
 passlib[bcrypt]==1.7.4
 bcrypt==4.0.1
 python-multipart==0.0.9

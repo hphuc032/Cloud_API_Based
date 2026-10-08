@@ -26,6 +26,7 @@ __pycache__/
 .pytest_cache/
 tests/p0/artifacts/
 tests/p1/artifacts/
+tests/p2/artifacts/
 **/.secrets/
 .coverage
 htmlcov/

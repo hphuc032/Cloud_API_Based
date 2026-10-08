@@ -69,6 +69,8 @@ services:
       WEBHOOK_SECRET_FILE: /run/secrets/webhook_secret
     secrets: [runtime_password, jwt_secret, webhook_secret]
     command: [python, -m, deployment.serve]
+    volumes:
+      - ${PKI_DIR:-./certs}/backend:/run/tls:ro
     networks: [api_transport, app_data]
     depends_on:
       postgres:
@@ -76,7 +78,7 @@ services:
       migrate:
         condition: service_completed_successfully
     healthcheck:
-      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://localhost:8000/health/ready', timeout=4)"]
+      test: [CMD, python, -m, deployment.health]
       interval: 5s
       timeout: 5s
       retries: 12
@@ -112,10 +114,21 @@ services:
       KONG_ADMIN_LISTEN: 'off'
       KONG_PROXY_ACCESS_LOG: /dev/stdout
       KONG_PROXY_ERROR_LOG: /dev/stderr
+      KONG_PROXY_LISTEN: '0.0.0.0:8443 ssl'
+      KONG_SSL_CERT: /run/tls/edge.pem
+      KONG_SSL_CERT_KEY: /run/tls/edge.key
+      KONG_SSL_PROTOCOLS: 'TLSv1.2 TLSv1.3'
+      KONG_CLIENT_SSL: 'on'
+      KONG_CLIENT_SSL_CERT: /run/tls/client.pem
+      KONG_CLIENT_SSL_CERT_KEY: /run/tls/client.key
+      KONG_NGINX_PROXY_PROXY_SSL_TRUSTED_CERTIFICATE: /run/tls/server-ca.pem
+      KONG_NGINX_PROXY_PROXY_SSL_VERIFY: 'on'
+      KONG_NGINX_PROXY_PROXY_SSL_VERIFY_DEPTH: '2'
     ports:
-      - '127.0.0.1:8000:8000'
+      - '127.0.0.1:8443:8443'
     volumes:
       - ../gateway/kong.yml:/opt/kong/kong.yml:ro
+      - ${PKI_DIR:-./certs}/kong:/run/tls:ro
     networks: [edge, api_transport]
     depends_on:
       backend:

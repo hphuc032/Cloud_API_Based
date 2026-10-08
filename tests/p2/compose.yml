@@ -1,0 +1,15 @@
+# Apply after main Compose and the P1 test overlay. Random project/volumes only.
+services:
+  kong:
+    ports: !override
+      - '127.0.0.1::8443'
+  tests:
+    build:
+      context: ..
+      dockerfile: tests/p2/Dockerfile
+    volumes: !override
+      - ../tests/p2/artifacts:/results
+      - ${PKI_DIR:?Isolated PKI required}/backend:/test-tls/backend:ro
+      - ${PKI_DIR:?Isolated PKI required}/kong:/test-tls/kong:ro
+      - ${PKI_DIR:?Isolated PKI required}/trust:/test-tls/trust:ro
+      - ${PKI_DIR:?Isolated PKI required}/negative:/test-tls/negative:ro

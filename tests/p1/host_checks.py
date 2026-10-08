@@ -9,7 +9,7 @@ import time
 import unittest
 
 
-def execute(run, compose, project, metadata, secret_dir, artifacts):
+def execute(run, compose, project, metadata, secret_dir, artifacts, extra_secret_values=()):
     containers = {c["Config"]["Labels"]["com.docker.compose.service"]: c for c in metadata}
     probe_image = project + "-tests"
 
@@ -22,8 +22,8 @@ def execute(run, compose, project, metadata, secret_dir, artifacts):
 
     def http_status(path):
         return output(compose + ["exec", "-T", "backend", "python", "-c",
-            "import urllib.request,urllib.error\ntry:\n print(urllib.request.urlopen('http://localhost:8000" + path +
-            "',timeout=5).status)\nexcept urllib.error.HTTPError as e:\n print(e.code)"])
+            "import urllib.error\nfrom deployment.health import status\ntry:\n print(status('" + path +
+            "'))\nexcept urllib.error.HTTPError as e:\n print(e.code)"])
 
     db_ip = containers["postgres"]["NetworkSettings"]["Networks"][project + "_app_data"]["IPAddress"]
 
@@ -80,6 +80,7 @@ def execute(run, compose, project, metadata, secret_dir, artifacts):
 
         def test_no_runtime_secrets_in_built_image_layers(self):
             needles = [p.read_bytes().strip() for p in secret_dir.iterdir()]
+            needles.extend(extra_secret_values)
             images = [containers[s]["Image"] for s in ("backend", "db-bootstrap", "migrate")]
             images.append(probe_image)
             with tempfile.TemporaryDirectory(prefix="p1-image-audit-") as tmp:
@@ -101,7 +102,7 @@ def execute(run, compose, project, metadata, secret_dir, artifacts):
                                 break
                             chunk = tail + block
                             self.assertFalse(any(value in chunk for value in needles), "Runtime secret found in image layer")
-                            tail = chunk[-512:]
+                            tail = chunk[-max(512, max(map(len, needles))):]
             self.assertEqual(probe("backend", "from pathlib import Path; print(not Path('/app/.env').exists() and not Path('/app/.secrets').exists())"), "True")
 
         def test_readiness_migration_mismatch(self):

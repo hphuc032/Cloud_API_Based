@@ -2,11 +2,14 @@ _format_version: '3.0'
 _transform: true
 services:
   - name: fastapi-service
-    url: http://backend:8000
+    url: https://backend:8443
+    tls_verify: true
+    tls_verify_depth: 2
     routes:
       - name: fastapi-route
         paths: [/health, /docs, /openapi.json, /api]
         strip_path: false
+        preserve_host: false
 plugins:
   - name: rate-limiting
     config:

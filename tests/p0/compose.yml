@@ -41,7 +41,7 @@ services:
       KONG_PROXY_ACCESS_LOG: "off"
       KONG_PROXY_ERROR_LOG: /dev/stderr
     volumes:
-      - ../../gateway/kong.yml:/opt/kong/kong.yml:ro
+      - ./kong.baseline.yml:/opt/kong/kong.yml:ro
     depends_on:
       backend:
         condition: service_healthy

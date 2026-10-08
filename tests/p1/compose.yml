@@ -21,9 +21,16 @@ services:
       SECRET_KEY_FILE: /run/secrets/jwt_secret
       WEBHOOK_SECRET_FILE: /run/secrets/webhook_secret
       P0_ISOLATED: "1"
-      GATEWAY_URL: http://kong:8000
-      BACKEND_URL: http://backend:8000
+      GATEWAY_URL: https://kong:8443
+      BACKEND_URL: https://backend:8443
+      EDGE_CA: /test-tls/trust/edge-ca.pem
+      SERVER_CA: /test-tls/trust/server-ca.pem
+      CLIENT_CERT: /test-tls/kong/client.pem
+      CLIENT_KEY: /test-tls/kong/client.key
     secrets: [postgres_password, migration_password, runtime_password, jwt_secret, webhook_secret]
     networks: [api_transport, app_data]
     volumes:
       - ../tests/p1/artifacts:/results
+      - ${PKI_DIR:?Generate isolated test PKI}/backend:/test-tls/backend:ro
+      - ${PKI_DIR:?Generate isolated test PKI}/kong:/test-tls/kong:ro
+      - ${PKI_DIR:?Generate isolated test PKI}/trust:/test-tls/trust:ro
