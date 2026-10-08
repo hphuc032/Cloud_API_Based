@@ -1,0 +1,52 @@
+{
+  "columns": [
+    [
+      "issuer",
+      "character varying",
+      "NO"
+    ],
+    [
+      "subject",
+      "character varying",
+      "NO"
+    ],
+    [
+      "user_id",
+      "uuid",
+      "NO"
+    ],
+    [
+      "reviewed_by",
+      "character varying",
+      "NO"
+    ],
+    [
+      "review_reference",
+      "character varying",
+      "NO"
+    ],
+    [
+      "created_at",
+      "timestamp with time zone",
+      "NO"
+    ]
+  ],
+  "constraints": [
+    [
+      "ck_external_identity_review",
+      "CHECK ((((issuer)::text ~~ 'https://%'::text) AND (length((subject)::text) > 0) AND (length((reviewed_by)::text) > 0) AND (length((review_reference)::text) > 0)))"
+    ],
+    [
+      "external_identities_pkey",
+      "PRIMARY KEY (issuer, subject)"
+    ],
+    [
+      "external_identities_user_id_fkey",
+      "FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT"
+    ],
+    [
+      "uq_external_identity_issuer_user",
+      "UNIQUE (issuer, user_id)"
+    ]
+  ]
+}

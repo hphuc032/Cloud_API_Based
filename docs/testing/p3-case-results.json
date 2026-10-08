@@ -1,0 +1,1302 @@
+{
+  "baseline_commit": "16703e01285938c6b8d002b672f2124e8ab24ac1",
+  "full_regression_run": {
+    "project": "cloud-api-p3-74c90e2fd3fc",
+    "exit_code": 1,
+    "cleanup_completed": true,
+    "started_utc": "2026-10-08T03:15:28.124140+00:00",
+    "finished_utc": "2026-10-08T03:32:52.141825+00:00"
+  },
+  "final_p3_run": {
+    "project": "cloud-api-p3-9a389b7320a8",
+    "exit_code": 0,
+    "cleanup_completed": true,
+    "started_utc": "2026-10-08T03:58:21.895318+00:00",
+    "identity_only": true,
+    "finished_utc": "2026-10-08T04:03:08.705262+00:00"
+  },
+  "counts": {
+    "passed": 236,
+    "expected-failure": 13,
+    "failed": 2,
+    "error": 1
+  },
+  "node_client_assertions": 19,
+  "case_results": [
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_auth::test_rejected_access_tokens[missing]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_auth::test_rejected_access_tokens[garbage]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_auth::test_rejected_access_tokens[wrong_key]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_auth::test_rejected_access_tokens[expired]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_auth::test_rejected_access_tokens[wrong_type]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_auth::test_rejected_access_tokens[no_sub]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_auth::test_rejected_access_tokens[unknown_user]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_auth::test_current_login_claims_and_refresh_hash[customer]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_auth::test_current_login_claims_and_refresh_hash[staff]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_auth::test_current_login_claims_and_refresh_hash[admin]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_auth::test_refresh_rotation_and_reuse",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_auth::test_refresh_rejection[unknown]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_auth::test_refresh_rejection[expired]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_auth::test_refresh_rejection[revoked]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_auth::test_refresh_rejection[disabled]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_auth::test_refresh_rejection[short]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_auth::test_logout_revokes_only_owned_refresh_and_keeps_access",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_auth::test_registration_cannot_assign_admin",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_auth::test_login_lockout",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_auth::test_defect_jwt_requires_exp",
+      "outcome": "expected-failure",
+      "detail": "P0-D01: signed access JWT without exp is accepted"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_auth::test_defect_malformed_subject_is_401",
+      "outcome": "expected-failure",
+      "detail": "P0-D02: signed non-UUID subject causes HTTP 500"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_authorization::test_product_crud_authorization[anonymous]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_authorization::test_product_crud_authorization[customer]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_authorization::test_product_crud_authorization[staff]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_authorization::test_product_crud_authorization[admin]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_authorization::test_order_create_authorization_and_server_ownership[anonymous]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_authorization::test_order_create_authorization_and_server_ownership[customer]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_authorization::test_order_create_authorization_and_server_ownership[staff]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_authorization::test_order_create_authorization_and_server_ownership[admin]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_authorization::test_order_list_read_status_authorization[anonymous]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_authorization::test_order_list_read_status_authorization[customer]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_authorization::test_order_list_read_status_authorization[staff]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_authorization::test_order_list_read_status_authorization[admin]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_authorization::test_user_self_vs_admin_authorization[anonymous]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_authorization::test_user_self_vs_admin_authorization[customer]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_authorization::test_user_self_vs_admin_authorization[staff]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_authorization::test_user_self_vs_admin_authorization[admin]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_authorization::test_admin_self_protection_and_db_role_active_authority",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_authorization::test_invalid_orders_do_not_deduct_stock",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_authorization::test_current_order_status_policy[staff]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_authorization::test_current_order_status_policy[admin]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_authorization::test_defect_product_null_field",
+      "outcome": "expected-failure",
+      "detail": "P0-D06: explicit null product price causes HTTP 500"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_authorization::test_defect_user_null_field",
+      "outcome": "expected-failure",
+      "detail": "P0-D07: explicit null user role causes HTTP 500"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_database::test_clean_database_migrations_and_downgrade",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_database::test_migration_template_generates_executable_revision",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_database::test_pg_dump_restore_preserves_ids_relationships_and_data",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_gateway::test_live_kong_route_and_rate_limit",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_webhook_hmac_timestamp[valid-200]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_webhook_hmac_timestamp[missing_timestamp-401]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_webhook_hmac_timestamp[bad_timestamp-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_webhook_hmac_timestamp[old-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_webhook_hmac_timestamp[future-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_webhook_hmac_timestamp[missing_signature-401]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_webhook_hmac_timestamp[wrong_signature-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_webhook_hmac_timestamp[wrong_prefix-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_webhook_hmac_timestamp[tampered_body-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_webhook_hmac_timestamp[tampered_timestamp-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_webhook_hmac_timestamp[invalid_json-400]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_webhook_exact_timestamp_boundary[-301-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_webhook_exact_timestamp_boundary[-300-200]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_webhook_exact_timestamp_boundary[300-200]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_webhook_exact_timestamp_boundary[301-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_webhook_debug_helper_disabled",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_defect_webhook_json_shape",
+      "outcome": "expected-failure",
+      "detail": "P0-D03: signed non-object JSON causes HTTP 500"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_defect_webhook_replay",
+      "outcome": "expected-failure",
+      "detail": "P0-D04: identical signed webhook is accepted twice"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_ssrf_role_access[anonymous-401]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_ssrf_role_access[customer-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_ssrf_role_access[staff-200]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_ssrf_role_access[admin-200]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_ssrf_url_validation[https://example.com-ips0-200]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_ssrf_url_validation[https://sub.example.com-ips1-200]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_ssrf_url_validation[https://example.com.evil.test-ips2-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_ssrf_url_validation[https://evilexample.com-ips3-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_ssrf_url_validation[http://localhost-ips4-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_ssrf_url_validation[http://169.254.169.254-ips5-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_ssrf_url_validation[ftp://example.com/file-ips6-422]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_ssrf_url_validation[https://example.com-ips7-400]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_ssrf_url_validation[https://example.com-ips8-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_ssrf_url_validation[https://example.com-ips9-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_ssrf_url_validation[https://example.com-ips10-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_ssrf_url_validation[https://example.com-ips11-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_ssrf_url_validation[https://example.com-ips12-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_ssrf_url_validation[https://example.com-ips13-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_ssrf_url_validation[https://example.com-ips14-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_ssrf_url_validation[https://example.com-ips15-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_ssrf_url_validation[https://example.com-ips16-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_ssrf_url_validation[https://example.com-ips17-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_ssrf_dns_failure",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "test_webhook_ssrf::test_defect_ssrf_ipv4_mapped_loopback",
+      "outcome": "expected-failure",
+      "detail": "P0-D05: IPv4-mapped IPv6 loopback bypasses IP denylist"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "::test_runtime_privilege_denials[CREATE TABLE public.p1_forbidden (id int)]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "::test_runtime_privilege_denials[ALTER TABLE public.products ADD COLUMN p1_forbidden int]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "::test_runtime_privilege_denials[DROP TABLE public.order_items]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "::test_runtime_privilege_denials[CREATE SCHEMA p1_forbidden]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "::test_runtime_privilege_denials[CREATE TEMP TABLE p1_forbidden (id int)]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "::test_runtime_privilege_denials[CREATE FUNCTION public.p1_forbidden() RETURNS int LANGUAGE sql AS 'SELECT 1']",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "::test_runtime_privilege_denials[ALTER ROLE app_runtime SUPERUSER]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "::test_runtime_privilege_denials[SET ROLE app_migrator]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "::test_runtime_privilege_denials[SET ROLE postgres]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "::test_runtime_privilege_denials[TRUNCATE public.users CASCADE]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "::test_runtime_privilege_denials[DELETE FROM public.products]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "::test_runtime_privilege_denials[UPDATE public.alembic_version SET version_num='forbidden']",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "::test_runtime_privilege_denials[SELECT * FROM public.audit_logs]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "::test_runtime_privilege_denials[INSERT INTO public.categories(name,slug) VALUES ('forbidden','forbidden')]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "::test_runtime_role_attributes",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "::test_required_runtime_dml",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "::test_migration_role_owns_schema_objects_and_can_ddl",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "::test_password_file_supports_url_encoding",
+      "outcome": "passed"
+    },
+    {
+      "group": "P0/P1 pytest",
+      "name": "::test_existing_p0_database_adoption_preserves_data",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_valid_mtls_is_http_200[771]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_valid_mtls_is_http_200[772]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_bad_client_is_tls_failure_not_http_auth[771-None]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_bad_client_is_tls_failure_not_http_auth[771-negative/untrusted]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_bad_client_is_tls_failure_not_http_auth[771-negative/expired]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_bad_client_is_tls_failure_not_http_auth[771-negative/unenrolled]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_bad_client_is_tls_failure_not_http_auth[771-negative/wrong-client-eku]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_bad_client_is_tls_failure_not_http_auth[772-None]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_bad_client_is_tls_failure_not_http_auth[772-negative/untrusted]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_bad_client_is_tls_failure_not_http_auth[772-negative/expired]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_bad_client_is_tls_failure_not_http_auth[772-negative/unenrolled]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_bad_client_is_tls_failure_not_http_auth[772-negative/wrong-client-eku]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_client_rejects_wrong_server_hostname",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_plain_http_cannot_reach_backend_or_gateway[backend-8443]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_plain_http_cannot_reach_backend_or_gateway[backend-8000]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_plain_http_cannot_reach_backend_or_gateway[kong-8000]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_gateway_health_and_http_401_are_distinct_from_tls_failure",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_certificate_san_usage_and_leaf_constraints[backend/server.pem-names0-purpose0]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_certificate_san_usage_and_leaf_constraints[kong/client.pem-names1-purpose1]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_certificate_san_usage_and_leaf_constraints[backend/health.pem-names2-purpose2]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_certificate_san_usage_and_leaf_constraints[kong/edge.pem-names3-purpose3]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_client_pin_store_enrolls_exactly_two_leaf_identities",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_product_crud_authorization[anonymous]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_product_crud_authorization[customer]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_product_crud_authorization[staff]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_product_crud_authorization[admin]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_order_create[anonymous]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_order_create[customer]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_order_create[staff]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_order_create[admin]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_order_list_read_status[anonymous]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_order_list_read_status[customer]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_order_list_read_status[staff]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_order_list_read_status[admin]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_user_access[anonymous]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_user_access[customer]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_user_access[staff]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_user_access[admin]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_db_authority",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_invalid_orders",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_order_status_policy[staff]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_order_status_policy[admin]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_defect_product_null",
+      "outcome": "expected-failure",
+      "detail": "P0-D06: explicit null product price causes HTTP 500"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_defect_user_null",
+      "outcome": "expected-failure",
+      "detail": "P0-D07: explicit null user role causes HTTP 500"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_bad_jwt[missing]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_bad_jwt[garbage]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_bad_jwt[wrong_key]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_bad_jwt[expired]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_bad_jwt[wrong_type]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_bad_jwt[no_sub]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_bad_jwt[unknown_user]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_login[customer]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_login[staff]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_login[admin]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_refresh_rotation",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_refresh_rejection[unknown]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_refresh_rejection[expired]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_refresh_rejection[revoked]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_refresh_rejection[disabled]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_refresh_rejection[short]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_logout",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_registration",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_login_lockout",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_defect_exp",
+      "outcome": "expected-failure",
+      "detail": "P0-D01: signed access JWT without exp is accepted"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_defect_sub",
+      "outcome": "expected-failure",
+      "detail": "P0-D02: signed non-UUID subject causes HTTP 500"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_webhook[valid-200]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_webhook[missing_timestamp-401]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_webhook[bad_timestamp-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_webhook[old-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_webhook[future-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_webhook[missing_signature-401]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_webhook[wrong_signature-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_webhook[wrong_prefix-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_webhook[tampered_body-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_webhook[tampered_timestamp-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_webhook[invalid_json-400]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_debug_helper",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_defect_webhook_shape",
+      "outcome": "expected-failure",
+      "detail": "P0-D03: signed non-object JSON causes HTTP 500"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_defect_webhook_replay",
+      "outcome": "expected-failure",
+      "detail": "P0-D04: identical signed webhook is accepted twice"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_ssrf_uses_real_dns_and_preserves_roles[anonymous-401]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_ssrf_uses_real_dns_and_preserves_roles[customer-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_ssrf_uses_real_dns_and_preserves_roles[staff-200]",
+      "outcome": "failed",
+      "detail": "AssertionError"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_ssrf_uses_real_dns_and_preserves_roles[admin-200]",
+      "outcome": "failed",
+      "detail": "AssertionError"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_ssrf_denies_invalid_targets[http://169.254.169.254-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_ssrf_denies_invalid_targets[http://localhost-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_ssrf_denies_invalid_targets[https://example.com.evil.test-403]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 pytest",
+      "name": "::test_https_ssrf_denies_invalid_targets[ftp://example.com/file-422]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 pytest",
+      "name": "::test_discovery_jwks_verified_https",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 pytest",
+      "name": "::test_realm_and_client_reproducible",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 pytest",
+      "name": "::test_code_pkce_tokens_audience_nonce_and_rotation",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 pytest",
+      "name": "::test_wrong_pkce_verifier_rejected",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 pytest",
+      "name": "::test_invalid_redirect_not_followed[https://localhost:5173/oidc/callback/extra]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 pytest",
+      "name": "::test_invalid_redirect_not_followed[https://evil.example/callback]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 pytest",
+      "name": "::test_invalid_redirect_not_followed[http://localhost:5173/oidc/callback]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 pytest",
+      "name": "::test_pkce_s256_required[challenge0]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 pytest",
+      "name": "::test_pkce_s256_required[challenge1]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 pytest",
+      "name": "::test_password_grant_disabled",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 pytest",
+      "name": "::test_implicit_and_hybrid_disabled[token]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 pytest",
+      "name": "::test_implicit_and_hybrid_disabled[id_token]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 pytest",
+      "name": "::test_implicit_and_hybrid_disabled[code token]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 pytest",
+      "name": "::test_public_edge_denies_admin_and_master",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 pytest",
+      "name": "::test_mapping_preserves_ids_orders_and_roles",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 pytest",
+      "name": "::test_duplicate_or_conflicting_mappings_rejected[changes0]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 pytest",
+      "name": "::test_duplicate_or_conflicting_mappings_rejected[changes1]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 pytest",
+      "name": "::test_duplicate_or_conflicting_mappings_rejected[changes2]",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 pytest",
+      "name": "::test_unknown_user_and_untrusted_issuer_rejected",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 pytest",
+      "name": "::test_email_collision_never_links_or_creates_mapping",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 pytest",
+      "name": "::test_runtime_cannot_create_identity_links",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 pytest",
+      "name": "::test_additive_migration_and_rollback_preserve_application_data",
+      "outcome": "passed"
+    },
+    {
+      "group": "P1 host",
+      "name": "test_backend_restart_does_not_run_migrations",
+      "outcome": "passed"
+    },
+    {
+      "group": "P1 host",
+      "name": "test_db_reachability_backend",
+      "outcome": "passed"
+    },
+    {
+      "group": "P1 host",
+      "name": "test_db_reachability_grafana",
+      "outcome": "passed"
+    },
+    {
+      "group": "P1 host",
+      "name": "test_db_reachability_keycloak",
+      "outcome": "passed"
+    },
+    {
+      "group": "P1 host",
+      "name": "test_db_reachability_kong",
+      "outcome": "passed"
+    },
+    {
+      "group": "P1 host",
+      "name": "test_db_reachability_loki",
+      "outcome": "passed"
+    },
+    {
+      "group": "P1 host",
+      "name": "test_db_reachability_promtail",
+      "outcome": "passed"
+    },
+    {
+      "group": "P1 host",
+      "name": "test_exact_network_memberships",
+      "outcome": "passed"
+    },
+    {
+      "group": "P1 host",
+      "name": "test_migration_jobs_completed_before_backend",
+      "outcome": "passed"
+    },
+    {
+      "group": "P1 host",
+      "name": "test_no_runtime_secrets_in_built_image_layers",
+      "outcome": "passed"
+    },
+    {
+      "group": "P1 host",
+      "name": "test_observability_readiness_and_backend_ingestion",
+      "outcome": "passed"
+    },
+    {
+      "group": "P1 host",
+      "name": "test_postgres_no_published_port",
+      "outcome": "passed"
+    },
+    {
+      "group": "P1 host",
+      "name": "test_public_dns_for_current_ssrf_validation",
+      "outcome": "error"
+    },
+    {
+      "group": "P1 host",
+      "name": "test_readiness_database_outage_and_recovery",
+      "outcome": "passed"
+    },
+    {
+      "group": "P1 host",
+      "name": "test_readiness_migration_mismatch",
+      "outcome": "passed"
+    },
+    {
+      "group": "P1 host",
+      "name": "test_secret_mounts_and_docker_api_absence",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 host",
+      "name": "test_actual_kong_bad_client_expired",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 host",
+      "name": "test_actual_kong_bad_client_untrusted",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 host",
+      "name": "test_ca_and_leaf_rotation_overlap_retirement_and_rollback",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 host",
+      "name": "test_enrolled_server_only_client_eku_rejected_during_handshake",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 host",
+      "name": "test_enrollment_configuration_fails_closed_for_ca_wrong_san_and_issuer",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 host",
+      "name": "test_expired_enrolled_client_rejected_during_handshake",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 host",
+      "name": "test_external_published_https_with_verified_local_trust",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 host",
+      "name": "test_kong_rejects_expired_server",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 host",
+      "name": "test_kong_rejects_wrong_chain",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 host",
+      "name": "test_kong_rejects_wrong_san",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 host",
+      "name": "test_kong_rejects_wrong_server_eku",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 host",
+      "name": "test_kong_requires_upstream_validation_in_generated_nginx",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 host",
+      "name": "test_leaf_renewal_reuses_issuers_and_refuses_overwrite",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 host",
+      "name": "test_runtime_logs_do_not_contain_keys_credentials_or_complete_jwt",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 host",
+      "name": "test_runtime_mounts_exclude_offline_issuers_and_peer_private_keys",
+      "outcome": "passed"
+    },
+    {
+      "group": "P2 host",
+      "name": "test_vite_proxy_uses_verified_https_and_rejects_wrong_ca",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 host",
+      "name": "test_identity_database_inaccessible_from_other_services",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 host",
+      "name": "test_identity_database_private_and_persistent",
+      "outcome": "passed"
+    },
+    {
+      "group": "P3 host",
+      "name": "test_restart_preserves_users_realm_and_client",
+      "outcome": "passed"
+    }
+  ]
+}

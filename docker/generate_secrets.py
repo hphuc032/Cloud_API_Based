@@ -5,7 +5,7 @@ from pathlib import Path
 import secrets
 
 NAMES = ("postgres_password", "migration_password", "runtime_password", "jwt_secret",
-         "webhook_secret", "keycloak_admin_password", "grafana_admin_password")
+         "webhook_secret", "identity_db_password", "identity_admin_password", "keycloak_admin_password", "grafana_admin_password")
 
 
 def generate(directory):

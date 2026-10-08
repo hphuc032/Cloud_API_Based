@@ -28,4 +28,4 @@ def configure_application(migration=False):
         os.environ[name] = secrets.token_hex(32) if migration else secret(name + "_FILE")
 
 
-TABLES = ("users", "refresh_tokens", "categories", "products", "orders", "order_items", "audit_logs", "alembic_version")
+TABLES = ("users", "refresh_tokens", "categories", "products", "orders", "order_items", "audit_logs", "alembic_version", "external_identities")

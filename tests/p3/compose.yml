@@ -1,0 +1,15 @@
+# Disposable project only. Test runner has no identity database membership.
+services:
+  identity-edge:
+    ports: !reset []
+  tests:
+    build:
+      context: ..
+      dockerfile: tests/p3/Dockerfile
+    environment:
+      IDENTITY_ISSUER: https://identity-edge:8443/realms/florasecure
+    secrets: [postgres_password, migration_password, runtime_password, jwt_secret, webhook_secret, keycloak_admin_password]
+    networks: [api_transport, app_data, identity_transport]
+    volumes:
+      - ${IDENTITY_TLS_DIR:?Isolated identity PKI}/trust:/identity-trust:ro
+      - ${P3_RESULTS_DIR:-../tests/p3/artifacts}:/results

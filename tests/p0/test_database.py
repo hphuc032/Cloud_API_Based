@@ -9,7 +9,7 @@ import psycopg2
 from psycopg2 import sql
 import pytest
 
-TABLES = ["users", "refresh_tokens", "categories", "products", "orders", "order_items", "audit_logs"]
+TABLES = ["users", "refresh_tokens", "categories", "products", "orders", "order_items", "audit_logs", "external_identities"]
 
 
 def admin_url():
@@ -52,11 +52,11 @@ def test_clean_database_migrations_and_downgrade(isolated_database):
     alembic(url, "upgrade", "head")
     with psycopg2.connect(url) as conn, conn.cursor() as cur:
         cur.execute("SELECT version_num FROM alembic_version")
-        assert cur.fetchone()[0] == "0001_initial_schema"
+        assert cur.fetchone()[0] == "0002_external_identities"
         cur.execute("SELECT tablename FROM pg_tables WHERE schemaname='public'")
         assert {row[0] for row in cur.fetchall()} == set(TABLES + ["alembic_version"])
         cur.execute("SELECT count(*) FROM pg_constraint WHERE contype='f' AND connamespace='public'::regnamespace")
-        assert cur.fetchone()[0] == 7
+        assert cur.fetchone()[0] == 8
         cur.execute("SELECT count(*) FROM information_schema.triggers WHERE trigger_schema='public'")
         assert cur.fetchone()[0] == 4
         cur.execute("SELECT enumlabel FROM pg_enum JOIN pg_type ON pg_type.oid=enumtypid WHERE typname='userrole'")
@@ -112,7 +112,7 @@ def test_pg_dump_restore_preserves_ids_relationships_and_data(isolated_database,
                     "JOIN order_items i ON i.order_id=o.id JOIN products p ON p.id=i.product_id")
         assert cur.fetchone()[0] == 2
         cur.execute("SELECT count(*) FROM pg_constraint WHERE contype='f' AND connamespace='public'::regnamespace")
-        assert cur.fetchone()[0] == 7
+        assert cur.fetchone()[0] == 8
     # Restored database is accepted by migration tooling without recreating data.
     alembic(restored_url, "upgrade", "head")
     assert snapshot(restored_url) == before

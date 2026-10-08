@@ -83,7 +83,7 @@ def test_migration_role_owns_schema_objects_and_can_ddl():
             cur.execute("SELECT pg_get_userbyid(relowner) FROM pg_class WHERE oid='public.users'::regclass")
             assert cur.fetchone()[0] == "app_migrator"
             cur.execute("SELECT version_num FROM alembic_version")
-            assert cur.fetchone()[0] == "0001_initial_schema"
+            assert cur.fetchone()[0] == "0002_external_identities"
             cur.execute("CREATE TABLE public.p1_migration_probe (id int)")
             cur.execute("ALTER TABLE public.p1_migration_probe ADD COLUMN label text")
             cur.execute("DROP TABLE public.p1_migration_probe")

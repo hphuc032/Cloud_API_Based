@@ -1,0 +1,12 @@
+{
+  "issuer": "https://identity-edge:8443/realms/florasecure",
+  "access_audience": "florasecure-api",
+  "id_audience": "florasecure-spa",
+  "algorithm": "RS256",
+  "access_lifetime_seconds": 300,
+  "signature_verified": true,
+  "nonce_matches": true,
+  "at_hash_verified": true,
+  "subject_matches_created_identity": true,
+  "keycloak_token_rejected_by_current_app": true
+}

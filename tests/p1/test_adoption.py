@@ -31,14 +31,14 @@ def test_existing_p0_database_adoption_preserves_data():
     def snapshot():
         with psycopg2.connect(old_url) as conn, conn.cursor() as cur:
             result = {}
-            for table in ("users", "products", "orders", "order_items", "alembic_version"):
+            for table in ("users", "products", "orders", "order_items"):
                 cur.execute(sql.SQL("SELECT row_to_json(t)::text FROM {} t ORDER BY row_to_json(t)::text").format(sql.Identifier(table)))
                 result[table] = cur.fetchall()
             return result
 
     try:
         # Build the historical schema as postgres using the UNCHANGED initial migration.
-        command(["alembic", "upgrade", "head"])
+        command(["alembic", "upgrade", "0001_initial_schema"])
         user_id, product_id, order_id, item_id = [str(uuid4()) for _ in range(4)]
         with psycopg2.connect(old_url) as conn, conn.cursor() as cur:
             cur.execute("INSERT INTO users(id,email,username,hashed_password,role,is_active) "
@@ -54,6 +54,9 @@ def test_existing_p0_database_adoption_preserves_data():
             command(["python", "-m", "deployment.bootstrap"])
             command(["python", "-m", "deployment.migrate"])
             assert snapshot() == before
+            with psycopg2.connect(old_url) as conn, conn.cursor() as cur:
+                cur.execute("SELECT version_num FROM alembic_version")
+                assert cur.fetchone()[0] == "0002_external_identities"
         runtime_url = admin_url.set(username="app_runtime", database=name,
                                    password=Path("/run/secrets/runtime_password").read_text().strip())
         with psycopg2.connect(runtime_url.render_as_string(hide_password=False)) as conn, conn.cursor() as cur:

@@ -34,3 +34,5 @@ htmlcov/
 ~$*
 .DS_Store
 Thumbs.db
+
+tests/p3/artifacts/

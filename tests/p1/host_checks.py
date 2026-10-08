@@ -32,14 +32,14 @@ def execute(run, compose, project, metadata, secret_dir, artifacts, extra_secret
             expected = {
                 "postgres": {"app_data"}, "db-bootstrap": {"app_data"}, "migrate": {"app_data"},
                 "backend": {"api_transport", "app_data"}, "kong": {"edge", "api_transport"},
-                "keycloak": {"identity_transport"}, "loki": {"observability"},
+                "keycloak": {"identity_transport", "identity_data"}, "identity-db": {"identity_data"}, "identity-bootstrap": {"identity_data"}, "identity-edge": {"identity_transport"}, "loki": {"observability"},
                 "promtail": {"observability"}, "grafana": {"observability"},
             }
             for service, networks in expected.items():
                 with self.subTest(service=service):
                     actual = set(containers[service]["NetworkSettings"]["Networks"])
                     self.assertEqual(actual, {project + "_" + n for n in networks})
-            for name in ("app_data", "observability"):
+            for name in ("app_data", "identity_data", "observability"):
                 network = json.loads(output(["docker", "network", "inspect", project + "_" + name]))[0]
                 self.assertTrue(network["Internal"])
             api_network = json.loads(output(["docker", "network", "inspect", project + "_api_transport"]))[0]
@@ -65,7 +65,7 @@ def execute(run, compose, project, metadata, secret_dir, artifacts, extra_secret
                 "backend": {"runtime_password", "jwt_secret", "webhook_secret"},
                 "migrate": {"migration_password"},
                 "db-bootstrap": {"postgres_password", "migration_password", "runtime_password"},
-                "postgres": {"postgres_password"}, "keycloak": {"keycloak_admin_password"},
+                "postgres": {"postgres_password"}, "keycloak": {"keycloak_admin_password", "identity_db_password"}, "identity-db": {"identity_admin_password"}, "identity-bootstrap": {"identity_admin_password", "identity_db_password"}, "identity-edge": set(),
                 "grafana": {"grafana_admin_password"}, "kong": set(), "loki": set(), "promtail": set(),
             }
             values = [p.read_text().strip() for p in secret_dir.iterdir()]
@@ -113,7 +113,7 @@ def execute(run, compose, project, metadata, secret_dir, artifacts, extra_secret
                 self.assertEqual(http_status("/health/ready"), "503")
                 self.assertEqual(http_status("/health"), "200")
             finally:
-                output(command + ["UPDATE alembic_version SET version_num='0001_initial_schema'"])
+                output(command + ["UPDATE alembic_version SET version_num='0002_external_identities'"])
             self.assertEqual(http_status("/health/ready"), "200")
 
         def test_readiness_database_outage_and_recovery(self):

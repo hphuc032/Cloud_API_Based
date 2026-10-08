@@ -1,0 +1,355 @@
+{
+  "discovery": {
+    "issuer": "https://identity-edge:8443/realms/florasecure",
+    "authorization_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/auth",
+    "token_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/token",
+    "introspection_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/token/introspect",
+    "userinfo_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/userinfo",
+    "end_session_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/logout",
+    "frontchannel_logout_session_supported": true,
+    "frontchannel_logout_supported": true,
+    "jwks_uri": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/certs",
+    "check_session_iframe": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/login-status-iframe.html",
+    "grant_types_supported": [
+      "authorization_code",
+      "client_credentials",
+      "implicit",
+      "password",
+      "refresh_token",
+      "urn:ietf:params:oauth:grant-type:device_code",
+      "urn:ietf:params:oauth:grant-type:token-exchange",
+      "urn:ietf:params:oauth:grant-type:uma-ticket",
+      "urn:openid:params:grant-type:ciba"
+    ],
+    "acr_values_supported": [
+      "0",
+      "1"
+    ],
+    "response_types_supported": [
+      "code",
+      "none",
+      "id_token",
+      "token",
+      "id_token token",
+      "code id_token",
+      "code token",
+      "code id_token token"
+    ],
+    "subject_types_supported": [
+      "public",
+      "pairwise"
+    ],
+    "prompt_values_supported": [
+      "none",
+      "login",
+      "consent"
+    ],
+    "id_token_signing_alg_values_supported": [
+      "PS384",
+      "RS384",
+      "EdDSA",
+      "ES384",
+      "HS256",
+      "HS512",
+      "ES256",
+      "RS256",
+      "HS384",
+      "ES512",
+      "PS256",
+      "PS512",
+      "RS512"
+    ],
+    "id_token_encryption_alg_values_supported": [
+      "ECDH-ES+A256KW",
+      "ECDH-ES+A192KW",
+      "ECDH-ES+A128KW",
+      "RSA-OAEP",
+      "RSA-OAEP-256",
+      "RSA1_5",
+      "ECDH-ES"
+    ],
+    "id_token_encryption_enc_values_supported": [
+      "A256GCM",
+      "A192GCM",
+      "A128GCM",
+      "A128CBC-HS256",
+      "A192CBC-HS384",
+      "A256CBC-HS512"
+    ],
+    "userinfo_signing_alg_values_supported": [
+      "PS384",
+      "RS384",
+      "EdDSA",
+      "ES384",
+      "HS256",
+      "HS512",
+      "ES256",
+      "RS256",
+      "HS384",
+      "ES512",
+      "PS256",
+      "PS512",
+      "RS512",
+      "none"
+    ],
+    "userinfo_encryption_alg_values_supported": [
+      "ECDH-ES+A256KW",
+      "ECDH-ES+A192KW",
+      "ECDH-ES+A128KW",
+      "RSA-OAEP",
+      "RSA-OAEP-256",
+      "RSA1_5",
+      "ECDH-ES"
+    ],
+    "userinfo_encryption_enc_values_supported": [
+      "A256GCM",
+      "A192GCM",
+      "A128GCM",
+      "A128CBC-HS256",
+      "A192CBC-HS384",
+      "A256CBC-HS512"
+    ],
+    "request_object_signing_alg_values_supported": [
+      "PS384",
+      "RS384",
+      "EdDSA",
+      "ES384",
+      "HS256",
+      "HS512",
+      "ES256",
+      "RS256",
+      "HS384",
+      "ES512",
+      "PS256",
+      "PS512",
+      "RS512",
+      "none"
+    ],
+    "request_object_encryption_alg_values_supported": [
+      "ECDH-ES+A256KW",
+      "ECDH-ES+A192KW",
+      "ECDH-ES+A128KW",
+      "RSA-OAEP",
+      "RSA-OAEP-256",
+      "RSA1_5",
+      "ECDH-ES"
+    ],
+    "request_object_encryption_enc_values_supported": [
+      "A256GCM",
+      "A192GCM",
+      "A128GCM",
+      "A128CBC-HS256",
+      "A192CBC-HS384",
+      "A256CBC-HS512"
+    ],
+    "response_modes_supported": [
+      "query",
+      "fragment",
+      "form_post",
+      "query.jwt",
+      "fragment.jwt",
+      "form_post.jwt",
+      "jwt"
+    ],
+    "registration_endpoint": "https://identity-edge:8443/realms/florasecure/clients-registrations/openid-connect",
+    "token_endpoint_auth_methods_supported": [
+      "private_key_jwt",
+      "client_secret_basic",
+      "client_secret_post",
+      "tls_client_auth",
+      "client_secret_jwt"
+    ],
+    "token_endpoint_auth_signing_alg_values_supported": [
+      "PS384",
+      "RS384",
+      "EdDSA",
+      "ES384",
+      "HS256",
+      "HS512",
+      "ES256",
+      "RS256",
+      "HS384",
+      "ES512",
+      "PS256",
+      "PS512",
+      "RS512"
+    ],
+    "introspection_endpoint_auth_methods_supported": [
+      "private_key_jwt",
+      "client_secret_basic",
+      "client_secret_post",
+      "tls_client_auth",
+      "client_secret_jwt"
+    ],
+    "introspection_endpoint_auth_signing_alg_values_supported": [
+      "PS384",
+      "RS384",
+      "EdDSA",
+      "ES384",
+      "HS256",
+      "HS512",
+      "ES256",
+      "RS256",
+      "HS384",
+      "ES512",
+      "PS256",
+      "PS512",
+      "RS512"
+    ],
+    "authorization_signing_alg_values_supported": [
+      "PS384",
+      "RS384",
+      "EdDSA",
+      "ES384",
+      "HS256",
+      "HS512",
+      "ES256",
+      "RS256",
+      "HS384",
+      "ES512",
+      "PS256",
+      "PS512",
+      "RS512"
+    ],
+    "authorization_encryption_alg_values_supported": [
+      "ECDH-ES+A256KW",
+      "ECDH-ES+A192KW",
+      "ECDH-ES+A128KW",
+      "RSA-OAEP",
+      "RSA-OAEP-256",
+      "RSA1_5",
+      "ECDH-ES"
+    ],
+    "authorization_encryption_enc_values_supported": [
+      "A256GCM",
+      "A192GCM",
+      "A128GCM",
+      "A128CBC-HS256",
+      "A192CBC-HS384",
+      "A256CBC-HS512"
+    ],
+    "claims_supported": [
+      "aud",
+      "sub",
+      "iss",
+      "auth_time",
+      "name",
+      "given_name",
+      "family_name",
+      "preferred_username",
+      "email",
+      "acr"
+    ],
+    "claim_types_supported": [
+      "normal"
+    ],
+    "claims_parameter_supported": true,
+    "scopes_supported": [
+      "openid",
+      "organization",
+      "acr",
+      "offline_access",
+      "roles",
+      "microprofile-jwt",
+      "web-origins",
+      "phone",
+      "service_account",
+      "basic",
+      "address",
+      "email",
+      "profile"
+    ],
+    "request_parameter_supported": true,
+    "request_uri_parameter_supported": true,
+    "require_request_uri_registration": true,
+    "code_challenge_methods_supported": [
+      "plain",
+      "S256"
+    ],
+    "tls_client_certificate_bound_access_tokens": true,
+    "revocation_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/revoke",
+    "revocation_endpoint_auth_methods_supported": [
+      "private_key_jwt",
+      "client_secret_basic",
+      "client_secret_post",
+      "tls_client_auth",
+      "client_secret_jwt"
+    ],
+    "revocation_endpoint_auth_signing_alg_values_supported": [
+      "PS384",
+      "RS384",
+      "EdDSA",
+      "ES384",
+      "HS256",
+      "HS512",
+      "ES256",
+      "RS256",
+      "HS384",
+      "ES512",
+      "PS256",
+      "PS512",
+      "RS512"
+    ],
+    "backchannel_logout_supported": true,
+    "backchannel_logout_session_supported": true,
+    "device_authorization_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/auth/device",
+    "backchannel_token_delivery_modes_supported": [
+      "poll",
+      "ping"
+    ],
+    "backchannel_authentication_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/ext/ciba/auth",
+    "backchannel_authentication_request_signing_alg_values_supported": [
+      "PS384",
+      "RS384",
+      "EdDSA",
+      "ES384",
+      "ES256",
+      "RS256",
+      "ES512",
+      "PS256",
+      "PS512",
+      "RS512"
+    ],
+    "require_pushed_authorization_requests": false,
+    "pushed_authorization_request_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/ext/par/request",
+    "mtls_endpoint_aliases": {
+      "token_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/token",
+      "revocation_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/revoke",
+      "introspection_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/token/introspect",
+      "device_authorization_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/auth/device",
+      "registration_endpoint": "https://identity-edge:8443/realms/florasecure/clients-registrations/openid-connect",
+      "userinfo_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/userinfo",
+      "pushed_authorization_request_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/ext/par/request",
+      "backchannel_authentication_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/ext/ciba/auth"
+    },
+    "authorization_response_iss_parameter_supported": true
+  },
+  "public_jwks": [
+    {
+      "kid": "zwrjst-76bCSPDEW0TUHYZLr1OpGU4HgQVIlREJlv68",
+      "kty": "RSA",
+      "alg": "RSA-OAEP",
+      "use": "enc",
+      "x5c": [
+        "MIICpTCCAY0CBgGhGassQDANBgkqhkiG9w0BAQsFADAWMRQwEgYDVQQDDAtmbG9yYXNlY3VyZTAeFw0yNjEwMDgwMzU4MzBaFw0zNjEwMDgwNDAwMTBaMBYxFDASBgNVBAMMC2Zsb3Jhc2VjdXJlMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApUkw5NdHZCh5sue2qpuJN262MlBv/UBTCYA1LiacCMI6ZW6xXY47qKYFbJIZUznJB02xOnTLrv2cCLWiEKjQ24FWiaq6BWv6iMb7VP9OCt1Rg9g1BSMpfpTG+pgD2dkrA1qaWdPShptlrkAwScgRpi52A3hixGE23Rp+JCro6zGvE1mD4nempZjygfzAfDUsb/PtxLxjbfQL4roMt2+k600U3hiUCZI1E46vmgKB5yRnE33H08p2MIrK9QufNWbI5NSdt+ReCQqgZii2bx/4pSNufdHvH6ORRehc9wlWUjm6NovtTpaRfbdRM+eRNWIaUMM/zU6437f2RocrbBLH8wIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQAPYPyCld7K4ihu3q3H9Lc/iygLIvP7vsk1yJNsQFJWBaQcArl0d5mBd9RN8KRt3EDz7iHK2KkffDodNNNDniKSYGkFBVw6u5ZRfu44x2gsV68fRaY2La4yl7zdqyDgixUe3lCR0ZfASZHnKV48i0Ih1Y//o20D19rIgSj0OgBhbmDf2uY/s8gSObMiKjhnp8Dz32cECONyMUnsqu17j3JijUplZrFw3X5IZqcwN979GXyBPfBQXXDcpvKP48FzN3a7lK66n864MHoKZ8du0RQjPXFRfbtL6Tm2wNSaTmXw03QesHFhP+A69OPdYqBicZr5CCAa0leW8/CfIBIWbfqP"
+      ],
+      "x5t": "9GpQIxQZy7zBoabpH1Nwt2gnxa8",
+      "x5t#S256": "9tAIzo-5yU4eYGcCTFZ5MBQLr_atPUaMemdAT6UKVr4",
+      "n": "pUkw5NdHZCh5sue2qpuJN262MlBv_UBTCYA1LiacCMI6ZW6xXY47qKYFbJIZUznJB02xOnTLrv2cCLWiEKjQ24FWiaq6BWv6iMb7VP9OCt1Rg9g1BSMpfpTG-pgD2dkrA1qaWdPShptlrkAwScgRpi52A3hixGE23Rp-JCro6zGvE1mD4nempZjygfzAfDUsb_PtxLxjbfQL4roMt2-k600U3hiUCZI1E46vmgKB5yRnE33H08p2MIrK9QufNWbI5NSdt-ReCQqgZii2bx_4pSNufdHvH6ORRehc9wlWUjm6NovtTpaRfbdRM-eRNWIaUMM_zU6437f2RocrbBLH8w",
+      "e": "AQAB"
+    },
+    {
+      "kid": "OIu52WPpPQ6PSvRlqLtFCpP5Rkkkk9PgD0APfYl7Puo",
+      "kty": "RSA",
+      "alg": "RS256",
+      "use": "sig",
+      "x5c": [
+        "MIICpTCCAY0CBgGhGassADANBgkqhkiG9w0BAQsFADAWMRQwEgYDVQQDDAtmbG9yYXNlY3VyZTAeFw0yNjEwMDgwMzU4MzBaFw0zNjEwMDgwNDAwMTBaMBYxFDASBgNVBAMMC2Zsb3Jhc2VjdXJlMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnJYmcyRbe0H+/BCqNQN5nJALDNtJ6M/cmmD7UPLE3UPoPuztX1S7HzKHKVsfBaA5o0lANNdkpP1KqeL3LNkNbeZTbh9UCh3/CDmdfbH3ROHuivX7FXlFMnHebkfVeJrsB5+6PGMzx8JKLNiBTBDmv9frSUvGsm0tIBFjUhsyMi2vcL6UdK2qiQwuUAhMNhGsfAi7DBgemnbDRjhj3XE1Wxh7Q0LsNkU1aRm+7ITDJveqD8vy0xXhcoZBhd51jIyrIr5jaZH4w0eMyihT1OzX8OrUzsvmZnaaFBaqTHfXYeUNSOU/Q8oM62hSQpu+MOLZsN8y+8nJiXROOy6yBzm9wQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQAOmzzu6fZuU0/Uw64HVyVHElsd64TNqmD2HjqWGOS350SPJq7SdadmKpzg6LFeGU7Kx+Ibn88wFhsF1zY7wERwD1ay8az7Mu6JJHtnEDQG0htioD4ghfvIJy1KoUqTtPSpir+tWc+LFVJiytypB8pnt78WwL1L0qvn+iZlvcDD+IYgvO32KHp20XILGjvHQlAkLuBhQHAPUBuim+KLnAJBMa1pgEpalCyrMDGT++kbKdSgYn/b0KqJZ0gZd6yHXDsts2/11inrTO1iUYRxuUwqBxNCmURjutP5fzZ/RKRjXN9806JTP/BX7Mnvf2mBDVauROCDPlIsqLBQuXdbN9k6"
+      ],
+      "x5t": "vuvaB0V65lVAj6ltaP6KWNtYkT8",
+      "x5t#S256": "wqkmRaMp0Jpb2gN4jlpqFC_B-mysCbENjqATAFIFPgA",
+      "n": "nJYmcyRbe0H-_BCqNQN5nJALDNtJ6M_cmmD7UPLE3UPoPuztX1S7HzKHKVsfBaA5o0lANNdkpP1KqeL3LNkNbeZTbh9UCh3_CDmdfbH3ROHuivX7FXlFMnHebkfVeJrsB5-6PGMzx8JKLNiBTBDmv9frSUvGsm0tIBFjUhsyMi2vcL6UdK2qiQwuUAhMNhGsfAi7DBgemnbDRjhj3XE1Wxh7Q0LsNkU1aRm-7ITDJveqD8vy0xXhcoZBhd51jIyrIr5jaZH4w0eMyihT1OzX8OrUzsvmZnaaFBaqTHfXYeUNSOU_Q8oM62hSQpu-MOLZsN8y-8nJiXROOy6yBzm9wQ",
+      "e": "AQAB"
+    }
+  ]
+}
