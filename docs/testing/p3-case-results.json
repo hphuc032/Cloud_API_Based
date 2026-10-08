@@ -1,19 +1,30 @@
 {
   "baseline_commit": "16703e01285938c6b8d002b672f2124e8ab24ac1",
+  "validated_p3_commit": "56af7f81b123fcbe649c70dc88ce6421d6636c48",
   "full_regression_run": {
-    "project": "cloud-api-p3-74c90e2fd3fc",
+    "project": "cloud-api-p3-68308dcfa0da",
     "exit_code": 1,
     "cleanup_completed": true,
-    "started_utc": "2026-10-08T03:15:28.124140+00:00",
-    "finished_utc": "2026-10-08T03:32:52.141825+00:00"
+    "started_utc": "2026-10-08T05:00:29.864250+00:00",
+    "identity_only": false,
+    "finished_utc": "2026-10-08T05:19:29.728807+00:00"
   },
-  "final_p3_run": {
-    "project": "cloud-api-p3-9a389b7320a8",
-    "exit_code": 0,
-    "cleanup_completed": true,
-    "started_utc": "2026-10-08T03:58:21.895318+00:00",
-    "identity_only": true,
-    "finished_utc": "2026-10-08T04:03:08.705262+00:00"
+  "historical_runs": {
+    "full_regression_run": {
+      "project": "cloud-api-p3-74c90e2fd3fc",
+      "exit_code": 1,
+      "cleanup_completed": true,
+      "started_utc": "2026-10-08T03:15:28.124140+00:00",
+      "finished_utc": "2026-10-08T03:32:52.141825+00:00"
+    },
+    "final_p3_run": {
+      "project": "cloud-api-p3-9a389b7320a8",
+      "exit_code": 0,
+      "cleanup_completed": true,
+      "started_utc": "2026-10-08T03:58:21.895318+00:00",
+      "identity_only": true,
+      "finished_utc": "2026-10-08T04:03:08.705262+00:00"
+    }
   },
   "counts": {
     "passed": 236,
@@ -22,6 +33,7 @@
     "error": 1
   },
   "node_client_assertions": 19,
+  "frontend_build": "passed",
   "case_results": [
     {
       "group": "P0/P1 pytest",
@@ -121,14 +133,12 @@
     {
       "group": "P0/P1 pytest",
       "name": "test_auth::test_defect_jwt_requires_exp",
-      "outcome": "expected-failure",
-      "detail": "P0-D01: signed access JWT without exp is accepted"
+      "outcome": "expected-failure"
     },
     {
       "group": "P0/P1 pytest",
       "name": "test_auth::test_defect_malformed_subject_is_401",
-      "outcome": "expected-failure",
-      "detail": "P0-D02: signed non-UUID subject causes HTTP 500"
+      "outcome": "expected-failure"
     },
     {
       "group": "P0/P1 pytest",
@@ -233,14 +243,12 @@
     {
       "group": "P0/P1 pytest",
       "name": "test_authorization::test_defect_product_null_field",
-      "outcome": "expected-failure",
-      "detail": "P0-D06: explicit null product price causes HTTP 500"
+      "outcome": "expected-failure"
     },
     {
       "group": "P0/P1 pytest",
       "name": "test_authorization::test_defect_user_null_field",
-      "outcome": "expected-failure",
-      "detail": "P0-D07: explicit null user role causes HTTP 500"
+      "outcome": "expected-failure"
     },
     {
       "group": "P0/P1 pytest",
@@ -345,14 +353,12 @@
     {
       "group": "P0/P1 pytest",
       "name": "test_webhook_ssrf::test_defect_webhook_json_shape",
-      "outcome": "expected-failure",
-      "detail": "P0-D03: signed non-object JSON causes HTTP 500"
+      "outcome": "expected-failure"
     },
     {
       "group": "P0/P1 pytest",
       "name": "test_webhook_ssrf::test_defect_webhook_replay",
-      "outcome": "expected-failure",
-      "detail": "P0-D04: identical signed webhook is accepted twice"
+      "outcome": "expected-failure"
     },
     {
       "group": "P0/P1 pytest",
@@ -472,8 +478,7 @@
     {
       "group": "P0/P1 pytest",
       "name": "test_webhook_ssrf::test_defect_ssrf_ipv4_mapped_loopback",
-      "outcome": "expected-failure",
-      "detail": "P0-D05: IPv4-mapped IPv6 loopback bypasses IP denylist"
+      "outcome": "expected-failure"
     },
     {
       "group": "P0/P1 pytest",
@@ -783,14 +788,12 @@
     {
       "group": "P2 pytest",
       "name": "::test_https_defect_product_null",
-      "outcome": "expected-failure",
-      "detail": "P0-D06: explicit null product price causes HTTP 500"
+      "outcome": "expected-failure"
     },
     {
       "group": "P2 pytest",
       "name": "::test_https_defect_user_null",
-      "outcome": "expected-failure",
-      "detail": "P0-D07: explicit null user role causes HTTP 500"
+      "outcome": "expected-failure"
     },
     {
       "group": "P2 pytest",
@@ -890,14 +893,12 @@
     {
       "group": "P2 pytest",
       "name": "::test_https_defect_exp",
-      "outcome": "expected-failure",
-      "detail": "P0-D01: signed access JWT without exp is accepted"
+      "outcome": "expected-failure"
     },
     {
       "group": "P2 pytest",
       "name": "::test_https_defect_sub",
-      "outcome": "expected-failure",
-      "detail": "P0-D02: signed non-UUID subject causes HTTP 500"
+      "outcome": "expected-failure"
     },
     {
       "group": "P2 pytest",
@@ -962,14 +963,12 @@
     {
       "group": "P2 pytest",
       "name": "::test_https_defect_webhook_shape",
-      "outcome": "expected-failure",
-      "detail": "P0-D03: signed non-object JSON causes HTTP 500"
+      "outcome": "expected-failure"
     },
     {
       "group": "P2 pytest",
       "name": "::test_https_defect_webhook_replay",
-      "outcome": "expected-failure",
-      "detail": "P0-D04: identical signed webhook is accepted twice"
+      "outcome": "expected-failure"
     },
     {
       "group": "P2 pytest",
@@ -984,14 +983,12 @@
     {
       "group": "P2 pytest",
       "name": "::test_https_ssrf_uses_real_dns_and_preserves_roles[staff-200]",
-      "outcome": "failed",
-      "detail": "AssertionError"
+      "outcome": "failed"
     },
     {
       "group": "P2 pytest",
       "name": "::test_https_ssrf_uses_real_dns_and_preserves_roles[admin-200]",
-      "outcome": "failed",
-      "detail": "AssertionError"
+      "outcome": "failed"
     },
     {
       "group": "P2 pytest",

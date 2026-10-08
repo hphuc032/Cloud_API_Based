@@ -2,14 +2,160 @@
 
 Branch: `migration/cloud-api-security`. Approved parent P2:
 `16703e01285938c6b8d002b672f2124e8ab24ac1`. Date: 2026-10-08 (Asia/Saigon).
-P3 is committed separately; its exact commit is in the completion response and
-`git log -1 --format=%H`. No P4 cutover, Kong JWT validation or business-policy
+P3 implementation commit: `56af7f81b123fcbe649c70dc88ce6421d6636c48`.
+Any acceptance-recovery commit changes documentation/evidence only. No P4 cutover, Kong JWT validation or business-policy
 change was implemented. No production deployment or database was changed.
 
 **P3's independent provider/mapping checks pass. Strict phase acceptance remains
-blocked by three confirmed cloud DNS regression failures.** Do not classify them
+blocked by three independently reproduced runtime DNS failures.** Do not classify them
 as passes or new P0 expected failures. Restore public DNS in the runtime and rerun
 the complete runner before approving strict P3 acceptance.
+
+## Final validation and acceptance recovery — 2026-10-08 UTC
+
+Validated implementation: `56af7f81b123fcbe649c70dc88ce6421d6636c48`.
+**Recommendation: BLOCKED.** DNS could not be restored through the supported
+runtime interfaces available in this environment. No P4 work was performed.
+
+The focused rerun executed all three affected cases **before** the full suite:
+**0 passed, 2 failed, 1 error, 0 expected failures, 0 skipped**. Both staff/admin
+requests traversed verified HTTPS and Kong upstream mTLS and returned exactly
+`400 {"detail":"Unable to resolve hostname"}`. No certificate checks or assertions
+were changed. The temporary recovery driver selected existing tests once, restored
+the unittest loader, then ran the complete unchanged runner sequence with fresh
+project-scoped databases and volumes. Selection did not disable any full-suite test.
+
+The fresh full run is `cloud-api-p3-68308dcfa0da`, 2026-10-08T05:00:29.864250+00:00–2026-10-08T05:19:29.728807+00:00 UTC, exit 1;
+project containers, networks and volumes were removed successfully. This is one
+complete current run, rather than the historical combined runs below.
+
+| Group | Executed | Passed | Expected failure | Failure/error |
+|---|---:|---:|---:|---:|
+| P0 auth/business/webhook/SSRF/schema | 89 | 82 | 7 | 0 |
+| P1 database privileges and populated-DB adoption | 19 | 19 | 0 | 0 |
+| P1 deployment/network/readiness/monitoring/image checks | 16 | 15 | 0 | 1 DNS error |
+| P2 TLS socket/certificate checks | 22 | 22 | 0 | 0 |
+| P2 HTTPS auth/business/webhook/SSRF | 65 | 57 | 6 | 2 DNS failures |
+| P2 Kong/TLS/enrollment/rotation/recovery/Vite checks | 16 | 16 | 0 | 0 |
+| P3 OIDC and identity-mapping cases | 22 | 22 | 0 | 0 |
+| P3 identity isolation/privileges/restart | 3 | 3 | 0 | 0 |
+| **Total** | **252** | **236** | **13** | **3 DNS** |
+
+Separately rerun: **19 inactive-client assertions passed**, frontend production
+build **passed** (4.01 seconds). There were **0 unexpected passes, 0 skipped or
+disabled cases, and 0 unexecuted cases in the requested suite**. The three DNS
+failures remain unexpected test outcomes; they are not xfails. The required
+post-DNS-restoration focused/full rerun is **unexecuted and blocked**; this fresh
+diagnostic full run does not satisfy that prerequisite. There were no other
+unexpected failures. The seven unique defects P0-D01–D07 remain strict expected
+failures, re-executed 13 times across the suites.
+
+### Exact failures and root cause
+
+| Test ID and source | Assertion/query | Actual result and cause |
+|---|---|---|
+| `host_checks.execute.<locals>.DeploymentChecks.test_public_dns_for_current_ssrf_validation`, `tests/p1/host_checks.py:152` | Backend network namespace: `bool(socket.getaddrinfo('example.com',443))` prints `True` | `socket.gaierror: [Errno -3] Temporary failure in name resolution`; probe subprocess exits 1, causing `CalledProcessError` and a unittest error. Supplied runtime upstream DNS endpoint is unavailable. |
+| `tests/p2/test_https_business.py::test_https_ssrf_uses_real_dns_and_preserves_roles[staff-200]`, line 72 | HTTPS `POST /api/v1/security/fetch-url`, `url=https://example.com/test`, status must be 200; validator calls `socket.getaddrinfo('example.com',None)` | Status 400, `Unable to resolve hostname`, then `AssertionError`. Same upstream DNS failure; staff authorization reached the unchanged validator. |
+| `tests/p2/test_https_business.py::test_https_ssrf_uses_real_dns_and_preserves_roles[admin-200]`, line 72 | Same request/query, authorized admin, status must be 200 | Same 400/error and root cause. |
+
+All three require `example.com` A/AAAA resolution. Independent raw DNS diagnostics
+also queried `pypi.org` as an allowed control domain:
+
+- Agent resolver: `/etc/resolv.conf` supplies `172.31.0.93`. Connected UDP and TCP
+  to port 53 return `[Errno 111] Connection refused`. Unconnected UDP waits time
+  out. Neither A nor AAAA queries produce answers.
+- Actual backend resolver: Docker `127.0.0.11`, with upstream
+  `host(172.31.0.93)`, no overrides. It returns **SERVFAIL (rcode 2), zero answers**
+  for both domains/types, over both UDP and TCP. Real backend `getaddrinfo` and
+  probes sharing backend/Kong namespaces also fail for external names.
+- Internal Docker names work: the backend resolves `postgres` and `kong` to their
+  project network addresses. The full isolation tests exercise both names and real
+  database IPs. `api_transport` has `Internal=false`; data/observability networks
+  retain `Internal=true`. This is not P1's earlier all-internal API network defect.
+- Default-verified HTTPS to `https://pypi.org` through the platform proxy returns
+  200; `https://example.com` receives proxy tunnel 403 under the original policy.
+  Internet/proxy availability therefore does not imply libc/raw DNS availability.
+- Read-only host firewall inspection was denied. Platform resolver listener,
+  sidecar and firewall state are not exposed. We can locate the failing upstream
+  resolver path, but cannot distinguish an absent listener from platform-side
+  rejection, or establish a global authoritative-DNS outage.
+
+Classification for each failure: **execution-environment DNS infrastructure**;
+no application regression or incorrect Compose network isolation was detected.
+The SSRF validator's SHA-256 is
+`b84670ffa50dca7510bbea1f33dc58a323fc00445e041053e7c5765429495ad3` in P1,
+P2 and P3. P1's final 16 deployment checks passed; approved P2 had
+**214 passed / 13 expected failures / 0 failures (227 executions)**. The fresh
+historical portion here has **211 passed / 13 expected failures / 3 DNS failures**.
+P3 adds 25 passing executions. Existing auth/business routes, defect tests, main
+application and P2 Kong declaration remain unchanged; no DNS exception was loosened.
+P0/P1 authority/privilege checks, P2 negative certificate/mTLS/rotation checks and
+local login/JWT/refresh/logout/ownership checks passed. P3 still rejects a genuine
+Keycloak token in the current application, including after explicit identity mapping.
+
+### Supported recovery attempted and remaining blocker
+
+The environment draft now preserves its `package_managers` preset and adds only
+`example.com` to custom destinations. Reusable startup instructions now describe
+P3 validation and the raw-DNS prerequisite. The configuration tool confirms **saved,
+requires publication**; it cannot apply or repair the running resolver. A post-save
+`getaddrinfo('example.com',443)` still fails with errno -3. No public resolver IP,
+fixed host answer, proxy-based DNS substitute, firewall change, TLS bypass,
+authentication cutover or application/test/deployment configuration change was introduced.
+
+Required external action: review/save the destination and startup draft in environment
+settings and publish as required by the tool, and have the supported runtime restore
+a working DNS resolver reachable by the Agent and Docker. Domain allowlisting alone
+is insufficient evidence of DNS repair. Alternatively run on a supported environment
+with functioning raw DNS. Once both host and backend `getaddrinfo` succeed, rerun the
+same three cases first and then the full suite. Until then, P3 acceptance stays pending.
+
+### Commands and evidence
+
+The public [DNS recovery evidence](p3-dns-recovery-evidence.json) records queries,
+errors, resolver files, network flags, source hashes, response bodies and focused
+results. [Individual case results](p3-case-results.json) now contain this complete
+fresh run; [command inventory](p3-commands.json) retains historical commands and adds
+`acceptance_recovery`. Discovery/JWKS and TLS evidence were refreshed from this run.
+Local raw diagnostics remain under `/workspace/.cloud-api/p3-dns-recovery/` and are
+not required production configuration.
+
+Principal executed diagnostics/validation commands:
+
+```text
+cat /etc/resolv.conf
+ip route
+ss -lunt
+iptables -S; iptables -t nat -S  # denied; also retried with a writable lock path
+python3 /workspace/.cloud-api/p3-dns-recovery/dns_probe.py
+# Python socket probes: connected UDP/TCP to supplied resolver, getaddrinfo,
+# actual backend docker exec, and docker run --network container:<backend/Kong>.
+# Python urllib default-verified HTTPS proxy controls for example.com and pypi.org.
+docker network inspect cloud-api-p3-68308dcfa0da_<network>
+git show <P1/P2/P3>:<security/defect-test path>  # SHA-256 comparison
+docker system df
+docker image rm cloud-api-p3-tests-base:verified cloud-api-p3-backend-base:verified
+# Replaced these redundant local cache bases with aliases to source-verified
+# retained test/backend images, avoiding duplicated vfs storage; no service data removed.
+docker image tag cloud-api-p3-9a389b7320a8-tests cloud-api-p3-tests-base:verified
+docker image tag cloud-api-p3-9a389b7320a8-backend cloud-api-p3-backend-base:verified
+DOCKER_CONFIG=/workspace/.docker-config P3_REUSE_PROJECT_IMAGES=cloud-api-p3-9a389b7320a8 python3 /workspace/.cloud-api/p3-dns-recovery/run_recovery.py
+node tests/p3/test_client.mjs
+npm --prefix frontend run build
+```
+
+The local recovery driver is the committed `tests/p3/run.py` with the checkout/output
+paths made explicit and a focused-test/diagnostic step inserted before its full-suite
+sequence. It neither changes production Compose nor changes test assertions. Source
+hash checks confirmed reused container code/realm matches the P3 checkout. All data,
+secrets, PKI and project networks were disposable. Original development services
+were preserved. Only tracked documentation/evidence changed for this recovery.
+
+Tracked recovery files: `docs/testing/p3-results.md`, `p3-case-results.json`,
+`p3-commands.json`, `p3-oidc-evidence.json`, and new
+`p3-dns-recovery-evidence.json` (all under `docs/testing/`).
+No application, test, deployment configuration, certificate-verification or
+business-authorization files changed.
 
 ## Architecture, configuration, schema and operations
 
@@ -38,7 +184,7 @@ an exact configured trusted HTTPS issuer; it never looks up/link accounts by ema
 creates users, changes roles or upserts conflicts. Runtime access to the inactive
 mapping table is denied. ORM metadata is registered for Alembic without auth wiring.
 
-## Executed results
+## Historical implementation results
 
 Full regression project: `cloud-api-p3-74c90e2fd3fc`,
 10:15:28–10:32:52 Asia/Saigon (03:15:28–03:32:52 UTC), wrapper exit 1,
@@ -57,7 +203,7 @@ final corrected P3 rerun; they are not a claim of one all-green full run.
 | P2 actual Kong/TLS/enrollment/rotation/recovery/Vite checks | 16 | 16 | 0 | 0 |
 | P3 real OIDC and mapping/migration cases | 22 | 22 | 0 | 0 |
 | P3 identity isolation/privileges/restart checks | 3 | 3 | 0 | 0 |
-| **Combined final outcomes** | **252** | **236** | **13** | **3 environmental** |
+| **Historical combined outcomes** | **252** | **236** | **13** | **3 environmental** |
 
 Separately, the inactive client module passed **19 Node assertions** covering valid
 responses and exact callback/state/nonce/issuer/audience/expiry rejection. The
