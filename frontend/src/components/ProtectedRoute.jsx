@@ -8,8 +8,10 @@ import { useAuth } from '../api/AuthContext';
  * - If `allowedRoles` is given and the user's role isn't in it -> render Access Denied
  */
 export default function ProtectedRoute({ children, allowedRoles }) {
-  const { isAuthenticated, role } = useAuth();
+  const { isAuthenticated, role, loading } = useAuth();
   const location = useLocation();
+
+  if (loading) return <p role="status">Checking session…</p>;
 
   if (!isAuthenticated) {
     return <Navigate to="/login" state={{ from: location }} replace />;

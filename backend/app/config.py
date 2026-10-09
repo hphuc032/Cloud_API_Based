@@ -1,6 +1,7 @@
-from typing import List, Optional
+from typing import List, Optional, Literal
+from urllib.parse import urlsplit
 
-from pydantic import field_validator
+from pydantic import field_validator, model_validator, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -34,6 +35,26 @@ class Settings(BaseSettings):
     KEYCLOAK_CLIENT_ID: Optional[str] = None
     KEYCLOAK_SERVER_URL: Optional[str] = None
     KEYCLOAK_ISSUER: Optional[str] = None
+    # Explicit release selection; failure never changes this mode or accepts legacy JWTs.
+    AUTH_MODE: Literal["legacy", "oidc"] = "legacy"
+    OIDC_ISSUER: Optional[str] = None
+    OIDC_AUDIENCE: str = "florasecure-api"
+    OIDC_CLIENT_ID: str = "florasecure-spa"
+    OIDC_CA_FILE: Optional[str] = None
+    OIDC_JWKS_TTL: int = Field(60, ge=1, le=300)
+    OIDC_JWKS_REFRESH_INTERVAL: int = Field(5, ge=1, le=60)
+
+    @model_validator(mode="after")
+    def validate_oidc(self):
+        if self.AUTH_MODE == "oidc":
+            parsed = urlsplit(self.OIDC_ISSUER or "")
+            if (parsed.scheme != "https" or not parsed.hostname or parsed.username or
+                    parsed.password or parsed.query or parsed.fragment or
+                    not parsed.path.startswith("/realms/") or self.OIDC_ISSUER.endswith("/")):
+                raise ValueError("OIDC mode requires one exact trusted HTTPS realm issuer")
+            if not self.OIDC_AUDIENCE or not self.OIDC_CLIENT_ID:
+                raise ValueError("OIDC audience and client must be configured")
+        return self
 
     model_config = SettingsConfigDict(
         env_file=".env",

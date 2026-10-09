@@ -1,73 +1,15 @@
+import { identity } from '../identity/runtime';
 import axios from 'axios';
 
 const BASE_URL = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/+$/, '');
 
-export const STORAGE_KEYS = {
-  ACCESS_TOKEN: 'fs_access_token',
-  REFRESH_TOKEN: 'fs_refresh_token',
-  EXPIRES_AT: 'fs_expires_at',
-  ROLE: 'fs_role',
-  USER: 'fs_user',
-};
-
-// --- Token storage helpers -------------------------------------------------
-
-export function saveSession({ access_token, refresh_token, expires_in }) {
-  localStorage.setItem(STORAGE_KEYS.ACCESS_TOKEN, access_token || '');
-  if (refresh_token) localStorage.setItem(STORAGE_KEYS.REFRESH_TOKEN, refresh_token);
-  if (expires_in) {
-    const expiresAt = Date.now() + Number(expires_in) * 1000;
-    localStorage.setItem(STORAGE_KEYS.EXPIRES_AT, String(expiresAt));
-  }
-}
-
-export function saveUser(user) {
-  localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(user || {}));
-  if (user?.role) localStorage.setItem(STORAGE_KEYS.ROLE, user.role);
-}
-
-export function getAccessToken() {
-  return localStorage.getItem(STORAGE_KEYS.ACCESS_TOKEN) || '';
-}
-
-export function getRefreshToken() {
-  return localStorage.getItem(STORAGE_KEYS.REFRESH_TOKEN) || '';
-}
-
-export function getExpiresAt() {
-  const v = localStorage.getItem(STORAGE_KEYS.EXPIRES_AT);
-  return v ? Number(v) : null;
-}
-
-export function getStoredUser() {
-  try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEYS.USER) || 'null');
-  } catch {
-    return null;
-  }
-}
-
-export function getRole() {
-  return localStorage.getItem(STORAGE_KEYS.ROLE) || getStoredUser()?.role || '';
-}
-
-export function clearSession() {
-  Object.values(STORAGE_KEYS).forEach((k) => localStorage.removeItem(k));
-}
-
+export function getAccessToken() { return identity.currentToken(); }
+export function getExpiresAt() { return identity.expiresAt(); }
 export function getTokenStatus() {
-  const token = getAccessToken();
-  if (!token) return 'missing';
-  const expiresAt = getExpiresAt();
-  if (expiresAt && Date.now() > expiresAt) return 'expired';
-  return 'valid';
+  if (!getAccessToken()) return 'missing';
+  return getExpiresAt() <= Date.now() ? 'expired' : 'valid';
 }
-
-export function tokenPreview(token) {
-  if (!token) return '-';
-  if (token.length <= 44) return token;
-  return `${token.slice(0, 20)}...${token.slice(-20)}`;
-}
+export function tokenPreview() { return getAccessToken() ? 'Access token held in memory' : '-'; }
 
 export function unwrapItems(data) {
   return Array.isArray(data) ? data : data?.items || [];
@@ -99,9 +41,9 @@ export const api = axios.create({
 });
 
 // Attach Authorization header automatically, unless explicitly skipped.
-api.interceptors.request.use((config) => {
+api.interceptors.request.use(async (config) => {
   if (!config.skipAuth) {
-    const token = getAccessToken();
+    const token = await identity.token();
     if (token) {
       config.headers = config.headers || {};
       config.headers.Authorization = `Bearer ${token}`;
@@ -127,23 +69,6 @@ api.interceptors.response.use(
 
 // --- Auth ------------------------------------------------------------------
 
-export async function login(email, password) {
-  const body = new URLSearchParams();
-  body.set('username', email);
-  body.set('password', password);
-
-  const res = await api.post('/api/v1/auth/login', body, {
-    skipAuth: true,
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-  });
-  return res.data;
-}
-
-export async function register(payload) {
-  const res = await api.post('/api/v1/auth/register', payload);
-  return res.data;
-}
-
 export async function getMe(opts = {}) {
   const res = await api.get('/api/v1/auth/me', opts);
   return res.data;
@@ -152,7 +77,7 @@ export async function getMe(opts = {}) {
 // --- Products --------------------------------------------------------------
 
 export async function getProducts() {
-  const res = await api.get('/api/v1/products/');
+  const res = await api.get('/api/v1/products/', {skipAuth:true});
   return res.data;
 }
 
@@ -209,6 +134,7 @@ export async function getWebhookTestSignature() {
 
 export async function postWebhookReceive(payload, signature) {
   const res = await api.post('/api/v1/webhooks/receive', payload, {
+    skipAuth:true,
     headers: signature ? { 'X-Webhook-Signature': signature } : {},
   });
   return res.data;
@@ -224,7 +150,7 @@ export async function testFetchUrl(url) {
 // --- Health ----------------------------------------------------------------
 
 export async function getHealth() {
-  const res = await api.get('/health');
+  const res = await api.get('/health', {skipAuth:true});
   return res.data;
 }
 

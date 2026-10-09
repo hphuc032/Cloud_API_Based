@@ -1,0 +1,15 @@
+services:
+  kong:
+    ports: !override ['127.0.0.1::8443']
+  identity-edge:
+    ports: !reset []
+  tests:
+    build:
+      dockerfile: tests/p4/Dockerfile
+    environment:
+      AUTH_MODE: oidc
+      OIDC_ISSUER: https://identity-edge:8443/realms/florasecure
+      OIDC_CA_FILE: /identity-trust/identity-ca.pem
+    volumes:
+      - ${P4_FIXTURES_DIR:?Disposable fixtures}/:/test-fixtures
+      - ${P4_RESULTS_DIR:?P4 evidence output}:/results

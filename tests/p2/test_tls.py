@@ -67,7 +67,14 @@ def test_https_gateway_health_and_http_401_are_distinct_from_tls_failure():
         assert client.get('/health').status_code == 200
         assert client.get('/health/ready').status_code == 200
         response = client.get('/api/v1/auth/me')
-        assert response.status_code == 401 and 'kong' in response.headers['via'].lower()
+        assert response.status_code == 401
+        if os.environ.get('AUTH_MODE') == 'oidc':
+            # P4 JWT rejection is generated at Kong before proxying, so Via (an
+            # upstream response header) is absent. TLS still completed first.
+            assert 'kong' in response.headers['server'].lower()
+            assert 'x-kong-upstream-latency' not in response.headers
+        else:
+            assert 'kong' in response.headers['via'].lower()
 
 
 @pytest.mark.parametrize('file,names,purpose', [

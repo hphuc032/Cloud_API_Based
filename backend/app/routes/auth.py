@@ -20,6 +20,11 @@ from app.models.user import User, UserRole
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
 
+
+def require_legacy_release():
+    if settings.AUTH_MODE != "legacy":
+        raise HTTPException(status_code=410, detail="Browser authentication is managed by the identity provider")
+
 MAX_FAILED_ATTEMPTS = 5
 LOCKOUT_MINUTES = 15
 
@@ -59,7 +64,7 @@ def _is_weak_password(password: str) -> bool:
     return password.isalpha() or password.isdigit()
 
 
-@router.post("/register", status_code=status.HTTP_201_CREATED)
+@router.post("/register", status_code=status.HTTP_201_CREATED, dependencies=[Depends(require_legacy_release)])
 def register(payload: RegisterRequest, db: Session = Depends(get_db)):
     """Register a new customer account."""
     if _is_weak_password(payload.password):
@@ -86,7 +91,7 @@ def register(payload: RegisterRequest, db: Session = Depends(get_db)):
     return {"message": "Registration successful", "user_id": str(user.id)}
 
 
-@router.post("/login", response_model=TokenResponse)
+@router.post("/login", response_model=TokenResponse, dependencies=[Depends(require_legacy_release)])
 def login(
     request: Request,
     form_data: OAuth2PasswordRequestForm = Depends(),
@@ -163,7 +168,7 @@ def login(
     )
 
 
-@router.post("/refresh", response_model=TokenResponse)
+@router.post("/refresh", response_model=TokenResponse, dependencies=[Depends(require_legacy_release)])
 def refresh_token(
     payload: RefreshRequest,
     request: Request,
@@ -221,7 +226,7 @@ def refresh_token(
     )
 
 
-@router.post("/logout", status_code=status.HTTP_204_NO_CONTENT)
+@router.post("/logout", status_code=status.HTTP_204_NO_CONTENT, dependencies=[Depends(require_legacy_release)])
 def logout(
     payload: RefreshRequest,
     current_user: User = Depends(get_current_active_user),

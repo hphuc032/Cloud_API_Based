@@ -250,7 +250,7 @@ function ApiRejectionDemoCard() {
     for (let i = 0; i < 6; i++) {
       const r = await runRequest(() =>
         api
-          .post('/api/v1/auth/login', { email: 'rate-limit-test@example.com', password: 'wrong' }, { skipAuth: true })
+          .get('/api/v1/products/', { skipAuth: true })
           .then((res) => res.data)
       );
       attempts.push(r.status);
@@ -261,7 +261,7 @@ function ApiRejectionDemoCard() {
       ...r,
       rateLimit: {
         status: hit429 ? 429 : attempts[attempts.length - 1],
-        label: `6x POST /api/v1/auth/login (bad credentials)`,
+        label: `6x GET /api/v1/products/`,
         message: hit429
           ? `Rate limit triggered after ${attempts.length} attempts: [${attempts.join(', ')}]`
           : `No 429 observed within ${attempts.length} attempts: [${attempts.join(', ')}]`,
@@ -359,7 +359,7 @@ function ApiRejectionDemoCard() {
         {/* Rate limit */}
         <div>
           <DemoButton
-            label="Test Rate Limit (6 rapid bad logins)"
+            label="Test Rate Limit (6 public product reads)"
             onClick={testRateLimit}
             loading={loadingKey === 'rateLimit'}
           />

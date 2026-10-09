@@ -1,0 +1,979 @@
+{
+  "approved_base": "e6501b4d64e428e503db5ae2e624e8188ff8bfd7",
+  "acceptance": "CONDITIONAL",
+  "runs": [
+    {
+      "project": "cloud-api-p4-34bab8e8c62e",
+      "results": {
+        "startup": 0,
+        "p4-focused": 0,
+        "p4-pytest": 1,
+        "p4-host": 0,
+        "p3-host": 0,
+        "p2-host": 0,
+        "browser": 1,
+        "key-rotation": 0,
+        "cleanup": 0
+      },
+      "started_utc": "2026-10-09T05:50:25.784813+00:00",
+      "finished_utc": "2026-10-09T06:07:16.495944+00:00"
+    },
+    {
+      "project": "cloud-api-p4-407858bc1ce0",
+      "results": {
+        "startup": 0,
+        "browser": 0,
+        "cleanup": 0
+      },
+      "focus": "browser",
+      "started_utc": "2026-10-09T06:40:04.446101+00:00",
+      "finished_utc": "2026-10-09T06:44:04.501290+00:00"
+    },
+    {
+      "project": "cloud-api-p3-b69c8dae86ca",
+      "exit_code": 1,
+      "cleanup_completed": true,
+      "started_utc": "2026-10-09T06:44:38.454584+00:00",
+      "identity_only": false,
+      "finished_utc": "2026-10-09T06:56:56.709181+00:00"
+    }
+  ],
+  "discovery_and_public_jwks": {
+    "discovery": {
+      "issuer": "https://identity-edge:8443/realms/florasecure",
+      "authorization_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/auth",
+      "token_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/token",
+      "introspection_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/token/introspect",
+      "userinfo_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/userinfo",
+      "end_session_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/logout",
+      "frontchannel_logout_session_supported": true,
+      "frontchannel_logout_supported": true,
+      "jwks_uri": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/certs",
+      "check_session_iframe": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/login-status-iframe.html",
+      "grant_types_supported": [
+        "authorization_code",
+        "client_credentials",
+        "implicit",
+        "password",
+        "refresh_token",
+        "urn:ietf:params:oauth:grant-type:device_code",
+        "urn:ietf:params:oauth:grant-type:token-exchange",
+        "urn:ietf:params:oauth:grant-type:uma-ticket",
+        "urn:openid:params:grant-type:ciba"
+      ],
+      "acr_values_supported": [
+        "0",
+        "1"
+      ],
+      "response_types_supported": [
+        "code",
+        "none",
+        "id_token",
+        "token",
+        "id_token token",
+        "code id_token",
+        "code token",
+        "code id_token token"
+      ],
+      "subject_types_supported": [
+        "public",
+        "pairwise"
+      ],
+      "prompt_values_supported": [
+        "none",
+        "login",
+        "consent"
+      ],
+      "id_token_signing_alg_values_supported": [
+        "PS384",
+        "RS384",
+        "EdDSA",
+        "ES384",
+        "HS256",
+        "HS512",
+        "ES256",
+        "RS256",
+        "HS384",
+        "ES512",
+        "PS256",
+        "PS512",
+        "RS512"
+      ],
+      "id_token_encryption_alg_values_supported": [
+        "ECDH-ES+A256KW",
+        "ECDH-ES+A192KW",
+        "ECDH-ES+A128KW",
+        "RSA-OAEP",
+        "RSA-OAEP-256",
+        "RSA1_5",
+        "ECDH-ES"
+      ],
+      "id_token_encryption_enc_values_supported": [
+        "A256GCM",
+        "A192GCM",
+        "A128GCM",
+        "A128CBC-HS256",
+        "A192CBC-HS384",
+        "A256CBC-HS512"
+      ],
+      "userinfo_signing_alg_values_supported": [
+        "PS384",
+        "RS384",
+        "EdDSA",
+        "ES384",
+        "HS256",
+        "HS512",
+        "ES256",
+        "RS256",
+        "HS384",
+        "ES512",
+        "PS256",
+        "PS512",
+        "RS512",
+        "none"
+      ],
+      "userinfo_encryption_alg_values_supported": [
+        "ECDH-ES+A256KW",
+        "ECDH-ES+A192KW",
+        "ECDH-ES+A128KW",
+        "RSA-OAEP",
+        "RSA-OAEP-256",
+        "RSA1_5",
+        "ECDH-ES"
+      ],
+      "userinfo_encryption_enc_values_supported": [
+        "A256GCM",
+        "A192GCM",
+        "A128GCM",
+        "A128CBC-HS256",
+        "A192CBC-HS384",
+        "A256CBC-HS512"
+      ],
+      "request_object_signing_alg_values_supported": [
+        "PS384",
+        "RS384",
+        "EdDSA",
+        "ES384",
+        "HS256",
+        "HS512",
+        "ES256",
+        "RS256",
+        "HS384",
+        "ES512",
+        "PS256",
+        "PS512",
+        "RS512",
+        "none"
+      ],
+      "request_object_encryption_alg_values_supported": [
+        "ECDH-ES+A256KW",
+        "ECDH-ES+A192KW",
+        "ECDH-ES+A128KW",
+        "RSA-OAEP",
+        "RSA-OAEP-256",
+        "RSA1_5",
+        "ECDH-ES"
+      ],
+      "request_object_encryption_enc_values_supported": [
+        "A256GCM",
+        "A192GCM",
+        "A128GCM",
+        "A128CBC-HS256",
+        "A192CBC-HS384",
+        "A256CBC-HS512"
+      ],
+      "response_modes_supported": [
+        "query",
+        "fragment",
+        "form_post",
+        "query.jwt",
+        "fragment.jwt",
+        "form_post.jwt",
+        "jwt"
+      ],
+      "registration_endpoint": "https://identity-edge:8443/realms/florasecure/clients-registrations/openid-connect",
+      "token_endpoint_auth_methods_supported": [
+        "private_key_jwt",
+        "client_secret_basic",
+        "client_secret_post",
+        "tls_client_auth",
+        "client_secret_jwt"
+      ],
+      "token_endpoint_auth_signing_alg_values_supported": [
+        "PS384",
+        "RS384",
+        "EdDSA",
+        "ES384",
+        "HS256",
+        "HS512",
+        "ES256",
+        "RS256",
+        "HS384",
+        "ES512",
+        "PS256",
+        "PS512",
+        "RS512"
+      ],
+      "introspection_endpoint_auth_methods_supported": [
+        "private_key_jwt",
+        "client_secret_basic",
+        "client_secret_post",
+        "tls_client_auth",
+        "client_secret_jwt"
+      ],
+      "introspection_endpoint_auth_signing_alg_values_supported": [
+        "PS384",
+        "RS384",
+        "EdDSA",
+        "ES384",
+        "HS256",
+        "HS512",
+        "ES256",
+        "RS256",
+        "HS384",
+        "ES512",
+        "PS256",
+        "PS512",
+        "RS512"
+      ],
+      "authorization_signing_alg_values_supported": [
+        "PS384",
+        "RS384",
+        "EdDSA",
+        "ES384",
+        "HS256",
+        "HS512",
+        "ES256",
+        "RS256",
+        "HS384",
+        "ES512",
+        "PS256",
+        "PS512",
+        "RS512"
+      ],
+      "authorization_encryption_alg_values_supported": [
+        "ECDH-ES+A256KW",
+        "ECDH-ES+A192KW",
+        "ECDH-ES+A128KW",
+        "RSA-OAEP",
+        "RSA-OAEP-256",
+        "RSA1_5",
+        "ECDH-ES"
+      ],
+      "authorization_encryption_enc_values_supported": [
+        "A256GCM",
+        "A192GCM",
+        "A128GCM",
+        "A128CBC-HS256",
+        "A192CBC-HS384",
+        "A256CBC-HS512"
+      ],
+      "claims_supported": [
+        "aud",
+        "sub",
+        "iss",
+        "auth_time",
+        "name",
+        "given_name",
+        "family_name",
+        "preferred_username",
+        "email",
+        "acr"
+      ],
+      "claim_types_supported": [
+        "normal"
+      ],
+      "claims_parameter_supported": true,
+      "scopes_supported": [
+        "openid",
+        "microprofile-jwt",
+        "acr",
+        "service_account",
+        "offline_access",
+        "organization",
+        "profile",
+        "roles",
+        "web-origins",
+        "basic",
+        "phone",
+        "address",
+        "email"
+      ],
+      "request_parameter_supported": true,
+      "request_uri_parameter_supported": true,
+      "require_request_uri_registration": true,
+      "code_challenge_methods_supported": [
+        "plain",
+        "S256"
+      ],
+      "tls_client_certificate_bound_access_tokens": true,
+      "revocation_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/revoke",
+      "revocation_endpoint_auth_methods_supported": [
+        "private_key_jwt",
+        "client_secret_basic",
+        "client_secret_post",
+        "tls_client_auth",
+        "client_secret_jwt"
+      ],
+      "revocation_endpoint_auth_signing_alg_values_supported": [
+        "PS384",
+        "RS384",
+        "EdDSA",
+        "ES384",
+        "HS256",
+        "HS512",
+        "ES256",
+        "RS256",
+        "HS384",
+        "ES512",
+        "PS256",
+        "PS512",
+        "RS512"
+      ],
+      "backchannel_logout_supported": true,
+      "backchannel_logout_session_supported": true,
+      "device_authorization_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/auth/device",
+      "backchannel_token_delivery_modes_supported": [
+        "poll",
+        "ping"
+      ],
+      "backchannel_authentication_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/ext/ciba/auth",
+      "backchannel_authentication_request_signing_alg_values_supported": [
+        "PS384",
+        "RS384",
+        "EdDSA",
+        "ES384",
+        "ES256",
+        "RS256",
+        "ES512",
+        "PS256",
+        "PS512",
+        "RS512"
+      ],
+      "require_pushed_authorization_requests": false,
+      "pushed_authorization_request_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/ext/par/request",
+      "mtls_endpoint_aliases": {
+        "token_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/token",
+        "revocation_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/revoke",
+        "introspection_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/token/introspect",
+        "device_authorization_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/auth/device",
+        "registration_endpoint": "https://identity-edge:8443/realms/florasecure/clients-registrations/openid-connect",
+        "userinfo_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/userinfo",
+        "pushed_authorization_request_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/ext/par/request",
+        "backchannel_authentication_endpoint": "https://identity-edge:8443/realms/florasecure/protocol/openid-connect/ext/ciba/auth"
+      },
+      "authorization_response_iss_parameter_supported": true
+    },
+    "public_jwks": [
+      {
+        "kid": "GCpjj4K4G7ocC7C9IUEoC3vxK7wV9MQnycA-zq8rXiQ",
+        "kty": "RSA",
+        "alg": "RS256",
+        "use": "sig",
+        "x5c": [
+          "MIIC0jCCAbqgAwIBAgIUb0IsB0KsOS0Tw4+WnqY7iQH4zuMwDQYJKoZIhvcNAQELBQAwIzEhMB8GA1UEAwwYRGlzcG9zYWJsZSBQNCBKV1Qgc2lnbmVyMB4XDTI2MTAwOTA1NTIwNVoXDTI2MTAxMDA1NTMwNVowIzEhMB8GA1UEAwwYRGlzcG9zYWJsZSBQNCBKV1Qgc2lnbmVyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtCWzgtgnYsfxKKcYxp2I6wWaYxRzk1+7rq5KukM7h7fXn/IWq8jOVxxNyZ5t78VkLvQPBzNdt3PJ7itRXCDSOgLAMvjdxnHeNQ+ClSQ4K9nkW/ANi6Y8BY7DnzgLA0hakn6Sb6Dd0kNes5LUGS/9zEioeb6T28KIA9Wv+xpOZ5I9LrEJhg+skuhdSrkpJuWJn8oiy3pZNgGIRbcbWmA5zek+e5OiuTWGdRQi8Q6Cehstvztbohum46TRhhCbt4AVtnVMhePZ2vW0q+42GgXxyVMeF0hduZo00+QXRjozFH+H90E/gCazjFTVmp0J0nJVeISDki8tVGZdKga0KJ0qVQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQBHg+Y2wWFmPb2sWLsbvTlPDqPZC43cMgB6A2qJ0ZwjM2yBvIUbU0nOKhEX4TYhivSqyp8uBK47KGrWaYeIY+8At9TNVrikF+px9Ecj8mD8dPLC5n0SYd7FdZpcKkJsRZxryQLOODFWt2e3Lrc/3msJXLiOhz1uVfrv2ZKdpXdHf+sgKGvTL5YBPwT3vkC+8TiOHiSLuJAKSb6EBhWc8YCuV1GpCZOFx/9um9sEv0LELk7Gf7YQ05E8s0xgb2ipa6JGmiO0Hv0UuUTZ2dkAH6lKbCEDoXvPmPSRdWBTTLeA48lNHRb0OpJCKCxxWpeZRr13iUE748PstbGEr7ShP4SQ"
+        ],
+        "x5t": "1WPbKcMk9vIB6tJwN4fe6wLcKSk",
+        "x5t#S256": "xkmAveqcnaWJbVEfX9d1pq50utic2YNxXVFPLjGZdRg",
+        "n": "tCWzgtgnYsfxKKcYxp2I6wWaYxRzk1-7rq5KukM7h7fXn_IWq8jOVxxNyZ5t78VkLvQPBzNdt3PJ7itRXCDSOgLAMvjdxnHeNQ-ClSQ4K9nkW_ANi6Y8BY7DnzgLA0hakn6Sb6Dd0kNes5LUGS_9zEioeb6T28KIA9Wv-xpOZ5I9LrEJhg-skuhdSrkpJuWJn8oiy3pZNgGIRbcbWmA5zek-e5OiuTWGdRQi8Q6Cehstvztbohum46TRhhCbt4AVtnVMhePZ2vW0q-42GgXxyVMeF0hduZo00-QXRjozFH-H90E_gCazjFTVmp0J0nJVeISDki8tVGZdKga0KJ0qVQ",
+        "e": "AQAB"
+      },
+      {
+        "kid": "X7zK7LPPp6WZRPPSNeY0UaYn0AumckGAfx-drtZgEiA",
+        "kty": "RSA",
+        "alg": "RS256",
+        "use": "sig",
+        "x5c": [
+          "MIICpTCCAY0CBgGhHzew4TANBgkqhkiG9w0BAQsFADAWMRQwEgYDVQQDDAtmbG9yYXNlY3VyZTAeFw0yNjEwMDkwNTUwMDVaFw0zNjEwMDkwNTUxNDVaMBYxFDASBgNVBAMMC2Zsb3Jhc2VjdXJlMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv2wOYcQNPVLLxHCOMAhzEfnVQAUrdFTMgBJzoCQ/ffRk0OIEqWLuddNPUv3wjn+kwf1fHPK36YD2xqQso4N0usdChBNHeVMWDvDFzBw3pzk474S22kuPDll/h+0Cdrg2xf0tNnUzlYnpV2sNBCPR24n7DQ69kFFxoxF9C2QUGoYglCa7TF2HUaaZaVQCZ2NXMiuFCmSybvAsrKDMuFxpvsZnf3ZvMv3VuMu3D6ycD8OFKcVhQkRsjylPrrFZ2mZ08tXDFivUAVYCbza1KBpJU1vs+UvqkTWJritSjWwEC8PmzmezFnUyeNtYGBBfMJvh0Zh5Kiq7NA4j32UMUvjCpwIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQCBjVLkcrVSb++VRyb2AUPu97TtdbFiZqWwu+Qrt4NhEuvxPpL2u9HIyuNL5yqYwCtkF2SQ5E4BGcYpj4NwLYYUJ6qTlDPEIW//t3CDZo5MRIbBxxpleeTD29SgbjsZFdI4HA3C37UJAxFioQRE2aSbFFkJ//GfGEV0nAtXL45nxLF/6OATcDfegPWqoCRRSBea6JlpeKe0q1xiUASibmfPhYlv07Pfz1HL9yi90YjSiSSIKG7Fv2rQPTuwGZvKeBWZ4I0XLnG76jGCIaH1FOFmCitnEL3h3rOXHEvGAuM2i/DRbvHn3sPVgcH1wXN5b3vXVcjsJU4geU5ZmxWKAYaw"
+        ],
+        "x5t": "Zc4YrhCy6K_P46l5n2wZIC9dsbU",
+        "x5t#S256": "jTFl6v-hneODCqbDuKCM7Qqs2aVFrKa-8FYMkj9_ATE",
+        "n": "v2wOYcQNPVLLxHCOMAhzEfnVQAUrdFTMgBJzoCQ_ffRk0OIEqWLuddNPUv3wjn-kwf1fHPK36YD2xqQso4N0usdChBNHeVMWDvDFzBw3pzk474S22kuPDll_h-0Cdrg2xf0tNnUzlYnpV2sNBCPR24n7DQ69kFFxoxF9C2QUGoYglCa7TF2HUaaZaVQCZ2NXMiuFCmSybvAsrKDMuFxpvsZnf3ZvMv3VuMu3D6ycD8OFKcVhQkRsjylPrrFZ2mZ08tXDFivUAVYCbza1KBpJU1vs-UvqkTWJritSjWwEC8PmzmezFnUyeNtYGBBfMJvh0Zh5Kiq7NA4j32UMUvjCpw",
+        "e": "AQAB"
+      },
+      {
+        "kid": "rq6nlBre5xgQZuHwIsNvNI8ZAPCIzouD4u1DuiBVQRU",
+        "kty": "RSA",
+        "alg": "RSA-OAEP",
+        "use": "enc",
+        "x5c": [
+          "MIICpTCCAY0CBgGhHzexsTANBgkqhkiG9w0BAQsFADAWMRQwEgYDVQQDDAtmbG9yYXNlY3VyZTAeFw0yNjEwMDkwNTUwMDZaFw0zNjEwMDkwNTUxNDZaMBYxFDASBgNVBAMMC2Zsb3Jhc2VjdXJlMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3bhYSvQJI5qGXsHFy+oTgx2uInjs4RhltOP3sMKmu5v7ilzTX6R28klQeGanj5I5znEr8jTkq1dlb71yqBDWVQS/ncqgn5R3zvVT136x3l0gizcxIemE+Veu6ENM4xOos80mJibL+0VaXH8u1js+fmtT3oDfJmcDZJooGGZ4QgKwN8ATEnwAxAb4Y5fKsrQWgSs6ipYfvTEPiqrFSda5waG8tu7IeolgjGw+0GhoBT8XPeiW7BmDuHEpuaszJmyBcFc5t2VTvjsrL27fFfgK8osixFKp+da3iQbEpmFmN1rv76vuFCLd8jezNrkkBgQy5U2o5P3o05r9rSf217wvUQIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQBXEBT2M3U/HQzctwlyBvDIkqVKxs5RXKjq0/7waGb7Td5eNXDWOUIrwKzfJgU8pI34bPEs1WjxCod+cfBnkNHNlI2Rqd2WGBOPXKPpkfZ2LMmMZXsMUCyRFpOqwJbfRdm9HP+IgCsvjnEfDkiffJgeXR70tora2C+Qhf7dCS/Pjbj9HQOQpu7WIvyIaSzeyb6SBCrX14fBIyLc+tL6A/TRffVmNooMTseL1BpZMhxWVX5gj1VJwvN+2L1LpXr98L0IKsXL6L7qHkvFgoENhMDuE/xEztwPTiMlm30aE9iNJPYEkyeyWw7V6x1Rys/sp5OGcBXQkoqKazfAji/umOVg"
+        ],
+        "x5t": "QpqT1mLwbIUSIR85Ru1R-Cxo9s8",
+        "x5t#S256": "GPU3eVHtvxgCh61qLg_ItsRkCukvrjtgXMM-5IGVpEo",
+        "n": "3bhYSvQJI5qGXsHFy-oTgx2uInjs4RhltOP3sMKmu5v7ilzTX6R28klQeGanj5I5znEr8jTkq1dlb71yqBDWVQS_ncqgn5R3zvVT136x3l0gizcxIemE-Veu6ENM4xOos80mJibL-0VaXH8u1js-fmtT3oDfJmcDZJooGGZ4QgKwN8ATEnwAxAb4Y5fKsrQWgSs6ipYfvTEPiqrFSda5waG8tu7IeolgjGw-0GhoBT8XPeiW7BmDuHEpuaszJmyBcFc5t2VTvjsrL27fFfgK8osixFKp-da3iQbEpmFmN1rv76vuFCLd8jezNrkkBgQy5U2o5P3o05r9rSf217wvUQ",
+        "e": "AQAB"
+      }
+    ]
+  },
+  "candidate_image_sources": {
+    "verified": true,
+    "sha256": {
+      "backend/app/__init__.py": "b587813128c2bc93e1a24b37641374ea7924ae2d006a803fcf3bb66beb4296fe",
+      "backend/app/config.py": "1fc2b6a4fa5898b72b24abeb5825a9e380bac1fdbdc0fb92998185b656f7fbb2",
+      "backend/app/readiness.py": "3c20cdeb4e015918a55ce9b0e9c18cc42b125c0526a898d662473b9345bb4fca",
+      "backend/app/services/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/services/user_service.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/services/order_service.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/services/product_service.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/auth/oidc.py": "91af741d3d0a813eef84877ef2af773d8348f23705dda56cb08c1ccc23b18bba",
+      "backend/app/auth/security.py": "c1d2bff39bfcf44d29830ca469d28f81c3efc575d6f36a55d6f4fce70c0f39da",
+      "backend/app/auth/dependencies.py": "37cbd3d3a00103f0b599e7953de0a4e7c532adace66822862dcfaba6649cf261",
+      "backend/app/auth/__init__.py": "1f2be11b8157c4cae5eee99158b74421d6740dffb7707334e0bc77629b3e851b",
+      "backend/app/database/session.py": "6ee913171090887179e4c0230bd4f3d645076a6aa7394bb151c1a7b63dd66e4e",
+      "backend/app/database/__init__.py": "54c5d5a0fb167bba8874b1cfabacf9bf7895321b20129e1a718abc0c8c6730c0",
+      "backend/app/utils/security.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/utils/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/middleware/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/middleware/logging.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/schemas/user.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/schemas/order.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/schemas/product.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/schemas/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/models/user.py": "83dd1dc9537e9bbdf2eade7bee38e82527b83f28584debeae45a307204523f04",
+      "backend/app/models/refresh_token.py": "79eb992c7d668b679177052390d4832620bb03bac1c857fd32178c0fd4164656",
+      "backend/app/models/order.py": "37fbd5c9d0abc43cdbe93523a9807b4ed4e08fcf8afe7dfc8c6a08a370aa1541",
+      "backend/app/models/external_identity.py": "673550083cda2c9be8e72224c9494c340ba5bdfc917d09e6df8fea1d13a69414",
+      "backend/app/models/product.py": "18cc5aeb7027a5a5ab547bb08a61fd8d0342f6354c9d8dbf2e366dfcba937511",
+      "backend/app/models/__init__.py": "0f1871a43e2c7177bc27222d0a55bbe8251c19dbfae416424ed4bbc685deca86",
+      "backend/app/models/audit_log.py": "e38fabbe205533f2c7da1aefea5cbfbfd43ac659d2f43ebbbf6f025143971a30",
+      "backend/app/routes/security.py": "b84670ffa50dca7510bbea1f33dc58a323fc00445e041053e7c5765429495ad3",
+      "backend/app/routes/users.py": "0d1352ab51658e9f3bfc1e0bceed1e179f2b950dc3f7a3a0dcd7798109d20125",
+      "backend/app/routes/__init__.py": "783f0bf12da8e759ee485a909d6d742e38799fc730040303e8b853840f0394e8",
+      "backend/app/routes/auth.py": "de7862099c558d6acec328e89853201914d6d82b5c495cd9856ebac2cf9fb416",
+      "backend/app/routes/orders.py": "43401db9866fb4776b288aaedaf77b6e20b3ab82809fcc84db1510988a2997b7",
+      "backend/app/routes/webhooks.py": "db6a2f3bd69be2526cc3f77531d5cd9646b7edaf419c76dc7abac381b4b87457",
+      "backend/app/routes/products.py": "c520c9ef3c2909ae93c68198f1dcbcfa9b6e76e8747f6b271dc7d9b4c733a7ef",
+      "backend/deployment/serve.py": "8c0345533af0c0c9d60955ab06b6f0995ff4116e4aed0fe10a95e9888fea5b93",
+      "backend/deployment/identity_mapping.py": "a070c0c75e5374859aa80ff2fb9077bfced94dd484f742d37438ef35d5fda44a",
+      "backend/deployment/jwks.py": "fc2f05af7387ec401d91b2439996d076b64348e6560f4533d64390558c82db82",
+      "backend/deployment/identity_review.py": "1443fde6a27bdcbffae0f5ea3b74af1b09d4b37e98001dda96c8463bf31f3252",
+      "backend/deployment/__init__.py": "f739bba9c60238e5a12b5952e5263552612c2b7a9df5b3932dbfa056527e10ae",
+      "backend/deployment/identity_bootstrap.py": "f795277056cecb7d9e7620491b123df6a826b8231988daaa2957400621be7bcd",
+      "backend/deployment/tls.py": "7c06eff11bb0c337628b466bb71ead28eec5f27a7cf08ff1cfc4db2037376fd0",
+      "backend/deployment/health.py": "16e82462423125c5b717ccb3068c9d516c56790bf250763a2cf45fbf1fbd2171",
+      "backend/deployment/migrate.py": "61eedd58821629dc88c151b40acee373a7ea69a1ebb7c7419dc321ae5a854cd2",
+      "backend/deployment/kong_jwks.py": "7086d535495cb13e74cd9d4a1db8d6eb776f225fd32291c7c313c1fe9b06d9fe",
+      "backend/deployment/bootstrap.py": "2ae0634da865772ac5cefe1aaa86df86132e66f6a2294e8f13f9152adde241e8",
+      "backend/deployment/common.py": "5936ef6336adfcf5ef8ad3cbe67681fb74cafb2f58b076f79a7ed90c51196271",
+      "backend/alembic/env.py": "d4929d92150bb68cf428e3f9754138200a51a5d0799e50b5d2d4f399dac6141a",
+      "backend/alembic/versions/__init__.py": "6c95114dad64b3f549e94ff190f1201f906dc7c26b2d6b312e16582b57877c00",
+      "backend/alembic/versions/0001_initial_schema.py": "9eef94f513b651a6f3acc64b6c12ba1459b4145b699eb48f38a7757a2c75b908",
+      "backend/alembic/versions/0002_external_identities.py": "7b2289055322663150bcfcd4c7f3059e7a26bba848d36594cf3f983298666309",
+      "tests/compose_probe.py": "71c1c147cf89e37eede927de5e18d583a583ca8ed7813ac821335340242f8ef4",
+      "tests/p3/persistence.py": "93a402205ad5baacdfeedc855394682fc06f4e4a94b207b6244f279d00899862",
+      "tests/p3/pki.py": "21daebcc217a450194e0a2366f24d964b8fa849181671485a4ba3070712195a9",
+      "tests/p3/test_identity.py": "abe6bab58adb8b9b2d9bfd0c948f6fe1d17b22a8705c7e6567722495efe54011",
+      "tests/p3/launch.py": "07a2cd9e2572c3bb4e6a85043008f908c9b9c0fc07197d0f75c93ee131bb7cbf",
+      "tests/p3/host_checks.py": "3e209f21785a32e04d1994ce5858f31b210032e996071917befb75d0ad131d27",
+      "tests/p3/run.py": "d68d814dbac178f736f20298597ba7b3695b1ae5cc6054f7e0e4d65595e2ddb5",
+      "tests/p1/test_adoption.py": "8e5ca95fd6ca68bcbb25b5b94046d625948c19663789785bf18d48d7e4127abc",
+      "tests/p1/test_privileges.py": "889d6b48f4613640a4df35d5023ebc38809145fcea74d29d307b5aa6559d23d0",
+      "tests/p1/launch.py": "aeff27c6dca7bc169de5bfd15f2c7cedb86b68e526829c28e072e00f02596055",
+      "tests/p1/host_checks.py": "11b2e48d41ed42847d608c83ac1de74e55d88e0e08a8d52d0b04e35ff3bafccb",
+      "tests/p1/run.py": "ee3dff8406a2767acb45ef0dd61e54a95adf15b79d0499f8e89077ca31b4cd28",
+      "tests/p0/conftest.py": "150de3cb3178262797769a2cf7681472c1a9caadf2b8d916353b64b19335060f",
+      "tests/p0/test_gateway.py": "7251640e0552dd194b1d7b1b3daef47bdcbd77911c482aa5eb3cff49763f4c9d",
+      "tests/p0/test_database.py": "bc8c286e719028b8281acca93218243e1289a8c66da22478ef0957d1a85712a7",
+      "tests/p0/test_webhook_ssrf.py": "39132c49e3306a69f8f84f156ae54ce2d1c9bc0a5d2ad1b2266d8797cffc8cda",
+      "tests/p0/transport.py": "90cc6ad65bac806b05ca223af342d6f60130d028ff6286711ba109f8c12f4a86",
+      "tests/p0/test_authorization.py": "a1b3c683b2cc63fbffd93e16905646172eca73b7f89da35293a725cd91010b0f",
+      "tests/p0/test_auth.py": "f7c9d8067bf182a576a5d3bed245de0c430fa85b649af0982240b08c4db5b460",
+      "tests/p0/baseline.py": "e4af59900abef7124905882039d92a47942839d598bcb3650997aadc5a33f2d2",
+      "tests/p0/run.py": "575769b360b2319fafc48f9525ecd6ac459db111d7d06e4142332a8ef6f8bdae",
+      "tests/p2/test_https_business.py": "ba30fc58b190527ce1d7020598e9b4d1be40f92e2167b5973c2b5332dba71370",
+      "tests/p2/test_tls.py": "6c1c62454fc6f0e76625978a37e8686e9ed76aae19718f8708cd72fe256a3649",
+      "tests/p2/launch.py": "f55a034ceabe62cda29c7beff1439eab20bdf042d6eb83fdb77b509f091a495a",
+      "tests/p2/host_checks.py": "03a13666560b8b842d84217f9aa55311033e0648e7fe5c742602eab4b8640c42",
+      "tests/p2/run.py": "7a1523d9b51080dec71c4ba0bed4be7f20774443a07d6222318b7cd533c13759",
+      "tests/p4/browser_setup.py": "ba49b82dc57b3479c3c0be107c51daf08fcacf336a95ba93a1354782b70db293",
+      "tests/p4/rotation.py": "775e6b04a603e396344b2b08e62c8361d95ca93ce916668911856f1f52bce1c6",
+      "tests/p4/outage.py": "1a4a86a7e65a1c0e87d4bc55095bbdfc84e1487d5aae0955f221f8621b9d6416",
+      "tests/p4/browser_host.py": "fd164b3bd41b13c610eafe577e1e147feba86a928314f69bee603574a1e07dca",
+      "tests/p4/startup.py": "dbb8d6e30d0e6f416e5a9989ca2794951dcd155e4687fbbc4e443cbf72b9cc25",
+      "tests/p4/launch.py": "d0d99b54bc3b6d82dd9f9c07d3faad2ff5ca339ea4c79dd943591ad811139d1f",
+      "tests/p4/rotation_host.py": "aaed4390fde596cd07e57340c707a2a97d8f9c2dbd78d17a5690debae17c7e48",
+      "tests/p4/bootstrap.py": "1666cff764b071cd756b39dd734c7317a328202a68e5fbd41c5465fc6b1025d7",
+      "tests/p4/host_checks.py": "9706a2c532fc125039082e6e0d8bb4644a04f5c870c96ddd4a0340bc0ddc0baf",
+      "tests/p4/run.py": "42865722aafef892ca95a693399824cce56487c4d1f0845d67af1a4f89eb8a3a",
+      "tests/p4/test_cutover.py": "7399c5abaedd6b71698ad5ab12fa58161453dbed4cb96045cd0c35906bb11e6d",
+      "backend/main.py": "8c7d1ceaacba4980dbad0d47816d39cf545b7b8530d991c83c2e0d88d0f907fe",
+      "docker/keycloak/florasecure-realm.json": "eb449c609ac5671ef2d8cdfc9f5565df4497fc0e080c9290c701436294a36ae2",
+      "docker/keycloak/florasecure-p4-realm.json": "639b8806ec2edbe9018ef325276292b832caca9b00edad44959cf03b29d2f811"
+    }
+  },
+  "browser_recovery_image_sources": {
+    "verified": true,
+    "sha256": {
+      "backend/app/__init__.py": "b587813128c2bc93e1a24b37641374ea7924ae2d006a803fcf3bb66beb4296fe",
+      "backend/app/config.py": "1fc2b6a4fa5898b72b24abeb5825a9e380bac1fdbdc0fb92998185b656f7fbb2",
+      "backend/app/readiness.py": "3c20cdeb4e015918a55ce9b0e9c18cc42b125c0526a898d662473b9345bb4fca",
+      "backend/app/services/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/services/user_service.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/services/order_service.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/services/product_service.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/auth/oidc.py": "91af741d3d0a813eef84877ef2af773d8348f23705dda56cb08c1ccc23b18bba",
+      "backend/app/auth/security.py": "c1d2bff39bfcf44d29830ca469d28f81c3efc575d6f36a55d6f4fce70c0f39da",
+      "backend/app/auth/dependencies.py": "37cbd3d3a00103f0b599e7953de0a4e7c532adace66822862dcfaba6649cf261",
+      "backend/app/auth/__init__.py": "1f2be11b8157c4cae5eee99158b74421d6740dffb7707334e0bc77629b3e851b",
+      "backend/app/database/session.py": "6ee913171090887179e4c0230bd4f3d645076a6aa7394bb151c1a7b63dd66e4e",
+      "backend/app/database/__init__.py": "54c5d5a0fb167bba8874b1cfabacf9bf7895321b20129e1a718abc0c8c6730c0",
+      "backend/app/utils/security.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/utils/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/middleware/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/middleware/logging.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/schemas/user.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/schemas/order.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/schemas/product.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/schemas/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/models/user.py": "83dd1dc9537e9bbdf2eade7bee38e82527b83f28584debeae45a307204523f04",
+      "backend/app/models/refresh_token.py": "79eb992c7d668b679177052390d4832620bb03bac1c857fd32178c0fd4164656",
+      "backend/app/models/order.py": "37fbd5c9d0abc43cdbe93523a9807b4ed4e08fcf8afe7dfc8c6a08a370aa1541",
+      "backend/app/models/external_identity.py": "673550083cda2c9be8e72224c9494c340ba5bdfc917d09e6df8fea1d13a69414",
+      "backend/app/models/product.py": "18cc5aeb7027a5a5ab547bb08a61fd8d0342f6354c9d8dbf2e366dfcba937511",
+      "backend/app/models/__init__.py": "0f1871a43e2c7177bc27222d0a55bbe8251c19dbfae416424ed4bbc685deca86",
+      "backend/app/models/audit_log.py": "e38fabbe205533f2c7da1aefea5cbfbfd43ac659d2f43ebbbf6f025143971a30",
+      "backend/app/routes/security.py": "b84670ffa50dca7510bbea1f33dc58a323fc00445e041053e7c5765429495ad3",
+      "backend/app/routes/users.py": "0d1352ab51658e9f3bfc1e0bceed1e179f2b950dc3f7a3a0dcd7798109d20125",
+      "backend/app/routes/__init__.py": "783f0bf12da8e759ee485a909d6d742e38799fc730040303e8b853840f0394e8",
+      "backend/app/routes/auth.py": "de7862099c558d6acec328e89853201914d6d82b5c495cd9856ebac2cf9fb416",
+      "backend/app/routes/orders.py": "43401db9866fb4776b288aaedaf77b6e20b3ab82809fcc84db1510988a2997b7",
+      "backend/app/routes/webhooks.py": "db6a2f3bd69be2526cc3f77531d5cd9646b7edaf419c76dc7abac381b4b87457",
+      "backend/app/routes/products.py": "c520c9ef3c2909ae93c68198f1dcbcfa9b6e76e8747f6b271dc7d9b4c733a7ef",
+      "backend/deployment/serve.py": "8c0345533af0c0c9d60955ab06b6f0995ff4116e4aed0fe10a95e9888fea5b93",
+      "backend/deployment/identity_mapping.py": "a070c0c75e5374859aa80ff2fb9077bfced94dd484f742d37438ef35d5fda44a",
+      "backend/deployment/jwks.py": "b20933378e7c23f2adb37166dabc7bfac3d27d3ea83fef4b8a15294a04838794",
+      "backend/deployment/identity_review.py": "1443fde6a27bdcbffae0f5ea3b74af1b09d4b37e98001dda96c8463bf31f3252",
+      "backend/deployment/__init__.py": "f739bba9c60238e5a12b5952e5263552612c2b7a9df5b3932dbfa056527e10ae",
+      "backend/deployment/identity_bootstrap.py": "f795277056cecb7d9e7620491b123df6a826b8231988daaa2957400621be7bcd",
+      "backend/deployment/tls.py": "7c06eff11bb0c337628b466bb71ead28eec5f27a7cf08ff1cfc4db2037376fd0",
+      "backend/deployment/health.py": "16e82462423125c5b717ccb3068c9d516c56790bf250763a2cf45fbf1fbd2171",
+      "backend/deployment/migrate.py": "61eedd58821629dc88c151b40acee373a7ea69a1ebb7c7419dc321ae5a854cd2",
+      "backend/deployment/kong_jwks.py": "7086d535495cb13e74cd9d4a1db8d6eb776f225fd32291c7c313c1fe9b06d9fe",
+      "backend/deployment/bootstrap.py": "2ae0634da865772ac5cefe1aaa86df86132e66f6a2294e8f13f9152adde241e8",
+      "backend/deployment/common.py": "5936ef6336adfcf5ef8ad3cbe67681fb74cafb2f58b076f79a7ed90c51196271",
+      "backend/alembic/env.py": "d4929d92150bb68cf428e3f9754138200a51a5d0799e50b5d2d4f399dac6141a",
+      "backend/alembic/versions/__init__.py": "6c95114dad64b3f549e94ff190f1201f906dc7c26b2d6b312e16582b57877c00",
+      "backend/alembic/versions/0001_initial_schema.py": "9eef94f513b651a6f3acc64b6c12ba1459b4145b699eb48f38a7757a2c75b908",
+      "backend/alembic/versions/0002_external_identities.py": "7b2289055322663150bcfcd4c7f3059e7a26bba848d36594cf3f983298666309",
+      "tests/compose_probe.py": "71c1c147cf89e37eede927de5e18d583a583ca8ed7813ac821335340242f8ef4",
+      "tests/p3/persistence.py": "93a402205ad5baacdfeedc855394682fc06f4e4a94b207b6244f279d00899862",
+      "tests/p3/pki.py": "21daebcc217a450194e0a2366f24d964b8fa849181671485a4ba3070712195a9",
+      "tests/p3/test_identity.py": "abe6bab58adb8b9b2d9bfd0c948f6fe1d17b22a8705c7e6567722495efe54011",
+      "tests/p3/launch.py": "07a2cd9e2572c3bb4e6a85043008f908c9b9c0fc07197d0f75c93ee131bb7cbf",
+      "tests/p3/host_checks.py": "3e209f21785a32e04d1994ce5858f31b210032e996071917befb75d0ad131d27",
+      "tests/p3/run.py": "2ecfb24a4b97a41f6517bca58bf6cfd3ab7f1a2285685bc9452f319791828733",
+      "tests/p1/test_adoption.py": "8e5ca95fd6ca68bcbb25b5b94046d625948c19663789785bf18d48d7e4127abc",
+      "tests/p1/test_privileges.py": "889d6b48f4613640a4df35d5023ebc38809145fcea74d29d307b5aa6559d23d0",
+      "tests/p1/launch.py": "aeff27c6dca7bc169de5bfd15f2c7cedb86b68e526829c28e072e00f02596055",
+      "tests/p1/host_checks.py": "11b2e48d41ed42847d608c83ac1de74e55d88e0e08a8d52d0b04e35ff3bafccb",
+      "tests/p1/run.py": "ee3dff8406a2767acb45ef0dd61e54a95adf15b79d0499f8e89077ca31b4cd28",
+      "tests/p0/conftest.py": "150de3cb3178262797769a2cf7681472c1a9caadf2b8d916353b64b19335060f",
+      "tests/p0/test_gateway.py": "7251640e0552dd194b1d7b1b3daef47bdcbd77911c482aa5eb3cff49763f4c9d",
+      "tests/p0/test_database.py": "bc8c286e719028b8281acca93218243e1289a8c66da22478ef0957d1a85712a7",
+      "tests/p0/test_webhook_ssrf.py": "39132c49e3306a69f8f84f156ae54ce2d1c9bc0a5d2ad1b2266d8797cffc8cda",
+      "tests/p0/transport.py": "90cc6ad65bac806b05ca223af342d6f60130d028ff6286711ba109f8c12f4a86",
+      "tests/p0/test_authorization.py": "a1b3c683b2cc63fbffd93e16905646172eca73b7f89da35293a725cd91010b0f",
+      "tests/p0/test_auth.py": "f7c9d8067bf182a576a5d3bed245de0c430fa85b649af0982240b08c4db5b460",
+      "tests/p0/baseline.py": "e4af59900abef7124905882039d92a47942839d598bcb3650997aadc5a33f2d2",
+      "tests/p0/run.py": "575769b360b2319fafc48f9525ecd6ac459db111d7d06e4142332a8ef6f8bdae",
+      "tests/p2/test_https_business.py": "ba30fc58b190527ce1d7020598e9b4d1be40f92e2167b5973c2b5332dba71370",
+      "tests/p2/test_tls.py": "6c1c62454fc6f0e76625978a37e8686e9ed76aae19718f8708cd72fe256a3649",
+      "tests/p2/launch.py": "f55a034ceabe62cda29c7beff1439eab20bdf042d6eb83fdb77b509f091a495a",
+      "tests/p2/host_checks.py": "03a13666560b8b842d84217f9aa55311033e0648e7fe5c742602eab4b8640c42",
+      "tests/p2/run.py": "7a1523d9b51080dec71c4ba0bed4be7f20774443a07d6222318b7cd533c13759",
+      "tests/p4/browser_setup.py": "ba49b82dc57b3479c3c0be107c51daf08fcacf336a95ba93a1354782b70db293",
+      "tests/p4/rotation.py": "775e6b04a603e396344b2b08e62c8361d95ca93ce916668911856f1f52bce1c6",
+      "tests/p4/outage.py": "1a4a86a7e65a1c0e87d4bc55095bbdfc84e1487d5aae0955f221f8621b9d6416",
+      "tests/p4/browser_host.py": "8820f9f43b67fa567b3752e9e1d4c0bfc052fa5a7946c2b65d5bd894cf36bae6",
+      "tests/p4/startup.py": "dbb8d6e30d0e6f416e5a9989ca2794951dcd155e4687fbbc4e443cbf72b9cc25",
+      "tests/p4/launch.py": "d0d99b54bc3b6d82dd9f9c07d3faad2ff5ca339ea4c79dd943591ad811139d1f",
+      "tests/p4/rotation_host.py": "aaed4390fde596cd07e57340c707a2a97d8f9c2dbd78d17a5690debae17c7e48",
+      "tests/p4/bootstrap.py": "1666cff764b071cd756b39dd734c7317a328202a68e5fbd41c5465fc6b1025d7",
+      "tests/p4/host_checks.py": "9706a2c532fc125039082e6e0d8bb4644a04f5c870c96ddd4a0340bc0ddc0baf",
+      "tests/p4/run.py": "6277ba1fc9577f589172c0ed00311a415c4941eb14d4e35e2992f53da09625e9",
+      "tests/p4/test_cutover.py": "7399c5abaedd6b71698ad5ab12fa58161453dbed4cb96045cd0c35906bb11e6d",
+      "backend/main.py": "8c7d1ceaacba4980dbad0d47816d39cf545b7b8530d991c83c2e0d88d0f907fe",
+      "docker/keycloak/florasecure-realm.json": "eb449c609ac5671ef2d8cdfc9f5565df4497fc0e080c9290c701436294a36ae2",
+      "docker/keycloak/florasecure-p4-realm.json": "639b8806ec2edbe9018ef325276292b832caca9b00edad44959cf03b29d2f811"
+    }
+  },
+  "browser": {
+    "tls_verification": "Chromium verified CA and SAN; no ignoreHTTPSErrors",
+    "private_alias_resolution": "actual Compose identity-edge address only",
+    "navigation_readiness": "DOMContentLoaded then application assertions; external font load is not auth readiness",
+    "optional_fonts": "Google typography requests explicitly blocked in test browser only; no IdP/API/DNS assertion substituted",
+    "network_failures": [
+      {
+        "host": "fonts.googleapis.com",
+        "path": "/css2",
+        "error": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      },
+      {
+        "host": "fonts.googleapis.com",
+        "path": "/css2",
+        "error": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      },
+      {
+        "host": "fonts.googleapis.com",
+        "path": "/css2",
+        "error": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      },
+      {
+        "host": "fonts.googleapis.com",
+        "path": "/css2",
+        "error": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      },
+      {
+        "host": "fonts.googleapis.com",
+        "path": "/css2",
+        "error": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      },
+      {
+        "host": "fonts.googleapis.com",
+        "path": "/css2",
+        "error": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      },
+      {
+        "host": "fonts.googleapis.com",
+        "path": "/css2",
+        "error": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      },
+      {
+        "host": "fonts.googleapis.com",
+        "path": "/css2",
+        "error": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      },
+      {
+        "host": "fonts.googleapis.com",
+        "path": "/css2",
+        "error": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      },
+      {
+        "host": "fonts.googleapis.com",
+        "path": "/css2",
+        "error": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      },
+      {
+        "host": "fonts.googleapis.com",
+        "path": "/css2",
+        "error": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      },
+      {
+        "host": "fonts.googleapis.com",
+        "path": "/css2",
+        "error": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      },
+      {
+        "host": "fonts.googleapis.com",
+        "path": "/css2",
+        "error": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      },
+      {
+        "host": "fonts.googleapis.com",
+        "path": "/css2",
+        "error": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      },
+      {
+        "host": "fonts.googleapis.com",
+        "path": "/css2",
+        "error": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      },
+      {
+        "host": "fonts.googleapis.com",
+        "path": "/css2",
+        "error": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      },
+      {
+        "host": "fonts.googleapis.com",
+        "path": "/css2",
+        "error": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      },
+      {
+        "host": "fonts.googleapis.com",
+        "path": "/css2",
+        "error": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      },
+      {
+        "host": "fonts.googleapis.com",
+        "path": "/css2",
+        "error": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      },
+      {
+        "host": "fonts.googleapis.com",
+        "path": "/css2",
+        "error": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      },
+      {
+        "host": "fonts.googleapis.com",
+        "path": "/css2",
+        "error": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      },
+      {
+        "host": "fonts.googleapis.com",
+        "path": "/css2",
+        "error": "net::ERR_BLOCKED_BY_CLIENT.Inspector"
+      },
+      {
+        "host": "identity-edge",
+        "path": "/realms/florasecure/.well-known/openid-configuration",
+        "error": "net::ERR_CONNECTION_REFUSED"
+      }
+    ],
+    "tests": [
+      {
+        "name": "real browser PKCE login, legacy cleanup and memory-only tokens",
+        "status": "passed"
+      },
+      {
+        "name": "reload recovers identity through Keycloak SSO without persistent tokens",
+        "status": "passed"
+      },
+      {
+        "name": "single-flight refresh with real Keycloak token endpoint",
+        "status": "passed"
+      },
+      {
+        "name": "IdP session expiration clears application authentication on refresh",
+        "status": "passed"
+      },
+      {
+        "name": "logout ends SSO and returns to exact configured redirect",
+        "status": "passed"
+      },
+      {
+        "name": "invalid callback state cannot establish authenticated identity",
+        "status": "passed"
+      },
+      {
+        "name": "cancelled authorization leaves the application signed out",
+        "status": "passed"
+      },
+      {
+        "name": "invalid nonce in one-time SDK transaction rejects a genuine IdP response",
+        "status": "passed"
+      },
+      {
+        "name": "Keycloak unavailable does not fall back to local password login",
+        "status": "passed"
+      }
+    ]
+  },
+  "key_rotation": [
+    {
+      "name": "stage",
+      "status": "passed"
+    },
+    {
+      "name": "activate",
+      "status": "passed"
+    },
+    {
+      "name": "retire",
+      "status": "passed"
+    },
+    {
+      "name": "verify-retired",
+      "status": "passed"
+    },
+    {
+      "name": "JWKS-outage-and-sync-preserves-config",
+      "status": "passed"
+    },
+    {
+      "name": "verify-retired",
+      "status": "passed"
+    }
+  ],
+  "host_dns": {
+    "utc": "2026-10-09T06:47:31.788999+00:00",
+    "resolv_conf": "nameserver 172.31.0.93\n",
+    "queries": [
+      {
+        "domain": "example.com",
+        "family": 2,
+        "errno": -3,
+        "error": "[Errno -3] Temporary failure in name resolution"
+      },
+      {
+        "domain": "example.com",
+        "family": 10,
+        "errno": -3,
+        "error": "[Errno -3] Temporary failure in name resolution"
+      },
+      {
+        "domain": "pypi.org",
+        "family": 2,
+        "errno": -3,
+        "error": "[Errno -3] Temporary failure in name resolution"
+      },
+      {
+        "domain": "pypi.org",
+        "family": 10,
+        "errno": -3,
+        "error": "[Errno -3] Temporary failure in name resolution"
+      },
+      {
+        "resolver": "172.31.0.93",
+        "transport": "UDP",
+        "errno": 111,
+        "error": "[Errno 111] Connection refused"
+      },
+      {
+        "resolver": "172.31.0.93",
+        "transport": "TCP",
+        "errno": 111,
+        "error": "[Errno 111] Connection refused"
+      }
+    ]
+  },
+  "container_dns_initial_P4": {
+    "resolv_conf": "# Generated by Docker Engine.\n# This file can be edited; Docker Engine will not make further changes once it\n# has been modified.\n\nnameserver 127.0.0.11\noptions ndots:0\n\n# Based on host file: '/etc/resolv.conf' (internal resolver)\n# ExtServers: [host(172.31.0.93)]\n# Overrides: []\n# Option ndots from: internal\n",
+    "queries": [
+      {
+        "host": "example.com",
+        "error": "[Errno -3] Temporary failure in name resolution",
+        "errno": -3
+      },
+      {
+        "host": "pypi.org",
+        "error": "[Errno -3] Temporary failure in name resolution",
+        "errno": -3
+      },
+      {
+        "host": "postgres",
+        "answers": [
+          "172.18.0.2"
+        ]
+      },
+      {
+        "host": "kong",
+        "answers": [
+          "172.21.0.3"
+        ]
+      },
+      {
+        "host": "identity-edge",
+        "answers": [
+          "172.22.0.3"
+        ]
+      }
+    ]
+  },
+  "container_dns_final_legacy": {
+    "utc": "2026-10-09T06:47:36.910261+00:00",
+    "project": "cloud-api-p3-b69c8dae86ca",
+    "resolv_conf": "# Generated by Docker Engine.\n# This file can be edited; Docker Engine will not make further changes once it\n# has been modified.\n\nnameserver 127.0.0.11\noptions ndots:0\n\n# Based on host file: '/etc/resolv.conf' (internal resolver)\n# ExtServers: [host(172.31.0.93)]\n# Overrides: []\n# Option ndots from: internal\n",
+    "queries": [
+      {
+        "host": "example.com",
+        "error": "[Errno -3] Temporary failure in name resolution",
+        "errno": -3
+      },
+      {
+        "host": "pypi.org",
+        "error": "[Errno -3] Temporary failure in name resolution",
+        "errno": -3
+      },
+      {
+        "host": "postgres",
+        "answers": [
+          "172.19.0.2"
+        ]
+      },
+      {
+        "host": "kong",
+        "answers": [
+          "172.21.0.3"
+        ]
+      }
+    ]
+  },
+  "ssrf_source_hashes": {
+    "d3f537f1dde7550cc946b1d13f2eba3d634d1c9e": "b84670ffa50dca7510bbea1f33dc58a323fc00445e041053e7c5765429495ad3",
+    "16703e01285938c6b8d002b672f2124e8ab24ac1": "b84670ffa50dca7510bbea1f33dc58a323fc00445e041053e7c5765429495ad3",
+    "56af7f81b123fcbe649c70dc88ce6421d6636c48": "b84670ffa50dca7510bbea1f33dc58a323fc00445e041053e7c5765429495ad3",
+    "e6501b4d64e428e503db5ae2e624e8188ff8bfd7": "b84670ffa50dca7510bbea1f33dc58a323fc00445e041053e7c5765429495ad3",
+    "P4_worktree": "b84670ffa50dca7510bbea1f33dc58a323fc00445e041053e7c5765429495ad3"
+  },
+  "focused_three": {
+    "passed": 3
+  },
+  "legacy_host_results": {
+    "host-results.json": {
+      "tests": 16,
+      "failures": 0,
+      "errors": 1
+    },
+    "p3-host.json": {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0
+    },
+    "tls-host-results.json": {
+      "tests": 16,
+      "failures": 0,
+      "errors": 0
+    }
+  },
+  "candidate_host_results": {
+    "p4-host.json": {
+      "tests": 5,
+      "failures": 0,
+      "errors": 0
+    },
+    "p3-host.json": {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0
+    },
+    "tls-host-results.json": {
+      "tests": 16,
+      "failures": 0,
+      "errors": 0
+    }
+  },
+  "frontend_build": {
+    "status": "passed",
+    "vite": "6.4.3",
+    "modules": 1649,
+    "duration_seconds": 3.18
+  },
+  "final_browser_source_sha256": {
+    "frontend/src/identity/runtime.js": "b3fb35ed06a54c9337cb4860468298a8dd818707b7b0cc01f1c258933dbdfae4",
+    "frontend/src/identity/session.js": "c5b0868eb76b7a4c9d462132caf8e55f184ed1d3fa713ae7d293748da680a2c4",
+    "frontend/src/api/AuthContext.jsx": "5a421c90f54efd19a9c1908981d124b15aab9f2051ff75f9fca690c95dbecda0",
+    "frontend/src/App.jsx": "2c975cf95d4e0da6f7f1d1688f9f4aa384880a713627c56d37313bc849097668",
+    "frontend/package-lock.json": "9258b0651beb1a23a218eb64fbf4276c39e8f473bd159a9eb776a7d52c4323e4",
+    "tests/p4/browser.mjs": "a0939ffcbcbb4bf0669f77cca2986f35e251de13d2b72c0f73e16d197d1063c8"
+  },
+  "node_checks": {
+    "P3_inactive_contract": {
+      "status": "passed",
+      "assertions": 19
+    },
+    "P4_session_contract": {
+      "status": "passed",
+      "formal_case_count": null
+    }
+  },
+  "secret_pattern_scan": {
+    "files_inspected": 59,
+    "findings": []
+  },
+  "skipped": 0,
+  "disabled": 0,
+  "mandatory_unexecuted": "Only post-DNS-repair focused/full rerun; no repair available",
+  "notes": [
+    "Full P4 browser launch hit orphan Vite port conflict; corrected fresh browser recovery supersedes it.",
+    "First browser recovery authenticated, then full-page-load reload timed out; final recovery waits DOM and actual application authentication.",
+    "Redirect-target interception did not modify callback state; final browser test changes the genuine URL at document initialization before the SPA executes.",
+    "Eight cases passed before a real outage navigation issue was fixed with verified exact-issuer discovery preflight; final browser run passes all nine.",
+    "Source manifests record tested bytes before final documentation/EOF whitespace cleanup."
+  ],
+  "git": {
+    "approved_remote_head": "e6501b4d64e428e503db5ae2e624e8188ff8bfd7",
+    "push_performed": false,
+    "account_or_credentials_changed": false
+  }
+}

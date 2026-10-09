@@ -1,17 +1,20 @@
 from fastapi import Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from jose import JWTError
 from sqlalchemy.orm import Session
 
 from app.auth.security import decode_access_token
 from app.database.session import get_db
 from app.models.user import User, UserRole
+from app.models.external_identity import ExternalIdentity
+from app.config import settings
+from app.auth.oidc import decode_oidc_access_token
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/login")
+bearer_scheme = HTTPBearer(auto_error=False)
 
 
 def get_current_user(
-    token: str = Depends(oauth2_scheme),
+    credentials: HTTPAuthorizationCredentials = Depends(bearer_scheme),
     db: Session = Depends(get_db),
 ) -> User:
     """
@@ -23,7 +26,18 @@ def get_current_user(
         detail="Could not validate credentials",
         headers={"WWW-Authenticate": "Bearer"},
     )
+    if credentials is None or credentials.scheme.lower() != "bearer":
+        raise credentials_exception
+    token = credentials.credentials
     try:
+        if settings.AUTH_MODE == "oidc":
+            payload = decode_oidc_access_token(token)
+            user = (db.query(User).join(ExternalIdentity, ExternalIdentity.user_id == User.id)
+                    .filter(ExternalIdentity.issuer == settings.OIDC_ISSUER,
+                            ExternalIdentity.subject == payload["sub"], User.is_active == True).first())
+            if user is None:
+                raise credentials_exception
+            return user
         payload = decode_access_token(token)
         user_id: str = payload.get("sub")
         if user_id is None:

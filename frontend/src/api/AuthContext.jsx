@@ -1,76 +1,29 @@
 import { createContext, useContext, useEffect, useState, useCallback } from 'react';
-import {
-  getStoredUser,
-  getRole,
-  getAccessToken,
-  clearSession,
-  saveSession,
-  saveUser,
-  registerUnauthorizedHandler,
-  getMe,
-} from '../api/api';
-
+import { identity, subscribeIdentity } from '../identity/runtime';
+import { getMe, registerUnauthorizedHandler } from './api';
 const AuthContext = createContext(null);
-
-export function AuthProvider({ children }) {
-  const [user, setUser] = useState(getStoredUser());
-  const [role, setRole] = useState(getRole());
-  const [authNotice, setAuthNotice] = useState('');
-
+export function AuthProvider({children}) {
+  const [user,setUser]=useState(null);
+  const [loading,setLoading]=useState(true);
+  const [authNotice,setAuthNotice]=useState('');
+  const clear=useCallback(() => setUser(null),[]);
   useEffect(() => {
-    registerUnauthorizedHandler(() => {
-      setAuthNotice('Token expired or missing. Please log in again.');
-      clearSession();
-      setUser(null);
-      setRole('');
+    let mounted=true;
+    const unsubscribe=subscribeIdentity(event => {
+      if (mounted) {setUser(null);if(event==='expired')setAuthNotice('Your session expired. Sign in again.');}
+      if (mounted && event==='rejected')setAuthNotice('The authentication response was rejected. Sign in again.');
     });
-  }, []);
-
-  const completeLogin = useCallback((tokenData, userData) => {
-    saveSession(tokenData);
-    saveUser(userData);
-    setUser(userData);
-    setRole(userData?.role || '');
-    setAuthNotice('');
-  }, []);
-
-  const refreshMe = useCallback(async () => {
-    const me = await getMe();
-    saveUser(me);
-    setUser(me);
-    setRole(me?.role || '');
-    return me;
-  }, []);
-
-  const logout = useCallback(() => {
-    clearSession();
-    setUser(null);
-    setRole('');
-    setAuthNotice('');
-  }, []);
-
-  const isAuthenticated = Boolean(getAccessToken()) && Boolean(user);
-
-  return (
-    <AuthContext.Provider
-      value={{
-        user,
-        role,
-        isAuthenticated,
-        authNotice,
-        setAuthNotice,
-        completeLogin,
-        refreshMe,
-        logout,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
+    registerUnauthorizedHandler(() => { identity.expire(); });
+    identity.init().then(async authenticated => {
+      if(authenticated) {const me=await getMe();if(mounted)setUser(me);}
+    }).catch(() => {if(mounted)setAuthNotice('Sign-in is unavailable or the authentication response was rejected. Try again.');})
+      .finally(() => {if(mounted)setLoading(false);});
+    return () => {mounted=false;unsubscribe();registerUnauthorizedHandler(null);};
+  },[]);
+  const refreshMe=useCallback(async () => {const me=await getMe();setUser(me);return me;},[]);
+  const login=useCallback(async () => {setAuthNotice('');await identity.login();},[]);
+  const logout=useCallback(async () => {clear();await identity.logout();},[clear]);
+  return <AuthContext.Provider value={{user,role:user?.role||'',loading,isAuthenticated:Boolean(user),
+    authNotice,setAuthNotice,login,logout,refreshMe}}>{children}</AuthContext.Provider>;
 }
-
-export function useAuth() {
-  const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error('useAuth must be used within AuthProvider');
-  return ctx;
-}
+export function useAuth() {return useContext(AuthContext);}

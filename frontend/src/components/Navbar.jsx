@@ -34,9 +34,8 @@ export default function Navbar() {
   const { user, role, logout } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
+  const handleLogout = async () => {
+    try {await logout();} catch {navigate('/login');}
   };
 
   const roleKey = (role || '').toLowerCase();

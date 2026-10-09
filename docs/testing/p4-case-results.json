@@ -1,0 +1,3051 @@
+{
+  "scope": "Full legacy regression plus corrected P4 outcome, explicitly combined across projects",
+  "runs": [
+    {
+      "project": "cloud-api-p3-b69c8dae86ca",
+      "exit_code": 1,
+      "cleanup_completed": true,
+      "started_utc": "2026-10-09T06:44:38.454584+00:00",
+      "identity_only": false,
+      "finished_utc": "2026-10-09T06:56:56.709181+00:00"
+    },
+    {
+      "project": "cloud-api-p4-34bab8e8c62e",
+      "results": {
+        "startup": 0,
+        "p4-focused": 0,
+        "p4-pytest": 1,
+        "p4-host": 0,
+        "p3-host": 0,
+        "p2-host": 0,
+        "browser": 1,
+        "key-rotation": 0,
+        "cleanup": 0
+      },
+      "started_utc": "2026-10-09T05:50:25.784813+00:00",
+      "finished_utc": "2026-10-09T06:07:16.495944+00:00"
+    },
+    {
+      "project": "cloud-api-p4-407858bc1ce0",
+      "results": {
+        "startup": 0,
+        "browser": 0,
+        "cleanup": 0
+      },
+      "focus": "browser",
+      "started_utc": "2026-10-09T06:40:04.446101+00:00",
+      "finished_utc": "2026-10-09T06:44:04.501290+00:00"
+    }
+  ],
+  "totals": {
+    "passed": 414,
+    "xfail": 17,
+    "failed": 4,
+    "error": 1
+  },
+  "cases": [
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_auth",
+      "name": "test_rejected_access_tokens[missing]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_auth",
+      "name": "test_rejected_access_tokens[garbage]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_auth",
+      "name": "test_rejected_access_tokens[wrong_key]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_auth",
+      "name": "test_rejected_access_tokens[expired]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_auth",
+      "name": "test_rejected_access_tokens[wrong_type]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_auth",
+      "name": "test_rejected_access_tokens[no_sub]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_auth",
+      "name": "test_rejected_access_tokens[unknown_user]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_auth",
+      "name": "test_current_login_claims_and_refresh_hash[customer]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_auth",
+      "name": "test_current_login_claims_and_refresh_hash[staff]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_auth",
+      "name": "test_current_login_claims_and_refresh_hash[admin]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_auth",
+      "name": "test_refresh_rotation_and_reuse",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_auth",
+      "name": "test_refresh_rejection[unknown]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_auth",
+      "name": "test_refresh_rejection[expired]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_auth",
+      "name": "test_refresh_rejection[revoked]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_auth",
+      "name": "test_refresh_rejection[disabled]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_auth",
+      "name": "test_refresh_rejection[short]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_auth",
+      "name": "test_logout_revokes_only_owned_refresh_and_keeps_access",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_auth",
+      "name": "test_registration_cannot_assign_admin",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_auth",
+      "name": "test_login_lockout",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_auth",
+      "name": "test_defect_jwt_requires_exp",
+      "status": "xfail",
+      "reason": "P0-D01: signed access JWT without exp is accepted"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_auth",
+      "name": "test_defect_malformed_subject_is_401",
+      "status": "xfail",
+      "reason": "P0-D02: signed non-UUID subject causes HTTP 500"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_authorization",
+      "name": "test_product_crud_authorization[anonymous]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_authorization",
+      "name": "test_product_crud_authorization[customer]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_authorization",
+      "name": "test_product_crud_authorization[staff]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_authorization",
+      "name": "test_product_crud_authorization[admin]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_authorization",
+      "name": "test_order_create_authorization_and_server_ownership[anonymous]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_authorization",
+      "name": "test_order_create_authorization_and_server_ownership[customer]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_authorization",
+      "name": "test_order_create_authorization_and_server_ownership[staff]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_authorization",
+      "name": "test_order_create_authorization_and_server_ownership[admin]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_authorization",
+      "name": "test_order_list_read_status_authorization[anonymous]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_authorization",
+      "name": "test_order_list_read_status_authorization[customer]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_authorization",
+      "name": "test_order_list_read_status_authorization[staff]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_authorization",
+      "name": "test_order_list_read_status_authorization[admin]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_authorization",
+      "name": "test_user_self_vs_admin_authorization[anonymous]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_authorization",
+      "name": "test_user_self_vs_admin_authorization[customer]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_authorization",
+      "name": "test_user_self_vs_admin_authorization[staff]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_authorization",
+      "name": "test_user_self_vs_admin_authorization[admin]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_authorization",
+      "name": "test_admin_self_protection_and_db_role_active_authority",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_authorization",
+      "name": "test_invalid_orders_do_not_deduct_stock",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_authorization",
+      "name": "test_current_order_status_policy[staff]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_authorization",
+      "name": "test_current_order_status_policy[admin]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_authorization",
+      "name": "test_defect_product_null_field",
+      "status": "xfail",
+      "reason": "P0-D06: explicit null product price causes HTTP 500"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_authorization",
+      "name": "test_defect_user_null_field",
+      "status": "xfail",
+      "reason": "P0-D07: explicit null user role causes HTTP 500"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_database",
+      "name": "test_clean_database_migrations_and_downgrade",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_database",
+      "name": "test_migration_template_generates_executable_revision",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_database",
+      "name": "test_pg_dump_restore_preserves_ids_relationships_and_data",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_gateway",
+      "name": "test_live_kong_route_and_rate_limit",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_webhook_hmac_timestamp[valid-200]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_webhook_hmac_timestamp[missing_timestamp-401]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_webhook_hmac_timestamp[bad_timestamp-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_webhook_hmac_timestamp[old-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_webhook_hmac_timestamp[future-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_webhook_hmac_timestamp[missing_signature-401]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_webhook_hmac_timestamp[wrong_signature-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_webhook_hmac_timestamp[wrong_prefix-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_webhook_hmac_timestamp[tampered_body-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_webhook_hmac_timestamp[tampered_timestamp-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_webhook_hmac_timestamp[invalid_json-400]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_webhook_exact_timestamp_boundary[-301-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_webhook_exact_timestamp_boundary[-300-200]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_webhook_exact_timestamp_boundary[300-200]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_webhook_exact_timestamp_boundary[301-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_webhook_debug_helper_disabled",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_defect_webhook_json_shape",
+      "status": "xfail",
+      "reason": "P0-D03: signed non-object JSON causes HTTP 500"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_defect_webhook_replay",
+      "status": "xfail",
+      "reason": "P0-D04: identical signed webhook is accepted twice"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_ssrf_role_access[anonymous-401]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_ssrf_role_access[customer-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_ssrf_role_access[staff-200]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_ssrf_role_access[admin-200]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_ssrf_url_validation[https://example.com-ips0-200]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_ssrf_url_validation[https://sub.example.com-ips1-200]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_ssrf_url_validation[https://example.com.evil.test-ips2-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_ssrf_url_validation[https://evilexample.com-ips3-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_ssrf_url_validation[http://localhost-ips4-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_ssrf_url_validation[http://169.254.169.254-ips5-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_ssrf_url_validation[ftp://example.com/file-ips6-422]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_ssrf_url_validation[https://example.com-ips7-400]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_ssrf_url_validation[https://example.com-ips8-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_ssrf_url_validation[https://example.com-ips9-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_ssrf_url_validation[https://example.com-ips10-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_ssrf_url_validation[https://example.com-ips11-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_ssrf_url_validation[https://example.com-ips12-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_ssrf_url_validation[https://example.com-ips13-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_ssrf_url_validation[https://example.com-ips14-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_ssrf_url_validation[https://example.com-ips15-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_ssrf_url_validation[https://example.com-ips16-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_ssrf_url_validation[https://example.com-ips17-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_ssrf_dns_failure",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "test_webhook_ssrf",
+      "name": "test_defect_ssrf_ipv4_mapped_loopback",
+      "status": "xfail",
+      "reason": "P0-D05: IPv4-mapped IPv6 loopback bypasses IP denylist"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "",
+      "name": "test_runtime_privilege_denials[CREATE TABLE public.p1_forbidden (id int)]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "",
+      "name": "test_runtime_privilege_denials[ALTER TABLE public.products ADD COLUMN p1_forbidden int]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "",
+      "name": "test_runtime_privilege_denials[DROP TABLE public.order_items]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "",
+      "name": "test_runtime_privilege_denials[CREATE SCHEMA p1_forbidden]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "",
+      "name": "test_runtime_privilege_denials[CREATE TEMP TABLE p1_forbidden (id int)]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "",
+      "name": "test_runtime_privilege_denials[CREATE FUNCTION public.p1_forbidden() RETURNS int LANGUAGE sql AS 'SELECT 1']",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "",
+      "name": "test_runtime_privilege_denials[ALTER ROLE app_runtime SUPERUSER]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "",
+      "name": "test_runtime_privilege_denials[SET ROLE app_migrator]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "",
+      "name": "test_runtime_privilege_denials[SET ROLE postgres]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "",
+      "name": "test_runtime_privilege_denials[TRUNCATE public.users CASCADE]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "",
+      "name": "test_runtime_privilege_denials[DELETE FROM public.products]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "",
+      "name": "test_runtime_privilege_denials[UPDATE public.alembic_version SET version_num='forbidden']",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "",
+      "name": "test_runtime_privilege_denials[SELECT * FROM public.audit_logs]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "",
+      "name": "test_runtime_privilege_denials[INSERT INTO public.categories(name,slug) VALUES ('forbidden','forbidden')]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "",
+      "name": "test_runtime_role_attributes",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "",
+      "name": "test_required_runtime_dml",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "",
+      "name": "test_migration_role_owns_schema_objects_and_can_ddl",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "",
+      "name": "test_password_file_supports_url_encoding",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P0-P1",
+      "file": null,
+      "class": "",
+      "name": "test_existing_p0_database_adoption_preserves_data",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_valid_mtls_is_http_200[771]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_valid_mtls_is_http_200[772]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[771-None]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[771-negative/untrusted]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[771-negative/expired]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[771-negative/unenrolled]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[771-negative/wrong-client-eku]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[772-None]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[772-negative/untrusted]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[772-negative/expired]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[772-negative/unenrolled]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[772-negative/wrong-client-eku]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_client_rejects_wrong_server_hostname",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_plain_http_cannot_reach_backend_or_gateway[backend-8443]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_plain_http_cannot_reach_backend_or_gateway[backend-8000]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_plain_http_cannot_reach_backend_or_gateway[kong-8000]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_https_gateway_health_and_http_401_are_distinct_from_tls_failure",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_certificate_san_usage_and_leaf_constraints[backend/server.pem-names0-purpose0]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_certificate_san_usage_and_leaf_constraints[kong/client.pem-names1-purpose1]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_certificate_san_usage_and_leaf_constraints[backend/health.pem-names2-purpose2]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_certificate_san_usage_and_leaf_constraints[kong/edge.pem-names3-purpose3]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_client_pin_store_enrolls_exactly_two_leaf_identities",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_https_product_crud_authorization[anonymous]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_https_product_crud_authorization[customer]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_https_product_crud_authorization[staff]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_https_product_crud_authorization[admin]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_https_order_create[anonymous]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_https_order_create[customer]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_https_order_create[staff]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_https_order_create[admin]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_https_order_list_read_status[anonymous]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_https_order_list_read_status[customer]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_https_order_list_read_status[staff]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_https_order_list_read_status[admin]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_https_user_access[anonymous]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_https_user_access[customer]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_https_user_access[staff]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_https_user_access[admin]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_https_db_authority",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_https_invalid_orders",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_https_order_status_policy[staff]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_https_order_status_policy[admin]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_https_defect_product_null",
+      "status": "xfail",
+      "reason": "P0-D06: explicit null product price causes HTTP 500"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_https_defect_user_null",
+      "status": "xfail",
+      "reason": "P0-D07: explicit null user role causes HTTP 500"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_auth.py",
+      "class": "",
+      "name": "test_https_bad_jwt[missing]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_auth.py",
+      "class": "",
+      "name": "test_https_bad_jwt[garbage]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_auth.py",
+      "class": "",
+      "name": "test_https_bad_jwt[wrong_key]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_auth.py",
+      "class": "",
+      "name": "test_https_bad_jwt[expired]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_auth.py",
+      "class": "",
+      "name": "test_https_bad_jwt[wrong_type]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_auth.py",
+      "class": "",
+      "name": "test_https_bad_jwt[no_sub]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_auth.py",
+      "class": "",
+      "name": "test_https_bad_jwt[unknown_user]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_auth.py",
+      "class": "",
+      "name": "test_https_login[customer]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_auth.py",
+      "class": "",
+      "name": "test_https_login[staff]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_auth.py",
+      "class": "",
+      "name": "test_https_login[admin]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_auth.py",
+      "class": "",
+      "name": "test_https_refresh_rotation",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_auth.py",
+      "class": "",
+      "name": "test_https_refresh_rejection[unknown]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_auth.py",
+      "class": "",
+      "name": "test_https_refresh_rejection[expired]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_auth.py",
+      "class": "",
+      "name": "test_https_refresh_rejection[revoked]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_auth.py",
+      "class": "",
+      "name": "test_https_refresh_rejection[disabled]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_auth.py",
+      "class": "",
+      "name": "test_https_refresh_rejection[short]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_auth.py",
+      "class": "",
+      "name": "test_https_logout",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_auth.py",
+      "class": "",
+      "name": "test_https_registration",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_auth.py",
+      "class": "",
+      "name": "test_https_login_lockout",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_auth.py",
+      "class": "",
+      "name": "test_https_defect_exp",
+      "status": "xfail",
+      "reason": "P0-D01: signed access JWT without exp is accepted"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_auth.py",
+      "class": "",
+      "name": "test_https_defect_sub",
+      "status": "xfail",
+      "reason": "P0-D02: signed non-UUID subject causes HTTP 500"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_https_webhook[valid-200]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_https_webhook[missing_timestamp-401]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_https_webhook[bad_timestamp-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_https_webhook[old-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_https_webhook[future-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_https_webhook[missing_signature-401]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_https_webhook[wrong_signature-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_https_webhook[wrong_prefix-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_https_webhook[tampered_body-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_https_webhook[tampered_timestamp-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_https_webhook[invalid_json-400]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_https_debug_helper",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_https_defect_webhook_shape",
+      "status": "xfail",
+      "reason": "P0-D03: signed non-object JSON causes HTTP 500"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_https_defect_webhook_replay",
+      "status": "xfail",
+      "reason": "P0-D04: identical signed webhook is accepted twice"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_https_business.py",
+      "class": "",
+      "name": "test_https_ssrf_uses_real_dns_and_preserves_roles[anonymous-401]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_https_business.py",
+      "class": "",
+      "name": "test_https_ssrf_uses_real_dns_and_preserves_roles[customer-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_https_business.py",
+      "class": "",
+      "name": "test_https_ssrf_uses_real_dns_and_preserves_roles[staff-200]",
+      "status": "failed",
+      "cause": "Runtime DNS infrastructure: example.com resolution unavailable; unchanged mandatory assertion"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_https_business.py",
+      "class": "",
+      "name": "test_https_ssrf_uses_real_dns_and_preserves_roles[admin-200]",
+      "status": "failed",
+      "cause": "Runtime DNS infrastructure: example.com resolution unavailable; unchanged mandatory assertion"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_https_business.py",
+      "class": "",
+      "name": "test_https_ssrf_denies_invalid_targets[http://169.254.169.254-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_https_business.py",
+      "class": "",
+      "name": "test_https_ssrf_denies_invalid_targets[http://localhost-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_https_business.py",
+      "class": "",
+      "name": "test_https_ssrf_denies_invalid_targets[https://example.com.evil.test-403]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2",
+      "file": "../p2/test_https_business.py",
+      "class": "",
+      "name": "test_https_ssrf_denies_invalid_targets[ftp://example.com/file-422]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3",
+      "file": null,
+      "class": "",
+      "name": "test_discovery_jwks_verified_https",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3",
+      "file": null,
+      "class": "",
+      "name": "test_realm_and_client_reproducible",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3",
+      "file": null,
+      "class": "",
+      "name": "test_code_pkce_tokens_audience_nonce_and_rotation",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3",
+      "file": null,
+      "class": "",
+      "name": "test_wrong_pkce_verifier_rejected",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3",
+      "file": null,
+      "class": "",
+      "name": "test_invalid_redirect_not_followed[https://localhost:5173/oidc/callback/extra]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3",
+      "file": null,
+      "class": "",
+      "name": "test_invalid_redirect_not_followed[https://evil.example/callback]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3",
+      "file": null,
+      "class": "",
+      "name": "test_invalid_redirect_not_followed[http://localhost:5173/oidc/callback]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3",
+      "file": null,
+      "class": "",
+      "name": "test_pkce_s256_required[challenge0]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3",
+      "file": null,
+      "class": "",
+      "name": "test_pkce_s256_required[challenge1]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3",
+      "file": null,
+      "class": "",
+      "name": "test_password_grant_disabled",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3",
+      "file": null,
+      "class": "",
+      "name": "test_implicit_and_hybrid_disabled[token]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3",
+      "file": null,
+      "class": "",
+      "name": "test_implicit_and_hybrid_disabled[id_token]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3",
+      "file": null,
+      "class": "",
+      "name": "test_implicit_and_hybrid_disabled[code token]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3",
+      "file": null,
+      "class": "",
+      "name": "test_public_edge_denies_admin_and_master",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3",
+      "file": null,
+      "class": "",
+      "name": "test_mapping_preserves_ids_orders_and_roles",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3",
+      "file": null,
+      "class": "",
+      "name": "test_duplicate_or_conflicting_mappings_rejected[changes0]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3",
+      "file": null,
+      "class": "",
+      "name": "test_duplicate_or_conflicting_mappings_rejected[changes1]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3",
+      "file": null,
+      "class": "",
+      "name": "test_duplicate_or_conflicting_mappings_rejected[changes2]",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3",
+      "file": null,
+      "class": "",
+      "name": "test_unknown_user_and_untrusted_issuer_rejected",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3",
+      "file": null,
+      "class": "",
+      "name": "test_email_collision_never_links_or_creates_mapping",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3",
+      "file": null,
+      "class": "",
+      "name": "test_runtime_cannot_create_identity_links",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3",
+      "file": null,
+      "class": "",
+      "name": "test_additive_migration_and_rollback_preserve_application_data",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P1-host",
+      "class": "host_checks.execute.<locals>.DeploymentChecks.test_backend_restart_does_not_run_migrations",
+      "name": "test_backend_restart_does_not_run_migrations",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P1-host",
+      "class": "host_checks.execute.<locals>.DeploymentChecks.test_db_reachability_backend",
+      "name": "test_db_reachability_backend",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P1-host",
+      "class": "host_checks.execute.<locals>.DeploymentChecks.test_db_reachability_grafana",
+      "name": "test_db_reachability_grafana",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P1-host",
+      "class": "host_checks.execute.<locals>.DeploymentChecks.test_db_reachability_keycloak",
+      "name": "test_db_reachability_keycloak",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P1-host",
+      "class": "host_checks.execute.<locals>.DeploymentChecks.test_db_reachability_kong",
+      "name": "test_db_reachability_kong",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P1-host",
+      "class": "host_checks.execute.<locals>.DeploymentChecks.test_db_reachability_loki",
+      "name": "test_db_reachability_loki",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P1-host",
+      "class": "host_checks.execute.<locals>.DeploymentChecks.test_db_reachability_promtail",
+      "name": "test_db_reachability_promtail",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P1-host",
+      "class": "host_checks.execute.<locals>.DeploymentChecks.test_exact_network_memberships",
+      "name": "test_exact_network_memberships",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P1-host",
+      "class": "host_checks.execute.<locals>.DeploymentChecks.test_migration_jobs_completed_before_backend",
+      "name": "test_migration_jobs_completed_before_backend",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P1-host",
+      "class": "host_checks.execute.<locals>.DeploymentChecks.test_no_runtime_secrets_in_built_image_layers",
+      "name": "test_no_runtime_secrets_in_built_image_layers",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P1-host",
+      "class": "host_checks.execute.<locals>.DeploymentChecks.test_observability_readiness_and_backend_ingestion",
+      "name": "test_observability_readiness_and_backend_ingestion",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P1-host",
+      "class": "host_checks.execute.<locals>.DeploymentChecks.test_postgres_no_published_port",
+      "name": "test_postgres_no_published_port",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P1-host",
+      "class": "host_checks.execute.<locals>.DeploymentChecks.test_public_dns_for_current_ssrf_validation",
+      "name": "test_public_dns_for_current_ssrf_validation",
+      "status": "error",
+      "cause": "Runtime DNS infrastructure: example.com resolution unavailable; unchanged mandatory assertion"
+    },
+    {
+      "group": "legacy-P1-host",
+      "class": "host_checks.execute.<locals>.DeploymentChecks.test_readiness_database_outage_and_recovery",
+      "name": "test_readiness_database_outage_and_recovery",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P1-host",
+      "class": "host_checks.execute.<locals>.DeploymentChecks.test_readiness_migration_mismatch",
+      "name": "test_readiness_migration_mismatch",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P1-host",
+      "class": "host_checks.execute.<locals>.DeploymentChecks.test_secret_mounts_and_docker_api_absence",
+      "name": "test_secret_mounts_and_docker_api_absence",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2-host",
+      "class": "tls_checks.execute.<locals>.TLSChecks.test_actual_kong_bad_client_expired",
+      "name": "test_actual_kong_bad_client_expired",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2-host",
+      "class": "tls_checks.execute.<locals>.TLSChecks.test_actual_kong_bad_client_untrusted",
+      "name": "test_actual_kong_bad_client_untrusted",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2-host",
+      "class": "tls_checks.execute.<locals>.TLSChecks.test_ca_and_leaf_rotation_overlap_retirement_and_rollback",
+      "name": "test_ca_and_leaf_rotation_overlap_retirement_and_rollback",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2-host",
+      "class": "tls_checks.execute.<locals>.TLSChecks.test_enrolled_server_only_client_eku_rejected_during_handshake",
+      "name": "test_enrolled_server_only_client_eku_rejected_during_handshake",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2-host",
+      "class": "tls_checks.execute.<locals>.TLSChecks.test_enrollment_configuration_fails_closed_for_ca_wrong_san_and_issuer",
+      "name": "test_enrollment_configuration_fails_closed_for_ca_wrong_san_and_issuer",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2-host",
+      "class": "tls_checks.execute.<locals>.TLSChecks.test_expired_enrolled_client_rejected_during_handshake",
+      "name": "test_expired_enrolled_client_rejected_during_handshake",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2-host",
+      "class": "tls_checks.execute.<locals>.TLSChecks.test_external_published_https_with_verified_local_trust",
+      "name": "test_external_published_https_with_verified_local_trust",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2-host",
+      "class": "tls_checks.execute.<locals>.TLSChecks.test_kong_rejects_expired_server",
+      "name": "test_kong_rejects_expired_server",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2-host",
+      "class": "tls_checks.execute.<locals>.TLSChecks.test_kong_rejects_wrong_chain",
+      "name": "test_kong_rejects_wrong_chain",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2-host",
+      "class": "tls_checks.execute.<locals>.TLSChecks.test_kong_rejects_wrong_san",
+      "name": "test_kong_rejects_wrong_san",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2-host",
+      "class": "tls_checks.execute.<locals>.TLSChecks.test_kong_rejects_wrong_server_eku",
+      "name": "test_kong_rejects_wrong_server_eku",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2-host",
+      "class": "tls_checks.execute.<locals>.TLSChecks.test_kong_requires_upstream_validation_in_generated_nginx",
+      "name": "test_kong_requires_upstream_validation_in_generated_nginx",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2-host",
+      "class": "tls_checks.execute.<locals>.TLSChecks.test_leaf_renewal_reuses_issuers_and_refuses_overwrite",
+      "name": "test_leaf_renewal_reuses_issuers_and_refuses_overwrite",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2-host",
+      "class": "tls_checks.execute.<locals>.TLSChecks.test_runtime_logs_do_not_contain_keys_credentials_or_complete_jwt",
+      "name": "test_runtime_logs_do_not_contain_keys_credentials_or_complete_jwt",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2-host",
+      "class": "tls_checks.execute.<locals>.TLSChecks.test_runtime_mounts_exclude_offline_issuers_and_peer_private_keys",
+      "name": "test_runtime_mounts_exclude_offline_issuers_and_peer_private_keys",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P2-host",
+      "class": "tls_checks.execute.<locals>.TLSChecks.test_vite_proxy_uses_verified_https_and_rejects_wrong_ca",
+      "name": "test_vite_proxy_uses_verified_https_and_rejects_wrong_ca",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3-host",
+      "name": "test_identity_database_private_and_persistent",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3-host",
+      "name": "test_identity_database_inaccessible_from_other_services",
+      "status": "passed"
+    },
+    {
+      "group": "legacy-P3-host",
+      "name": "test_restart_preserves_users_realm_and_client",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p3/test_identity.py",
+      "class": "",
+      "name": "test_discovery_jwks_verified_https",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p3/test_identity.py",
+      "class": "",
+      "name": "test_wrong_pkce_verifier_rejected",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p3/test_identity.py",
+      "class": "",
+      "name": "test_invalid_redirect_not_followed[https://localhost:5173/oidc/callback/extra]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p3/test_identity.py",
+      "class": "",
+      "name": "test_invalid_redirect_not_followed[https://evil.example/callback]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p3/test_identity.py",
+      "class": "",
+      "name": "test_invalid_redirect_not_followed[http://localhost:5173/oidc/callback]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p3/test_identity.py",
+      "class": "",
+      "name": "test_pkce_s256_required[challenge0]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p3/test_identity.py",
+      "class": "",
+      "name": "test_pkce_s256_required[challenge1]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p3/test_identity.py",
+      "class": "",
+      "name": "test_password_grant_disabled",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p3/test_identity.py",
+      "class": "",
+      "name": "test_implicit_and_hybrid_disabled[token]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p3/test_identity.py",
+      "class": "",
+      "name": "test_implicit_and_hybrid_disabled[id_token]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p3/test_identity.py",
+      "class": "",
+      "name": "test_implicit_and_hybrid_disabled[code token]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p3/test_identity.py",
+      "class": "",
+      "name": "test_public_edge_denies_admin_and_master",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p3/test_identity.py",
+      "class": "",
+      "name": "test_duplicate_or_conflicting_mappings_rejected[changes0]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p3/test_identity.py",
+      "class": "",
+      "name": "test_duplicate_or_conflicting_mappings_rejected[changes1]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p3/test_identity.py",
+      "class": "",
+      "name": "test_duplicate_or_conflicting_mappings_rejected[changes2]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p3/test_identity.py",
+      "class": "",
+      "name": "test_unknown_user_and_untrusted_issuer_rejected",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p3/test_identity.py",
+      "class": "",
+      "name": "test_email_collision_never_links_or_creates_mapping",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_product_crud_authorization[anonymous]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_product_crud_authorization[customer]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_product_crud_authorization[staff]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_product_crud_authorization[admin]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_order_create_authorization_and_server_ownership[anonymous]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_order_create_authorization_and_server_ownership[customer]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_order_create_authorization_and_server_ownership[staff]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_order_create_authorization_and_server_ownership[admin]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_order_list_read_status_authorization[anonymous]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_order_list_read_status_authorization[customer]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_order_list_read_status_authorization[staff]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_order_list_read_status_authorization[admin]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_user_self_vs_admin_authorization[anonymous]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_user_self_vs_admin_authorization[customer]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_user_self_vs_admin_authorization[staff]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_user_self_vs_admin_authorization[admin]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_admin_self_protection_and_db_role_active_authority",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_invalid_orders_do_not_deduct_stock",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_current_order_status_policy[staff]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_current_order_status_policy[admin]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_defect_product_null_field",
+      "status": "xfail",
+      "reason": "P0-D06: explicit null product price causes HTTP 500"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_authorization.py",
+      "class": "",
+      "name": "test_defect_user_null_field",
+      "status": "xfail",
+      "reason": "P0-D07: explicit null user role causes HTTP 500"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_webhook_hmac_timestamp[valid-200]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_webhook_hmac_timestamp[missing_timestamp-401]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_webhook_hmac_timestamp[bad_timestamp-403]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_webhook_hmac_timestamp[old-403]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_webhook_hmac_timestamp[future-403]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_webhook_hmac_timestamp[missing_signature-401]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_webhook_hmac_timestamp[wrong_signature-403]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_webhook_hmac_timestamp[wrong_prefix-403]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_webhook_hmac_timestamp[tampered_body-403]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_webhook_hmac_timestamp[tampered_timestamp-403]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_webhook_hmac_timestamp[invalid_json-400]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_webhook_debug_helper_disabled",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_defect_webhook_json_shape",
+      "status": "xfail",
+      "reason": "P0-D03: signed non-object JSON causes HTTP 500"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "test_webhook_ssrf.py",
+      "class": "",
+      "name": "test_defect_webhook_replay",
+      "status": "xfail",
+      "reason": "P0-D04: identical signed webhook is accepted twice"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_https_business.py",
+      "class": "",
+      "name": "test_https_ssrf_uses_real_dns_and_preserves_roles[anonymous-401]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_https_business.py",
+      "class": "",
+      "name": "test_https_ssrf_uses_real_dns_and_preserves_roles[customer-403]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_https_business.py",
+      "class": "",
+      "name": "test_https_ssrf_uses_real_dns_and_preserves_roles[staff-200]",
+      "status": "failed",
+      "cause": "Runtime DNS infrastructure: example.com resolution unavailable; unchanged mandatory assertion"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_https_business.py",
+      "class": "",
+      "name": "test_https_ssrf_uses_real_dns_and_preserves_roles[admin-200]",
+      "status": "failed",
+      "cause": "Runtime DNS infrastructure: example.com resolution unavailable; unchanged mandatory assertion"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_https_business.py",
+      "class": "",
+      "name": "test_https_ssrf_denies_invalid_targets[http://169.254.169.254-403]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_https_business.py",
+      "class": "",
+      "name": "test_https_ssrf_denies_invalid_targets[http://localhost-403]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_https_business.py",
+      "class": "",
+      "name": "test_https_ssrf_denies_invalid_targets[https://example.com.evil.test-403]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_https_business.py",
+      "class": "",
+      "name": "test_https_ssrf_denies_invalid_targets[ftp://example.com/file-422]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_real_access_and_legacy_rejection",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_backend_independent_claim_validation[changes0-drop0]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_backend_independent_claim_validation[changes1-drop1]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_backend_independent_claim_validation[changes2-drop2]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_backend_independent_claim_validation[changes3-drop3]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_backend_independent_claim_validation[changes4-drop4]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_backend_independent_claim_validation[changes5-drop5]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_backend_independent_claim_validation[changes6-drop6]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_backend_independent_claim_validation[changes7-drop7]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_backend_independent_claim_validation[changes8-drop8]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_backend_independent_claim_validation[changes9-drop9]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_backend_independent_claim_validation[changes10-drop10]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_backend_independent_claim_validation[changes11-drop11]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_backend_independent_claim_validation[changes12-drop12]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_backend_independent_claim_validation[changes13-drop13]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_backend_independent_claim_validation[changes14-drop14]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_backend_independent_claim_validation[changes15-drop15]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_backend_independent_claim_validation[changes16-drop16]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_backend_independent_claim_validation[changes17-drop17]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_gateway_rejects_or_backend_finishes_validation[missing]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_gateway_rejects_or_backend_finishes_validation[garbage]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_gateway_rejects_or_backend_finishes_validation[invalid-signature]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_gateway_rejects_or_backend_finishes_validation[unknown-kid]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_gateway_rejects_or_backend_finishes_validation[missing-exp]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_gateway_rejects_or_backend_finishes_validation[expired]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_gateway_rejects_or_backend_finishes_validation[hs256]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_gateway_rejects_or_backend_finishes_validation[id-token]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_gateway_rejects_or_backend_finishes_validation[refresh-token]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_wrong_audience_issuer_type_gateway_is_not_oidc",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_claim_roles_headers_cannot_elevate",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_unmapped_identity_email_collision_denied",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_retired_local_issuance[login]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_retired_local_issuance[register]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_retired_local_issuance[refresh]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_retired_local_issuance[logout]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_public_routes_and_cors",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_mapping_runtime_select_only",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_reviewed_dry_run_approval_existing_ids",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_mapping_preserves_ids_orders_and_roles",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_new_customer_review_and_collision",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_refresh_logout_and_expiration",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_p4_realm_client_reproducibility",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_review_rejects_ambiguous_batch_and_privileged_provisioning",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_live_p4_global_rate_limit",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_valid_mtls_is_http_200[771]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_valid_mtls_is_http_200[772]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[771-None]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[771-negative/untrusted]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[771-negative/expired]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[771-negative/unenrolled]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[771-negative/wrong-client-eku]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[772-None]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[772-negative/untrusted]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[772-negative/expired]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[772-negative/unenrolled]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_bad_client_is_tls_failure_not_http_auth[772-negative/wrong-client-eku]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_client_rejects_wrong_server_hostname",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_plain_http_cannot_reach_backend_or_gateway[backend-8443]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_plain_http_cannot_reach_backend_or_gateway[backend-8000]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_plain_http_cannot_reach_backend_or_gateway[kong-8000]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_https_gateway_health_and_http_401_are_distinct_from_tls_failure",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_certificate_san_usage_and_leaf_constraints[backend/server.pem-names0-purpose0]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_certificate_san_usage_and_leaf_constraints[kong/client.pem-names1-purpose1]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_certificate_san_usage_and_leaf_constraints[backend/health.pem-names2-purpose2]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_certificate_san_usage_and_leaf_constraints[kong/edge.pem-names3-purpose3]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_client_pin_store_enrolls_exactly_two_leaf_identities",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p1/test_privileges.py",
+      "class": "",
+      "name": "test_runtime_privilege_denials[CREATE TABLE public.p1_forbidden (id int)]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p1/test_privileges.py",
+      "class": "",
+      "name": "test_runtime_privilege_denials[ALTER TABLE public.products ADD COLUMN p1_forbidden int]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p1/test_privileges.py",
+      "class": "",
+      "name": "test_runtime_privilege_denials[DROP TABLE public.order_items]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p1/test_privileges.py",
+      "class": "",
+      "name": "test_runtime_privilege_denials[CREATE SCHEMA p1_forbidden]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p1/test_privileges.py",
+      "class": "",
+      "name": "test_runtime_privilege_denials[CREATE TEMP TABLE p1_forbidden (id int)]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p1/test_privileges.py",
+      "class": "",
+      "name": "test_runtime_privilege_denials[CREATE FUNCTION public.p1_forbidden() RETURNS int LANGUAGE sql AS 'SELECT 1']",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p1/test_privileges.py",
+      "class": "",
+      "name": "test_runtime_privilege_denials[ALTER ROLE app_runtime SUPERUSER]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p1/test_privileges.py",
+      "class": "",
+      "name": "test_runtime_privilege_denials[SET ROLE app_migrator]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p1/test_privileges.py",
+      "class": "",
+      "name": "test_runtime_privilege_denials[SET ROLE postgres]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p1/test_privileges.py",
+      "class": "",
+      "name": "test_runtime_privilege_denials[TRUNCATE public.users CASCADE]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p1/test_privileges.py",
+      "class": "",
+      "name": "test_runtime_privilege_denials[DELETE FROM public.products]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p1/test_privileges.py",
+      "class": "",
+      "name": "test_runtime_privilege_denials[UPDATE public.alembic_version SET version_num='forbidden']",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p1/test_privileges.py",
+      "class": "",
+      "name": "test_runtime_privilege_denials[SELECT * FROM public.audit_logs]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p1/test_privileges.py",
+      "class": "",
+      "name": "test_runtime_privilege_denials[INSERT INTO public.categories(name,slug) VALUES ('forbidden','forbidden')]",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p1/test_privileges.py",
+      "class": "",
+      "name": "test_runtime_role_attributes",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p1/test_privileges.py",
+      "class": "",
+      "name": "test_required_runtime_dml",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p1/test_privileges.py",
+      "class": "",
+      "name": "test_migration_role_owns_schema_objects_and_can_ddl",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-pytest",
+      "file": "../p1/test_privileges.py",
+      "class": "",
+      "name": "test_password_file_supports_url_encoding",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P2-host",
+      "class": "p4_tls_checks.execute.<locals>.TLSChecks.test_actual_kong_bad_client_expired",
+      "name": "test_actual_kong_bad_client_expired",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P2-host",
+      "class": "p4_tls_checks.execute.<locals>.TLSChecks.test_actual_kong_bad_client_untrusted",
+      "name": "test_actual_kong_bad_client_untrusted",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P2-host",
+      "class": "p4_tls_checks.execute.<locals>.TLSChecks.test_ca_and_leaf_rotation_overlap_retirement_and_rollback",
+      "name": "test_ca_and_leaf_rotation_overlap_retirement_and_rollback",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P2-host",
+      "class": "p4_tls_checks.execute.<locals>.TLSChecks.test_enrolled_server_only_client_eku_rejected_during_handshake",
+      "name": "test_enrolled_server_only_client_eku_rejected_during_handshake",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P2-host",
+      "class": "p4_tls_checks.execute.<locals>.TLSChecks.test_enrollment_configuration_fails_closed_for_ca_wrong_san_and_issuer",
+      "name": "test_enrollment_configuration_fails_closed_for_ca_wrong_san_and_issuer",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P2-host",
+      "class": "p4_tls_checks.execute.<locals>.TLSChecks.test_expired_enrolled_client_rejected_during_handshake",
+      "name": "test_expired_enrolled_client_rejected_during_handshake",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P2-host",
+      "class": "p4_tls_checks.execute.<locals>.TLSChecks.test_external_published_https_with_verified_local_trust",
+      "name": "test_external_published_https_with_verified_local_trust",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P2-host",
+      "class": "p4_tls_checks.execute.<locals>.TLSChecks.test_kong_rejects_expired_server",
+      "name": "test_kong_rejects_expired_server",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P2-host",
+      "class": "p4_tls_checks.execute.<locals>.TLSChecks.test_kong_rejects_wrong_chain",
+      "name": "test_kong_rejects_wrong_chain",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P2-host",
+      "class": "p4_tls_checks.execute.<locals>.TLSChecks.test_kong_rejects_wrong_san",
+      "name": "test_kong_rejects_wrong_san",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P2-host",
+      "class": "p4_tls_checks.execute.<locals>.TLSChecks.test_kong_rejects_wrong_server_eku",
+      "name": "test_kong_rejects_wrong_server_eku",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P2-host",
+      "class": "p4_tls_checks.execute.<locals>.TLSChecks.test_kong_requires_upstream_validation_in_generated_nginx",
+      "name": "test_kong_requires_upstream_validation_in_generated_nginx",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P2-host",
+      "class": "p4_tls_checks.execute.<locals>.TLSChecks.test_leaf_renewal_reuses_issuers_and_refuses_overwrite",
+      "name": "test_leaf_renewal_reuses_issuers_and_refuses_overwrite",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P2-host",
+      "class": "p4_tls_checks.execute.<locals>.TLSChecks.test_runtime_logs_do_not_contain_keys_credentials_or_complete_jwt",
+      "name": "test_runtime_logs_do_not_contain_keys_credentials_or_complete_jwt",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P2-host",
+      "class": "p4_tls_checks.execute.<locals>.TLSChecks.test_runtime_mounts_exclude_offline_issuers_and_peer_private_keys",
+      "name": "test_runtime_mounts_exclude_offline_issuers_and_peer_private_keys",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P2-host",
+      "class": "p4_tls_checks.execute.<locals>.TLSChecks.test_vite_proxy_uses_verified_https_and_rejects_wrong_ca",
+      "name": "test_vite_proxy_uses_verified_https_and_rejects_wrong_ca",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-host",
+      "name": "test_networks_and_no_public_databases_or_admin",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-host",
+      "name": "test_private_database_unreachable_by_gateway_and_identity_edge",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-host",
+      "name": "test_database_roles_and_mapping_read_privilege",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-host",
+      "name": "test_no_socket_privileged_container_or_secret_key_volume",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P4-host",
+      "name": "test_observability_ingests_backend_logs",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P3-host",
+      "name": "test_identity_database_private_and_persistent",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P3-host",
+      "name": "test_identity_database_inaccessible_from_other_services",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-P3-host",
+      "name": "test_restart_preserves_users_realm_and_client",
+      "status": "passed"
+    },
+    {
+      "name": "stage",
+      "status": "passed",
+      "group": "candidate-key-rotation",
+      "execution": 1
+    },
+    {
+      "name": "activate",
+      "status": "passed",
+      "group": "candidate-key-rotation",
+      "execution": 2
+    },
+    {
+      "name": "retire",
+      "status": "passed",
+      "group": "candidate-key-rotation",
+      "execution": 3
+    },
+    {
+      "name": "verify-retired",
+      "status": "passed",
+      "group": "candidate-key-rotation",
+      "execution": 4
+    },
+    {
+      "name": "JWKS-outage-and-sync-preserves-config",
+      "status": "passed",
+      "group": "candidate-key-rotation",
+      "execution": 5
+    },
+    {
+      "name": "verify-retired",
+      "status": "passed",
+      "group": "candidate-key-rotation",
+      "execution": 6
+    },
+    {
+      "name": "real browser PKCE login, legacy cleanup and memory-only tokens",
+      "status": "passed",
+      "group": "candidate-browser"
+    },
+    {
+      "name": "reload recovers identity through Keycloak SSO without persistent tokens",
+      "status": "passed",
+      "group": "candidate-browser"
+    },
+    {
+      "name": "single-flight refresh with real Keycloak token endpoint",
+      "status": "passed",
+      "group": "candidate-browser"
+    },
+    {
+      "name": "IdP session expiration clears application authentication on refresh",
+      "status": "passed",
+      "group": "candidate-browser"
+    },
+    {
+      "name": "logout ends SSO and returns to exact configured redirect",
+      "status": "passed",
+      "group": "candidate-browser"
+    },
+    {
+      "name": "invalid callback state cannot establish authenticated identity",
+      "status": "passed",
+      "group": "candidate-browser"
+    },
+    {
+      "name": "cancelled authorization leaves the application signed out",
+      "status": "passed",
+      "group": "candidate-browser"
+    },
+    {
+      "name": "invalid nonce in one-time SDK transaction rejects a genuine IdP response",
+      "status": "passed",
+      "group": "candidate-browser"
+    },
+    {
+      "name": "Keycloak unavailable does not fall back to local password login",
+      "status": "passed",
+      "group": "candidate-browser"
+    }
+  ],
+  "focused_three": [
+    {
+      "group": "candidate-focused-three",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_p4_realm_client_reproducibility",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-focused-three",
+      "file": "../p4/test_cutover.py",
+      "class": "",
+      "name": "test_live_p4_global_rate_limit",
+      "status": "passed"
+    },
+    {
+      "group": "candidate-focused-three",
+      "file": "../p2/test_tls.py",
+      "class": "",
+      "name": "test_https_gateway_health_and_http_401_are_distinct_from_tls_failure",
+      "status": "passed"
+    }
+  ]
+}

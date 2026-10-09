@@ -19,12 +19,19 @@ function RoleHome() {
   );
 }
 
+function IdentityCallback() {
+  const {loading,isAuthenticated}=useAuth();
+  if(loading)return <p role="status">Completing sign-in…</p>;
+  return <Navigate to={isAuthenticated?'/':'/login'} replace />;
+}
+
 export default function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/oidc/callback" element={<IdentityCallback />} />
 
           <Route
             path="/"

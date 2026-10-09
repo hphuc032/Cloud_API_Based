@@ -1,0 +1,49 @@
+# Explicit P4 candidate/cutover overlay on the P3 deployment. No automatic auth fallback.
+services:
+  backend:
+    environment:
+      AUTH_MODE: oidc
+      OIDC_ISSUER: ${IDENTITY_HOSTNAME:?Stable HTTPS identity origin}/realms/florasecure
+      OIDC_AUDIENCE: florasecure-api
+      OIDC_CLIENT_ID: florasecure-spa
+      OIDC_CA_FILE: /identity-trust/identity-ca.pem
+      ALLOWED_ORIGINS: ${OIDC_ORIGINS:?Exact HTTPS SPA origins as JSON array}
+    networks: [api_transport, app_data, oidc_transport]
+    volumes:
+      - ${IDENTITY_TLS_DIR:?Identity TLS required}/trust:/identity-trust:ro
+  migrate:
+    environment:
+      AUTH_MODE: oidc
+      OIDC_ISSUER: ${IDENTITY_HOSTNAME:?Stable HTTPS identity origin}/realms/florasecure
+  keycloak:
+    volumes:
+      - ./keycloak/florasecure-p4-realm.json:/opt/keycloak/data/import/florasecure-realm.json:ro
+  identity-edge:
+    networks: [identity_transport, oidc_transport]
+  kong-keys:
+    build: ../backend
+    command: [python, -m, deployment.kong_jwks, --output, /gateway/kong.json]
+    environment:
+      OIDC_ISSUER: ${IDENTITY_HOSTNAME:?Stable HTTPS identity origin}/realms/florasecure
+      OIDC_CA_FILE: /identity-trust/identity-ca.pem
+      OIDC_ORIGINS: ${OIDC_ORIGINS:?Exact HTTPS SPA origins as JSON array}
+    networks: [oidc_transport]
+    volumes:
+      - gateway_keys:/gateway
+      - ${IDENTITY_TLS_DIR:?Identity TLS required}/trust:/identity-trust:ro
+    depends_on:
+      identity-edge:
+        condition: service_healthy
+    restart: "no"
+  kong:
+    environment:
+      KONG_DECLARATIVE_CONFIG: /gateway/kong.json
+    volumes:
+      - gateway_keys:/gateway:ro
+    depends_on:
+      kong-keys:
+        condition: service_completed_successfully
+volumes:
+  gateway_keys:
+networks:
+  oidc_transport: {}

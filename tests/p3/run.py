@@ -70,8 +70,12 @@ def main():
 
         if env.get("P3_BUILD_OVERLAY"):
             compose += ["-f", env["P3_BUILD_OVERLAY"]]
+        spec=importlib.util.spec_from_file_location('p3_probe_worker',ROOT/'tests/compose_probe.py')
+        worker_module=importlib.util.module_from_spec(spec);spec.loader.exec_module(worker_module)
+        worker=worker_module.ProbeWorker(compose)
 
         def run(args, **kwargs):
+            args=worker.command(args)
             commands.append(args)
             kwargs.setdefault('check', True)
             return subprocess.run(args, cwd=ROOT, env=env, **kwargs)
@@ -108,10 +112,28 @@ def main():
             if env.get("P3_RELEASE_BUILD_CACHE") == "1":
                 run(["docker", "builder", "prune", "--all", "--force"])
 
-            run(compose + ["up", "-d", "--wait", "--wait-timeout", "300",
-                           "backend", "kong", "keycloak", "identity-edge", "grafana", "promtail"])
+            historical = []
+            if env.get('P3_RELEASE_EXITED_JOBS') == '1':
+                # Optional disk-bounded orchestration for copy-heavy vfs hosts.
+                # Keep migrate for the existing restart/no-rerun assertion.
+                def up(*services):
+                    run(compose+['up','--no-deps','-d','--wait','--wait-timeout','300',*services])
+                up('postgres','identity-db')
+                for service in ('db-bootstrap','identity-bootstrap','migrate'):
+                    run(compose+['up','--no-deps','-d',service])
+                    run(compose+['wait',service])
+                    if service!='migrate':
+                        ids=run(compose+['ps','-a','-q',service],capture_output=True,text=True).stdout.split()
+                        records=json.loads(run(['docker','inspect',*ids],capture_output=True,text=True).stdout)
+                        assert len(records)==1 and records[0]['State']['Status']=='exited' and records[0]['State']['ExitCode']==0
+                        historical.extend(records)
+                        run(compose+['rm','--force',service])
+                up('backend','keycloak');up('identity-edge','kong','loki');up('grafana','promtail')
+            else:
+                run(compose + ["up", "-d", "--wait", "--wait-timeout", "300",
+                               "backend", "kong", "keycloak", "identity-edge", "grafana", "promtail"])
             ids = run(compose + ["ps", "-a", "-q"], capture_output=True, text=True).stdout.split()
-            metadata = json.loads(run(["docker", "inspect", *ids], capture_output=True, text=True).stdout)
+            metadata = json.loads(run(["docker", "inspect", *ids], capture_output=True, text=True).stdout)+historical
             (artifacts / "containers.json").write_text(json.dumps(metadata, indent=2), encoding="utf-8")
             result = 0  # Startup succeeded; retain every later nonzero result.
             proc = run(compose + ['run', '--rm', '--no-deps', '-T', 'tests',
@@ -148,6 +170,7 @@ def main():
                 (artifacts / 'p2-pytest.txt').write_text(proc.stdout, encoding='utf-8')
                 if proc.returncode:
                     result = 1
+                if env.get('CLOUD_API_KEEP_PROBES')=='1':worker.start(run,project)
                 spec = importlib.util.spec_from_file_location('tls_checks', ROOT / 'tests/p2/host_checks.py')
                 module = importlib.util.module_from_spec(spec)
                 spec.loader.exec_module(module)
@@ -161,6 +184,7 @@ def main():
                                   cwd=ROOT, env=env, capture_output=True, text=True)
             (artifacts / "deployment-failure.txt").write_text(logs.stdout + logs.stderr, encoding="utf-8")
         finally:
+            worker.close(run)
             try:
                 run(compose + ["down", "--volumes", "--remove-orphans", "--timeout", "10"])
                 cleanup = True

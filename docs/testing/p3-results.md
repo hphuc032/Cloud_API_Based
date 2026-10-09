@@ -1,5 +1,24 @@
 # P3 identity preparation: implementation and test record
 
+## P4-worktree compatibility revalidation — 2026-10-09 UTC
+
+This file retains the historical P3 record below. The separately authorized P4
+candidate is described in [P4 results](p4-results.md); historical "no P4"/"stop"
+statements below refer to the scope at the time of P3's original validation.
+P3 acceptance is still **BLOCKED**, not promoted by a P4 commit.
+
+The full unchanged historical test groups were rerun in explicit legacy mode on
+the P4 worktree, project `cloud-api-p3-b69c8dae86ca`,
+2026-10-09T06:44:38.454584+00:00–06:56:56.709181+00:00 UTC:
+**252 executions, 236 passed, 13 strict expected failures, 2 DNS failures and
+1 DNS error; no skipped cases or other failures.** All seven unique baseline
+defects remain expected failures. All 25 provider/mapping/persistence checks and
+P2's 22 socket plus 16 host mTLS checks passed. Cleanup completed.
+The three original DNS test IDs/root cause remain unchanged; fresh Agent/backend
+diagnostics and all individual rerun outcomes are in [P4 evidence](p4-evidence.json)
+and [case results](p4-case-results.json). This is compatibility evidence for the
+P4 worktree in legacy mode, not a rewritten validation of the immutable P3 commit.
+
 Branch: `migration/cloud-api-security`. Approved parent P2:
 `16703e01285938c6b8d002b672f2124e8ab24ac1`. Date: 2026-10-08 (Asia/Saigon).
 P3 implementation commit: `56af7f81b123fcbe649c70dc88ce6421d6636c48`.
