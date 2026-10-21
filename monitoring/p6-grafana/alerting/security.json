@@ -1,0 +1,433 @@
+{
+  "apiVersion": 1,
+  "groups": [
+    {
+      "orgId": 1,
+      "name": "p6-security",
+      "folder": "Security",
+      "interval": "10s",
+      "rules": [
+        {
+          "uid": "p6-jwt-rejections",
+          "title": "P6 jwt-rejections",
+          "condition": "C",
+          "data": [
+            {
+              "refId": "A",
+              "relativeTimeRange": {
+                "from": 120,
+                "to": 0
+              },
+              "datasourceUid": "florasecure-loki",
+              "model": {
+                "expr": "sum(count_over_time({service=~\"kong|backend\"} | json | event_type=~\"token_rejected\" [1m])) or vector(0)",
+                "refId": "A",
+                "queryType": "instant",
+                "instant": true
+              }
+            },
+            {
+              "refId": "C",
+              "relativeTimeRange": {
+                "from": 0,
+                "to": 0
+              },
+              "datasourceUid": "__expr__",
+              "model": {
+                "type": "threshold",
+                "expression": "A",
+                "refId": "C",
+                "conditions": [
+                  {
+                    "evaluator": {
+                      "type": "gt",
+                      "params": [
+                        5
+                      ]
+                    },
+                    "operator": {
+                      "type": "and"
+                    },
+                    "reducer": {
+                      "type": "last",
+                      "params": []
+                    },
+                    "type": "query",
+                    "query": {
+                      "params": [
+                        "C"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "noDataState": "NoData",
+          "execErrState": "Error",
+          "for": "30s",
+          "annotations": {
+            "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials.",
+            "runbook_url": "docs/monitoring/alert-response.md"
+          },
+          "labels": {
+            "severity": "warning",
+            "phase": "p6",
+            "environment": "lab"
+          },
+          "isPaused": false
+        },
+        {
+          "uid": "p6-webhook-attacks",
+          "title": "P6 webhook-attacks",
+          "condition": "C",
+          "data": [
+            {
+              "refId": "A",
+              "relativeTimeRange": {
+                "from": 120,
+                "to": 0
+              },
+              "datasourceUid": "florasecure-loki",
+              "model": {
+                "expr": "sum(count_over_time({service=~\"kong|backend\"} | json | event_type=~\"webhook_rejected|webhook_conflict\" [1m])) or vector(0)",
+                "refId": "A",
+                "queryType": "instant",
+                "instant": true
+              }
+            },
+            {
+              "refId": "C",
+              "relativeTimeRange": {
+                "from": 0,
+                "to": 0
+              },
+              "datasourceUid": "__expr__",
+              "model": {
+                "type": "threshold",
+                "expression": "A",
+                "refId": "C",
+                "conditions": [
+                  {
+                    "evaluator": {
+                      "type": "gt",
+                      "params": [
+                        3
+                      ]
+                    },
+                    "operator": {
+                      "type": "and"
+                    },
+                    "reducer": {
+                      "type": "last",
+                      "params": []
+                    },
+                    "type": "query",
+                    "query": {
+                      "params": [
+                        "C"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "noDataState": "NoData",
+          "execErrState": "Error",
+          "for": "30s",
+          "annotations": {
+            "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials.",
+            "runbook_url": "docs/monitoring/alert-response.md"
+          },
+          "labels": {
+            "severity": "warning",
+            "phase": "p6",
+            "environment": "lab"
+          },
+          "isPaused": false
+        },
+        {
+          "uid": "p6-ownership-denials",
+          "title": "P6 ownership-denials",
+          "condition": "C",
+          "data": [
+            {
+              "refId": "A",
+              "relativeTimeRange": {
+                "from": 120,
+                "to": 0
+              },
+              "datasourceUid": "florasecure-loki",
+              "model": {
+                "expr": "sum(count_over_time({service=~\"kong|backend\"} | json | event_type=~\"ownership_denied\" [1m])) or vector(0)",
+                "refId": "A",
+                "queryType": "instant",
+                "instant": true
+              }
+            },
+            {
+              "refId": "C",
+              "relativeTimeRange": {
+                "from": 0,
+                "to": 0
+              },
+              "datasourceUid": "__expr__",
+              "model": {
+                "type": "threshold",
+                "expression": "A",
+                "refId": "C",
+                "conditions": [
+                  {
+                    "evaluator": {
+                      "type": "gt",
+                      "params": [
+                        3
+                      ]
+                    },
+                    "operator": {
+                      "type": "and"
+                    },
+                    "reducer": {
+                      "type": "last",
+                      "params": []
+                    },
+                    "type": "query",
+                    "query": {
+                      "params": [
+                        "C"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "noDataState": "NoData",
+          "execErrState": "Error",
+          "for": "30s",
+          "annotations": {
+            "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials.",
+            "runbook_url": "docs/monitoring/alert-response.md"
+          },
+          "labels": {
+            "severity": "warning",
+            "phase": "p6",
+            "environment": "lab"
+          },
+          "isPaused": false
+        },
+        {
+          "uid": "p6-ssrf-denials",
+          "title": "P6 ssrf-denials",
+          "condition": "C",
+          "data": [
+            {
+              "refId": "A",
+              "relativeTimeRange": {
+                "from": 120,
+                "to": 0
+              },
+              "datasourceUid": "florasecure-loki",
+              "model": {
+                "expr": "sum(count_over_time({service=~\"kong|backend\"} | json | event_type=~\"ssrf_denied\" [1m])) or vector(0)",
+                "refId": "A",
+                "queryType": "instant",
+                "instant": true
+              }
+            },
+            {
+              "refId": "C",
+              "relativeTimeRange": {
+                "from": 0,
+                "to": 0
+              },
+              "datasourceUid": "__expr__",
+              "model": {
+                "type": "threshold",
+                "expression": "A",
+                "refId": "C",
+                "conditions": [
+                  {
+                    "evaluator": {
+                      "type": "gt",
+                      "params": [
+                        3
+                      ]
+                    },
+                    "operator": {
+                      "type": "and"
+                    },
+                    "reducer": {
+                      "type": "last",
+                      "params": []
+                    },
+                    "type": "query",
+                    "query": {
+                      "params": [
+                        "C"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "noDataState": "NoData",
+          "execErrState": "Error",
+          "for": "30s",
+          "annotations": {
+            "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials.",
+            "runbook_url": "docs/monitoring/alert-response.md"
+          },
+          "labels": {
+            "severity": "warning",
+            "phase": "p6",
+            "environment": "lab"
+          },
+          "isPaused": false
+        },
+        {
+          "uid": "p6-rate-limits",
+          "title": "P6 rate-limits",
+          "condition": "C",
+          "data": [
+            {
+              "refId": "A",
+              "relativeTimeRange": {
+                "from": 120,
+                "to": 0
+              },
+              "datasourceUid": "florasecure-loki",
+              "model": {
+                "expr": "sum(count_over_time({service=~\"kong|backend\"} | json | event_type=~\"rate_limited\" [1m])) or vector(0)",
+                "refId": "A",
+                "queryType": "instant",
+                "instant": true
+              }
+            },
+            {
+              "refId": "C",
+              "relativeTimeRange": {
+                "from": 0,
+                "to": 0
+              },
+              "datasourceUid": "__expr__",
+              "model": {
+                "type": "threshold",
+                "expression": "A",
+                "refId": "C",
+                "conditions": [
+                  {
+                    "evaluator": {
+                      "type": "gt",
+                      "params": [
+                        5
+                      ]
+                    },
+                    "operator": {
+                      "type": "and"
+                    },
+                    "reducer": {
+                      "type": "last",
+                      "params": []
+                    },
+                    "type": "query",
+                    "query": {
+                      "params": [
+                        "C"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "noDataState": "NoData",
+          "execErrState": "Error",
+          "for": "30s",
+          "annotations": {
+            "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials.",
+            "runbook_url": "docs/monitoring/alert-response.md"
+          },
+          "labels": {
+            "severity": "warning",
+            "phase": "p6",
+            "environment": "lab"
+          },
+          "isPaused": false
+        },
+        {
+          "uid": "p6-upstream-errors",
+          "title": "P6 upstream-errors",
+          "condition": "C",
+          "data": [
+            {
+              "refId": "A",
+              "relativeTimeRange": {
+                "from": 120,
+                "to": 0
+              },
+              "datasourceUid": "florasecure-loki",
+              "model": {
+                "expr": "sum(count_over_time({service=~\"kong|backend\"} | json | event_type=~\"upstream_error\" [1m])) or vector(0)",
+                "refId": "A",
+                "queryType": "instant",
+                "instant": true
+              }
+            },
+            {
+              "refId": "C",
+              "relativeTimeRange": {
+                "from": 0,
+                "to": 0
+              },
+              "datasourceUid": "__expr__",
+              "model": {
+                "type": "threshold",
+                "expression": "A",
+                "refId": "C",
+                "conditions": [
+                  {
+                    "evaluator": {
+                      "type": "gt",
+                      "params": [
+                        3
+                      ]
+                    },
+                    "operator": {
+                      "type": "and"
+                    },
+                    "reducer": {
+                      "type": "last",
+                      "params": []
+                    },
+                    "type": "query",
+                    "query": {
+                      "params": [
+                        "C"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "noDataState": "NoData",
+          "execErrState": "Error",
+          "for": "30s",
+          "annotations": {
+            "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials.",
+            "runbook_url": "docs/monitoring/alert-response.md"
+          },
+          "labels": {
+            "severity": "warning",
+            "phase": "p6",
+            "environment": "lab"
+          },
+          "isPaused": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+# Candidate only: apply after base, P4 and P5. Fresh volumes; no storage migration.
+services:
+  postgres:
+    command: [postgres, -c, log_min_error_statement=panic, -c, log_error_verbosity=terse, -c, log_statement=none]
+  identity-db:
+    command: [postgres, -c, log_min_error_statement=panic, -c, log_error_verbosity=terse, -c, log_statement=none]
+  keycloak:
+    environment:
+      KC_HTTP_ACCESS_LOG_ENABLED: 'false'
+      KC_LOG_LEVEL: info
+  identity-edge:
+    volumes:
+      - ./keycloak/p6-nginx.conf:/etc/nginx/conf.d/default.conf:ro
+  kong-keys:
+    environment:
+      GATEWAY_POLICY: p6
+  kong:
+    environment:
+      KONG_PROXY_ACCESS_LOG: '/dev/stdout p6'
+      KONG_NGINX_HTTP_LOG_FORMAT: >-
+        p6 escape=json '{"service":"kong","event_type":"http_request","status_code":$$status,"upstream_status":"$$upstream_status","request_id":"$$sent_http_x_request_id","route":"gateway","duration_seconds":$$request_time}'
+      KONG_LOG_LEVEL: notice
+      KONG_PLUGINS: bundled,p6-telemetry
+      KONG_NGINX_HTTP_LUA_CAPTURE_ERROR_LOG: 128k
+      # Avoid request-line/error context leakage; structured log-phase events carry 5xx.
+      KONG_PROXY_ERROR_LOG: /dev/null
+    volumes:
+      - ../gateway/plugins/p6-telemetry:/usr/local/share/lua/5.1/kong/plugins/p6-telemetry:ro
+  promtail:
+    profiles: [p6-promtail-rollback]
+  alloy:
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    tmpfs: [/tmp]
+    image: grafana/alloy:v1.14.1@sha256:8f5666aebb871ba43ee2d65159c5d1c26c903720efafaf2d9ed4e237afc3bc88
+    command: [run, --server.http.listen-addr=0.0.0.0:12345, --storage.path=/var/lib/alloy, /etc/alloy/config.alloy]
+    environment:
+      LOG_PROJECT: ${COMPOSE_PROJECT_NAME}
+    volumes:
+      - ../monitoring/alloy/config.alloy:/etc/alloy/config.alloy:ro
+      - ${P6_PROJECT_LOG_DIR:?Mount reviewed project-only Docker log directory}:/var/log/project:ro
+      - type: volume
+        source: alloy_positions
+        target: /var/lib/alloy
+        volume:
+          nocopy: true
+    networks: [observability]
+    depends_on:
+      loki:
+        condition: service_healthy
+    logging:
+      driver: json-file
+      options: {max-size: 10m, max-file: '3'}
+  loki:
+    volumes:
+      - ../monitoring/loki/p6-loki.yml:/etc/loki/loki-config.yml:ro
+      - p6_loki_data:/loki
+  grafana:
+    environment:
+      GF_LOG_LEVEL: warn
+      GF_DATABASE_LOG_QUERIES: 'false'
+      GF_AUTH_ANONYMOUS_ENABLED: 'false'
+      GF_USERS_ALLOW_SIGN_UP: 'false'
+      GF_ANALYTICS_REPORTING_ENABLED: 'false'
+      GF_ANALYTICS_CHECK_FOR_UPDATES: 'false'
+      GF_SECURITY_COOKIE_SAMESITE: strict
+    volumes:
+      - p6_grafana_data:/var/lib/grafana
+      - ../monitoring/p6-grafana:/etc/grafana/provisioning:ro
+volumes:
+  alloy_positions:
+  p6_loki_data:
+  p6_grafana_data:

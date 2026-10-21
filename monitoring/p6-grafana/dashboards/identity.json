@@ -1,0 +1,112 @@
+{
+  "uid": "florasecure-identity",
+  "title": "Authentication and Identity",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "10s",
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "panels": [
+    {
+      "id": 1,
+      "title": "Token rejection",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "loki",
+        "uid": "florasecure-loki"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(count_over_time({service=~\".+\"} | json | event_type=~\"token_rejected\" [$__interval]))"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Application authentication rejection (unmapped/disabled not distinguished)",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 12,
+        "y": 0,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "loki",
+        "uid": "florasecure-loki"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(count_over_time({service=~\"backend\"} | json | event_type=~\"token_rejected\" [$__interval]))"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Keycloak login failures",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 0,
+        "y": 8,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "loki",
+        "uid": "florasecure-loki"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(count_over_time({service=\"keycloak\"} | json | event_type=\"login_failed\" [1m]))"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Unmapped or disabled identity (combined)",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 12,
+        "y": 8,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "loki",
+        "uid": "florasecure-loki"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(count_over_time({service=\"backend\"} | json | event_type=\"identity_unmapped_or_disabled\" [1m]))"
+        }
+      ]
+    },
+    {
+      "id": 99,
+      "title": "Coverage limitations",
+      "type": "text",
+      "gridPos": {
+        "x": 0,
+        "y": 24,
+        "w": 24,
+        "h": 4
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "Missing telemetry: explicit mTLS cause, independent availability probes, storage metrics, separate account-lockout reasons. Recent ingestion is not proof of service health. See security-events.md."
+      }
+    }
+  ]
+}

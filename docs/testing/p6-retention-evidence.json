@@ -1,0 +1,507 @@
+{
+  "run": {
+    "project": "cloud-api-p6-retention-d50afad2c9",
+    "exit_code": 1,
+    "cleanup_exit": 0,
+    "commands": [
+      [
+        "docker",
+        "compose",
+        "-p",
+        "cloud-api-p6-retention-d50afad2c9",
+        "-f",
+        "/tmp/cloud-api-p6-retention-d50afad2c976dhdfjk/compose.json",
+        "up",
+        "-d"
+      ],
+      [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:9685913165ed786859004306f5fee537d33700dd9aced0d03b2ad4316493a5c8",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/tmp/cloud-api-p6-retention-d50afad2c976dhdfjk/probe.py:/probe.py:ro",
+        "-v",
+        "/workspace/Cloud_API_Based/tests/p6/artifacts/retention:/evidence",
+        "cloud-api-backend-flat:verified",
+        "/probe.py"
+      ],
+      [
+        "docker",
+        "compose",
+        "-p",
+        "cloud-api-p6-retention-d50afad2c9",
+        "-f",
+        "/tmp/cloud-api-p6-retention-d50afad2c976dhdfjk/compose.json",
+        "logs",
+        "--no-color"
+      ],
+      [
+        "docker",
+        "compose",
+        "-p",
+        "cloud-api-p6-retention-d50afad2c9",
+        "-f",
+        "/tmp/cloud-api-p6-retention-d50afad2c976dhdfjk/compose.json",
+        "down",
+        "--volumes",
+        "--timeout",
+        "10"
+      ]
+    ]
+  },
+  "probe": {
+    "passed": false,
+    "target_retention_hours": 168,
+    "synthetic_old_age_days": 8,
+    "accelerated_delete_delay_seconds": 1,
+    "initial_visibility": [
+      {
+        "old": 0,
+        "current": 1
+      }
+    ],
+    "accepted_push_status": 204,
+    "received_metrics": [
+      "loki_distributor_lines_received_total{tenant=\"fake\"} 2"
+    ],
+    "snapshots": [
+      {
+        "old_count": 0,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 0,
+        "current_count": 0,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 0,
+        "current_count": 0,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 0,
+        "current_count": 0,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 0,
+        "current_count": 0,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 0,
+        "current_count": 0,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 0,
+        "current_count": 0,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      },
+      {
+        "old_count": 1,
+        "current_count": 1,
+        "retention_metrics": [
+          "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+          "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+        ]
+      }
+    ]
+  },
+  "classification": "Acceptance blocker: no successful physical expiry/deletion demonstrated within 240 seconds; both samples queryable at final observation. No production volume was touched."
+}

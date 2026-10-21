@@ -1,0 +1,6 @@
+services:
+  tests:
+    networks: [api_transport, app_data, identity_transport, observability]
+    environment:
+      P6_ENABLED: '1'
+    secrets: [grafana_admin_password]

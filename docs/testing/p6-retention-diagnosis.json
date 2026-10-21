@@ -1,0 +1,12 @@
+{
+  "observed_runtime_boltdb_shipper_shared_store": "",
+  "compactor_shared_store": "filesystem",
+  "filesystem_remote_index_files_observed": false,
+  "observation": "Local index tables and chunks existed; compactor cycles ran with no marker files; shipper shared_store unset. Explicit filesystem shared_store added to P6 fresh-volume configuration; verification pending.",
+  "compactor_log_samples": [
+    "level=info ts=2026-10-21T16:28:08.079056706Z caller=compactor.go:517 msg=\"applying retention with compaction\"",
+    "level=info ts=2026-10-21T16:28:13.079060458Z caller=compactor.go:517 msg=\"applying retention with compaction\"",
+    "level=info ts=2026-10-21T16:28:18.078348366Z caller=compactor.go:517 msg=\"applying retention with compaction\""
+  ],
+  "final_status": "Historical hypothesis only: explicit shared_store did not establish physical deletion in the subsequent clean experiment; sole root cause remains unresolved. See p6-retention-clean-evidence.json."
+}

@@ -1,0 +1,49 @@
+{
+  "expected_reasons": [
+    "certificate has expired",
+    "does not match",
+    "unable to verify the first certificate",
+    "unsuitable certificate purpose"
+  ],
+  "observed_reasons": [
+    "certificate has expired",
+    "does not match",
+    "unable to verify the first certificate",
+    "unsuitable certificate purpose"
+  ],
+  "raw_error_persisted": false,
+  "samples": [
+    {
+      "event_outcome": "denied",
+      "security_reason": "unsuitable certificate purpose",
+      "service": "kong",
+      "request_id": "unattributed",
+      "event_type": "mtls_verification_failed",
+      "level": "error"
+    },
+    {
+      "event_outcome": "denied",
+      "security_reason": "unable to verify the first certificate",
+      "service": "kong",
+      "request_id": "unattributed",
+      "event_type": "mtls_verification_failed",
+      "level": "error"
+    },
+    {
+      "event_outcome": "denied",
+      "security_reason": "does not match",
+      "service": "kong",
+      "request_id": "unattributed",
+      "event_type": "mtls_verification_failed",
+      "level": "error"
+    },
+    {
+      "event_outcome": "denied",
+      "security_reason": "certificate has expired",
+      "service": "kong",
+      "request_id": "unattributed",
+      "event_type": "mtls_verification_failed",
+      "level": "error"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "auth_dependency_policy_ast_unchanged_after_removing_telemetry_marks": true,
+  "ssrf_validator_helpers_unchanged": {
+    "_checked_url": true,
+    "URLRequest": true,
+    "_is_allowed_domain": true,
+    "_normalize_ip": true,
+    "_is_blocked_ip": true,
+    "_resolve_host": true,
+    "_validate_public_url": true
+  }
+}

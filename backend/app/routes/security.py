@@ -5,6 +5,7 @@ import socket
 from urllib.parse import urlsplit
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, HttpUrl, field_validator
+from app.middleware.logging import mark
 from app.auth.dependencies import require_staff_or_admin
 from app.models.user import User
 
@@ -93,4 +94,10 @@ def _validate_public_url(url):
 @router.post('/fetch-url')
 def fetch_url(payload: URLRequest, _: User = Depends(require_staff_or_admin)):
     url=str(payload.url)
-    return {'message':'URL accepted','url':url,'resolved_ips':_validate_public_url(url)}
+    try:
+        ips = _validate_public_url(url)
+    except HTTPException as exc:
+        if exc.status_code == 403:
+            mark('ssrf_denied')
+        raise
+    return {'message':'URL accepted','url':url,'resolved_ips':ips}

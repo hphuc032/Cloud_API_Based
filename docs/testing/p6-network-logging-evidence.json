@@ -1,0 +1,95 @@
+{
+  "alloy": {
+    "networks": [
+      "cloud-api-p6-f8c7d617b2be_observability"
+    ],
+    "published_ports": {},
+    "privileged": false,
+    "read_only_root": true,
+    "socket_mounted": false
+  },
+  "grafana": {
+    "networks": [
+      "cloud-api-p6-f8c7d617b2be_observability"
+    ],
+    "published_ports": {},
+    "privileged": false,
+    "read_only_root": false,
+    "socket_mounted": false
+  },
+  "loki": {
+    "networks": [
+      "cloud-api-p6-f8c7d617b2be_observability"
+    ],
+    "published_ports": {},
+    "privileged": false,
+    "read_only_root": false,
+    "socket_mounted": false
+  },
+  "kong": {
+    "networks": [
+      "cloud-api-p6-f8c7d617b2be_api_transport",
+      "cloud-api-p6-f8c7d617b2be_edge"
+    ],
+    "published_ports": {
+      "8443/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": ""
+        }
+      ]
+    },
+    "privileged": false,
+    "read_only_root": false,
+    "socket_mounted": false
+  },
+  "backend": {
+    "networks": [
+      "cloud-api-p6-f8c7d617b2be_api_transport",
+      "cloud-api-p6-f8c7d617b2be_app_data",
+      "cloud-api-p6-f8c7d617b2be_oidc_transport"
+    ],
+    "published_ports": {},
+    "privileged": false,
+    "read_only_root": false,
+    "socket_mounted": false
+  },
+  "keycloak": {
+    "networks": [
+      "cloud-api-p6-f8c7d617b2be_identity_data",
+      "cloud-api-p6-f8c7d617b2be_identity_transport"
+    ],
+    "published_ports": {},
+    "privileged": false,
+    "read_only_root": false,
+    "socket_mounted": false
+  },
+  "postgres": {
+    "networks": [
+      "cloud-api-p6-f8c7d617b2be_app_data"
+    ],
+    "published_ports": {},
+    "privileged": false,
+    "read_only_root": false,
+    "socket_mounted": false,
+    "logging_configuration": [
+      "panic",
+      "terse",
+      "none"
+    ]
+  },
+  "identity-db": {
+    "networks": [
+      "cloud-api-p6-f8c7d617b2be_identity_data"
+    ],
+    "published_ports": {},
+    "privileged": false,
+    "read_only_root": false,
+    "socket_mounted": false,
+    "logging_configuration": [
+      "panic",
+      "terse",
+      "none"
+    ]
+  }
+}

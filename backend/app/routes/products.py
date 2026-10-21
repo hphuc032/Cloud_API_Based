@@ -1,3 +1,4 @@
+from app.middleware.logging import audit
 from uuid import UUID
 from typing import Optional
 from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
@@ -160,6 +161,8 @@ def create_product(
     )
 
     db.add(product)
+    db.flush()
+    audit(db, current_user.id, "product_created", "product", product.id)
     db.commit()
     db.refresh(product)
 
@@ -190,6 +193,7 @@ def update_product(
     for field, value in update_data.items():
         setattr(product, field, value)
 
+    audit(db, current_user.id, "product_updated", "product", product.id)
     db.commit()
 
     return {"message": "Product updated"}
@@ -208,4 +212,5 @@ def delete_product(
         raise HTTPException(status_code=404, detail="Product not found")
 
     product.is_active = False
+    audit(db, current_user.id, "product_deactivated", "product", product.id)
     db.commit()

@@ -1,0 +1,17 @@
+{
+  "request_id": "bde394a8-9c2f-49f7-80df-a29a6ece5f49",
+  "before_restart": {
+    "kong": 1,
+    "backend": 1
+  },
+  "after_restart": {
+    "kong": 1,
+    "backend": 1
+  },
+  "new_event_after_restart": true,
+  "controlled_backend_outage": {
+    "status": 502,
+    "request_id": "bb39213e-43ee-439f-8a47-c0d43668e284",
+    "ingested": true
+  }
+}

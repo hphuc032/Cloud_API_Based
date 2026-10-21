@@ -74,6 +74,9 @@ if __name__=='__main__':
         if policy=='p5':
             from deployment.p5_gateway import harden
             document=harden(document)
+        elif policy=='p6':
+            from deployment.p6_gateway import observe
+            document=observe(document)
         elif policy!='p4':raise ValueError('Unknown gateway policy')
         raw=(json.dumps(document,indent=2)+'\n').encode()
         if args.candidate:target=candidate

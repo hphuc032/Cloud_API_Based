@@ -14,8 +14,21 @@ validate_enrollment(tls)
 config = uvicorn.Config("main:app", host="0.0.0.0", port=8443,
                         ssl_certfile=tls + "/server.pem", ssl_keyfile=tls + "/server.key",
                         ssl_ca_certs=tls + "/client-pins.pem", ssl_cert_reqs=ssl.CERT_REQUIRED,
-                        ssl_version=ssl.PROTOCOL_TLS_SERVER)
+                        ssl_version=ssl.PROTOCOL_TLS_SERVER, access_log=False)
 config.load()
+# SQL/transport exception strings can include credentials or request values.
+# Keep detailed diagnostics out of persistent general logs; use controlled probes.
+import logging
+class SafeServerError(logging.Filter):
+    def filter(self, record):
+        if record.exc_info:
+            record.msg = "Application exception; consult sanitized security events"
+            record.args = ()
+            record.exc_info = None
+            record.exc_text = None
+            record.stack_info = None
+        return True
+logging.getLogger("uvicorn.error").addFilter(SafeServerError())
 # Trust only the explicitly enrolled Kong and local health leaf certificates.
 # Stock Uvicorn does not authorize a client by SAN. OpenSSL partial-chain anchors
 # enforce possession of these exact keys, validity and clientAuth at the handshake.

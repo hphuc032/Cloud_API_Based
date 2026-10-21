@@ -1,3 +1,4 @@
+from app.middleware.logging import audit
 from uuid import UUID
 from typing import Optional
 
@@ -121,6 +122,7 @@ def update_user_admin(
     for field, value in update_data.items():
         setattr(user, field, value)
 
+    audit(db, current_admin.id, "user_updated", "user", user.id)
     db.commit()
 
     return {"message": "User updated"}

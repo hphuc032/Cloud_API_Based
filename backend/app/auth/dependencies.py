@@ -1,3 +1,4 @@
+from app.middleware.logging import mark
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from jose import JWTError
@@ -36,6 +37,7 @@ def get_current_user(
                     .filter(ExternalIdentity.issuer == settings.OIDC_ISSUER,
                             ExternalIdentity.subject == payload["sub"], User.is_active == True).first())
             if user is None:
+                mark("identity_unmapped_or_disabled")
                 raise credentials_exception
             return user
         payload = decode_access_token(token)
@@ -64,6 +66,7 @@ def require_role(*roles: UserRole):
     """
     def role_checker(current_user: User = Depends(get_current_active_user)) -> User:
         if current_user.role not in roles:
+            mark("rbac_denied")
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail="Insufficient permissions",

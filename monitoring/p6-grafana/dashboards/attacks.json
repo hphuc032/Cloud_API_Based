@@ -1,0 +1,154 @@
+{
+  "uid": "florasecure-attacks",
+  "title": "Application Attack Signals",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "10s",
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "panels": [
+    {
+      "id": 1,
+      "title": "Ownership denial",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "loki",
+        "uid": "florasecure-loki"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(count_over_time({service=~\"backend\"} | json | event_type=~\"ownership_denied\" [$__interval]))"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "RBAC denial",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 12,
+        "y": 0,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "loki",
+        "uid": "florasecure-loki"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(count_over_time({service=~\"backend\"} | json | event_type=~\"rbac_denied\" [$__interval]))"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Webhook rejection",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 0,
+        "y": 8,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "loki",
+        "uid": "florasecure-loki"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(count_over_time({service=~\"backend\"} | json | event_type=~\"webhook_rejected\" [$__interval]))"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Webhook retry or conflict",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 12,
+        "y": 8,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "loki",
+        "uid": "florasecure-loki"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(count_over_time({service=~\"backend\"} | json | event_type=~\"webhook_replayed|webhook_conflict\" [$__interval]))"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "SSRF denial",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 0,
+        "y": 16,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "loki",
+        "uid": "florasecure-loki"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(count_over_time({service=~\"backend\"} | json | event_type=~\"ssrf_denied\" [$__interval]))"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Invalid payload",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 12,
+        "y": 16,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "loki",
+        "uid": "florasecure-loki"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(count_over_time({service=~\"backend\"} | json | event_type=~\"validation_failed\" [$__interval]))"
+        }
+      ]
+    },
+    {
+      "id": 99,
+      "title": "Coverage limitations",
+      "type": "text",
+      "gridPos": {
+        "x": 0,
+        "y": 40,
+        "w": 24,
+        "h": 4
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "No data is not proof of health. Keycloak login/lockout, explicit mTLS reason, storage metrics and end-to-end probes are not yet collected; see security-events.md."
+      }
+    }
+  ]
+}

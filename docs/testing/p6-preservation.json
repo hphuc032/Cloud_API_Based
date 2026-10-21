@@ -1,0 +1,50 @@
+{
+  "docker/docker-compose.yml": {
+    "unchanged_from_p5": true,
+    "sha256": "932237fc437b64569383a8baeeba07e7ceffb840fefa0f3b149182088469134d"
+  },
+  "docker/p4-compose.yml": {
+    "unchanged_from_p5": true,
+    "sha256": "b4de53bf2d79a0955a7203fd5bb902f7f41eb6ebb44062a8610b2c73e34befcc"
+  },
+  "docker/p5-compose.yml": {
+    "unchanged_from_p5": true,
+    "sha256": "c196c6b1e8f46b4cc02d3ed9a88e0b9b49da8cfdff81fd7fc115708812900fca"
+  },
+  "backend/app/auth/oidc.py": {
+    "unchanged_from_p5": true,
+    "sha256": "91af741d3d0a813eef84877ef2af773d8348f23705dda56cb08c1ccc23b18bba"
+  },
+  "backend/app/auth/security.py": {
+    "unchanged_from_p5": true,
+    "sha256": "c1d2bff39bfcf44d29830ca469d28f81c3efc575d6f36a55d6f4fce70c0f39da"
+  },
+  "backend/app/routes/webhooks.py": {
+    "unchanged_from_p5": true,
+    "sha256": "28d3d1d2aa624bf0104eeb994a22f5bf2473d57f9164b2141122739ce93f6fd9"
+  },
+  "backend/deployment/tls.py": {
+    "unchanged_from_p5": true,
+    "sha256": "7c06eff11bb0c337628b466bb71ead28eec5f27a7cf08ff1cfc4db2037376fd0"
+  },
+  "backend/deployment/jwks.py": {
+    "unchanged_from_p5": true,
+    "sha256": "b20933378e7c23f2adb37166dabc7bfac3d27d3ea83fef4b8a15294a04838794"
+  },
+  "backend/deployment/identity_mapping.py": {
+    "unchanged_from_p5": true,
+    "sha256": "a070c0c75e5374859aa80ff2fb9077bfced94dd484f742d37438ef35d5fda44a"
+  },
+  "backend/alembic/versions/0001_initial_schema.py": {
+    "unchanged_from_p5": true,
+    "sha256": "9eef94f513b651a6f3acc64b6c12ba1459b4145b699eb48f38a7757a2c75b908"
+  },
+  "backend/alembic/versions/0002_external_identities.py": {
+    "unchanged_from_p5": true,
+    "sha256": "7b2289055322663150bcfcd4c7f3059e7a26bba848d36594cf3f983298666309"
+  },
+  "backend/alembic/versions/0003_webhook_receipts.py": {
+    "unchanged_from_p5": true,
+    "sha256": "06aa135c8c2434943a6a7576eae2da1c672eced903a8acd4771a10af72d203ab"
+  }
+}

@@ -13,10 +13,10 @@ class Settings(BaseSettings):
     API_PREFIX: str = "/api/v1"
 
     # Database
-    DATABASE_URL: str
+    DATABASE_URL: str = Field(repr=False)
 
     # JWT
-    SECRET_KEY: str
+    SECRET_KEY: str = Field(repr=False)
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 15
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7
@@ -28,11 +28,11 @@ class Settings(BaseSettings):
     RATE_LIMIT_PER_MINUTE: int = 60
 
     # Webhook
-    WEBHOOK_SECRET: str
+    WEBHOOK_SECRET: str = Field(repr=False)
     WEBHOOK_PROVIDER: str = Field('florasecure-simulator', pattern=r'^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$')
     WEBHOOK_TIMESTAMP_TOLERANCE: int = Field(300, ge=0, le=900)
     WEBHOOK_MAX_BODY_BYTES: int = Field(65536, ge=1024, le=1048576)
-    WEBHOOK_PREVIOUS_SECRET: Optional[str] = None
+    WEBHOOK_PREVIOUS_SECRET: Optional[str] = Field(None, repr=False)
     WEBHOOK_PREVIOUS_START: int = 0
     WEBHOOK_PREVIOUS_UNTIL: int = 0
 
@@ -77,6 +77,7 @@ class Settings(BaseSettings):
         env_file=".env",
         env_file_encoding="utf-8",
         extra="ignore",
+        hide_input_in_errors=True,
     )
 
     @field_validator("SECRET_KEY", "WEBHOOK_SECRET")

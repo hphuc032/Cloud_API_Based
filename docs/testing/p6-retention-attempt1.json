@@ -1,0 +1,54 @@
+{
+  "project": "cloud-api-p6-retention-acf943daa7",
+  "exit_code": 1,
+  "cleanup_exit": 0,
+  "commands": [
+    [
+      "docker",
+      "compose",
+      "-p",
+      "cloud-api-p6-retention-acf943daa7",
+      "-f",
+      "/tmp/cloud-api-p6-retention-acf943daa78grxk7z7/compose.json",
+      "up",
+      "-d"
+    ],
+    [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "container:5f7ce587ba1f2ca07c6bcac72d343133c5a8f29bbf25c66cc3407eb8110bc3fb",
+      "--entrypoint",
+      "python",
+      "-v",
+      "/tmp/cloud-api-p6-retention-acf943daa78grxk7z7/probe.py:/probe.py:ro",
+      "-v",
+      "/workspace/Cloud_API_Based/tests/p6/artifacts/retention:/evidence",
+      "cloud-api-backend-flat:verified",
+      "/probe.py"
+    ],
+    [
+      "docker",
+      "compose",
+      "-p",
+      "cloud-api-p6-retention-acf943daa7",
+      "-f",
+      "/tmp/cloud-api-p6-retention-acf943daa78grxk7z7/compose.json",
+      "logs",
+      "--no-color"
+    ],
+    [
+      "docker",
+      "compose",
+      "-p",
+      "cloud-api-p6-retention-acf943daa7",
+      "-f",
+      "/tmp/cloud-api-p6-retention-acf943daa78grxk7z7/compose.json",
+      "down",
+      "--volumes",
+      "--timeout",
+      "10"
+    ]
+  ]
+}

@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 from app.readiness import database_ready
+from app.middleware.logging import emit, request_context, security_context
 
 from app.config import settings
 from app.routes import (
@@ -50,10 +51,25 @@ async def security_headers_middleware(request: Request, call_next):
     """
     Add security headers and request correlation ID to every response.
     """
-    request_id = str(uuid.uuid4())
+    # Only Kong's enrolled mTLS peer can reach the application. P6 Kong overwrites
+    # incoming IDs; direct local health probes get a new ID. Never echo arbitrary IDs.
+    supplied = request.headers.get("X-Request-ID", "")
+    try:
+        parsed = uuid.UUID(supplied)
+        request_id = str(parsed) if parsed.version == 4 else str(uuid.uuid4())
+    except ValueError:
+        request_id = str(uuid.uuid4())
+    context_token = request_context.set(request_id)
+    security_token = security_context.set({})
 
     start_time = time.time()
-    response = await call_next(request)
+    try:
+        response = await call_next(request)
+    except Exception:
+        emit("service_error", status_code=500, request_id=request_id)
+        request_context.reset(context_token)
+        security_context.reset(security_token)
+        raise
     process_time = time.time() - start_time
 
     response.headers["X-Request-ID"] = request_id
@@ -72,6 +88,25 @@ async def security_headers_middleware(request: Request, call_next):
     except KeyError:
         pass
 
+    route = getattr(request.scope.get("route"), "path", "unmatched")
+    method = request.method if request.method in {"GET","HEAD","POST","PUT","PATCH","DELETE","OPTIONS"} else "OTHER"
+    event = "http_request"
+    code = response.status_code
+    if code == 401: event = "token_rejected"
+    elif code == 403:
+        event = "ownership_denied" if route in {"/api/v1/orders/{order_id}", "/api/v1/users/{user_id}"} else "rbac_denied"
+
+    elif code == 422: event = "validation_failed"
+    elif code >= 500: event = "service_error"
+    if route == "/api/v1/webhooks/receive":
+        if code == 409: event = "webhook_conflict"
+        elif code >= 400: event = "webhook_rejected"
+        elif response.headers.get("X-Webhook-Replayed") == "true": event = "webhook_replayed"
+    event = security_context.get().get("event", event)
+    emit(event, status_code=code, route=route, method=method,
+         duration_ms=process_time * 1000, request_id=request_id)
+    request_context.reset(context_token)
+    security_context.reset(security_token)
     return response
 
 

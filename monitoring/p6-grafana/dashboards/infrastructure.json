@@ -1,0 +1,112 @@
+{
+  "uid": "florasecure-infrastructure",
+  "title": "Infrastructure and Transport",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "10s",
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "panels": [
+    {
+      "id": 1,
+      "title": "Upstream failure (not proof of mTLS cause)",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "loki",
+        "uid": "florasecure-loki"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(count_over_time({service=~\"kong\"} | json | event_type=~\"upstream_error\" [$__interval]))"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "API service failure",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 12,
+        "y": 0,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "loki",
+        "uid": "florasecure-loki"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(count_over_time({service=~\"backend\"} | json | event_type=~\"service_error\" [$__interval]))"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Recent ingested events (not availability proof)",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 0,
+        "y": 8,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "loki",
+        "uid": "florasecure-loki"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum by (service) (count_over_time({service=~\"kong|backend|keycloak\"}[1m]))"
+        }
+      ]
+    },
+    {
+      "id": 99,
+      "title": "Coverage limitations",
+      "type": "text",
+      "gridPos": {
+        "x": 0,
+        "y": 16,
+        "w": 24,
+        "h": 4
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "Missing telemetry: explicit mTLS cause, independent availability probes, storage metrics, separate account-lockout reasons. Recent ingestion is not proof of service health. See security-events.md."
+      }
+    },
+    {
+      "id": 20,
+      "title": "Verified upstream TLS failure reasons (unattributed worker events)",
+      "type": "timeseries",
+      "gridPos": {
+        "x": 12,
+        "y": 8,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "loki",
+        "uid": "florasecure-loki"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum by (security_reason) (count_over_time({service=\"kong\"} | json | event_type=\"mtls_verification_failed\" [1m]))"
+        }
+      ]
+    }
+  ]
+}

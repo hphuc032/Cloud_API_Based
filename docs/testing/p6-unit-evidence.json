@@ -1,0 +1,7 @@
+{
+  "json_serialization": true,
+  "generated_id_correlation": true,
+  "allowlisted_fields_only": true,
+  "unreviewed_event_rejected": true,
+  "scope": "isolated logger assertions, not pipeline integration"
+}

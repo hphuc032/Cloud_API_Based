@@ -1,0 +1,93 @@
+[
+  {
+    "original": "grafana/alloy:v1.14.1",
+    "original_id": "sha256:57131bca9834d2f7ae6b6ffe6378ae2b10ba69867e8f85b4a2d5b52a0b4ea1cf",
+    "original_digest": [
+      "grafana/alloy@sha256:8f5666aebb871ba43ee2d65159c5d1c26c903720efafaf2d9ed4e237afc3bc88"
+    ],
+    "flattened": "cloud-api-alloy-flat:p6",
+    "flattened_id": "sha256:77baeffd33d4091ff30954d48420ff9563c855c9ceaaa4070c40dc30047513db",
+    "config_preserved": true,
+    "startup_fields_compared": [
+      "Entrypoint",
+      "Cmd",
+      "Env",
+      "WorkingDir",
+      "User"
+    ],
+    "stop_signal_note": "Original runtime stop signals restored via environment-local Compose overrides; production references unchanged."
+  },
+  {
+    "original": "postgres:16",
+    "original_id": "sha256:275447c94b11b151decd1f29877965301d5a77032037c46de93d990f739f00a9",
+    "original_digest": [
+      "postgres@sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d"
+    ],
+    "flattened": "cloud-api-postgres-flat:p6",
+    "flattened_id": "sha256:245bef945b03a6a5c0e0b85c8edb216ae690a094fea39befeb2bd90e857e3bd9",
+    "config_preserved": true,
+    "note": "Original image retained because an unrelated stopped container references it; no force removal or volume change.",
+    "startup_fields_compared": [
+      "Entrypoint",
+      "Cmd",
+      "Env",
+      "WorkingDir",
+      "User"
+    ],
+    "stop_signal_note": "Original runtime stop signals restored via environment-local Compose overrides; production references unchanged."
+  },
+  {
+    "original": "kong:3.8",
+    "original_id": "sha256:bfb293c155dd5d4aea6aaaaa220b998d8a1c4f3faa2ee6e0ea43bf59f1dae46c",
+    "original_digest": [
+      "kong@sha256:8635e3c97b27cf71ed620bb30f6091dbab1d39aad99a6c54dd9c3cfccb6d1013"
+    ],
+    "flattened": "cloud-api-kong-flat:p6",
+    "flattened_id": "sha256:59ae4336e6109fb66bd9c54fd71091b906f89266a484fe7f32b6b016771f4de0",
+    "config_preserved": true,
+    "startup_fields_compared": [
+      "Entrypoint",
+      "Cmd",
+      "Env",
+      "WorkingDir",
+      "User"
+    ],
+    "stop_signal_note": "Original runtime stop signals restored via environment-local Compose overrides; production references unchanged."
+  },
+  {
+    "original": "quay.io/keycloak/keycloak:26.2",
+    "original_id": "sha256:df8a2a25b1d12325a193a3a52f75a705faa55c76027601a8f04fc86e8ba3b8e5",
+    "original_digest": [
+      "quay.io/keycloak/keycloak@sha256:4883630ef9db14031cde3e60700c9a9a8eaf1b5c24db1589d6a2d43de38ba2a9"
+    ],
+    "flattened": "cloud-api-keycloak-flat:p6",
+    "flattened_id": "sha256:091631c598e571535b55f8d481bccb718acf73402cc2c7c5c8d87de8810c7568",
+    "config_preserved": true,
+    "startup_fields_compared": [
+      "Entrypoint",
+      "Cmd",
+      "Env",
+      "WorkingDir",
+      "User"
+    ],
+    "stop_signal_note": "Original runtime stop signals restored via environment-local Compose overrides; production references unchanged."
+  },
+  {
+    "original": "grafana/grafana:10.4.2",
+    "original_id": "sha256:679e4be9f9184b60905bc3c9297d293d0070f1d1155017877cf0199b1f1b787c",
+    "original_digest": [
+      "grafana/grafana@sha256:7d5faae481a4c6f436c99e98af11534f7fd5e8d3e35213552dd1dd02bc393d2e"
+    ],
+    "flattened": "cloud-api-grafana-flat:p6",
+    "flattened_id": "sha256:bf0a962304e6410362fc84e98527a44f7b95856cd1f22850085aef410984459f",
+    "config_preserved": true,
+    "startup_fields_compared": [
+      "Entrypoint",
+      "Cmd",
+      "Env",
+      "WorkingDir",
+      "User"
+    ],
+    "stop_signal_note": "Original runtime stop signals restored via environment-local Compose overrides; production references unchanged."
+  }
+]

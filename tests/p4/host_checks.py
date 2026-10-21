@@ -3,7 +3,7 @@ import json
 import unittest
 
 
-def execute(run,compose,project,metadata,artifacts):
+def execute(run,compose,project,metadata,artifacts,collector="promtail"):
     containers={c['Config']['Labels']['com.docker.compose.service']:c for c in metadata}
     def output(args):return run(args,capture_output=True,text=True).stdout.strip()
     def probe(service,code):
@@ -40,7 +40,7 @@ def execute(run,compose,project,metadata,artifacts):
             self.assertEqual(output(compose+['exec','-T','kong','sh','-c',"grep -c 'PRIVATE KEY' /gateway/kong.json || true"]),'0')
         def test_observability_ingests_backend_logs(self):
             code="""import json,time,urllib.request,urllib.parse
-assert urllib.request.urlopen('http://promtail:9080/ready',timeout=5).status==200
+assert urllib.request.urlopen('COLLECTOR_READY',timeout=5).status==200
 assert urllib.request.urlopen('http://grafana:3000/api/health',timeout=5).status==200
 query=urllib.parse.urlencode({'query':'{service="backend"}','limit':'1'})
 for _ in range(30):
@@ -49,6 +49,7 @@ for _ in range(30):
  time.sleep(1)
 else:raise AssertionError('Backend logs not ingested')
 """
+            code=code.replace('COLLECTOR_READY','http://alloy:12345/-/ready' if collector=='alloy' else 'http://promtail:9080/ready')
             self.assertEqual(probe('loki',code),'ingested')
     result=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromTestCase(Checks))
     (artifacts/'p4-host.json').write_text(json.dumps({'tests':result.testsRun,'failures':len(result.failures),'errors':len(result.errors)},indent=2))

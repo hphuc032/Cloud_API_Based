@@ -1,0 +1,100 @@
+// Only the explicitly mounted project's container directory is visible.
+local.file_match "project" {
+  path_targets = [{"__path__" = "/var/log/project/*/*-json.log"}]
+  sync_period = "2s"
+}
+loki.source.file "project" {
+  targets = local.file_match.project.targets
+  forward_to = [loki.process.security.receiver]
+}
+loki.process "security" {
+  stage.json {
+    expressions = {body = "log", docker_time = "time", service = "attrs.\"com.docker.compose.service\"", project = "attrs.\"com.docker.compose.project\""}
+  }
+  stage.timestamp {
+    source = "docker_time"
+    format = "RFC3339Nano"
+  }
+  stage.labels { values = {service = "", project = ""} }
+  stage.match {
+    selector = "{project!=\"" + sys.env("LOG_PROJECT") + "\"}"
+    action = "drop"
+  }
+  stage.output { source = "body" }
+  stage.match {
+    selector = "{service=\"keycloak\"} |= \"LOGIN_ERROR\""
+    stage.template {
+      source = "identity_event"
+      template = "{\"service\":\"keycloak\",\"event_type\":\"login_failed\",\"status_code\":401}"
+    }
+    stage.output { source = "identity_event" }
+  }
+  stage.match {
+    selector = "{service=\"keycloak\"} !~ \"^\\\\{\\\"service\\\":\\\"keycloak\\\",\\\"event_type\\\":\\\"login_failed\\\",\\\"status_code\\\":401\\\\}$\""
+    action = "drop"
+  }
+  // Accept only application allowlisted JSON and gateway JSON after its constant marker.
+  // Raw proxy lines, tracebacks, Keycloak detailed events and headers are dropped.
+  stage.regex { expression = "^(?:.*P6_JSON )?(?P<safe>\\{.*\\})\\s*$" }
+  stage.output { source = "safe" }
+  stage.json { expressions = {event_type = "event_type", source_service = "service"} }
+  stage.match {
+    selector = "{service=~\".+\"} !~ \"\\\"event_type\\\"[ ]*:[ ]*\\\"[a-z_]+\\\"\""
+    action = "drop"
+  }
+  stage.match {
+    selector = "{service=\"kong\"} |= \"\\\"status_code\\\":401\" |~ \"\\\"upstream_status\\\":\\\"(-|)\\\"\""
+    stage.replace {
+      expression = "(http_request)"
+      replace = "token_rejected"
+    }
+  }
+  stage.match {
+    selector = "{service=\"kong\"} |= \"\\\"status_code\\\":429\""
+    stage.replace {
+      expression = "(http_request)"
+      replace = "rate_limited"
+    }
+  }
+  stage.match {
+    selector = "{service=\"kong\"} |= \"\\\"status_code\\\":500\""
+    stage.replace {
+      expression = "(http_request)"
+      replace = "upstream_error"
+    }
+  }
+  stage.match {
+    selector = "{service=\"kong\"} |= \"\\\"status_code\\\":502\""
+    stage.replace {
+      expression = "(http_request)"
+      replace = "upstream_error"
+    }
+  }
+  stage.match {
+    selector = "{service=\"kong\"} |= \"\\\"status_code\\\":503\""
+    stage.replace {
+      expression = "(http_request)"
+      replace = "upstream_error"
+    }
+  }
+  stage.match {
+    selector = "{service=\"kong\"} |= \"\\\"status_code\\\":504\""
+    stage.replace {
+      expression = "(http_request)"
+      replace = "upstream_error"
+    }
+  }
+  stage.label_drop { values = ["filename"] }
+  forward_to = [loki.write.internal.receiver]
+}
+loki.write "internal" {
+  endpoint {
+    url = "http://loki:3100/loki/api/v1/push"
+    batch_wait = "1s"
+    batch_size = "256KiB"
+    remote_timeout = "10s"
+    min_backoff_period = "500ms"
+    max_backoff_period = "5s"
+    max_backoff_retries = 10
+  }
+}

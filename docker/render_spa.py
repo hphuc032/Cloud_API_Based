@@ -12,9 +12,10 @@ def render(identity_origin):
     headers=json.loads(subprocess.run(['node','--input-type=module','-e',code,identity_origin],cwd=root/'frontend',check=True,capture_output=True,text=True).stdout)
     directives='\n'.join('    add_header '+name+' '+json.dumps(value)+' always;' for name,value in headers.items())
     return '''# Do not put OAuth callback codes/state or other query values in access logs.
-log_format p5_spa '$remote_addr $request_method $uri $status';
+log_format p5_spa '$request_method $uri $status';
 server {
     access_log /dev/stdout p5_spa;
+    error_log /dev/null;
     listen 8443 ssl;
     server_name localhost;
     ssl_certificate /run/tls/spa.pem;

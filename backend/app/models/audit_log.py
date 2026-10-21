@@ -7,8 +7,8 @@ from app.database.session import Base
 
 class AuditLog(Base):
     """
-    Security audit trail — immutable write-once table.
-    Supports MTTD (Mean Time to Detect) and incident response.
+    Transactional application audit records. Runtime has INSERT only.
+    Database owners can modify records; this is not tamper-proof storage.
     """
     __tablename__ = "audit_logs"
 

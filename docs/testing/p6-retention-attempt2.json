@@ -1,0 +1,122 @@
+{
+  "run": {
+    "project": "cloud-api-p6-retention-6247c9fcb1",
+    "exit_code": 1,
+    "cleanup_exit": 0,
+    "commands": [
+      [
+        "docker",
+        "compose",
+        "-p",
+        "cloud-api-p6-retention-6247c9fcb1",
+        "-f",
+        "/tmp/cloud-api-p6-retention-6247c9fcb19up3tlxc/compose.json",
+        "up",
+        "-d"
+      ],
+      [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:3aac08eadfc5d2d61330bbfc64b5d8cdf1bfd43ce533791d4ac2202e637b4f6a",
+        "--entrypoint",
+        "python",
+        "-v",
+        "/tmp/cloud-api-p6-retention-6247c9fcb19up3tlxc/probe.py:/probe.py:ro",
+        "-v",
+        "/workspace/Cloud_API_Based/tests/p6/artifacts/retention:/evidence",
+        "cloud-api-backend-flat:verified",
+        "/probe.py"
+      ],
+      [
+        "docker",
+        "compose",
+        "-p",
+        "cloud-api-p6-retention-6247c9fcb1",
+        "-f",
+        "/tmp/cloud-api-p6-retention-6247c9fcb19up3tlxc/compose.json",
+        "logs",
+        "--no-color"
+      ],
+      [
+        "docker",
+        "compose",
+        "-p",
+        "cloud-api-p6-retention-6247c9fcb1",
+        "-f",
+        "/tmp/cloud-api-p6-retention-6247c9fcb19up3tlxc/compose.json",
+        "down",
+        "--volumes",
+        "--timeout",
+        "10"
+      ]
+    ]
+  },
+  "probe": {
+    "passed": false,
+    "stage": "initial visibility",
+    "initial": [
+      {
+        "old": 0,
+        "current": 1
+      },
+      {
+        "old": 0,
+        "current": 1
+      },
+      {
+        "old": 0,
+        "current": 1
+      },
+      {
+        "old": 0,
+        "current": 0
+      },
+      {
+        "old": 0,
+        "current": 0
+      },
+      {
+        "old": 0,
+        "current": 0
+      },
+      {
+        "old": 0,
+        "current": 0
+      },
+      {
+        "old": 0,
+        "current": 0
+      },
+      {
+        "old": 0,
+        "current": 0
+      },
+      {
+        "old": 0,
+        "current": 0
+      },
+      {
+        "old": 0,
+        "current": 0
+      },
+      {
+        "old": 0,
+        "current": 0
+      },
+      {
+        "old": 0,
+        "current": 0
+      },
+      {
+        "old": 0,
+        "current": 0
+      },
+      {
+        "old": 0,
+        "current": 0
+      }
+    ]
+  }
+}

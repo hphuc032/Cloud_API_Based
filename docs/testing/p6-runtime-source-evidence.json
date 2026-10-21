@@ -1,0 +1,47 @@
+{
+  "backend/main.py": {
+    "service": "backend",
+    "runtime_sha256": "d95c073117f253481290faf1ddbc8a0b8e1a097342bf25fa376feeffb1899d67",
+    "matches_checkout": true
+  },
+  "backend/app/config.py": {
+    "service": "backend",
+    "runtime_sha256": "12b40526b483a26701f61983fcc911d90f71f34b8e356ecae4e5a7837d401fed",
+    "matches_checkout": true
+  },
+  "backend/app/middleware/logging.py": {
+    "service": "backend",
+    "runtime_sha256": "7051541ed3b728ddc4d079e9e5f7007afb40e5a0dc0ab5d71ce5e7f55a2cea40",
+    "matches_checkout": true
+  },
+  "backend/app/auth/dependencies.py": {
+    "service": "backend",
+    "runtime_sha256": "057c8cf114be61910b0fb52b86768dc07f886e48d8959b14d3669e6d0a95da2f",
+    "matches_checkout": true
+  },
+  "backend/deployment/p6_gateway.py": {
+    "service": "backend",
+    "runtime_sha256": "c52154e0b9d604b1fc5a4cf30d6d5fc2a678a7637832d992d60fc5740c302dcb",
+    "matches_checkout": true
+  },
+  "gateway/plugins/p6-telemetry/handler.lua": {
+    "service": "kong",
+    "runtime_sha256": "496904fe968747ad00eb2c963602e05dde05cb9c702ecea555cc0f1174cf4492",
+    "matches_checkout": true
+  },
+  "gateway/plugins/p6-telemetry/schema.lua": {
+    "service": "kong",
+    "runtime_sha256": "8b4f4fc7f6a899a0f1dd8fd1ca68e6418f6c9ced9a1659f423f6f28219aea185",
+    "matches_checkout": true
+  },
+  "monitoring/alloy/config.alloy": {
+    "service": "alloy",
+    "runtime_sha256": "ef9c283a9d2fed3a03566c1c93b51603ab20096a5dad23a700f951e94cd43c17",
+    "matches_checkout": true
+  },
+  "monitoring/loki/p6-loki.yml": {
+    "service": "loki",
+    "runtime_sha256": "95d3d5c3eb31f6689976d60f0e74ff722e8e142b97f12680cf328a790d5d8032",
+    "matches_checkout": true
+  }
+}

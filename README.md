@@ -63,3 +63,8 @@ không tải nội dung URL. Raw DNS hoạt động là điều kiện nghiệm 
 Generated secrets, private keys, tokens, dependencies, artifacts và `_local_archive/`
 không được commit. [Workspace B transfer](docs/deployment/p5-workspace-transfer.md)
 chỉ hướng dẫn nhập bundle và push từ workspace được cấp quyền riêng.
+
+P6 observability candidate: [architecture](docs/monitoring/p6-architecture.md),
+[event/privacy coverage](docs/monitoring/security-events.md),
+[deployment and rollback](docs/deployment/p6-observability.md), and
+[actual acceptance results](docs/testing/p6-results.md).

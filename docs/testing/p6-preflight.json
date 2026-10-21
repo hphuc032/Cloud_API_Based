@@ -1,0 +1,20 @@
+{
+  "approved_p5": "9ebca60bff2947e26b2a91ef0273118d21fd6c05",
+  "initial_head": "9ebca60bff2947e26b2a91ef0273118d21fd6c05",
+  "branch": "migration/cloud-api-security",
+  "origin_branch": "9ebca60bff2947e26b2a91ef0273118d21fd6c05",
+  "tree_matches_approved": true,
+  "upstream_dns_resolver": "nameserver 172.31.2.109",
+  "dns": {
+    "example.com": {
+      "error": "[Errno -3] Temporary failure in name resolution",
+      "errno": -3
+    },
+    "pypi.org": {
+      "error": "[Errno -3] Temporary failure in name resolution",
+      "errno": -3
+    }
+  },
+  "outside_sandbox_dns": "User aborted request before execution; unexecuted",
+  "alloy_image_digest": "sha256:8f5666aebb871ba43ee2d65159c5d1c26c903720efafaf2d9ed4e237afc3bc88"
+}

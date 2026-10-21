@@ -1,3 +1,4 @@
+from app.middleware.logging import audit
 from uuid import UUID
 from typing import Optional, List
 from datetime import datetime
@@ -193,5 +194,6 @@ def update_order_status(
         order.cancelled_at = datetime.utcnow()
         order.cancel_reason = payload.cancel_reason
 
+    audit(db, current_user.id, "order_status_updated", "order", order.id)
     db.commit()
     return {"message": f"Order status updated to {payload.status}"}

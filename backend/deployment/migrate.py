@@ -28,6 +28,8 @@ def migrate():
                 cur.execute("GRANT SELECT ON public.external_identities TO app_runtime")
             cur.execute("REVOKE EXECUTE ON FUNCTION public.update_updated_at_column() FROM PUBLIC")
             cur.execute("GRANT EXECUTE ON FUNCTION public.update_updated_at_column() TO app_runtime")
+            cur.execute("GRANT INSERT ON public.audit_logs TO app_runtime")
+            cur.execute("GRANT USAGE ON SEQUENCE public.audit_logs_id_seq TO app_runtime")
             # No blanket default grants: new tables need an explicit privilege review.
             cur.execute("ALTER DEFAULT PRIVILEGES IN SCHEMA public REVOKE EXECUTE ON FUNCTIONS FROM PUBLIC")
     print("Migrations and runtime grants completed")
