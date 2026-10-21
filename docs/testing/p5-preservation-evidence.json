@@ -1,0 +1,15 @@
+{
+  "base": "11136585a0bade4144976bd3a0500d6f36503f28",
+  "unchanged_paths": [
+    "backend/app/auth",
+    "backend/app/routes/auth.py",
+    "backend/app/routes/orders.py",
+    "backend/deployment/serve.py",
+    "backend/deployment/tls.py",
+    "docker/docker-compose.yml",
+    "backend/alembic/versions/0001_initial_schema.py",
+    "backend/alembic/versions/0002_external_identities.py"
+  ],
+  "diff_exit": 0,
+  "claim": "Source preservation supplements, and does not replace, live regression tests."
+}

@@ -1,3 +1,5 @@
+> P5 note: this guide describes the historical P0 baseline. Current tests assert repaired D03–D07 behavior after recorded before/after proof; D01/D02 remain strict legacy expected failures. See [P5 results](../../docs/testing/p5-results.md).
+
 # P0: current-implementation regression baseline
 
 Run from the repository root with Python 3.9+ and Docker Desktop/Engine with Linux

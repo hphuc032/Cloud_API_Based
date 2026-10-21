@@ -1,0 +1,8 @@
+{
+  "project": "cloud-api-p5-57662720b576",
+  "before_status": 500,
+  "after_status": 200,
+  "permission_denied_in_nginx_log": true,
+  "change": "Generated public dist directories 0755, files 0644; private key permissions unchanged",
+  "tls": "CA and SAN verified"
+}

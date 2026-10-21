@@ -134,14 +134,12 @@ def test_current_order_status_policy(client, headers, orders, role):
 
 
 @pytest.mark.defect
-@pytest.mark.xfail(reason="P0-D06: explicit null product price causes HTTP 500", raises=KnownBaselineDefect)
 def test_defect_product_null_field(client, headers, product):
     response = client.patch(f"/api/v1/products/{product.id}", headers=headers("staff"), json={"price": None})
-    expected_status(response, current=500, desired=422)
+    assert response.status_code == 422
 
 
 @pytest.mark.defect
-@pytest.mark.xfail(reason="P0-D07: explicit null user role causes HTTP 500", raises=KnownBaselineDefect)
 def test_defect_user_null_field(client, headers, users):
     response = client.patch(f"/api/v1/users/{users['customer'].id}", headers=headers("admin"), json={"role": None})
-    expected_status(response, current=500, desired=422)
+    assert response.status_code == 422

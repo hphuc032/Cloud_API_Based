@@ -1,0 +1,217 @@
+{
+  "run": {
+    "project": "cloud-api-p5-92dc79787452",
+    "results": {
+      "startup": 0,
+      "p4-browser": 0,
+      "browser": 0,
+      "cleanup": 0
+    },
+    "focus": "browser",
+    "started_utc": "2026-10-21T10:21:59.129520+00:00",
+    "finished_utc": "2026-10-21T10:25:20.834107+00:00"
+  },
+  "sdk": {
+    "tls_verification": "Chromium verified CA and SAN; no ignoreHTTPSErrors",
+    "private_alias_resolution": "actual Compose identity-edge address only",
+    "navigation_readiness": "DOMContentLoaded then application assertions; external font load is not auth readiness",
+    "optional_fonts": "Google typography requests explicitly blocked in test browser only; no IdP/API/DNS assertion substituted",
+    "network_failures": [
+      {
+        "host": "identity-edge",
+        "path": "/realms/florasecure/.well-known/openid-configuration",
+        "error": "net::ERR_CONNECTION_REFUSED"
+      }
+    ],
+    "tests": [
+      {
+        "name": "real browser PKCE login, legacy cleanup and memory-only tokens",
+        "status": "passed"
+      },
+      {
+        "name": "reload recovers identity through Keycloak SSO without persistent tokens",
+        "status": "passed"
+      },
+      {
+        "name": "single-flight refresh with real Keycloak token endpoint",
+        "status": "passed"
+      },
+      {
+        "name": "IdP session expiration clears application authentication on refresh",
+        "status": "passed"
+      },
+      {
+        "name": "logout ends SSO and returns to exact configured redirect",
+        "status": "passed"
+      },
+      {
+        "name": "invalid callback state cannot establish authenticated identity",
+        "status": "passed"
+      },
+      {
+        "name": "cancelled authorization leaves the application signed out",
+        "status": "passed"
+      },
+      {
+        "name": "invalid nonce in one-time SDK transaction rejects a genuine IdP response",
+        "status": "passed"
+      },
+      {
+        "name": "Keycloak unavailable does not fall back to local password login",
+        "status": "passed"
+      }
+    ]
+  },
+  "production": {
+    "tests": [
+      {
+        "name": "production HTML has strict CSP and verified HTTPS",
+        "status": "passed"
+      },
+      {
+        "name": "production PKCE login and application identity",
+        "status": "passed"
+      },
+      {
+        "name": "Security Center shows real 401/403/422 without ending the session",
+        "status": "passed"
+      },
+      {
+        "name": "lab BOLA, forged MAC and authenticated retry show actual responses",
+        "status": "passed"
+      },
+      {
+        "name": "production reload preserves SSO without stored bearer tokens",
+        "status": "passed"
+      },
+      {
+        "name": "staff lab metadata validation and real rate rejection",
+        "status": "passed"
+      },
+      {
+        "name": "application documents have no CSP violations",
+        "status": "passed"
+      },
+      {
+        "name": "production Keycloak logout completes",
+        "status": "passed"
+      }
+    ],
+    "csp_violations": [],
+    "tls": "CA/SAN verified; no bypass"
+  },
+  "source": {
+    "verified": true,
+    "sha256": {
+      "backend/app/__init__.py": "b587813128c2bc93e1a24b37641374ea7924ae2d006a803fcf3bb66beb4296fe",
+      "backend/app/config.py": "1c15d92db7a99d52f3e8b82cd95113d98d84254ac7424351ddb0f117de86f159",
+      "backend/app/readiness.py": "3c20cdeb4e015918a55ce9b0e9c18cc42b125c0526a898d662473b9345bb4fca",
+      "backend/app/services/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/services/user_service.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/services/order_service.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/services/product_service.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/auth/oidc.py": "91af741d3d0a813eef84877ef2af773d8348f23705dda56cb08c1ccc23b18bba",
+      "backend/app/auth/security.py": "c1d2bff39bfcf44d29830ca469d28f81c3efc575d6f36a55d6f4fce70c0f39da",
+      "backend/app/auth/dependencies.py": "37cbd3d3a00103f0b599e7953de0a4e7c532adace66822862dcfaba6649cf261",
+      "backend/app/auth/__init__.py": "1f2be11b8157c4cae5eee99158b74421d6740dffb7707334e0bc77629b3e851b",
+      "backend/app/database/session.py": "6ee913171090887179e4c0230bd4f3d645076a6aa7394bb151c1a7b63dd66e4e",
+      "backend/app/database/__init__.py": "54c5d5a0fb167bba8874b1cfabacf9bf7895321b20129e1a718abc0c8c6730c0",
+      "backend/app/utils/security.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/utils/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/middleware/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/middleware/logging.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/schemas/user.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/schemas/order.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/schemas/product.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/schemas/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/models/user.py": "83dd1dc9537e9bbdf2eade7bee38e82527b83f28584debeae45a307204523f04",
+      "backend/app/models/refresh_token.py": "79eb992c7d668b679177052390d4832620bb03bac1c857fd32178c0fd4164656",
+      "backend/app/models/order.py": "37fbd5c9d0abc43cdbe93523a9807b4ed4e08fcf8afe7dfc8c6a08a370aa1541",
+      "backend/app/models/external_identity.py": "673550083cda2c9be8e72224c9494c340ba5bdfc917d09e6df8fea1d13a69414",
+      "backend/app/models/product.py": "18cc5aeb7027a5a5ab547bb08a61fd8d0342f6354c9d8dbf2e366dfcba937511",
+      "backend/app/models/__init__.py": "bf5ef4273361b685df7dd896a40573f85d91502985127f4a8a49be687b5caf7a",
+      "backend/app/models/webhook_receipt.py": "62effa857b74813f9944ad0e5ddd3b68a538ea02cf9fbebba62dfe06287e206e",
+      "backend/app/models/audit_log.py": "e38fabbe205533f2c7da1aefea5cbfbfd43ac659d2f43ebbbf6f025143971a30",
+      "backend/app/routes/security.py": "15ac6353bf849a3433e5fdc797faacc40e908a989c1a378d297851c948b34a93",
+      "backend/app/routes/users.py": "934261e97656f9be80ce27aab8d41d4537003118099f108196f1f25b6562e2ae",
+      "backend/app/routes/__init__.py": "783f0bf12da8e759ee485a909d6d742e38799fc730040303e8b853840f0394e8",
+      "backend/app/routes/auth.py": "de7862099c558d6acec328e89853201914d6d82b5c495cd9856ebac2cf9fb416",
+      "backend/app/routes/orders.py": "43401db9866fb4776b288aaedaf77b6e20b3ab82809fcc84db1510988a2997b7",
+      "backend/app/routes/webhooks.py": "28d3d1d2aa624bf0104eeb994a22f5bf2473d57f9164b2141122739ce93f6fd9",
+      "backend/app/routes/products.py": "f421e471dab58c9808a78d9a9f6bdfca3e86b4d192e6ef6bf391dbc862c45cc4",
+      "backend/deployment/serve.py": "8c0345533af0c0c9d60955ab06b6f0995ff4116e4aed0fe10a95e9888fea5b93",
+      "backend/deployment/identity_mapping.py": "a070c0c75e5374859aa80ff2fb9077bfced94dd484f742d37438ef35d5fda44a",
+      "backend/deployment/jwks.py": "b20933378e7c23f2adb37166dabc7bfac3d27d3ea83fef4b8a15294a04838794",
+      "backend/deployment/identity_review.py": "1443fde6a27bdcbffae0f5ea3b74af1b09d4b37e98001dda96c8463bf31f3252",
+      "backend/deployment/__init__.py": "f739bba9c60238e5a12b5952e5263552612c2b7a9df5b3932dbfa056527e10ae",
+      "backend/deployment/identity_bootstrap.py": "f795277056cecb7d9e7620491b123df6a826b8231988daaa2957400621be7bcd",
+      "backend/deployment/tls.py": "7c06eff11bb0c337628b466bb71ead28eec5f27a7cf08ff1cfc4db2037376fd0",
+      "backend/deployment/health.py": "16e82462423125c5b717ccb3068c9d516c56790bf250763a2cf45fbf1fbd2171",
+      "backend/deployment/migrate.py": "26a8241c3013b50d35e24d4b6e14e237e782377c7c1037f67a3e43cc01804048",
+      "backend/deployment/kong_jwks.py": "c0dce0d1a59ad5dc7a26b7ee5adc55c929a26aa1eb7f11e76438b6d5f828eec8",
+      "backend/deployment/bootstrap.py": "2ae0634da865772ac5cefe1aaa86df86132e66f6a2294e8f13f9152adde241e8",
+      "backend/deployment/common.py": "3e18b09016c216ab7092409b0e30ea0f1289f2052dad985b9d655abc66383d85",
+      "backend/deployment/p5_gateway.py": "bda0a0843cbfb9c664a4a7b64addaa17ec0b45ab71fa023d2ffc89fe607dec7a",
+      "backend/alembic/env.py": "d4929d92150bb68cf428e3f9754138200a51a5d0799e50b5d2d4f399dac6141a",
+      "backend/alembic/versions/0003_webhook_receipts.py": "06aa135c8c2434943a6a7576eae2da1c672eced903a8acd4771a10af72d203ab",
+      "backend/alembic/versions/__init__.py": "6c95114dad64b3f549e94ff190f1201f906dc7c26b2d6b312e16582b57877c00",
+      "backend/alembic/versions/0001_initial_schema.py": "9eef94f513b651a6f3acc64b6c12ba1459b4145b699eb48f38a7757a2c75b908",
+      "backend/alembic/versions/0002_external_identities.py": "7b2289055322663150bcfcd4c7f3059e7a26bba848d36594cf3f983298666309",
+      "tests/compose_probe.py": "71c1c147cf89e37eede927de5e18d583a583ca8ed7813ac821335340242f8ef4",
+      "tests/p3/persistence.py": "93a402205ad5baacdfeedc855394682fc06f4e4a94b207b6244f279d00899862",
+      "tests/p3/pki.py": "21daebcc217a450194e0a2366f24d964b8fa849181671485a4ba3070712195a9",
+      "tests/p3/test_identity.py": "abe6bab58adb8b9b2d9bfd0c948f6fe1d17b22a8705c7e6567722495efe54011",
+      "tests/p3/launch.py": "07a2cd9e2572c3bb4e6a85043008f908c9b9c0fc07197d0f75c93ee131bb7cbf",
+      "tests/p3/host_checks.py": "3e209f21785a32e04d1994ce5858f31b210032e996071917befb75d0ad131d27",
+      "tests/p3/run.py": "79a0c93b53b05083dc78739d48166a9af17bcb5c1d571e1261e4bc77b4429ca6",
+      "tests/p5/browser_setup.py": "246d671bcf9891b4c423ac908a525e3ae347730d3373b0ceb3aaee713ef2e262",
+      "tests/p5/lab.py": "f5a394e46e985cfa1360912d3dd53228234e9cc63f229d10ac5530c0007e9abe",
+      "tests/p5/test_configuration.py": "68ce84aad27acdc03a5227906e73016309492f83021050a848766452eb6e8835",
+      "tests/p5/browser_host.py": "c63c33cd8dbb9d986b6457f37793002a44eb7fbf5710cd151aba67e83cf0f793",
+      "tests/p5/test_hardening.py": "5b15389561a5d4690c5245ca606f176e65931c8158038420b6f5aa366431b6e9",
+      "tests/p5/test_gateway.py": "98214fc4a13e327b4a596a9879050b8fca7217cbfa056f6d37033043eb5896e1",
+      "tests/p5/startup.py": "e6cd6092a330a343457ed5035e1cda0ca36bd79f37be67a5777fe8482549c15e",
+      "tests/p5/launch.py": "a444b4f89c3d1027172731835d71e13aff965809449299bed622e58fed47aec3",
+      "tests/p5/run.py": "6401a86568d418c138099f272236cbda51596bf56da1b03a10495f4fcaab1121",
+      "tests/p1/test_adoption.py": "87e770e60cf773d82b22739eda97cd376d0a34d4d499c32d50d689e4e0c75ed7",
+      "tests/p1/test_privileges.py": "f4b6856aeace2850d4855e64d475f621fbd33e00643bd8b9017441c8102a7c96",
+      "tests/p1/launch.py": "aeff27c6dca7bc169de5bfd15f2c7cedb86b68e526829c28e072e00f02596055",
+      "tests/p1/host_checks.py": "330047e2614e951239f659a371bfa493f2afc1145438d08a9206f0305a96fd4c",
+      "tests/p1/run.py": "ee3dff8406a2767acb45ef0dd61e54a95adf15b79d0499f8e89077ca31b4cd28",
+      "tests/p0/conftest.py": "66e48b785c83d55782e229bdb4b3ff06bbbc9bbe0d331c18a93a36d9ce9fd147",
+      "tests/p0/test_gateway.py": "7251640e0552dd194b1d7b1b3daef47bdcbd77911c482aa5eb3cff49763f4c9d",
+      "tests/p0/test_database.py": "476d2016762042378730c686c7bfbfbabf0da3a7286782720df5dd32a29a6731",
+      "tests/p0/test_webhook_ssrf.py": "b561f55c2be2b4b2b676e4a0aeba9c2714bd6a3dca83d6916e75615369b2bf9e",
+      "tests/p0/transport.py": "90cc6ad65bac806b05ca223af342d6f60130d028ff6286711ba109f8c12f4a86",
+      "tests/p0/test_authorization.py": "fae042baa455b703716e80e8ae58a907bc94c730033087f057e32a5de4d05f9f",
+      "tests/p0/test_auth.py": "f7c9d8067bf182a576a5d3bed245de0c430fa85b649af0982240b08c4db5b460",
+      "tests/p0/baseline.py": "e4af59900abef7124905882039d92a47942839d598bcb3650997aadc5a33f2d2",
+      "tests/p0/run.py": "575769b360b2319fafc48f9525ecd6ac459db111d7d06e4142332a8ef6f8bdae",
+      "tests/p2/test_https_business.py": "ba30fc58b190527ce1d7020598e9b4d1be40f92e2167b5973c2b5332dba71370",
+      "tests/p2/test_tls.py": "ea30fcb78a25be3095f306615078966afa9a09193d6a02cf64d3a774690a643f",
+      "tests/p2/launch.py": "f55a034ceabe62cda29c7beff1439eab20bdf042d6eb83fdb77b509f091a495a",
+      "tests/p2/host_checks.py": "03a13666560b8b842d84217f9aa55311033e0648e7fe5c742602eab4b8640c42",
+      "tests/p2/run.py": "7a1523d9b51080dec71c4ba0bed4be7f20774443a07d6222318b7cd533c13759",
+      "tests/p4/browser_setup.py": "ba49b82dc57b3479c3c0be107c51daf08fcacf336a95ba93a1354782b70db293",
+      "tests/p4/rotation.py": "775e6b04a603e396344b2b08e62c8361d95ca93ce916668911856f1f52bce1c6",
+      "tests/p4/outage.py": "1a4a86a7e65a1c0e87d4bc55095bbdfc84e1487d5aae0955f221f8621b9d6416",
+      "tests/p4/browser_host.py": "8820f9f43b67fa567b3752e9e1d4c0bfc052fa5a7946c2b65d5bd894cf36bae6",
+      "tests/p4/startup.py": "dbb8d6e30d0e6f416e5a9989ca2794951dcd155e4687fbbc4e443cbf72b9cc25",
+      "tests/p4/launch.py": "d0d99b54bc3b6d82dd9f9c07d3faad2ff5ca339ea4c79dd943591ad811139d1f",
+      "tests/p4/rotation_host.py": "aaed4390fde596cd07e57340c707a2a97d8f9c2dbd78d17a5690debae17c7e48",
+      "tests/p4/bootstrap.py": "1666cff764b071cd756b39dd734c7317a328202a68e5fbd41c5465fc6b1025d7",
+      "tests/p4/host_checks.py": "9706a2c532fc125039082e6e0d8bb4644a04f5c870c96ddd4a0340bc0ddc0baf",
+      "tests/p4/run.py": "6277ba1fc9577f589172c0ed00311a415c4941eb14d4e35e2992f53da09625e9",
+      "tests/p4/test_cutover.py": "7399c5abaedd6b71698ad5ab12fa58161453dbed4cb96045cd0c35906bb11e6d",
+      "backend/main.py": "a03775e74eea40aadcb64f82b583dd778516120ede3e85f5b089d5ff8d67a31f",
+      "docker/keycloak/florasecure-realm.json": "eb449c609ac5671ef2d8cdfc9f5565df4497fc0e080c9290c701436294a36ae2",
+      "docker/keycloak/florasecure-p4-realm.json": "639b8806ec2edbe9018ef325276292b832caca9b00edad44959cf03b29d2f811",
+      "docker/keycloak/florasecure-p5-realm.json": "7e926ec62bcf114bd9c324198f7e0d6d7d53e6ca73a5f52798ea14b9cb04a091"
+    }
+  },
+  "access_log": {
+    "query_probe_sent": true,
+    "query_value_absent": true
+  },
+  "raw_body_boundary_whitespace_verified": true
+}

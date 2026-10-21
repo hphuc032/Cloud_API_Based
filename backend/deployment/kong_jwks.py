@@ -70,6 +70,11 @@ if __name__=='__main__':
     elif args.rollback:raw=previous.read_bytes()
     else:
         document=render(os.environ['OIDC_ISSUER'],os.environ.get('OIDC_CA_FILE'),json.loads(os.environ['OIDC_ORIGINS']))
+        policy=os.environ.get('GATEWAY_POLICY','p4')
+        if policy=='p5':
+            from deployment.p5_gateway import harden
+            document=harden(document)
+        elif policy!='p4':raise ValueError('Unknown gateway policy')
         raw=(json.dumps(document,indent=2)+'\n').encode()
         if args.candidate:target=candidate
     temporary=target.with_suffix('.pending');temporary.write_bytes(raw)

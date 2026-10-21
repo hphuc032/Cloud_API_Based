@@ -39,6 +39,8 @@ def clean_database():
         connection.execute(text(
             "TRUNCATE audit_logs, order_items, orders, refresh_tokens, products, "
             "categories, users RESTART IDENTITY CASCADE"))
+        if connection.scalar(text("SELECT to_regclass('public.webhook_receipts')")):
+            connection.execute(text('TRUNCATE webhook_receipts'))
     if admin_url:
         cleanup_engine.dispose()
     yield

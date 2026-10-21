@@ -1,0 +1,64 @@
+{
+  "configuration": [
+    {
+      "id": "test_unsafe_webhook_configuration_rejected[short-old-key]",
+      "status": "passed"
+    },
+    {
+      "id": "test_unsafe_webhook_configuration_rejected[same-key]",
+      "status": "passed"
+    },
+    {
+      "id": "test_unsafe_webhook_configuration_rejected[empty-interval]",
+      "status": "passed"
+    },
+    {
+      "id": "test_unsafe_webhook_configuration_rejected[backwards]",
+      "status": "passed"
+    },
+    {
+      "id": "test_unsafe_webhook_configuration_rejected[over-900]",
+      "status": "passed"
+    },
+    {
+      "id": "test_unsafe_webhook_configuration_rejected[anchors-without-key]",
+      "status": "passed"
+    },
+    {
+      "id": "test_unsafe_webhook_configuration_rejected[negative-tolerance]",
+      "status": "passed"
+    },
+    {
+      "id": "test_unsafe_webhook_configuration_rejected[over-900-tolerance]",
+      "status": "passed"
+    },
+    {
+      "id": "test_unsafe_webhook_configuration_rejected[small-body]",
+      "status": "passed"
+    },
+    {
+      "id": "test_unsafe_webhook_configuration_rejected[huge-body]",
+      "status": "passed"
+    },
+    {
+      "id": "test_unsafe_webhook_configuration_rejected[invalid-provider]",
+      "status": "passed"
+    },
+    {
+      "id": "test_explicit_maximum_overlap_and_body_bound_are_supported",
+      "status": "passed"
+    }
+  ],
+  "client_unit_commands": [
+    {
+      "command": "node tests/p3/test_client.mjs",
+      "passed": true,
+      "assertions": 19
+    },
+    {
+      "command": "node tests/p4/test_session.mjs",
+      "passed": true,
+      "note": "memory-only lifecycle and fail-closed adapter checks; one command, not a claimed case count"
+    }
+  ]
+}

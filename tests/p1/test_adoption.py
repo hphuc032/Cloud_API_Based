@@ -56,7 +56,7 @@ def test_existing_p0_database_adoption_preserves_data():
             assert snapshot() == before
             with psycopg2.connect(old_url) as conn, conn.cursor() as cur:
                 cur.execute("SELECT version_num FROM alembic_version")
-                assert cur.fetchone()[0] == "0002_external_identities"
+                assert cur.fetchone()[0] == "0003_webhook_receipts"
         runtime_url = admin_url.set(username="app_runtime", database=name,
                                    password=Path("/run/secrets/runtime_password").read_text().strip())
         with psycopg2.connect(runtime_url.render_as_string(hide_password=False)) as conn, conn.cursor() as cur:

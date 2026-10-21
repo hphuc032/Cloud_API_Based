@@ -1,123 +1,142 @@
+"""Raw-body HMAC plus atomic, provider-scoped idempotent acknowledgements."""
 import hashlib
 import hmac
 import json
+import re
 import time
 from datetime import datetime, timezone
-
-from fastapi import APIRouter, Header, HTTPException, Request, status
-
+from fastapi import APIRouter, Depends, Header, HTTPException, Request, Response
+from pydantic import BaseModel, ConfigDict, Field, ValidationError, model_validator
+from sqlalchemy import select, update
+from sqlalchemy.dialects.postgresql import insert
+from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.orm import Session
 from app.config import settings
+from app.database.session import get_db
+from app.models.webhook_receipt import WebhookReceipt
 
-router = APIRouter(prefix="/webhooks", tags=["Webhooks"])
+router = APIRouter(prefix='/webhooks', tags=['Webhooks'])
+WEBHOOK_SECRET = settings.WEBHOOK_SECRET
 
-WEBHOOK_SECRET = getattr(settings, "WEBHOOK_SECRET", None)
-TIMESTAMP_TOLERANCE_SEC = 300
+class WebhookEvent(BaseModel):
+    model_config = ConfigDict(strict=True, extra='allow')
+    event: str = Field(min_length=1, max_length=128, pattern=r'^[A-Za-z0-9][A-Za-z0-9._-]*$')
+    event_id: str | None = Field(default=None, min_length=1, max_length=200, pattern=r'^[A-Za-z0-9][A-Za-z0-9._:-]*$')
+    order_id: str | None = Field(default=None, min_length=1, max_length=255)
+    tracking_number: str | None = Field(default=None, min_length=1, max_length=255)
+
+    @model_validator(mode='after')
+    def known_event_structure(self):
+        if self.event in ('payment.success','payment.failed','order.shipped') and not self.order_id:
+            raise ValueError('Known events require order_id')
+        return self
 
 
-def _get_webhook_secret() -> str:
+def _get_webhook_secret():
     if not WEBHOOK_SECRET:
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Webhook secret is not configured",
-        )
+        raise HTTPException(503, 'Webhook temporarily unavailable')
     return WEBHOOK_SECRET
 
 
-def _verify_timestamp(timestamp_header: str | None) -> str:
+def _verify_timestamp(timestamp_header):
     if not timestamp_header:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Missing X-Timestamp",
-        )
-
-    try:
-        request_ts = int(timestamp_header)
-    except ValueError:
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="Invalid X-Timestamp",
-        )
-
-    now_ts = int(datetime.now(timezone.utc).timestamp())
-
-    if abs(now_ts - request_ts) > TIMESTAMP_TOLERANCE_SEC:
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="Webhook timestamp expired",
-        )
-
+        raise HTTPException(401, 'Missing X-Timestamp')
+    if not re.fullmatch(r'(?:0|[1-9][0-9]{0,11})', timestamp_header):
+        raise HTTPException(403, 'Invalid X-Timestamp')
+    now = int(datetime.now(timezone.utc).timestamp())
+    if abs(now-int(timestamp_header)) > settings.WEBHOOK_TIMESTAMP_TOLERANCE:
+        raise HTTPException(403, 'Webhook timestamp expired')
     return timestamp_header
 
 
-def _verify_signature(raw_body: bytes, timestamp: str, signature_header: str | None) -> bool:
+def _verify_signature(raw_body, timestamp, signature_header):
     if not signature_header:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Missing X-Signature",
-            headers={"WWW-Authenticate": 'HMAC realm="webhook"'},
-        )
-
-    if not signature_header.startswith("sha256="):
+        raise HTTPException(401, 'Missing X-Signature', headers={'WWW-Authenticate':'HMAC realm="webhook"'})
+    if not re.fullmatch(r'sha256=[0-9a-f]{64}', signature_header):
         return False
+    keys = [_get_webhook_secret()]
+    now = int(datetime.now(timezone.utc).timestamp())
+    start, end = settings.WEBHOOK_PREVIOUS_START, settings.WEBHOOK_PREVIOUS_UNTIL
+    if (settings.WEBHOOK_PREVIOUS_SECRET and 0 < end-start <= 900 and start <= now < end):
+        keys.append(settings.WEBHOOK_PREVIOUS_SECRET)
+    valid = False
+    for key in keys:
+        expected = hmac.new(key.encode(),timestamp.encode()+b'.'+raw_body,hashlib.sha256).hexdigest()
+        valid |= hmac.compare_digest(expected,signature_header[7:])
+    return valid
 
-    received_hex = signature_header[len("sha256="):]
-    signed_payload = timestamp.encode() + b"." + raw_body
 
-    expected = hmac.new(
-        key=_get_webhook_secret().encode(),
-        msg=signed_payload,
-        digestmod=hashlib.sha256,
-    ).hexdigest()
-
-    return hmac.compare_digest(expected, received_hex)
+def _object_pairs(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError('Duplicate JSON member')
+        result[key] = value
+    return result
 
 
-@router.post(
-    "/receive",
-    status_code=status.HTTP_200_OK,
-    summary="Receive signed webhook",
-)
-async def receive_webhook(
-    request: Request,
-    x_signature: str | None = Header(default=None, alias="X-Signature"),
-    x_timestamp: str | None = Header(default=None, alias="X-Timestamp"),
-):
-    """
-    Webhook security flow:
-    1. Require X-Timestamp.
-    2. Reject old timestamps to prevent replay attacks.
-    3. Verify HMAC-SHA256 over: X-Timestamp + "." + raw_body.
-    4. Process event only after signature verification.
-    """
+def _invalid_constant(value):
+    raise ValueError('Non-finite JSON number')
+
+
+@router.post('/receive', summary='Receive signed webhook')
+async def receive_webhook(request: Request, response: Response,
+    x_signature: str | None = Header(default=None,alias='X-Signature'),
+    x_timestamp: str | None = Header(default=None,alias='X-Timestamp'),
+    db: Session = Depends(get_db)):
     timestamp = _verify_timestamp(x_timestamp)
-    raw_body = await request.body()
-
-    if not _verify_signature(raw_body, timestamp, x_signature):
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="Invalid webhook signature",
-        )
-
+    length = request.headers.get('content-length')
+    if length and (not length.isdecimal() or len(length)>12):
+        raise HTTPException(400, 'Invalid Content-Length')
+    if length and int(length)>settings.WEBHOOK_MAX_BODY_BYTES:
+        raise HTTPException(413, 'Webhook body too large')
+    raw = bytearray()
+    async for chunk in request.stream():
+        raw.extend(chunk)
+        if len(raw)>settings.WEBHOOK_MAX_BODY_BYTES:
+            raise HTTPException(413, 'Webhook body too large')
+    if not _verify_signature(bytes(raw),timestamp,x_signature):
+        raise HTTPException(403, 'Invalid webhook signature')
     try:
-        payload = json.loads(raw_body)
-    except json.JSONDecodeError:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Invalid JSON body",
-        )
+        payload = json.loads(raw,object_pairs_hook=_object_pairs,parse_constant=_invalid_constant)
+        if not isinstance(payload,dict):
+            raise ValueError('JSON object required')
+        event = WebhookEvent.model_validate(payload)
+        canonical = json.dumps(payload,sort_keys=True,separators=(',',':'),ensure_ascii=True,allow_nan=False).encode()
+    except (ValueError,TypeError,UnicodeError,RecursionError,ValidationError):
+        raise HTTPException(400, 'Invalid webhook event') from None
+    digest = hashlib.sha256(canonical).hexdigest()
+    # Preserve older senders without IDs, but stable provider event_id is preferred.
+    identity = 'id:'+event.event_id if event.event_id else 'body-sha256:'+digest
+    provider = settings.WEBHOOK_PROVIDER  # fixed by deployment, never a caller header
+    try:
+        with db.begin():
+            reserved = db.execute(insert(WebhookReceipt).values(provider=provider,event_id=identity,
+                payload_sha256=digest).on_conflict_do_nothing().returning(WebhookReceipt.event_id)).scalar_one_or_none()
+            if reserved is None:
+                receipt = db.execute(select(WebhookReceipt).where(WebhookReceipt.provider==provider,
+                    WebhookReceipt.event_id==identity)).scalar_one()
+                if receipt.payload_sha256!=digest:
+                    raise HTTPException(409, 'Event ID conflicts with an existing payload')
+                if receipt.response is None:
+                    raise HTTPException(503, 'Webhook acknowledgement unavailable')
+                result = receipt.response
+                response.headers['X-Webhook-Replayed'] = 'true'
+            else:
+                # Current handlers acknowledge simulations only. Future DB effects
+                # must use THIS session/transaction after successful reservation.
+                result = {'received':True,'event':event.event,'message':_handle_event(event.event,payload,db),
+                          'timestamp':datetime.now(timezone.utc).isoformat()}
+                db.execute(update(WebhookReceipt).where(WebhookReceipt.provider==provider,
+                    WebhookReceipt.event_id==identity).values(response=result))
+                response.headers['X-Webhook-Replayed'] = 'false'
+        return result
+    except SQLAlchemyError:
+        db.rollback()
+        raise HTTPException(503, 'Webhook temporarily unavailable') from None
 
-    event_type = payload.get("event")
-    result = _handle_event(event_type, payload)
 
-    return {
-        "received": True,
-        "event": event_type,
-        "message": result,
-        "timestamp": datetime.now(timezone.utc).isoformat(),
-    }
-
-
-def _handle_event(event_type: str | None, payload: dict) -> str:
+def _handle_event(event_type: str | None, payload: dict, db: Session | None = None) -> str:
     handlers = {
         "payment.success": _on_payment_success,
         "payment.failed": _on_payment_failed,

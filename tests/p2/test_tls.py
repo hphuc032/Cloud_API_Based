@@ -37,7 +37,7 @@ def test_valid_mtls_is_http_200(version):
 def test_bad_client_is_tls_failure_not_http_auth(cert, version, record_property):
     try:
         data = request(cert, version=version)
-    except (ssl.SSLError, ConnectionResetError) as exc:
+    except (ssl.SSLError, ConnectionResetError, BrokenPipeError) as exc:
         record_property('tls_rejection', type(exc).__name__ + ': ' + str(exc))
         print('TLS rejection:', cert or 'missing', version.name, type(exc).__name__, str(exc))
     else:

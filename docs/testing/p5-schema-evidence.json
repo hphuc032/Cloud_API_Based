@@ -1,0 +1,53 @@
+{
+  "revision": "0003_webhook_receipts",
+  "columns": [
+    {
+      "column_name": "provider",
+      "data_type": "character varying",
+      "character_maximum_length": 128,
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "column_name": "event_id",
+      "data_type": "character varying",
+      "character_maximum_length": 256,
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "column_name": "payload_sha256",
+      "data_type": "character varying",
+      "character_maximum_length": 64,
+      "is_nullable": "NO",
+      "column_default": null
+    },
+    {
+      "column_name": "response",
+      "data_type": "jsonb",
+      "character_maximum_length": null,
+      "is_nullable": "YES",
+      "column_default": null
+    },
+    {
+      "column_name": "received_at",
+      "data_type": "timestamp with time zone",
+      "character_maximum_length": null,
+      "is_nullable": "NO",
+      "column_default": "now()"
+    }
+  ],
+  "constraints": [
+    "CHECK (((length((provider)::text) > 0) AND (length((event_id)::text) > 0) AND ((payload_sha256)::text ~ '^[0-9a-f]{64}$'::text)))",
+    "PRIMARY KEY (provider, event_id)"
+  ],
+  "foreign_keys_total": 8,
+  "runtime": {
+    "select": true,
+    "insert": true,
+    "delete": false,
+    "update_table": false,
+    "update_response": true,
+    "update_provider": false
+  }
+}

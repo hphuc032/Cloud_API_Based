@@ -1,26 +1,14 @@
 # FloraSecure frontend
 
-React + Vite + Tailwind. Xem README ở thư mục gốc để dựng stack đầy đủ.
+React/Vite/Tailwind with Keycloak Authorization Code + PKCE S256. Identity tokens stay in memory; PostgreSQL supplies application roles through the mapped `/auth/me` profile. The P5 candidate adds a strict browser CSP, actual Security Center response probes and an optional disposable lab build. See [demo guide](DEMO_GUIDE.md) and the root README for the complete HTTPS/mTLS stack.
 
-```powershell
-Copy-Item .env.example .env
+```sh
 npm ci
-npm run dev
-```
-
-Mặc định: http://localhost:5173. Browser gọi `/api` qua Vite proxy đến
-`API_PROXY_TARGET` (mặc định http://127.0.0.1:8000).
-Khi deploy, đặt `VITE_API_BASE_URL` thành URL gateway và cấu hình CORS tương ứng.
-
-```powershell
 npm run build
-npm run preview
 ```
 
-Các màn hình: Login, Customer/Admin Dashboard, Products, Orders, Profile,
-Security Center và Monitoring. Session hiện lưu trong localStorage; luồng
-Keycloak OIDC/PKCE và logout/revoke chưa tích hợp.
+Development needs the reviewed HTTPS IdP origin (`VITE_OIDC_URL`), exact registered frontend redirects/origin, `VITE_TLS_CERT`/`VITE_TLS_KEY`, an HTTPS `API_PROXY_TARGET`, and `NODE_EXTRA_CA_CERTS` for the gateway CA. Keep proxy certificate verification enabled. `npm run dev` uses Vite's development nonce policy; it is not the production serving boundary. Never commit certificates' private keys, tokens or runtime secret files. The default IdP/proxy values are development candidates and must be reviewed for each deployment.
 
-`DEMO_GUIDE.md` là hướng dẫn của môi trường demo cũ; tài khoản và URL trong đó
-không tự được provision trong stack local mới. Không dùng credentials demo
-cho môi trường thật.
+For production-style browser validation, build assets and use `docker/render_spa.py` plus `docker/p5-compose.yml` after the P4 overlay. Supply dedicated SPA TLS files, the public gateway CA, exact IdP origin, rendered Nginx configuration and dist directory. Public generated dist directories must be readable as 0755 and files as 0644 by the Nginx worker; preserve private key permissions. The isolated P5 browser driver prepares those public permissions automatically. Static access logs omit query values, including OAuth callback code/state.
+
+Compile `VITE_SECURITY_LAB=true` only for authorized disposable demonstrations. The browser receives temporary MACs from an operator-held key, never the key itself. Leave `VITE_GRAFANA_URL` unset unless a reviewed HTTPS monitoring URL exists. Frontend build success and UI labels alone do not establish security acceptance; use [P5 test evidence](../docs/testing/p5-results.md).

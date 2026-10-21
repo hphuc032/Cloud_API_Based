@@ -1,0 +1,14 @@
+{
+  "project": "cloud-api-p5-57662720b576",
+  "reason": "Bound vfs disk use: completed/running pytest uses PostgreSQL/Python image; subsequent network probes and browser setup use verified lean Python image with the same read-only source mounts. No security settings changed.",
+  "images": {
+    "cloud-api-tests-flat:verified": "sha256:453545d0fb36138578f187670f7ce8ed8359084cc09c77a7742fbefaf76c85f9",
+    "cloud-api-backend-flat:verified": "sha256:20af3403390c9f520e24b9c7c2030107316d70ca11040577a992bd0b41260608"
+  },
+  "command": [
+    "docker",
+    "tag",
+    "cloud-api-backend-flat:verified",
+    "cloud-api-p5-57662720b576-tests"
+  ]
+}

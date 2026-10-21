@@ -1,0 +1,77 @@
+{
+  "project": "cloud-api-p5-57662720b576",
+  "utc": "2026-10-21T09:33:18.102262+00:00",
+  "tls": "CA and localhost SAN verified",
+  "responses": [
+    {
+      "path": "/health",
+      "status": 200,
+      "headers": {
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "x-xss-protection": "0",
+        "strict-transport-security": "max-age=31536000",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "cache-control": "no-store",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+        "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'"
+      }
+    },
+    {
+      "path": "/api/v1/auth/me",
+      "status": 401,
+      "headers": {
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "strict-transport-security": "max-age=31536000",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+        "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+        "cache-control": "no-store",
+        "x-xss-protection": "0"
+      }
+    },
+    {
+      "path": "/api/v1/webhooks/test-signature",
+      "status": 404,
+      "headers": {
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "strict-transport-security": "max-age=31536000",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+        "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+        "cache-control": "no-store",
+        "x-xss-protection": "0"
+      }
+    },
+    {
+      "path": "/api/v1/auth/login",
+      "status": 410,
+      "headers": {
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "strict-transport-security": "max-age=31536000",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+        "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+        "cache-control": "no-store",
+        "x-xss-protection": "0"
+      }
+    },
+    {
+      "path": "/no-route",
+      "status": 404,
+      "headers": {
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "DENY",
+        "strict-transport-security": "max-age=31536000",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+        "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+        "cache-control": "no-store",
+        "x-xss-protection": "0"
+      }
+    }
+  ]
+}

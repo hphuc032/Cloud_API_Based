@@ -1,0 +1,10 @@
+{
+  "cloud-api-tests-flat:verified": {
+    "python": "3.11.2",
+    "openssl": "OpenSSL 3.0.22 25 Aug 2026"
+  },
+  "cloud-api-backend-flat:verified": {
+    "python": "3.11.17",
+    "openssl": "OpenSSL 3.5.7 9 Jun 2026"
+  }
+}

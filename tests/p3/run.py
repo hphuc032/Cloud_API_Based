@@ -70,6 +70,8 @@ def main():
 
         if env.get("P3_BUILD_OVERLAY"):
             compose += ["-f", env["P3_BUILD_OVERLAY"]]
+        if env.get("P3_SOURCE_OVERLAY"):
+            compose += ["-f",env["P3_SOURCE_OVERLAY"]]
         spec=importlib.util.spec_from_file_location('p3_probe_worker',ROOT/'tests/compose_probe.py')
         worker_module=importlib.util.module_from_spec(spec);spec.loader.exec_module(worker_module)
         worker=worker_module.ProbeWorker(compose)
@@ -81,6 +83,8 @@ def main():
             return subprocess.run(args, cwd=ROOT, env=env, **kwargs)
 
         try:
+            if env.get('P3_TEST_BASE_IMAGE'):
+                run(['docker','tag',env['P3_TEST_BASE_IMAGE'],project+'-tests'])
             reuse = env.get("P3_REUSE_PROJECT_IMAGES")
             if reuse:
                 if not reuse.startswith('cloud-api-p3-') or not all(c.isalnum() or c=='-' for c in reuse):
@@ -121,7 +125,9 @@ def main():
                 up('postgres','identity-db')
                 for service in ('db-bootstrap','identity-bootstrap','migrate'):
                     run(compose+['up','--no-deps','-d',service])
-                    run(compose+['wait',service])
+                    job_ids=run(compose+['ps','-a','-q',service],capture_output=True,text=True).stdout.split()
+                    assert len(job_ids)==1
+                    assert run(['docker','wait',job_ids[0]],capture_output=True,text=True).stdout.strip()=='0'
                     if service!='migrate':
                         ids=run(compose+['ps','-a','-q',service],capture_output=True,text=True).stdout.split()
                         records=json.loads(run(['docker','inspect',*ids],capture_output=True,text=True).stdout)
@@ -135,6 +141,18 @@ def main():
             ids = run(compose + ["ps", "-a", "-q"], capture_output=True, text=True).stdout.split()
             metadata = json.loads(run(["docker", "inspect", *ids], capture_output=True, text=True).stdout)+historical
             (artifacts / "containers.json").write_text(json.dumps(metadata, indent=2), encoding="utf-8")
+            if env.get('P3_SOURCE_OVERLAY'):
+                sources=[]
+                for directory in ('backend/app','backend/deployment','backend/alembic','tests'):
+                    sources.extend(p for p in (ROOT/directory).rglob('*.py') if 'artifacts' not in p.parts and '__pycache__' not in p.parts)
+                sources.append(ROOT/'backend/main.py')
+                paths={str(p.relative_to(ROOT)):('/app/'+str(p.relative_to(ROOT/'backend')) if p.is_relative_to(ROOT/'backend') else '/'+str(p.relative_to(ROOT))) for p in sources}
+                paths['docker/keycloak/florasecure-realm.json']='/realm.json'
+                expected={name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in paths}
+                code='import hashlib,json;from pathlib import Path;paths='+repr(paths)+';print(json.dumps({n:hashlib.sha256(Path(p).read_bytes()).hexdigest() for n,p in paths.items()}))'
+                actual=json.loads(run(compose+['run','--rm','--no-deps','-T','tests','python','-c',code],capture_output=True,text=True).stdout)
+                if actual!=expected:raise RuntimeError('Mounted test sources differ from checkout')
+                (artifacts/'image-source-evidence.json').write_text(json.dumps({'verified':True,'sha256':actual},indent=2))
             result = 0  # Startup succeeded; retain every later nonzero result.
             proc = run(compose + ['run', '--rm', '--no-deps', '-T', 'tests',
                                   'python', '/tests/p3/launch.py'], check=False,
@@ -170,6 +188,8 @@ def main():
                 (artifacts / 'p2-pytest.txt').write_text(proc.stdout, encoding='utf-8')
                 if proc.returncode:
                     result = 1
+                if env.get('P3_PROBE_BASE_IMAGE'):
+                    run(['docker','tag',env['P3_PROBE_BASE_IMAGE'],project+'-tests'])
                 if env.get('CLOUD_API_KEEP_PROBES')=='1':worker.start(run,project)
                 spec = importlib.util.spec_from_file_location('tls_checks', ROOT / 'tests/p2/host_checks.py')
                 module = importlib.util.module_from_spec(spec)

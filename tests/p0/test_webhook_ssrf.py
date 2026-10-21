@@ -72,21 +72,23 @@ def test_webhook_debug_helper_disabled(client):
 
 
 @pytest.mark.defect
-@pytest.mark.xfail(reason="P0-D03: signed non-object JSON causes HTTP 500", raises=KnownBaselineDefect)
 def test_defect_webhook_json_shape(client):
     body = b"[]"
     response = client.post("/api/v1/webhooks/receive", headers=signed(body), content=body)
-    expected_status(response, current=500, desired=400)
+    assert response.status_code == 400
 
 
 @pytest.mark.defect
-@pytest.mark.xfail(reason="P0-D04: identical signed webhook is accepted twice", raises=KnownBaselineDefect)
 def test_defect_webhook_replay(client):
     auth = signed()
     first = client.post("/api/v1/webhooks/receive", headers=auth, content=BODY)
     assert first.status_code == 200
     second = client.post("/api/v1/webhooks/receive", headers=auth, content=BODY)
-    expected_status(second, current=200, desired=409)
+    # P5 preserves the provider retry contract: stored acknowledgement, no effect.
+    assert second.status_code == 200
+    assert first.json() == second.json()
+    assert first.headers['x-webhook-replayed'] == 'false'
+    assert second.headers['x-webhook-replayed'] == 'true'
 
 
 def dns_result(ips):
@@ -132,9 +134,8 @@ def test_ssrf_dns_failure(client, headers, monkeypatch):
 
 
 @pytest.mark.defect
-@pytest.mark.xfail(reason="P0-D05: IPv4-mapped IPv6 loopback bypasses IP denylist", raises=KnownBaselineDefect)
 def test_defect_ssrf_ipv4_mapped_loopback(client, headers, monkeypatch):
     monkeypatch.setattr(security.socket, "getaddrinfo", lambda *a: dns_result(["::ffff:127.0.0.1"]))
     response = client.post("/api/v1/security/fetch-url", headers=headers("staff"),
                            json={"url": "https://example.com"})
-    expected_status(response, current=200, desired=403)
+    assert response.status_code == 403

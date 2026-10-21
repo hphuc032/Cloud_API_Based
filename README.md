@@ -16,7 +16,9 @@ issuer/sub, `is_active`, role PostgreSQL và ownership hiện có. Local login/t
 issuance trả 410 trong P4, không tự fallback. Compose chính giữ chế độ legacy
 để regression/rollback theo release. Không có production cutover hay push từ
 Workspace A. Kết quả nghiệm thu thực tế nằm trong [P4 test report](docs/testing/p4-results.md).
-Không bắt đầu P5–P7.
+P5 đã triển khai và kiểm thử webhook receipt nguyên tử, SSRF IPv4/IPv6, validation,
+gateway, CSP và demo phản hồi thật trên ứng viên OIDC. **CONDITIONAL: gate DNS còn bị chặn**; xem [P5 results](docs/testing/p5-results.md)
+và [thiết kế/control matrix/rollback](docs/security/p5-design.md). Không bắt đầu P6/P7.
 
 ## Kiểm thử local
 
@@ -29,6 +31,7 @@ npm ci --prefix frontend
 node tests/p4/test_session.mjs
 npm run build --prefix frontend
 python tests/p4/run.py
+python tests/p5/run.py
 # Toàn bộ P0/P1/P2/P3 chạy ở release legacy rõ ràng:
 python tests/p3/run.py
 ```
@@ -47,8 +50,9 @@ Quyền không lấy từ token/header không tin cậy; email không tự liên
 Logout thu hồi phiên refresh, nhưng access token có thể còn hiệu lực đến hạn.
 JWT cache/rotation cần quy trình vận hành có kiểm soát. Frontend không phải BFF;
 XSS vẫn có thể đọc token trong bộ nhớ. SQL/monitoring TLS, HA, vault và MFA policy
-chưa được chứng nhận. Webhook replay, một số lỗi input và SSRF IPv4-mapped IPv6
-là baseline defects còn lại; xem phân loại từng lỗi trong P4 report.
+chưa được chứng nhận. P5 đã sửa webhook replay, null-input và SSRF IPv4-mapped
+IPv6 trong ứng viên; các lỗi legacy D01/D02 được giữ làm baseline và bị thay thế
+bởi OIDC trong ứng viên. Xem kết quả thực chạy và gate DNS trong P5 report.
 
 Database nằm trên network internal riêng và không publish port. HTTPS/mTLS P2,
 CA/SAN checking và client enrollment được giữ nguyên. [P2 TLS guide](docs/deployment/p2-tls.md)
@@ -57,5 +61,5 @@ Network membership không phải directional firewall. SSRF chỉ validate URL/D
 không tải nội dung URL. Raw DNS hoạt động là điều kiện nghiệm thu regression.
 
 Generated secrets, private keys, tokens, dependencies, artifacts và `_local_archive/`
-không được commit. [Workspace B transfer](docs/deployment/p4-workspace-transfer.md)
+không được commit. [Workspace B transfer](docs/deployment/p5-workspace-transfer.md)
 chỉ hướng dẫn nhập bundle và push từ workspace được cấp quyền riêng.

@@ -9,7 +9,7 @@ import psycopg2
 from psycopg2 import sql
 import pytest
 
-TABLES = ["users", "refresh_tokens", "categories", "products", "orders", "order_items", "audit_logs", "external_identities"]
+TABLES = ["users", "refresh_tokens", "categories", "products", "orders", "order_items", "audit_logs", "external_identities", "webhook_receipts"]
 
 
 def admin_url():
@@ -52,7 +52,7 @@ def test_clean_database_migrations_and_downgrade(isolated_database):
     alembic(url, "upgrade", "head")
     with psycopg2.connect(url) as conn, conn.cursor() as cur:
         cur.execute("SELECT version_num FROM alembic_version")
-        assert cur.fetchone()[0] == "0002_external_identities"
+        assert cur.fetchone()[0] == "0003_webhook_receipts"
         cur.execute("SELECT tablename FROM pg_tables WHERE schemaname='public'")
         assert {row[0] for row in cur.fetchall()} == set(TABLES + ["alembic_version"])
         cur.execute("SELECT count(*) FROM pg_constraint WHERE contype='f' AND connamespace='public'::regnamespace")

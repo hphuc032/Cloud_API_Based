@@ -1,0 +1,11 @@
+# Optional, explicitly timed rotation; never mount the old key when not rotating.
+services:
+  backend:
+    environment:
+      WEBHOOK_PREVIOUS_SECRET_FILE: /run/secrets/webhook_previous_secret
+      WEBHOOK_PREVIOUS_START: ${WEBHOOK_PREVIOUS_START:?Explicit UTC Unix timestamp}
+      WEBHOOK_PREVIOUS_UNTIL: ${WEBHOOK_PREVIOUS_UNTIL:?At most 900 seconds after start}
+    secrets: [webhook_previous_secret]
+secrets:
+  webhook_previous_secret:
+    file: ${WEBHOOK_PREVIOUS_SECRET_PATH:?Protected runtime old-key file}

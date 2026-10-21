@@ -60,7 +60,7 @@ export function registerUnauthorizedHandler(fn) {
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401 && typeof onUnauthorized === 'function') {
+    if (error.response?.status === 401 && !error.config?.intentionalSecurityProbe && typeof onUnauthorized === 'function') {
       onUnauthorized();
     }
     return Promise.reject(error);
@@ -132,10 +132,12 @@ export async function getWebhookTestSignature() {
   return res.data;
 }
 
-export async function postWebhookReceive(payload, signature) {
-  const res = await api.post('/api/v1/webhooks/receive', payload, {
+export async function postWebhookReceive(rawBody, signature, timestamp) {
+  // Axios JSON transforms may trim strings; MAC verification needs exact bytes.
+  const res = await api.post('/api/v1/webhooks/receive', rawBody, {
     skipAuth:true,
-    headers: signature ? { 'X-Webhook-Signature': signature } : {},
+    transformRequest: [(value) => value],
+    headers: {'Content-Type':'application/json','X-Signature':signature,'X-Timestamp':timestamp},
   });
   return res.data;
 }

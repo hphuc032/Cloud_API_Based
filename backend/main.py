@@ -4,6 +4,7 @@ import uuid
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.exceptions import RequestValidationError
 from app.readiness import database_ready
 
 from app.config import settings
@@ -22,6 +23,7 @@ app = FastAPI(
     description="NT219 Capstone - Cloud API Security for SME",
     docs_url="/docs" if settings.DEBUG else None,
     redoc_url="/redoc" if settings.DEBUG else None,
+    openapi_url="/openapi.json" if settings.DEBUG else None,
 )
 
 app.add_middleware(
@@ -34,12 +36,21 @@ app.add_middleware(
 )
 
 
+@app.exception_handler(RequestValidationError)
+async def controlled_validation_error(request: Request, exc: RequestValidationError):
+    # Do not echo raw inputs (including secrets or non-finite JSON numbers).
+    return JSONResponse(status_code=422, content={"detail": [
+        {key: error[key] for key in ("loc", "msg", "type") if key in error}
+        for error in exc.errors()
+    ]})
+
+
 @app.middleware("http")
 async def security_headers_middleware(request: Request, call_next):
     """
     Add security headers and request correlation ID to every response.
     """
-    request_id = request.headers.get("X-Request-ID", str(uuid.uuid4()))
+    request_id = str(uuid.uuid4())
 
     start_time = time.time()
     response = await call_next(request)
@@ -49,10 +60,12 @@ async def security_headers_middleware(request: Request, call_next):
     response.headers["X-Process-Time"] = f"{process_time:.4f}s"
     response.headers["X-Content-Type-Options"] = "nosniff"
     response.headers["X-Frame-Options"] = "DENY"
-    response.headers["X-XSS-Protection"] = "1; mode=block"
-    response.headers["Strict-Transport-Security"] = "max-age=63072000; includeSubDomains; preload"
+    response.headers["X-XSS-Protection"] = "0"
+    response.headers["Strict-Transport-Security"] = "max-age=31536000"
     response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
     response.headers["Cache-Control"] = "no-store"
+    response.headers['Permissions-Policy'] = 'camera=(), microphone=(), geolocation=(), payment=()'
+    response.headers['Content-Security-Policy'] = "default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'"
 
     try:
         del response.headers["Server"]

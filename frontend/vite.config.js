@@ -1,10 +1,12 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import { readFileSync } from 'node:fs'
+import { browserHeaders, developmentNonce } from './security-policy.js'
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   const backendTarget = env.API_PROXY_TARGET || 'https://localhost:8443'
+  const nonce=developmentNonce()
   const proxy = {
     target: backendTarget,
     changeOrigin: true,
@@ -13,6 +15,7 @@ export default defineConfig(({ mode }) => {
   }
   return {
     plugins: [react()],
-    server: { https: env.VITE_TLS_CERT && env.VITE_TLS_KEY ? {cert:readFileSync(env.VITE_TLS_CERT),key:readFileSync(env.VITE_TLS_KEY)} : undefined, port: 5173, proxy: { '/api': proxy, '/health': proxy } },
+    html: {cspNonce:nonce},
+    server: { headers:browserHeaders(env.VITE_OIDC_URL || 'https://localhost:9443',{development:true,nonce}), https: env.VITE_TLS_CERT && env.VITE_TLS_KEY ? {cert:readFileSync(env.VITE_TLS_CERT),key:readFileSync(env.VITE_TLS_KEY)} : undefined, port: 5173, proxy: { '/api': proxy, '/health': proxy } },
   }
 })

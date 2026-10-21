@@ -1,0 +1,34 @@
+{
+  "source_sha256": {
+    "frontend/package.json": "a4b7aaf22b5a1ad753239dd7663d183aab7c87b00f03f21aff64dc8569fe83d8",
+    "frontend/package-lock.json": "9258b0651beb1a23a218eb64fbf4276c39e8f473bd159a9eb776a7d52c4323e4",
+    "frontend/vite.config.js": "449034baa676bda56279782e744485f617980bdf8e3df21e2e47767e58d9a7ee",
+    "frontend/security-policy.js": "8cedef9b52edea808d2bde9d3f3234b7b67254a1fb7252d0462c00282c0786e5",
+    "frontend/index.html": "ab0e6cdf68d546376c3c70ecd93731c7961f7f161ad9d02c72ea3326f1a37d70",
+    "frontend/src/main.jsx": "26c739b131ac4cd9501d988c6057eab42f3f72879ecc18a4fddabcc80a9dc526",
+    "frontend/src/App.jsx": "2c975cf95d4e0da6f7f1d1688f9f4aa384880a713627c56d37313bc849097668",
+    "frontend/src/index.css": "b9124ff243239399a8230275e98413a872deb2236507f5528e2abdac93c801f3",
+    "frontend/src/api/AuthContext.jsx": "5a421c90f54efd19a9c1908981d124b15aab9f2051ff75f9fca690c95dbecda0",
+    "frontend/src/api/api.js": "4788ae72853234f70afef782f3743b19fc8828a625c4df058c4f2023e26b19a4",
+    "frontend/src/components/ProtectedRoute.jsx": "5d99655c22a0832ede9a8f73eaa688a68c200e09b9867df374fc09be7f70b87e",
+    "frontend/src/components/AppLayout.jsx": "e0e773d1401c3af053711bfc903f849d3e3d677ad2568085a0b69ed62cc75816",
+    "frontend/src/components/Navbar.jsx": "2145000a79519428ae7d6fad54a4fbf04525b331e42f02c25c49912ca4e05d09",
+    "frontend/src/pages/Profile.jsx": "2661ec58646cfdbe8f247bed8f1e9089fc45b4f29b6eb3984ba0ba5eb98938a8",
+    "frontend/src/pages/AdminDashboard.jsx": "22d2ec27628e9a33a2e1787ec8a5d4d2e15f3746012a2f1ead68479964d70ed0",
+    "frontend/src/pages/Login.jsx": "0ac582475513acdfa3b64bcc4d4b490acdb486dbb07a7483154920f260d0bbf0",
+    "frontend/src/pages/Orders.jsx": "c05aeef8f4f29b74bbfea6edb90588fe6b6dfe0ce9159e49846d4ba3b6a578ca",
+    "frontend/src/pages/SecurityCenter.jsx": "91746c84ffb561447d258d4ba8ec52c975c509ef7456e9a87ae5210513860a5f",
+    "frontend/src/pages/Monitoring.jsx": "4fac86b4a56836dd18af854d6fc9e3ac76beb2b110d8fbd13b7a8dd0582db390",
+    "frontend/src/pages/CustomerDashboard.jsx": "d1bce09280dc90c28d5d1728b6944d25d94d5feaf9ec83017fac8191eabea29e",
+    "frontend/src/pages/Products.jsx": "e0d34a9a8839d6cbb1d41606a01e892544d776ff2de5dbb9f96f8e49cfb3bf81",
+    "frontend/src/identity/runtime.js": "b3fb35ed06a54c9337cb4860468298a8dd818707b7b0cc01f1c258933dbdfae4",
+    "frontend/src/identity/oidcPreparation.js": "f0537cf46e08f4831f41fae5ad2fe87091fcafb1b99479f596f1b71c7aaa483d",
+    "frontend/src/identity/session.js": "c5b0868eb76b7a4c9d462132caf8e55f184ed1d3fa713ae7d293748da680a2c4"
+  },
+  "production_dist_sha256": {
+    "frontend/dist/index.html": "e3a427a7788dd1e000db419f15f293987bd0b611d3b90462d526a0d1c5aba44b",
+    "frontend/dist/assets/index-Ch-rSwjJ.css": "96cb0bfe87cfad681c8429a1f5cce7ed27faef8e190c6bec680e546afa47fdca",
+    "frontend/dist/assets/index-Dda8qtX5.js": "35e08fa7c3c8b6a315e981617d75799491f79af9b0229961eee7b95415c381a2"
+  },
+  "tested_build": "cloud-api-p5-92dc79787452; VITE_SECURITY_LAB=true; exact body and CSP browser checks passed"
+}

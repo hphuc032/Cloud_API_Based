@@ -21,6 +21,8 @@ def migrate():
                 cur.execute(sql.SQL("GRANT SELECT, INSERT, UPDATE ON public.{} TO app_runtime").format(sql.Identifier(table)))
             cur.execute("GRANT SELECT, INSERT ON public.order_items TO app_runtime")
             cur.execute("GRANT SELECT ON public.categories, public.alembic_version TO app_runtime")
+            cur.execute('GRANT SELECT, INSERT ON public.webhook_receipts TO app_runtime')
+            cur.execute('GRANT UPDATE(response) ON public.webhook_receipts TO app_runtime')
             if os.environ.get("AUTH_MODE", "legacy") == "oidc":
                 # P4 grants only identity lookup; runtime cannot provision or relink accounts.
                 cur.execute("GRANT SELECT ON public.external_identities TO app_runtime")

@@ -1,0 +1,17 @@
+Actual Kong with expired client: backend TLS rejects; Kong 502; no app 401/403
+Actual Kong with untrusted client: backend TLS rejects; Kong 502; no app 401/403
+CA/client leaf rotation: old -> overlap -> mixed generations -> new -> retired old client UNEXPECTED_EOF_WHILE_READING
+Edge CA rotated independently: new edge trust -> 200; retired edge trust -> certificate verification failure
+Rollback: matching original server/client/edge leaves and trust restored -> HTTP 200
+Explicitly enrolled wrong client EKU: UNEXPECTED_EOF_WHILE_READING; no HTTP status
+Invalid enrollment client-ca.pem: startup refused before listener; must be leaf certificates
+Invalid enrollment wrong-client-san.pem: startup refused before listener; Unexpected enrolled client identity
+Invalid enrollment untrusted.pem: startup refused before listener; not issued by a trusted client issuer
+Expired explicitly enrolled client: UNEXPECTED_EOF_WHILE_READING; no HTTP status
+Published host HTTPS: trusted edge CA + localhost SAN -> HTTP 200
+Kong rejects expired-server: upstream TLS error certificate has expired -> HTTP 502 (gateway, not app 401/403)
+Kong rejects wrong-chain: upstream TLS error unable to verify the first certificate -> HTTP 502 (gateway, not app 401/403)
+Kong rejects wrong-san: upstream TLS error does not match -> HTTP 502 (gateway, not app 401/403)
+Kong rejects wrong-server-eku: upstream TLS error unsuitable certificate purpose -> HTTP 502 (gateway, not app 401/403)
+Leaf renewal: existing issuer trust preserved, new leaf keys generated; existing output directory refused
+Actual Vite proxy: correct Node extra CA -> 200; wrong CA -> TLS failure / proxy 500; secure=true

@@ -1,0 +1,28 @@
+{
+  "project": "cloud-api-p5-57662720b576",
+  "command_exit": 0,
+  "query": "{service=\"kong\"} |= \"p5_rejection\"",
+  "streams": 1,
+  "rejections": [
+    {
+      "status": 429,
+      "route": "protected-api"
+    },
+    {
+      "status": 429,
+      "route": "public-products"
+    },
+    {
+      "status": 429,
+      "route": "protected-api"
+    },
+    {
+      "status": 401,
+      "route": "protected-api"
+    },
+    {
+      "status": 401,
+      "route": "protected-api"
+    }
+  ]
+}

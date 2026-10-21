@@ -2,7 +2,7 @@ from uuid import UUID
 from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 from sqlalchemy.orm import Session
 
 from app.auth.dependencies import get_current_active_user, require_admin
@@ -16,6 +16,13 @@ class UserUpdateAdmin(BaseModel):
     role: Optional[UserRole] = None
     is_active: Optional[bool] = None
     is_verified: Optional[bool] = None
+
+    @field_validator('role','is_active','is_verified', mode='before')
+    @classmethod
+    def reject_explicit_null(cls, value):
+        if value is None:
+            raise ValueError('This field cannot be null; omit it to leave it unchanged')
+        return value
 
 
 def _role_value(role: UserRole) -> str:

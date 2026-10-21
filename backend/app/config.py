@@ -29,6 +29,23 @@ class Settings(BaseSettings):
 
     # Webhook
     WEBHOOK_SECRET: str
+    WEBHOOK_PROVIDER: str = Field('florasecure-simulator', pattern=r'^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$')
+    WEBHOOK_TIMESTAMP_TOLERANCE: int = Field(300, ge=0, le=900)
+    WEBHOOK_MAX_BODY_BYTES: int = Field(65536, ge=1024, le=1048576)
+    WEBHOOK_PREVIOUS_SECRET: Optional[str] = None
+    WEBHOOK_PREVIOUS_START: int = 0
+    WEBHOOK_PREVIOUS_UNTIL: int = 0
+
+    @model_validator(mode='after')
+    def validate_webhook_overlap(self):
+        if self.WEBHOOK_PREVIOUS_SECRET:
+            if len(self.WEBHOOK_PREVIOUS_SECRET) < 32 or self.WEBHOOK_PREVIOUS_SECRET == self.WEBHOOK_SECRET:
+                raise ValueError('Previous webhook key must be strong and different')
+            if not 0 < self.WEBHOOK_PREVIOUS_UNTIL-self.WEBHOOK_PREVIOUS_START <= 900:
+                raise ValueError('Previous webhook key requires an explicit overlap of at most 900 seconds')
+        elif self.WEBHOOK_PREVIOUS_START or self.WEBHOOK_PREVIOUS_UNTIL:
+            raise ValueError('Overlap timestamps require a previous key')
+        return self
 
     # Optional production IdP settings
     KEYCLOAK_REALM: Optional[str] = None

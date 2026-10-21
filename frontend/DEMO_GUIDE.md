@@ -1,37 +1,33 @@
-# P4 browser demonstration
+# P5 disposable security demonstration
 
-Use only a disposable candidate with reviewed explicit account mappings. There
-are no committed demo passwords or embedded client secrets. P4 is not production
-cutover approval; read `docs/testing/p4-results.md` first.
+Use the OIDC candidate with explicit operator-reviewed mappings and disposable users/data. Read [P5 results](../docs/testing/p5-results.md) before presenting acceptance claims. No demo passwords, administrator credentials or signing keys are embedded in the bundle. The main automated demonstration is `python3 tests/p5/run.py --focus browser`.
 
-1. Start the candidate described in `docs/deployment/p4-cutover.md`. Configure
-   exact HTTPS realm redirect/web origins and `VITE_OIDC_URL`. The issuer must be
-   stable and reachable from browser, FastAPI and the public-key sync job.
-2. Provide verified frontend TLS certificate/key paths and trust the generated
-   public development edge/identity CAs only after fingerprint review. Vite's API
-   proxy must trust the gateway CA via `NODE_EXTRA_CA_CERTS`; keep `secure=true`.
-3. Open the configured HTTPS frontend `/login` and select Sign in. Credentials are
-   entered at Keycloak. The adapter exchanges a code using S256 PKCE, verifies
-   state/nonce and fetches the mapped application profile. Tokens remain in memory.
-4. Use customer/staff/admin **database roles** through explicitly reviewed mapping
-   fixtures. Show product reads, permitted product writes, own versus another
-   customer's orders, order status policy, profile and existing admin operations.
-   Keycloak role claims and forged identity headers do not grant application roles.
-5. Reload: recover identity through Keycloak SSO, with no persistent access/refresh
-   token. Show legacy `fs_*` entries removed. Do not display full JWTs or passwords.
-6. Logout: POST to Keycloak, then return to the exact allowed `/login`. A reload
-   should remain signed out. Session expiration/refresh failure clears the UI;
-   initialization outage shows an error and Reload sign-in allows a later retry.
-7. Security Center still exercises HMAC webhook and SSRF validation. Development
-   HMAC-signature helper is disabled; use a separately authorized trusted webhook
-   sender. The rate-limit demonstration sends six public reads; these six alone
-   need not exhaust the global 60/minute policy. Automated tests exhaust it and
-   prove 429 without changing the policy.
-8. Verify Loki receives backend logs without secrets/full tokens. Do not infer
-   security acceptance from UI alone; use the automated candidate and legacy
-   regression reports.
+The browser signs in at Keycloak with Authorization Code + S256 PKCE. Application role and active status come from `/auth/me` and PostgreSQL. Tokens remain in memory. Select **Security Center** through the navigation after login. The existing callback goes to the application home; an initial deep-link navigation may return home after SSO, so select the page again rather than assuming the original route is restored.
 
-SSRF success requires real public DNS. Do not add fixed public DNS answers or
-weaken the validator for a demonstration. Access-token revocation after logout is
-bounded by token expiry; application `is_active=false` denies on the next request.
-No BFF, HttpOnly application session, WAF or later-phase feature is claimed.
+Use a separately built `VITE_SECURITY_LAB=true` frontend only in an authorized disposable lab. BOLA fixture inputs, webhook forging/retry and rate bursts are hidden in the normal build. Supply customer A, customer B and staff mappings without granting roles from token claims.
+
+| Scenario | Steps | Inspect the observed response |
+| --- | --- | --- |
+| Missing/invalid token | Select Missing access token and Invalid access token | Kong 401; intentional probes keep the legitimate UI session |
+| Unauthorized administration | Sign in as a customer; select Check admin authorization | Actual 403; no destructive admin action is used |
+| BOLA | Enter customer B's disposable order UUID while logged in as customer A; select Check BOLA | Actual 403 with ownership enforced by FastAPI |
+| HMAC forgery | Select Webhook forgery | Actual 403 for a fresh timestamp and forged MAC |
+| Webhook retry | Generate a private short-lived delivery file using the operator CLI below; paste exact body, timestamp and signature; submit twice | Two actual 200 stored acknowledgements, identical JSON and second replay header true; this is idempotent handling, not a second business effect |
+| SSRF metadata | Sign in as staff/admin; select SSRF metadata validation | Actual 403 for metadata address; customer button is disabled and API role checks remain authoritative |
+| SQL-shaped input | Select SQL-shaped input | Actual 422 for invalid UUID-shaped category input; the read-only probe does not execute injected SQL |
+| Rate limit | Select Rate burst (up to 65 public reads) | Stops on actual 429 or network failure; inspect reported limiter layer and Retry-After. Prior traffic may exhaust the quota earlier |
+| Security headers | Select Inspect security headers | Actual response headers; production HTML also has its own browser-compatible CSP |
+| Invalid client certificate | Run the isolated P2 socket and host checks | TLS failure before an application HTTP response, or verified Kong 502 for a bad upstream server certificate; browser JavaScript cannot supply arbitrary client certificates |
+
+Offline disposable signing:
+
+```sh
+APP_ENV=test P0_ISOLATED=1 python3 tests/p5/lab.py --disposable-lab \
+  --secret-file /path/to/disposable/webhook_secret --output /tmp/new-lab-delivery.json
+```
+
+The CLI writes a new mode-0600 file and performs no network request. Paste its fields without editing the body. The frontend preserves exact string bytes, including boundary whitespace; no browser-side signing secret is needed. Use fresh timestamps within the configured tolerance and fresh event IDs for unrelated events. Keep the file private and remove it after the lab. Never commit it.
+
+Reload to demonstrate SSO recovery without stored bearer tokens, then logout and verify the exact allowed return URL. Automated browser checks also exercise invalid state/nonce and IdP outages. Inspect real Loki rejection logs; Monitoring shows no fabricated numbers and links only to an explicitly configured HTTPS Grafana URL.
+
+Kong API quotas do not cover the Keycloak login route. Keycloak's own brute-force controls are separately tested. SSRF success still needs functioning real DNS; the validator never fetches remote content. Rate bursts can affect other users sharing the same proxy peer, so never run them against a shared production gateway. Access tokens may remain valid until expiry after logout; database deactivation still denies subsequent requests. Review [design and limitations](../docs/security/p5-design.md).

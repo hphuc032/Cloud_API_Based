@@ -113,7 +113,7 @@ def execute(run, compose, project, metadata, secret_dir, artifacts, extra_secret
                 self.assertEqual(http_status("/health/ready"), "503")
                 self.assertEqual(http_status("/health"), "200")
             finally:
-                output(command + ["UPDATE alembic_version SET version_num='0002_external_identities'"])
+                output(command + ["UPDATE alembic_version SET version_num='0003_webhook_receipts'"])
             self.assertEqual(http_status("/health/ready"), "200")
 
         def test_readiness_database_outage_and_recovery(self):

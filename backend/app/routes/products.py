@@ -1,8 +1,9 @@
 from uuid import UUID
 from typing import Optional
+from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
-from pydantic import BaseModel, Field, HttpUrl
+from pydantic import BaseModel, Field, HttpUrl, field_validator
 from sqlalchemy.orm import Session
 
 from app.auth.dependencies import require_staff_or_admin
@@ -13,24 +14,63 @@ from app.models.user import User
 router = APIRouter(prefix="/products", tags=["Products"])
 
 
+def _database_price(value):
+    try:
+        rounded = Decimal(str(value)).quantize(Decimal('.01'), rounding=ROUND_HALF_UP)
+        if rounded > Decimal('9999999999.99'):
+            raise ValueError('Price exceeds database numeric capacity')
+    except InvalidOperation:
+        raise ValueError('Price exceeds database numeric capacity') from None
+    return value
+
+
 class ProductCreate(BaseModel):
     category_id: Optional[UUID] = None
     sku: str = Field(..., min_length=1, max_length=100)
     name: str = Field(..., min_length=1, max_length=255)
     description: Optional[str] = Field(None, max_length=2000)
-    price: float = Field(..., gt=0)
-    stock_quantity: int = Field(0, ge=0)
+    price: float = Field(..., gt=0, allow_inf_nan=False)
+    stock_quantity: int = Field(0, ge=0, le=2147483647)
     image_url: Optional[HttpUrl] = None
+
+    @field_validator('price')
+    @classmethod
+    def database_price(cls, value):
+        return _database_price(value)
+
+    @field_validator('image_url')
+    @classmethod
+    def image_url_length(cls, value):
+        if value is not None and len(str(value)) > 500:
+            raise ValueError('Image URL exceeds database capacity')
+        return value
 
 
 class ProductUpdate(BaseModel):
     category_id: Optional[UUID] = None
     name: Optional[str] = Field(None, min_length=1, max_length=255)
     description: Optional[str] = Field(None, max_length=2000)
-    price: Optional[float] = Field(None, gt=0)
-    stock_quantity: Optional[int] = Field(None, ge=0)
+    price: Optional[float] = Field(None, gt=0, allow_inf_nan=False)
+    stock_quantity: Optional[int] = Field(None, ge=0, le=2147483647)
     is_active: Optional[bool] = None
     image_url: Optional[HttpUrl] = None
+
+    @field_validator('name','price','stock_quantity','is_active', mode='before')
+    @classmethod
+    def reject_explicit_null(cls, value):
+        if value is None:
+            raise ValueError('This field cannot be null; omit it to leave it unchanged')
+        return value
+
+    @field_validator('price')
+    @classmethod
+    def database_price(cls, value):
+        return _database_price(value)
+
+    @field_validator('image_url')
+    @classmethod
+    def image_url_length(cls, value):
+        return ProductCreate.image_url_length(value)
 
 
 def _ensure_category_exists(db: Session, category_id: Optional[UUID]) -> None:

@@ -26,6 +26,8 @@ def configure_application(migration=False):
     # Do not give the migration job the real application signing secrets.
     for name in ("SECRET_KEY", "WEBHOOK_SECRET"):
         os.environ[name] = secrets.token_hex(32) if migration else secret(name + "_FILE")
+    if not migration and os.environ.get('WEBHOOK_PREVIOUS_SECRET_FILE'):
+        os.environ['WEBHOOK_PREVIOUS_SECRET'] = secret('WEBHOOK_PREVIOUS_SECRET_FILE')
 
 
-TABLES = ("users", "refresh_tokens", "categories", "products", "orders", "order_items", "audit_logs", "alembic_version", "external_identities")
+TABLES = ("users", "refresh_tokens", "categories", "products", "orders", "order_items", "audit_logs", "alembic_version", "external_identities", "webhook_receipts")

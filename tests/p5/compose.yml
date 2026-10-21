@@ -1,0 +1,19 @@
+# Focused backend/gateway candidate; production SPA boundary is docker/p5-compose.yml.
+services:
+  tests:
+    build:
+      dockerfile: tests/p5/Dockerfile
+  backend:
+    environment:
+      DEBUG: 'false'
+  kong-keys:
+    environment:
+      GATEWAY_POLICY: p5
+  kong:
+    environment:
+      KONG_TRUSTED_IPS: ''
+      KONG_REAL_IP_RECURSIVE: 'off'
+      KONG_NGINX_HTTP_LUA_SHARED_DICT: 'p5_rate_limits 10m'
+  keycloak:
+    volumes:
+      - ./keycloak/florasecure-p5-realm.json:/opt/keycloak/data/import/florasecure-realm.json:ro
