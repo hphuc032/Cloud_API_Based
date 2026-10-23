@@ -1,0 +1,306 @@
+{
+  "additional_five_rules": [
+    {
+      "uid": "p6-webhook-attacks",
+      "passed": true,
+      "actual_query": {
+        "expr": "sum(count_over_time({service=~\"kong|backend\"} | json | event_type=~\"webhook_rejected|webhook_conflict\" [1m])) or vector(0)",
+        "value": 9.0,
+        "threshold": 3,
+        "for": "30s",
+        "window_seconds": 60,
+        "evaluation_interval_seconds": 10
+      },
+      "initial_state": "inactive",
+      "first_pending": {
+        "observed_utc": "2026-10-23T05:39:20.242104+00:00",
+        "engine_last_evaluation": "2026-10-23T05:39:10Z"
+      },
+      "first_firing": {
+        "observed_utc": "2026-10-23T05:39:48.412969+00:00",
+        "engine_last_evaluation": "2026-10-23T05:39:40Z"
+      },
+      "first_recovered": {
+        "observed_utc": "2026-10-23T05:40:12.574999+00:00",
+        "engine_last_evaluation": "2026-10-23T05:40:10Z"
+      },
+      "raw_evidence": "p6-recovery-final.json/evidence/p6-alert-four-rules.json"
+    },
+    {
+      "uid": "p6-ownership-denials",
+      "passed": true,
+      "actual_query": {
+        "expr": "sum(count_over_time({service=~\"kong|backend\"} | json | event_type=~\"ownership_denied\" [1m])) or vector(0)",
+        "value": 8.0,
+        "threshold": 3,
+        "for": "30s",
+        "window_seconds": 60,
+        "evaluation_interval_seconds": 10
+      },
+      "initial_state": "inactive",
+      "first_pending": {
+        "observed_utc": "2026-10-23T05:39:10.188102+00:00",
+        "engine_last_evaluation": "2026-10-23T05:39:10Z"
+      },
+      "first_firing": {
+        "observed_utc": "2026-10-23T05:39:40.369963+00:00",
+        "engine_last_evaluation": "2026-10-23T05:39:40Z"
+      },
+      "first_recovered": {
+        "observed_utc": "2026-10-23T05:40:14.583993+00:00",
+        "engine_last_evaluation": "2026-10-23T05:40:10Z"
+      },
+      "raw_evidence": "p6-recovery-final.json/evidence/p6-alert-four-rules.json"
+    },
+    {
+      "uid": "p6-ssrf-denials",
+      "passed": true,
+      "actual_query": {
+        "expr": "sum(count_over_time({service=~\"kong|backend\"} | json | event_type=~\"ssrf_denied\" [1m])) or vector(0)",
+        "value": 8.0,
+        "threshold": 3,
+        "for": "30s",
+        "window_seconds": 60,
+        "evaluation_interval_seconds": 10
+      },
+      "initial_state": "inactive",
+      "first_pending": {
+        "observed_utc": "2026-10-23T05:39:12.200592+00:00",
+        "engine_last_evaluation": "2026-10-23T05:39:10Z"
+      },
+      "first_firing": {
+        "observed_utc": "2026-10-23T05:39:42.381655+00:00",
+        "engine_last_evaluation": "2026-10-23T05:39:40Z"
+      },
+      "first_recovered": {
+        "observed_utc": "2026-10-23T05:40:16.597220+00:00",
+        "engine_last_evaluation": "2026-10-23T05:40:10Z"
+      },
+      "raw_evidence": "p6-recovery-final.json/evidence/p6-alert-four-rules.json"
+    },
+    {
+      "uid": "p6-rate-limits",
+      "passed": true,
+      "actual_query": {
+        "expr": "sum(count_over_time({service=~\"kong|backend\"} | json | event_type=~\"rate_limited\" [1m])) or vector(0)",
+        "value": 12.0,
+        "threshold": 5,
+        "for": "30s",
+        "window_seconds": 60,
+        "evaluation_interval_seconds": 10
+      },
+      "initial_state": "inactive",
+      "first_pending": {
+        "observed_utc": "2026-10-23T05:39:14.211249+00:00",
+        "engine_last_evaluation": "2026-10-23T05:39:10Z"
+      },
+      "first_firing": {
+        "observed_utc": "2026-10-23T05:39:44.390882+00:00",
+        "engine_last_evaluation": "2026-10-23T05:39:40Z"
+      },
+      "first_recovered": {
+        "observed_utc": "2026-10-23T05:40:18.611330+00:00",
+        "engine_last_evaluation": "2026-10-23T05:40:10Z"
+      },
+      "raw_evidence": "p6-recovery-final.json/evidence/p6-alert-four-rules.json"
+    },
+    {
+      "uid": "p6-upstream-errors",
+      "passed": true,
+      "actual_query": {
+        "expr": "sum(count_over_time({service=~\"kong|backend\"} | json | event_type=~\"upstream_error\" [1m])) or vector(0)",
+        "value": 8.0,
+        "threshold": 3,
+        "for": "30s",
+        "window_seconds": 60,
+        "evaluation_interval_seconds": 10
+      },
+      "initial_state": "inactive",
+      "first_pending": {
+        "observed_utc": "2026-10-23T05:41:49.240123+00:00",
+        "engine_last_evaluation": "2026-10-23T05:41:40Z"
+      },
+      "first_firing": {
+        "observed_utc": "2026-10-23T05:42:19.487416+00:00",
+        "engine_last_evaluation": "2026-10-23T05:42:10Z"
+      },
+      "first_recovered": {
+        "observed_utc": "2026-10-23T05:42:43.652439+00:00",
+        "engine_last_evaluation": "2026-10-23T05:42:40Z"
+      },
+      "raw_evidence": "p6-recovery-final.json/evidence/p6-alert-upstream-errors.json"
+    }
+  ],
+  "jwt_rule": {
+    "rule": "p6-jwt-rejections",
+    "actual_engine": true,
+    "initial_state": "inactive",
+    "external_delivery_tested": false,
+    "states": [
+      {
+        "state": "inactive",
+        "health": "ok"
+      },
+      {
+        "state": "inactive",
+        "health": "ok"
+      },
+      {
+        "state": "inactive",
+        "health": "ok"
+      },
+      {
+        "state": "inactive",
+        "health": "ok"
+      },
+      {
+        "state": "pending",
+        "health": "ok"
+      },
+      {
+        "state": "pending",
+        "health": "ok"
+      },
+      {
+        "state": "pending",
+        "health": "ok"
+      },
+      {
+        "state": "pending",
+        "health": "ok"
+      },
+      {
+        "state": "pending",
+        "health": "ok"
+      },
+      {
+        "state": "pending",
+        "health": "ok"
+      },
+      {
+        "state": "pending",
+        "health": "ok"
+      },
+      {
+        "state": "pending",
+        "health": "ok"
+      },
+      {
+        "state": "pending",
+        "health": "ok"
+      },
+      {
+        "state": "pending",
+        "health": "ok"
+      },
+      {
+        "state": "pending",
+        "health": "ok"
+      },
+      {
+        "state": "pending",
+        "health": "ok"
+      },
+      {
+        "state": "pending",
+        "health": "ok"
+      },
+      {
+        "state": "pending",
+        "health": "ok"
+      },
+      {
+        "state": "pending",
+        "health": "ok"
+      },
+      {
+        "state": "firing",
+        "health": "ok"
+      },
+      {
+        "state": "firing",
+        "health": "ok"
+      },
+      {
+        "state": "firing",
+        "health": "ok"
+      },
+      {
+        "state": "firing",
+        "health": "ok"
+      },
+      {
+        "state": "firing",
+        "health": "ok"
+      },
+      {
+        "state": "firing",
+        "health": "ok"
+      },
+      {
+        "state": "firing",
+        "health": "ok"
+      },
+      {
+        "state": "firing",
+        "health": "ok"
+      },
+      {
+        "state": "firing",
+        "health": "ok"
+      },
+      {
+        "state": "firing",
+        "health": "ok"
+      },
+      {
+        "state": "firing",
+        "health": "ok"
+      },
+      {
+        "state": "firing",
+        "health": "ok"
+      },
+      {
+        "state": "firing",
+        "health": "ok"
+      },
+      {
+        "state": "firing",
+        "health": "ok"
+      },
+      {
+        "state": "firing",
+        "health": "ok"
+      },
+      {
+        "state": "firing",
+        "health": "ok"
+      },
+      {
+        "state": "firing",
+        "health": "ok"
+      },
+      {
+        "state": "firing",
+        "health": "ok"
+      },
+      {
+        "state": "firing",
+        "health": "ok"
+      },
+      {
+        "state": "firing",
+        "health": "ok"
+      },
+      {
+        "state": "inactive",
+        "health": "ok"
+      }
+    ]
+  },
+  "external_delivery_configured": false,
+  "external_delivery_tested": false,
+  "synthetic_loki_security_events_used": false,
+  "notes": "Actual 60s LogQL window, 10s evaluation group, 30s pending; observation timestamps are not an MTTD/MTTR benchmark. Raw engine snapshots and real request IDs are retained in the final recovery evidence."
+}

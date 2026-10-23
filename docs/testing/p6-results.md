@@ -1,98 +1,279 @@
-# P6 security observability — acceptance report
+# P6 security observability — acceptance recovery report
 
-**Recommendation: BLOCKED.** Structured telemetry, transactional audit, Alloy ingestion, dashboards and local Grafana rule evaluation are implemented and tested. Mandatory physical-retention validation failed, and the three inherited real-DNS cases remain unresolved. This is a reviewable P6 candidate, not an accepted production release. No P7 work or GitHub push is performed.
+**Recommendation: BLOCKED — external DNS.** Physical retention is independently
+proved on repeated fresh volumes. All six provisioned alert rules have real pending/firing/recovery evidence. The three inherited real-DNS
+regression IDs remain environmental blockers; they are not skipped, mocked or
+converted to expected failures. No P7, production-volume migration or GitHub push
+was performed.
 
-Approved parent: `9ebca60bff2947e26b2a91ef0273118d21fd6c05`. Initial branch, local HEAD, origin branch and committed tree matched exactly; the working tree was clean. Prior commits were not reset, rebased, amended or rewritten. Exact resulting commit/tree and verified bundle SHA256 are recorded in the external transfer manifest to avoid a self-referential commit hash in this file.
+Recovery starts from P6 `3d6f2ff3b2d8fe432df000b6c4beaebec744f291`, on
+`migration/cloud-api-security`, with approved P5 parent
+`9ebca60bff2947e26b2a91ef0273118d21fd6c05`. Previous history is unchanged. The new
+local recovery commit, tree, verified bundle SHA256 and real import verification
+are recorded in the external transfer manifest to avoid a self-referential hash.
 
-## Architecture, event coverage and audit
+## Retention root cause and changes
 
-See [actual architecture and threat matrix](../monitoring/p6-architecture.md), [event/source/severity/privacy matrix](../monitoring/security-events.md), [detection rules](../monitoring/detection-rules.md), [operator response](../monitoring/alert-response.md) and [deployment/rollback](../deployment/p6-observability.md).
+See [full version-compatible diagnosis](p6-retention-recovery.md),
+[official source URLs/SHA256](p6-recovery-retention-sources.json),
+[actual image provenance](p6-recovery-image-provenance.json) and
+[failed/successful experiments](p6-recovery-retention.json).
 
-Kong replaces caller request IDs at the controlled boundary, forwards a generated canonical UUIDv4 over the existing enrolled mTLS connection and echoes it on gateway-only and upstream responses. FastAPI validates ID shape, uses normalized framework routes and emits allowlisted JSON. Tests prove forged IDs are replaced, gateway-only401 never appears as an application request, successful gateway/API events correlate, and IDs do not become Loki labels. Stored labels are limited to project/service.
+Loki2.9.8/revision94e00299ec supports this filesystem/v11 boltdb-shipper/24h index
+retention design. The original probe flushed chunks but waited only480seconds:
+its newly written local index was still in a15minute write-time shard plus a
+one-minute safety buffer. Compactor cycles could not process an index that had
+not shipped. Explicit shared_store alignment alone could not fix that lifecycle.
+A supported graceful stop forces index handover; restart then produces real
+retention markers and successful chunk deletion. No upgrade, timestamp/shard
+manipulation, reduced168h policy or direct delete request was needed.
 
-Coverage includes JWT rejection, unmapped/disabled identities as a combined non-enumerating category, RBAC and ownership denials, gateway429, webhook rejection/authenticated retry/conflict, SSRF destination-policy denial,422 validation, Keycloak login failure and controlled upstream502. A customer forbidden from entering the SSRF endpoint is RBAC denied, not an SSRF destination event. An upstream webhook401 is not mislabeled a gateway JWT rejection.
+Query/cache visibility was a second independent issue. Local writer index/chunk
+caches could serve the old record after its shared object disappeared; an
+accelerated diagnostic single-binary query eventually converged after~462s.
+Production now explicitly sets `limits_config.max_query_lookback:168h`, matching
+the unchanged physical policy and preventing cached expired records from being
+returned. Physical retention remains168h, compaction1m, deletion delay2h.
 
-The existing audit table/schema is reused. User administration, product create/update/deactivate and order status changes write actor/resource UUIDs, action, correlation UUID and schema version in the business transaction. No payload, password, email, shipping data, raw header or before/after personal values are copied. Actual SQL tests verify records, commit/rollback and INSERT-only runtime privileges. SELECT/UPDATE/DELETE remain denied; only sequence USAGE is added. Inline INSERT avoids RETURNING/read grants. Owners can modify records and a compromised writer can append false records; this is not immutable or tamper-proof storage.
+The probe now uses a separate read-only querier with its own temporary cache and
+**max_query_lookback:0s**. Its query cannot pass merely because of the production
+lookback filter. Exact old/current object keys are decoded and matched to sample
+event timestamps; size/SHA256, actual successful-deletion histogram count,
+independent query results and writer queries are all required. The reader has no
+host port, a read-only root/object mount, dropped capabilities and temporary cache.
 
-## Alloy, storage, dashboards and alerts
+Two authoritative final-source repeats:
 
-Alloy1.14.1 is digest-pinned and replaces Promtail only in the P6 candidate. Historical Promtail configuration is retained unchanged and its ingestion path is independently tested by the legacy suite. Alloy receives reviewed project-only container directories read-only, no Docker socket, no capabilities and a read-only root. Its fresh nocopy positions volume and readable empty mount root avoid dependence on DAC override. Runtime source hashes cover backend, mounted plugin, Alloy and Loki configuration.
+| Project suffix | Unbounded reader before | After | Writer after | Physical proof | Observation loop |
+| --- | --- | --- | --- | --- | ---: |
+| `8fd1584c3c` | old1/current1 | old0/current1 | old0/current1 | Old object absent; current SHA256 unchanged; success count1 |65.27s|
+| `7c3b4bd0c3` | old1/current1 | old0/current1 | old0/current1 | Old object absent; current SHA256 unchanged; success count1 |70.39s|
 
-Kong and FastAPI exclude headers/bodies/query strings before Docker persistence. SPA and identity-edge access logs omit query parameters; raw proxy error output is suppressed. A small tracked OSS log-phase plugin reads a bounded128KiB OpenResty memory ring and exports only four constant upstream TLS verification reasons. Those worker events explicitly remain unattributed; correlated HTTP502 observations are separate. Keycloak's failed-login event becomes constant JSON before Loki, and other Keycloak lines are dropped. Host Keycloak logs can retain identity metadata under bounded Docker rotation; host privacy/access controls still matter. Settings error messages and repr exclude credential inputs; Uvicorn exception text and SQL statement/detail logging are suppressed.
+Both exited0 and cleaned up their own volumes/networks with exit0. Durations
+exclude startup, seed and graceful shutdown. Earlier successes/failed experiments
+remain evidence, not extra unique acceptance cases. The original clean failure
+is preserved in [p6-retention-clean-evidence.json](p6-retention-clean-evidence.json).
 
-Loki uses a fresh P6 volume, filesystem storage, v11/24-hour boltdb index, explicit filesystem shared_store, single replica and an in-memory ring. Configured target retention is168hours with a2hour deletion delay. Ingestion is2MiB/s with4MiB burst; queries cap1000series/5000entries. Docker sources rotate at10MiB ×3. These are not a hard Loki disk quota or HA/backup guarantees.
+Only the disposable probe accelerates flush/compaction/index cache/resync/delete
+delay and admits old samples. The sweeper's own one-minute cycle is unchanged.
+The actual **production two-hour deletion delay has not been wall-clock tested**;
+natural shard rollover, marker recovery after a compactor restart, production
+volume migration and backup/restore remain unverified. The experiment proves the
+mechanism, not an exact production deletion SLA or a hard disk quota.
 
-Four automatically provisioned dashboards use stable datasource/dashboard UIDs and real LogQL. All provisioned panel queries are exercised; Grafana visual rendering is not separately browser-certified. Six rules cover JWT rejection, webhook rejection/conflict, ownership denial, SSRF denial,429 and upstream errors. Actual Grafana evaluation starts inactive, enters pending/firing after real gateway traffic and recovers inactive. All rules are provisioned and query successfully; only the JWT rule has a dedicated end-to-end threshold/firing/recovery experiment. No external notification channel or delivery is configured/tested. Missing-data/error states are configured, not exhaustively fault-injected. There is no fabricated live availability, storage metric or MTTD/MTTR.
+Private RPC also encountered an independent recovery-environment proxy failure:
+The default Docker client config injected proxy172.31.2.109:8080 with loopback-only NO_PROXY; Go gRPC and Python HTTP attempted that unreachable external proxy from the isolated storage network. Sanitized evidence is in [proxy diagnostics](p6-recovery-proxy-diagnostics.json). The
+P6 Loki service clears proxy variables/sets NO_PROXY, and the private probe uses
+`ProxyHandler({})`. This does not replace DNS, relax TLS or alter application
+security. The intermediate unsupported query-path/configuration/reader-startup
+failures are retained with real nonzero exits.
+
+## Critical detection validation
+
+All six provisioned rules passed actual engine firing/recovery. The five
+previously unexecuted rule experiments now have the following exact query values:
+
+| Additional rule | Real count | Threshold | Observed state sequence |
+| --- | ---: | ---: | --- |
+| Webhook rejection/conflict |9|>3|inactive -> pending -> firing -> inactive|
+| Ownership/BOLA denial |8|>3|inactive -> pending -> firing -> inactive|
+| SSRF denial |8|>3|inactive -> pending -> firing -> inactive|
+| Gateway rate-limit429 |12|>5|inactive -> pending -> firing -> inactive|
+| Controlled upstream failure |8|>3|inactive -> pending -> firing -> inactive|
+
+The existing JWT spike experiment also passed again. See
+[p6-recovery-alerts.json](p6-recovery-alerts.json) for exact UTC observation/engine
+evaluation times and query values, and [final raw engine evidence](p6-recovery-final.json)
+for the snapshots. Two-second sampling can observe pending after it began; sampled
+elapsed time is not a modified pending policy or an MTTD/MTTR benchmark.
+
+The source rules remain unchanged: actual60s LogQL windows,10s evaluation group,
+30s pending. Real gateway/application events are generated with existing
+JWT/mTLS, PostgreSQL role/ownership and HMAC policies. Missing/forged signatures,
+authenticated receipt conflicts, ownership denial, SSRF policy denial, real429
+and a stopped-backend upstream failure are used; no synthetic security series or
+direct Loki push substitutes for the collector path. Each experiment begins at
+inactive, checks real ingested events and query values above the provisioned
+threshold, observes pending/firing and returns inactive. Exact UTC evaluation
+samples, query strings/values and request IDs are retained.
+
+**External notification delivery is not configured or tested.** These are actual
+local Grafana engine results, not proof of email/webhook delivery, grouping,
+silencing, missing-data fault handling or incident-response effectiveness.
 
 ## Authoritative regression matrix
 
-Counts are executions within each phase, not unique vulnerabilities. Repeated diagnostic/focused runs are not added as new unique cases. Browser groups and lifecycle scripts are separate from pytest counts. Final recovery results are recorded in `p6-final_recovery-evidence.json`; any nonzero command remains visible.
+Counts are executions within a phase. Repeated focused reruns, browser groups and
+scripts must not be summed as unique vulnerabilities. Initial failed experiments
+remain visible and separate from final outcomes.
 
-| Phase | Passed | Expected failure | DNS fail/error | Other unresolved failure |
+| Active/candidate phase | Pass | Expected failure | DNS failure | Other unresolved failure |
 | --- | ---: | ---: | ---: | ---: |
-| Final P6 telemetry/audit/redaction/engine pytest |23|0|0|0|
-| Final P5 hardening/configuration pytest |110|0|0|0|
-| Final active OIDC/P2/P1 pytest |143|0|2|0|
-| Final active network/privilege/Alloy host |5|0|0|0|
-| Active P3 identity persistence/isolation host |3|0|0|0|
-| Final P2 TLS host |16|0|0|0|
-| Actual sanitized TLS reason ingestion script |1|0|0|0|
-| Final collector/Loki restart, duplicate observation and backend outage scripts |3|0|0|0|
-| P4 SDK/browser lifecycle/state/nonce/outage |9|0|0|0|
+| Final P6 telemetry/audit/privacy/alert pytest |24|0|0|0|
+| P5 hardening (full run; final repeat) |110;110|0|0|0|
+| Full active OIDC/P2/P1 pytest |143|0|2|0|
+| Full active network/privilege/Alloy host |5|0|0|0|
+| Full active P3 identity persistence/isolation host |3|0|0|0|
+| P2 TLS/mTLS host (full; final transport repeat) |16;16|0|0|0|
+| Final transport network/privilege/Alloy repeat |5|0|0|0|
+| Final actual four sanitized TLS-reason ingestion script |1|0|0|0|
+| SDK/browser lifecycle/state/nonce/outage groups |9|0|0|0|
 | Production SPA/CSP/Security Center browser groups |8|0|0|0|
-| Key rotation/retirement/JWKS-outage phases |6|0|0|0|
-| Separate legacy P0/P1 pytest |106|2|0|0|
-| Separate legacy P2 HTTPS/business pytest |83|2|2|0|
-| Separate legacy P3 OIDC/mapping pytest |22|0|0|0|
-| Separate legacy P1 host |15|0|1error|0|
-| Separate legacy P3 persistence host |3|0|0|0|
-| Separate legacy P2 TLS host |16|0|0|0|
-| Clean isolated physical-retention experiment |0|0|0|1|
+| Rotation/retirement/JWKS-outage phases |6|0|0|0|
+| Collector/Loki restart + duplicate observation + controlled outage (full; final) |3;3|0|0|0|
+| Final-source independent physical-retention repeats |2|0|0|0|
 
-Legacy totals: **245pass/4expected failures/3DNS failures/errors across252executions**, matching P5. The four xfails represent only two unique legacy JWT defects D01/D02, each exercised locally and over HTTPS. P5's five fixes D03–D07 remain passing. Active OIDC has no baseline xfails. P0/P1 emitted two existing deprecation warnings.
+The full P4 focused3case subset also passed; it overlaps the full active suite.
+The initial full run's P6 phase had23pass/1new-test failure; the final24pass replaces
+that assertion failure for acceptance, while preserving its original evidence.
+The full run precedes the final logical-lookback/probe refinements; the final
+P6/P5 rerun exercises the final Loki configuration and corrected alert test.
+Authentication, business policy, TLS, realm, Alloy and alert-rule sources are
+identical across those runs. The final transport supplement reran all16TLS/mTLS and5network/privilege checks
+with final Loki configuration, then independently queried all four real sanitized
+TLS verification reasons in Loki. It preserves every original assertion and
+supplements the full regression; it does not replace any DNS-dependent case.
 
-Also passed: `node tests/p3/test_client.mjs` (19 assertions, not19pytest cases), `node tests/p4/test_session.mjs`, production frontend build, isolated logger assertions, original P4 focused3case subset, Python AST checks and `git diff --check`. Source comparison proves auth dependency decisions are identical after removing telemetry-only marks, and SSRF validator helpers are unchanged. Final API suites additionally exercise the Settings error/repr privacy changes. Browser/identity/rotation evidence comes from the earlier full run with identical authentication, business and TLS decisions, before the final transport-log relay and error-format refinements; that scope is not hidden.
+| Separate legacy phase | Pass | Expected failure | DNS fail/error | Other unresolved failure |
+| --- | ---: | ---: | ---: | ---: |
+| P0/P1 pytest |106|2|0|0|
+| P2 HTTPS/business pytest |83|2|2|0|
+| P3 OIDC/mapping pytest |22|0|0|0|
+| P1 host |15|0|1error|0|
+| P3 persistence/isolation host |3|0|0|0|
+| P2 TLS/mTLS host |16|0|0|0|
 
-### DNS, separately retained
+Legacy total: **245pass / 4expected failures / 3DNS fail/errors across252executions**,
+matching approved P5 and the original P6 regression. Two existing deprecation
+warnings remain. Both active and legacy retain nonzero DNS failure results;
+they are not counted as passed or expected failures.
 
-Three distinct required IDs remain visible:
+Four legacy expected failures represent only two unique historical JWT defects,
+D01/D02, exercised locally and over HTTPS. P5 fixes D03–D07 remain passing. Active
+OIDC has no baseline xfails. No new expected failure or skip was introduced.
+The initial new alert test incorrectly expected400 for a literal-IP SSRF deny;
+the unchanged application/previous tests require403. That new assertion was fixed
+to exact403, and the whole P6 suite was rerun. Its initial23pass/1failure is
+preserved in [initial P6 evidence](p6-recovery-initial-p6.json), not relabeled as a
+baseline defect. Earlier full source-guard/build-environment failures accepted
+zero tests and are separately documented.
 
-1. P1 host `test_public_dns_for_current_ssrf_validation`: backend-namespace `socket.getaddrinfo('example.com',443)` errors with gaierror errno-3; subprocess exits1.
-2. P2 `test_https_ssrf_uses_real_dns_and_preserves_roles[staff-200]`: expected200, actual400 `Unable to resolve hostname`.
-3. P2 same `[admin-200]`: same result.
+Also rerun: `node tests/p3/test_client.mjs` (19 assertions, not19pytest cases),
+`node tests/p4/test_session.mjs`, new Python source compilation and
+`git diff --check`. Browser/state/nonce, production frontend build/CSP and actual
+rotation/retirement/JWKS outage are recorded in the full run. The final P6/P5
+rerun uses the final Loki configuration and current mounted-source hash guard.
 
-The two P2 IDs run in active and legacy matrices, giving five DNS fail/error executions across three unique cases. Earlier repeated runs are recorded separately. Agent resolver remains172.31.2.109; example.com and pypi.org fail host resolution. Internal Compose names, OIDC HTTPS and mTLS operate. No resolver substitution, DNS mock, skip, xfail conversion or TLS bypass is used. A new outside-sandbox diagnostic request was aborted before execution and is explicitly unexecuted. Platform-supported DNS repair and real reruns remain required for P3–P6 acceptance.
+## DNS — unresolved environmental acceptance gate
 
-### Retention — mandatory unresolved gate
+| Required ID | Actual result |
+| --- | --- |
+| P1 host `test_public_dns_for_current_ssrf_validation` | Backend `socket.getaddrinfo('example.com',443)` raises gaierror errno-3; subprocess1 |
+| P2 `test_https_ssrf_uses_real_dns_and_preserves_roles[staff-200]` | Expected200, actual400: `Unable to resolve hostname` |
+| P2 same `[admin-200]` | Expected200, actual400: `Unable to resolve hostname` |
 
-`python3 tests/p6/retention.py` runs only on a random isolated Compose project/volume. It admits two synthetic samples (eight days old/current), keeps the actual168hour policy and accelerates compaction/flush/delete delay; this direct storage probe is not security-event collection evidence. It requires the expired sample to disappear, the current sample to remain and a successful physical-deletion metric. The production2hour delay is not wall-clock tested.
+P2 invokes the existing SSRF resolver `getaddrinfo('example.com',None)` for
+`https://example.com/test`. These two IDs appear in both active and legacy runs:
+five fail/error executions across three unique IDs. Host example.com/pypi.org
+queries also fail. An actual outside-sandbox `getent ahosts example.com` exited2
+with no result. Docker127.0.0.11 forwards to host172.31.2.109; its configuration
+shows no resolver override. Internal postgres/kong names resolve and verified
+HTTPS/mTLS/OIDC work. See [DNS commands and exact errors](p6-recovery-dns.json).
 
-The clean480second experiment **failed**: both samples remained queryable and no successful physical-deletion metric was observed. No blanket retention PASS is claimed. Initial baseline visibility assumptions were corrected after observing shipper/flush visibility; the physical-deletion condition remained mandatory. An empty shipper shared_store was found and made explicit, but that change did not establish deletion and is not asserted as the sole root cause. Shipper/compactor timing/storage behavior still needs independent diagnosis. Early runs affected by concurrent disk pressure do not establish production retention behavior. The clean failure remains a P6 validation blocker, not a DNS failure or expected failure.
+The shared external resolver/forwarding path remains unavailable across the
+Agent and backend namespace, consistent with the inherited P1/P2/P3/P5/P6
+failures. Application security sources are unchanged; no application regression
+explains this cross-environment failure. The precise platform resolver/egress
+fault cannot be diagnosed from these results alone. The environment operator must
+restore a supported external DNS forwarding/resolver path, then rerun these three
+IDs and the full suite. HTTP proxy connectivity is not a substitute for raw DNS.
+No public resolver/address hardcode, /etc/hosts substitution, DNS mock, weakened
+SSRF expectation, certificate bypass or expected-failure conversion was used.
+Fixing retention did not fix DNS, so P6 cannot be accepted.
 
-## Intermediate failures and recovery
+## Preserved architecture and release integrity
 
-Intermediate issues are retained rather than relabeled baseline defects: initial Compose dollar escaping and incorrect new fixture/route names; nested mounts under a read-only parent; Grafana public-directory permissions; unsupported UUID require in the serverless sandbox; a Loki-incompatible empty regex; Alloy match selector runtime syntax; vfs DiskFull; positions ownership and empty mount-root traversal after capability removal. Final IDs use Nginx-generated random bytes, not untrusted headers. A focused run passed16P6/110P5 before the final expanded coverage.
+The [architecture](../monitoring/p6-architecture.md),
+[event/privacy matrix](../monitoring/security-events.md),
+[detection rules](../monitoring/detection-rules.md),
+[response procedures](../monitoring/alert-response.md) and
+[deployment/rollback](../deployment/p6-observability.md) remain the operational
+references. [Source preservation evidence](p6-recovery-preservation.json) proves
+backend, gateway, frontend, P2/P4/P5 policy and Keycloak source/configuration are
+unchanged from P6. Runtime network/privilege, persistence and TLS checks are
+recorded separately in the regression evidence.
 
-The first full run had7missing-ingestion failures caused by collector startup permissions;10other P6 cases passed after diagnosis. Its original P2 host suite had12pass/4fail because suppressed raw logs removed the four TLS-reason substrings, even though all four invalid peers still produced502. The new constant-reason relay preserves those original assertions; no P2 assertion or certificate check was weakened. A later concurrent full-stack startup exceeded the32GiB vfs host and failed P6 Loki initialization; zero tests from that startup are accepted. Final acceptance runs are serialized and use reviewed dependency exports/imports and source mounts. No production volumes or the unrelated stopped PostgreSQL container/data were modified.
+P1 private networks/database privileges; P2 HTTPS/mTLS/enrollment; P3 separate
+identity PostgreSQL and explicit identity mappings; P4 issuer/audience/JWKS,
+PostgreSQL RBAC/is_active/ownership; P5 webhook receipts/HMAC/SSRF/input/gateway/CSP;
+and P6 structured logs/privacy/correlation/Alloy/audit remain intact. No new
+Alembic revision or application migration is introduced. No authentication
+fallback, role assignment from token claims, account auto-linking or cutover is
+added. The unrelated stopped PostgreSQL container/data are untouched.
 
-## Evidence, commands, files and transfer
+Changes are limited to Loki logical lookback/private proxy environment, retention
+and alert test infrastructure, diagnostic source-mismatch reporting and public
+documentation/evidence. Prior commits are not amended/reset/rebased. The new
+recovery commit uses `nhpntd@gmail.com`; changed staged/committed files undergo
+secret review. The bundle includes P6 and its recovery on approved P5, is verified
+and actually imported into an isolated bare repository with commit/tree/ancestry
+checks. Workspace A does not push.
 
-- `p6-final_recovery-evidence.json`: final per-case outcomes, host results and actual rule states.
-- `p6-initial_full-evidence.json`, `p6-legacy-evidence.json`, `p6-focused-evidence.json`: full prior/focused/legacy outcomes and scope.
-- `p6-ingestion-evidence.json`, `p6-alert-evaluation.json`, `p6-lifecycle-evidence.json`, `p6-transport-ingestion.json`: real stored event samples, Grafana engine state transitions and actual restart/outage/transport observations.
-- `p6-retention-clean-evidence.json` and earlier retention evidence: failing storage experiments, including accepted samples and counters. They are not erased or called skipped.
-- `p6-runtime-source-evidence.json`, `p6-policy-comparison.json`, `p6-preservation.json`, `p6-network-logging-evidence.json`, `p6-local-images.json`: runtime hashes, unchanged policy/TLS artifacts, networks, grants/logging settings and dependency provenance.
-- `p6-preflight.json`, `p6-supplemental.json`, `p6-unit-evidence.json`, `p6-resource-snapshot.json`: preflight/DNS, client/build checks and one actual resource snapshot.
-- `p6-files.txt`, `p6-diffstat.txt`, `p6-secret-review.json`: complete file inventory, diff summary and reviewed staged-secret scan.
+## Commands, evidence and remaining limits
 
-`p6-commands.json` contains exact runner-managed argv. Executed wrappers: `python3 tests/p6/run.py --focus hardening`, `python3 tests/p6/run.py`, final `python3 tests/p6/run.py --focus telemetry`, separate `python3 tests/p3/run.py` and repeated `python3 tests/p6/retention.py`. Cloud-local P4/P5/P3 dependency/source overlays and original stop signals are recorded; standard tracked Dockerfiles remain the portable path. Additional diagnostics included Git status/branch/HEAD/remotes/fetch/tree comparison; Docker version/inspect/images/logs/stats/systemdf; disk inspection and scoped unused dependency-cache cleanup; public runtime SHA256 checks; actual PostgreSQL logging/grant queries; source-policy AST comparisons; source/config validation; DNS resolution; Node/build commands; and final secret/bundle/import checks. Read-only exploration is summarized rather than represented as runner-managed commands.
+Actual runner-managed argv and return codes are in the full/final/legacy recovery
+JSON evidence. The executed release commands are:
 
-There is no new Alembic revision. P6 reuses the existing audit schema and explicitly re-applies reviewed grants. Rollback requires traffic drain, preservation of P6 observability data, reviewed P5 OIDC deployment/configuration and reapplying P5 runtime grants; it must not silently retain audit writer privileges or switch to legacy token issuance. Details and Workspace B-only import/fast-forward commands are in the deployment document. The external manifest contains exact commit, parent, tree, bundle hash and real local-import verification. Workspace A does not push.
+```sh
+python3 tests/p6/run.py
+python3 tests/p6/run.py --focus hardening
+python3 tests/p6/run.py --focus transport
+python3 tests/p3/run.py
+python3 tests/p6/retention.py  # repeated fresh projects; failures also preserved
+node tests/p3/test_client.mjs
+node tests/p4/test_session.mjs
+```
 
-## Remaining limits / unexecuted checks
+Cloud-local wrappers set writable DOCKER_CONFIG, reviewed P4/P3 build and source
+overlays, verified test/probe base images and the existing reusable probe worker.
+Standard tracked Dockerfiles remain the portable path. Public dependency image
+IDs/digests are recorded. Additional commands included Git status/diff/ancestry,
+Docker version/images/inspect/logs/systemdf, disk checks, official v2.9.8 source
+fetches, host/outside-sandbox/backend DNS diagnostics, source-policy comparison,
+Python compilation, secret review and bundle/real-import verification. No global
+Docker volume prune or unrelated PostgreSQL cleanup was performed.
 
-Mandatory blockers are DNS and physical-retention validation. Other unexecuted checks: all five non-JWT alert threshold/firing/recovery experiments, external delivery, grouping/silences/mutes, exhaustive missing-data fault injection, forced source rotation/long pipeline outage/positions loss, Loki/Grafana backup restore and migration of existing production volumes. Grafana UI rendering is not separately browser-tested. Before/after latency, median/p95 overhead, log-growth and alert-delay benchmarks are unmeasured. The Docker resource snapshot is one sample, not a benchmark or MTTD/MTTR claim.
+- [Full active run](p6-recovery-full.json): per-case results, command argv, browser/rotation/network/TLS evidence.
+- [Final P6/P5 recovery](p6-recovery-final.json): final24/110passes, source hashes, lifecycle and all rule-state snapshots.
+- [Final transport and real four-reason ingestion](p6-recovery-transport.json): final-config16TLS/5network passes and actual Alloy/Loki samples.
+- [Separate legacy run](p6-recovery-legacy.json): per-case pass/xfail/DNS results and host checks.
+- [Retention runs/config/log excerpts/object hashes/metrics](p6-recovery-retention.json), [detailed root cause](p6-retention-recovery.md), [official sources](p6-recovery-retention-sources.json).
+- [Alert summary](p6-recovery-alerts.json), [DNS diagnostics](p6-recovery-dns.json), [sanitized proxy diagnosis](p6-recovery-proxy-diagnostics.json).
+- [Initial new-test failure](p6-recovery-initial-p6.json), [zero-test startup failures](p6-recovery-startup-failures.json), [supplemental client checks](p6-recovery-supplemental.json).
+- [Source preservation](p6-recovery-preservation.json), [image provenance](p6-recovery-image-provenance.json), [changed files](p6-recovery-files.txt), [secret review](p6-recovery-secret-review.json).
 
-Old Loki2.9.8/Grafana10.4.2 are retained for bounded compatibility tests and require support/vulnerability review or a validated upgrade before production; version pins are not support certification. Single-node filesystem storage is not HA and has no hard disk quota. Loki has no built-in auth here; private-network peers can forge telemetry. Remote Grafana management requires a verified HTTPS/authenticated boundary; loopback/internal HTTP is not an Internet deployment. Alloy can read selected Docker metadata and rootless/user-namespace layouts are not validated. Retry exhaustion, full disks and rotated source files can lose logs. Audit owners/host admins can tamper; raw host Keycloak identity metadata remains a privacy consideration. Neither privacy compliance nor operational incident-response effectiveness is claimed.
+The external retention evidence archive contains101verified raw synthetic-storage
+files/console logs, including failed runs; its SHA256 and member hashes are in the
+external evidence manifest. The new Git transfer manifest contains the recovery
+commit/tree, approved base, verified bundle hash and real bare-repository import
+checks. Existing P6 evidence and its original commit remain unchanged.
 
-**Stop after P6 candidate testing, local commit and verified bundle. P6 acceptance is BLOCKED; do not begin P7.**
+Remaining limits: platform DNS; production two-hour retention timing/natural
+rollover/marker restart/backup restore; external alert delivery and
+silence/grouping/error/missing-data fault injection; forced source rotation,
+long collector outage/positions loss; production volume migration; standalone
+Grafana UI rendering; before/after latency/p95/overhead/log-growth/MTTD/MTTR
+benchmarks. A prior Docker stats sample is not a benchmark. Logical lookback is
+not physical-deletion proof, and delayed physical retention is not a hard disk
+quota.
+
+Loki2.9.8/Grafana10.4.2 still require support/vulnerability review or validated
+upgrade before production. Filesystem/single-node storage is not HA; Loki's
+private-network peers can forge telemetry. Grafana remote management needs a
+verified HTTPS/authenticated boundary. Retry exhaustion, full disks and rotated
+files can lose logs. Audit owners/host admins can tamper, a compromised runtime
+can append false records, and raw host Keycloak metadata remains a privacy risk.
+No WORM, privacy-compliance, operational response or production readiness claim
+is made.
+
+**STOP after P6 acceptance recovery. Acceptance remains BLOCKED. Do not begin P7.**

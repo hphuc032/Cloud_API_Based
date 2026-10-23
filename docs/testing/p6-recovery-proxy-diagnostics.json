@@ -1,0 +1,21 @@
+{
+  "default_docker_config_path": "/home/agent/.docker/config.json",
+  "default_proxy_configuration": {
+    "default": {
+      "httpProxy": {
+        "scheme": "http",
+        "hostname": "172.31.2.109",
+        "port": 8080,
+        "has_credentials": false
+      },
+      "httpsProxy": {
+        "scheme": "http",
+        "hostname": "172.31.2.109",
+        "port": 8080,
+        "has_credentials": false
+      },
+      "noProxy": "localhost,127.0.0.1,::1"
+    }
+  },
+  "credentials_printed": false
+}

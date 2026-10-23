@@ -23,7 +23,7 @@ Alloy1.14.1 is digest-pinned. The P6 Kong overlay loads the tracked `p6-telemetr
 
 Alloy persists file positions and batches256KiB/1second, with10second request timeout and bounded retry backoff500ms–5s ×10. There is no durable remote-write WAL guarantee here. Prolonged outages, rotated source logs, positions loss, container recreation, disk full or exhausted retries can lose logs. Position replay and Loki deduplication behavior require actual restart testing. Refresh the mount manifest after recreation. No exactly-once delivery claim is made.
 
-Loki retains filesystem chunks/index on a new named volume, single replica/in-memory ring, schema v11 boltdb-shipper24hour index. Target retention168hours (physical deletion validation is currently BLOCKED; do not claim enforced retention), compactor1minute, physical delete delay2hours, two workers. Ingestion2MiB/s, burst4MiB, max query1000series/5000entries. Docker source files10MiB×3 provide a hard local source bound; Loki volume itself has no hard filesystem quota. Monitor host capacity separately; no storage exporter or measured storage alert is implemented. Query limits are not disk limits. Backup filesystem/index consistently during a controlled stop and rehearse restore on an isolated clone; production backup/restore is not certified by configuration alone.
+Loki retains filesystem chunks/index on a new named volume, single replica/in-memory ring, schema v11 boltdb-shipper24hour index. Target physical retention168hours (two independent accelerated fresh-volume recovery experiments passed; the production2hour delay is not wall-clock certified), logical max_query_lookback168hours, compactor1minute, physical delete delay2hours, two workers. Ingestion2MiB/s, burst4MiB, max query1000series/5000entries. Docker source files10MiB×3 provide a hard local source bound; Loki volume itself has no hard filesystem quota. Monitor host capacity separately; no storage exporter or measured storage alert is implemented. Query limits are not disk limits. Backup filesystem/index consistently during a controlled stop and rehearse restore on an isolated clone; production backup/restore is not certified by configuration alone.
 
 ## Migration comparison and rollback
 
@@ -50,4 +50,67 @@ If remote/local ancestry diverges, stop for review; never force-push or rewrite 
 
 The operator helper `python3 docker/render_collector.py --project PROJECT --mount-root EMPTY_DIRECTORY --output collector.json` validates exact Compose project membership, one instance of each selected service and the Docker json-file path shape before generating mounts. This helper runs on the authorized host; Alloy itself receives no Docker API access. Public provisioning directories need0755 and public configuration files0644 for nonroot images; secrets/private key modes are unchanged. Alloy runs with a read-only root, all capabilities dropped and no-new-privileges, with only its positions volume and temporary memory filesystem writable.
 
-Final recovery command: `python3 tests/p6/run.py --focus telemetry`. This focused acceptance recovery includes P6 telemetry/lifecycle, the full110-case P5 API suite,145-case active OIDC/P2/P1 pytest suite, original P2 TLS host tests, network/privilege checks and actual transport-reason Loki queries. It does not substitute for the separately recorded browser/identity/rotation and legacy phases. `python3 tests/p6/retention.py` is a mandatory failing storage experiment until physical expiry is independently confirmed. No failing test is skipped or disabled.
+Original P6 focused recovery command: `python3 tests/p6/run.py --focus telemetry`. This focused acceptance recovery includes P6 telemetry/lifecycle, the full110-case P5 API suite,145-case active OIDC/P2/P1 pytest suite, original P2 TLS host tests, network/privilege checks and actual transport-reason Loki queries. It does not substitute for the separately recorded browser/identity/rotation and legacy phases. `python3 tests/p6/retention.py` now proves physical expiry independently with two passing fresh-volume recovery repeats; preserve the original failed evidence. P6 acceptance still requires real external DNS. No failing test is skipped or disabled.
+
+
+## Acceptance recovery storage probe
+
+Run `python3 tests/p6/retention.py` repeatedly against fresh disposable volumes only.
+The probe identifies physical chunks by decoding each filesystem object key and
+matching its event timestamp, records size/SHA256, gracefully stops Loki to hand
+over its active BoltDB shard, restarts it, and requires both old query count zero
+and successful chunk deletion plus disappearance of that exact old object. An
+independent querier reads the shared object store read-only, with its own temporary
+index cache; it never queries the writer/ingester. The current object/query and
+SHA256 must remain unchanged. Source/runtime configuration and logs are saved
+under the random project directory in `tests/p6/artifacts/`.
+
+Loki 2.9.8 uses 15-minute write-time BoltDB shards with a one-minute safety buffer;
+`/flush` alone does not make a new active shard available to the compactor. An
+8-minute timeout is insufficient to diagnose failed retention. A graceful stop
+forces supported index handover. The test keeps 168h retention and only accelerates
+compaction, deletion delay, flush, index cache validity and shipper resync. It
+admits old samples only in the disposable probe. Single-binary filesystem Loki
+retains local writer index snapshots and can return cached historical chunks even
+after deletion from shared storage. The independent reader isolates shared-store
+expiry from this cache visibility. Production max_query_lookback168h enforces
+logical expiry while caches converge. The writer is also queried before/after
+deletion; the independent reader explicitly sets max_query_lookback0s so a query
+filter cannot stand in for shared-store index expiry or physical deletion. Single-binary recent queries use ingester storage; `query_store_only` alone is not a
+valid shortcut for verifying the current sample. No direct delete API is used.
+
+The production 2h deletion delay remains unchanged and is not validated by a
+wall-clock two-hour experiment. Naturally rolling shards, production-volume
+migration and backup/restore still require separate validation. Do not shorten
+production deletion delay: it protects readers while index/cache updates spread.
+Loki receives explicit empty proxy variables/NO_PROXY for its private filesystem
+and RPC deployment; re-review that boundary if adding a remote object store.
+
+The five additional alert experiments generate authentic rejection/conflict,
+ownership, SSRF, 429 and controlled backend-outage events; the actual Grafana
+engine must show inactive -> pending -> firing -> inactive. They use the unchanged
+1m windows, 10s group evaluation and 30s pending duration. No notification delivery
+is implied. See the recovery evidence and latest acceptance status in the report.
+
+The acceptance-recovery sequence also executes the full P6 runner, `--focus hardening` after correcting the new alert assertion, and the isolated legacy P3 runner. The cloud-local legacy overlay applies the same private-Loki proxy exclusion to accommodate this execution environment; it preserves the original schema, Promtail collector, TLS/DNS assertions and application behavior. See the current report for all actual phase outcomes; no successful retention/alert result clears the external DNS gate.
+
+## Recovery-only rollback
+
+This recovery keeps Loki2.9.8, v11/24h filesystem storage and the existing audit
+schema; no storage conversion or application migration is introduced. Preserve
+P6 Loki/Alloy volumes and evidence before stopping a candidate. Review a restored
+configuration against a disposable clone first. Restoring the original P6
+configuration removes the logical168h query bound and the explicit private-proxy
+guard; its original retention acceptance was BLOCKED, so restoring it is not a
+retention PASS. Keep environment-required private RPC proxy exclusions under
+review. A recovery-only observability rollback changes no application grants,
+OIDC/RBAC/HMAC/CSP or TLS policy. The separate full P5 rollback/grant procedure
+above applies only when rolling back the entire application release. Never
+remove production volumes, rewrite previous commits, or weaken TLS/DNS checks.
+
+`python3 tests/p6/run.py --focus transport` is a supplemental fresh-volume
+transport check: it runs the existing5network/privilege/Alloy host checks and all
+16P2 TLS/mTLS assertions, then verifies actual collection of the four sanitized
+TLS verification reasons. It does not replace the full active, P6/P5, browser,
+rotation or legacy phases, and cannot clear their real-DNS failures. The other
+focus modes retain their existing test calls and assertions.

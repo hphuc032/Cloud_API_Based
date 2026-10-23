@@ -1,0 +1,317 @@
+{
+  "phase": "initial-p6",
+  "pytest": {
+    "p6-junit.xml": {
+      "counts": {
+        "passed": 23,
+        "failed": 1,
+        "error": 0,
+        "expected_failure": 0,
+        "skipped": 0
+      },
+      "cases": [
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_gateway_boundary_and_sensitive_query",
+          "time": "2.244",
+          "status": "passed"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_success_correlation",
+          "time": "2.228",
+          "status": "passed"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_wrong_claims_ingestion[change0]",
+          "time": "3.543",
+          "status": "passed"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_wrong_claims_ingestion[change1]",
+          "time": "2.224",
+          "status": "passed"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_admin_denial",
+          "time": "2.233",
+          "status": "passed"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_bola_denial",
+          "time": "2.285",
+          "status": "passed"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_webhook_signatures_retry_conflict",
+          "time": "6.721",
+          "status": "passed"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_ssrf_telemetry[http://127.0.0.1]",
+          "time": "2.228",
+          "status": "passed"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_ssrf_telemetry[http://10.0.0.1]",
+          "time": "2.184",
+          "status": "passed"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_ssrf_telemetry[http://169.254.169.254]",
+          "time": "2.158",
+          "status": "passed"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_validation_redaction",
+          "time": "1.381",
+          "status": "passed"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_audit_transaction_and_privileges",
+          "time": "0.554",
+          "status": "passed"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_grafana_dashboards_queries_and_rules",
+          "time": "2.134",
+          "status": "passed"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_keycloak_login_failure_collected",
+          "time": "2.445",
+          "status": "passed"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_gateway_rate_limit_collected",
+          "time": "75.244",
+          "status": "passed"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_actual_grafana_engine_firing_and_recovery",
+          "time": "79.008",
+          "status": "passed"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_ssrf_rbac_is_not_destination_denial",
+          "time": "2.319",
+          "status": "passed"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_product_and_order_audit_commits",
+          "time": "3.910",
+          "status": "passed"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_role_and_activation_audit[change0]",
+          "time": "0.859",
+          "status": "passed"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_role_and_activation_audit[change1]",
+          "time": "1.138",
+          "status": "passed"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_settings_errors_and_repr_do_not_echo_credentials",
+          "time": "0.057",
+          "status": "passed"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_identity_mapping_rejection_collected[unmapped]",
+          "time": "2.290",
+          "status": "passed"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_identity_mapping_rejection_collected[disabled]",
+          "time": "2.296",
+          "status": "passed"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_four_additional_rule_transitions",
+          "time": "28.269",
+          "status": "failed",
+          "message": "AssertionError"
+        }
+      ]
+    }
+  },
+  "evidence": {
+    "p6-alert-evaluation.json": {
+      "rule": "p6-jwt-rejections",
+      "actual_engine": true,
+      "initial_state": "inactive",
+      "external_delivery_tested": false,
+      "states": [
+        {
+          "state": "inactive",
+          "health": "ok"
+        },
+        {
+          "state": "inactive",
+          "health": "ok"
+        },
+        {
+          "state": "inactive",
+          "health": "ok"
+        },
+        {
+          "state": "inactive",
+          "health": "ok"
+        },
+        {
+          "state": "pending",
+          "health": "ok"
+        },
+        {
+          "state": "pending",
+          "health": "ok"
+        },
+        {
+          "state": "pending",
+          "health": "ok"
+        },
+        {
+          "state": "pending",
+          "health": "ok"
+        },
+        {
+          "state": "pending",
+          "health": "ok"
+        },
+        {
+          "state": "pending",
+          "health": "ok"
+        },
+        {
+          "state": "pending",
+          "health": "ok"
+        },
+        {
+          "state": "pending",
+          "health": "ok"
+        },
+        {
+          "state": "pending",
+          "health": "ok"
+        },
+        {
+          "state": "pending",
+          "health": "ok"
+        },
+        {
+          "state": "pending",
+          "health": "ok"
+        },
+        {
+          "state": "pending",
+          "health": "ok"
+        },
+        {
+          "state": "pending",
+          "health": "ok"
+        },
+        {
+          "state": "pending",
+          "health": "ok"
+        },
+        {
+          "state": "pending",
+          "health": "ok"
+        },
+        {
+          "state": "pending",
+          "health": "ok"
+        },
+        {
+          "state": "pending",
+          "health": "ok"
+        },
+        {
+          "state": "firing",
+          "health": "ok"
+        },
+        {
+          "state": "firing",
+          "health": "ok"
+        },
+        {
+          "state": "firing",
+          "health": "ok"
+        },
+        {
+          "state": "firing",
+          "health": "ok"
+        },
+        {
+          "state": "firing",
+          "health": "ok"
+        },
+        {
+          "state": "firing",
+          "health": "ok"
+        },
+        {
+          "state": "firing",
+          "health": "ok"
+        },
+        {
+          "state": "firing",
+          "health": "ok"
+        },
+        {
+          "state": "firing",
+          "health": "ok"
+        },
+        {
+          "state": "firing",
+          "health": "ok"
+        },
+        {
+          "state": "firing",
+          "health": "ok"
+        },
+        {
+          "state": "firing",
+          "health": "ok"
+        },
+        {
+          "state": "firing",
+          "health": "ok"
+        },
+        {
+          "state": "firing",
+          "health": "ok"
+        },
+        {
+          "state": "inactive",
+          "health": "ok"
+        }
+      ]
+    }
+  },
+  "project": "cloud-api-p6-c7fcf02e17ec",
+  "scope": "P6 pytest only; other phase files present at collection time were historical and are deliberately excluded."
+}

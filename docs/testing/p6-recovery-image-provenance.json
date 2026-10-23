@@ -1,0 +1,18 @@
+{
+  "grafana/loki:2.9.8": {
+    "Id": "sha256:105db0731131ce0a837c6b422d2c96d4e26eed348f1168c884815bf2052e1212",
+    "RepoDigests": [
+      "grafana/loki@sha256:8b5bd7748d0e4da66cd741ac276e485517514af0bea32167e27c0e1a95bcf8aa"
+    ],
+    "Architecture": "amd64",
+    "Os": "linux"
+  },
+  "python:3.11-slim": {
+    "Id": "sha256:b4403f3b7acf5e0700a5dd4e7ab01456d62b557a208a04f8a42d3470d93b5730",
+    "RepoDigests": [
+      "python@sha256:cce12316475d7d56d605f76e1d811d0dc4e7227f2d4afd29951521264f504ff8"
+    ],
+    "Architecture": "amd64",
+    "Os": "linux"
+  }
+}

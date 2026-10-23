@@ -1,0 +1,21 @@
+[
+  {
+    "classification": "Docker default config path was read-only; configured supported writable DOCKER_CONFIG on rerun",
+    "accepted_tests": 0,
+    "log_sha256": "d510f4b1949f7aa4db26ee0ef1a4daf2f07a4e5372f0925195a95bcfe433b337",
+    "diagnostic_lines": [
+      "mkdir /home/agent/.docker/buildx: read-only file system",
+      "CalledProcessError: Command '['docker', 'compose', '--env-file', '/dev/null', '-p', 'cloud-api-p6-2119d07d8bc3', '-f', '/workspace/Cloud_API_Based/docker/docker-compose.yml', '-f', '/workspace/Cloud_API_Based/tests/p1/compose.yml', '-f', '/workspace/Cloud_API_Based/tests/p2/compose.yml', '-f', '/workspace/Cloud_API_Based/tests/p3/compose.yml', '-f', '/workspace/Cloud_API_Based/docker/p4-compose.yml', '-f', '/workspace/Cloud_API_Based/tests/p4/compose.yml', '-f', '/workspace/Cloud_API_Based/tests/p5/compose.yml', '-f', '/workspace/Cloud_API_Based/docker/p6-compose.yml', '-f', '/workspace/Cloud_API_Based/tests/p6/compose.yml', '-f', '/workspace/.cloud-api/p6-build.json', '-f', '/workspace/.cloud-api/p5-mounted-source.yml', 'build']' returned non-zero exit status 1."
+    ],
+    "exit_code": 1
+  },
+  {
+    "classification": "Mounted source hash guard rejected source/context mismatch before pytest; exact changed names unavailable from that earlier generic error",
+    "accepted_tests": 0,
+    "log_sha256": "b02f1b81a1b1e5fa338996d9d982a26ef85190d10fbad5fec3c7355bb10c973e",
+    "diagnostic_lines": [
+      "RuntimeError: Built container sources differ from the checkout"
+    ],
+    "exit_code": 1
+  }
+]

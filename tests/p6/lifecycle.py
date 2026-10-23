@@ -27,8 +27,17 @@ elif stage=='recovered':
  ingested('backend','http_request',r.headers['x-request-id'])
  data['new_event_after_restart']=True
 elif stage=='outage':
- with http_client('https://kong:8443') as c:
-  r=c.get('/health');assert r.status_code in (502,503)
+ from alert_recovery import grafana,observe,query_values,save
+ with grafana() as gc:
+  uids=['p6-upstream-errors'];initial=observe(gc,uids,'inactive')
+  with http_client('https://kong:8443') as c:
+   for _ in range(8):
+    r=c.get('/health');assert r.status_code in (502,503)
+  ingested('kong','upstream_error',r.headers['x-request-id'])
+  values=query_values(gc,uids);firing=observe(gc,uids,'firing',65)
+  recovery=observe(gc,uids,'inactive',110)
+  save('upstream-errors',{'passed':True,'external_delivery_tested':False,'initial':initial,'queries':values,'firing':firing,'recovery':recovery})
+  assert any(s['rules'][uids[0]]['state']=='pending' for s in firing)
  ingested('kong','upstream_error',r.headers['x-request-id'])
  data['controlled_backend_outage']={'status':r.status_code,'request_id':r.headers['x-request-id'],'ingested':True}
 else:raise ValueError(stage)

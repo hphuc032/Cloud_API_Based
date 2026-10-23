@@ -26,7 +26,7 @@ def module(name, path):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--focus',choices=['browser','rotation','hardening','telemetry'],
+    parser.add_argument('--focus',choices=['browser','rotation','hardening','telemetry','transport'],
                         help='Fresh disposable focused recovery; never replaces the full suite')
     focus=parser.parse_args().focus
     artifacts = ROOT / 'tests/p6/artifacts'
@@ -125,7 +125,10 @@ def main():
             expected={name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in paths}
             code='import hashlib,json;from pathlib import Path;paths='+repr(paths)+';print(json.dumps({name:hashlib.sha256(Path(path).read_bytes()).hexdigest() for name,path in paths.items()}))'
             actual=json.loads(run(compose+['run','--rm','--no-deps','-T','tests','python','-c',code],capture_output=True,text=True).stdout)
-            if actual!=expected:raise RuntimeError('Built container sources differ from the checkout')
+            if actual!=expected:
+                differences={name:{'expected':value,'actual':actual.get(name)} for name,value in expected.items() if actual.get(name)!=value}
+                (artifacts/'source-mismatch.json').write_text(json.dumps(differences,indent=2))
+                raise RuntimeError('Built container sources differ from the checkout: '+', '.join(differences))
             (artifacts/'image-source-evidence.json').write_text(json.dumps({'verified':True,'sha256':actual},indent=2))
             run(compose+['run','--rm','--no-deps','-T','-e','PYTHONPATH=/app:/tests/p0:/tests/p3',
                          'tests','python','/tests/p4/bootstrap.py'])
@@ -133,20 +136,22 @@ def main():
             run(compose+['run','--rm','--no-deps','-T','kong-keys'])
             run(compose+['exec','-T','kong','kong','config','parse','/gateway/kong.json'],capture_output=True)
             run(compose+['exec','-T','kong','kong','reload'],capture_output=True)
-            capture('p6-observability',compose+['run','--rm','--no-deps','-T','tests','python','/tests/p6/launch.py'])
-            lifecycle=['tests','python','/tests/p6/lifecycle.py']
-            capture('p6-lifecycle-initial',compose+['run','--rm','--no-deps','-T',*lifecycle,'initial'])
-            run(compose+['restart','alloy','loki'])
-            run(compose+['up','--no-deps','-d','--wait','--wait-timeout','90','loki'])
-            capture('p6-lifecycle-recovered',compose+['run','--rm','--no-deps','-T',*lifecycle,'recovered'])
-            run(compose+['stop','backend'])
-            try:
-                capture('p6-controlled-outage',compose+['run','--rm','--no-deps','-T',*lifecycle,'outage'])
-            finally:
-                run(compose+['up','--no-deps','-d','--wait','--wait-timeout','90','backend'])
-            if focus=='telemetry':
-                capture('p5-hardening',compose+['run','--rm','--no-deps','-T','tests','python','/tests/p5/launch.py'])
-                capture('p4-pytest',compose+['run','--rm','--no-deps','-T','tests','python','/tests/p4/launch.py'])
+            if focus!='transport':
+                capture('p6-observability',compose+['run','--rm','--no-deps','-T','tests','python','/tests/p6/launch.py'])
+                lifecycle=['tests','python','/tests/p6/lifecycle.py']
+                capture('p6-lifecycle-initial',compose+['run','--rm','--no-deps','-T',*lifecycle,'initial'])
+                run(compose+['restart','alloy','loki'])
+                run(compose+['up','--no-deps','-d','--wait','--wait-timeout','90','loki'])
+                capture('p6-lifecycle-recovered',compose+['run','--rm','--no-deps','-T',*lifecycle,'recovered'])
+                run(compose+['stop','backend'])
+                try:
+                    capture('p6-controlled-outage',compose+['run','--rm','--no-deps','-T',*lifecycle,'outage'])
+                finally:
+                    run(compose+['up','--no-deps','-d','--wait','--wait-timeout','90','backend'])
+            if focus in ('telemetry','transport'):
+                if focus=='telemetry':
+                    capture('p5-hardening',compose+['run','--rm','--no-deps','-T','tests','python','/tests/p5/launch.py'])
+                    capture('p4-pytest',compose+['run','--rm','--no-deps','-T','tests','python','/tests/p4/launch.py'])
                 if env.get('P5_PROBE_BASE_IMAGE'):
                     run(['docker','tag',env['P5_PROBE_BASE_IMAGE'],project+'-tests'])
                 if env.get('CLOUD_API_KEEP_PROBES')=='1':worker.start(run,project)
@@ -172,17 +177,17 @@ def main():
                 tls = module('p4_tls_checks',ROOT/'tests/p2/host_checks.py')
                 results['p2-host'] = 0 if tls.execute(run,compose,project,pki,secret_dir,artifacts,pki_module) else 1
                 worker.close(run)
-            if focus not in ('rotation','hardening','telemetry'):
+            if focus not in ('rotation','hardening','telemetry','transport'):
                 results['p4-browser'] = 0 if module('p5_sdk_browser',ROOT/'tests/p4/browser_host.py').execute(
                     run,compose,project,metadata,pki,identity_pki,fixtures,temp,artifacts,env) else 1
             browser_file = ROOT/'tests/p5/browser_host.py'
-            if focus in ('rotation','hardening','telemetry'):pass
+            if focus in ('rotation','hardening','telemetry','transport'):pass
             elif browser_file.exists():
                 results['browser'] = 0 if module('p4_browser',browser_file).execute(
                     run,compose,project,metadata,pki,identity_pki,fixtures,temp,artifacts,env) else 1
             else:results['browser-unexecuted'] = 1
             rotation_file = ROOT/'tests/p4/rotation_host.py'
-            if focus in ('browser','hardening','telemetry'):pass
+            if focus in ('browser','hardening','telemetry','transport'):pass
             elif rotation_file.exists():
                 results['key-rotation'] = 0 if module('p4_rotation',rotation_file).execute(
                     run,compose,project,artifacts,fixtures,env) else 1

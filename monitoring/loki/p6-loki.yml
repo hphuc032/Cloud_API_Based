@@ -36,6 +36,8 @@ storage_config:
 limits_config:
   allow_structured_metadata: false
   retention_period: 168h
+  # Enforce logical expiry even while local writer/chunk caches converge.
+  max_query_lookback: 168h
   ingestion_rate_mb: 2
   ingestion_burst_size_mb: 4
   max_query_series: 1000

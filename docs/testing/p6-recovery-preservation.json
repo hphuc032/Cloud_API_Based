@@ -1,0 +1,50 @@
+{
+  "base_commit": "3d6f2ff3b2d8fe432df000b6c4beaebec744f291",
+  "application_and_security_configuration": [
+    {
+      "path": "backend",
+      "unchanged_from_p6": true
+    },
+    {
+      "path": "gateway",
+      "unchanged_from_p6": true
+    },
+    {
+      "path": "frontend",
+      "unchanged_from_p6": true
+    },
+    {
+      "path": "docker/p2-compose.yml",
+      "unchanged_from_p6": true
+    },
+    {
+      "path": "docker/p4-compose.yml",
+      "unchanged_from_p6": true
+    },
+    {
+      "path": "docker/p5-compose.yml",
+      "unchanged_from_p6": true
+    },
+    {
+      "path": "docker/keycloak",
+      "unchanged_from_p6": true
+    },
+    {
+      "path": "docker/docker-compose.yml",
+      "unchanged_from_p6": true
+    },
+    {
+      "path": "docker/pki.py",
+      "unchanged_from_p6": true
+    },
+    {
+      "path": "monitoring/alloy",
+      "unchanged_from_p6": true
+    },
+    {
+      "path": "monitoring/p6-grafana/alerting/security.json",
+      "unchanged_from_p6": true
+    }
+  ],
+  "assertion": "Application/auth/RBAC/SSRF/HMAC/CSP/PKI/Kong policy sources unchanged. Only P6 Loki config/private proxy environment and test/docs changed. Runtime isolation/privilege/TLS checks are recorded separately."
+}

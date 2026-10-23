@@ -1,0 +1,30 @@
+[
+  {
+    "url": "https://raw.githubusercontent.com/grafana/loki/v2.9.8/pkg/storage/stores/shipper/index/table.go",
+    "sha256": "592b332aff0c56ebccdc6a484bddbdac9e629afebcf0f0db97ea91b1dee44e38"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/grafana/loki/v2.9.8/pkg/storage/stores/shipper/index/table_manager.go",
+    "sha256": "a2700cb1c1e5e5771ef3df5658b44f5cf129cf211a7191adf973c134f78372fd"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/grafana/loki/v2.9.8/pkg/storage/stores/indexshipper/compactor/retention/metrics.go",
+    "sha256": "b5b3327fc796dee29d576ae942f3f529f4957f38fafc175a1b5107c9a9d65763"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/grafana/loki/v2.9.8/pkg/storage/stores/indexshipper/compactor/retention/marker.go",
+    "sha256": "862883e4f8a3a8144575c39328c1597e04272ac8b3d16e81485df90a8bf6b50a"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/grafana/loki/v2.9.8/pkg/storage/stores/indexshipper/compactor/compactor.go",
+    "sha256": "60559d5b4f415ce2db9b56d1bf10e5683a1dfc2218a3e3a72aacd40c7d28822f"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/grafana/loki/v2.9.8/pkg/querier/querier.go",
+    "sha256": "63bd17e3f6963cd0c4a46adf1db54ee730c2f420f1bcc041e11be76663de4a14"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/grafana/loki/v2.9.8/pkg/loki/modules.go",
+    "sha256": "b8973a5888a8b6637ae8b683aa3d44b6c546ea299bdce773cc0c44ff185dc1e1"
+  }
+]

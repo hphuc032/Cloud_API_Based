@@ -24,7 +24,7 @@ API/Kong remain outside the observability network. Only a disposable test client
 
 General API telemetry deliberately excludes IPs, actor IDs, subjects, email, query strings, headers, raw bodies and exception messages. Request IDs and normalized application routes stay inside JSON, not labels. Labels are project/service; filename is dropped. Gateway uses a fixed `gateway` route label rather than recording arbitrary paths. Precise per-route gateway rejection dashboards are therefore unavailable.
 
-Raw Uvicorn access logs are disabled; Kong access format contains only status/timing/generated response ID. Proxy error logging is disabled in the P6 overlay to avoid URL/authorization-code context; coarse upstream status signals remain. Explicit TLS root-cause telemetry is not claimed. Keycloak raw Docker events can contain personal identity metadata, so host access and Docker rotation remain part of the privacy boundary; only constant LOGIN_ERROR events enter Loki.
+Raw Uvicorn access logs are disabled; Kong access format contains only status/timing/generated response ID. Proxy error logging is disabled in the P6 overlay to avoid URL/authorization-code context; coarse upstream status signals remain. The bounded OSS log-phase relay emits four constant upstream TLS verification reasons without raw request/error context; these worker events remain unattributed. Actual P2 rejection and Loki-ingestion evidence verifies the four reasons. Keycloak raw Docker events can contain personal identity metadata, so host access and Docker rotation remain part of the privacy boundary; only constant LOGIN_ERROR events enter Loki.
 
 ## Threat-to-control changes
 

@@ -68,3 +68,5 @@ P6 observability candidate: [architecture](docs/monitoring/p6-architecture.md),
 [event/privacy coverage](docs/monitoring/security-events.md),
 [deployment and rollback](docs/deployment/p6-observability.md), and
 [actual acceptance results](docs/testing/p6-results.md).
+
+P6 acceptance recovery đã chứng minh xóa chunk vật lý trên hai volume mới độc lập, giữ nguyên retention168h và mẫu hiện tại; cả sáu alert có firing/recovery thật. Nghiệm thu vẫn **BLOCKED** bởi ba test ID DNS công cộng. Xem [retention recovery](docs/testing/p6-retention-recovery.md) và [kết quả hiện tại](docs/testing/p6-results.md). Không push từ Workspace A, không bắt đầu P7.

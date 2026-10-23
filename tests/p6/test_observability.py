@@ -256,3 +256,39 @@ def test_identity_mapping_rejection_collected(client,tokens,users,db,kind):
  assert r.status_code==401
  rows=ingested('backend','identity_unmapped_or_disabled',r.headers['x-request-id'])
  assert all(not {'sub','email','password','authorization','user_id'} & row.keys() for row in rows)
+
+
+def test_four_additional_rule_transitions(backend,headers,legacy_order):
+ from alert_recovery import observe,query_values,save
+ uids=['p6-webhook-attacks','p6-ownership-denials','p6-ssrf-denials','p6-rate-limits']
+ with grafana() as gc:
+  initial=observe(gc,uids,'inactive')
+  # Use actual enrolled mTLS for backend events, preserving all auth decisions.
+  staff=headers('staff');customer=headers('customer_b')
+  # Align a fresh fixed window without altering counters or rate policies.
+  time.sleep(61-int(time.time())%60)
+  with http_client('https://kong:8443') as c:
+   for _ in range(60):assert c.get('/api/v1/users/').status_code==401
+   for _ in range(12):assert c.get('/api/v1/users/').status_code==429
+  rids=[]
+  for _ in range(8):
+   body=raw(envelope());r=backend.post('/api/v1/webhooks/receive',content=body,headers={'Content-Type':'application/json'})
+   assert r.status_code==401;rids.append(('webhook_rejected',r.headers['x-request-id']))
+   r=backend.get('/api/v1/orders/'+legacy_order,headers=customer)
+   assert r.status_code==403;rids.append(('ownership_denied',r.headers['x-request-id']))
+   r=backend.post('/api/v1/security/fetch-url',headers=staff,json={'url':'http://127.0.0.1'})
+   assert r.status_code==403;rids.append(('ssrf_denied',r.headers['x-request-id']))
+  body=raw(envelope())
+  assert backend.post('/api/v1/webhooks/receive',content=body,headers=signed(body)).status_code==200
+  changed=json.loads(body);changed['order_id']='different';body=raw(changed)
+  r=backend.post('/api/v1/webhooks/receive',content=body,headers=signed(body));assert r.status_code==409
+  rids.append(('webhook_conflict',r.headers['x-request-id']))
+  for event,rid in rids:ingested('backend',event,rid)
+  ingested('kong','rate_limited')
+  values=query_values(gc,uids)
+  firing=observe(gc,uids,'firing',65)
+  recovery=observe(gc,uids,'inactive',110)
+  data={'passed':True,'external_delivery_tested':False,'initial':initial,'queries':values,'firing':firing,'recovery':recovery,'real_request_ids':rids}
+  for uid in uids:
+   assert any(s['rules'][uid]['state']=='pending' for s in firing),(uid,'No pending state observed')
+  save('four-rules',data)

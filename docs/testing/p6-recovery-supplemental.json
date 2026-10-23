@@ -1,0 +1,31 @@
+{
+  "utc": "2026-10-23T05:36:53.529392+00:00",
+  "commands": [
+    {
+      "argv": [
+        "node",
+        "tests/p3/test_client.mjs"
+      ],
+      "returncode": 0,
+      "stdout": "PASS: 19 client assertions for valid responses and state/nonce/issuer/audience/expiry rejection"
+    },
+    {
+      "argv": [
+        "node",
+        "tests/p4/test_session.mjs"
+      ],
+      "returncode": 0,
+      "stdout": "PASS: memory-only lifecycle, exact PKCE/nonce adapter initialization, concurrent refresh, logout, legacy cleanup and fail-closed outage cases"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "returncode": 0,
+      "stdout": ""
+    }
+  ],
+  "scope": "Actual supplemental reruns; client assertions are not pytest case counts."
+}

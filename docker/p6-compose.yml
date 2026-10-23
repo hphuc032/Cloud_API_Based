@@ -53,6 +53,17 @@ services:
       driver: json-file
       options: {max-size: 10m, max-file: '3'}
   loki:
+    # All Loki RPC/object-store traffic stays on private networks. Prevent inherited
+    # runtime proxy settings from sending internal gRPC to an external proxy.
+    environment:
+      HTTP_PROXY: ''
+      HTTPS_PROXY: ''
+      ALL_PROXY: ''
+      http_proxy: ''
+      https_proxy: ''
+      all_proxy: ''
+      NO_PROXY: '*'
+      no_proxy: '*'
     volumes:
       - ../monitoring/loki/p6-loki.yml:/etc/loki/loki-config.yml:ro
       - p6_loki_data:/loki
