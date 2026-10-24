@@ -18,7 +18,7 @@ issuance trả 410 trong P4, không tự fallback. Compose chính giữ chế đ
 Workspace A. Kết quả nghiệm thu thực tế nằm trong [P4 test report](docs/testing/p4-results.md).
 P5 đã triển khai và kiểm thử webhook receipt nguyên tử, SSRF IPv4/IPv6, validation,
 gateway, CSP và demo phản hồi thật trên ứng viên OIDC. **CONDITIONAL: gate DNS còn bị chặn**; xem [P5 results](docs/testing/p5-results.md)
-và [thiết kế/control matrix/rollback](docs/security/p5-design.md). Không bắt đầu P6/P7.
+và [thiết kế/control matrix/rollback](docs/security/p5-design.md). Đây là mốc P5 lịch sử; xem trạng thái P7 hiện tại bên dưới.
 
 ## Kiểm thử local
 
@@ -69,4 +69,22 @@ P6 observability candidate: [architecture](docs/monitoring/p6-architecture.md),
 [deployment and rollback](docs/deployment/p6-observability.md), and
 [actual acceptance results](docs/testing/p6-results.md).
 
-P6 acceptance recovery đã chứng minh xóa chunk vật lý trên hai volume mới độc lập, giữ nguyên retention168h và mẫu hiện tại; cả sáu alert có firing/recovery thật. Nghiệm thu vẫn **BLOCKED** bởi ba test ID DNS công cộng. Xem [retention recovery](docs/testing/p6-retention-recovery.md) và [kết quả hiện tại](docs/testing/p6-results.md). Không push từ Workspace A, không bắt đầu P7.
+P6 acceptance recovery đã chứng minh xóa chunk vật lý trên hai volume mới độc lập, giữ nguyên retention168h và mẫu hiện tại; cả sáu alert có firing/recovery thật. Nghiệm thu vẫn **BLOCKED** bởi ba test ID DNS công cộng. Xem [retention recovery](docs/testing/p6-retention-recovery.md) và [kết quả hiện tại](docs/testing/p6-results.md). P7 được cho phép riêng với các gate còn mở; không push từ Workspace A.
+
+## P7 final validation candidate
+
+P7 adds isolated end-to-end/attack evidence, paired application/identity PostgreSQL
+restore rehearsals, deployment/rollback documentation and a capstone demo guide.
+Runtime authentication, business authorization, TLS, schema and P6 policies remain
+unchanged. **Strict release acceptance is BLOCKED**: the user deferred the three
+real-DNS cases, and current dependency/image advisory scanning is incomplete.
+No production rollout or Workspace A push is authorized.
+
+- [Actual test results and A–R release matrix](docs/testing/p7-results.md)
+- [Security assessment and architecture](docs/security/p7-final-assessment.md)
+- [Attack-to-control matrix](docs/security/p7-attack-matrix.md)
+- [Reproducible lab deployment](docs/deployment/p7-reproducibility.md)
+- [Paired backup/recovery and rollback scope](docs/deployment/p7-backup-recovery.md)
+- [Release/Workspace B transfer checklist](docs/deployment/p7-release-checklist.md)
+- [Security demonstration](docs/demo/p7-security-demo.md)
+- [P7 runner and evidence curation](tests/p7/README.md)

@@ -1,0 +1,5 @@
+# Test-only controls; public-DNS deferral is recorded by run.py, never a PASS.
+services:
+  tests:
+    environment:
+      P7_DEFER_PUBLIC_DNS: ${P7_DEFER_PUBLIC_DNS:-0}

@@ -1,0 +1,1373 @@
+{
+  "project": "cloud-api-p7-e73da2045657",
+  "observations": [
+    {
+      "service": "kong",
+      "event_type": "token_rejected",
+      "request_id": "cc6b44a6-3b2a-4f1c-852e-fea27ae405f2",
+      "samples": [
+        {
+          "service": "kong",
+          "event_type": "token_rejected",
+          "status_code": 401,
+          "upstream_status": "",
+          "request_id": "cc6b44a6-3b2a-4f1c-852e-fea27ae405f2",
+          "route": "gateway",
+          "duration_seconds": 0.002
+        }
+      ]
+    },
+    {
+      "service": "kong",
+      "event_type": "token_rejected",
+      "request_id": "761cdb13-8631-4ef5-8468-ffd6f0f56215",
+      "samples": [
+        {
+          "service": "kong",
+          "event_type": "token_rejected",
+          "status_code": 401,
+          "upstream_status": "",
+          "request_id": "761cdb13-8631-4ef5-8468-ffd6f0f56215",
+          "route": "gateway",
+          "duration_seconds": 0.002
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "token_rejected",
+      "request_id": "c84207b6-96ab-4c7c-891c-8ac186632cbc",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:16:50.161342+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "token_rejected",
+          "event_outcome": "denied",
+          "request_id": "c84207b6-96ab-4c7c-891c-8ac186632cbc",
+          "method": "GET",
+          "route": "/api/v1/auth/me",
+          "status_code": 401,
+          "duration_ms": 63.161
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "token_rejected",
+      "request_id": "c983fc98-cf6a-4e05-8d91-ed59bf6fae8c",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:16:52.360789+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "token_rejected",
+          "event_outcome": "denied",
+          "request_id": "c983fc98-cf6a-4e05-8d91-ed59bf6fae8c",
+          "method": "GET",
+          "route": "/api/v1/auth/me",
+          "status_code": 401,
+          "duration_ms": 1.214
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "rbac_denied",
+      "request_id": "cea9c00b-bc76-42f6-85cc-adda05bb8ca1",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:16:53.521726+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "rbac_denied",
+          "event_outcome": "denied",
+          "request_id": "cea9c00b-bc76-42f6-85cc-adda05bb8ca1",
+          "method": "PATCH",
+          "route": "/api/v1/users/{user_id}",
+          "status_code": 403,
+          "duration_ms": 44.155
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ownership_denied",
+      "request_id": "4417bb13-deb3-47ab-8615-d1b229ba0137",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:16:55.696626+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ownership_denied",
+          "event_outcome": "denied",
+          "request_id": "4417bb13-deb3-47ab-8615-d1b229ba0137",
+          "method": "GET",
+          "route": "/api/v1/orders/{order_id}",
+          "status_code": 403,
+          "duration_ms": 7.991
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "webhook_rejected",
+      "request_id": "f1cc9280-39fe-4fbd-8116-597cc102193f",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:16:57.841879+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "webhook_rejected",
+          "event_outcome": "denied",
+          "request_id": "f1cc9280-39fe-4fbd-8116-597cc102193f",
+          "method": "POST",
+          "route": "/api/v1/webhooks/receive",
+          "status_code": 403,
+          "duration_ms": 2.11
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "webhook_replayed",
+      "request_id": "00bf0afc-820b-458a-829e-6a902c89dedc",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:17:01.110847+00:00",
+          "service": "fastapi",
+          "level": "info",
+          "event_type": "webhook_replayed",
+          "event_outcome": "success",
+          "request_id": "00bf0afc-820b-458a-829e-6a902c89dedc",
+          "method": "POST",
+          "route": "/api/v1/webhooks/receive",
+          "status_code": 200,
+          "duration_ms": 9.502
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "webhook_conflict",
+      "request_id": "b419226a-f4a4-4714-8f3f-4b03f3c96f93",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:17:03.228116+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "webhook_conflict",
+          "event_outcome": "denied",
+          "request_id": "b419226a-f4a4-4714-8f3f-4b03f3c96f93",
+          "method": "POST",
+          "route": "/api/v1/webhooks/receive",
+          "status_code": 409,
+          "duration_ms": 5.746
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ssrf_denied",
+      "request_id": "3a4cae5c-456f-41da-89b4-313c57631d3b",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:17:04.378822+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ssrf_denied",
+          "event_outcome": "denied",
+          "request_id": "3a4cae5c-456f-41da-89b4-313c57631d3b",
+          "method": "POST",
+          "route": "/api/v1/security/fetch-url",
+          "status_code": 403,
+          "duration_ms": 6.048
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ssrf_denied",
+      "request_id": "38be6cd8-2bb0-4d1c-8595-0b65892cc68a",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:17:06.541162+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ssrf_denied",
+          "event_outcome": "denied",
+          "request_id": "38be6cd8-2bb0-4d1c-8595-0b65892cc68a",
+          "method": "POST",
+          "route": "/api/v1/security/fetch-url",
+          "status_code": 403,
+          "duration_ms": 4.268
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ssrf_denied",
+      "request_id": "6149e1b7-0b30-497d-8fcd-6821242b593c",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:17:08.707012+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ssrf_denied",
+          "event_outcome": "denied",
+          "request_id": "6149e1b7-0b30-497d-8fcd-6821242b593c",
+          "method": "POST",
+          "route": "/api/v1/security/fetch-url",
+          "status_code": 403,
+          "duration_ms": 5.365
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ssrf_denied",
+      "request_id": "e5f02d09-1b61-4f79-87a9-1f1772a24cda",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:17:10.863357+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ssrf_denied",
+          "event_outcome": "denied",
+          "request_id": "e5f02d09-1b61-4f79-87a9-1f1772a24cda",
+          "method": "POST",
+          "route": "/api/v1/security/fetch-url",
+          "status_code": 403,
+          "duration_ms": 4.235
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ssrf_denied",
+      "request_id": "3e8fb0a3-8b1d-4f9c-8d34-4aeb18ecabf2",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:17:13.017994+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ssrf_denied",
+          "event_outcome": "denied",
+          "request_id": "3e8fb0a3-8b1d-4f9c-8d34-4aeb18ecabf2",
+          "method": "POST",
+          "route": "/api/v1/security/fetch-url",
+          "status_code": 403,
+          "duration_ms": 5.044
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ssrf_denied",
+      "request_id": "91403be6-1ef5-455e-8eab-278aeecf60b3",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:17:14.243519+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ssrf_denied",
+          "event_outcome": "denied",
+          "request_id": "91403be6-1ef5-455e-8eab-278aeecf60b3",
+          "method": "POST",
+          "route": "/api/v1/security/fetch-url",
+          "status_code": 403,
+          "duration_ms": 13.639
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ssrf_denied",
+      "request_id": "84ca5827-5cd3-47c0-8648-4a509d72409c",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:17:16.403210+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ssrf_denied",
+          "event_outcome": "denied",
+          "request_id": "84ca5827-5cd3-47c0-8648-4a509d72409c",
+          "method": "POST",
+          "route": "/api/v1/security/fetch-url",
+          "status_code": 403,
+          "duration_ms": 3.886
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ssrf_denied",
+      "request_id": "d9afa2be-ef5d-43e7-8cf8-57e06fe8e85e",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:17:18.602120+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ssrf_denied",
+          "event_outcome": "denied",
+          "request_id": "d9afa2be-ef5d-43e7-8cf8-57e06fe8e85e",
+          "method": "POST",
+          "route": "/api/v1/security/fetch-url",
+          "status_code": 403,
+          "duration_ms": 3.778
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "validation_failed",
+      "request_id": "771eb44b-4837-4ca1-8fb7-0b2f7844d27a",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:17:20.800967+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "validation_failed",
+          "event_outcome": "denied",
+          "request_id": "771eb44b-4837-4ca1-8fb7-0b2f7844d27a",
+          "method": "GET",
+          "route": "/api/v1/users/{user_id}",
+          "status_code": 422,
+          "duration_ms": 4.277
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "validation_failed",
+      "request_id": "15debc40-f199-43c6-80d3-62cb5930ba17",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:17:22.957476+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "validation_failed",
+          "event_outcome": "denied",
+          "request_id": "15debc40-f199-43c6-80d3-62cb5930ba17",
+          "method": "GET",
+          "route": "/api/v1/users/{user_id}",
+          "status_code": 422,
+          "duration_ms": 5.558
+        }
+      ]
+    },
+    {
+      "service": "kong",
+      "event_type": "token_rejected",
+      "request_id": "9cdc2264-0ba5-4405-81af-692f40ef98f1",
+      "samples": [
+        {
+          "service": "kong",
+          "event_type": "token_rejected",
+          "status_code": 401,
+          "upstream_status": "",
+          "request_id": "9cdc2264-0ba5-4405-81af-692f40ef98f1",
+          "route": "gateway",
+          "duration_seconds": 0.004
+        }
+      ]
+    },
+    {
+      "service": "kong",
+      "event_type": "http_request",
+      "request_id": "9597d11e-1a25-4539-834d-d71a37fe0613",
+      "samples": [
+        {
+          "service": "kong",
+          "event_type": "http_request",
+          "status_code": 200,
+          "upstream_status": "200",
+          "request_id": "9597d11e-1a25-4539-834d-d71a37fe0613",
+          "route": "gateway",
+          "duration_seconds": 0.009
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "http_request",
+      "request_id": "9597d11e-1a25-4539-834d-d71a37fe0613",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:18:54.038615+00:00",
+          "service": "fastapi",
+          "level": "info",
+          "event_type": "http_request",
+          "event_outcome": "success",
+          "request_id": "9597d11e-1a25-4539-834d-d71a37fe0613",
+          "method": "GET",
+          "route": "/health",
+          "status_code": 200,
+          "duration_ms": 0.742
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "token_rejected",
+      "request_id": "7042ebfa-0a98-4737-855c-31c829f50d9a",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:18:56.750372+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "token_rejected",
+          "event_outcome": "denied",
+          "request_id": "7042ebfa-0a98-4737-855c-31c829f50d9a",
+          "method": "GET",
+          "route": "/api/v1/auth/me",
+          "status_code": 401,
+          "duration_ms": 194.936
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "token_rejected",
+      "request_id": "d4eeffc1-c66a-4d88-8855-8177ef15dc4b",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:18:57.963394+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "token_rejected",
+          "event_outcome": "denied",
+          "request_id": "d4eeffc1-c66a-4d88-8855-8177ef15dc4b",
+          "method": "GET",
+          "route": "/api/v1/auth/me",
+          "status_code": 401,
+          "duration_ms": 7.437
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "rbac_denied",
+      "request_id": "aa41c6f3-bd3e-4dc1-8e94-8e55e31084d0",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:19:00.149906+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "rbac_denied",
+          "event_outcome": "denied",
+          "request_id": "aa41c6f3-bd3e-4dc1-8e94-8e55e31084d0",
+          "method": "GET",
+          "route": "/api/v1/users/",
+          "status_code": 403,
+          "duration_ms": 34.418
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ownership_denied",
+      "request_id": "e90d8d91-fdae-42b6-8bab-ce36d95f39db",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:19:02.459055+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ownership_denied",
+          "event_outcome": "denied",
+          "request_id": "e90d8d91-fdae-42b6-8bab-ce36d95f39db",
+          "method": "GET",
+          "route": "/api/v1/orders/{order_id}",
+          "status_code": 403,
+          "duration_ms": 114.184
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "webhook_rejected",
+      "request_id": "dbec6007-218c-455b-8a22-978ef4026c43",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:19:04.617195+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "webhook_rejected",
+          "event_outcome": "denied",
+          "request_id": "dbec6007-218c-455b-8a22-978ef4026c43",
+          "method": "POST",
+          "route": "/api/v1/webhooks/receive",
+          "status_code": 401,
+          "duration_ms": 1.994
+        }
+      ]
+    },
+    {
+      "service": "kong",
+      "event_type": "http_request",
+      "request_id": "dbec6007-218c-455b-8a22-978ef4026c43",
+      "samples": [
+        {
+          "service": "kong",
+          "event_type": "http_request",
+          "status_code": 401,
+          "upstream_status": "401",
+          "request_id": "dbec6007-218c-455b-8a22-978ef4026c43",
+          "route": "gateway",
+          "duration_seconds": 0.004
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "webhook_rejected",
+      "request_id": "115d68bf-41a9-4a3c-8da5-2ad59abe2749",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:19:06.836247+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "webhook_rejected",
+          "event_outcome": "denied",
+          "request_id": "115d68bf-41a9-4a3c-8da5-2ad59abe2749",
+          "method": "POST",
+          "route": "/api/v1/webhooks/receive",
+          "status_code": 403,
+          "duration_ms": 3.307
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "webhook_replayed",
+      "request_id": "16d6f95d-9d13-4afb-8978-737afa2c0f6d",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:19:08.946758+00:00",
+          "service": "fastapi",
+          "level": "info",
+          "event_type": "webhook_replayed",
+          "event_outcome": "success",
+          "request_id": "16d6f95d-9d13-4afb-8978-737afa2c0f6d",
+          "method": "POST",
+          "route": "/api/v1/webhooks/receive",
+          "status_code": 200,
+          "duration_ms": 3.917
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "webhook_conflict",
+      "request_id": "9e5e8a59-528e-4907-8da8-bffc581f7991",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:19:11.033288+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "webhook_conflict",
+          "event_outcome": "denied",
+          "request_id": "9e5e8a59-528e-4907-8da8-bffc581f7991",
+          "method": "POST",
+          "route": "/api/v1/webhooks/receive",
+          "status_code": 409,
+          "duration_ms": 5.072
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ssrf_denied",
+      "request_id": "36d124bf-1c3b-4106-811c-0acc99c666e1",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:19:12.165253+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ssrf_denied",
+          "event_outcome": "denied",
+          "request_id": "36d124bf-1c3b-4106-811c-0acc99c666e1",
+          "method": "POST",
+          "route": "/api/v1/security/fetch-url",
+          "status_code": 403,
+          "duration_ms": 6.229
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ssrf_denied",
+      "request_id": "39c0f64c-45ce-4f0b-8de4-546489d12098",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:19:14.670480+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ssrf_denied",
+          "event_outcome": "denied",
+          "request_id": "39c0f64c-45ce-4f0b-8de4-546489d12098",
+          "method": "POST",
+          "route": "/api/v1/security/fetch-url",
+          "status_code": 403,
+          "duration_ms": 56.731
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ssrf_denied",
+      "request_id": "a2c2907c-0f7b-41e9-8633-7dd0021b9e5e",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:19:16.902506+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ssrf_denied",
+          "event_outcome": "denied",
+          "request_id": "a2c2907c-0f7b-41e9-8633-7dd0021b9e5e",
+          "method": "POST",
+          "route": "/api/v1/security/fetch-url",
+          "status_code": 403,
+          "duration_ms": 10.693
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "validation_failed",
+      "request_id": "6ec7527e-a524-4542-8620-12a8a4d09505",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:19:19.080174+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "validation_failed",
+          "event_outcome": "denied",
+          "request_id": "6ec7527e-a524-4542-8620-12a8a4d09505",
+          "method": "POST",
+          "route": "/api/v1/products/",
+          "status_code": 422,
+          "duration_ms": 5.039
+        }
+      ]
+    },
+    {
+      "service": "keycloak",
+      "event_type": "login_failed",
+      "request_id": null,
+      "samples": [
+        {
+          "service": "keycloak",
+          "event_type": "login_failed",
+          "status_code": 401
+        },
+        {
+          "service": "keycloak",
+          "event_type": "login_failed",
+          "status_code": 401
+        }
+      ]
+    },
+    {
+      "service": "kong",
+      "event_type": "rate_limited",
+      "request_id": null,
+      "samples": [
+        {
+          "service": "kong",
+          "event_type": "rate_limited",
+          "status_code": 429,
+          "upstream_status": "",
+          "request_id": "a6beb2a0-f047-4ff4-8783-34558dfa7118",
+          "route": "gateway",
+          "duration_seconds": 0.001
+        }
+      ]
+    },
+    {
+      "service": "kong",
+      "event_type": "token_rejected",
+      "request_id": null,
+      "samples": [
+        {
+          "service": "kong",
+          "event_type": "token_rejected",
+          "status_code": 401,
+          "upstream_status": "",
+          "request_id": "15c650e2-43a6-44fe-8b60-1bec521c31ef",
+          "route": "gateway",
+          "duration_seconds": 0.0
+        },
+        {
+          "service": "kong",
+          "event_type": "token_rejected",
+          "status_code": 401,
+          "upstream_status": "",
+          "request_id": "209804f4-79ea-4c7b-807e-77119ec08d63",
+          "route": "gateway",
+          "duration_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "rbac_denied",
+      "request_id": "d2f2c00d-93a3-4a93-8809-07d63ace8033",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:22:30.192687+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "rbac_denied",
+          "event_outcome": "denied",
+          "request_id": "d2f2c00d-93a3-4a93-8809-07d63ace8033",
+          "method": "POST",
+          "route": "/api/v1/security/fetch-url",
+          "status_code": 403,
+          "duration_ms": 39.829
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "identity_unmapped_or_disabled",
+      "request_id": "e68c56d3-fafc-4d16-868c-7a9b2dfb861f",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:22:39.161885+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "identity_unmapped_or_disabled",
+          "event_outcome": "denied",
+          "request_id": "e68c56d3-fafc-4d16-868c-7a9b2dfb861f",
+          "method": "GET",
+          "route": "/api/v1/auth/me",
+          "status_code": 401,
+          "duration_ms": 5.343
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "identity_unmapped_or_disabled",
+      "request_id": "b26d0519-4244-4317-89d7-1921e830d1ea",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:22:40.305093+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "identity_unmapped_or_disabled",
+          "event_outcome": "denied",
+          "request_id": "b26d0519-4244-4317-89d7-1921e830d1ea",
+          "method": "GET",
+          "route": "/api/v1/auth/me",
+          "status_code": 401,
+          "duration_ms": 4.025
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "webhook_rejected",
+      "request_id": "64e14934-ca4b-40bd-b495-803296a06dd4",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.639020+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "webhook_rejected",
+          "event_outcome": "denied",
+          "request_id": "64e14934-ca4b-40bd-b495-803296a06dd4",
+          "method": "POST",
+          "route": "/api/v1/webhooks/receive",
+          "status_code": 401,
+          "duration_ms": 2.374
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ownership_denied",
+      "request_id": "5cde7e62-2635-4452-8476-946ac497e173",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.649349+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ownership_denied",
+          "event_outcome": "denied",
+          "request_id": "5cde7e62-2635-4452-8476-946ac497e173",
+          "method": "GET",
+          "route": "/api/v1/orders/{order_id}",
+          "status_code": 403,
+          "duration_ms": 8.662
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ssrf_denied",
+      "request_id": "5cdc6485-a027-48da-88f6-4a89d700cc05",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.655202+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ssrf_denied",
+          "event_outcome": "denied",
+          "request_id": "5cdc6485-a027-48da-88f6-4a89d700cc05",
+          "method": "POST",
+          "route": "/api/v1/security/fetch-url",
+          "status_code": 403,
+          "duration_ms": 4.409
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "webhook_rejected",
+      "request_id": "07ee4142-5235-4c1d-a0fb-8696bb673351",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.657152+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "webhook_rejected",
+          "event_outcome": "denied",
+          "request_id": "07ee4142-5235-4c1d-a0fb-8696bb673351",
+          "method": "POST",
+          "route": "/api/v1/webhooks/receive",
+          "status_code": 401,
+          "duration_ms": 0.698
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ownership_denied",
+      "request_id": "00601297-5aca-45c7-bdfe-71a32e20a713",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.664112+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ownership_denied",
+          "event_outcome": "denied",
+          "request_id": "00601297-5aca-45c7-bdfe-71a32e20a713",
+          "method": "GET",
+          "route": "/api/v1/orders/{order_id}",
+          "status_code": 403,
+          "duration_ms": 3.249
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ssrf_denied",
+      "request_id": "0093a889-b0dd-4eb7-ac77-49044c94542d",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.668542+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ssrf_denied",
+          "event_outcome": "denied",
+          "request_id": "0093a889-b0dd-4eb7-ac77-49044c94542d",
+          "method": "POST",
+          "route": "/api/v1/security/fetch-url",
+          "status_code": 403,
+          "duration_ms": 2.988
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "webhook_rejected",
+      "request_id": "d0490208-16fb-44c9-aee0-272ec0d81277",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.670810+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "webhook_rejected",
+          "event_outcome": "denied",
+          "request_id": "d0490208-16fb-44c9-aee0-272ec0d81277",
+          "method": "POST",
+          "route": "/api/v1/webhooks/receive",
+          "status_code": 401,
+          "duration_ms": 0.652
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ownership_denied",
+      "request_id": "84d668d9-d275-46f8-9b1c-f93e20ca5c18",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.679198+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ownership_denied",
+          "event_outcome": "denied",
+          "request_id": "84d668d9-d275-46f8-9b1c-f93e20ca5c18",
+          "method": "GET",
+          "route": "/api/v1/orders/{order_id}",
+          "status_code": 403,
+          "duration_ms": 4.496
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ssrf_denied",
+      "request_id": "f929a8d5-729e-4d49-81a9-3bfb0a3229b3",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.686451+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ssrf_denied",
+          "event_outcome": "denied",
+          "request_id": "f929a8d5-729e-4d49-81a9-3bfb0a3229b3",
+          "method": "POST",
+          "route": "/api/v1/security/fetch-url",
+          "status_code": 403,
+          "duration_ms": 4.534
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "webhook_rejected",
+      "request_id": "1f846caf-5e8d-402c-b9d6-81ee0d6d66e5",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.688543+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "webhook_rejected",
+          "event_outcome": "denied",
+          "request_id": "1f846caf-5e8d-402c-b9d6-81ee0d6d66e5",
+          "method": "POST",
+          "route": "/api/v1/webhooks/receive",
+          "status_code": 401,
+          "duration_ms": 0.689
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ownership_denied",
+      "request_id": "93ccbe31-1c4a-4d62-80e2-4872ccb1ed14",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.692533+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ownership_denied",
+          "event_outcome": "denied",
+          "request_id": "93ccbe31-1c4a-4d62-80e2-4872ccb1ed14",
+          "method": "GET",
+          "route": "/api/v1/orders/{order_id}",
+          "status_code": 403,
+          "duration_ms": 2.896
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ssrf_denied",
+      "request_id": "5a1bef9f-5ffd-483e-a1c0-28167454e802",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.696369+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ssrf_denied",
+          "event_outcome": "denied",
+          "request_id": "5a1bef9f-5ffd-483e-a1c0-28167454e802",
+          "method": "POST",
+          "route": "/api/v1/security/fetch-url",
+          "status_code": 403,
+          "duration_ms": 2.666
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "webhook_rejected",
+      "request_id": "e0db9d7f-5a2f-4230-b64f-72a84d3c7a6f",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.698258+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "webhook_rejected",
+          "event_outcome": "denied",
+          "request_id": "e0db9d7f-5a2f-4230-b64f-72a84d3c7a6f",
+          "method": "POST",
+          "route": "/api/v1/webhooks/receive",
+          "status_code": 401,
+          "duration_ms": 0.595
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ownership_denied",
+      "request_id": "65eae570-9421-4042-a7b3-3359cf6d7bc9",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.702805+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ownership_denied",
+          "event_outcome": "denied",
+          "request_id": "65eae570-9421-4042-a7b3-3359cf6d7bc9",
+          "method": "GET",
+          "route": "/api/v1/orders/{order_id}",
+          "status_code": 403,
+          "duration_ms": 3.227
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ssrf_denied",
+      "request_id": "6d223737-c514-446c-9e78-9564af0a925e",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.707141+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ssrf_denied",
+          "event_outcome": "denied",
+          "request_id": "6d223737-c514-446c-9e78-9564af0a925e",
+          "method": "POST",
+          "route": "/api/v1/security/fetch-url",
+          "status_code": 403,
+          "duration_ms": 3.102
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "webhook_rejected",
+      "request_id": "15e1118f-4caf-4213-be5b-4b0d7dd9e04a",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.709361+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "webhook_rejected",
+          "event_outcome": "denied",
+          "request_id": "15e1118f-4caf-4213-be5b-4b0d7dd9e04a",
+          "method": "POST",
+          "route": "/api/v1/webhooks/receive",
+          "status_code": 401,
+          "duration_ms": 0.854
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ownership_denied",
+      "request_id": "23dce6ef-c56e-40e8-b062-d9d463def5e1",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.714259+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ownership_denied",
+          "event_outcome": "denied",
+          "request_id": "23dce6ef-c56e-40e8-b062-d9d463def5e1",
+          "method": "GET",
+          "route": "/api/v1/orders/{order_id}",
+          "status_code": 403,
+          "duration_ms": 3.012
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ssrf_denied",
+      "request_id": "0f08c52a-3e63-4c31-a934-975513ce650a",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.718178+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ssrf_denied",
+          "event_outcome": "denied",
+          "request_id": "0f08c52a-3e63-4c31-a934-975513ce650a",
+          "method": "POST",
+          "route": "/api/v1/security/fetch-url",
+          "status_code": 403,
+          "duration_ms": 2.638
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "webhook_rejected",
+      "request_id": "70717e5a-2d07-416b-8f0a-49462e0a163c",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.720020+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "webhook_rejected",
+          "event_outcome": "denied",
+          "request_id": "70717e5a-2d07-416b-8f0a-49462e0a163c",
+          "method": "POST",
+          "route": "/api/v1/webhooks/receive",
+          "status_code": 401,
+          "duration_ms": 0.566
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ownership_denied",
+      "request_id": "44513957-0267-421a-a404-9d0203f8722b",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.724136+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ownership_denied",
+          "event_outcome": "denied",
+          "request_id": "44513957-0267-421a-a404-9d0203f8722b",
+          "method": "GET",
+          "route": "/api/v1/orders/{order_id}",
+          "status_code": 403,
+          "duration_ms": 2.874
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ssrf_denied",
+      "request_id": "d34cd937-eb3c-4f87-beb5-2e38294e8c55",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.728370+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ssrf_denied",
+          "event_outcome": "denied",
+          "request_id": "d34cd937-eb3c-4f87-beb5-2e38294e8c55",
+          "method": "POST",
+          "route": "/api/v1/security/fetch-url",
+          "status_code": 403,
+          "duration_ms": 2.997
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "webhook_rejected",
+      "request_id": "65398a75-47ae-4582-b4a7-d158630b085b",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.730205+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "webhook_rejected",
+          "event_outcome": "denied",
+          "request_id": "65398a75-47ae-4582-b4a7-d158630b085b",
+          "method": "POST",
+          "route": "/api/v1/webhooks/receive",
+          "status_code": 401,
+          "duration_ms": 0.603
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ownership_denied",
+      "request_id": "1d8642da-8418-4e22-bc44-c47b743767c5",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.734333+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ownership_denied",
+          "event_outcome": "denied",
+          "request_id": "1d8642da-8418-4e22-bc44-c47b743767c5",
+          "method": "GET",
+          "route": "/api/v1/orders/{order_id}",
+          "status_code": 403,
+          "duration_ms": 2.874
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "ssrf_denied",
+      "request_id": "1c57a725-ef5f-47f3-8717-ec2090f53d96",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.738211+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "ssrf_denied",
+          "event_outcome": "denied",
+          "request_id": "1c57a725-ef5f-47f3-8717-ec2090f53d96",
+          "method": "POST",
+          "route": "/api/v1/security/fetch-url",
+          "status_code": 403,
+          "duration_ms": 2.534
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "webhook_conflict",
+      "request_id": "bd72dd0c-7e46-4a7a-a416-1ac3573e99ee",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:23:01.751593+00:00",
+          "service": "fastapi",
+          "level": "warning",
+          "event_type": "webhook_conflict",
+          "event_outcome": "denied",
+          "request_id": "bd72dd0c-7e46-4a7a-a416-1ac3573e99ee",
+          "method": "POST",
+          "route": "/api/v1/webhooks/receive",
+          "status_code": 409,
+          "duration_ms": 3.353
+        }
+      ]
+    },
+    {
+      "service": "kong",
+      "event_type": "rate_limited",
+      "request_id": null,
+      "samples": [
+        {
+          "service": "kong",
+          "event_type": "rate_limited",
+          "status_code": 429,
+          "upstream_status": "",
+          "request_id": "0319b255-6fe8-444a-8243-6a3a19ca4fa2",
+          "route": "gateway",
+          "duration_seconds": 0.0
+        },
+        {
+          "service": "kong",
+          "event_type": "rate_limited",
+          "status_code": 429,
+          "upstream_status": "",
+          "request_id": "11ee8461-d1f4-4fd8-8d2f-a0e20675c450",
+          "route": "gateway",
+          "duration_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "service": "kong",
+      "event_type": "http_request",
+      "request_id": "f6904f08-2a61-4c13-828c-edb0a29af657",
+      "samples": [
+        {
+          "service": "kong",
+          "event_type": "http_request",
+          "status_code": 200,
+          "upstream_status": "200",
+          "request_id": "f6904f08-2a61-4c13-828c-edb0a29af657",
+          "route": "gateway",
+          "duration_seconds": 0.017
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "http_request",
+      "request_id": "f6904f08-2a61-4c13-828c-edb0a29af657",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:24:37.366610+00:00",
+          "service": "fastapi",
+          "level": "info",
+          "event_type": "http_request",
+          "event_outcome": "success",
+          "request_id": "f6904f08-2a61-4c13-828c-edb0a29af657",
+          "method": "GET",
+          "route": "/health",
+          "status_code": 200,
+          "duration_ms": 1.122
+        }
+      ]
+    },
+    {
+      "service": "kong",
+      "event_type": "http_request",
+      "request_id": "f6904f08-2a61-4c13-828c-edb0a29af657",
+      "samples": [
+        {
+          "service": "kong",
+          "event_type": "http_request",
+          "status_code": 200,
+          "upstream_status": "200",
+          "request_id": "f6904f08-2a61-4c13-828c-edb0a29af657",
+          "route": "gateway",
+          "duration_seconds": 0.017
+        }
+      ]
+    },
+    {
+      "service": "backend",
+      "event_type": "http_request",
+      "request_id": "fb47a980-57ee-40ed-8046-e53cc567c7a4",
+      "samples": [
+        {
+          "timestamp": "2026-10-24T03:25:22.230950+00:00",
+          "service": "fastapi",
+          "level": "info",
+          "event_type": "http_request",
+          "event_outcome": "success",
+          "request_id": "fb47a980-57ee-40ed-8046-e53cc567c7a4",
+          "method": "GET",
+          "route": "/health",
+          "status_code": 200,
+          "duration_ms": 1.25
+        }
+      ]
+    },
+    {
+      "service": "kong",
+      "event_type": "upstream_error",
+      "request_id": "808dd340-a54b-4528-8458-7deac9ef8807",
+      "samples": [
+        {
+          "service": "kong",
+          "event_type": "upstream_error",
+          "status_code": 502,
+          "upstream_status": "502, 502, 502, 502, 502, 502",
+          "request_id": "808dd340-a54b-4528-8458-7deac9ef8807",
+          "route": "gateway",
+          "duration_seconds": 0.007
+        }
+      ]
+    },
+    {
+      "service": "kong",
+      "event_type": "upstream_error",
+      "request_id": "808dd340-a54b-4528-8458-7deac9ef8807",
+      "samples": [
+        {
+          "service": "kong",
+          "event_type": "upstream_error",
+          "status_code": 502,
+          "upstream_status": "502, 502, 502, 502, 502, 502",
+          "request_id": "808dd340-a54b-4528-8458-7deac9ef8807",
+          "route": "gateway",
+          "duration_seconds": 0.007
+        }
+      ]
+    }
+  ],
+  "security_fields_allowlisted": true
+}

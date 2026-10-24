@@ -1,0 +1,133 @@
+{
+  "strict_release": "BLOCKED",
+  "areas": [
+    {
+      "id": "A",
+      "area": "Functional end-to-end",
+      "status": "PASS",
+      "evidence_scope": "Real Keycloak tokens, Kong HTTPS, backend mTLS, user/product/order APIs; both browser groups"
+    },
+    {
+      "id": "B",
+      "area": "Authentication",
+      "status": "PASS",
+      "evidence_scope": "Real S256, state/nonce, refresh/logout/expired session, retired local issuance, signing rotation/JWKS outage"
+    },
+    {
+      "id": "C",
+      "area": "Authorization / BOLA",
+      "status": "PASS",
+      "evidence_scope": "Current PostgreSQL role/is_active; own/other order and administration; no email linking"
+    },
+    {
+      "id": "D",
+      "area": "Webhook integrity / replay",
+      "status": "PASS",
+      "evidence_scope": "HMAC forgery/retry/conflict, eight concurrent local deliveries, real receipt/transaction rollback"
+    },
+    {
+      "id": "E",
+      "area": "SSRF",
+      "status": "BLOCKED",
+      "evidence_scope": "Nonpublic/mapped/mixed-answer denials pass; actual allowed public DNS success deferred"
+    },
+    {
+      "id": "F",
+      "area": "Input validation",
+      "status": "PASS",
+      "evidence_scope": "Null/invalid price/role/UUID/JSON and SQL-shaped IDs; no partial mutation"
+    },
+    {
+      "id": "G",
+      "area": "HTTPS / mTLS",
+      "status": "PASS",
+      "evidence_scope": "22 socket/certificate cases inside candidate suite plus16 actual host checks and browser CA/SAN"
+    },
+    {
+      "id": "H",
+      "area": "Database least privilege",
+      "status": "PASS",
+      "evidence_scope": "18 candidate privilege cases, five host isolation/grant checks, identity isolation, restored grants"
+    },
+    {
+      "id": "I",
+      "area": "Audit logging",
+      "status": "PASS",
+      "evidence_scope": "Atomic business/audit commit/rollback; runtime INSERT-only; correlation/privacy tests"
+    },
+    {
+      "id": "J",
+      "area": "Alloy / Loki",
+      "status": "PASS",
+      "evidence_scope": "Real events queried; restart preservation; refreshed narrow mounts after backend recreation"
+    },
+    {
+      "id": "K",
+      "area": "Grafana dashboard queries",
+      "status": "PASS",
+      "evidence_scope": "Four provisioned dashboards; all target expressions executed; recovered Grafana verified"
+    },
+    {
+      "id": "L",
+      "area": "Grafana alerting",
+      "status": "PASS",
+      "evidence_scope": "Six unchanged rules real pending/firing/recovery. External notifications NOT EXECUTED"
+    },
+    {
+      "id": "M",
+      "area": "Deployment reproducibility",
+      "status": "PASS",
+      "evidence_scope": "Fresh full/focused projects, secrets, volumes, migrations, realm, source guard, verified dependency bases. Fresh Internet registry rebuild NOT EXECUTED"
+    },
+    {
+      "id": "N",
+      "area": "Backup / restore",
+      "status": "PASS",
+      "evidence_scope": "Paired quiesced DB archives -> two fresh PostgreSQL instances; rows/owners/constraints/grants and recovered real PKCE/API assertions. Cold Loki/Grafana/positions disaster restore NOT EXECUTED"
+    },
+    {
+      "id": "O",
+      "area": "Rollback preparedness",
+      "status": "PASS",
+      "evidence_scope": "Documented P7-to-P6 schema-compatible plan; tested return to original DBs. Historical release deployment/security downgrade NOT EXECUTED"
+    },
+    {
+      "id": "P",
+      "area": "DNS integration",
+      "status": "BLOCKED",
+      "evidence_scope": "Three inherited real-DNS IDs NOT EXECUTED by explicit user instruction; no bypass"
+    },
+    {
+      "id": "Q",
+      "area": "Security / dependencies",
+      "status": "BLOCKED",
+      "evidence_scope": "Runtime/code/secret review recorded; OSV proxy403, retry aborted, no current scanner/image feed; offline npm audit0 is not certification"
+    },
+    {
+      "id": "R",
+      "area": "Documentation / demonstration",
+      "status": "PASS",
+      "evidence_scope": "Tested lab entry points, case traceability, attack matrix, scoped recovery and evidence-based demo guide"
+    }
+  ],
+  "deferred_tests": [
+    {
+      "id": "tests/p1/host_checks.py::test_public_dns_for_current_ssrf_validation",
+      "status": "NOT EXECUTED",
+      "reason": "User explicitly postponed real DNS"
+    },
+    {
+      "id": "tests/p2/test_https_business.py::test_https_ssrf_uses_real_dns_and_preserves_roles[staff-200]",
+      "status": "NOT EXECUTED",
+      "reason": "User explicitly postponed real DNS"
+    },
+    {
+      "id": "tests/p2/test_https_business.py::test_https_ssrf_uses_real_dns_and_preserves_roles[admin-200]",
+      "status": "NOT EXECUTED",
+      "reason": "User explicitly postponed real DNS"
+    }
+  ],
+  "optional_performance": "NOT EXECUTED",
+  "live_advisory_scan": "BLOCKED",
+  "production_cutover": "NOT APPLICABLE"
+}

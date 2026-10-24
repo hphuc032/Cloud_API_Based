@@ -1,0 +1,18 @@
+
+> florasecure-shop@1.0.0 build
+> vite build
+
+vite v6.4.3 building for production...
+transforming...
+✓ 1649 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.73 kB │ gzip:  0.44 kB
+dist/assets/index-Ch-rSwjJ.css   21.48 kB │ gzip:  4.45 kB
+dist/assets/index-Dda8qtX5.js   295.85 kB │ gzip: 93.52 kB
+✓ built in 2.32s
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

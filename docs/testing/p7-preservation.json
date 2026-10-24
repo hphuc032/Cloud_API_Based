@@ -1,0 +1,850 @@
+{
+  "base": "45e025703f6a193aeb5738632d436d52146f12de",
+  "all_equal": true,
+  "files": {
+    "backend/.dockerignore": {
+      "sha256": "580c17efb6e012b088a613093c64a6cc60401659b00b3e0c9fcd3e0fbe7b1b2a",
+      "equal_approved_p6": true
+    },
+    "backend/.env.example": {
+      "sha256": "1e663ee353eb95754672bf0e32a59f408c03866b5d6f4545e8448f4f8d037a47",
+      "equal_approved_p6": true
+    },
+    "backend/Dockerfile": {
+      "sha256": "21114f7b0942f506e5a0bb85ae9cf4936d7a464ad9df28da397a89325adcb914",
+      "equal_approved_p6": true
+    },
+    "backend/alembic.ini": {
+      "sha256": "8e4d1504064f5ba9e4b193093788713c8676cebcd740b5a847f463b07b056fdb",
+      "equal_approved_p6": true
+    },
+    "backend/alembic/env.py": {
+      "sha256": "d4929d92150bb68cf428e3f9754138200a51a5d0799e50b5d2d4f399dac6141a",
+      "equal_approved_p6": true
+    },
+    "backend/alembic/script.py.mako": {
+      "sha256": "114d2c8daf1106848ce42d0c5f13a4d0056ec4205dfc568999d988c131bb8c54",
+      "equal_approved_p6": true
+    },
+    "backend/alembic/versions/0001_initial_schema.py": {
+      "sha256": "9eef94f513b651a6f3acc64b6c12ba1459b4145b699eb48f38a7757a2c75b908",
+      "equal_approved_p6": true
+    },
+    "backend/alembic/versions/0002_external_identities.py": {
+      "sha256": "7b2289055322663150bcfcd4c7f3059e7a26bba848d36594cf3f983298666309",
+      "equal_approved_p6": true
+    },
+    "backend/alembic/versions/0003_webhook_receipts.py": {
+      "sha256": "06aa135c8c2434943a6a7576eae2da1c672eced903a8acd4771a10af72d203ab",
+      "equal_approved_p6": true
+    },
+    "backend/alembic/versions/__init__.py": {
+      "sha256": "6c95114dad64b3f549e94ff190f1201f906dc7c26b2d6b312e16582b57877c00",
+      "equal_approved_p6": true
+    },
+    "backend/app/__init__.py": {
+      "sha256": "b587813128c2bc93e1a24b37641374ea7924ae2d006a803fcf3bb66beb4296fe",
+      "equal_approved_p6": true
+    },
+    "backend/app/auth/__init__.py": {
+      "sha256": "1f2be11b8157c4cae5eee99158b74421d6740dffb7707334e0bc77629b3e851b",
+      "equal_approved_p6": true
+    },
+    "backend/app/auth/dependencies.py": {
+      "sha256": "057c8cf114be61910b0fb52b86768dc07f886e48d8959b14d3669e6d0a95da2f",
+      "equal_approved_p6": true
+    },
+    "backend/app/auth/oidc.py": {
+      "sha256": "91af741d3d0a813eef84877ef2af773d8348f23705dda56cb08c1ccc23b18bba",
+      "equal_approved_p6": true
+    },
+    "backend/app/auth/security.py": {
+      "sha256": "c1d2bff39bfcf44d29830ca469d28f81c3efc575d6f36a55d6f4fce70c0f39da",
+      "equal_approved_p6": true
+    },
+    "backend/app/config.py": {
+      "sha256": "12b40526b483a26701f61983fcc911d90f71f34b8e356ecae4e5a7837d401fed",
+      "equal_approved_p6": true
+    },
+    "backend/app/database/__init__.py": {
+      "sha256": "54c5d5a0fb167bba8874b1cfabacf9bf7895321b20129e1a718abc0c8c6730c0",
+      "equal_approved_p6": true
+    },
+    "backend/app/database/session.py": {
+      "sha256": "6ee913171090887179e4c0230bd4f3d645076a6aa7394bb151c1a7b63dd66e4e",
+      "equal_approved_p6": true
+    },
+    "backend/app/middleware/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "equal_approved_p6": true
+    },
+    "backend/app/middleware/logging.py": {
+      "sha256": "7051541ed3b728ddc4d079e9e5f7007afb40e5a0dc0ab5d71ce5e7f55a2cea40",
+      "equal_approved_p6": true
+    },
+    "backend/app/models/__init__.py": {
+      "sha256": "bf5ef4273361b685df7dd896a40573f85d91502985127f4a8a49be687b5caf7a",
+      "equal_approved_p6": true
+    },
+    "backend/app/models/audit_log.py": {
+      "sha256": "a53ab49ad5f75066750341b05684e6a895d857f3e642b97adeb17b168bcf4edc",
+      "equal_approved_p6": true
+    },
+    "backend/app/models/external_identity.py": {
+      "sha256": "673550083cda2c9be8e72224c9494c340ba5bdfc917d09e6df8fea1d13a69414",
+      "equal_approved_p6": true
+    },
+    "backend/app/models/order.py": {
+      "sha256": "37fbd5c9d0abc43cdbe93523a9807b4ed4e08fcf8afe7dfc8c6a08a370aa1541",
+      "equal_approved_p6": true
+    },
+    "backend/app/models/product.py": {
+      "sha256": "18cc5aeb7027a5a5ab547bb08a61fd8d0342f6354c9d8dbf2e366dfcba937511",
+      "equal_approved_p6": true
+    },
+    "backend/app/models/refresh_token.py": {
+      "sha256": "79eb992c7d668b679177052390d4832620bb03bac1c857fd32178c0fd4164656",
+      "equal_approved_p6": true
+    },
+    "backend/app/models/user.py": {
+      "sha256": "83dd1dc9537e9bbdf2eade7bee38e82527b83f28584debeae45a307204523f04",
+      "equal_approved_p6": true
+    },
+    "backend/app/models/webhook_receipt.py": {
+      "sha256": "62effa857b74813f9944ad0e5ddd3b68a538ea02cf9fbebba62dfe06287e206e",
+      "equal_approved_p6": true
+    },
+    "backend/app/readiness.py": {
+      "sha256": "3c20cdeb4e015918a55ce9b0e9c18cc42b125c0526a898d662473b9345bb4fca",
+      "equal_approved_p6": true
+    },
+    "backend/app/routes/__init__.py": {
+      "sha256": "783f0bf12da8e759ee485a909d6d742e38799fc730040303e8b853840f0394e8",
+      "equal_approved_p6": true
+    },
+    "backend/app/routes/auth.py": {
+      "sha256": "de7862099c558d6acec328e89853201914d6d82b5c495cd9856ebac2cf9fb416",
+      "equal_approved_p6": true
+    },
+    "backend/app/routes/orders.py": {
+      "sha256": "4e7b4096e6e4da2b06e219bdb6d9d64bc471eeeddbccb3bf66aa9eb521b0991f",
+      "equal_approved_p6": true
+    },
+    "backend/app/routes/products.py": {
+      "sha256": "60a04060d5b73867ad712fb7d41efdb947af653e572a70ef9ad3341b76ecd792",
+      "equal_approved_p6": true
+    },
+    "backend/app/routes/security.py": {
+      "sha256": "a4b1677ed4a4e380af030e58de932accfbe1417e35126de59c3851ae68355ede",
+      "equal_approved_p6": true
+    },
+    "backend/app/routes/users.py": {
+      "sha256": "0f214a77807c5193768e9f8c48f695e4e0b4e543814605aee332a5d92cc2cff3",
+      "equal_approved_p6": true
+    },
+    "backend/app/routes/webhooks.py": {
+      "sha256": "28d3d1d2aa624bf0104eeb994a22f5bf2473d57f9164b2141122739ce93f6fd9",
+      "equal_approved_p6": true
+    },
+    "backend/app/schemas/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "equal_approved_p6": true
+    },
+    "backend/app/schemas/order.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "equal_approved_p6": true
+    },
+    "backend/app/schemas/product.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "equal_approved_p6": true
+    },
+    "backend/app/schemas/user.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "equal_approved_p6": true
+    },
+    "backend/app/services/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "equal_approved_p6": true
+    },
+    "backend/app/services/order_service.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "equal_approved_p6": true
+    },
+    "backend/app/services/product_service.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "equal_approved_p6": true
+    },
+    "backend/app/services/user_service.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "equal_approved_p6": true
+    },
+    "backend/app/utils/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "equal_approved_p6": true
+    },
+    "backend/app/utils/security.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "equal_approved_p6": true
+    },
+    "backend/database/schema.sql": {
+      "sha256": "2eb03d43a640581a190eb35509adb266d448419d9af7109321ab32eacc4fb4a8",
+      "equal_approved_p6": true
+    },
+    "backend/deployment/__init__.py": {
+      "sha256": "f739bba9c60238e5a12b5952e5263552612c2b7a9df5b3932dbfa056527e10ae",
+      "equal_approved_p6": true
+    },
+    "backend/deployment/bootstrap.py": {
+      "sha256": "2ae0634da865772ac5cefe1aaa86df86132e66f6a2294e8f13f9152adde241e8",
+      "equal_approved_p6": true
+    },
+    "backend/deployment/common.py": {
+      "sha256": "3e18b09016c216ab7092409b0e30ea0f1289f2052dad985b9d655abc66383d85",
+      "equal_approved_p6": true
+    },
+    "backend/deployment/health.py": {
+      "sha256": "16e82462423125c5b717ccb3068c9d516c56790bf250763a2cf45fbf1fbd2171",
+      "equal_approved_p6": true
+    },
+    "backend/deployment/identity_bootstrap.py": {
+      "sha256": "f795277056cecb7d9e7620491b123df6a826b8231988daaa2957400621be7bcd",
+      "equal_approved_p6": true
+    },
+    "backend/deployment/identity_mapping.py": {
+      "sha256": "a070c0c75e5374859aa80ff2fb9077bfced94dd484f742d37438ef35d5fda44a",
+      "equal_approved_p6": true
+    },
+    "backend/deployment/identity_review.py": {
+      "sha256": "1443fde6a27bdcbffae0f5ea3b74af1b09d4b37e98001dda96c8463bf31f3252",
+      "equal_approved_p6": true
+    },
+    "backend/deployment/jwks.py": {
+      "sha256": "b20933378e7c23f2adb37166dabc7bfac3d27d3ea83fef4b8a15294a04838794",
+      "equal_approved_p6": true
+    },
+    "backend/deployment/kong_jwks.py": {
+      "sha256": "da3248c8cdb7216624deb54023eb71c9241b34695681d752f83bb5171b33dfb8",
+      "equal_approved_p6": true
+    },
+    "backend/deployment/migrate.py": {
+      "sha256": "6fb1a7943d2a6a89d122e9f1fd87bd9acde47a97ec2a985b378a6216c2624e0d",
+      "equal_approved_p6": true
+    },
+    "backend/deployment/p5_gateway.py": {
+      "sha256": "bda0a0843cbfb9c664a4a7b64addaa17ec0b45ab71fa023d2ffc89fe607dec7a",
+      "equal_approved_p6": true
+    },
+    "backend/deployment/p6_gateway.py": {
+      "sha256": "c52154e0b9d604b1fc5a4cf30d6d5fc2a678a7637832d992d60fc5740c302dcb",
+      "equal_approved_p6": true
+    },
+    "backend/deployment/serve.py": {
+      "sha256": "181ee250cf77b16b6399878f214d70a024c28268deb9f01b4811cbdfa5d96421",
+      "equal_approved_p6": true
+    },
+    "backend/deployment/tls.py": {
+      "sha256": "7c06eff11bb0c337628b466bb71ead28eec5f27a7cf08ff1cfc4db2037376fd0",
+      "equal_approved_p6": true
+    },
+    "backend/main.py": {
+      "sha256": "d95c073117f253481290faf1ddbc8a0b8e1a097342bf25fa376feeffb1899d67",
+      "equal_approved_p6": true
+    },
+    "backend/nginx/default.conf": {
+      "sha256": "2088b9193c667f5a65e5cc3111382439a3bfdbdc0ab9450f5bf5658a67439d86",
+      "equal_approved_p6": true
+    },
+    "backend/requirements.txt": {
+      "sha256": "0198985a6fb7eb868fa6cf721683e44af2f01d15c28334f43009147a5a5fe827",
+      "equal_approved_p6": true
+    },
+    "docker/.env.example": {
+      "sha256": "542376ad0e69fcba1dbb24b4e073f654c4ee674fa1a70102168ed52c7c900dcb",
+      "equal_approved_p6": true
+    },
+    "docker/docker-compose.yml": {
+      "sha256": "932237fc437b64569383a8baeeba07e7ceffb840fefa0f3b149182088469134d",
+      "equal_approved_p6": true
+    },
+    "docker/generate_secrets.py": {
+      "sha256": "bec6696008b2a94c7dd093ef8c417a4424511fe17bd323de39306bba6fa35096",
+      "equal_approved_p6": true
+    },
+    "docker/keycloak-entrypoint.sh": {
+      "sha256": "7971720fab5fa6ed72da18e745aebbfd9b709a8b7acbccbe5b4c3cc2735e0130",
+      "equal_approved_p6": true
+    },
+    "docker/keycloak/HealthProbe.java": {
+      "sha256": "5bea1452d68b61d730f9267838a3f0ec65276f8afadecacc778e2c27e21a629f",
+      "equal_approved_p6": true
+    },
+    "docker/keycloak/florasecure-p4-realm.json": {
+      "sha256": "639b8806ec2edbe9018ef325276292b832caca9b00edad44959cf03b29d2f811",
+      "equal_approved_p6": true
+    },
+    "docker/keycloak/florasecure-p5-realm.json": {
+      "sha256": "7e926ec62bcf114bd9c324198f7e0d6d7d53e6ca73a5f52798ea14b9cb04a091",
+      "equal_approved_p6": true
+    },
+    "docker/keycloak/florasecure-realm.json": {
+      "sha256": "eb449c609ac5671ef2d8cdfc9f5565df4497fc0e080c9290c701436294a36ae2",
+      "equal_approved_p6": true
+    },
+    "docker/keycloak/nginx.conf": {
+      "sha256": "51fa18decca80947f6cd7f55b1d2910142244a0a3c32288d5912cf693499a752",
+      "equal_approved_p6": true
+    },
+    "docker/keycloak/p6-nginx.conf": {
+      "sha256": "7229ba4f73abfbbb208d6b1922dfd81a60922761a33e2eab96199cf686168f93",
+      "equal_approved_p6": true
+    },
+    "docker/p4-compose.yml": {
+      "sha256": "b4de53bf2d79a0955a7203fd5bb902f7f41eb6ebb44062a8610b2c73e34befcc",
+      "equal_approved_p6": true
+    },
+    "docker/p5-compose.yml": {
+      "sha256": "c196c6b1e8f46b4cc02d3ed9a88e0b9b49da8cfdff81fd7fc115708812900fca",
+      "equal_approved_p6": true
+    },
+    "docker/p6-compose.yml": {
+      "sha256": "f6ac2782525a0811841d1841835616b72d99da57e2c9900cf10ebe095da88e65",
+      "equal_approved_p6": true
+    },
+    "docker/pki-requirements.txt": {
+      "sha256": "70c867286e0e8fae9c36dff5d479b0a017c1b2892e03382cbf772608714cce74",
+      "equal_approved_p6": true
+    },
+    "docker/pki.py": {
+      "sha256": "11771aed5b7141eb21055e68fd516678724f1a2a95f3657ed6d5ac9e75dac1a6",
+      "equal_approved_p6": true
+    },
+    "docker/render_collector.py": {
+      "sha256": "116bd7c4d545337256bff47703f767565ec37cf4606979f94d4aab477b3c668a",
+      "equal_approved_p6": true
+    },
+    "docker/render_spa.py": {
+      "sha256": "7d0e5d601b1c5db98eb9179905c801da514e739fe6e8e418b8f8718de72cd5e1",
+      "equal_approved_p6": true
+    },
+    "docker/webhook-rotation.compose.yml": {
+      "sha256": "e6d11e3180f8ab11a03add8d8a402d21e025c98ac2a0d4df7abca9f29d4db2e5",
+      "equal_approved_p6": true
+    },
+    "frontend/.env.example": {
+      "sha256": "a556e1b7762730f6573fb083a88aa44bd8d1cc55fbfe8d93773e93684541ce03",
+      "equal_approved_p6": true
+    },
+    "frontend/.gitignore": {
+      "sha256": "4f4a7dd382e64dac3d6b67c5b99f27554a33418866a2610614f27ff312f1b4bf",
+      "equal_approved_p6": true
+    },
+    "frontend/DEMO_GUIDE.md": {
+      "sha256": "cc7bdd0d7cde7572a7047eee62d3dbc44fb32daaf7109c297669c626c01da7aa",
+      "equal_approved_p6": true
+    },
+    "frontend/README.md": {
+      "sha256": "a80a4dae65e4701cdaa86d967844fa56bd346a346304178f465ca86ef8e14b11",
+      "equal_approved_p6": true
+    },
+    "frontend/index.html": {
+      "sha256": "ab0e6cdf68d546376c3c70ecd93731c7961f7f161ad9d02c72ea3326f1a37d70",
+      "equal_approved_p6": true
+    },
+    "frontend/package-lock.json": {
+      "sha256": "9258b0651beb1a23a218eb64fbf4276c39e8f473bd159a9eb776a7d52c4323e4",
+      "equal_approved_p6": true
+    },
+    "frontend/package.json": {
+      "sha256": "a4b7aaf22b5a1ad753239dd7663d183aab7c87b00f03f21aff64dc8569fe83d8",
+      "equal_approved_p6": true
+    },
+    "frontend/postcss.config.js": {
+      "sha256": "190c877db466995bf1482f4a16abd06e04a89ede3119341e2a86ff96e1737b27",
+      "equal_approved_p6": true
+    },
+    "frontend/security-policy.js": {
+      "sha256": "8cedef9b52edea808d2bde9d3f3234b7b67254a1fb7252d0462c00282c0786e5",
+      "equal_approved_p6": true
+    },
+    "frontend/src/App.jsx": {
+      "sha256": "2c975cf95d4e0da6f7f1d1688f9f4aa384880a713627c56d37313bc849097668",
+      "equal_approved_p6": true
+    },
+    "frontend/src/api/AuthContext.jsx": {
+      "sha256": "5a421c90f54efd19a9c1908981d124b15aab9f2051ff75f9fca690c95dbecda0",
+      "equal_approved_p6": true
+    },
+    "frontend/src/api/api.js": {
+      "sha256": "4788ae72853234f70afef782f3743b19fc8828a625c4df058c4f2023e26b19a4",
+      "equal_approved_p6": true
+    },
+    "frontend/src/components/AppLayout.jsx": {
+      "sha256": "e0e773d1401c3af053711bfc903f849d3e3d677ad2568085a0b69ed62cc75816",
+      "equal_approved_p6": true
+    },
+    "frontend/src/components/Navbar.jsx": {
+      "sha256": "2145000a79519428ae7d6fad54a4fbf04525b331e42f02c25c49912ca4e05d09",
+      "equal_approved_p6": true
+    },
+    "frontend/src/components/ProtectedRoute.jsx": {
+      "sha256": "5d99655c22a0832ede9a8f73eaa688a68c200e09b9867df374fc09be7f70b87e",
+      "equal_approved_p6": true
+    },
+    "frontend/src/identity/oidcPreparation.js": {
+      "sha256": "f0537cf46e08f4831f41fae5ad2fe87091fcafb1b99479f596f1b71c7aaa483d",
+      "equal_approved_p6": true
+    },
+    "frontend/src/identity/runtime.js": {
+      "sha256": "b3fb35ed06a54c9337cb4860468298a8dd818707b7b0cc01f1c258933dbdfae4",
+      "equal_approved_p6": true
+    },
+    "frontend/src/identity/session.js": {
+      "sha256": "c5b0868eb76b7a4c9d462132caf8e55f184ed1d3fa713ae7d293748da680a2c4",
+      "equal_approved_p6": true
+    },
+    "frontend/src/index.css": {
+      "sha256": "b9124ff243239399a8230275e98413a872deb2236507f5528e2abdac93c801f3",
+      "equal_approved_p6": true
+    },
+    "frontend/src/main.jsx": {
+      "sha256": "26c739b131ac4cd9501d988c6057eab42f3f72879ecc18a4fddabcc80a9dc526",
+      "equal_approved_p6": true
+    },
+    "frontend/src/pages/AdminDashboard.jsx": {
+      "sha256": "22d2ec27628e9a33a2e1787ec8a5d4d2e15f3746012a2f1ead68479964d70ed0",
+      "equal_approved_p6": true
+    },
+    "frontend/src/pages/CustomerDashboard.jsx": {
+      "sha256": "d1bce09280dc90c28d5d1728b6944d25d94d5feaf9ec83017fac8191eabea29e",
+      "equal_approved_p6": true
+    },
+    "frontend/src/pages/Login.jsx": {
+      "sha256": "0ac582475513acdfa3b64bcc4d4b490acdb486dbb07a7483154920f260d0bbf0",
+      "equal_approved_p6": true
+    },
+    "frontend/src/pages/Monitoring.jsx": {
+      "sha256": "4fac86b4a56836dd18af854d6fc9e3ac76beb2b110d8fbd13b7a8dd0582db390",
+      "equal_approved_p6": true
+    },
+    "frontend/src/pages/Orders.jsx": {
+      "sha256": "c05aeef8f4f29b74bbfea6edb90588fe6b6dfe0ce9159e49846d4ba3b6a578ca",
+      "equal_approved_p6": true
+    },
+    "frontend/src/pages/Products.jsx": {
+      "sha256": "e0d34a9a8839d6cbb1d41606a01e892544d776ff2de5dbb9f96f8e49cfb3bf81",
+      "equal_approved_p6": true
+    },
+    "frontend/src/pages/Profile.jsx": {
+      "sha256": "2661ec58646cfdbe8f247bed8f1e9089fc45b4f29b6eb3984ba0ba5eb98938a8",
+      "equal_approved_p6": true
+    },
+    "frontend/src/pages/SecurityCenter.jsx": {
+      "sha256": "91746c84ffb561447d258d4ba8ec52c975c509ef7456e9a87ae5210513860a5f",
+      "equal_approved_p6": true
+    },
+    "frontend/tailwind.config.js": {
+      "sha256": "33947c877fe913b4ac897a463348295c13a6610abf4bde6fb02045dbb84afc0a",
+      "equal_approved_p6": true
+    },
+    "frontend/vite.config.js": {
+      "sha256": "449034baa676bda56279782e744485f617980bdf8e3df21e2e47767e58d9a7ee",
+      "equal_approved_p6": true
+    },
+    "gateway/kong.yml": {
+      "sha256": "3ddb269ea08c2b527c4c246ed123bb3981cd0f0928d12a667305cc360fdf20cb",
+      "equal_approved_p6": true
+    },
+    "gateway/plugins/p6-telemetry/handler.lua": {
+      "sha256": "496904fe968747ad00eb2c963602e05dde05cb9c702ecea555cc0f1174cf4492",
+      "equal_approved_p6": true
+    },
+    "gateway/plugins/p6-telemetry/schema.lua": {
+      "sha256": "8b4f4fc7f6a899a0f1dd8fd1ca68e6418f6c9ced9a1659f423f6f28219aea185",
+      "equal_approved_p6": true
+    },
+    "monitoring/alloy/config.alloy": {
+      "sha256": "ef9c283a9d2fed3a03566c1c93b51603ab20096a5dad23a700f951e94cd43c17",
+      "equal_approved_p6": true
+    },
+    "monitoring/dashboards/Kong Rate Limit Logs-1782373744744.json": {
+      "sha256": "fade7ebf203c5ecc2aafe9fbcbfd9c45cd8b8cf2ffd9afae2ec84e70f323958f",
+      "equal_approved_p6": true
+    },
+    "monitoring/grafana/provisioning/datasources/loki.yml": {
+      "sha256": "e54c56fe164ee5c47fd7751b62a7ca8df61466b0b32359c5e897fb85d42d8418",
+      "equal_approved_p6": true
+    },
+    "monitoring/loki/loki-config.yml": {
+      "sha256": "6ae0161dba97b3fd3f7145261ef0495692e7c8d457a101e0ca34e314aef220c2",
+      "equal_approved_p6": true
+    },
+    "monitoring/loki/p6-loki.yml": {
+      "sha256": "0653051d10ed26f15ebf046ed995bba4c7dd5c19c7e77ddedea4fdf75c1fcec4",
+      "equal_approved_p6": true
+    },
+    "monitoring/p6-grafana/alerting/security.json": {
+      "sha256": "a67b56ae7718ee4801c2f94810eec4ae79b15462b781b2c7de24d82f44bd5d6c",
+      "equal_approved_p6": true
+    },
+    "monitoring/p6-grafana/dashboards/attacks.json": {
+      "sha256": "6a22806c8e7fbff48583e63e77d1d0ae26b0f0d2faaf87dce5924955f9005662",
+      "equal_approved_p6": true
+    },
+    "monitoring/p6-grafana/dashboards/identity.json": {
+      "sha256": "33d4f64e7f00bbca43b67653bc1ae4c50c5c407922f0a10387382b17b055db26",
+      "equal_approved_p6": true
+    },
+    "monitoring/p6-grafana/dashboards/infrastructure.json": {
+      "sha256": "1429634298009502c14da221fa257e27218828c91b0ac367efcbd2d7a57fb281",
+      "equal_approved_p6": true
+    },
+    "monitoring/p6-grafana/dashboards/overview.json": {
+      "sha256": "60ca873e188786e228372c6ebe6b3acd2eb0a71b1e8876828257ce3a6f4388e4",
+      "equal_approved_p6": true
+    },
+    "monitoring/p6-grafana/dashboards/provider.yml": {
+      "sha256": "bbaf88d52201cdbd967c650cbfdf7ef314e7399c9a2574114e2c9dcc3874b1bb",
+      "equal_approved_p6": true
+    },
+    "monitoring/p6-grafana/datasources/loki.yml": {
+      "sha256": "d83ee38842cdb27a06c7a12bf68579f2bc489e34308952d19cd7709cf1b4ba5b",
+      "equal_approved_p6": true
+    },
+    "monitoring/promtail/promtail-config.yml": {
+      "sha256": "8a3bdd269935f3b2ed64950adc59cabaad0faae13d209abfe4c1216b1be17628",
+      "equal_approved_p6": true
+    },
+    "tests/p0/Dockerfile": {
+      "sha256": "71f963c52023fefbd480ec80071e4f36d5f76db826cd11cf586e164fd8f83029",
+      "equal_approved_p6": true
+    },
+    "tests/p0/Dockerfile.dockerignore": {
+      "sha256": "1e5f1ffd14f42f2b434574f36f8eb803746abe2270862acb9c4339b4998f61a0",
+      "equal_approved_p6": true
+    },
+    "tests/p0/README.md": {
+      "sha256": "dd718761fe609b5217dee9e246f6578d322b6dc1895a19e1d0f313f22b56c707",
+      "equal_approved_p6": true
+    },
+    "tests/p0/baseline.py": {
+      "sha256": "e4af59900abef7124905882039d92a47942839d598bcb3650997aadc5a33f2d2",
+      "equal_approved_p6": true
+    },
+    "tests/p0/compose.yml": {
+      "sha256": "2d8e9640b28d23663c8dbb5e421132a48b26473a2dae1d88825066d5cbf1d7c6",
+      "equal_approved_p6": true
+    },
+    "tests/p0/conftest.py": {
+      "sha256": "66e48b785c83d55782e229bdb4b3ff06bbbc9bbe0d331c18a93a36d9ce9fd147",
+      "equal_approved_p6": true
+    },
+    "tests/p0/kong.baseline.yml": {
+      "sha256": "38bb1c1a7fa7aecc861c2cfe446a0331d1ce4643bdce702d4781899cd72b7116",
+      "equal_approved_p6": true
+    },
+    "tests/p0/pytest.ini": {
+      "sha256": "5295eeff6cce56d90e6e5cb3d0548ffe41e54850957f5aca882c8b155f959af0",
+      "equal_approved_p6": true
+    },
+    "tests/p0/run.py": {
+      "sha256": "575769b360b2319fafc48f9525ecd6ac459db111d7d06e4142332a8ef6f8bdae",
+      "equal_approved_p6": true
+    },
+    "tests/p0/test_auth.py": {
+      "sha256": "f7c9d8067bf182a576a5d3bed245de0c430fa85b649af0982240b08c4db5b460",
+      "equal_approved_p6": true
+    },
+    "tests/p0/test_authorization.py": {
+      "sha256": "fae042baa455b703716e80e8ae58a907bc94c730033087f057e32a5de4d05f9f",
+      "equal_approved_p6": true
+    },
+    "tests/p0/test_database.py": {
+      "sha256": "476d2016762042378730c686c7bfbfbabf0da3a7286782720df5dd32a29a6731",
+      "equal_approved_p6": true
+    },
+    "tests/p0/test_gateway.py": {
+      "sha256": "7251640e0552dd194b1d7b1b3daef47bdcbd77911c482aa5eb3cff49763f4c9d",
+      "equal_approved_p6": true
+    },
+    "tests/p0/test_webhook_ssrf.py": {
+      "sha256": "b561f55c2be2b4b2b676e4a0aeba9c2714bd6a3dca83d6916e75615369b2bf9e",
+      "equal_approved_p6": true
+    },
+    "tests/p0/transport.py": {
+      "sha256": "90cc6ad65bac806b05ca223af342d6f60130d028ff6286711ba109f8c12f4a86",
+      "equal_approved_p6": true
+    },
+    "tests/p1/Dockerfile": {
+      "sha256": "e8787758f8b853d8679d7627cb08037ff840510f8df23238251c0f5710e5c968",
+      "equal_approved_p6": true
+    },
+    "tests/p1/Dockerfile.dockerignore": {
+      "sha256": "6c762e0e7468a5165d6a769d6d7a7761f6d23130dc352299ca6d73518856ace8",
+      "equal_approved_p6": true
+    },
+    "tests/p1/README.md": {
+      "sha256": "45db9eb672797a73f73d8c851b214173d4d713f0924ef347b78d2cfd6b3664eb",
+      "equal_approved_p6": true
+    },
+    "tests/p1/compose.yml": {
+      "sha256": "ddf9e895f346aff1c22558739e69eb1e1bdd2e7b6cd54942b3d41c57e294e530",
+      "equal_approved_p6": true
+    },
+    "tests/p1/host_checks.py": {
+      "sha256": "330047e2614e951239f659a371bfa493f2afc1145438d08a9206f0305a96fd4c",
+      "equal_approved_p6": true
+    },
+    "tests/p1/launch.py": {
+      "sha256": "aeff27c6dca7bc169de5bfd15f2c7cedb86b68e526829c28e072e00f02596055",
+      "equal_approved_p6": true
+    },
+    "tests/p1/run.py": {
+      "sha256": "ee3dff8406a2767acb45ef0dd61e54a95adf15b79d0499f8e89077ca31b4cd28",
+      "equal_approved_p6": true
+    },
+    "tests/p1/test_adoption.py": {
+      "sha256": "87e770e60cf773d82b22739eda97cd376d0a34d4d499c32d50d689e4e0c75ed7",
+      "equal_approved_p6": true
+    },
+    "tests/p1/test_privileges.py": {
+      "sha256": "f4b6856aeace2850d4855e64d475f621fbd33e00643bd8b9017441c8102a7c96",
+      "equal_approved_p6": true
+    },
+    "tests/p2/Dockerfile": {
+      "sha256": "f439139653a2f708c61187f8f1fe8751eb34f3928d3c3dcc37ca004d0e2fda8a",
+      "equal_approved_p6": true
+    },
+    "tests/p2/Dockerfile.dockerignore": {
+      "sha256": "114ba32054181a0b7ca7ae167f252332dc5669c7dbf1970475cedf86f292ed2a",
+      "equal_approved_p6": true
+    },
+    "tests/p2/README.md": {
+      "sha256": "43fb5e7346de39033afc280cae9967fbd7d4fb7abd11b814633f8ceb0759209a",
+      "equal_approved_p6": true
+    },
+    "tests/p2/compose.yml": {
+      "sha256": "cf9ab2321cca5190544b6b2d7620148a0f659f227ec85a54d9e5a4034541d42f",
+      "equal_approved_p6": true
+    },
+    "tests/p2/host_checks.py": {
+      "sha256": "03a13666560b8b842d84217f9aa55311033e0648e7fe5c742602eab4b8640c42",
+      "equal_approved_p6": true
+    },
+    "tests/p2/launch.py": {
+      "sha256": "f55a034ceabe62cda29c7beff1439eab20bdf042d6eb83fdb77b509f091a495a",
+      "equal_approved_p6": true
+    },
+    "tests/p2/run.py": {
+      "sha256": "7a1523d9b51080dec71c4ba0bed4be7f20774443a07d6222318b7cd533c13759",
+      "equal_approved_p6": true
+    },
+    "tests/p2/test_https_business.py": {
+      "sha256": "ba30fc58b190527ce1d7020598e9b4d1be40f92e2167b5973c2b5332dba71370",
+      "equal_approved_p6": true
+    },
+    "tests/p2/test_tls.py": {
+      "sha256": "ea30fcb78a25be3095f306615078966afa9a09193d6a02cf64d3a774690a643f",
+      "equal_approved_p6": true
+    },
+    "tests/p3/Dockerfile": {
+      "sha256": "15a2f5c8000487f3f7b7fb4feb10b78425e779e36b416cace10ef5755170828c",
+      "equal_approved_p6": true
+    },
+    "tests/p3/Dockerfile.dockerignore": {
+      "sha256": "df78b5265bdfca68658bb66f0f5e4a1b2f97311b13967e090a19755d9f1c5411",
+      "equal_approved_p6": true
+    },
+    "tests/p3/README.md": {
+      "sha256": "f90cd50863ccad1ae86be6e33a5544b9504651cc7d66e38dff462877a61f4eaf",
+      "equal_approved_p6": true
+    },
+    "tests/p3/compose.yml": {
+      "sha256": "a57c1773964e34eaecd56c9a124d57f40c10d2a68eedf5416e0644e177774c88",
+      "equal_approved_p6": true
+    },
+    "tests/p3/host_checks.py": {
+      "sha256": "3e209f21785a32e04d1994ce5858f31b210032e996071917befb75d0ad131d27",
+      "equal_approved_p6": true
+    },
+    "tests/p3/launch.py": {
+      "sha256": "07a2cd9e2572c3bb4e6a85043008f908c9b9c0fc07197d0f75c93ee131bb7cbf",
+      "equal_approved_p6": true
+    },
+    "tests/p3/persistence.py": {
+      "sha256": "93a402205ad5baacdfeedc855394682fc06f4e4a94b207b6244f279d00899862",
+      "equal_approved_p6": true
+    },
+    "tests/p3/pki.py": {
+      "sha256": "21daebcc217a450194e0a2366f24d964b8fa849181671485a4ba3070712195a9",
+      "equal_approved_p6": true
+    },
+    "tests/p3/run.py": {
+      "sha256": "79a0c93b53b05083dc78739d48166a9af17bcb5c1d571e1261e4bc77b4429ca6",
+      "equal_approved_p6": true
+    },
+    "tests/p3/test_client.mjs": {
+      "sha256": "9723ddf62e4b2e83512f89e5fb62a8a583c5052078e9bc13507bceb62130e30f",
+      "equal_approved_p6": true
+    },
+    "tests/p3/test_identity.py": {
+      "sha256": "abe6bab58adb8b9b2d9bfd0c948f6fe1d17b22a8705c7e6567722495efe54011",
+      "equal_approved_p6": true
+    },
+    "tests/p4/Dockerfile": {
+      "sha256": "9ef40c8975d8b1e3723e1542edef166da733e9c5d213ce71c3c5b278cc095119",
+      "equal_approved_p6": true
+    },
+    "tests/p4/Dockerfile.dockerignore": {
+      "sha256": "f1ac9fdebffca35d69e22a438e218998ea3e1a54c2357563255ae2665d89a0c7",
+      "equal_approved_p6": true
+    },
+    "tests/p4/README.md": {
+      "sha256": "60433679cbac5c8d1e4566eb376e7e83037b618762215280da9178a5c5b78bd7",
+      "equal_approved_p6": true
+    },
+    "tests/p4/bootstrap.py": {
+      "sha256": "1666cff764b071cd756b39dd734c7317a328202a68e5fbd41c5465fc6b1025d7",
+      "equal_approved_p6": true
+    },
+    "tests/p4/browser.mjs": {
+      "sha256": "a0939ffcbcbb4bf0669f77cca2986f35e251de13d2b72c0f73e16d197d1063c8",
+      "equal_approved_p6": true
+    },
+    "tests/p4/browser_host.py": {
+      "sha256": "8820f9f43b67fa567b3752e9e1d4c0bfc052fa5a7946c2b65d5bd894cf36bae6",
+      "equal_approved_p6": true
+    },
+    "tests/p4/browser_setup.py": {
+      "sha256": "ba49b82dc57b3479c3c0be107c51daf08fcacf336a95ba93a1354782b70db293",
+      "equal_approved_p6": true
+    },
+    "tests/p4/compose.yml": {
+      "sha256": "6b914c64c4f3f3231aff05352d9421dcfd03f669b8ca69c067c17960d66c01a0",
+      "equal_approved_p6": true
+    },
+    "tests/p4/host_checks.py": {
+      "sha256": "d1e8245d697a5c93ab8bfaeba68e0856087ab1666d93c0dd4dcf9f897eaef7c4",
+      "equal_approved_p6": true
+    },
+    "tests/p4/launch.py": {
+      "sha256": "d0d99b54bc3b6d82dd9f9c07d3faad2ff5ca339ea4c79dd943591ad811139d1f",
+      "equal_approved_p6": true
+    },
+    "tests/p4/outage.py": {
+      "sha256": "1a4a86a7e65a1c0e87d4bc55095bbdfc84e1487d5aae0955f221f8621b9d6416",
+      "equal_approved_p6": true
+    },
+    "tests/p4/rotation.py": {
+      "sha256": "775e6b04a603e396344b2b08e62c8361d95ca93ce916668911856f1f52bce1c6",
+      "equal_approved_p6": true
+    },
+    "tests/p4/rotation_host.py": {
+      "sha256": "aaed4390fde596cd07e57340c707a2a97d8f9c2dbd78d17a5690debae17c7e48",
+      "equal_approved_p6": true
+    },
+    "tests/p4/run.py": {
+      "sha256": "6277ba1fc9577f589172c0ed00311a415c4941eb14d4e35e2992f53da09625e9",
+      "equal_approved_p6": true
+    },
+    "tests/p4/startup.py": {
+      "sha256": "dbb8d6e30d0e6f416e5a9989ca2794951dcd155e4687fbbc4e443cbf72b9cc25",
+      "equal_approved_p6": true
+    },
+    "tests/p4/test_cutover.py": {
+      "sha256": "7399c5abaedd6b71698ad5ab12fa58161453dbed4cb96045cd0c35906bb11e6d",
+      "equal_approved_p6": true
+    },
+    "tests/p4/test_session.mjs": {
+      "sha256": "be115ecc25441b74b07b9ed587421ac32022cdc12d32409276aea7c9cda8e5e5",
+      "equal_approved_p6": true
+    },
+    "tests/p5/Dockerfile": {
+      "sha256": "70fe004ce6dbd6523cc11e361db8cfa3beefbe82a808f74f6ecca4721dc1fd91",
+      "equal_approved_p6": true
+    },
+    "tests/p5/README.md": {
+      "sha256": "c9c2c03a25ec10ca7655b450640eca7bd15c56069ee3baff62a810884035b95c",
+      "equal_approved_p6": true
+    },
+    "tests/p5/browser.mjs": {
+      "sha256": "2183b1595bc1bc1a77c974ffca5dca1f563c9ac61d7b4620535fe3b1764501cd",
+      "equal_approved_p6": true
+    },
+    "tests/p5/browser_host.py": {
+      "sha256": "c63c33cd8dbb9d986b6457f37793002a44eb7fbf5710cd151aba67e83cf0f793",
+      "equal_approved_p6": true
+    },
+    "tests/p5/browser_setup.py": {
+      "sha256": "246d671bcf9891b4c423ac908a525e3ae347730d3373b0ceb3aaee713ef2e262",
+      "equal_approved_p6": true
+    },
+    "tests/p5/compose.yml": {
+      "sha256": "0f36c819df702e5a177ad036e3eb8223d295647b8d7e3779223bd21891daf29a",
+      "equal_approved_p6": true
+    },
+    "tests/p5/lab.py": {
+      "sha256": "f5a394e46e985cfa1360912d3dd53228234e9cc63f229d10ac5530c0007e9abe",
+      "equal_approved_p6": true
+    },
+    "tests/p5/launch.py": {
+      "sha256": "a444b4f89c3d1027172731835d71e13aff965809449299bed622e58fed47aec3",
+      "equal_approved_p6": true
+    },
+    "tests/p5/run.py": {
+      "sha256": "6401a86568d418c138099f272236cbda51596bf56da1b03a10495f4fcaab1121",
+      "equal_approved_p6": true
+    },
+    "tests/p5/startup.py": {
+      "sha256": "e6cd6092a330a343457ed5035e1cda0ca36bd79f37be67a5777fe8482549c15e",
+      "equal_approved_p6": true
+    },
+    "tests/p5/test_configuration.py": {
+      "sha256": "68ce84aad27acdc03a5227906e73016309492f83021050a848766452eb6e8835",
+      "equal_approved_p6": true
+    },
+    "tests/p5/test_gateway.py": {
+      "sha256": "98214fc4a13e327b4a596a9879050b8fca7217cbfa056f6d37033043eb5896e1",
+      "equal_approved_p6": true
+    },
+    "tests/p5/test_hardening.py": {
+      "sha256": "5b15389561a5d4690c5245ca606f176e65931c8158038420b6f5aa366431b6e9",
+      "equal_approved_p6": true
+    },
+    "tests/p6/README.md": {
+      "sha256": "1c98945d0df47a0928e6f6c91e66778a6981c4e2f5cd910e4eba04bbc78ef5ff",
+      "equal_approved_p6": true
+    },
+    "tests/p6/alert_recovery.py": {
+      "sha256": "41475bf5d505a8294e4f01c76d65316c669b049c6ad4e95e813f630d97267937",
+      "equal_approved_p6": true
+    },
+    "tests/p6/compose.yml": {
+      "sha256": "a83937eeeb2afb58e642d521dff35330ec76382370a02123a0b4da095fa34f48",
+      "equal_approved_p6": true
+    },
+    "tests/p6/launch.py": {
+      "sha256": "aacb4303fe4f309e7453e22b9e8e7811e3cfde0df4809cffaa11b785163da63a",
+      "equal_approved_p6": true
+    },
+    "tests/p6/lifecycle.py": {
+      "sha256": "28ba6b1ec8e9b7a27bf972e9082d66d385d79d75c762c31b7cb7053a5fac93f8",
+      "equal_approved_p6": true
+    },
+    "tests/p6/retention.py": {
+      "sha256": "321c43cf72d1dc2a528b918047ba36a073f8b73e2901e4e35d3e9d2dc34bfa31",
+      "equal_approved_p6": true
+    },
+    "tests/p6/run.py": {
+      "sha256": "c4361ed2cfd4b6eabe9e804ed544fffcc66d0c5c2a05ec9c07e84c010ad8c04d",
+      "equal_approved_p6": true
+    },
+    "tests/p6/test_observability.py": {
+      "sha256": "6cd6b813d8ea9dc79a6da2f4f22d29e0567e715bbc832733b6d9cbcfdb1dd444",
+      "equal_approved_p6": true
+    },
+    "tests/p6/transport_evidence.py": {
+      "sha256": "2bbffee1e007c2cfca7833d020718d4eda2e322779b989b01643fa27e5fa0ef0",
+      "equal_approved_p6": true
+    }
+  }
+}

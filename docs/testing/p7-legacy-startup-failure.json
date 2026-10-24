@@ -1,0 +1,18 @@
+{
+  "status": "FAIL",
+  "accepted_test_cases": 0,
+  "failed_stage": "container source guard",
+  "root_cause": "Legacy cloud-local overlay mounted the old p5-legacy-test-context without new P7 Python files. Source guard failed before any tests; actual application code was not accepted from that context.",
+  "missing_current_files": [
+    "tests/p7/test_security.py",
+    "tests/p7/monitoring_recovered.py",
+    "tests/p7/regression.py",
+    "tests/p7/evidence.py",
+    "tests/p7/legacy.py",
+    "tests/p7/launch.py",
+    "tests/p7/recovery.py",
+    "tests/p7/verify_recovered.py",
+    "tests/p7/run.py"
+  ],
+  "remedy": "Reuse the current source-verified /workspace/.cloud-api/test-context via P3_SOURCE_OVERLAY=/workspace/.cloud-api/p5-mounted-source.yml; preserve legacy Compose/auth mode."
+}

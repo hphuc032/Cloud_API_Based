@@ -1,0 +1,3350 @@
+{
+  "initial-full": {
+    "p4-focused-junit.xml": {
+      "counts": {
+        "PASS": 3,
+        "FAIL": 0,
+        "EXPECTED FAILURE": 0,
+        "NOT EXECUTED": 0
+      },
+      "cases": [
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_p4_realm_client_reproducibility",
+          "seconds": 0.224,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_live_p4_global_rate_limit",
+          "seconds": 45.489,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_https_gateway_health_and_http_401_are_distinct_from_tls_failure",
+          "seconds": 0.082,
+          "status": "PASS"
+        }
+      ]
+    },
+    "p4-junit.xml": {
+      "counts": {
+        "PASS": 143,
+        "FAIL": 0,
+        "EXPECTED FAILURE": 0,
+        "NOT EXECUTED": 0
+      },
+      "cases": [
+        {
+          "file": "../p3/test_identity.py",
+          "name": "test_discovery_jwks_verified_https",
+          "seconds": 0.107,
+          "status": "PASS"
+        },
+        {
+          "file": "../p3/test_identity.py",
+          "name": "test_wrong_pkce_verifier_rejected",
+          "seconds": 0.395,
+          "status": "PASS"
+        },
+        {
+          "file": "../p3/test_identity.py",
+          "name": "test_invalid_redirect_not_followed[https://localhost:5173/oidc/callback/extra]",
+          "seconds": 0.089,
+          "status": "PASS"
+        },
+        {
+          "file": "../p3/test_identity.py",
+          "name": "test_invalid_redirect_not_followed[https://evil.example/callback]",
+          "seconds": 0.068,
+          "status": "PASS"
+        },
+        {
+          "file": "../p3/test_identity.py",
+          "name": "test_invalid_redirect_not_followed[http://localhost:5173/oidc/callback]",
+          "seconds": 0.053,
+          "status": "PASS"
+        },
+        {
+          "file": "../p3/test_identity.py",
+          "name": "test_pkce_s256_required[challenge0]",
+          "seconds": 0.056,
+          "status": "PASS"
+        },
+        {
+          "file": "../p3/test_identity.py",
+          "name": "test_pkce_s256_required[challenge1]",
+          "seconds": 0.062,
+          "status": "PASS"
+        },
+        {
+          "file": "../p3/test_identity.py",
+          "name": "test_password_grant_disabled",
+          "seconds": 0.237,
+          "status": "PASS"
+        },
+        {
+          "file": "../p3/test_identity.py",
+          "name": "test_implicit_and_hybrid_disabled[token]",
+          "seconds": 0.051,
+          "status": "PASS"
+        },
+        {
+          "file": "../p3/test_identity.py",
+          "name": "test_implicit_and_hybrid_disabled[id_token]",
+          "seconds": 0.052,
+          "status": "PASS"
+        },
+        {
+          "file": "../p3/test_identity.py",
+          "name": "test_implicit_and_hybrid_disabled[code token]",
+          "seconds": 0.054,
+          "status": "PASS"
+        },
+        {
+          "file": "../p3/test_identity.py",
+          "name": "test_public_edge_denies_admin_and_master",
+          "seconds": 0.071,
+          "status": "PASS"
+        },
+        {
+          "file": "../p3/test_identity.py",
+          "name": "test_duplicate_or_conflicting_mappings_rejected[changes0]",
+          "seconds": 0.349,
+          "status": "PASS"
+        },
+        {
+          "file": "../p3/test_identity.py",
+          "name": "test_duplicate_or_conflicting_mappings_rejected[changes1]",
+          "seconds": 0.05,
+          "status": "PASS"
+        },
+        {
+          "file": "../p3/test_identity.py",
+          "name": "test_duplicate_or_conflicting_mappings_rejected[changes2]",
+          "seconds": 0.044,
+          "status": "PASS"
+        },
+        {
+          "file": "../p3/test_identity.py",
+          "name": "test_unknown_user_and_untrusted_issuer_rejected",
+          "seconds": 0.059,
+          "status": "PASS"
+        },
+        {
+          "file": "../p3/test_identity.py",
+          "name": "test_email_collision_never_links_or_creates_mapping",
+          "seconds": 0.208,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_product_crud_authorization[anonymous]",
+          "seconds": 5.948,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_product_crud_authorization[customer]",
+          "seconds": 6.695,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_product_crud_authorization[staff]",
+          "seconds": 6.716,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_product_crud_authorization[admin]",
+          "seconds": 6.675,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_order_create_authorization_and_server_ownership[anonymous]",
+          "seconds": 1.105,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_order_create_authorization_and_server_ownership[customer]",
+          "seconds": 1.146,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_order_create_authorization_and_server_ownership[staff]",
+          "seconds": 1.118,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_order_create_authorization_and_server_ownership[admin]",
+          "seconds": 1.116,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_order_list_read_status_authorization[anonymous]",
+          "seconds": 7.748,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_order_list_read_status_authorization[customer]",
+          "seconds": 7.806,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_order_list_read_status_authorization[staff]",
+          "seconds": 7.888,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_order_list_read_status_authorization[admin]",
+          "seconds": 7.939,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_user_self_vs_admin_authorization[anonymous]",
+          "seconds": 4.414,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_user_self_vs_admin_authorization[customer]",
+          "seconds": 4.484,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_user_self_vs_admin_authorization[staff]",
+          "seconds": 4.434,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_user_self_vs_admin_authorization[admin]",
+          "seconds": 4.454,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_admin_self_protection_and_db_role_active_authority",
+          "seconds": 6.78,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_invalid_orders_do_not_deduct_stock",
+          "seconds": 3.392,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_current_order_status_policy[staff]",
+          "seconds": 19.97,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_current_order_status_policy[admin]",
+          "seconds": 19.346,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_defect_product_null_field",
+          "seconds": 1.129,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_defect_user_null_field",
+          "seconds": 1.112,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_webhook_hmac_timestamp[valid-200]",
+          "seconds": 1.127,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_webhook_hmac_timestamp[missing_timestamp-401]",
+          "seconds": 1.106,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_webhook_hmac_timestamp[bad_timestamp-403]",
+          "seconds": 1.108,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_webhook_hmac_timestamp[old-403]",
+          "seconds": 1.106,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_webhook_hmac_timestamp[future-403]",
+          "seconds": 1.106,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_webhook_hmac_timestamp[missing_signature-401]",
+          "seconds": 1.157,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_webhook_hmac_timestamp[wrong_signature-403]",
+          "seconds": 1.122,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_webhook_hmac_timestamp[wrong_prefix-403]",
+          "seconds": 1.107,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_webhook_hmac_timestamp[tampered_body-403]",
+          "seconds": 1.106,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_webhook_hmac_timestamp[tampered_timestamp-403]",
+          "seconds": 1.107,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_webhook_hmac_timestamp[invalid_json-400]",
+          "seconds": 1.113,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_webhook_debug_helper_disabled",
+          "seconds": 1.105,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_defect_webhook_json_shape",
+          "seconds": 1.108,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_defect_webhook_replay",
+          "seconds": 2.223,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_https_business.py",
+          "name": "test_https_ssrf_uses_real_dns_and_preserves_roles[anonymous-401]",
+          "seconds": 1.105,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_https_business.py",
+          "name": "test_https_ssrf_uses_real_dns_and_preserves_roles[customer-403]",
+          "seconds": 1.139,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_https_business.py",
+          "name": "test_https_ssrf_denies_invalid_targets[http://169.254.169.254-403]",
+          "seconds": 1.111,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_https_business.py",
+          "name": "test_https_ssrf_denies_invalid_targets[http://localhost-403]",
+          "seconds": 1.127,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_https_business.py",
+          "name": "test_https_ssrf_denies_invalid_targets[https://example.com.evil.test-403]",
+          "seconds": 1.108,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_https_business.py",
+          "name": "test_https_ssrf_denies_invalid_targets[ftp://example.com/file-422]",
+          "seconds": 1.111,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_real_access_and_legacy_rejection",
+          "seconds": 2.217,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_backend_independent_claim_validation[changes0-drop0]",
+          "seconds": 0.12,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_backend_independent_claim_validation[changes1-drop1]",
+          "seconds": 0.109,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_backend_independent_claim_validation[changes2-drop2]",
+          "seconds": 0.105,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_backend_independent_claim_validation[changes3-drop3]",
+          "seconds": 0.106,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_backend_independent_claim_validation[changes4-drop4]",
+          "seconds": 0.111,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_backend_independent_claim_validation[changes5-drop5]",
+          "seconds": 0.128,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_backend_independent_claim_validation[changes6-drop6]",
+          "seconds": 0.114,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_backend_independent_claim_validation[changes7-drop7]",
+          "seconds": 0.171,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_backend_independent_claim_validation[changes8-drop8]",
+          "seconds": 0.126,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_backend_independent_claim_validation[changes9-drop9]",
+          "seconds": 0.107,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_backend_independent_claim_validation[changes10-drop10]",
+          "seconds": 0.117,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_backend_independent_claim_validation[changes11-drop11]",
+          "seconds": 0.102,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_backend_independent_claim_validation[changes12-drop12]",
+          "seconds": 0.101,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_backend_independent_claim_validation[changes13-drop13]",
+          "seconds": 0.108,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_backend_independent_claim_validation[changes14-drop14]",
+          "seconds": 0.103,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_backend_independent_claim_validation[changes15-drop15]",
+          "seconds": 0.096,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_backend_independent_claim_validation[changes16-drop16]",
+          "seconds": 0.101,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_backend_independent_claim_validation[changes17-drop17]",
+          "seconds": 0.125,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_gateway_rejects_or_backend_finishes_validation[missing]",
+          "seconds": 0.087,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_gateway_rejects_or_backend_finishes_validation[garbage]",
+          "seconds": 1.108,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_gateway_rejects_or_backend_finishes_validation[invalid-signature]",
+          "seconds": 1.12,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_gateway_rejects_or_backend_finishes_validation[unknown-kid]",
+          "seconds": 1.263,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_gateway_rejects_or_backend_finishes_validation[missing-exp]",
+          "seconds": 1.04,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_gateway_rejects_or_backend_finishes_validation[expired]",
+          "seconds": 1.101,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_gateway_rejects_or_backend_finishes_validation[hs256]",
+          "seconds": 1.105,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_gateway_rejects_or_backend_finishes_validation[id-token]",
+          "seconds": 1.113,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_gateway_rejects_or_backend_finishes_validation[refresh-token]",
+          "seconds": 1.105,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_wrong_audience_issuer_type_gateway_is_not_oidc",
+          "seconds": 4.427,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_claim_roles_headers_cannot_elevate",
+          "seconds": 3.5,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_unmapped_identity_email_collision_denied",
+          "seconds": 1.118,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_retired_local_issuance[login]",
+          "seconds": 1.103,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_retired_local_issuance[register]",
+          "seconds": 1.104,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_retired_local_issuance[refresh]",
+          "seconds": 1.105,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_retired_local_issuance[logout]",
+          "seconds": 1.102,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_public_routes_and_cors",
+          "seconds": 5.553,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_mapping_runtime_select_only",
+          "seconds": 0.088,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_reviewed_dry_run_approval_existing_ids",
+          "seconds": 0.098,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_mapping_preserves_ids_orders_and_roles",
+          "seconds": 2.065,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_new_customer_review_and_collision",
+          "seconds": 0.32,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_refresh_logout_and_expiration",
+          "seconds": 0.746,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_p4_realm_client_reproducibility",
+          "seconds": 0.121,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_review_rejects_ambiguous_batch_and_privileged_provisioning",
+          "seconds": 0.055,
+          "status": "PASS"
+        },
+        {
+          "file": "../p4/test_cutover.py",
+          "name": "test_live_p4_global_rate_limit",
+          "seconds": 36.908,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_valid_mtls_is_http_200[771]",
+          "seconds": 0.069,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_valid_mtls_is_http_200[772]",
+          "seconds": 0.058,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_bad_client_is_tls_failure_not_http_auth[771-None]",
+          "seconds": 0.051,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_bad_client_is_tls_failure_not_http_auth[771-negative/untrusted]",
+          "seconds": 0.049,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_bad_client_is_tls_failure_not_http_auth[771-negative/expired]",
+          "seconds": 0.056,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_bad_client_is_tls_failure_not_http_auth[771-negative/unenrolled]",
+          "seconds": 0.049,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_bad_client_is_tls_failure_not_http_auth[771-negative/wrong-client-eku]",
+          "seconds": 0.045,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_bad_client_is_tls_failure_not_http_auth[772-None]",
+          "seconds": 0.049,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_bad_client_is_tls_failure_not_http_auth[772-negative/untrusted]",
+          "seconds": 0.046,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_bad_client_is_tls_failure_not_http_auth[772-negative/expired]",
+          "seconds": 0.047,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_bad_client_is_tls_failure_not_http_auth[772-negative/unenrolled]",
+          "seconds": 0.05,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_bad_client_is_tls_failure_not_http_auth[772-negative/wrong-client-eku]",
+          "seconds": 0.044,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_client_rejects_wrong_server_hostname",
+          "seconds": 0.052,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_plain_http_cannot_reach_backend_or_gateway[backend-8443]",
+          "seconds": 0.044,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_plain_http_cannot_reach_backend_or_gateway[backend-8000]",
+          "seconds": 0.049,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_plain_http_cannot_reach_backend_or_gateway[kong-8000]",
+          "seconds": 0.043,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_https_gateway_health_and_http_401_are_distinct_from_tls_failure",
+          "seconds": 0.06,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_certificate_san_usage_and_leaf_constraints[backend/server.pem-names0-purpose0]",
+          "seconds": 0.046,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_certificate_san_usage_and_leaf_constraints[kong/client.pem-names1-purpose1]",
+          "seconds": 0.045,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_certificate_san_usage_and_leaf_constraints[backend/health.pem-names2-purpose2]",
+          "seconds": 0.04,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_certificate_san_usage_and_leaf_constraints[kong/edge.pem-names3-purpose3]",
+          "seconds": 0.043,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_client_pin_store_enrolls_exactly_two_leaf_identities",
+          "seconds": 0.051,
+          "status": "PASS"
+        },
+        {
+          "file": "../p1/test_privileges.py",
+          "name": "test_runtime_privilege_denials[CREATE TABLE public.p1_forbidden (id int)]",
+          "seconds": 0.07,
+          "status": "PASS"
+        },
+        {
+          "file": "../p1/test_privileges.py",
+          "name": "test_runtime_privilege_denials[ALTER TABLE public.products ADD COLUMN p1_forbidden int]",
+          "seconds": 0.055,
+          "status": "PASS"
+        },
+        {
+          "file": "../p1/test_privileges.py",
+          "name": "test_runtime_privilege_denials[DROP TABLE public.order_items]",
+          "seconds": 0.048,
+          "status": "PASS"
+        },
+        {
+          "file": "../p1/test_privileges.py",
+          "name": "test_runtime_privilege_denials[CREATE SCHEMA p1_forbidden]",
+          "seconds": 0.062,
+          "status": "PASS"
+        },
+        {
+          "file": "../p1/test_privileges.py",
+          "name": "test_runtime_privilege_denials[CREATE TEMP TABLE p1_forbidden (id int)]",
+          "seconds": 0.053,
+          "status": "PASS"
+        },
+        {
+          "file": "../p1/test_privileges.py",
+          "name": "test_runtime_privilege_denials[CREATE FUNCTION public.p1_forbidden() RETURNS int LANGUAGE sql AS 'SELECT 1']",
+          "seconds": 0.055,
+          "status": "PASS"
+        },
+        {
+          "file": "../p1/test_privileges.py",
+          "name": "test_runtime_privilege_denials[ALTER ROLE app_runtime SUPERUSER]",
+          "seconds": 0.047,
+          "status": "PASS"
+        },
+        {
+          "file": "../p1/test_privileges.py",
+          "name": "test_runtime_privilege_denials[SET ROLE app_migrator]",
+          "seconds": 0.038,
+          "status": "PASS"
+        },
+        {
+          "file": "../p1/test_privileges.py",
+          "name": "test_runtime_privilege_denials[SET ROLE postgres]",
+          "seconds": 0.046,
+          "status": "PASS"
+        },
+        {
+          "file": "../p1/test_privileges.py",
+          "name": "test_runtime_privilege_denials[TRUNCATE public.users CASCADE]",
+          "seconds": 0.041,
+          "status": "PASS"
+        },
+        {
+          "file": "../p1/test_privileges.py",
+          "name": "test_runtime_privilege_denials[DELETE FROM public.products]",
+          "seconds": 0.044,
+          "status": "PASS"
+        },
+        {
+          "file": "../p1/test_privileges.py",
+          "name": "test_runtime_privilege_denials[UPDATE public.alembic_version SET version_num='forbidden']",
+          "seconds": 0.037,
+          "status": "PASS"
+        },
+        {
+          "file": "../p1/test_privileges.py",
+          "name": "test_runtime_privilege_denials[SELECT * FROM public.audit_logs]",
+          "seconds": 0.044,
+          "status": "PASS"
+        },
+        {
+          "file": "../p1/test_privileges.py",
+          "name": "test_runtime_privilege_denials[INSERT INTO public.categories(name,slug) VALUES ('forbidden','forbidden')]",
+          "seconds": 0.053,
+          "status": "PASS"
+        },
+        {
+          "file": "../p1/test_privileges.py",
+          "name": "test_runtime_role_attributes",
+          "seconds": 0.042,
+          "status": "PASS"
+        },
+        {
+          "file": "../p1/test_privileges.py",
+          "name": "test_required_runtime_dml",
+          "seconds": 0.051,
+          "status": "PASS"
+        },
+        {
+          "file": "../p1/test_privileges.py",
+          "name": "test_migration_role_owns_schema_objects_and_can_ddl",
+          "seconds": 0.066,
+          "status": "PASS"
+        },
+        {
+          "file": "../p1/test_privileges.py",
+          "name": "test_password_file_supports_url_encoding",
+          "seconds": 0.064,
+          "status": "PASS"
+        }
+      ]
+    },
+    "p5-hardening-junit.xml": {
+      "counts": {
+        "PASS": 110,
+        "FAIL": 0,
+        "EXPECTED FAILURE": 0,
+        "NOT EXECUTED": 0
+      },
+      "cases": [
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_typed_object[payload0]",
+          "seconds": 0.053,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_typed_object[None]",
+          "seconds": 0.043,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_typed_object[True]",
+          "seconds": 0.05,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_typed_object[1]",
+          "seconds": 0.054,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_typed_object[text]",
+          "seconds": 0.042,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_typed_object[payload5]",
+          "seconds": 0.04,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_typed_object[payload6]",
+          "seconds": 0.045,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_typed_object[payload7]",
+          "seconds": 0.059,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_typed_object[payload8]",
+          "seconds": 0.051,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_typed_object[payload9]",
+          "seconds": 0.044,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_typed_object[payload10]",
+          "seconds": 0.038,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_typed_object[payload11]",
+          "seconds": 0.072,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_malformed_json[{]",
+          "seconds": 0.046,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_malformed_json[{\"event\":\"unknown\",\"event\":\"payment.success\"}]",
+          "seconds": 0.041,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_malformed_json[{\"event\":\"unknown\",\"data\":NaN}]",
+          "seconds": 0.068,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_malformed_json[\\xff]",
+          "seconds": 0.047,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_auth_negatives[missing]",
+          "seconds": 0.04,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_auth_negatives[short]",
+          "seconds": 0.039,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_auth_negatives[uppercase]",
+          "seconds": 0.045,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_auth_negatives[unicode]",
+          "seconds": 0.037,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_auth_negatives[wrong-secret]",
+          "seconds": 0.083,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_auth_negatives[changed-body]",
+          "seconds": 0.043,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_auth_negatives[changed-time]",
+          "seconds": 0.042,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_auth_negatives[expired]",
+          "seconds": 0.046,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_auth_negatives[future]",
+          "seconds": 0.052,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_body_bound[False]",
+          "seconds": 0.049,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_webhook_body_bound[True]",
+          "seconds": 0.044,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_duplicate_acknowledgement_once",
+          "seconds": 0.06,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_concurrent_duplicates_real_postgres",
+          "seconds": 0.206,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_same_event_conflict_and_canonical_retry",
+          "seconds": 0.057,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_failed_operation_rolls_back_receipt_and_effect",
+          "seconds": 0.398,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_secret_overlap_and_retirement",
+          "seconds": 0.087,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_address_matrix[127.0.0.1]",
+          "seconds": 0.058,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_address_matrix[10.0.0.1]",
+          "seconds": 0.042,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_address_matrix[169.254.169.254]",
+          "seconds": 0.073,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_address_matrix[100.64.0.1]",
+          "seconds": 0.04,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_address_matrix[0.0.0.0]",
+          "seconds": 0.045,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_address_matrix[224.0.0.1]",
+          "seconds": 0.044,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_address_matrix[240.0.0.1]",
+          "seconds": 0.037,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_address_matrix[192.0.2.1]",
+          "seconds": 0.037,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_address_matrix[198.18.0.1]",
+          "seconds": 0.028,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_address_matrix[::]",
+          "seconds": 0.042,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_address_matrix[::1]",
+          "seconds": 0.03,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_address_matrix[fc00::1]",
+          "seconds": 0.04,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_address_matrix[fe80::1]",
+          "seconds": 0.038,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_address_matrix[ff02::1]",
+          "seconds": 0.04,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_address_matrix[2001:db8::1]",
+          "seconds": 0.05,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_address_matrix[::ffff:127.0.0.1]",
+          "seconds": 0.038,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_address_matrix[::ffff:169.254.169.254]",
+          "seconds": 0.039,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_address_matrix[64:ff9b::a9fe:a9fe]",
+          "seconds": 0.05,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_address_matrix[2002:7f00:1::]",
+          "seconds": 0.04,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_address_matrix[2001:0000:4136:e378:8000:63bf:3fff:fdd2]",
+          "seconds": 0.042,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_public_addresses[93.184.216.34]",
+          "seconds": 0.042,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_public_addresses[2606:4700:4700::1111]",
+          "seconds": 0.051,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_public_addresses[::ffff:93.184.216.34]",
+          "seconds": 0.054,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_mixed_dns_fails_closed[answers0]",
+          "seconds": 0.04,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_mixed_dns_fails_closed[answers1]",
+          "seconds": 0.043,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_mixed_dns_fails_closed[answers2]",
+          "seconds": 0.044,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_parser_edges[https://user:pass@example.com]",
+          "seconds": 0.842,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_parser_edges[https://example.com:99999]",
+          "seconds": 0.06,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_parser_edges[https://example.com\\\\@evil.test]",
+          "seconds": 0.066,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_parser_edges[https://example.com..]",
+          "seconds": 0.067,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_parser_edges[https://-bad.example.com]",
+          "seconds": 0.053,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_parser_edges[http://2130706433]",
+          "seconds": 0.067,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_parser_edges[http://0177.0.0.1]",
+          "seconds": 0.054,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_parser_edges[http://0x7f000001]",
+          "seconds": 0.061,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_ssrf_parser_edges[https://[::ffff:127.0.0.1]]",
+          "seconds": 0.055,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_product_null_no_partial_mutation[price]",
+          "seconds": 0.065,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_product_null_no_partial_mutation[name]",
+          "seconds": 0.065,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_product_null_no_partial_mutation[stock_quantity]",
+          "seconds": 0.055,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_product_null_no_partial_mutation[is_active]",
+          "seconds": 0.064,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_user_null_no_partial_mutation[role]",
+          "seconds": 0.058,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_user_null_no_partial_mutation[is_active]",
+          "seconds": 0.058,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_user_null_no_partial_mutation[is_verified]",
+          "seconds": 0.059,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_receipt_least_privilege",
+          "seconds": 0.041,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_adjacent_product_validation[patch0]",
+          "seconds": 0.056,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_adjacent_product_validation[patch1]",
+          "seconds": 0.053,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_adjacent_product_validation[patch2]",
+          "seconds": 0.077,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_adjacent_product_validation[patch3]",
+          "seconds": 0.059,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_adjacent_product_validation[patch4]",
+          "seconds": 0.057,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_adjacent_product_validation[patch5]",
+          "seconds": 0.067,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_adjacent_product_validation[patch6]",
+          "seconds": 0.068,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_adjacent_product_validation[patch7]",
+          "seconds": 0.056,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_adjacent_product_validation[patch8]",
+          "seconds": 0.057,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_nonfinite_price_controlled_without_echo[Infinity]",
+          "seconds": 0.067,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_nonfinite_price_controlled_without_echo[-Infinity]",
+          "seconds": 0.07,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_nonfinite_price_controlled_without_echo[NaN]",
+          "seconds": 0.075,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_nonfinite_price_controlled_without_echo[1e999]",
+          "seconds": 0.079,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_invalid_user_role_no_partial_mutation[owner]",
+          "seconds": 0.132,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_invalid_user_role_no_partial_mutation[value1]",
+          "seconds": 0.084,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_invalid_user_role_no_partial_mutation[value2]",
+          "seconds": 0.103,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_hardening.py",
+          "name": "test_invalid_user_role_no_partial_mutation[3]",
+          "seconds": 0.082,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_gateway.py",
+          "name": "test_success_and_gateway_error_headers",
+          "seconds": 0.089,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_gateway.py",
+          "name": "test_exact_cors_and_hmac_preflight",
+          "seconds": 0.078,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_gateway.py",
+          "name": "test_live_webhook_public_retry_and_forgery",
+          "seconds": 0.104,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_gateway.py",
+          "name": "test_keycloak_own_bruteforce_configuration",
+          "seconds": 0.376,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_gateway.py",
+          "name": "test_pre_auth_throttle_rejects_forwarding_header_spoofing",
+          "seconds": 111.122,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_gateway.py",
+          "name": "test_keycloak_repeated_wrong_password_is_temporarily_disabled",
+          "seconds": 1.305,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_configuration.py",
+          "name": "test_unsafe_webhook_configuration_rejected[short-old-key]",
+          "seconds": 0.068,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_configuration.py",
+          "name": "test_unsafe_webhook_configuration_rejected[same-key]",
+          "seconds": 0.041,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_configuration.py",
+          "name": "test_unsafe_webhook_configuration_rejected[empty-interval]",
+          "seconds": 0.065,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_configuration.py",
+          "name": "test_unsafe_webhook_configuration_rejected[backwards]",
+          "seconds": 0.046,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_configuration.py",
+          "name": "test_unsafe_webhook_configuration_rejected[over-900]",
+          "seconds": 0.04,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_configuration.py",
+          "name": "test_unsafe_webhook_configuration_rejected[anchors-without-key]",
+          "seconds": 0.044,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_configuration.py",
+          "name": "test_unsafe_webhook_configuration_rejected[negative-tolerance]",
+          "seconds": 0.056,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_configuration.py",
+          "name": "test_unsafe_webhook_configuration_rejected[over-900-tolerance]",
+          "seconds": 0.04,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_configuration.py",
+          "name": "test_unsafe_webhook_configuration_rejected[small-body]",
+          "seconds": 0.059,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_configuration.py",
+          "name": "test_unsafe_webhook_configuration_rejected[huge-body]",
+          "seconds": 0.041,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_configuration.py",
+          "name": "test_unsafe_webhook_configuration_rejected[invalid-provider]",
+          "seconds": 0.035,
+          "status": "PASS"
+        },
+        {
+          "file": "../p5/test_configuration.py",
+          "name": "test_explicit_maximum_overlap_and_body_bound_are_supported",
+          "seconds": 0.044,
+          "status": "PASS"
+        }
+      ]
+    },
+    "p7-junit.xml": {
+      "counts": {
+        "PASS": 22,
+        "FAIL": 1,
+        "EXPECTED FAILURE": 0,
+        "NOT EXECUTED": 0
+      },
+      "cases": [
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as01_missing_token",
+          "seconds": 1.115,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as02_invalid_signature",
+          "seconds": 2.141,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as03_gateway_is_not_complete_oidc[change0]",
+          "seconds": 2.629,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as03_gateway_is_not_complete_oidc[change1]",
+          "seconds": 1.156,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as04_customer_cannot_mutate_admin",
+          "seconds": 2.189,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as05_bola",
+          "seconds": 2.181,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as06_forgery_no_receipt",
+          "seconds": 2.145,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as07_network_replay_and_conflict",
+          "seconds": 4.37,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as08_validator_denies_nonpublic[127.0.0.1]",
+          "seconds": 2.166,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as08_validator_denies_nonpublic[[::1]]",
+          "seconds": 2.164,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as08_validator_denies_nonpublic[[::ffff:127.0.0.1]]",
+          "seconds": 2.159,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as08_validator_denies_nonpublic[10.0.0.1]",
+          "seconds": 2.15,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as08_validator_denies_nonpublic[172.16.0.1]",
+          "seconds": 1.125,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as08_validator_denies_nonpublic[192.168.0.1]",
+          "seconds": 2.269,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as08_validator_denies_nonpublic[169.254.1.1]",
+          "seconds": 2.175,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as08_validator_denies_nonpublic[169.254.169.254]",
+          "seconds": 2.18,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as10_sql_shaped_uuid_no_business_effect[' OR '1'='1]",
+          "seconds": 2.189,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as10_sql_shaped_uuid_no_business_effect[x'); SELECT 1; --]",
+          "seconds": 1.127,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as11_input_no_unhandled_500[price]",
+          "seconds": 0.075,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as11_input_no_unhandled_500[role]",
+          "seconds": 1.111,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as11_input_no_unhandled_500[uuid]",
+          "seconds": 1.113,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as11_input_no_unhandled_500[json]",
+          "seconds": 1.105,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_recovery_seed_real_oidc_chain",
+          "seconds": 36.616,
+          "status": "FAIL",
+          "result_kind": "failure"
+        }
+      ]
+    },
+    "p6-junit.xml": {
+      "counts": {
+        "PASS": 24,
+        "FAIL": 0,
+        "EXPECTED FAILURE": 0,
+        "NOT EXECUTED": 0
+      },
+      "cases": [
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_gateway_boundary_and_sensitive_query",
+          "seconds": 1.184,
+          "status": "PASS"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_success_correlation",
+          "seconds": 2.175,
+          "status": "PASS"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_wrong_claims_ingestion[change0]",
+          "seconds": 1.665,
+          "status": "PASS"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_wrong_claims_ingestion[change1]",
+          "seconds": 2.224,
+          "status": "PASS"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_admin_denial",
+          "seconds": 2.192,
+          "status": "PASS"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_bola_denial",
+          "seconds": 2.322,
+          "status": "PASS"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_webhook_signatures_retry_conflict",
+          "seconds": 7.524,
+          "status": "PASS"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_ssrf_telemetry[http://127.0.0.1]",
+          "seconds": 2.184,
+          "status": "PASS"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_ssrf_telemetry[http://10.0.0.1]",
+          "seconds": 2.523,
+          "status": "PASS"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_ssrf_telemetry[http://169.254.169.254]",
+          "seconds": 2.203,
+          "status": "PASS"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_validation_redaction",
+          "seconds": 2.16,
+          "status": "PASS"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_audit_transaction_and_privileges",
+          "seconds": 0.096,
+          "status": "PASS"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_grafana_dashboards_queries_and_rules",
+          "seconds": 0.945,
+          "status": "PASS"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_keycloak_login_failure_collected",
+          "seconds": 2.833,
+          "status": "PASS"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_gateway_rate_limit_collected",
+          "seconds": 96.241,
+          "status": "PASS"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_actual_grafana_engine_firing_and_recovery",
+          "seconds": 87.176,
+          "status": "PASS"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_ssrf_rbac_is_not_destination_denial",
+          "seconds": 3.875,
+          "status": "PASS"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_product_and_order_audit_commits",
+          "seconds": 3.499,
+          "status": "PASS"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_role_and_activation_audit[change0]",
+          "seconds": 1.101,
+          "status": "PASS"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_role_and_activation_audit[change1]",
+          "seconds": 1.117,
+          "status": "PASS"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_settings_errors_and_repr_do_not_echo_credentials",
+          "seconds": 0.112,
+          "status": "PASS"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_identity_mapping_rejection_collected[unmapped]",
+          "seconds": 2.057,
+          "status": "PASS"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_identity_mapping_rejection_collected[disabled]",
+          "seconds": 2.22,
+          "status": "PASS"
+        },
+        {
+          "file": "../p6/test_observability.py",
+          "name": "test_four_additional_rule_transitions",
+          "seconds": 97.822,
+          "status": "PASS"
+        }
+      ]
+    }
+  },
+  "final-recovery": {
+    "p7-junit.xml": {
+      "counts": {
+        "PASS": 23,
+        "FAIL": 0,
+        "EXPECTED FAILURE": 0,
+        "NOT EXECUTED": 0
+      },
+      "cases": [
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as01_missing_token",
+          "seconds": 2.229,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as02_invalid_signature",
+          "seconds": 2.213,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as03_gateway_is_not_complete_oidc[change0]",
+          "seconds": 3.485,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as03_gateway_is_not_complete_oidc[change1]",
+          "seconds": 1.338,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as04_customer_cannot_mutate_admin",
+          "seconds": 1.188,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as05_bola",
+          "seconds": 2.163,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as06_forgery_no_receipt",
+          "seconds": 2.17,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as07_network_replay_and_conflict",
+          "seconds": 3.384,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as08_validator_denies_nonpublic[127.0.0.1]",
+          "seconds": 2.301,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as08_validator_denies_nonpublic[[::1]]",
+          "seconds": 2.183,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as08_validator_denies_nonpublic[[::ffff:127.0.0.1]]",
+          "seconds": 2.206,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as08_validator_denies_nonpublic[10.0.0.1]",
+          "seconds": 2.182,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as08_validator_denies_nonpublic[172.16.0.1]",
+          "seconds": 2.197,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as08_validator_denies_nonpublic[192.168.0.1]",
+          "seconds": 1.205,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as08_validator_denies_nonpublic[169.254.1.1]",
+          "seconds": 2.563,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as08_validator_denies_nonpublic[169.254.169.254]",
+          "seconds": 2.165,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as10_sql_shaped_uuid_no_business_effect[' OR '1'='1]",
+          "seconds": 2.182,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as10_sql_shaped_uuid_no_business_effect[x'); SELECT 1; --]",
+          "seconds": 2.165,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as11_input_no_unhandled_500[price]",
+          "seconds": 0.076,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as11_input_no_unhandled_500[role]",
+          "seconds": 1.113,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as11_input_no_unhandled_500[uuid]",
+          "seconds": 1.436,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_as11_input_no_unhandled_500[json]",
+          "seconds": 0.801,
+          "status": "PASS"
+        },
+        {
+          "file": "../p7/test_security.py",
+          "name": "test_recovery_seed_real_oidc_chain",
+          "seconds": 9.909,
+          "status": "PASS"
+        }
+      ]
+    }
+  },
+  "legacy-startup": {},
+  "legacy": {
+    "p3-junit.xml": {
+      "counts": {
+        "PASS": 22,
+        "FAIL": 0,
+        "EXPECTED FAILURE": 0,
+        "NOT EXECUTED": 0
+      },
+      "cases": [
+        {
+          "file": null,
+          "name": "test_discovery_jwks_verified_https",
+          "seconds": 0.921,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_realm_and_client_reproducible",
+          "seconds": 1.831,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_code_pkce_tokens_audience_nonce_and_rotation",
+          "seconds": 2.826,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_wrong_pkce_verifier_rejected",
+          "seconds": 0.299,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_invalid_redirect_not_followed[https://localhost:5173/oidc/callback/extra]",
+          "seconds": 0.204,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_invalid_redirect_not_followed[https://evil.example/callback]",
+          "seconds": 0.116,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_invalid_redirect_not_followed[http://localhost:5173/oidc/callback]",
+          "seconds": 0.097,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_pkce_s256_required[challenge0]",
+          "seconds": 0.066,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_pkce_s256_required[challenge1]",
+          "seconds": 0.116,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_password_grant_disabled",
+          "seconds": 0.24,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_implicit_and_hybrid_disabled[token]",
+          "seconds": 0.068,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_implicit_and_hybrid_disabled[id_token]",
+          "seconds": 0.055,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_implicit_and_hybrid_disabled[code token]",
+          "seconds": 0.063,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_public_edge_denies_admin_and_master",
+          "seconds": 0.04,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_mapping_preserves_ids_orders_and_roles",
+          "seconds": 0.117,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_duplicate_or_conflicting_mappings_rejected[changes0]",
+          "seconds": 0.089,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_duplicate_or_conflicting_mappings_rejected[changes1]",
+          "seconds": 0.062,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_duplicate_or_conflicting_mappings_rejected[changes2]",
+          "seconds": 0.065,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_unknown_user_and_untrusted_issuer_rejected",
+          "seconds": 0.103,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_email_collision_never_links_or_creates_mapping",
+          "seconds": 0.364,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_runtime_cannot_create_identity_links",
+          "seconds": 0.044,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_additive_migration_and_rollback_preserve_application_data",
+          "seconds": 3.564,
+          "status": "PASS"
+        }
+      ]
+    },
+    "p2-junit.xml": {
+      "counts": {
+        "PASS": 83,
+        "FAIL": 0,
+        "EXPECTED FAILURE": 2,
+        "NOT EXECUTED": 0
+      },
+      "cases": [
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_valid_mtls_is_http_200[771]",
+          "seconds": 0.049,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_valid_mtls_is_http_200[772]",
+          "seconds": 0.044,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_bad_client_is_tls_failure_not_http_auth[771-None]",
+          "seconds": 0.04,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_bad_client_is_tls_failure_not_http_auth[771-negative/untrusted]",
+          "seconds": 0.043,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_bad_client_is_tls_failure_not_http_auth[771-negative/expired]",
+          "seconds": 0.054,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_bad_client_is_tls_failure_not_http_auth[771-negative/unenrolled]",
+          "seconds": 0.061,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_bad_client_is_tls_failure_not_http_auth[771-negative/wrong-client-eku]",
+          "seconds": 0.055,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_bad_client_is_tls_failure_not_http_auth[772-None]",
+          "seconds": 0.06,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_bad_client_is_tls_failure_not_http_auth[772-negative/untrusted]",
+          "seconds": 0.083,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_bad_client_is_tls_failure_not_http_auth[772-negative/expired]",
+          "seconds": 0.061,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_bad_client_is_tls_failure_not_http_auth[772-negative/unenrolled]",
+          "seconds": 0.061,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_bad_client_is_tls_failure_not_http_auth[772-negative/wrong-client-eku]",
+          "seconds": 0.053,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_client_rejects_wrong_server_hostname",
+          "seconds": 0.051,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_plain_http_cannot_reach_backend_or_gateway[backend-8443]",
+          "seconds": 0.057,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_plain_http_cannot_reach_backend_or_gateway[backend-8000]",
+          "seconds": 0.051,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_plain_http_cannot_reach_backend_or_gateway[kong-8000]",
+          "seconds": 0.048,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_https_gateway_health_and_http_401_are_distinct_from_tls_failure",
+          "seconds": 0.073,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_certificate_san_usage_and_leaf_constraints[backend/server.pem-names0-purpose0]",
+          "seconds": 0.053,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_certificate_san_usage_and_leaf_constraints[kong/client.pem-names1-purpose1]",
+          "seconds": 0.05,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_certificate_san_usage_and_leaf_constraints[backend/health.pem-names2-purpose2]",
+          "seconds": 0.048,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_certificate_san_usage_and_leaf_constraints[kong/edge.pem-names3-purpose3]",
+          "seconds": 0.052,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_tls.py",
+          "name": "test_client_pin_store_enrolls_exactly_two_leaf_identities",
+          "seconds": 0.047,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_https_product_crud_authorization[anonymous]",
+          "seconds": 5.97,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_https_product_crud_authorization[customer]",
+          "seconds": 6.656,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_https_product_crud_authorization[staff]",
+          "seconds": 6.801,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_https_product_crud_authorization[admin]",
+          "seconds": 6.759,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_https_order_create[anonymous]",
+          "seconds": 1.115,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_https_order_create[customer]",
+          "seconds": 1.126,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_https_order_create[staff]",
+          "seconds": 1.111,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_https_order_create[admin]",
+          "seconds": 1.115,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_https_order_list_read_status[anonymous]",
+          "seconds": 7.784,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_https_order_list_read_status[customer]",
+          "seconds": 7.787,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_https_order_list_read_status[staff]",
+          "seconds": 7.804,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_https_order_list_read_status[admin]",
+          "seconds": 7.851,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_https_user_access[anonymous]",
+          "seconds": 4.451,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_https_user_access[customer]",
+          "seconds": 4.513,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_https_user_access[staff]",
+          "seconds": 4.486,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_https_user_access[admin]",
+          "seconds": 4.505,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_https_db_authority",
+          "seconds": 6.7,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_https_invalid_orders",
+          "seconds": 3.338,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_https_order_status_policy[staff]",
+          "seconds": 19.18,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_https_order_status_policy[admin]",
+          "seconds": 19.37,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_https_defect_product_null",
+          "seconds": 1.088,
+          "status": "PASS"
+        },
+        {
+          "file": "test_authorization.py",
+          "name": "test_https_defect_user_null",
+          "seconds": 1.109,
+          "status": "PASS"
+        },
+        {
+          "file": "test_auth.py",
+          "name": "test_https_bad_jwt[missing]",
+          "seconds": 1.105,
+          "status": "PASS"
+        },
+        {
+          "file": "test_auth.py",
+          "name": "test_https_bad_jwt[garbage]",
+          "seconds": 1.107,
+          "status": "PASS"
+        },
+        {
+          "file": "test_auth.py",
+          "name": "test_https_bad_jwt[wrong_key]",
+          "seconds": 1.124,
+          "status": "PASS"
+        },
+        {
+          "file": "test_auth.py",
+          "name": "test_https_bad_jwt[expired]",
+          "seconds": 1.105,
+          "status": "PASS"
+        },
+        {
+          "file": "test_auth.py",
+          "name": "test_https_bad_jwt[wrong_type]",
+          "seconds": 1.106,
+          "status": "PASS"
+        },
+        {
+          "file": "test_auth.py",
+          "name": "test_https_bad_jwt[no_sub]",
+          "seconds": 1.106,
+          "status": "PASS"
+        },
+        {
+          "file": "test_auth.py",
+          "name": "test_https_bad_jwt[unknown_user]",
+          "seconds": 1.113,
+          "status": "PASS"
+        },
+        {
+          "file": "test_auth.py",
+          "name": "test_https_login[customer]",
+          "seconds": 2.503,
+          "status": "PASS"
+        },
+        {
+          "file": "test_auth.py",
+          "name": "test_https_login[staff]",
+          "seconds": 2.469,
+          "status": "PASS"
+        },
+        {
+          "file": "test_auth.py",
+          "name": "test_https_login[admin]",
+          "seconds": 2.498,
+          "status": "PASS"
+        },
+        {
+          "file": "test_auth.py",
+          "name": "test_https_refresh_rotation",
+          "seconds": 4.696,
+          "status": "PASS"
+        },
+        {
+          "file": "test_auth.py",
+          "name": "test_https_refresh_rejection[unknown]",
+          "seconds": 2.481,
+          "status": "PASS"
+        },
+        {
+          "file": "test_auth.py",
+          "name": "test_https_refresh_rejection[expired]",
+          "seconds": 2.481,
+          "status": "PASS"
+        },
+        {
+          "file": "test_auth.py",
+          "name": "test_https_refresh_rejection[revoked]",
+          "seconds": 2.483,
+          "status": "PASS"
+        },
+        {
+          "file": "test_auth.py",
+          "name": "test_https_refresh_rejection[disabled]",
+          "seconds": 2.504,
+          "status": "PASS"
+        },
+        {
+          "file": "test_auth.py",
+          "name": "test_https_refresh_rejection[short]",
+          "seconds": 2.475,
+          "status": "PASS"
+        },
+        {
+          "file": "test_auth.py",
+          "name": "test_https_logout",
+          "seconds": 9.44,
+          "status": "PASS"
+        },
+        {
+          "file": "test_auth.py",
+          "name": "test_https_registration",
+          "seconds": 2.474,
+          "status": "PASS"
+        },
+        {
+          "file": "test_auth.py",
+          "name": "test_https_login_lockout",
+          "seconds": 8.113,
+          "status": "PASS"
+        },
+        {
+          "file": "test_auth.py",
+          "name": "test_https_defect_exp",
+          "seconds": 1.131,
+          "status": "EXPECTED FAILURE",
+          "result_kind": "skipped"
+        },
+        {
+          "file": "test_auth.py",
+          "name": "test_https_defect_sub",
+          "seconds": 1.067,
+          "status": "EXPECTED FAILURE",
+          "result_kind": "skipped"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_https_webhook[valid-200]",
+          "seconds": 1.117,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_https_webhook[missing_timestamp-401]",
+          "seconds": 1.105,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_https_webhook[bad_timestamp-403]",
+          "seconds": 1.106,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_https_webhook[old-403]",
+          "seconds": 1.109,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_https_webhook[future-403]",
+          "seconds": 1.106,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_https_webhook[missing_signature-401]",
+          "seconds": 1.107,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_https_webhook[wrong_signature-403]",
+          "seconds": 1.122,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_https_webhook[wrong_prefix-403]",
+          "seconds": 1.105,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_https_webhook[tampered_body-403]",
+          "seconds": 1.108,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_https_webhook[tampered_timestamp-403]",
+          "seconds": 1.108,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_https_webhook[invalid_json-400]",
+          "seconds": 1.106,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_https_debug_helper",
+          "seconds": 1.11,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_https_defect_webhook_shape",
+          "seconds": 1.11,
+          "status": "PASS"
+        },
+        {
+          "file": "test_webhook_ssrf.py",
+          "name": "test_https_defect_webhook_replay",
+          "seconds": 2.224,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_https_business.py",
+          "name": "test_https_ssrf_uses_real_dns_and_preserves_roles[anonymous-401]",
+          "seconds": 1.107,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_https_business.py",
+          "name": "test_https_ssrf_uses_real_dns_and_preserves_roles[customer-403]",
+          "seconds": 1.11,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_https_business.py",
+          "name": "test_https_ssrf_denies_invalid_targets[http://169.254.169.254-403]",
+          "seconds": 1.11,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_https_business.py",
+          "name": "test_https_ssrf_denies_invalid_targets[http://localhost-403]",
+          "seconds": 1.109,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_https_business.py",
+          "name": "test_https_ssrf_denies_invalid_targets[https://example.com.evil.test-403]",
+          "seconds": 1.116,
+          "status": "PASS"
+        },
+        {
+          "file": "../p2/test_https_business.py",
+          "name": "test_https_ssrf_denies_invalid_targets[ftp://example.com/file-422]",
+          "seconds": 1.112,
+          "status": "PASS"
+        }
+      ]
+    },
+    "junit.xml": {
+      "counts": {
+        "PASS": 106,
+        "FAIL": 0,
+        "EXPECTED FAILURE": 2,
+        "NOT EXECUTED": 0
+      },
+      "cases": [
+        {
+          "file": null,
+          "name": "test_rejected_access_tokens[missing]",
+          "seconds": 0.423,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_rejected_access_tokens[garbage]",
+          "seconds": 0.065,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_rejected_access_tokens[wrong_key]",
+          "seconds": 0.074,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_rejected_access_tokens[expired]",
+          "seconds": 0.081,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_rejected_access_tokens[wrong_type]",
+          "seconds": 0.085,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_rejected_access_tokens[no_sub]",
+          "seconds": 0.056,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_rejected_access_tokens[unknown_user]",
+          "seconds": 0.088,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_current_login_claims_and_refresh_hash[customer]",
+          "seconds": 0.405,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_current_login_claims_and_refresh_hash[staff]",
+          "seconds": 0.373,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_current_login_claims_and_refresh_hash[admin]",
+          "seconds": 0.315,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_refresh_rotation_and_reuse",
+          "seconds": 0.323,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_refresh_rejection[unknown]",
+          "seconds": 0.326,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_refresh_rejection[expired]",
+          "seconds": 0.334,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_refresh_rejection[revoked]",
+          "seconds": 0.309,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_refresh_rejection[disabled]",
+          "seconds": 0.353,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_refresh_rejection[short]",
+          "seconds": 0.313,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_logout_revokes_only_owned_refresh_and_keeps_access",
+          "seconds": 0.719,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_registration_cannot_assign_admin",
+          "seconds": 0.398,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_login_lockout",
+          "seconds": 1.82,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_defect_jwt_requires_exp",
+          "seconds": 0.095,
+          "status": "EXPECTED FAILURE",
+          "result_kind": "skipped"
+        },
+        {
+          "file": null,
+          "name": "test_defect_malformed_subject_is_401",
+          "seconds": 0.052,
+          "status": "EXPECTED FAILURE",
+          "result_kind": "skipped"
+        },
+        {
+          "file": null,
+          "name": "test_product_crud_authorization[anonymous]",
+          "seconds": 0.076,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_product_crud_authorization[customer]",
+          "seconds": 0.076,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_product_crud_authorization[staff]",
+          "seconds": 0.09,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_product_crud_authorization[admin]",
+          "seconds": 0.093,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_order_create_authorization_and_server_ownership[anonymous]",
+          "seconds": 0.058,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_order_create_authorization_and_server_ownership[customer]",
+          "seconds": 0.068,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_order_create_authorization_and_server_ownership[staff]",
+          "seconds": 0.085,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_order_create_authorization_and_server_ownership[admin]",
+          "seconds": 0.074,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_order_list_read_status_authorization[anonymous]",
+          "seconds": 0.092,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_order_list_read_status_authorization[customer]",
+          "seconds": 0.116,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_order_list_read_status_authorization[staff]",
+          "seconds": 0.114,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_order_list_read_status_authorization[admin]",
+          "seconds": 0.109,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_user_self_vs_admin_authorization[anonymous]",
+          "seconds": 0.063,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_user_self_vs_admin_authorization[customer]",
+          "seconds": 0.07,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_user_self_vs_admin_authorization[staff]",
+          "seconds": 0.064,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_user_self_vs_admin_authorization[admin]",
+          "seconds": 0.081,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_admin_self_protection_and_db_role_active_authority",
+          "seconds": 0.082,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_invalid_orders_do_not_deduct_stock",
+          "seconds": 0.074,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_current_order_status_policy[staff]",
+          "seconds": 0.15,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_current_order_status_policy[admin]",
+          "seconds": 0.162,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_defect_product_null_field",
+          "seconds": 0.058,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_defect_user_null_field",
+          "seconds": 0.052,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_clean_database_migrations_and_downgrade",
+          "seconds": 2.558,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_migration_template_generates_executable_revision",
+          "seconds": 1.748,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_pg_dump_restore_preserves_ids_relationships_and_data",
+          "seconds": 1.43,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_live_kong_route_and_rate_limit",
+          "seconds": 0.198,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_webhook_hmac_timestamp[valid-200]",
+          "seconds": 0.056,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_webhook_hmac_timestamp[missing_timestamp-401]",
+          "seconds": 0.052,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_webhook_hmac_timestamp[bad_timestamp-403]",
+          "seconds": 0.055,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_webhook_hmac_timestamp[old-403]",
+          "seconds": 0.054,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_webhook_hmac_timestamp[future-403]",
+          "seconds": 0.05,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_webhook_hmac_timestamp[missing_signature-401]",
+          "seconds": 0.062,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_webhook_hmac_timestamp[wrong_signature-403]",
+          "seconds": 0.098,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_webhook_hmac_timestamp[wrong_prefix-403]",
+          "seconds": 0.059,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_webhook_hmac_timestamp[tampered_body-403]",
+          "seconds": 0.059,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_webhook_hmac_timestamp[tampered_timestamp-403]",
+          "seconds": 0.056,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_webhook_hmac_timestamp[invalid_json-400]",
+          "seconds": 0.051,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_webhook_exact_timestamp_boundary[-301-403]",
+          "seconds": 0.058,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_webhook_exact_timestamp_boundary[-300-200]",
+          "seconds": 0.058,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_webhook_exact_timestamp_boundary[300-200]",
+          "seconds": 0.057,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_webhook_exact_timestamp_boundary[301-403]",
+          "seconds": 0.05,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_webhook_debug_helper_disabled",
+          "seconds": 0.049,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_defect_webhook_json_shape",
+          "seconds": 0.053,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_defect_webhook_replay",
+          "seconds": 0.064,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_ssrf_role_access[anonymous-401]",
+          "seconds": 0.062,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_ssrf_role_access[customer-403]",
+          "seconds": 0.062,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_ssrf_role_access[staff-200]",
+          "seconds": 0.06,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_ssrf_role_access[admin-200]",
+          "seconds": 0.057,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_ssrf_url_validation[https://example.com-ips0-200]",
+          "seconds": 0.058,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_ssrf_url_validation[https://sub.example.com-ips1-200]",
+          "seconds": 0.056,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_ssrf_url_validation[https://example.com.evil.test-ips2-403]",
+          "seconds": 0.057,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_ssrf_url_validation[https://evilexample.com-ips3-403]",
+          "seconds": 0.071,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_ssrf_url_validation[http://localhost-ips4-403]",
+          "seconds": 0.103,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_ssrf_url_validation[http://169.254.169.254-ips5-403]",
+          "seconds": 0.089,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_ssrf_url_validation[ftp://example.com/file-ips6-422]",
+          "seconds": 0.108,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_ssrf_url_validation[https://example.com-ips7-400]",
+          "seconds": 0.157,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_ssrf_url_validation[https://example.com-ips8-403]",
+          "seconds": 0.077,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_ssrf_url_validation[https://example.com-ips9-403]",
+          "seconds": 0.134,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_ssrf_url_validation[https://example.com-ips10-403]",
+          "seconds": 0.23,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_ssrf_url_validation[https://example.com-ips11-403]",
+          "seconds": 0.093,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_ssrf_url_validation[https://example.com-ips12-403]",
+          "seconds": 0.073,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_ssrf_url_validation[https://example.com-ips13-403]",
+          "seconds": 0.118,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_ssrf_url_validation[https://example.com-ips14-403]",
+          "seconds": 0.094,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_ssrf_url_validation[https://example.com-ips15-403]",
+          "seconds": 0.083,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_ssrf_url_validation[https://example.com-ips16-403]",
+          "seconds": 0.083,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_ssrf_url_validation[https://example.com-ips17-403]",
+          "seconds": 0.069,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_ssrf_dns_failure",
+          "seconds": 0.117,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_defect_ssrf_ipv4_mapped_loopback",
+          "seconds": 0.256,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_runtime_privilege_denials[CREATE TABLE public.p1_forbidden (id int)]",
+          "seconds": 0.051,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_runtime_privilege_denials[ALTER TABLE public.products ADD COLUMN p1_forbidden int]",
+          "seconds": 0.043,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_runtime_privilege_denials[DROP TABLE public.order_items]",
+          "seconds": 0.044,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_runtime_privilege_denials[CREATE SCHEMA p1_forbidden]",
+          "seconds": 0.095,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_runtime_privilege_denials[CREATE TEMP TABLE p1_forbidden (id int)]",
+          "seconds": 0.074,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_runtime_privilege_denials[CREATE FUNCTION public.p1_forbidden() RETURNS int LANGUAGE sql AS 'SELECT 1']",
+          "seconds": 0.07,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_runtime_privilege_denials[ALTER ROLE app_runtime SUPERUSER]",
+          "seconds": 0.042,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_runtime_privilege_denials[SET ROLE app_migrator]",
+          "seconds": 0.048,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_runtime_privilege_denials[SET ROLE postgres]",
+          "seconds": 0.047,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_runtime_privilege_denials[TRUNCATE public.users CASCADE]",
+          "seconds": 0.045,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_runtime_privilege_denials[DELETE FROM public.products]",
+          "seconds": 0.054,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_runtime_privilege_denials[UPDATE public.alembic_version SET version_num='forbidden']",
+          "seconds": 0.04,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_runtime_privilege_denials[SELECT * FROM public.audit_logs]",
+          "seconds": 0.048,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_runtime_privilege_denials[INSERT INTO public.categories(name,slug) VALUES ('forbidden','forbidden')]",
+          "seconds": 0.055,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_runtime_role_attributes",
+          "seconds": 0.06,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_required_runtime_dml",
+          "seconds": 0.055,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_migration_role_owns_schema_objects_and_can_ddl",
+          "seconds": 0.052,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_password_file_supports_url_encoding",
+          "seconds": 0.033,
+          "status": "PASS"
+        },
+        {
+          "file": null,
+          "name": "test_existing_p0_database_adoption_preserves_data",
+          "seconds": 2.759,
+          "status": "PASS"
+        }
+      ]
+    }
+  }
+}

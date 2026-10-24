@@ -1,0 +1,36 @@
+Staged diff snapshot; external transfer manifest records final commit statistics.
+
+ .gitignore                                  |     2 +
+ README.md                                   |    22 +-
+ docs/demo/p7-security-demo.md               |    37 +
+ docs/deployment/p7-backup-recovery.md       |    76 +
+ docs/deployment/p7-release-checklist.md     |    58 +
+ docs/deployment/p7-reproducibility.md       |    88 +
+ docs/security/p7-attack-matrix.md           |    41 +
+ docs/security/p7-final-assessment.md        |   112 +
+ docs/testing/p7-acceptance.json             |   133 +
+ docs/testing/p7-case-results.json           |  3350 +++
+ docs/testing/p7-commands.json               | 29934 ++++++++++++++++++++++++++
+ docs/testing/p7-diffstat.txt                |    36 +
+ docs/testing/p7-files.txt                   |    33 +
+ docs/testing/p7-frontend-build.txt          |    18 +
+ docs/testing/p7-ingestion.json              |  1373 ++
+ docs/testing/p7-legacy-startup-failure.json |    18 +
+ docs/testing/p7-preservation.json           |   850 +
+ docs/testing/p7-results.md                  |   223 +
+ docs/testing/p7-runtime-evidence.json       |  7993 +++++++
+ docs/testing/p7-secret-review.json          |   151 +
+ docs/testing/p7-security-review.json        |  1824 ++
+ docs/testing/p7-tls-evidence.txt            |    17 +
+ tests/p7/README.md                          |    43 +
+ tests/p7/compose.yml                        |     5 +
+ tests/p7/evidence.py                        |    64 +
+ tests/p7/launch.py                          |    15 +
+ tests/p7/legacy.py                          |    65 +
+ tests/p7/monitoring_recovered.py            |    22 +
+ tests/p7/recovery.py                        |   126 +
+ tests/p7/regression.py                      |    33 +
+ tests/p7/run.py                             |   236 +
+ tests/p7/test_security.py                   |   159 +
+ tests/p7/verify_recovered.py                |    45 +
+ 33 files changed, 47200 insertions(+), 2 deletions(-)
