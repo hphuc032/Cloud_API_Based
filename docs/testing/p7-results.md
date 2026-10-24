@@ -1,5 +1,10 @@
 # P7 final validation and release readiness
 
+> Follow-up, 2026-10-24: [Windows/Docker final DNS recovery](final-dns-acceptance-20261024.md)
+> passed all three inherited real-DNS cases, including the active OIDC equivalents.
+> Strict release acceptance remains BLOCKED by other regression/execution failures
+> and unresolved dependency findings. The original P7 results below are preserved.
+
 **Strict recommendation: BLOCKED.** P7 implements an isolated validation candidate,
 not a production release. The user explicitly deferred the three inherited
 real-DNS cases. Their P7 status is NOT EXECUTED, never PASS/xfail. Current dependency

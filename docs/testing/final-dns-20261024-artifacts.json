@@ -1,0 +1,631 @@
+{
+  "base": "90117e623bfa2e18d701e1f283b2b617b9a50270",
+  "tree": "c5317f33b811a084f0ab8cf2d26c28f3bff6d2b4",
+  "raw_evidence": "Ignored local files; hashes only are published. Raw content is not approved for uncurated export.",
+  "files": {
+    "tests/p7/artifacts/final-dns-20261024/active-backend-dns.json": {
+      "bytes": 1112,
+      "sha256": "6147d93063ccf78bdd4b92a626b5121f69af74b11ab430ecb942d05c7b5bde26"
+    },
+    "tests/p7/artifacts/final-dns-20261024/active-full.json": {
+      "bytes": 36674,
+      "sha256": "0f502d00a62e6b91752b34a8d310e909010352f413910ff8487781156bc11918"
+    },
+    "tests/p7/artifacts/final-dns-20261024/active-p6-full.json": {
+      "bytes": 93754,
+      "sha256": "426a61f7aa9487ea32f11b22c3878328d8c8db51b516b093d1738f6a0a5dc730"
+    },
+    "tests/p7/artifacts/final-dns-20261024/active-python-inventory.json": {
+      "bytes": 1408,
+      "sha256": "0a2c53f7c9d5e79d7ab720d17794e6ff6ad61a7308b1cd091f7f4b5abd92ec64"
+    },
+    "tests/p7/artifacts/final-dns-20261024/browser-path.json": {
+      "bytes": 559,
+      "sha256": "cd91b7f0bb80205f08f31c3e5d0cb7fbcea924d8b7be15af36badfa18de6070a"
+    },
+    "tests/p7/artifacts/final-dns-20261024/build.json": {
+      "bytes": 151,
+      "sha256": "3061adc59e419070981565d4e0aeef27222746dd2937af4d97e08b21a02e0e87"
+    },
+    "tests/p7/artifacts/final-dns-20261024/chromium-install.json": {
+      "bytes": 27060,
+      "sha256": "95f45fe650f98e86f996f32a38568a797b8766ef0ce5dfa4266dc227aa415997"
+    },
+    "tests/p7/artifacts/final-dns-20261024/chromium-version.json": {
+      "bytes": 326,
+      "sha256": "9c09d99a08531327cb59026cb2720c130b67a15ddcef4b83a479f4a17651f089"
+    },
+    "tests/p7/artifacts/final-dns-20261024/cleanup-mounts.json": {
+      "bytes": 2150,
+      "sha256": "a1cc41c825e47ae26d41968394eeb291ec829e47e4f4ae9ef8a98a2873029b61"
+    },
+    "tests/p7/artifacts/final-dns-20261024/cleanup-resources.json": {
+      "bytes": 4281,
+      "sha256": "c3d1949a984ee586a6e70834d682c56669a5c76a3bdd4df8746d72a91107ca2c"
+    },
+    "tests/p7/artifacts/final-dns-20261024/cleanup_mounts.py": {
+      "bytes": 1719,
+      "sha256": "393c83cdddddda7ebcd9b315db604865e5adada96249be2bd225a8d875cb4ac4"
+    },
+    "tests/p7/artifacts/final-dns-20261024/compose-version.json": {
+      "bytes": 253,
+      "sha256": "0b137755c9dc4b67d9000be7f197a98416830f1e77afffa53143cc15f46b6254"
+    },
+    "tests/p7/artifacts/final-dns-20261024/curate.py": {
+      "bytes": 8533,
+      "sha256": "3bab1923e6d37c6221afabba2564393c2800ff0228fe280d0b729bba36e67088"
+    },
+    "tests/p7/artifacts/final-dns-20261024/disk-final.json": {
+      "bytes": 560,
+      "sha256": "d0fbf1dee29f9795ae7faeb759214fd4d456c2504ac59285264a29d9008b51c0"
+    },
+    "tests/p7/artifacts/final-dns-20261024/disposable-dns.json": {
+      "bytes": 1090,
+      "sha256": "fc7429a62d41033c5912eb63b6f6296c946bb75c1512f83d2911c7ccbf94376b"
+    },
+    "tests/p7/artifacts/final-dns-20261024/docker-resources.json": {
+      "bytes": 344,
+      "sha256": "f84e995d6f5343def81a5f4373f620209e277b7a54f793a43a1551d8fd147441"
+    },
+    "tests/p7/artifacts/final-dns-20261024/docker-version.json": {
+      "bytes": 1574,
+      "sha256": "d5320b7c9380b43f4bc915df1e98db9ef8b76e09931cec65a9ac96eb143374d7"
+    },
+    "tests/p7/artifacts/final-dns-20261024/focused/backend-boundaries.json": {
+      "bytes": 362,
+      "sha256": "2294bb3c4b6693d1133729da592b87b7ef6bc9dcac6073f6cda222fd96ac92c8"
+    },
+    "tests/p7/artifacts/final-dns-20261024/focused/backend-dns.txt": {
+      "bytes": 591,
+      "sha256": "741fa828eec1425c38a507455bf8021e6350bd39c11685775af106663cbe6cf5"
+    },
+    "tests/p7/artifacts/final-dns-20261024/focused/commands.json": {
+      "bytes": 5403,
+      "sha256": "6abdac65df522a33be1fc047f2649ca7f1c49b8e3ada860ebc5acaa9d0058a65"
+    },
+    "tests/p7/artifacts/final-dns-20261024/focused/focused-junit.xml": {
+      "bytes": 526,
+      "sha256": "734c07ba20a8c202bbdba56486baa74873afe8636efb1c3a82331747a55cad19"
+    },
+    "tests/p7/artifacts/final-dns-20261024/focused/host-checks.txt": {
+      "bytes": 239,
+      "sha256": "0c95d341cd1d9a0e38a2fdfacbf248892f887a9cfbc9a562571cb0bfa3d9e447"
+    },
+    "tests/p7/artifacts/final-dns-20261024/focused/host-results.json": {
+      "bytes": 48,
+      "sha256": "f0e625b0e1b86e44a04270d274ee164f2247c5665c2a3320ef716e00dc999f51"
+    },
+    "tests/p7/artifacts/final-dns-20261024/focused/namespace-dns.txt": {
+      "bytes": 591,
+      "sha256": "741fa828eec1425c38a507455bf8021e6350bd39c11685775af106663cbe6cf5"
+    },
+    "tests/p7/artifacts/final-dns-20261024/focused/pytest.txt": {
+      "bytes": 976,
+      "sha256": "c156d38c555335317af589c3ab4dd629e3cf2a2902989ff3a0486989920e7d39"
+    },
+    "tests/p7/artifacts/final-dns-20261024/focused/run.json": {
+      "bytes": 269,
+      "sha256": "b2ebd1a181c08d413f06aeca727194650620cb9e268b638bfe2b9c4a77437eca"
+    },
+    "tests/p7/artifacts/final-dns-20261024/focused-run.json": {
+      "bytes": 67526,
+      "sha256": "e4784baa6c551e0ba24ec620bd0e39da7cacee36ee3535b5d0e17996c90b8594"
+    },
+    "tests/p7/artifacts/final-dns-20261024/focused.py": {
+      "bytes": 6268,
+      "sha256": "01e73c1bfa3c34c73e569f2fb850ca2df0d32b69018770010a5b1e2153c13eab"
+    },
+    "tests/p7/artifacts/final-dns-20261024/frontend-build.json": {
+      "bytes": 789,
+      "sha256": "0fd372d656425441e7775b968fe0f4f2230e3b3b749bbb7db49586fbb5c0d8c0"
+    },
+    "tests/p7/artifacts/final-dns-20261024/frontend-ci.json": {
+      "bytes": 903,
+      "sha256": "da91a67b6392a62ccb442fb5828f913b23deeb768207f1eea9c4be72589637e0"
+    },
+    "tests/p7/artifacts/final-dns-20261024/full-build.json": {
+      "bytes": 235,
+      "sha256": "e9ecc0d6a8549e5d02eb4be164d74e34d4a7e0f6522025ac93cef7712f00335c"
+    },
+    "tests/p7/artifacts/final-dns-20261024/full.py": {
+      "bytes": 1255,
+      "sha256": "f73e5be9d9fb8afe2868aaa6c993c6293fce06d59624bacca109845fd1f08ead"
+    },
+    "tests/p7/artifacts/final-dns-20261024/independent-source-verification.json": {
+      "bytes": 20312,
+      "sha256": "b531449fa76f89666f6271b5dad63b4aae8449360ce1f96d6fec1249831b125c"
+    },
+    "tests/p7/artifacts/final-dns-20261024/legacy-full.json": {
+      "bytes": 98871,
+      "sha256": "a5cf6f4ee5dd5b124672282c705c21300aaf659f6f0e8728c6de48224be04320"
+    },
+    "tests/p7/artifacts/final-dns-20261024/log-mount-events-initial.json": {
+      "bytes": 6939,
+      "sha256": "7951efbe34ecba16bcf8938af626fafcfe742856f8546105f6101a761d80d745"
+    },
+    "tests/p7/artifacts/final-dns-20261024/log-mount-events.json": {
+      "bytes": 3901,
+      "sha256": "3cc0e3bd7ec67f86d176b856b231beaafd15d1c5c6128215fd40909ae457bc1c"
+    },
+    "tests/p7/artifacts/final-dns-20261024/log-mount-summary-initial.json": {
+      "bytes": 715,
+      "sha256": "c1c8fef00fd43660482f868381fa0c6e4576ef47ab407e36e1b59854271bc6d1"
+    },
+    "tests/p7/artifacts/final-dns-20261024/log-mount-summary.json": {
+      "bytes": 496,
+      "sha256": "d5cdc1ea71b840320a798d4c693a52511bcb2b68c1fa9ebc0330dea360b0128f"
+    },
+    "tests/p7/artifacts/final-dns-20261024/log_mounts.py": {
+      "bytes": 2437,
+      "sha256": "46582df116805c8366ee6a84b70876372b5d60df3d24c8499ef85defd8844f70"
+    },
+    "tests/p7/artifacts/final-dns-20261024/node-client.json": {
+      "bytes": 455,
+      "sha256": "f120446dccad7cef7da09c084a37b67e8c20544c78347b8d0f050a2f39ca5297"
+    },
+    "tests/p7/artifacts/final-dns-20261024/node-session.json": {
+      "bytes": 502,
+      "sha256": "ae2c43bffeb451817401e38fb3a360016b38c6281e4acb4f367d4e76b836684f"
+    },
+    "tests/p7/artifacts/final-dns-20261024/npm-audit.json": {
+      "bytes": 23653,
+      "sha256": "4a1a3cc60dc9327d92cf445f596a53dbdde60c7ff16b6f4ca26d0b81d1bf1d9d"
+    },
+    "tests/p7/artifacts/final-dns-20261024/npm-prod-audit.json": {
+      "bytes": 11930,
+      "sha256": "71f330d06da45b40bec1eda0ae954c6d74713bd6f3edd379fb4564234545fdf0"
+    },
+    "tests/p7/artifacts/final-dns-20261024/python-audit.json": {
+      "bytes": 116130,
+      "sha256": "bf3632aebdc3592956d52238c456cec201acaf03b2b564282a70c55c5962ace5"
+    },
+    "tests/p7/artifacts/final-dns-20261024/record.py": {
+      "bytes": 874,
+      "sha256": "9c7bd979be98c0c3d903ec7d70e8d5e710d4b62b39feb845b49abd7f479d38cc"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p3/artifacts/commands.json": {
+      "bytes": 136101,
+      "sha256": "7202d4459814a6adcc6799c25448d4029b6e9a382809b613aca25df2c517da58"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p3/artifacts/containers.json": {
+      "bytes": 134555,
+      "sha256": "9db00a361062186c1fef05aa3085f7a9dfdd091e9c4999b7ca29a21905389fbd"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p3/artifacts/host-checks.txt": {
+      "bytes": 4534,
+      "sha256": "24209a965a18daae87df21be020074157e882ec1048d891152f3486f3a2ad227"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p3/artifacts/host-results.json": {
+      "bytes": 49,
+      "sha256": "4700610ef3281765bfee65a1ef4ca8bc8439ad984e17dc2169dd22166bd0beb7"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p3/artifacts/identity-schema.json": {
+      "bytes": 980,
+      "sha256": "117f8fe88e91e3aa634e1c6a3621c1589af129297bafcccd73c1c8b364c0955b"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p3/artifacts/image-source-evidence.json": {
+      "bytes": 245,
+      "sha256": "619a7a2c234ce625c8c3a0a05fe5ef3d097c0448a6c72f1c5cff26f8cafba499"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p3/artifacts/junit.xml": {
+      "bytes": 11871,
+      "sha256": "51a5a7dd152394ae4c70f076a446316d9eefdbd3f38f979848c4569a2e66072d"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p3/artifacts/oidc-evidence.json": {
+      "bytes": 11909,
+      "sha256": "abe6755abb8be43dcbea9709e6e754ea240e1cc64c46e5121b1331493956519b"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p3/artifacts/p2-junit.xml": {
+      "bytes": 12645,
+      "sha256": "d125754e889666f627d477a242a52bcf01169f9f6feed150a8c9dc7c6eea2ce6"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p3/artifacts/p2-pytest.txt": {
+      "bytes": 1869,
+      "sha256": "a21473a7050e3c7ec0d14a09c16a3a4e2676d16966dbc2be15bd1eed6f3a0a34"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p3/artifacts/p3-host.json": {
+      "bytes": 48,
+      "sha256": "adf8dbf20e3008db8dcd89cb3f2e8f84184fd48ce6984a5de5a39d95440b8264"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p3/artifacts/p3-junit.xml": {
+      "bytes": 2281,
+      "sha256": "8922306014b8190d2d03e9ea8beadb60dbee15a14b92e294264be585cf5bb7a9"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p3/artifacts/p3-pytest.txt": {
+      "bytes": 649,
+      "sha256": "efa921e8944a7d6c3e5a08ac4574ee9a1902e1a9087646cb66f2941a7a88a12d"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p3/artifacts/persistence-marker.json": {
+      "bytes": 4442,
+      "sha256": "6b43031a9b9222d7e734e88aaad8121c833564a7e8a322a96cdd839e8836c4c6"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p3/artifacts/pytest.txt": {
+      "bytes": 3735,
+      "sha256": "da1cbebeef889c1e747ad59330fceb735e43f9a9dd7d458dd2677372898d3f99"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p3/artifacts/run.json": {
+      "bytes": 224,
+      "sha256": "95a9b35b63f1e062d05003aa3b60fa2c789fc5a84e97f0054207af47a3903857"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p3/artifacts/tls-evidence.txt": {
+      "bytes": 627,
+      "sha256": "7220371979c1aec5452d3be6a8ade0d9fa2dabba7d069c1271ca32d615556942"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p3/artifacts/tls-host-checks.txt": {
+      "bytes": 64562,
+      "sha256": "b78e7130f46fc5c26f532da60747e65a423b8291a0dc6de0d09b8388e2ddbbb6"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p3/artifacts/tls-host-results.json": {
+      "bytes": 50,
+      "sha256": "aadd6d0d3745b3ecd72022e068dbc704e6e8591b8a7f5321ceb56e6af3ee778e"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p3/artifacts/token-verification-evidence.json": {
+      "bytes": 374,
+      "sha256": "d301c7daec0173ac8b8fbff08a86fb48c39242c6f237b25f2932cf3d8720935a"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/browser-error.txt": {
+      "bytes": 20,
+      "sha256": "230f31b7d6839724feeb0952cdbe3739ffd23f8a6357a133346cad7cca985523"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/commands.json": {
+      "bytes": 237943,
+      "sha256": "99e243084f0f336af80a0facf238ee847070bf395a738de6be181a1ad2865aa4"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/containers.json": {
+      "bytes": 148393,
+      "sha256": "b91c71e4e9ac6a9eb814303a9c3c5a7dffd20849215ca53189872033aef13fd7"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/image-source-evidence.json": {
+      "bytes": 479,
+      "sha256": "97e1a7782ee49bd6929c0cf28dff0eaf9ef2be6142c600a5eca22f685ee0ea62"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/key-rotation-results.json": {
+      "bytes": 1523,
+      "sha256": "3dabeeed40d80f3af30260bf4a4e8944b309b7acd776d01be58b1632ba179667"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/oidc-evidence.json": {
+      "bytes": 13531,
+      "sha256": "77f5df595c41a3f8c87b4e8fd16622a88c6629ba1f4d1d9b98ea95786603b758"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/p3-host.json": {
+      "bytes": 48,
+      "sha256": "adf8dbf20e3008db8dcd89cb3f2e8f84184fd48ce6984a5de5a39d95440b8264"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/p4-focused-junit.xml": {
+      "bytes": 1013,
+      "sha256": "8d29ddd74197acf9eb7ad6f6ae67ad67851e61e0f13b158ca35c163a047fc4a3"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/p4-focused.txt": {
+      "bytes": 1430,
+      "sha256": "8c9f5805ab836312704ddb4445c03910561d74baa9567f3c2e7357f3ce5085ea"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/p4-host.json": {
+      "bytes": 48,
+      "sha256": "190a08991032e5696eddd8fe41b5067c075ad20e0d0f09fde83c030968864185"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/p4-junit.xml": {
+      "bytes": 21825,
+      "sha256": "2961d33c39133ff97cbca0505ff9492ce3860be4e420bc99aab2f8dc17714111"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/p4-pytest.txt": {
+      "bytes": 1252,
+      "sha256": "b22dae68f26f22d77d8faaacc63d930eeacc16f6cabfe9fc1c21db08fdee2eba"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/p5-hardening-junit.xml": {
+      "bytes": 14671,
+      "sha256": "65419a46f6baf061b786ddc6d990428ca5b98d3ccef318b480df3d12ae1d7b56"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/p5-hardening.txt": {
+      "bytes": 730,
+      "sha256": "55f38374164534a2aba9552b1c5fac8d74be35c12d7bd2fad3352a93532f43c7"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/p6-alert-evaluation.json": {
+      "bytes": 2417,
+      "sha256": "d213b8dc4067497c6e9151af2d94dfa12e6d290875cd2eebebd30ae75d869b99"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/p6-alert-four-rules.json": {
+      "bytes": 148349,
+      "sha256": "93712b06255b9f1899c409b95c98929d33298e6bba5a3b9906cbc65f6a37164d"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/p6-alert-upstream-errors.json": {
+      "bytes": 38205,
+      "sha256": "fc5d8757ffc119959fb829f23f7a721204c7f81fc40355c279fc46bfd1fff2b4"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/p6-controlled-outage.txt": {
+      "bytes": 175,
+      "sha256": "8cf3dffa9712cbd00e182ff0ec7547b7716089d503b7b658bad04d427abef2ed"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/p6-ingestion.json": {
+      "bytes": 28379,
+      "sha256": "4e3ced3145666923bf051df1bc2b6f0448967851c3d51d0efc77a991d4842b35"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/p6-junit.xml": {
+      "bytes": 3316,
+      "sha256": "cd957a20dd0d9e190b5ce20fe85ab0532f129a31abacc7c1dcf28e5d2418f6c9"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/p6-lifecycle-initial.txt": {
+      "bytes": 176,
+      "sha256": "880c038931a3ef5efbb041dff9c477bb83b174e672da6e2126dbd13bc5b19523"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/p6-lifecycle-recovered.txt": {
+      "bytes": 178,
+      "sha256": "f3dc640b9259a41b270f06ecb1f779807375f019023cd6896955b784c95450d5"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/p6-lifecycle.json": {
+      "bytes": 346,
+      "sha256": "77381c1e65c1bdd9a4be3d4a500421b6c28899e8bb2b96661044a9099810adc8"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/p6-observability.txt": {
+      "bytes": 649,
+      "sha256": "020112f81fab505ddde10712669e00f5a1bdff439a8f2004acf3e609dd985f93"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/persistence-marker.json": {
+      "bytes": 6155,
+      "sha256": "f3adaa17b34523481facfb3bf90fc21c1471bb058b12936891a913016742a4e6"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/run.json": {
+      "bytes": 525,
+      "sha256": "43bf5a45eaac1f2df70078e33ab9bef405312721663a5fd17a8499ab99a3d983"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/tls-evidence.txt": {
+      "bytes": 627,
+      "sha256": "7220371979c1aec5452d3be6a8ade0d9fa2dabba7d069c1271ca32d615556942"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/tls-host-checks.txt": {
+      "bytes": 64667,
+      "sha256": "84631f1eab0512df0089cdd12c2afd391de8e5f3692380a092f186407975ff96"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p6/artifacts/tls-host-results.json": {
+      "bytes": 50,
+      "sha256": "aadd6d0d3745b3ecd72022e068dbc704e6e8591b8a7f5321ceb56e6af3ee778e"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p7/artifacts/cloud-api-p7-060e950e1523/commands.json": {
+      "bytes": 521807,
+      "sha256": "4351273f090b2c0492c1a3e81a4ccf4792a2bfe3b244982998042c6b0c30941c"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p7/artifacts/cloud-api-p7-060e950e1523/containers.json": {
+      "bytes": 149847,
+      "sha256": "e00a303ea1702b7dd3b91e3ff7a98f80615d3011a9114de0e33037fd1bad1628"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p7/artifacts/cloud-api-p7-060e950e1523/deployment-failure.txt": {
+      "bytes": 55224,
+      "sha256": "3a1e1b96ad522037dd9259e8ad1698b89da57da3a9797532a9ccb26412347b92"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p7/artifacts/cloud-api-p7-060e950e1523/image-source-evidence.json": {
+      "bytes": 479,
+      "sha256": "97e1a7782ee49bd6929c0cf28dff0eaf9ef2be6142c600a5eca22f685ee0ea62"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p7/artifacts/cloud-api-p7-060e950e1523/p6-ingestion.json": {
+      "bytes": 11181,
+      "sha256": "a6fd01ba941be4502c773831a115233fa1b64692bc4af5e5b467be7a1813d5ab"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p7/artifacts/cloud-api-p7-060e950e1523/p7-junit.xml": {
+      "bytes": 3176,
+      "sha256": "a3a192a219a80518c55e88ce953314836f33b5405cbbbed6073c58d5c345911c"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p7/artifacts/cloud-api-p7-060e950e1523/p7-recovery.json": {
+      "bytes": 7852,
+      "sha256": "7b7786f8686c6b9dcf2360a564f5efb1976c5708fde5d46d76bda3a4863d0fbb"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p7/artifacts/cloud-api-p7-060e950e1523/p7-scenarios.json": {
+      "bytes": 11870,
+      "sha256": "d47e4860a4a535d20d1eb94e8510b18a9eb0186c08bdce997c94157a247fbcf1"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p7/artifacts/cloud-api-p7-060e950e1523/p7-security.txt": {
+      "bytes": 649,
+      "sha256": "4f3512069a57f958255fcb1496f02a2ac9fbb991f8a670b83a3d1f26b5069447"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p7/artifacts/cloud-api-p7-060e950e1523/recovery-compose.json": {
+      "bytes": 1703,
+      "sha256": "7b668340b6109ca7e83371c7b2421bd4977a124944ef54b555b74e7ee799d59c"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runroot/tests/p7/artifacts/cloud-api-p7-060e950e1523/run.json": {
+      "bytes": 365,
+      "sha256": "3041b7ec850dd0a05eff9e9f61b2c76bbf6426bc822eb1163a0b5fd8cba26608"
+    },
+    "tests/p7/artifacts/final-dns-20261024/runtime-python.json": {
+      "bytes": 304,
+      "sha256": "44fc772d0adc565a3187d36a59ea6f560adfd3491c0bbe211774baf403de4776"
+    },
+    "tests/p7/artifacts/final-dns-20261024/scout-alloy-retry.json": {
+      "bytes": 1170474,
+      "sha256": "234c7d264c11bdffbc81887649162564e270ad78c3f66a79552471b010d20f66"
+    },
+    "tests/p7/artifacts/final-dns-20261024/scout-alloy.json": {
+      "bytes": 932,
+      "sha256": "2bfad458c6203a71a377d5b78ebc6bbf8fa109af3009e414f21a2f2c18f6b705"
+    },
+    "tests/p7/artifacts/final-dns-20261024/scout-backend.json": {
+      "bytes": 440863,
+      "sha256": "9603b2040c6b5e0edd083222ba6d5e59b93ad86644122f659d9438cbe4dec431"
+    },
+    "tests/p7/artifacts/final-dns-20261024/scout-grafana-retry.json": {
+      "bytes": 1047957,
+      "sha256": "aae10de46518da8765a452aedca266a95bd13a15a3cccfde2ca386d6c164fe02"
+    },
+    "tests/p7/artifacts/final-dns-20261024/scout-grafana.json": {
+      "bytes": 520,
+      "sha256": "a9cd4c43d430f5d5ffb94dd2eed913cb11d6e54e241758068b684fa9c855db1f"
+    },
+    "tests/p7/artifacts/final-dns-20261024/scout-keycloak-retry.json": {
+      "bytes": 2177799,
+      "sha256": "6038826df1fb2d31178f24339ecd991c7bd54f10be33e393847b8cbe0bae1c93"
+    },
+    "tests/p7/artifacts/final-dns-20261024/scout-keycloak.json": {
+      "bytes": 705,
+      "sha256": "29c938b33a21056a1f1be3a6930db4fdc1b448519f2bb1f39668f82330320bb6"
+    },
+    "tests/p7/artifacts/final-dns-20261024/scout-kong.json": {
+      "bytes": 204885,
+      "sha256": "469f76ac6081b523c94788332394038459376f183be81233fcacb60680595cfd"
+    },
+    "tests/p7/artifacts/final-dns-20261024/scout-loki.json": {
+      "bytes": 477130,
+      "sha256": "d3769b2ddf8182f731d20f0d2d134b0b8035786362a54a78d572e2bec01982c3"
+    },
+    "tests/p7/artifacts/final-dns-20261024/scout-nginx.json": {
+      "bytes": 587441,
+      "sha256": "c36c6509c606b4b7e9156dd8a7c1c0633aca09e7c4e907e2aab949407fcde28f"
+    },
+    "tests/p7/artifacts/final-dns-20261024/scout-postgres.json": {
+      "bytes": 491950,
+      "sha256": "0beeba152cb02d9b6d7fee203526018f1675ecbdff35ede1265defd219cec390"
+    },
+    "tests/p7/artifacts/final-dns-20261024/scout-version.json": {
+      "bytes": 2263,
+      "sha256": "f7f7078f4b61ea6040fe1891d076c5268220d6aae58a24bfdaa7d08f778e821a"
+    },
+    "tests/p7/artifacts/final-dns-20261024/seal_evidence.py": {
+      "bytes": 3959,
+      "sha256": "ce3824e02a80f9f0794a2d82f6b8dbb48a586679b853156a2d7aeee2c8ee8d98"
+    },
+    "tests/p7/artifacts/final-dns-20261024/source-90117e6.tar": {
+      "bytes": 8366080,
+      "sha256": "c47001224f6eb54ba85b89d7f76ab55c1bb9dde6e468643c3bd6b5d0f14d35aa"
+    },
+    "tests/p7/artifacts/final-dns-20261024/source-guard.json": {
+      "bytes": 15,
+      "sha256": "d8bb576872842519ea3e5e49d7e21510a8ce619e70bcc49ec4c59d2202898366"
+    },
+    "tests/p7/artifacts/final-dns-20261024/staged-review-initial.json": {
+      "bytes": 643,
+      "sha256": "255e416e23229ffba7fe1660abda0a43a89ef3cfc7237389905a384179ef1b19"
+    },
+    "tests/p7/artifacts/final-dns-20261024/Test.Dockerfile": {
+      "bytes": 669,
+      "sha256": "a54612d746107e95a09035a55985b2df23515ae288385f807786c98e4fd05d66"
+    },
+    "tests/p7/artifacts/final-dns-20261024/Test.Dockerfile.dockerignore": {
+      "bytes": 480,
+      "sha256": "f18d1b5306b073dd08fe9a3ae1ed37718b44d222e83a2d52c22bbe6ee30a87a9"
+    },
+    "tests/p7/artifacts/final-dns-20261024/tls-diagnostic/backend-boundaries.json": {
+      "bytes": 362,
+      "sha256": "7972f29894bd4948afae6dde098cc58999f6cc34cf6545094d2454330e63d3e3"
+    },
+    "tests/p7/artifacts/final-dns-20261024/tls-diagnostic/backend-dns.txt": {
+      "bytes": 591,
+      "sha256": "741fa828eec1425c38a507455bf8021e6350bd39c11685775af106663cbe6cf5"
+    },
+    "tests/p7/artifacts/final-dns-20261024/tls-diagnostic/commands.json": {
+      "bytes": 11591,
+      "sha256": "7e4f4a589ed57ca2705d27ee2e40a6fc016c7ef8b6e977c9e3f9d26f0e704df1"
+    },
+    "tests/p7/artifacts/final-dns-20261024/tls-diagnostic/focused-junit.xml": {
+      "bytes": 526,
+      "sha256": "723ed809388fdcb9e625371ab03b87deabae82ccd78a18f3260cc547bad082da"
+    },
+    "tests/p7/artifacts/final-dns-20261024/tls-diagnostic/host-checks.txt": {
+      "bytes": 239,
+      "sha256": "f98158134b069aa9afd288d5b153fa9b685c02ebfee6b61bf035a0498c18f127"
+    },
+    "tests/p7/artifacts/final-dns-20261024/tls-diagnostic/host-results.json": {
+      "bytes": 48,
+      "sha256": "f0e625b0e1b86e44a04270d274ee164f2247c5665c2a3320ef716e00dc999f51"
+    },
+    "tests/p7/artifacts/final-dns-20261024/tls-diagnostic/kong-after.txt": {
+      "bytes": 11195,
+      "sha256": "2f2ca66a475a8ee3bfc13a456224941809b28e77ebc853b303bdc9180365a9b5"
+    },
+    "tests/p7/artifacts/final-dns-20261024/tls-diagnostic/namespace-dns.txt": {
+      "bytes": 591,
+      "sha256": "741fa828eec1425c38a507455bf8021e6350bd39c11685775af106663cbe6cf5"
+    },
+    "tests/p7/artifacts/final-dns-20261024/tls-diagnostic/pytest.txt": {
+      "bytes": 976,
+      "sha256": "f6e0dd10fa5bfc2bebeed5cb8c5761ada3f0470c9bf5fca5002653dd54de1864"
+    },
+    "tests/p7/artifacts/final-dns-20261024/tls-diagnostic/run.json": {
+      "bytes": 294,
+      "sha256": "f79f6dc70ee94226cf55cd43c9c8ce76624d99b71605aea9582f905497252d70"
+    },
+    "tests/p7/artifacts/final-dns-20261024/tls-diagnostic/tls-evidence.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests/p7/artifacts/final-dns-20261024/tls-diagnostic/tls-host-checks.txt": {
+      "bytes": 4879,
+      "sha256": "e3e009584515cb136b482d07e549b7008ff803cbc1cc632c258c3df0d3f35c25"
+    },
+    "tests/p7/artifacts/final-dns-20261024/tls-diagnostic/tls-host-results.json": {
+      "bytes": 48,
+      "sha256": "461b67e67031caecbb786861de94ee97990c8581a19b6dd1ed54fe8a92036b96"
+    },
+    "tests/p7/artifacts/final-dns-20261024/tls-diagnostic.json": {
+      "bytes": 19902,
+      "sha256": "8ac9b06c4defc174e679f588a8f41d43e9cdccfd7579dc5182f8d35915e44690"
+    },
+    "tests/p7/artifacts/final-dns-20261024/tools-pip.json": {
+      "bytes": 14705,
+      "sha256": "7da13b21706ad028f70f0c30d79a6ef02db34926092d9b3073d9276d82f84fba"
+    },
+    "tests/p7/artifacts/final-dns-20261024/tools-venv.json": {
+      "bytes": 321,
+      "sha256": "1c6443e4c4e069003263a498e1243020e0c809e1053f5d98cd1704a33c852543"
+    },
+    "tests/p7/artifacts/final-dns-20261024/verify_cleanup.py": {
+      "bytes": 1277,
+      "sha256": "f5442119dd1421b0e5dc4da190435009080b7c6c919ca5a6375df5e19cd56aa9"
+    },
+    "tests/p7/artifacts/final-dns-20261024/verify_sources.py": {
+      "bytes": 1516,
+      "sha256": "38c664e1a7cee14e8f1ede8809663190b5843ad1cbba0975b443a73e11ebd848"
+    },
+    "tests/p7/artifacts/final-dns-20261024/verify_staged.py": {
+      "bytes": 1417,
+      "sha256": "a7fd6602d441ad82013ab097b0282990dd0cf8e80d62057c41998260954a6cdd"
+    },
+    "tests/p7/artifacts/final-dns-20261024/version-alloy.json": {
+      "bytes": 560,
+      "sha256": "79ab765c7817bf9c79cda617c4850155c02c2d37d1207c5592d25bcb47d0f2cf"
+    },
+    "tests/p7/artifacts/final-dns-20261024/version-grafana.json": {
+      "bytes": 336,
+      "sha256": "dd64e59a61a7a3113fc436aee6a569e50b1ebe9ae0c485aa077f08439c3b6a70"
+    },
+    "tests/p7/artifacts/final-dns-20261024/version-keycloak.json": {
+      "bytes": 440,
+      "sha256": "43a5b7c55655fd61a8d2d5236f6b832198923c33ed3a9098cd741a4fb71bd33d"
+    },
+    "tests/p7/artifacts/final-dns-20261024/version-kong.json": {
+      "bytes": 288,
+      "sha256": "cf62f95c2b1dab75dbf64084c378cbd6365fb2f266a456486098f7b4867eedc2"
+    },
+    "tests/p7/artifacts/final-dns-20261024/version-loki.json": {
+      "bytes": 520,
+      "sha256": "dcf82beed33c48f6ac39525416bb6eb2e31687e6a373ff0b662fd2ac9456ceb3"
+    },
+    "tests/p7/artifacts/final-dns-20261024/version-nginx.json": {
+      "bytes": 315,
+      "sha256": "08712de85c6aaa0330ce8a5b261e7116e745baf46617405363f4e59fa9699924"
+    },
+    "tests/p7/artifacts/final-dns-20261024/version-postgres.json": {
+      "bytes": 346,
+      "sha256": "93c717d2ff09a4f7b7ab58ccb752482caedf6dd86c4d347e52e2f50db9f25cc1"
+    },
+    "tests/p7/artifacts/final-dns-20261024/windows-dns-final.json": {
+      "bytes": 4947,
+      "sha256": "469cc91a40268a0db85ed7a2b1bd23328ad780ab4a88b9737dea31709b5f8296"
+    },
+    "tests/p7/artifacts/final-dns-20261024/windows-dns.json": {
+      "bytes": 2718,
+      "sha256": "ed54c5b8e43bf1e97cc46aa6eb6095234d7b74e64a9998ba8f8a37517eee5e2f"
+    },
+    "tests/p7/artifacts/final-dns-20261024/windows-environment.json": {
+      "bytes": 883,
+      "sha256": "3f7627afced82a13f4d9a93b36a8b3670e6a2ebb639ca8a0955ea8db12c32ea9"
+    },
+    "tests/p7/artifacts/final-dns-20261024/wsl-install.json": {
+      "bytes": 141733,
+      "sha256": "599c4da0d73503f7d9ebedff9bd347c4fe24480f043cc8d33180df2d077689b9"
+    },
+    "tests/p7/artifacts/final-dns-20261024/wsl-network-config.json": {
+      "bytes": 485,
+      "sha256": "30f0e0262d68408cb54806ecfd099a6b368e9a976a65666432702e52a1aa73d6"
+    },
+    "tests/p7/artifacts/final-dns-20261024/wsl-setup.json": {
+      "bytes": 2777,
+      "sha256": "b68213288b921e4a8c0cfd3d0a6fe85a5ea16befe04ee48c846442309b7a7ac7"
+    }
+  }
+}

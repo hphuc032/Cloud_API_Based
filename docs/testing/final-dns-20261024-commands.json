@@ -1,0 +1,866 @@
+{
+  "active-backend-dns": {
+    "argv": [
+      "docker",
+      "exec",
+      "cloud-api-p6-c08966a13806-backend-1",
+      "python",
+      "-c",
+      "import socket,json,pathlib;print(pathlib.Path('/etc/resolv.conf').read_text());print(json.dumps({h:sorted({a[4][0] for a in socket.getaddrinfo(h,443)}) for h in ['example.com','pypi.org']}))"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T06:32:41.951342+00:00",
+    "finished_utc": "2026-10-24T06:32:42.293084+00:00"
+  },
+  "active-full": {
+    "argv": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "--",
+      "/tmp/florasecure-final-dns-20261024-venv/bin/python",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-dns-20261024/full.py",
+      "active"
+    ],
+    "exit_code": 1,
+    "started_utc": "2026-10-24T06:14:23.006534+00:00",
+    "finished_utc": "2026-10-24T06:20:48.782716+00:00"
+  },
+  "active-p6-full": {
+    "argv": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "--",
+      "/tmp/florasecure-final-dns-20261024-venv/bin/python",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-dns-20261024/full.py",
+      "active-p6"
+    ],
+    "exit_code": 1,
+    "started_utc": "2026-10-24T06:21:59.092508+00:00",
+    "finished_utc": "2026-10-24T06:42:30.260145+00:00"
+  },
+  "active-python-inventory": {
+    "argv": [
+      "docker",
+      "exec",
+      "cloud-api-p6-c08966a13806-backend-1",
+      "python",
+      "-m",
+      "pip",
+      "freeze",
+      "--all"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T06:27:56.887070+00:00",
+    "finished_utc": "2026-10-24T06:27:57.921092+00:00"
+  },
+  "browser-path": {
+    "argv": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "-u",
+      "root",
+      "--",
+      "python3",
+      "-c",
+      "from pathlib import Path;p=Path('/usr/lib/chromium/chromium');p.parent.mkdir(exist_ok=True);p.symlink_to('/usr/lib/florasecure-dns-chromium/chromium-1208/chrome-linux64/chrome');print(p.resolve())"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T06:08:00.462396+00:00",
+    "finished_utc": "2026-10-24T06:08:00.660167+00:00"
+  },
+  "chromium-install": {
+    "argv": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "-u",
+      "root",
+      "--",
+      "env",
+      "PLAYWRIGHT_BROWSERS_PATH=/usr/lib/florasecure-dns-chromium",
+      "node",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-dns-20261024/runroot/frontend/node_modules/playwright/cli.js",
+      "install",
+      "--with-deps",
+      "chromium"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T06:05:33.787055+00:00",
+    "finished_utc": "2026-10-24T06:06:45.742673+00:00"
+  },
+  "chromium-version": {
+    "argv": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "--",
+      "/usr/lib/chromium/chromium",
+      "--version"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T06:08:00.797405+00:00",
+    "finished_utc": "2026-10-24T06:08:01.288410+00:00"
+  },
+  "compose-version": {
+    "argv": [
+      "docker",
+      "compose",
+      "version",
+      "--short"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T06:27:56.587524+00:00",
+    "finished_utc": "2026-10-24T06:27:56.791459+00:00"
+  },
+  "disk-final": {
+    "argv": [
+      "powershell",
+      "-NoProfile",
+      "-Command",
+      "Get-PSDrive -Name C,D | Select-Object Name,Used,Free | ConvertTo-Json"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T06:27:55.455275+00:00",
+    "finished_utc": "2026-10-24T06:27:56.186432+00:00"
+  },
+  "disposable-dns": {
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "bridge",
+      "--entrypoint",
+      "python",
+      "cloud-api-p2-3f6e70061a6e-backend:latest",
+      "-c",
+      "import socket,json,pathlib;print(pathlib.Path('/etc/resolv.conf').read_text());print(json.dumps({h:sorted({x[4][0] for x in socket.getaddrinfo(h,443)}) for h in ['example.com','pypi.org']}))"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T05:57:31.017855+00:00",
+    "finished_utc": "2026-10-24T05:57:31.837635+00:00"
+  },
+  "docker-resources": {
+    "argv": [
+      "docker",
+      "info",
+      "--format",
+      "{{.ServerVersion}} {{.OSType}} {{.Architecture}} {{.NCPU}} {{.MemTotal}}"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T06:20:08.418280+00:00",
+    "finished_utc": "2026-10-24T06:20:09.033377+00:00"
+  },
+  "docker-version": {
+    "argv": [
+      "docker",
+      "version",
+      "--format",
+      "{{json .}}"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T06:27:56.309667+00:00",
+    "finished_utc": "2026-10-24T06:27:56.481609+00:00"
+  },
+  "focused-run": {
+    "argv": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "--",
+      "/tmp/florasecure-final-dns-20261024-venv/bin/python",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-dns-20261024/focused.py"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T05:59:53.571231+00:00",
+    "finished_utc": "2026-10-24T06:01:29.149401+00:00"
+  },
+  "frontend-build": {
+    "argv": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "--",
+      "npm",
+      "--prefix",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-dns-20261024/runroot/frontend",
+      "run",
+      "build"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T06:24:48.469540+00:00",
+    "finished_utc": "2026-10-24T06:25:31.977226+00:00"
+  },
+  "frontend-ci": {
+    "argv": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "--",
+      "/tmp/florasecure-final-dns-20261024-venv/bin/python",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-dns-20261024/full.py",
+      "install"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T06:03:04.597611+00:00",
+    "finished_utc": "2026-10-24T06:03:56.093910+00:00"
+  },
+  "legacy-full": {
+    "argv": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "--",
+      "/tmp/florasecure-final-dns-20261024-venv/bin/python",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-dns-20261024/full.py",
+      "legacy"
+    ],
+    "exit_code": 1,
+    "started_utc": "2026-10-24T06:03:56.215184+00:00",
+    "finished_utc": "2026-10-24T06:14:22.894052+00:00"
+  },
+  "node-client": {
+    "argv": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "--",
+      "node",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-dns-20261024/runroot/tests/p3/test_client.mjs"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T06:08:01.417467+00:00",
+    "finished_utc": "2026-10-24T06:08:01.696772+00:00"
+  },
+  "node-session": {
+    "argv": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "--",
+      "node",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-dns-20261024/runroot/tests/p4/test_session.mjs"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T06:08:01.839665+00:00",
+    "finished_utc": "2026-10-24T06:08:02.230670+00:00"
+  },
+  "npm-audit": {
+    "argv": [
+      "cmd",
+      "/d",
+      "/c",
+      "npm",
+      "--prefix",
+      "frontend",
+      "audit",
+      "--json",
+      "--package-lock-only"
+    ],
+    "exit_code": 1,
+    "started_utc": "2026-10-24T06:00:15.986233+00:00",
+    "finished_utc": "2026-10-24T06:00:38.997154+00:00"
+  },
+  "npm-prod-audit": {
+    "argv": [
+      "cmd",
+      "/d",
+      "/c",
+      "npm",
+      "--prefix",
+      "frontend",
+      "audit",
+      "--json",
+      "--package-lock-only",
+      "--omit=dev"
+    ],
+    "exit_code": 1,
+    "started_utc": "2026-10-24T06:01:58.989075+00:00",
+    "finished_utc": "2026-10-24T06:02:01.124182+00:00"
+  },
+  "python-audit": {
+    "argv": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "--",
+      "/tmp/florasecure-final-dns-20261024-venv/bin/pip-audit",
+      "--disable-pip",
+      "--no-deps",
+      "-r",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-dns-20261024/python-inventory.txt",
+      "--format",
+      "json"
+    ],
+    "exit_code": 1,
+    "started_utc": "2026-10-24T06:01:13.502111+00:00",
+    "finished_utc": "2026-10-24T06:01:20.800227+00:00"
+  },
+  "runtime-python": {
+    "argv": [
+      "docker",
+      "exec",
+      "cloud-api-p7-060e950e1523-backend-1",
+      "python",
+      "--version"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T06:20:08.038031+00:00",
+    "finished_utc": "2026-10-24T06:20:08.279978+00:00"
+  },
+  "scout-alloy-retry": {
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--platform",
+      "linux/amd64",
+      "--format",
+      "sarif",
+      "--exit-code",
+      "local://grafana/alloy:v1.14.1@sha256:8f5666aebb871ba43ee2d65159c5d1c26c903720efafaf2d9ed4e237afc3bc88"
+    ],
+    "exit_code": 2,
+    "started_utc": "2026-10-24T06:17:57.653309+00:00",
+    "finished_utc": "2026-10-24T06:18:24.831573+00:00"
+  },
+  "scout-alloy": {
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--exit-code",
+      "registry://grafana/alloy:v1.14.1@sha256:8f5666aebb871ba43ee2d65159c5d1c26c903720efafaf2d9ed4e237afc3bc88"
+    ],
+    "exit_code": 1,
+    "started_utc": "2026-10-24T06:12:46.903715+00:00",
+    "finished_utc": "2026-10-24T06:13:05.107290+00:00"
+  },
+  "scout-backend": {
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--exit-code",
+      "local://cloud-api-p3-7ed9c5da832f-backend:latest"
+    ],
+    "exit_code": 2,
+    "started_utc": "2026-10-24T06:01:11.135881+00:00",
+    "finished_utc": "2026-10-24T06:01:58.815749+00:00"
+  },
+  "scout-grafana-retry": {
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--exit-code",
+      "local://grafana/grafana:10.4.2"
+    ],
+    "exit_code": 2,
+    "started_utc": "2026-10-24T06:08:19.552665+00:00",
+    "finished_utc": "2026-10-24T06:09:06.460198+00:00"
+  },
+  "scout-grafana": {
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--exit-code",
+      "local://grafana/grafana:10.4.2"
+    ],
+    "exit_code": 1,
+    "started_utc": "2026-10-24T06:05:25.889324+00:00",
+    "finished_utc": "2026-10-24T06:05:53.043180+00:00"
+  },
+  "scout-keycloak-retry": {
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--exit-code",
+      "local://quay.io/keycloak/keycloak:26.2@sha256:4883630ef9db14031cde3e60700c9a9a8eaf1b5c24db1589d6a2d43de38ba2a9"
+    ],
+    "exit_code": 2,
+    "started_utc": "2026-10-24T06:06:41.705684+00:00",
+    "finished_utc": "2026-10-24T06:08:19.393609+00:00"
+  },
+  "scout-keycloak": {
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--exit-code",
+      "local://quay.io/keycloak/keycloak:26.2@sha256:4883630ef9db14031cde3e60700c9a9a8eaf1b5c24db1589d6a2d43de38ba2a9"
+    ],
+    "exit_code": 1,
+    "started_utc": "2026-10-24T06:04:14.201116+00:00",
+    "finished_utc": "2026-10-24T06:05:10.527190+00:00"
+  },
+  "scout-kong": {
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--exit-code",
+      "local://kong:3.8"
+    ],
+    "exit_code": 2,
+    "started_utc": "2026-10-24T06:04:13.275315+00:00",
+    "finished_utc": "2026-10-24T06:05:09.725282+00:00"
+  },
+  "scout-loki": {
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--exit-code",
+      "local://grafana/loki:2.9.8"
+    ],
+    "exit_code": 2,
+    "started_utc": "2026-10-24T06:05:09.912943+00:00",
+    "finished_utc": "2026-10-24T06:05:25.729186+00:00"
+  },
+  "scout-nginx": {
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--platform",
+      "linux/amd64",
+      "--format",
+      "sarif",
+      "--exit-code",
+      "local://nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10"
+    ],
+    "exit_code": 2,
+    "started_utc": "2026-10-24T06:19:58.849311+00:00",
+    "finished_utc": "2026-10-24T06:20:07.918957+00:00"
+  },
+  "scout-postgres": {
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--exit-code",
+      "local://postgres:16@sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d"
+    ],
+    "exit_code": 2,
+    "started_utc": "2026-10-24T06:05:10.682024+00:00",
+    "finished_utc": "2026-10-24T06:05:56.382760+00:00"
+  },
+  "scout-version": {
+    "argv": [
+      "docker",
+      "scout",
+      "version"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T06:00:39.163601+00:00",
+    "finished_utc": "2026-10-24T06:00:39.703263+00:00"
+  },
+  "tls-diagnostic": {
+    "argv": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "--",
+      "/tmp/florasecure-final-dns-20261024-venv/bin/python",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-dns-20261024/focused.py",
+      "--tls"
+    ],
+    "exit_code": 1,
+    "started_utc": "2026-10-24T06:15:50.858521+00:00",
+    "finished_utc": "2026-10-24T06:16:53.640014+00:00"
+  },
+  "tools-pip": {
+    "argv": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "--",
+      "/tmp/florasecure-final-dns-20261024-venv/bin/pip",
+      "install",
+      "cryptography==46.0.5",
+      "PyYAML==6.0.3",
+      "pip-audit"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T05:59:37.915207+00:00",
+    "finished_utc": "2026-10-24T05:59:53.418246+00:00"
+  },
+  "tools-venv": {
+    "argv": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "--",
+      "python3",
+      "-m",
+      "venv",
+      "/tmp/florasecure-final-dns-20261024-venv"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T05:59:34.878241+00:00",
+    "finished_utc": "2026-10-24T05:59:37.803289+00:00"
+  },
+  "version-alloy": {
+    "argv": [
+      "docker",
+      "exec",
+      "cloud-api-p6-c08966a13806-alloy-1",
+      "/bin/alloy",
+      "--version"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T06:39:42.138230+00:00",
+    "finished_utc": "2026-10-24T06:39:42.691086+00:00"
+  },
+  "version-grafana": {
+    "argv": [
+      "docker",
+      "exec",
+      "cloud-api-p6-c08966a13806-grafana-1",
+      "/usr/share/grafana/bin/grafana",
+      "--version"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T06:39:41.477765+00:00",
+    "finished_utc": "2026-10-24T06:39:42.024779+00:00"
+  },
+  "version-keycloak": {
+    "argv": [
+      "docker",
+      "exec",
+      "cloud-api-p6-c08966a13806-keycloak-1",
+      "/opt/keycloak/bin/kc.sh",
+      "--version"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T06:39:38.955683+00:00",
+    "finished_utc": "2026-10-24T06:39:40.362207+00:00"
+  },
+  "version-kong": {
+    "argv": [
+      "docker",
+      "exec",
+      "cloud-api-p6-c08966a13806-kong-1",
+      "kong",
+      "version"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T06:39:40.474408+00:00",
+    "finished_utc": "2026-10-24T06:39:40.944952+00:00"
+  },
+  "version-loki": {
+    "argv": [
+      "docker",
+      "exec",
+      "cloud-api-p6-c08966a13806-loki-1",
+      "/usr/bin/loki",
+      "-version"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T06:39:41.051100+00:00",
+    "finished_utc": "2026-10-24T06:39:41.380385+00:00"
+  },
+  "version-nginx": {
+    "argv": [
+      "docker",
+      "exec",
+      "cloud-api-p6-c08966a13806-identity-edge-1",
+      "nginx",
+      "-v"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T06:39:43.166857+00:00",
+    "finished_utc": "2026-10-24T06:39:43.432735+00:00"
+  },
+  "version-postgres": {
+    "argv": [
+      "docker",
+      "exec",
+      "cloud-api-p6-c08966a13806-postgres-1",
+      "postgres",
+      "--version"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T06:39:42.794877+00:00",
+    "finished_utc": "2026-10-24T06:39:43.041309+00:00"
+  },
+  "windows-dns-final": {
+    "argv": [
+      "powershell",
+      "-NoProfile",
+      "-Command",
+      "Resolve-DnsName example.com -DnsOnly; Resolve-DnsName pypi.org -DnsOnly; Get-DnsClientServerAddress | Format-Table -AutoSize"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T05:57:55.177697+00:00",
+    "finished_utc": "2026-10-24T05:57:56.143011+00:00"
+  },
+  "windows-dns": {
+    "argv": [
+      "powershell",
+      "-NoProfile",
+      "-Command",
+      "Resolve-DnsName example.com -DnsOnly; Resolve-DnsName pypi.org -DnsOnly; Get-DnsClientServerAddress | Where-Object { .ServerAddresses.Count -gt 0 } | Format-Table -AutoSize"
+    ],
+    "exit_code": 1,
+    "started_utc": "2026-10-24T05:57:29.744014+00:00",
+    "finished_utc": "2026-10-24T05:57:31.510909+00:00"
+  },
+  "windows-environment": {
+    "argv": [
+      "powershell",
+      "-NoProfile",
+      "-Command",
+      "Get-CimInstance Win32_OperatingSystem | Select-Object Caption,Version,BuildNumber; python --version; node --version; npm --version; docker compose version; Get-PSDrive -PSProvider FileSystem | Select-Object Name,Free"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T06:00:39.815934+00:00",
+    "finished_utc": "2026-10-24T06:00:41.844795+00:00"
+  },
+  "wsl-install": {
+    "argv": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "-u",
+      "root",
+      "--",
+      "apt-get",
+      "install",
+      "-y",
+      "--no-install-recommends",
+      "python3-venv",
+      "libnss3-tools",
+      "nodejs",
+      "npm"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T05:57:56.254476+00:00",
+    "finished_utc": "2026-10-24T05:58:44.694678+00:00"
+  },
+  "wsl-network-config": {
+    "argv": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "--",
+      "cat",
+      "/etc/resolv.conf"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T06:12:46.595511+00:00",
+    "finished_utc": "2026-10-24T06:12:46.779696+00:00"
+  },
+  "wsl-setup": {
+    "argv": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "-u",
+      "root",
+      "--",
+      "apt-get",
+      "update"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-24T05:57:31.967208+00:00",
+    "finished_utc": "2026-10-24T05:57:40.350316+00:00"
+  },
+  "focused_exact_container_argv": [
+    [
+      "docker",
+      "compose",
+      "--env-file",
+      "/dev/null",
+      "-p",
+      "cloud-api-p3-7ed9c5da832f",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/docker/docker-compose.yml",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p1/compose.yml",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p2/compose.yml",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p3/compose.yml",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-dns-20261024/build.json",
+      "build"
+    ],
+    [
+      "docker",
+      "compose",
+      "--env-file",
+      "/dev/null",
+      "-p",
+      "cloud-api-p3-7ed9c5da832f",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/docker/docker-compose.yml",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p1/compose.yml",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p2/compose.yml",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p3/compose.yml",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-dns-20261024/build.json",
+      "up",
+      "-d",
+      "--wait",
+      "--wait-timeout",
+      "300",
+      "backend",
+      "kong"
+    ],
+    [
+      "docker",
+      "compose",
+      "--env-file",
+      "/dev/null",
+      "-p",
+      "cloud-api-p3-7ed9c5da832f",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/docker/docker-compose.yml",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p1/compose.yml",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p2/compose.yml",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p3/compose.yml",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-dns-20261024/build.json",
+      "ps",
+      "-a",
+      "-q"
+    ],
+    [
+      "docker",
+      "inspect",
+      "615f9ad455038962e7ebbe2d0c21b14566bb16d5dddbb5b7843e987f1ea5cb11",
+      "546fa77f19dd621ddccb4242047f1fd548dd9ae9f86532fe6dfbd6db32132e35",
+      "ec286974d26323ce93421cb7849c39bddd9a5c0f9e07a2f0d7b7f07271d7d581",
+      "a545867ccd7686a022f324398fea310b67ae0160d48afff59a622ba7ff033afb",
+      "3547f4dc70740738cd1144d7104aa297991418adbf69fa9f5e7110165d2f1de7"
+    ],
+    [
+      "docker",
+      "compose",
+      "--env-file",
+      "/dev/null",
+      "-p",
+      "cloud-api-p3-7ed9c5da832f",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/docker/docker-compose.yml",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p1/compose.yml",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p2/compose.yml",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p3/compose.yml",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-dns-20261024/build.json",
+      "exec",
+      "-T",
+      "backend",
+      "python",
+      "-c",
+      "import socket,json,pathlib;print(pathlib.Path('/etc/resolv.conf').read_text());print(json.dumps({h:sorted({x[4][0] for x in socket.getaddrinfo(h,443)}) for h in ['example.com','pypi.org']}))"
+    ],
+    [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "container:615f9ad455038962e7ebbe2d0c21b14566bb16d5dddbb5b7843e987f1ea5cb11",
+      "--entrypoint",
+      "python",
+      "cloud-api-p3-7ed9c5da832f-tests",
+      "-c",
+      "import socket,json,pathlib;print(pathlib.Path('/etc/resolv.conf').read_text());print(json.dumps({h:sorted({x[4][0] for x in socket.getaddrinfo(h,443)}) for h in ['example.com','pypi.org']}))"
+    ],
+    [
+      "docker",
+      "compose",
+      "--env-file",
+      "/dev/null",
+      "-p",
+      "cloud-api-p3-7ed9c5da832f",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/docker/docker-compose.yml",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p1/compose.yml",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p2/compose.yml",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p3/compose.yml",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-dns-20261024/build.json",
+      "run",
+      "--rm",
+      "--no-deps",
+      "-T",
+      "tests",
+      "python",
+      "-c",
+      "import os,sys\nfrom pathlib import Path\nfrom deployment.common import configure_application,database_url\nconfigure_application()\nos.environ['P0_ADMIN_DATABASE_URL']=database_url('postgres',Path('/run/secrets/postgres_password').read_text().strip())\nimport pytest,conftest as baseline_fixtures\nsys.exit(pytest.main(['-c','/tests/p0/pytest.ini','/tests/p2/test_https_business.py::test_https_ssrf_uses_real_dns_and_preserves_roles[staff-200]','/tests/p2/test_https_business.py::test_https_ssrf_uses_real_dns_and_preserves_roles[admin-200]','-vv','--tb=short','-o','junit_family=legacy','--junitxml=/results/focused-junit.xml'],plugins=[baseline_fixtures]))\n"
+    ],
+    [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "container:615f9ad455038962e7ebbe2d0c21b14566bb16d5dddbb5b7843e987f1ea5cb11",
+      "--entrypoint",
+      "python",
+      "cloud-api-p3-7ed9c5da832f-tests",
+      "-c",
+      "import socket; print(bool(socket.getaddrinfo('example.com',443)))"
+    ],
+    [
+      "docker",
+      "compose",
+      "--env-file",
+      "/dev/null",
+      "-p",
+      "cloud-api-p3-7ed9c5da832f",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/docker/docker-compose.yml",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p1/compose.yml",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p2/compose.yml",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p3/compose.yml",
+      "-f",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-dns-20261024/build.json",
+      "down",
+      "--volumes",
+      "--remove-orphans",
+      "--timeout",
+      "10"
+    ]
+  ]
+}

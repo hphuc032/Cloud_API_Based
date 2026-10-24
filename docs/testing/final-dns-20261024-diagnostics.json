@@ -1,0 +1,669 @@
+{
+  "windows-dns-final": {
+    "argv": [
+      "powershell",
+      "-NoProfile",
+      "-Command",
+      "Resolve-DnsName example.com -DnsOnly; Resolve-DnsName pypi.org -DnsOnly; Get-DnsClientServerAddress | Format-Table -AutoSize"
+    ],
+    "started_utc": "2026-10-24T05:57:55.177697+00:00",
+    "finished_utc": "2026-10-24T05:57:56.143011+00:00",
+    "exit_code": 0,
+    "stdout": "\r\nName                                           Type   TTL   Section    IPAddress                                \r\n----                                           ----   ---   -------    ---------                                \r\nexample.com                                    AAAA   216   Answer     2606:4700:10::6814:179a                  \r\nexample.com                                    AAAA   216   Answer     2606:4700:10::ac42:93f3                  \r\nexample.com                                    A      281   Answer     104.20.23.154                            \r\nexample.com                                    A      281   Answer     172.66.147.243                           \r\npypi.org                                       AAAA   85481 Answer     2a04:4e42:600::223                       \r\npypi.org                                       AAAA   85481 Answer     2a04:4e42::223                           \r\npypi.org                                       AAAA   85481 Answer     2a04:4e42:200::223                       \r\npypi.org                                       AAAA   85481 Answer     2a04:4e42:400::223                       \r\npypi.org                                       A      86032 Answer     151.101.192.223                          \r\npypi.org                                       A      86032 Answer     151.101.0.223                            \r\npypi.org                                       A      86032 Answer     151.101.64.223                           \r\npypi.org                                       A      86032 Answer     151.101.128.223                          \r\n\r\n\r\n\r\nInterfaceAlias                     InterfaceIndex AddressFamily ServerAddresses                                       \r\n--------------                     -------------- ------------- ---------------                                       \r\nCloudflareWARP                                 46 IPv4          {127.0.2.2, 127.0.2.3}                                \r\nCloudflareWARP                                 46 IPv6          {}                                                    \r\nLocal Area Connection                          12 IPv4          {}                                                    \r\nLocal Area Connection                          12 IPv6          {}                                                    \r\nLocal Area Connection* 3                       14 IPv4          {}                                                    \r\nLocal Area Connection* 3                       14 IPv6          {}                                                    \r\nLocal Area Connection* 4                       24 IPv4          {}                                                    \r\nLocal Area Connection* 4                       24 IPv6          {}                                                    \r\nWi-Fi                                          11 IPv4          {127.0.2.2, 127.0.2.3}                                \r\nWi-Fi                                          11 IPv6          {}                                                    \r\nVMware Network Adapter V...1                    3 IPv4          {}                                                    \r\nVMware Network Adapter V...1                    3 IPv6          {}                                                    \r\nVMware Network Adapter V...8                   13 IPv4          {}                                                    \r\nVMware Network Adapter V...8                   13 IPv6          {}                                                    \r\nBluetooth Network Connection                   23 IPv4          {}                                                    \r\nBluetooth Network Connection                   23 IPv6          {}                                                    \r\nEthernet                                        5 IPv4          {8.8.8.8}                                             \r\nEthernet                                        5 IPv6          {}                                                    \r\nLoopback Pseudo-Interface 1                     1 IPv4          {}                                                    \r\nLoopback Pseudo-Interface 1                     1 IPv6          {fec0:0:0:ffff::1, fec0:0:0:ffff::2, fec0:0:0:ffff::3}\r\nvEthernet (WSL (Hyper-V firewall))             66 IPv4          {}                                                    \r\nvEthernet (WSL (Hyper-V firewall))             66 IPv6          {fec0:0:0:ffff::1, fec0:0:0:ffff::2, fec0:0:0:ffff::3}\r\n\r\n\r\n",
+    "stderr": ""
+  },
+  "disposable-dns": {
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "bridge",
+      "--entrypoint",
+      "python",
+      "cloud-api-p2-3f6e70061a6e-backend:latest",
+      "-c",
+      "import socket,json,pathlib;print(pathlib.Path('/etc/resolv.conf').read_text());print(json.dumps({h:sorted({x[4][0] for x in socket.getaddrinfo(h,443)}) for h in ['example.com','pypi.org']}))"
+    ],
+    "started_utc": "2026-10-24T05:57:31.017855+00:00",
+    "finished_utc": "2026-10-24T05:57:31.837635+00:00",
+    "exit_code": 0,
+    "stdout": "# Generated by Docker Engine.\n# This file can be edited; Docker Engine will not make further changes once it\n# has been modified.\n\nnameserver 192.168.65.7\n\n# Based on host file: '/etc/resolv.conf' (legacy)\n# Overrides: []\n\n{\"example.com\": [\"104.20.23.154\", \"172.66.147.243\", \"2606:4700:10::6814:179a\", \"2606:4700:10::ac42:93f3\"], \"pypi.org\": [\"151.101.0.223\", \"151.101.128.223\", \"151.101.192.223\", \"151.101.64.223\", \"2a04:4e42:200::223\", \"2a04:4e42:400::223\", \"2a04:4e42:600::223\", \"2a04:4e42::223\"]}\n",
+    "stderr": ""
+  },
+  "wsl-network-config": {
+    "argv": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "--",
+      "cat",
+      "/etc/resolv.conf"
+    ],
+    "started_utc": "2026-10-24T06:12:46.595511+00:00",
+    "finished_utc": "2026-10-24T06:12:46.779696+00:00",
+    "exit_code": 0,
+    "stdout": "# This file was automatically generated by WSL. To stop automatic generation of this file, add the following entry to /etc/wsl.conf:\n# [network]\n# generateResolvConf = false\nnameserver 10.255.255.254\nsearch fpt\n",
+    "stderr": ""
+  },
+  "windows-environment": {
+    "argv": [
+      "powershell",
+      "-NoProfile",
+      "-Command",
+      "Get-CimInstance Win32_OperatingSystem | Select-Object Caption,Version,BuildNumber; python --version; node --version; npm --version; docker compose version; Get-PSDrive -PSProvider FileSystem | Select-Object Name,Free"
+    ],
+    "started_utc": "2026-10-24T06:00:39.815934+00:00",
+    "finished_utc": "2026-10-24T06:00:41.844795+00:00",
+    "exit_code": 0,
+    "stdout": "\r\nPython 3.14.2\r\nv24.14.0\r\n11.9.0\nDocker Compose version v5.1.3\nCaption                                   Version    BuildNumber\r\n-------                                   -------    -----------\r\nMicrosoft Windows 11 Home Single Language 10.0.26300 26300      \r\n                                                                \r\n                                                                \r\n\r\n\r\n",
+    "stderr": ""
+  },
+  "docker-resources": {
+    "argv": [
+      "docker",
+      "info",
+      "--format",
+      "{{.ServerVersion}} {{.OSType}} {{.Architecture}} {{.NCPU}} {{.MemTotal}}"
+    ],
+    "started_utc": "2026-10-24T06:20:08.418280+00:00",
+    "finished_utc": "2026-10-24T06:20:09.033377+00:00",
+    "exit_code": 0,
+    "stdout": "29.4.3 linux x86_64 20 8171724800\n",
+    "stderr": ""
+  },
+  "docker-version": {
+    "argv": [
+      "docker",
+      "version",
+      "--format",
+      "{{json .}}"
+    ],
+    "started_utc": "2026-10-24T06:27:56.309667+00:00",
+    "finished_utc": "2026-10-24T06:27:56.481609+00:00",
+    "exit_code": 0,
+    "stdout": "{\"Client\":{\"Version\":\"29.4.3\",\"ApiVersion\":\"1.54\",\"DefaultAPIVersion\":\"1.54\",\"GitCommit\":\"055a478\",\"GoVersion\":\"go1.26.2\",\"Os\":\"windows\",\"Arch\":\"amd64\",\"BuildTime\":\"Wed May  6 17:10:36 2026\",\"Context\":\"desktop-linux\"},\"Server\":{\"Platform\":{\"Name\":\"Docker Desktop 4.73.1 (226574)\"},\"Version\":\"29.4.3\",\"ApiVersion\":\"1.54\",\"MinAPIVersion\":\"1.40\",\"Os\":\"linux\",\"Arch\":\"amd64\",\"Components\":[{\"Name\":\"Engine\",\"Version\":\"29.4.3\",\"Details\":{\"ApiVersion\":\"1.54\",\"Arch\":\"amd64\",\"BuildTime\":\"Wed May  6 17:07:37 2026\",\"Experimental\":\"false\",\"GitCommit\":\"56be731\",\"GoVersion\":\"go1.26.2\",\"KernelVersion\":\"6.6.87.2-microsoft-standard-WSL2\",\"MinAPIVersion\":\"1.40\",\"Module\":\"github.com/moby/moby/v2\",\"ModuleVersion\":\"v2.0.0+unknown\",\"Os\":\"linux\"}},{\"Name\":\"containerd\",\"Version\":\"v2.2.3\",\"Details\":{\"GitCommit\":\"77c84241c7cbdd9b4eca2591793e3d4f4317c590\"}},{\"Name\":\"runc\",\"Version\":\"1.3.5\",\"Details\":{\"GitCommit\":\"v1.3.5-0-g488fc13e\"}},{\"Name\":\"docker-init\",\"Version\":\"0.19.0\",\"Details\":{\"GitCommit\":\"de40ad0\"}}],\"GitCommit\":\"56be731\",\"GoVersion\":\"go1.26.2\",\"KernelVersion\":\"6.6.87.2-microsoft-standard-WSL2\",\"BuildTime\":\"2026-05-06T17:07:37.000000000+00:00\"}}\n",
+    "stderr": ""
+  },
+  "compose-version": {
+    "argv": [
+      "docker",
+      "compose",
+      "version",
+      "--short"
+    ],
+    "started_utc": "2026-10-24T06:27:56.587524+00:00",
+    "finished_utc": "2026-10-24T06:27:56.791459+00:00",
+    "exit_code": 0,
+    "stdout": "5.1.3\n",
+    "stderr": ""
+  },
+  "disk-final": {
+    "argv": [
+      "powershell",
+      "-NoProfile",
+      "-Command",
+      "Get-PSDrive -Name C,D | Select-Object Name,Used,Free | ConvertTo-Json"
+    ],
+    "started_utc": "2026-10-24T06:27:55.455275+00:00",
+    "finished_utc": "2026-10-24T06:27:56.186432+00:00",
+    "exit_code": 0,
+    "stdout": "[\r\n    {\r\n        \"Name\":  \"C\",\r\n        \"Used\":  310664155136,\r\n        \"Free\":  6810279936\r\n    },\r\n    {\r\n        \"Name\":  \"D\",\r\n        \"Used\":  121756950528,\r\n        \"Free\":  71516573696\r\n    }\r\n]\r\n",
+    "stderr": ""
+  },
+  "runtime-python": {
+    "argv": [
+      "docker",
+      "exec",
+      "cloud-api-p7-060e950e1523-backend-1",
+      "python",
+      "--version"
+    ],
+    "started_utc": "2026-10-24T06:20:08.038031+00:00",
+    "finished_utc": "2026-10-24T06:20:08.279978+00:00",
+    "exit_code": 0,
+    "stdout": "Python 3.11.17\n",
+    "stderr": ""
+  },
+  "chromium-version": {
+    "argv": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "--",
+      "/usr/lib/chromium/chromium",
+      "--version"
+    ],
+    "started_utc": "2026-10-24T06:08:00.797405+00:00",
+    "finished_utc": "2026-10-24T06:08:01.288410+00:00",
+    "exit_code": 0,
+    "stdout": "Google Chrome for Testing 145.0.7632.6 \n",
+    "stderr": ""
+  },
+  "node-client": {
+    "argv": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "--",
+      "node",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-dns-20261024/runroot/tests/p3/test_client.mjs"
+    ],
+    "started_utc": "2026-10-24T06:08:01.417467+00:00",
+    "finished_utc": "2026-10-24T06:08:01.696772+00:00",
+    "exit_code": 0,
+    "stdout": "PASS: 19 client assertions for valid responses and state/nonce/issuer/audience/expiry rejection\n",
+    "stderr": ""
+  },
+  "node-session": {
+    "argv": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "--",
+      "node",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-dns-20261024/runroot/tests/p4/test_session.mjs"
+    ],
+    "started_utc": "2026-10-24T06:08:01.839665+00:00",
+    "finished_utc": "2026-10-24T06:08:02.230670+00:00",
+    "exit_code": 0,
+    "stdout": "PASS: memory-only lifecycle, exact PKCE/nonce adapter initialization, concurrent refresh, logout, legacy cleanup and fail-closed outage cases\n",
+    "stderr": ""
+  },
+  "frontend-build": {
+    "argv": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "--",
+      "npm",
+      "--prefix",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-dns-20261024/runroot/frontend",
+      "run",
+      "build"
+    ],
+    "started_utc": "2026-10-24T06:24:48.469540+00:00",
+    "finished_utc": "2026-10-24T06:25:31.977226+00:00",
+    "exit_code": 0,
+    "stdout": "\n> florasecure-shop@1.0.0 build\n> vite build\n\nvite v6.4.3 building for production...\ntransforming...\n✓ 1649 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                   0.74 kB │ gzip:  0.45 kB\ndist/assets/index-Ch-rSwjJ.css   21.48 kB │ gzip:  4.45 kB\ndist/assets/index-D9InQfRI.js   293.37 kB │ gzip: 92.60 kB\n✓ built in 31.07s\n",
+    "stderr": ""
+  },
+  "active-backend-dns": {
+    "argv": [
+      "docker",
+      "exec",
+      "cloud-api-p6-c08966a13806-backend-1",
+      "python",
+      "-c",
+      "import socket,json,pathlib;print(pathlib.Path('/etc/resolv.conf').read_text());print(json.dumps({h:sorted({a[4][0] for a in socket.getaddrinfo(h,443)}) for h in ['example.com','pypi.org']}))"
+    ],
+    "started_utc": "2026-10-24T06:32:41.951342+00:00",
+    "finished_utc": "2026-10-24T06:32:42.293084+00:00",
+    "exit_code": 0,
+    "stdout": "# Generated by Docker Engine.\n# This file can be edited; Docker Engine will not make further changes once it\n# has been modified.\n\nnameserver 127.0.0.11\noptions ndots:0\n\n# Based on host file: '/etc/resolv.conf' (internal resolver)\n# ExtServers: [host(192.168.65.7)]\n# Overrides: []\n# Option ndots from: internal\n\n{\"example.com\": [\"104.20.23.154\", \"172.66.147.243\", \"2606:4700:10::6814:179a\", \"2606:4700:10::ac42:93f3\"], \"pypi.org\": [\"151.101.0.223\", \"151.101.128.223\", \"151.101.192.223\", \"151.101.64.223\", \"2a04:4e42:200::223\", \"2a04:4e42:400::223\", \"2a04:4e42:600::223\", \"2a04:4e42::223\"]}\n",
+    "stderr": ""
+  },
+  "version-keycloak": {
+    "argv": [
+      "docker",
+      "exec",
+      "cloud-api-p6-c08966a13806-keycloak-1",
+      "/opt/keycloak/bin/kc.sh",
+      "--version"
+    ],
+    "started_utc": "2026-10-24T06:39:38.955683+00:00",
+    "finished_utc": "2026-10-24T06:39:40.362207+00:00",
+    "exit_code": 0,
+    "stdout": "Keycloak 26.2.5\nJVM: 21.0.7 (Red Hat, Inc. OpenJDK 64-Bit Server VM 21.0.7+6-LTS)\nOS: Linux 6.6.87.2-microsoft-standard-WSL2 amd64\n",
+    "stderr": ""
+  },
+  "version-kong": {
+    "argv": [
+      "docker",
+      "exec",
+      "cloud-api-p6-c08966a13806-kong-1",
+      "kong",
+      "version"
+    ],
+    "started_utc": "2026-10-24T06:39:40.474408+00:00",
+    "finished_utc": "2026-10-24T06:39:40.944952+00:00",
+    "exit_code": 0,
+    "stdout": "3.8.0\n",
+    "stderr": ""
+  },
+  "version-loki": {
+    "argv": [
+      "docker",
+      "exec",
+      "cloud-api-p6-c08966a13806-loki-1",
+      "/usr/bin/loki",
+      "-version"
+    ],
+    "started_utc": "2026-10-24T06:39:41.051100+00:00",
+    "finished_utc": "2026-10-24T06:39:41.380385+00:00",
+    "exit_code": 0,
+    "stdout": "loki, version 2.9.8 (branch: HEAD, revision: 94e00299ec)\n  build user:       root@cb6d9cb8a985\n  build date:       2024-05-03T07:51:40Z\n  go version:       go1.21.9\n  platform:         linux/amd64\n  tags:             netgo\n",
+    "stderr": ""
+  },
+  "version-grafana": {
+    "argv": [
+      "docker",
+      "exec",
+      "cloud-api-p6-c08966a13806-grafana-1",
+      "/usr/share/grafana/bin/grafana",
+      "--version"
+    ],
+    "started_utc": "2026-10-24T06:39:41.477765+00:00",
+    "finished_utc": "2026-10-24T06:39:42.024779+00:00",
+    "exit_code": 0,
+    "stdout": "grafana version 10.4.2\n",
+    "stderr": ""
+  },
+  "version-alloy": {
+    "argv": [
+      "docker",
+      "exec",
+      "cloud-api-p6-c08966a13806-alloy-1",
+      "/bin/alloy",
+      "--version"
+    ],
+    "started_utc": "2026-10-24T06:39:42.138230+00:00",
+    "finished_utc": "2026-10-24T06:39:42.691086+00:00",
+    "exit_code": 0,
+    "stdout": "alloy, version v1.14.1 (branch: HEAD, revision: fea47a9)\n  build user:       root@buildkitsandbox\n  build date:       2026-03-17T15:28:42Z\n  go version:       go1.25.7\n  platform:         linux/amd64\n  tags:             netgo,embedalloyui,promtail_journal_enabled\n",
+    "stderr": ""
+  },
+  "version-postgres": {
+    "argv": [
+      "docker",
+      "exec",
+      "cloud-api-p6-c08966a13806-postgres-1",
+      "postgres",
+      "--version"
+    ],
+    "started_utc": "2026-10-24T06:39:42.794877+00:00",
+    "finished_utc": "2026-10-24T06:39:43.041309+00:00",
+    "exit_code": 0,
+    "stdout": "postgres (PostgreSQL) 16.15 (Debian 16.15-1.pgdg13+2)\n",
+    "stderr": ""
+  },
+  "version-nginx": {
+    "argv": [
+      "docker",
+      "exec",
+      "cloud-api-p6-c08966a13806-identity-edge-1",
+      "nginx",
+      "-v"
+    ],
+    "started_utc": "2026-10-24T06:39:43.166857+00:00",
+    "finished_utc": "2026-10-24T06:39:43.432735+00:00",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "nginx version: nginx/1.27.5\n"
+  },
+  "backend-dns.txt": "# Generated by Docker Engine.\n# This file can be edited; Docker Engine will not make further changes once it\n# has been modified.\n\nnameserver 127.0.0.11\noptions ndots:0\n\n# Based on host file: '/etc/resolv.conf' (internal resolver)\n# ExtServers: [host(192.168.65.7)]\n# Overrides: []\n# Option ndots from: internal\n\n{\"example.com\": [\"104.20.23.154\", \"172.66.147.243\", \"2606:4700:10::6814:179a\", \"2606:4700:10::ac42:93f3\"], \"pypi.org\": [\"151.101.0.223\", \"151.101.128.223\", \"151.101.192.223\", \"151.101.64.223\", \"2a04:4e42:200::223\", \"2a04:4e42:400::223\", \"2a04:4e42:600::223\", \"2a04:4e42::223\"]}\n",
+  "namespace-dns.txt": "# Generated by Docker Engine.\n# This file can be edited; Docker Engine will not make further changes once it\n# has been modified.\n\nnameserver 127.0.0.11\noptions ndots:0\n\n# Based on host file: '/etc/resolv.conf' (internal resolver)\n# ExtServers: [host(192.168.65.7)]\n# Overrides: []\n# Option ndots from: internal\n\n{\"example.com\": [\"104.20.23.154\", \"172.66.147.243\", \"2606:4700:10::6814:179a\", \"2606:4700:10::ac42:93f3\"], \"pypi.org\": [\"151.101.0.223\", \"151.101.128.223\", \"151.101.192.223\", \"151.101.64.223\", \"2a04:4e42:200::223\", \"2a04:4e42:400::223\", \"2a04:4e42:600::223\", \"2a04:4e42::223\"]}\n",
+  "backend-boundaries.json": {
+    "backend_id": "615f9ad455038962e7ebbe2d0c21b14566bb16d5dddbb5b7843e987f1ea5cb11",
+    "networks": [
+      "cloud-api-p3-7ed9c5da832f_api_transport",
+      "cloud-api-p3-7ed9c5da832f_app_data"
+    ],
+    "published_ports": {},
+    "dns_overrides": null,
+    "extra_hosts": [],
+    "security_source_sha256": "f2924b813a99d0379aeb3b5f3e48b655f72043496709ca726f23f56ab481c807"
+  },
+  "independent-source-verification": {
+    "image": "cloud-api-p6-c08966a13806-tests",
+    "files": 122,
+    "all_equal": true,
+    "sha256": {
+      "backend/app/config.py": "80b3d97ab482ee9669c3c5a8c60048ab4678efc332b836781695f3cf7332c087",
+      "backend/app/readiness.py": "49b37f4c3ffb7f4e1b1c242394c8a767493eda0c27bfc214e64aec1ae0955f7c",
+      "backend/app/__init__.py": "b587813128c2bc93e1a24b37641374ea7924ae2d006a803fcf3bb66beb4296fe",
+      "backend/app/auth/dependencies.py": "be5a0091d1715088710d0119fc501ff61575bfc010b75bbb5190f48cb367ec3c",
+      "backend/app/auth/oidc.py": "15ae7c872d08b8edc74c7493e71d1fd26e76d4d53a3306615aab8f02b80d9d28",
+      "backend/app/auth/security.py": "3d54478d958f70c85176797326d8c4e8ca836c3fc1515b8f3baa7299f790bd40",
+      "backend/app/auth/__init__.py": "44b12746ed728faa5b4a4cf13515cc1225163f7e2a7bb7c92dfa56f1b52e1817",
+      "backend/app/database/session.py": "eec95790a7ba93ac609ad1d91e7169acb7de50cc06c05566549e6ca8a8d02aae",
+      "backend/app/database/__init__.py": "5e516599a08c041f6899ed765f4d4b754dba0da45bd129730c037ba75480bdda",
+      "backend/app/middleware/logging.py": "15439fec9960166bceaba0fc28b24e539b97631c356e50abc44c8914d915c56c",
+      "backend/app/middleware/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/models/audit_log.py": "05b202495201d2d6ab79e1d8c9b13f51657bf01e37e1887d7b30e066bf0c7f61",
+      "backend/app/models/external_identity.py": "0d16741f8ac6278d30c1e10390e7dfe9fb0f119b86d520c8fcccc0ad2bd25e44",
+      "backend/app/models/order.py": "2fb5decd007c50a264b2e310e833397472d73b79d717a685ef28797ae68dc41b",
+      "backend/app/models/product.py": "c7932d6c704966cf4ab03680e4e2483acd5179428cb9a62c5b9035ad69b63f0e",
+      "backend/app/models/refresh_token.py": "ae1a86ede43102a4c484a7563febc2e28e8b56491b2b7912cda07cc4b820ca8b",
+      "backend/app/models/user.py": "19306ccc50c23cd9fb391ea785187c59044534802b2aeeab6a13f9e5303309e3",
+      "backend/app/models/webhook_receipt.py": "b8af788099963467f49baf3022bd89562f72aa579a43c4c0706e39ad911e56bf",
+      "backend/app/models/__init__.py": "de13ce11102d2e119201ce2ecbcf6b08965ce975099e3317c9a92b3926f3658d",
+      "backend/app/routes/auth.py": "9b77a942b23292612b289f5c18b4516ba71872f1dc82f90d8c1fe50ada17b5bf",
+      "backend/app/routes/orders.py": "a5ae735e67df359b1aa2bfeabcf9247de3267ad335683c068b9be74257e20dfd",
+      "backend/app/routes/products.py": "68dc1b328a2c232c0c3cc3bc0fc9875d8da3cd7fab5d97b3f8756eab03cfce1d",
+      "backend/app/routes/security.py": "f2924b813a99d0379aeb3b5f3e48b655f72043496709ca726f23f56ab481c807",
+      "backend/app/routes/users.py": "c453d1b35e86c9b7018175e76fc8545fe60e2f74bded818f19c4d2f4cdad53a4",
+      "backend/app/routes/webhooks.py": "b5f47b274f57a7ca15394768b68ea7c61cdc7e1b8b07a3eaae55aa71bbaea6fb",
+      "backend/app/routes/__init__.py": "dddd848dd6a657bc319c9f89391fac095bfb472698f7e546f200d05cb8e93e7d",
+      "backend/app/schemas/order.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/schemas/product.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/schemas/user.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/schemas/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/services/order_service.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/services/product_service.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/services/user_service.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/services/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/utils/security.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/app/utils/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend/deployment/bootstrap.py": "f468a50798e057918e479e0e6653d7938cb8aa8582f119a0e8d32cf9d87c52cc",
+      "backend/deployment/common.py": "7db4c050fa8d8f6982db1b3bf85903177a0a38fe6faf3f2cf6fa85b2fd8a4998",
+      "backend/deployment/health.py": "cf7a29728f80dbc9c752f4b99248f86af20e7224805eb38479be54893ac4d8ef",
+      "backend/deployment/identity_bootstrap.py": "5c1626c99e07fc607ee68497321899840be95c50073796b784f0f68a2586396b",
+      "backend/deployment/identity_mapping.py": "c7b77b7f24af624ac6cdbec1d9fa125c689f4b86eaf90fc20d754c4e811851f3",
+      "backend/deployment/identity_review.py": "5b8c5f7d195574f93f54544ae28c2b4b99b61dd7e0620b804b3afc8629de1977",
+      "backend/deployment/jwks.py": "22e92740cf5fdf4168e8e71626530232ab20b4a176c1f3ff7ff546d028252768",
+      "backend/deployment/kong_jwks.py": "4330279227dd5e75ac75ba4131d99b5d4bc079c882b1ffd09b2523d551fa06bc",
+      "backend/deployment/migrate.py": "4949def12eb8f3c7dac9216ff73abd88b4ee97d13fcb5f57a09d7bf14030f42c",
+      "backend/deployment/p5_gateway.py": "4c6ee7e7d1cdbbe4d76bdf6fe267ad595c4253f19f4b486ae009c76f593ad2e6",
+      "backend/deployment/p6_gateway.py": "8dcb79ffc8f43e9897cc03cf83ae542bb14c7845f5a976567639702710aa9463",
+      "backend/deployment/serve.py": "46fce111b6a9c06b2fe8cf5369f511ffd8e21ab26187ff330351d80f2f893fa2",
+      "backend/deployment/tls.py": "e2da436dc05b405e7d0b57daa6963220f799fb4910b1d8419c29d300eb684210",
+      "backend/deployment/__init__.py": "fa9eb83d2f8f4f6c298c6f51ae8818f76b19630bc01abb019d6d31afe1e0973b",
+      "backend/alembic/env.py": "acace9b1ec346d2d5f67855107bab4ec85f1df63fb097180fd34c2414b3b499c",
+      "backend/alembic/versions/0001_initial_schema.py": "c8338bfb2edfcb87751c06e07e40b17289f05fc7d5889c5c4734b29c2c20958e",
+      "backend/alembic/versions/0002_external_identities.py": "c652c65073ae86a1e1847ddaf4eb39af6050c425f7ec6246ed1e35c32e98d41c",
+      "backend/alembic/versions/0003_webhook_receipts.py": "52caca19ac8b87e0b3482364bd146d811e7cc8b16969206a3404601ae023693d",
+      "backend/alembic/versions/__init__.py": "6c95114dad64b3f549e94ff190f1201f906dc7c26b2d6b312e16582b57877c00",
+      "tests/compose_probe.py": "9cc3d3c09be860368d49490fda5224cd024f4933304457bdf5e1727212154703",
+      "tests/p0/baseline.py": "1eda079f58aceb30fbc3ec0e84145ec0ad6fec8069e2c4365c6c02a3ee8de546",
+      "tests/p0/conftest.py": "679cffa0303854245698229d03c7ac9d72b734358a087e0c8083f9fd71a8bc0c",
+      "tests/p0/run.py": "22ba7ecf7f2f85177d84e9c624b4f0b8abb63d8ee5061c475e2ce5fdc0f72879",
+      "tests/p0/test_auth.py": "46dff55d66152b905874172250636ef691c39ff736e735026b2b0143343edf48",
+      "tests/p0/test_authorization.py": "0e9ac73c88489521817c27876480b09de42949c09e1307496e45bced4e524c2a",
+      "tests/p0/test_database.py": "fc9adbd53271827d880224e8a3976519291e942735b357069f4c46971cd88931",
+      "tests/p0/test_gateway.py": "48f02620ce69620c42ce90c035de906d7b62b70b5d6bec60fc0913998df7b474",
+      "tests/p0/test_webhook_ssrf.py": "cee7a9aa1e6359f60256628ed3fb4854a28bcee879902ff4f859cdeaa4fc5299",
+      "tests/p0/transport.py": "886ef9616c9189ff2d9f222b949135f4e8dc19999eadf80fe09c432f314e94c5",
+      "tests/p1/host_checks.py": "e2e165a42f0bfe9a031c4e42c26d96b51e5782834eabeff4792603b2c44ec812",
+      "tests/p1/launch.py": "3ff28c91bb7e0e3e41d3f690396cf5ae9dd50b4b9db9a1e1a51a840eabecc3a2",
+      "tests/p1/run.py": "4cbb77058aba8162b090f6a1b4c4c31512660695222b5edcad6dcbe61a7646fa",
+      "tests/p1/test_adoption.py": "a2c6033839b8974677e5452fabecc0d64f91dae2c5c7e2fd624a54f7457342c4",
+      "tests/p1/test_privileges.py": "47f893e9da03fe2bbb52b3655024aa3d8bcb6545122d85774ba5987352337710",
+      "tests/p2/host_checks.py": "989cd2764a69b94a2a7605a96536d8858e73652ab020e8c502cbf75ad5019b82",
+      "tests/p2/launch.py": "af0df89acb7efba823da519da485771a2644c73290f6e568505ed790ce52e962",
+      "tests/p2/run.py": "8de8b3b89d2e865dc798021f0762874b9bacd7147fd2cd1d06fd94c8a9d03dee",
+      "tests/p2/test_https_business.py": "b1b4e8b53f9ea8af7160a64fbf5e16771419c69a3eada10d0facc391eb34c664",
+      "tests/p2/test_tls.py": "9cc1e2f8ae4e986ca1802b95b2f87044029287aa658366e55a34737ee958468e",
+      "tests/p3/host_checks.py": "010161ae6cb0264d983365b206884b35bf75ba4a4b754ea9b1242d18ae3559f7",
+      "tests/p3/launch.py": "e4b44d23067bdb25a14cd2d1c38cb4ac539e827c983bdf09f721226e453a984d",
+      "tests/p3/persistence.py": "ce33a1054e0a7949aabe00fea5fcac43960e6693478532c2817c8b32821bba39",
+      "tests/p3/pki.py": "129330aae0fccf111109e86ce2807c92b5f4cab822b5e8acb92d219335dd522f",
+      "tests/p3/run.py": "e551ed77125452ba0d3bdf15a57900072dce80b494e5c04f5bee3a2f381c1f89",
+      "tests/p3/test_identity.py": "e6214a65054204bdffe43280386030dd945363b08eebd1807852d1f80425fcae",
+      "tests/p4/bootstrap.py": "79861ce60b2c8507be6f6a07a78ff88b8eba86228ef2b54d775fd6ca52385b46",
+      "tests/p4/browser_host.py": "48849d2a5dad4b397ce1cb746c42461d7fd4c644d6816080f86eea777793c207",
+      "tests/p4/browser_setup.py": "ba69c4bdc97d0cc0bb0032fc800003e5acd64d60efeb6c5b126e481635c96692",
+      "tests/p4/host_checks.py": "c5a4848c746f92c52e111251797d4c195015a7e90804c0727058557349d83fae",
+      "tests/p4/launch.py": "f48ec73c37652fe0e26266ebcf5ab889d6dac2f95a3b4bc7a0d37fd9a96769ad",
+      "tests/p4/outage.py": "fda2f9d2d910ccd48a9ef00681289637765431f6877fd8bccfc7f75fdb608bd5",
+      "tests/p4/rotation.py": "3fafe6b1d6b42974692cde91060426cd286ebf1653a7e97752a746df9da8febf",
+      "tests/p4/rotation_host.py": "ad430c055f1fc11e7a01e7afb96c367000b022f0424a675224e18273989c395b",
+      "tests/p4/run.py": "415e9bc6b34ec98f84aa5017ff8791aa132238cdc938fa117e376a8ba7de492c",
+      "tests/p4/startup.py": "1163affe15dc3f3f0f08d08f98bfdf1883ae46ea4f97b29132a8ae999adee86f",
+      "tests/p4/test_cutover.py": "bcee46bc707c09030915f511c220532c947e3d79ba88192d56e513168f0cddce",
+      "tests/p5/browser_host.py": "94105109d778d804cbc6ac53fa936d3b11f7d1da639fd13f4efcce0ca2b0048d",
+      "tests/p5/browser_setup.py": "b0c3714de40ab3314ea966d373bd3306a6acbd5217fe4d10f94ea5450fe64935",
+      "tests/p5/lab.py": "4cbb6870b36fa197a78265fe021e819aadc08bb2927fcf6d742518acf23219eb",
+      "tests/p5/launch.py": "38c29855af34569092cb3699d26284ab7b732aecaaeb4ee3145f6999272332fb",
+      "tests/p5/run.py": "58573bfa424ef6bc443ab26cfb5a3662bf0d79a3184fe545f713295b7689e234",
+      "tests/p5/startup.py": "740b88dac26c18adfd38f5a33ad9d104b10b99cdd78751eca4aa58195e778de0",
+      "tests/p5/test_configuration.py": "3a03a54bb4bc3924b45cb10763afa3cc094cee94fa8a601e9342243cc1037134",
+      "tests/p5/test_gateway.py": "5f2bfdab5d3eb3a56e4eac0837f5c58993e7809c35368e30bc919c82a9696604",
+      "tests/p5/test_hardening.py": "959a8d430a5f0471854afaca53a1e38d9e21ef9a6e46ff9d33ae74a48edc099b",
+      "tests/p6/alert_recovery.py": "feeca2d011f5ac8a2daadfcce9112140360676f0d4f60ba5cb235192d37ebf42",
+      "tests/p6/launch.py": "4fd968e5496f73836970a3c98a4229dfebb6db27c642bff7e433556e67809680",
+      "tests/p6/lifecycle.py": "5f0ffd8c4ff170e7f44b4dd2df694e0b4137e209712d7943dbf073e4edde7989",
+      "tests/p6/retention.py": "06231c3b732af12d9ea65e3255e086982e78d3694126ab6a7ceeb15659d88f27",
+      "tests/p6/run.py": "910fa984d2084c28f318602a4a5e2569d39724be8d09dd8b13d64aaeff3d5f7f",
+      "tests/p6/test_observability.py": "0807cbb4e8bffe1edb738d461cf4ec49640dfd53c9ebb0f9acf6834f682ed81a",
+      "tests/p6/transport_evidence.py": "89996f321939ae28afce6951cb4ace32f9c631f048d561c24cc3028f9c96ff3c",
+      "tests/p7/evidence.py": "002633bd0699695c4a5b3c4f81f75b31a422b31e3ff38586ac32fa6353ac7c8f",
+      "tests/p7/launch.py": "df15bff499d9a17e33f91ee258963f025e9f71c2cf62d9e4a0d14286d9566fa4",
+      "tests/p7/legacy.py": "1dcf0501b0600cedb0512f42a727a2a21d17c6410564babf6b5e88899cf8829e",
+      "tests/p7/monitoring_recovered.py": "ec3e4ec98d96b574182d023bb9e5c3dd762117d54e713196660217fc582b4997",
+      "tests/p7/recovery.py": "afbfea48f481dc2db20a41d64432c0f6198806a1a559c509710da96089c1378e",
+      "tests/p7/regression.py": "07939e010f4356ed9e0cd3d6ab9c4a99e0b18a643ab26d2ce1297bc6b995560c",
+      "tests/p7/run.py": "76357555bf56cff3929f7e1e043b36a01168a3d570db9dc3fc23ca78e79f2dba",
+      "tests/p7/test_security.py": "41237f87b87eef1a7bfa11c51ef9dd02fa46da46176aac4e3655afa7dd37942a",
+      "tests/p7/verify_recovered.py": "ea8565c23d6a723aaf65424d0078c96897aec1c9f1c700c6d0745a4a4a65d97c",
+      "backend/main.py": "09f753d8cf637f5e2798d60105e15ad18adb5c9661be8a95bcac773961c86f07",
+      "backend/requirements.txt": "58e1f2335920ab6da4ffcb75478f38fb771b606670e281830d1e647b7d889edb",
+      "docker/keycloak/florasecure-realm.json": "958da3f0e2e5492495d1d3d40411dddd0e18c67678be2b3918d8dac1d2f06e16",
+      "docker/keycloak/florasecure-p4-realm.json": "4744661d41f6ae2ac7f18b1673d7bd22b333b8ef65f91b36b6587d722d2ac3e6",
+      "docker/keycloak/florasecure-p5-realm.json": "81601029e41fbd6a46636e14e5aa136605763c1c5d60f903423ad91e7826cea9"
+    }
+  },
+  "cleanup-resources": {
+    "projects": [
+      "cloud-api-p3-7ed9c5da832f",
+      "cloud-api-p3-d97431f3b772",
+      "cloud-api-p3-7b47c48cd1cd",
+      "cloud-api-p6-c08966a13806",
+      "cloud-api-p7-060e950e1523"
+    ],
+    "checks": [
+      {
+        "argv": [
+          "docker",
+          "ps",
+          "-a",
+          "--filter",
+          "name=cloud-api-p3-7ed9c5da832f",
+          "--format",
+          "{{.Names}}"
+        ],
+        "exit_code": 0,
+        "remaining": [],
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "docker",
+          "volume",
+          "ls",
+          "--filter",
+          "name=cloud-api-p3-7ed9c5da832f",
+          "--format",
+          "{{.Name}}"
+        ],
+        "exit_code": 0,
+        "remaining": [],
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "docker",
+          "network",
+          "ls",
+          "--filter",
+          "name=cloud-api-p3-7ed9c5da832f",
+          "--format",
+          "{{.Name}}"
+        ],
+        "exit_code": 0,
+        "remaining": [],
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "docker",
+          "ps",
+          "-a",
+          "--filter",
+          "name=cloud-api-p3-d97431f3b772",
+          "--format",
+          "{{.Names}}"
+        ],
+        "exit_code": 0,
+        "remaining": [],
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "docker",
+          "volume",
+          "ls",
+          "--filter",
+          "name=cloud-api-p3-d97431f3b772",
+          "--format",
+          "{{.Name}}"
+        ],
+        "exit_code": 0,
+        "remaining": [],
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "docker",
+          "network",
+          "ls",
+          "--filter",
+          "name=cloud-api-p3-d97431f3b772",
+          "--format",
+          "{{.Name}}"
+        ],
+        "exit_code": 0,
+        "remaining": [],
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "docker",
+          "ps",
+          "-a",
+          "--filter",
+          "name=cloud-api-p3-7b47c48cd1cd",
+          "--format",
+          "{{.Names}}"
+        ],
+        "exit_code": 0,
+        "remaining": [],
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "docker",
+          "volume",
+          "ls",
+          "--filter",
+          "name=cloud-api-p3-7b47c48cd1cd",
+          "--format",
+          "{{.Name}}"
+        ],
+        "exit_code": 0,
+        "remaining": [],
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "docker",
+          "network",
+          "ls",
+          "--filter",
+          "name=cloud-api-p3-7b47c48cd1cd",
+          "--format",
+          "{{.Name}}"
+        ],
+        "exit_code": 0,
+        "remaining": [],
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "docker",
+          "ps",
+          "-a",
+          "--filter",
+          "name=cloud-api-p6-c08966a13806",
+          "--format",
+          "{{.Names}}"
+        ],
+        "exit_code": 0,
+        "remaining": [],
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "docker",
+          "volume",
+          "ls",
+          "--filter",
+          "name=cloud-api-p6-c08966a13806",
+          "--format",
+          "{{.Name}}"
+        ],
+        "exit_code": 0,
+        "remaining": [],
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "docker",
+          "network",
+          "ls",
+          "--filter",
+          "name=cloud-api-p6-c08966a13806",
+          "--format",
+          "{{.Name}}"
+        ],
+        "exit_code": 0,
+        "remaining": [],
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "docker",
+          "ps",
+          "-a",
+          "--filter",
+          "name=cloud-api-p7-060e950e1523",
+          "--format",
+          "{{.Names}}"
+        ],
+        "exit_code": 0,
+        "remaining": [],
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "docker",
+          "volume",
+          "ls",
+          "--filter",
+          "name=cloud-api-p7-060e950e1523",
+          "--format",
+          "{{.Name}}"
+        ],
+        "exit_code": 0,
+        "remaining": [],
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "docker",
+          "network",
+          "ls",
+          "--filter",
+          "name=cloud-api-p7-060e950e1523",
+          "--format",
+          "{{.Name}}"
+        ],
+        "exit_code": 0,
+        "remaining": [],
+        "stderr": ""
+      }
+    ],
+    "remaining_task_mounts": [],
+    "all_removed": true
+  }
+}
