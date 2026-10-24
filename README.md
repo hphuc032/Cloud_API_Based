@@ -5,6 +5,15 @@ RBAC/ownership, webhook HMAC và Loki/Promtail/Grafana.
 
 ## Trạng thái triển khai
 
+**Cập nhật nghiệm thu 24/10/2026:** hồi quy đầy đủ legacy và OIDC, ba ca DNS thật,
+16/16 phương thức TLS/mTLS, trình duyệt, xoay khóa và restore/recreate đều PASS.
+**Phát hành vẫn BLOCKED** bởi các advisory hạ tầng còn cần điều tra/khắc phục và
+chưa được người có thẩm quyền chấp nhận rủi ro. Xem
+[báo cáo remediation](docs/testing/final-acceptance-remediation.md),
+[bằng chứng thực chạy](docs/testing/final-remediation-evidence.json) và
+[advisory sau sửa](docs/testing/final-remediation-advisories-after.json).
+Các đoạn P3–P7 bên dưới mô tả mốc lịch sử; gate DNS hiện đã được giải quyết.
+
 P0–P2 là baseline và kiến trúc mạng/HTTPS/mTLS đã phê duyệt. P3 chuẩn bị Keycloak
 production mode, PostgreSQL identity riêng và bảng ánh xạ danh tính; nghiệm thu
 P3 vẫn **BLOCKED** bởi ba lỗi DNS runtime. Xem [P3 evidence](docs/testing/p3-results.md).
@@ -76,8 +85,11 @@ P6 acceptance recovery đã chứng minh xóa chunk vật lý trên hai volume m
 P7 adds isolated end-to-end/attack evidence, paired application/identity PostgreSQL
 restore rehearsals, deployment/rollback documentation and a capstone demo guide.
 Runtime authentication, business authorization, TLS, schema and P6 policies remain
-unchanged. **Strict release acceptance is BLOCKED**: the user deferred the three
-real-DNS cases, and current dependency/image advisory scanning is incomplete.
+unchanged in the original P7 milestone. At the subsequent remediation milestone,
+all original unfiltered regression groups and real DNS passed; all eight runtime
+image scans completed. **Strict release acceptance remains BLOCKED** by unresolved
+material advisory risks, not by the historical DNS/execution failures. Dependency
+and harness changes are recorded separately in the remediation report.
 No production rollout or Workspace A push is authorized.
 
 - [Actual test results and A–R release matrix](docs/testing/p7-results.md)

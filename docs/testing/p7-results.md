@@ -1,5 +1,13 @@
 # P7 final validation and release readiness
 
+> Final remediation, 2026-10-24: [complete before/after report](final-acceptance-remediation.md)
+> and [machine evidence](final-remediation-evidence.json) record successful original
+> unfiltered legacy and active runners, all 16 TLS methods, browser/rotation,
+> paired recovery and real collector ingestion. All three DNS cases PASS.
+> Fresh advisory scans completed for all eight exact runtime images; unresolved
+> material findings still make release BLOCKED. Historical results below remain
+> unchanged; they are not the current execution status.
+
 > Follow-up, 2026-10-24: [Windows/Docker final DNS recovery](final-dns-acceptance-20261024.md)
 > passed all three inherited real-DNS cases, including the active OIDC equivalents.
 > Strict release acceptance remains BLOCKED by other regression/execution failures

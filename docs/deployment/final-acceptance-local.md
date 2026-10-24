@@ -108,3 +108,47 @@ An incomplete/failed runner remains a failed run even when a later focus succeed
 
 See [current remediation evidence](../testing/final-acceptance-remediation.md)
 for exact executed versions, commands, outcomes and unresolved release risks.
+
+## Dependency lock and image rollback
+
+Docker application/test builds install `backend/requirements.lock` using
+`--require-hashes --only-binary=:all:` and run `pip check`. It contains the same
+51 exact versions for Linux CPython 3.11 AMD64 and ARM64. ARM64 wheel availability
+and hashes were checked; the full runtime acceptance was on AMD64. Other Python
+versions/platforms require their own resolution and validation.
+
+Regeneration requires two reviewed pip JSON reports, resolving both
+`backend/requirements.txt` and `backend/build-requirements.txt`. Resolve AMD64 on
+Linux CPython 3.11 using `pip install --dry-run --ignore-installed
+--only-binary=:all: --report amd64.json -r backend/requirements.txt
+-r backend/build-requirements.txt`. Constrain every resolved package to that
+exact version for the ARM64 cross-resolution; use `--python-version 3.11
+--implementation cp --abi cp311 --abi abi3 --abi none` and supported ARM64
+manylinux platform tags. The exact executed arguments are in the linked public
+evidence. Generate the final lock with:
+
+```sh
+python docker/lock_requirements.py --report amd64.json --arm64-report arm64.json
+```
+
+The generator rejects different package/version sets and wrong architecture
+wheel tags. Input digests normalize LF so Windows/Linux regenerate identically.
+Download both sets with hash verification, install/check the lock in the target
+environment, audit actual installed packages and rerun affected regressions.
+Do not replace failed resolutions with unpinned installs or source builds.
+
+The nginx update pins 1.30.6-alpine by digest in the identity edge, production SPA
+and test SPA. Explicit HTTP/1.0 upstream plus `Connection: close` retains the old
+proxy defaults. Base identity, P6 identity and generated SPA configurations were
+exercised by the full legacy/active runs. No nginx persistent storage schema
+changes. To roll back, restore the prior reviewed image/configuration and
+dependency manifests from the preceding commit, rebuild/recreate only the
+intended disposable services and rerun verified HTTPS/OIDC checks. Never reuse
+test credentials/PKI in production. A dependency rollback reintroduces known
+parser/advisory exposure and is not a release approval.
+
+Fresh Docker Scout scans use a task-owned directory on D: through
+`DOCKER_SCOUT_CACHE_DIR`, with process-local `TEMP`/`TMP` on D: to avoid exhausting
+the system drive. Scanner caches are ignored; no global Docker pruning is needed.
+Scan exact image IDs/digests and record the platform. A zero scanner exit status
+means the scan completed, not that the image has no vulnerabilities.
