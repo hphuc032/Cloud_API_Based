@@ -2,6 +2,7 @@
 import gzip
 import io
 import json
+import os
 import subprocess
 import tarfile
 import tempfile
@@ -83,7 +84,11 @@ def execute(run, compose, project, metadata, secret_dir, artifacts, extra_secret
             needles.extend(extra_secret_values)
             images = [containers[s]["Image"] for s in ("backend", "db-bootstrap", "migrate")]
             images.append(probe_image)
-            with tempfile.TemporaryDirectory(prefix="p1-image-audit-") as tmp:
+            # The complete image archive can exceed small Windows system-drive
+            # headroom. Only its temporary storage location is configurable;
+            # all original layer and generated-secret assertions still execute.
+            with tempfile.TemporaryDirectory(prefix="p1-image-audit-",
+                                             dir=os.environ.get('P1_IMAGE_AUDIT_TMPDIR')) as tmp:
                 archive = tmp + "/images.tar"
                 run(["docker", "image", "save", "-o", archive, *images], capture_output=True)
                 with tarfile.open(archive) as tar:

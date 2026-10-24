@@ -75,10 +75,17 @@ def main():
         spec=importlib.util.spec_from_file_location('p3_probe_worker',ROOT/'tests/compose_probe.py')
         worker_module=importlib.util.module_from_spec(spec);spec.loader.exec_module(worker_module)
         worker=worker_module.ProbeWorker(compose)
+        spec=importlib.util.spec_from_file_location('project_logs',ROOT/'tests/project_logs.py')
+        log_module=importlib.util.module_from_spec(spec);spec.loader.exec_module(log_module)
+        project_logs=log_module.ProjectLogs(project)
+        if project_logs.desktop:
+            log_root=Path(temp)/'project-logs';log_root.mkdir()
+            env['DOCKER_LOG_ROOT']=str(log_root)
 
         def run(args, **kwargs):
             args=worker.command(args)
             commands.append(args)
+            (artifacts/'commands.json').write_text(json.dumps(commands,indent=2))
             kwargs.setdefault('check', True)
             return subprocess.run(args, cwd=ROOT, env=env, **kwargs)
 
@@ -138,13 +145,18 @@ def main():
             else:
                 run(compose + ["up", "-d", "--wait", "--wait-timeout", "300",
                                "backend", "kong", "keycloak", "identity-edge", "grafana", "promtail"])
+            if project_logs.desktop:
+                overlay=Path(temp)/'desktop-collector.json'
+                overlay.write_text(json.dumps(project_logs.overlay(run,'promtail',log_root)))
+                compose+=['-f',str(overlay)]
+                run(compose+['up','--no-deps','-d','--force-recreate','promtail'])
             ids = run(compose + ["ps", "-a", "-q"], capture_output=True, text=True).stdout.split()
             metadata = json.loads(run(["docker", "inspect", *ids], capture_output=True, text=True).stdout)+historical
             (artifacts / "containers.json").write_text(json.dumps(metadata, indent=2), encoding="utf-8")
             if env.get('P3_SOURCE_OVERLAY'):
                 sources=[]
                 for directory in ('backend/app','backend/deployment','backend/alembic','tests'):
-                    sources.extend(p for p in (ROOT/directory).rglob('*.py') if 'artifacts' not in p.parts and '__pycache__' not in p.parts)
+                    sources.extend(p for p in (ROOT/directory).rglob('*.py') if 'artifacts' not in p.relative_to(ROOT).parts and '__pycache__' not in p.parts)
                 sources.append(ROOT/'backend/main.py')
                 paths={str(p.relative_to(ROOT)):('/app/'+str(p.relative_to(ROOT/'backend')) if p.is_relative_to(ROOT/'backend') else '/'+str(p.relative_to(ROOT))) for p in sources}
                 paths['docker/keycloak/florasecure-realm.json']='/realm.json'
@@ -210,6 +222,7 @@ def main():
                 cleanup = True
             except subprocess.CalledProcessError:
                 print(f"Cleanup failed: remove ONLY project {project}", file=sys.stderr)
+            project_logs.close(run)
             (artifacts / "run.json").write_text(json.dumps({
                 "project": project, "exit_code": result, "cleanup_completed": cleanup,
                 "started_utc": started, "identity_only": identity_only, "finished_utc": datetime.now(timezone.utc).isoformat(),

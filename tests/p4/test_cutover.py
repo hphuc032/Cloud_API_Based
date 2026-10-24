@@ -232,16 +232,34 @@ def test_review_rejects_ambiguous_batch_and_privileged_provisioning(users):
 
 def test_live_p4_global_rate_limit(tokens,headers):
  headers('customer')
+ evidence=[]
+ def wait_for_window():
+  # Sleep uses a monotonic clock while Kong's minute buckets use wall time.
+  # Recheck the actual boundary after every wake (including VM clock corrections).
+  boundary=(int(time.time())//60+1)*60+1
+  deadline=time.monotonic()+90
+  evidence.append({'event':'wait-start','wall_time':time.time(),'monotonic':time.monotonic(),'boundary':boundary})
+  while time.time()<boundary:
+   assert time.monotonic()<deadline, 'Wall-clock rate-limit window did not advance within 90s'
+   time.sleep(min(.25,max(0,boundary-time.time())))
+  evidence.append({'event':'wait-end','wall_time':time.time(),'monotonic':time.monotonic(),'boundary':boundary})
+ def observed(c,path,**kwargs):
+  r=c.get(path,**kwargs)
+  evidence.append({'client_time':time.time(),'monotonic':time.monotonic(),'path':path,'status':r.status_code,
+    'headers':{k:v for k,v in r.headers.items() if k.startswith(('x-ratelimit','ratelimit','x-kong','x-request')) or k in ('date','retry-after','x-ratelimit-layer')}})
+  from pathlib import Path
+  Path('/results/rate-limit-window.json').write_text(json.dumps(evidence,indent=2))
+  return r
  # JWT rejection precedes the rate plugin. Exercise the limiter with public and
  # valid authenticated routes, then recover the window before later TLS checks.
  with http_client('https://kong:8443') as c:
   remaining_seconds=60-time.time()%60
-  if remaining_seconds<15:time.sleep(remaining_seconds+.1)
-  r=c.get('/health');assert r.status_code==200
+  if remaining_seconds<15:wait_for_window()
+  r=observed(c,'/health');assert r.status_code==200
   assert r.headers['x-ratelimit-limit-minute']=='60'
   try:
-   for _ in range(int(r.headers['x-ratelimit-remaining-minute'])):assert c.get('/health').status_code==200
-   assert c.get('/api/v1/products/').status_code==429
-   assert c.get('/api/v1/auth/me',headers={'Authorization':'Bearer '+tokens['customer']['access_token']}).status_code==429
-  finally:time.sleep(60-time.time()%60+1)
-  assert c.get('/health').status_code==200
+   for _ in range(int(r.headers['x-ratelimit-remaining-minute'])):assert observed(c,'/health').status_code==200
+   assert observed(c,'/api/v1/products/').status_code==429
+   assert observed(c,'/api/v1/auth/me',headers={'Authorization':'Bearer '+tokens['customer']['access_token']}).status_code==429
+  finally:wait_for_window()
+  assert observed(c,'/health').status_code==200

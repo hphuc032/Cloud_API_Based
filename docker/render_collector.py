@@ -21,8 +21,10 @@ def render(project,mount_root):
   seen.add(service);cid=record['Id'];log=Path(record['LogPath'])
   if not log.is_absolute() or log.name!=cid+'-json.log' or log.parent.name!=cid:
    raise ValueError('Expected reviewed json-file log path')
-  (mount_root/cid).mkdir(parents=True,exist_ok=True)
-  mounts.append(dict(type='bind',source=str(log.parent),target='/var/log/project/'+cid,read_only=True))
+  # Compose merges volumes by target. A stable service target replaces a removed
+  # container's source rather than retaining its now-invalid CID bind mount.
+  (mount_root/service).mkdir(parents=True,exist_ok=True)
+  mounts.append(dict(type='bind',source=str(log.parent),target='/var/log/project/'+service,read_only=True))
  if seen!={'backend','kong','keycloak'}:raise ValueError('Required services missing')
  return {'services':{'alloy':{'volumes':mounts}}}
 

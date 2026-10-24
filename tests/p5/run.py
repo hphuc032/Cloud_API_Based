@@ -94,7 +94,7 @@ def main():
             (artifacts/'containers.json').write_text(json.dumps(metadata,indent=2))
             sources=[]
             for directory in ('backend/app','backend/deployment','backend/alembic','tests'):
-                sources.extend(p for p in (ROOT/directory).rglob('*.py') if 'artifacts' not in p.parts and '__pycache__' not in p.parts)
+                sources.extend(p for p in (ROOT/directory).rglob('*.py') if 'artifacts' not in p.relative_to(ROOT).parts and '__pycache__' not in p.parts)
             sources.append(ROOT/'backend/main.py')
             paths={str(p.relative_to(ROOT)):('/app/'+str(p.relative_to(ROOT/'backend')) if p.is_relative_to(ROOT/'backend') else '/'+str(p.relative_to(ROOT))) for p in sources}
             paths.update({'docker/keycloak/florasecure-realm.json':'/realm.json',

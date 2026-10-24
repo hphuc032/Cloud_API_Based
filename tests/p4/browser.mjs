@@ -126,7 +126,7 @@ try {
 } catch(error) {
  console.error('Browser validation failed: '+error.name);process.exitCode=1;
 } finally {
- writeFileSync(config.results,JSON.stringify({tls_verification:'Chromium verified CA and SAN; no ignoreHTTPSErrors',private_alias_resolution:'actual Compose identity-edge address only',navigation_readiness:'DOMContentLoaded then application assertions; external font load is not auth readiness',optional_fonts:'Google typography requests explicitly blocked in test browser only; no IdP/API/DNS assertion substituted',network_failures:networkFailures,tests:results},null,2));
+ writeFileSync(config.results,JSON.stringify({tls_verification:'Chromium verified CA and SAN; no ignoreHTTPSErrors',private_alias_resolution:config.private_alias_resolution||'actual Compose identity-edge address only',navigation_readiness:'DOMContentLoaded then application assertions; external font load is not auth readiness',optional_fonts:'Google typography requests explicitly blocked in test browser only; no IdP/API/DNS assertion substituted',network_failures:networkFailures,tests:results},null,2));
  await context.close();
  await browser.close();
 }

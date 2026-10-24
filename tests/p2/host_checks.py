@@ -1,5 +1,6 @@
 """Fail-closed Kong tests, isolated rotation/recovery, runtime file and log evidence."""
 import io
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -41,21 +42,37 @@ with http_client('https://kong:8443') as c:
 
     def restart(service):
         output(compose + ['restart', service])
-        # Readiness is intentionally allowed to fail for a negative server cert.
-        for _ in range(30):
+        # `kong health` only observes the nginx PID: it can succeed before the
+        # proxy listener/configuration is usable. Probe the verified edge HTTPS
+        # listener, including during deliberately broken upstream TLS cases.
+        deadline = time.monotonic() + 45
+        last_error = 'no probe completed'
+        while time.monotonic() < deadline:
             try:
+                if service == 'kong':
+                    probe("""import ssl,socket,http.client
+from pathlib import Path
+c=ssl.create_default_context(cafile='/test-tls/trust/edge-ca.pem')
+next_ca=Path('/test-tls/trust/edge-next.pem')
+if next_ca.exists(): c.load_verify_locations(cafile=str(next_ca))
+c.hostname_checks_common_name=False
+with socket.create_connection(('kong',8443),2) as s:
+ with c.wrap_socket(s,server_hostname='kong') as t:
+  t.settimeout(3)
+  t.sendall(b'GET /health HTTP/1.0\\r\\nHost: kong\\r\\n\\r\\n')
+  response=http.client.HTTPResponse(t);response.begin()
+  assert response.status in (200,502), 'Gateway not ready: '+str(response.status)
+""")
+                    return
+                # Negative backend server certificates intentionally cannot
+                # pass a certificate-validating application readiness check.
                 output(compose + ['exec', '-T', service, 'python', '-c',
                                   "import socket; socket.create_connection(('localhost',8443),2).close()"])
                 return
-            except Exception:
-                if service == 'kong':  # Kong's image has no Python; use process health.
-                    try:
-                        output(compose + ['exec', '-T', 'kong', 'kong', 'health'])
-                        return
-                    except Exception:
-                        pass
-            time.sleep(1)
-        raise AssertionError(service + ' TLS listener did not recover')
+            except Exception as exc:
+                last_error = str(exc)
+            time.sleep(.5)
+        raise AssertionError(service + ' TLS listener did not recover within 45s: ' + last_error)
 
     def restore():
         for directory, values in [('backend', original_backend), ('kong', original_kong)]:
@@ -119,7 +136,20 @@ with http_client('https://kong:8443') as c:
                 tls = [m for m in info['Mounts'] if m['Destination'] == '/run/tls']
                 self.assertEqual(len(tls), 1)
                 self.assertFalse(tls[0]['RW'])
-                self.assertTrue(tls[0]['Source'].replace('\\', '/').endswith('/certs/' + directory))
+                source = tls[0]['Source'].replace('\\', '/')
+                # Desktop may rebind a WSL source through an opaque mount ID.
+                # Accept only that specific translation, and independently prove
+                # the complete mounted file set/content on both native/Desktop.
+                self.assertTrue(source.endswith('/certs/' + directory) or
+                                re.fullmatch(r'/run/desktop/mnt/host/wsl/docker-desktop-bind-mounts/[^/]+/[a-f0-9]{64}', source))
+                expected = {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
+                            for p in (pki / directory).iterdir() if p.is_file()}
+                names = output(compose + ['exec', '-T', service, 'ls', '-A', '/run/tls']).splitlines()
+                self.assertEqual(set(names), set(expected))
+                for name, digest in expected.items():
+                    self.assertRegex(name, r'^[a-zA-Z0-9_.-]+$')
+                    actual = output(compose + ['exec', '-T', service, 'sha256sum', '/run/tls/' + name]).split()[0]
+                    self.assertEqual(actual, digest, 'Mounted TLS file differs: ' + name)
                 self.assertFalse(info['HostConfig']['PortBindings'] if service == 'backend' else False)
                 self.assertTrue(all('/offline' not in m['Source'] for m in info['Mounts']))
             self.assertFalse((pki / 'backend/client.key').exists())
@@ -264,15 +294,16 @@ else: raise AssertionError('Old edge trust accepted new issuer')
                                             cwd=root / 'frontend', env=env, stdout=log, stderr=subprocess.STDOUT,
                                             creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0)
                     try:
-                        for _ in range(30):
+                        deadline = time.monotonic() + 45
+                        while time.monotonic() < deadline:
                             try:
-                                with urllib.request.urlopen('http://127.0.0.1:' + str(port) + '/health', timeout=5) as response:
+                                with urllib.request.urlopen('http://127.0.0.1:' + str(port) + '/health', timeout=3) as response:
                                     actual = response.status
                                 break
                             except urllib.error.HTTPError as exc:
                                 actual = exc.code
                                 break
-                            except urllib.error.URLError:
+                            except (urllib.error.URLError, TimeoutError):
                                 self.assertIsNone(proc.poll(), 'Vite exited before it was ready')
                                 time.sleep(0.5)
                         else:

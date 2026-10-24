@@ -5,7 +5,7 @@ from pathlib import Path
 
 def execute(run,compose,project,metadata,pki,identity_pki,fixtures,temp,artifacts,env):
     root=Path(__file__).resolve().parents[2]
-    server=None;browser_container=None;frontend_container=None
+    server=None;desktop_browser=None;browser_container=None;frontend_container=None
     try:
         if 'application_id' not in json.loads((fixtures/'identities.json').read_text()):
             run(compose+['run','--rm','--no-deps','-T','tests','python','/tests/p4/browser_setup.py','prepare'])
@@ -29,24 +29,38 @@ def execute(run,compose,project,metadata,pki,identity_pki,fixtures,temp,artifact
         # A separate disposable OS context avoids touching the host's existing
         # NSS store. HOME is never reassigned. System Chromium/libraries are read
         # only; the browser receives no database secrets or application private keys.
-        browser_container=project+'-browser'
-        args=['docker','run','-d','--name',browser_container,'--network','host','--read-only',
-            '--user',str(os.getuid())+':'+str(os.getgid()),'--tmpfs','/tmp:rw,nosuid,nodev',
-            '-v',str(browser_root)+':/p4','-v','/usr:/usr:ro','-v','/lib:/lib:ro','-v','/lib64:/lib64:ro',
-            '-v','/etc/fonts:/etc/fonts:ro','-e','XDG_DATA_HOME=/p4/xdg',
-            '-e','XDG_CACHE_HOME=/p4/cache','-e','XDG_CONFIG_HOME=/p4/config',
-            '--entrypoint','/usr/lib/chromium/chromium','python:3.11-slim','--headless','--no-sandbox',
-            '--disable-dev-shm-usage','--no-proxy-server','--disable-breakpad',
-            '--remote-debugging-address=127.0.0.1','--remote-debugging-port='+str(cdp_port),
-            '--user-data-dir=/p4/profile','--host-resolver-rules=MAP identity-edge '+edge,'about:blank']
-        run(args,capture_output=True,text=True)
+        if env.get('CLOUD_API_DESKTOP_BROWSER')=='1':
+            import importlib.util
+            spec=importlib.util.spec_from_file_location('desktop_browser',root/'tests/browser_runtime.py')
+            runtime=importlib.util.module_from_spec(spec);spec.loader.exec_module(runtime)
+            desktop_browser=runtime.DesktopBrowser(run,project,browser_root,cdp_port)
+            desktop_browser.start()
+        else:
+            browser_container=project+'-browser'
+            args=['docker','run','-d','--name',browser_container,'--network','host','--read-only',
+                '--user',str(os.getuid())+':'+str(os.getgid()),'--tmpfs','/tmp:rw,nosuid,nodev',
+                '-v',str(browser_root)+':/p4','-v','/usr:/usr:ro','-v','/lib:/lib:ro','-v','/lib64:/lib64:ro',
+                '-v','/etc/fonts:/etc/fonts:ro','-e','XDG_DATA_HOME=/p4/xdg',
+                '-e','XDG_CACHE_HOME=/p4/cache','-e','XDG_CONFIG_HOME=/p4/config',
+                '--entrypoint','/usr/lib/chromium/chromium','python:3.11-slim','--headless','--no-sandbox',
+                '--disable-dev-shm-usage','--no-proxy-server','--disable-breakpad',
+                '--remote-debugging-address=127.0.0.1','--remote-debugging-port='+str(cdp_port),
+                '--user-data-dir=/p4/profile','--host-resolver-rules=MAP identity-edge '+edge,'about:blank']
+            run(args,capture_output=True,text=True)
         for _ in range(60):
             try:
                 with urllib.request.urlopen('http://127.0.0.1:'+str(cdp_port)+'/json/version',timeout=1) as r:
                     assert json.load(r)['Browser'].startswith('Chrome/');break
             except (OSError,urllib.error.URLError):time.sleep(.5)
-        else:raise RuntimeError('Disposable Chromium CDP endpoint did not start')
+        else:
+            if desktop_browser:
+                (artifacts/'browser-startup.txt').write_text((browser_root/'startup.log').read_text())
+            else:
+                diagnostic=run(['docker','logs',browser_container],check=False,capture_output=True,text=True)
+                (artifacts/'browser-startup.txt').write_text(diagnostic.stdout+diagnostic.stderr)
+            raise RuntimeError('Disposable Chromium CDP endpoint did not start')
         config={'fixtures':str(fixtures/'identities.json'),'edge_ip':edge,'cdp':'http://127.0.0.1:'+str(cdp_port),
+                'private_alias_resolution':'loopback TCP relay to Compose identity-edge; original TLS SNI/hostname' if desktop_browser else 'actual Compose identity-edge address only',
                 'compose':compose,'results':str(artifacts/'p5-browser-results.json')}
         (temp/'browser.json').write_text(json.dumps(config))
         # Production self-hosted assets and exact-IdP CSP, not the Vite server.
@@ -92,6 +106,7 @@ def execute(run,compose,project,metadata,pki,identity_pki,fixtures,temp,artifact
         print('Browser validation failed: '+type(exc).__name__,flush=True)
         return False
     finally:
+        if desktop_browser:desktop_browser.close()
         if server:
             server.terminate()
             try:server.wait(timeout=10)

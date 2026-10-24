@@ -71,10 +71,12 @@ def main():
         (temp/'empty-logs').mkdir()
         (temp/'empty-logs').chmod(0o755)
         worker=module('p4_probe_worker',ROOT/'tests/compose_probe.py').ProbeWorker(compose)
+        project_logs=module('project_logs',ROOT/'tests/project_logs.py').ProjectLogs(project)
 
         def run(args,**kwargs):
             args=worker.command(args)
             commands.append(args)
+            (artifacts/'commands.json').write_text(json.dumps(commands,indent=2))
             kwargs.setdefault('check',True)
             kwargs.setdefault('cwd',ROOT);kwargs.setdefault('env',env)
             return subprocess.run(args,**kwargs)
@@ -100,15 +102,8 @@ def main():
                 run(compose+['up','--no-deps','-d','--wait','--wait-timeout','120','loki','grafana'])
                 ids=run(compose+['ps','-a','-q'],capture_output=True,text=True).stdout.split()
                 records=json.loads(run(['docker','inspect',*ids],capture_output=True,text=True).stdout)
-                mounts=[]
-                for c in records:
-                    service=c['Config']['Labels']['com.docker.compose.service']
-                    if service in ('backend','kong','keycloak'):
-                        (temp/'empty-logs'/c['Id']).mkdir()
-                        mounts.append({'type':'bind','source':str(Path(c['LogPath']).parent),
-                                       'target':'/var/log/project/'+c['Id'],'read_only':True})
                 overlay=temp/'collector.json'
-                overlay.write_text(json.dumps({'services':{'alloy':{'volumes':mounts}}}))
+                overlay.write_text(json.dumps(project_logs.overlay(run,'alloy',temp/'empty-logs')))
                 compose+=['-f',str(overlay)]
                 run(compose+['up','--no-deps','-d','alloy'])
             else:
@@ -121,7 +116,7 @@ def main():
             (artifacts/'containers.json').write_text(json.dumps(metadata,indent=2))
             sources=[]
             for directory in ('backend/app','backend/deployment','backend/alembic','tests'):
-                sources.extend(p for p in (ROOT/directory).rglob('*.py') if 'artifacts' not in p.parts and '__pycache__' not in p.parts)
+                sources.extend(p for p in (ROOT/directory).rglob('*.py') if 'artifacts' not in p.relative_to(ROOT).parts and '__pycache__' not in p.parts)
             sources.append(ROOT/'backend/main.py')
             paths={str(p.relative_to(ROOT)):('/app/'+str(p.relative_to(ROOT/'backend')) if p.is_relative_to(ROOT/'backend') else '/'+str(p.relative_to(ROOT))) for p in sources}
             paths.update({'docker/keycloak/florasecure-realm.json':'/realm.json',
@@ -151,9 +146,12 @@ def main():
                 # Refresh the narrow collector mounts and subsequent host probes.
                 ids=run(compose+['ps','-a','-q'],capture_output=True,text=True).stdout.split()
                 metadata=json.loads(run(['docker','inspect',*ids],capture_output=True,text=True).stdout)+historical
-                renewed=temp/'recovered-collector.json'
-                renewed.write_text(json.dumps(module('p7_collector',ROOT/'docker/render_collector.py').render(project,temp/'empty-logs')))
-                compose+=['-f',str(renewed)]
+                # One owner/file for collector configuration. In particular,
+                # volumes_from is a sequence, so appending another overlay can
+                # retain/duplicate references even when the holder name is stable.
+                renewed=temp/'collector.json'
+                renewed.write_text(json.dumps(project_logs.overlay(run,'alloy',temp/'empty-logs')))
+                if str(renewed) not in compose:compose+=['-f',str(renewed)]
                 run(compose+['up','--no-deps','-d','alloy'])
                 run(compose+['up','--no-deps','-d','--wait','--wait-timeout','90','grafana'])
                 capture('p7-monitoring-recovered',compose+['run','--rm','--no-deps','-T','tests','python','/tests/p7/monitoring_recovered.py'])
@@ -224,6 +222,7 @@ def main():
         finally:
             worker.close(run)
             clean = run(compose+['--profile','p7-recovery','down','--volumes','--remove-orphans','--timeout','10'],check=False)
+            project_logs.close(run)
             results['cleanup'] = clean.returncode
             (artifacts/'commands.json').write_text(json.dumps(commands,indent=2))
             (artifacts/'run.json').write_text(json.dumps(dict(project=project,results=results,

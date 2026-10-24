@@ -29,7 +29,17 @@ with httpx.Client(verify='/identity-trust/identity-ca.pem',timeout=20,follow_red
   state['new']=issue(c);assert jwt.get_unverified_header(state['new'])['kid']==state['newkid'];path.write_text(json.dumps(state));time.sleep(5.1)
   for url in ('https://kong:8443','https://backend:8443'):
    with http_client(url,backend=url.startswith('https://backend:')) as target:
-    for token in (state['old'],state['new']):assert target.get('/api/v1/auth/me',headers={'Authorization':'Bearer '+token}).status_code==200
+    for label,token in (('old',state['old']),('new',state['new'])):
+     response=target.get('/api/v1/auth/me',headers={'Authorization':'Bearer '+token})
+     evidence=Path('/results/rotation-http-status.json')
+     observations=json.loads(evidence.read_text()) if evidence.exists() else []
+     claims=jwt.get_unverified_claims(token)
+     observations.append({'phase':'activate','target':url,'key_generation':label,
+                          'status':response.status_code,'wall_clock':time.time(),
+                          'token_exp':claims.get('exp'),'token_iat':claims.get('iat'),
+                          'date':response.headers.get('date')})
+     evidence.write_text(json.dumps(observations,indent=2))
+     assert response.status_code==200, url+' '+label+' status '+str(response.status_code)
  elif mode=='retire':
   state=json.loads(path.read_text());assert c.delete(base+'/components/'+state['old_provider'],headers=h).status_code==204
   assert state['oldkid'] not in [k['kid'] for k in c.get(ISSUER+'/protocol/openid-connect/certs').json()['keys']]
