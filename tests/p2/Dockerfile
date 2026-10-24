@@ -4,8 +4,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends python3 python3
 RUN python3 -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH" PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=/app:/tests/p0
 WORKDIR /app
-COPY backend/requirements.txt /app/requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+COPY backend/requirements.txt backend/build-requirements.txt backend/requirements.lock /app/
+RUN python -m pip install --no-cache-dir --require-hashes --only-binary=:all: -r requirements.lock \
+    && python -m pip check
 COPY backend/ /app/
 COPY tests/p0/ /tests/p0/
 COPY tests/p1/ /tests/p1/

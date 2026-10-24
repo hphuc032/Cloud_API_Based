@@ -84,7 +84,7 @@ def execute(run,compose,project,metadata,pki,identity_pki,fixtures,temp,artifact
             '--tmpfs','/var/cache/nginx','--tmpfs','/var/run','--tmpfs','/tmp',
             '-p','127.0.0.1:5174:8443','-v',str(root/'frontend/dist')+':/usr/share/nginx/html:ro',
             '-v',str(nginx)+':/etc/nginx/conf.d/default.conf:ro','-v',str(spa)+':/run/tls:ro',
-            'nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10'],capture_output=True,text=True)
+            'nginx:1.30.6-alpine@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951'],capture_output=True,text=True)
         context=ssl.create_default_context(cafile=str(pki/'trust/edge-ca.pem'))
         for _ in range(40):
             try:

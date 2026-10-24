@@ -136,6 +136,8 @@ def main():
             run(compose+['run','--rm','--no-deps','-T','kong-keys'])
             run(compose+['exec','-T','kong','kong','config','parse','/gateway/kong.json'],capture_output=True)
             run(compose+['exec','-T','kong','kong','reload'],capture_output=True)
+            if not focus:
+                capture('parser-boundary',compose+['run','--rm','--no-deps','-T','tests','python','/tests/p7/parser_checks.py'])
             if focus in (None,'recovery'):
                 capture('p7-security',compose+['run','--rm','--no-deps','-T','tests','python','/tests/p7/launch.py'])
                 # Bound vfs disk use: preserve monitoring volumes/positions while

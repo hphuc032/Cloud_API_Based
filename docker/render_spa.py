@@ -26,6 +26,9 @@ server {
 '''+directives+'''
     location / { try_files $uri $uri/ /index.html; }
     location ~ ^/(api/|health) {
+        # Preserve the pre-1.29.7 proxy defaults across the image update.
+        proxy_http_version 1.0;
+        proxy_set_header Connection close;
         proxy_pass https://kong:8443;
         proxy_ssl_verify on;
         proxy_ssl_trusted_certificate /run/tls/edge-ca.pem;

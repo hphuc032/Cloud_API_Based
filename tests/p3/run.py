@@ -179,6 +179,13 @@ def main():
             if not module.execute(run, compose, project, metadata, artifacts):
                 result = 1
             if not identity_only:
+                parser_check = run(compose + ['run', '--rm', '--no-deps', '-T', 'tests',
+                                             'python', '/tests/p7/parser_checks.py'],
+                                   check=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+                print(parser_check.stdout, flush=True)
+                (artifacts/'parser-boundary.txt').write_text(parser_check.stdout)
+                if parser_check.returncode:
+                    result = 1
                 proc = run(compose + ["run", "--rm", "--no-deps", "-T", "tests"],
                            check=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
                 print(proc.stdout, flush=True)
