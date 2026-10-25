@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import subprocess
 import sys
@@ -29,7 +30,14 @@ def main():
     parser.add_argument('--focus',choices=['browser','rotation','hardening','telemetry','transport','recovery'],
                         help='Fresh disposable focused recovery; never replaces the full suite')
     parser.add_argument('--defer-public-dns', action='store_true', help='Record the three inherited real-DNS cases as NOT EXECUTED, never as PASS')
+    parser.add_argument('--identity-upgrade-from', help='Exact old Keycloak digest; disposable recovery drill only')
+    parser.add_argument('--identity-upgrade-to', help='Exact target Keycloak digest; disposable recovery drill only')
     args=parser.parse_args()
+    if bool(args.identity_upgrade_from)!=bool(args.identity_upgrade_to) or (args.identity_upgrade_to and args.focus!='recovery'):
+        parser.error('Identity upgrade requires both image digests and --focus recovery')
+    for image in (args.identity_upgrade_from,args.identity_upgrade_to):
+        if image and not re.fullmatch(r'quay.io/keycloak/keycloak:[0-9.]+@sha256:[a-f0-9]{64}',image):
+            parser.error('Identity upgrade requires pinned official Keycloak image references')
     focus=args.focus
     project = 'cloud-api-p7-' + uuid.uuid4().hex[:12]
     artifacts = ROOT / 'tests/p7/artifacts' / project
@@ -66,6 +74,14 @@ def main():
                          'tests/p3/compose.yml','docker/p4-compose.yml','tests/p4/compose.yml','tests/p5/compose.yml','docker/p6-compose.yml','tests/p6/compose.yml','tests/p7/compose.yml'):
             compose += ['-f',str(ROOT/relative)]
         if env.get('P4_BUILD_OVERLAY'):compose += ['-f',env['P4_BUILD_OVERLAY']]
+        if args.identity_upgrade_from:
+            env.pop('KC_FEATURES_DISABLED',None)
+            env.pop('KC_SPI_CONNECTIONS_JPA__QUARKUS__ASYNC_COMMIT',None)
+            start_identity=temp/'identity-start.json'
+            start_identity.write_text(json.dumps({'services':{'keycloak':{
+                'image':args.identity_upgrade_from,'environment':{
+                    'KC_FEATURES_DISABLED':None,'KC_SPI_CONNECTIONS_JPA__QUARKUS__ASYNC_COMMIT':None}}}}))
+            compose+=['-f',str(start_identity)]
         if env.get('P5_SOURCE_OVERLAY'):compose += ['-f',env['P5_SOURCE_OVERLAY']]
         env['P6_PROJECT_LOG_DIR']=str(temp/'empty-logs')
         (temp/'empty-logs').mkdir()
@@ -143,6 +159,11 @@ def main():
                 # Bound vfs disk use: preserve monitoring volumes/positions while
                 # freeing these two own instance filesystems for fresh DB peers.
                 run(compose+['rm','--stop','--force','grafana','alloy'])
+                if args.identity_upgrade_to:
+                    results['identity-upgrade']=0 if module('identity_upgrade',ROOT/'tests/p7/identity_upgrade.py').execute(
+                        run,compose,project,artifacts,args.identity_upgrade_to) else 1
+                    if results['identity-upgrade']:
+                        raise RuntimeError('Disposable identity migration or cold rollback failed')
                 results['p7-recovery']=0 if module('p7_recovery',ROOT/'tests/p7/recovery.py').execute(run,compose,project,artifacts) else 1
                 # Recreation changes the Docker log directory and namespace ID.
                 # Refresh the narrow collector mounts and subsequent host probes.

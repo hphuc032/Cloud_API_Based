@@ -1,8 +1,24 @@
 """Transport selection only; the P0 assertions and expected defects stay unchanged."""
 import os
 import ssl
+import time
 
 import httpx
+
+
+def wait_for_rate_limit_window(evidence=None):
+    """Wait for an observed new wall-clock bucket, bounded by monotonic time."""
+    boundary=(int(time.time())//60+1)*60+1
+    deadline=time.monotonic()+90
+    if evidence is not None:
+        evidence.append({'event':'wait-start','wall_time':time.time(),
+                         'monotonic':time.monotonic(),'boundary':boundary})
+    while time.time()<boundary:
+        assert time.monotonic()<deadline, 'Wall-clock rate-limit window did not advance within 90s'
+        time.sleep(min(.25,max(0,boundary-time.time())))
+    if evidence is not None:
+        evidence.append({'event':'wait-end','wall_time':time.time(),
+                         'monotonic':time.monotonic(),'boundary':boundary})
 
 
 def http_client(url, backend=False):

@@ -3,7 +3,7 @@ import json,os,time,secrets
 from pathlib import Path
 from uuid import UUID,uuid4
 import httpx,psycopg2,pytest
-from transport import http_client
+from transport import http_client,wait_for_rate_limit_window
 from test_cutover import headers,tokens,client,backend,identity,admin,oidc_user,legacy_order,signed as token_signed
 from test_hardening import signed,raw,envelope
 
@@ -266,10 +266,19 @@ def test_four_additional_rule_transitions(backend,headers,legacy_order):
   # Use actual enrolled mTLS for backend events, preserving all auth decisions.
   staff=headers('staff');customer=headers('customer_b')
   # Align a fresh fixed window without altering counters or rate policies.
-  time.sleep(61-int(time.time())%60)
+  observed=[]
+  wait_for_rate_limit_window(observed)
   with http_client('https://kong:8443') as c:
-   for _ in range(60):assert c.get('/api/v1/users/').status_code==401
-   for _ in range(12):assert c.get('/api/v1/users/').status_code==429
+   try:
+    for expected,count in [(401,60),(429,12)]:
+     for _ in range(count):
+      response=c.get('/api/v1/users/')
+      observed.append({'status':response.status_code,'expected':expected,'time':time.time(),
+       'headers':{k:v for k,v in response.headers.items() if k.lower() in
+        ('date','retry-after','ratelimit-limit','ratelimit-remaining','ratelimit-reset')}})
+      assert response.status_code==expected,observed[-1]
+   finally:
+    Path('/results/p6-rate-burst.json').write_text(json.dumps(observed,indent=2))
   rids=[]
   for _ in range(8):
    body=raw(envelope());r=backend.post('/api/v1/webhooks/receive',content=body,headers={'Content-Type':'application/json'})

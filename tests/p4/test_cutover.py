@@ -234,15 +234,8 @@ def test_live_p4_global_rate_limit(tokens,headers):
  headers('customer')
  evidence=[]
  def wait_for_window():
-  # Sleep uses a monotonic clock while Kong's minute buckets use wall time.
-  # Recheck the actual boundary after every wake (including VM clock corrections).
-  boundary=(int(time.time())//60+1)*60+1
-  deadline=time.monotonic()+90
-  evidence.append({'event':'wait-start','wall_time':time.time(),'monotonic':time.monotonic(),'boundary':boundary})
-  while time.time()<boundary:
-   assert time.monotonic()<deadline, 'Wall-clock rate-limit window did not advance within 90s'
-   time.sleep(min(.25,max(0,boundary-time.time())))
-  evidence.append({'event':'wait-end','wall_time':time.time(),'monotonic':time.monotonic(),'boundary':boundary})
+  from transport import wait_for_rate_limit_window
+  wait_for_rate_limit_window(evidence)
  def observed(c,path,**kwargs):
   r=c.get(path,**kwargs)
   evidence.append({'client_time':time.time(),'monotonic':time.monotonic(),'path':path,'status':r.status_code,

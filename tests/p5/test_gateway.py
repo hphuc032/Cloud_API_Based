@@ -4,7 +4,7 @@ from pathlib import Path
 import httpx,pytest
 from test_cutover import headers,tokens,identity,admin,oidc_user
 from test_hardening import signed,raw,envelope
-from transport import http_client
+from transport import http_client,wait_for_rate_limit_window
 
 HEADERS={'strict-transport-security':'max-age=31536000','x-content-type-options':'nosniff','x-frame-options':'DENY','x-xss-protection':'0'}
 
@@ -52,16 +52,27 @@ def test_keycloak_own_bruteforce_configuration(identity,admin):
 
 def test_pre_auth_throttle_rejects_forwarding_header_spoofing():
  # Begin a clean fixed window; no production counters or policy are reset.
- time.sleep(61-int(time.time())%60)
+ evidence=[]
+ wait_for_rate_limit_window(evidence)
  with http_client('https://kong:8443') as c:
+  def record(r,expected):
+   row={'status':r.status_code,'expected':expected,'time':time.time(),
+    'headers':{k:v for k,v in r.headers.items() if k.lower() in
+     ('date','retry-after','ratelimit-limit','ratelimit-remaining','ratelimit-reset','x-ratelimit-layer')}}
+   evidence.append(row)
+   Path('/results/p5-preauth-burst.json').write_text(json.dumps(evidence,indent=2))
+   return row
   for i in range(60):
    r=c.get('/api/v1/users/',headers={'X-Forwarded-For':f'198.51.100.{i+1}','X-Real-IP':f'203.0.113.{i+1}'})
-   assert r.status_code==401
+   observed=record(r,401)
+   assert r.status_code==401,observed
   r=c.get('/api/v1/users/',headers={'X-Forwarded-For':'192.0.2.99','X-Real-IP':'192.0.2.99'})
-  assert r.status_code==429 and r.headers['x-ratelimit-layer']=='pre-auth'
+  observed=record(r,429)
+  assert r.status_code==429 and r.headers['x-ratelimit-layer']=='pre-auth',observed
   assert int(r.headers['retry-after'])>0;check_headers(r)
  # Avoid carrying intentional rejection traffic into later business regressions.
- time.sleep(61-int(time.time())%60)
+ wait_for_rate_limit_window(evidence)
+ Path('/results/p5-preauth-burst.json').write_text(json.dumps(evidence,indent=2))
 
 
 def test_keycloak_repeated_wrong_password_is_temporarily_disabled(identity,admin,oidc_user):

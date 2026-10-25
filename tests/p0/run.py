@@ -40,7 +40,13 @@ def main():
         for service in ("backend", "tests"):
             args = (["exec", "-T", service] if service == "backend" else
                     ["run", "--rm", "--no-deps", "-T", service])
-            packages = run(compose + args + ["pip", "freeze"], capture_output=True, text=True).stdout
+            # Runtime images need not ship their installation tool. Read installed
+            # distribution metadata without requiring pip inside the application.
+            inventory = ("from importlib.metadata import distributions; "
+                         "print('\\n'.join(sorted(d.metadata['Name']+'=='+d.version "
+                         "for d in distributions())))")
+            packages = run(compose + args + ["python", "-c", inventory],
+                           capture_output=True, text=True).stdout
             (artifacts / f"{service}-packages.txt").write_text(packages, encoding="utf-8")
         proc = subprocess.run(compose + ["run", "--rm", "-T", "tests"],
                               cwd=root, env=env, stdout=subprocess.PIPE,
