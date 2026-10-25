@@ -84,7 +84,7 @@ def execute(run,compose,project,metadata,pki,identity_pki,fixtures,temp,artifact
             '--tmpfs','/var/cache/nginx','--tmpfs','/var/run','--tmpfs','/tmp',
             '-p','127.0.0.1:5174:8443','-v',str(root/'frontend/dist')+':/usr/share/nginx/html:ro',
             '-v',str(nginx)+':/etc/nginx/conf.d/default.conf:ro','-v',str(spa)+':/run/tls:ro',
-            'nginx:1.30.6-alpine@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951'],capture_output=True,text=True)
+            cs['identity-edge']['Image']],capture_output=True,text=True)
         context=ssl.create_default_context(cafile=str(pki/'trust/edge-ca.pem'))
         for _ in range(40):
             try:
@@ -92,6 +92,18 @@ def execute(run,compose,project,metadata,pki,identity_pki,fixtures,temp,artifact
                     if r.status==200:break
             except (OSError,urllib.error.URLError):time.sleep(0.5)
         else:raise RuntimeError('Verified HTTPS frontend did not start')
+        # Exercise the actual Compose healthcheck binary and TLS trust contract.
+        # An external Python HTTPS probe cannot detect missing wget CA support.
+        health=['docker','exec',frontend_container,'wget','--spider','--quiet']
+        valid=run(health+['--ca-certificate=/run/tls/edge-ca.pem','https://localhost:8443/login'],capture_output=True,text=True)
+        (spa/'wrong-ca.pem').write_bytes((pki/'trust/server-ca.pem').read_bytes())
+        (spa/'wrong-ca.pem').chmod(0o444)
+        wrong=run(health+['--ca-certificate=/run/tls/wrong-ca.pem','https://localhost:8443/login'],check=False,capture_output=True,text=True)
+        if wrong.returncode!=5:
+            raise AssertionError('GNU wget must reject the unrelated CA with SSL verification exit 5')
+        (artifacts/'p5-spa-healthcheck.json').write_text(json.dumps({
+            'image_id':cs['identity-edge']['Image'],'verified_ca_exit':valid.returncode,
+            'untrusted_ca_exit':wrong.returncode,'tls_verification_bypassed':False},indent=2))
         proc=run(['node',str(root/'tests/p5/browser.mjs')],env=settings,capture_output=True,text=True,check=False)
         print(proc.stdout,flush=True)
         access=run(['docker','logs',frontend_container],capture_output=True,text=True).stdout

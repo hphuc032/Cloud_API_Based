@@ -107,11 +107,11 @@ def main():
   cfg=cfg.replace('    cache_location: /loki/cache','    cache_location: /loki/cache\n    resync_interval: 5s')
   (temp/'loki.yml').write_text(cfg);(temp/'loki.yml').chmod(0o644)
   (temp/'probe.py').write_text(CLIENT);(temp/'probe.py').chmod(0o644)
-  compose={'services':{'loki':{'image':'grafana/loki:2.9.8','environment':{'HTTP_PROXY':'','HTTPS_PROXY':'','ALL_PROXY':'','http_proxy':'','https_proxy':'','all_proxy':'','NO_PROXY':'*','no_proxy':'*'},'command':['-config.file=/etc/loki/p6.yml'],'volumes':[str(temp/'loki.yml')+':/etc/loki/p6.yml:ro','data:/loki'],'networks':['storage']}},'networks':{'storage':{'internal':True}},'volumes':{'data':{}}}
+  compose={'services':{'loki':{'image':'grafana/loki:2.9.17@sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04','environment':{'HTTP_PROXY':'','HTTPS_PROXY':'','ALL_PROXY':'','http_proxy':'','https_proxy':'','all_proxy':'','NO_PROXY':'*','no_proxy':'*'},'command':['-config.file=/etc/loki/p6.yml'],'volumes':[str(temp/'loki.yml')+':/etc/loki/p6.yml:ro','data:/loki'],'networks':['storage']}},'networks':{'storage':{'internal':True}},'volumes':{'data':{}}}
   reader_cfg=cfg.replace('  max_query_lookback: 168h','  max_query_lookback: 0s').replace('  query_ingesters_within: 0s','  query_store_only: true').replace('/loki/index','/tmp/p6-reader/index').replace('/loki/cache','/tmp/p6-reader/cache').replace('path_prefix: /loki','path_prefix: /tmp/p6-reader')
   reader_cfg=reader_cfg.replace('common:','common:\n  compactor_address: http://loki:3100')
   (temp/'reader.yml').write_text(reader_cfg);(temp/'reader.yml').chmod(0o644)
-  compose['services']['reader']={'image':'grafana/loki:2.9.8','environment':compose['services']['loki']['environment'],'command':['-target=querier','-config.file=/etc/loki/reader.yml'],'volumes':[str(temp/'reader.yml')+':/etc/loki/reader.yml:ro','data:/loki:ro'],'networks':['storage'],'read_only':True,'tmpfs':['/tmp'],'cap_drop':['ALL'],'security_opt':['no-new-privileges:true']}
+  compose['services']['reader']={'image':'grafana/loki:2.9.17@sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04','environment':compose['services']['loki']['environment'],'command':['-target=querier','-config.file=/etc/loki/reader.yml'],'volumes':[str(temp/'reader.yml')+':/etc/loki/reader.yml:ro','data:/loki:ro'],'networks':['storage'],'read_only':True,'tmpfs':['/tmp'],'cap_drop':['ALL'],'security_opt':['no-new-privileges:true']}
   (temp/'compose.json').write_text(json.dumps(compose))
   base=['docker','compose','-p',project,'-f',str(temp/'compose.json')]
   def run(args,**kw):
@@ -119,7 +119,7 @@ def main():
   try:
    run(base+['up','-d','loki'],check=True)
    cid=subprocess.check_output(base+['ps','-q','loki'],text=True).strip()
-   version=run(['docker','run','--rm','--entrypoint','/usr/bin/loki','grafana/loki:2.9.8','-version'],capture_output=True,text=True)
+   version=run(['docker','run','--rm','--entrypoint','/usr/bin/loki','grafana/loki:2.9.17@sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04','-version'],capture_output=True,text=True)
    (artifacts/'version.txt').write_text(version.stdout+version.stderr)
    def probe(phase):
     return run(['docker','run','--rm','--network','container:'+cid,'--entrypoint','python','-v',str(temp/'probe.py')+':/probe.py:ro','-v',str(artifacts)+':/evidence','-v',project+'_data:/storage:ro',probe_image,'/probe.py',phase]).returncode

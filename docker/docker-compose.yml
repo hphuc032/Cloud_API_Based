@@ -14,7 +14,7 @@ x-logging: &logging
 
 services:
   postgres:
-    image: postgres:16
+    image: postgres:16@sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d
     environment:
       POSTGRES_DB: ${APP_DB_NAME:-appdb}
       POSTGRES_USER: postgres
@@ -116,12 +116,15 @@ services:
     logging: *logging
 
   keycloak:
-    image: quay.io/keycloak/keycloak:26.2@sha256:4883630ef9db14031cde3e60700c9a9a8eaf1b5c24db1589d6a2d43de38ba2a9
+    image: quay.io/keycloak/keycloak:26.8.1@sha256:a78d6b79572168cb25886b80a8b5b8d4ed4390743e3eecb810538683e209dd6b
     entrypoint: [/bin/bash, /opt/p3-entrypoint.sh]
     environment:
       KC_BOOTSTRAP_ADMIN_USERNAME: admin
       KC_HEALTH_ENABLED: "true"
       KC_DB: postgres
+      # Preserve pre-26.7 durability; keep the new, unused SCIM surface disabled.
+      KC_SPI_CONNECTIONS_JPA__QUARKUS__ASYNC_COMMIT: 'false'
+      KC_FEATURES_DISABLED: scim-api
       KC_DB_URL: jdbc:postgresql://identity-db:5432/keycloak
       KC_DB_USERNAME: keycloak
       KC_HOSTNAME: ${IDENTITY_HOSTNAME:?Set the stable HTTPS identity origin}
@@ -150,7 +153,7 @@ services:
     logging: *logging
 
   identity-edge:
-    image: nginx:1.30.6-alpine@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951
+    build: ./nginx
     volumes:
       - ./keycloak/nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - ${IDENTITY_TLS_DIR:?Supply identity TLS certificates}/edge:/run/tls:ro
@@ -167,8 +170,13 @@ services:
     logging: *logging
 
   kong:
-    image: kong:3.8
+    image: kong:3.9.3@sha256:92035d16d7ff86b7bc12fb1d0090d29357d924238b1880f78735f3f2fea6b631
+    # Preserve the established bind-mounted PKI owner despite the image UID change.
+    user: '1000:1000'
+    tmpfs:
+      - /run/kong:uid=1000,gid=1000,mode=0750,size=256m
     environment:
+      KONG_PREFIX: /run/kong
       KONG_DATABASE: 'off'
       KONG_DECLARATIVE_CONFIG: /opt/kong/kong.yml
       KONG_ADMIN_LISTEN: 'off'
@@ -201,7 +209,7 @@ services:
     logging: *logging
 
   loki:
-    image: grafana/loki:2.9.8
+    image: grafana/loki:2.9.17@sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04
     command: -config.file=/etc/loki/loki-config.yml
     volumes:
       - ../monitoring/loki/loki-config.yml:/etc/loki/loki-config.yml:ro
@@ -231,7 +239,7 @@ services:
     logging: *logging
 
   grafana:
-    image: grafana/grafana:10.4.2
+    image: grafana/grafana:10.4.19@sha256:a9043254ba16fb10945cc27333963dfd08eccbb43b51f1222d831cc564e3a1f4
     environment:
       GF_SECURITY_ADMIN_USER: admin
       GF_SECURITY_ADMIN_PASSWORD__FILE: /run/secrets/grafana_admin_password

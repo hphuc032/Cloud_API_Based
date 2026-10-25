@@ -156,7 +156,7 @@ with socket.create_connection(('kong',8443),2) as s:
             self.assertFalse((pki / 'kong/server.key').exists())
 
         def test_kong_requires_upstream_validation_in_generated_nginx(self):
-            config = output(compose + ['exec', '-T', 'kong', 'cat', '/usr/local/kong/nginx-kong.conf'])
+            config = output(compose + ['exec', '-T', 'kong', 'cat', '/run/kong/nginx-kong.conf'])
             for directive in ('proxy_ssl_verify on;', 'proxy_ssl_trusted_certificate /run/tls/server-ca.pem;',
                               'proxy_ssl_name        $upstream_host;', 'proxy_ssl_server_name on;',
                               'proxy_ssl_certificate /run/tls/client.pem;'):
