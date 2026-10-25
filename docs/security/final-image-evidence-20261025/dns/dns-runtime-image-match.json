@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "docker",
+    "inspect",
+    "--format",
+    "{{.Image}} {{.State.Status}}",
+    "cloud-api-p7-bab361c35b7e-backend-1"
+  ],
+  "started_utc": "2026-10-25T07:40:58.116930+00:00",
+  "finished_utc": "2026-10-25T07:40:58.369482+00:00",
+  "exit_code": 0,
+  "stdout": "sha256:480b00fb7ff0758fac43bec31805326e6240dbd6cfd32fb6482db6276a9dc60b running\n",
+  "stderr": ""
+}

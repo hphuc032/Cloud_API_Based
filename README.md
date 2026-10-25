@@ -1,9 +1,21 @@
 # Cloud API Security for SME — FloraSecure
 
 Đồ án NT219: FastAPI/PostgreSQL, React/Vite, Kong OSS, Keycloak,
-RBAC/ownership, webhook HMAC và Loki/Promtail/Grafana.
+RBAC/ownership, webhook HMAC và Loki/Alloy/Grafana (Promtail dùng cho baseline legacy).
 
 ## Trạng thái triển khai
+
+**Image security review 25/10/2026:** hồi quy cuối đạt legacy **213 PASS + 4 XFAIL**;
+OIDC **305 lượt PASS / 302 ca pytest duy nhất** (3 ca được runner chạy lặp).
+DNS thật, HTTPS/mTLS, browser, rotation/outage, sáu alert và recovery đều PASS.
+Scan đúng 8 image cuối ghi nhận HIGH/CRITICAL thô **409 → 358**; con số này
+không đồng nghĩa mọi finding đều khai thác được hoặc đã được chấp nhận.
+**Phát hành vẫn BLOCKED**: còn rủi ro image, thư viện nhúng và build tool chưa
+được đóng hoặc được chủ dự án phê duyệt. Xem [image review](docs/security/final-container-image-review.md),
+[risk register](docs/security/final-image-risk-register.md),
+[kết quả thực chạy](docs/testing/final-image-remediation-results.md) và
+[upgrade/rollback](docs/deployment/final-image-upgrade-rollback.md).
+Các thay đổi này chỉ được commit local; không tự push, merge hay deploy production.
 
 **Cập nhật nghiệm thu 24/10/2026:** hồi quy đầy đủ legacy và OIDC, ba ca DNS thật,
 16/16 phương thức TLS/mTLS, trình duyệt, xoay khóa và restore/recreate đều PASS.

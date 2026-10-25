@@ -1,0 +1,2938 @@
+[
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:50:08.975346+00:00",
+    "finished_utc": "2026-10-25T07:50:09.889875+00:00",
+    "label": "alloy-patch-config-validate",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "-e",
+      "LOG_PROJECT=cloud-api-image-review",
+      "--mount",
+      "type=bind,source=D:\\MatMaHoc\\Project_CLOUD_API\\monitoring\\alloy\\config.alloy,target=/etc/alloy/config.alloy,readonly",
+      "grafana/alloy:v1.14.2@sha256:eadfe35ea52b26cbec4d4d780fbcc31edb31108c1c9e537ca59557a5a102c712",
+      "validate",
+      "/etc/alloy/config.alloy"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T07:56:04.155417+00:00",
+    "finished_utc": null,
+    "label": "alloy-positions-cold-upgrade-final-running",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "/tmp/florasecure-final-image-alloy-final-20261025/tests/p7/alloy_upgrade.py",
+      "--output",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-image-review-20261025/alloy-positions-final-evidence"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:56:04.155417+00:00",
+    "finished_utc": "2026-10-25T07:56:48.837231+00:00",
+    "label": "alloy-positions-cold-upgrade-final",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "/tmp/florasecure-final-image-alloy-final-20261025/tests/p7/alloy_upgrade.py",
+      "--output",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-image-review-20261025/alloy-positions-final-evidence"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "699349adc7acbae336faa3e30e382632c390845bae16bdce00943b6442238dbb",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T07:50:06.803441+00:00",
+    "finished_utc": null,
+    "label": "alloy-positions-cold-upgrade-running",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "/tmp/florasecure-final-image-alloy-patch-20261025/tests/p7/alloy_upgrade.py",
+      "--output",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-image-review-20261025/alloy-positions-evidence"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:50:06.803441+00:00",
+    "finished_utc": "2026-10-25T07:50:45.376452+00:00",
+    "label": "alloy-positions-cold-upgrade",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "/tmp/florasecure-final-image-alloy-patch-20261025/tests/p7/alloy_upgrade.py",
+      "--output",
+      "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-image-review-20261025/alloy-positions-evidence"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "4eb3f61acafd458003a9a1bde660425e5916824a3503df8a4848edd44472f01d",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:40:57.641527+00:00",
+    "finished_utc": "2026-10-25T07:40:58.115020+00:00",
+    "label": "backend-namespace-real-dns-final",
+    "argv": [
+      "docker",
+      "exec",
+      "cloud-api-p7-bab361c35b7e-backend-1",
+      "python",
+      "-c",
+      "import socket,json,pathlib,sys\nrows=[]\nfor name in [\"example.com\",\"pypi.org\"]:\n try:\n  rows.append(dict(host=name,error_code=0,addresses=sorted({x[4][0] for x in socket.getaddrinfo(name,None)})))\n except socket.gaierror as e: rows.append(dict(host=name,error_code=e.errno,error=str(e)))\nprint(json.dumps(dict(resolv_conf=pathlib.Path(\"/etc/resolv.conf\").read_text(),results=rows)))\nsys.exit(any(r[\"error_code\"]!=0 for r in rows))"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "f3fe7f485a072aec63288046fc9e1c298673b3f6e2913144392d810cdaa172e9",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 1,
+    "started_utc": "2026-10-25T03:47:35.105352+00:00",
+    "finished_utc": "2026-10-25T03:47:35.284574+00:00",
+    "label": "backend-namespace-real-dns",
+    "argv": [
+      "docker",
+      "exec",
+      "cloud-api-p7-9044956d8c9a-backend-1",
+      "python",
+      "-c",
+      "import socket,json,pathlib,sys\nrows=[]\nfor name in [\"example.com\",\"pypi.org\"]:\n try:\n  rows.append(dict(host=name,error_code=0,addresses=sorted({x[4][0] for x in socket.getaddrinfo(name,None)})))\n except socket.gaierror as e: rows.append(dict(host=name,error_code=e.errno,error=str(e)))\nprint(json.dumps(dict(resolv_conf=pathlib.Path(\"/etc/resolv.conf\").read_text(),results=rows)))\nsys.exit(any(r[\"error_code\"]!=0 for r in rows))"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "6935f978807cd7cb8293ce774e39537a3fd0a86927bec4c1313984104a451ace"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:37:15.628811+00:00",
+    "finished_utc": "2026-10-25T03:38:00.849439+00:00",
+    "label": "backend-runtime-without-pip-build",
+    "argv": [
+      "docker",
+      "build",
+      "--tag",
+      "florasecure-final-image-backend:20261025",
+      "backend"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "addac2af22a97e315da5304204f05d56079cfd5718d24db18cb862dd9a2c73b3"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:38:00.850628+00:00",
+    "finished_utc": "2026-10-25T03:38:03.123160+00:00",
+    "label": "backend-runtime-without-pip-check",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--entrypoint",
+      "python",
+      "florasecure-final-image-backend:20261025",
+      "-c",
+      "import importlib.util; import fastapi,starlette,cryptography,psycopg2,alembic,sqlalchemy,jose,passlib; assert importlib.util.find_spec(\"pip\") is None; print(\"Runtime imports PASS; installation tool pip absent\")"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "877fab898aeb57dd4a472cdd3a26961ac966595022515317a2a76295ee945314",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:28:57.178718+00:00",
+    "finished_utc": "2026-10-25T02:28:57.662408+00:00",
+    "label": "baseline-os-alloy",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--entrypoint",
+      "/bin/cat",
+      "sha256:8f5666aebb871ba43ee2d65159c5d1c26c903720efafaf2d9ed4e237afc3bc88",
+      "/etc/os-release"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "01af466feb100306498c86aa6bad1815e33036019aa34d4362c20f374ea5c829",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:28:57.858554+00:00",
+    "finished_utc": "2026-10-25T02:28:58.254259+00:00",
+    "label": "baseline-os-backend",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--entrypoint",
+      "/bin/cat",
+      "sha256:a21afcf4d34be085a47f0c1da932589ecd2a1f61e1f2be9fa9cf279bc954fc0e",
+      "/etc/os-release"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e249e69c32d81350fdd6b05ac5575255f14e380ba14b8454acea14e49f088bfa",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:28:58.437790+00:00",
+    "finished_utc": "2026-10-25T02:28:58.820797+00:00",
+    "label": "baseline-os-grafana",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--entrypoint",
+      "/bin/cat",
+      "sha256:7d5faae481a4c6f436c99e98af11534f7fd5e8d3e35213552dd1dd02bc393d2e",
+      "/etc/os-release"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "3b35a719387727c7b05d20e02c6496433dbc484ca4222f53953d876a397ca486",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:28:59.604317+00:00",
+    "finished_utc": "2026-10-25T02:29:00.047318+00:00",
+    "label": "baseline-os-keycloak",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--entrypoint",
+      "/bin/cat",
+      "sha256:4883630ef9db14031cde3e60700c9a9a8eaf1b5c24db1589d6a2d43de38ba2a9",
+      "/etc/os-release"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "57f6fc3d24e151ffc44f752ff74a4fad7a85e9bea49fd41589f74d22fec50c0a",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:29:00.236718+00:00",
+    "finished_utc": "2026-10-25T02:29:00.661969+00:00",
+    "label": "baseline-os-kong",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--entrypoint",
+      "/bin/cat",
+      "sha256:8635e3c97b27cf71ed620bb30f6091dbab1d39aad99a6c54dd9c3cfccb6d1013",
+      "/etc/os-release"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "594d5ddd35aedb47f00d9c34d140017907a5b9f93c975aba125fc924daac5c07",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:29:00.842956+00:00",
+    "finished_utc": "2026-10-25T02:29:01.249084+00:00",
+    "label": "baseline-os-loki",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--entrypoint",
+      "/bin/cat",
+      "sha256:8b5bd7748d0e4da66cd741ac276e485517514af0bea32167e27c0e1a95bcf8aa",
+      "/etc/os-release"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "4d64eab910e0f5adfb00e71f1b472072902174ddcca72bdfecbc64960db40fa7",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:28:59.016844+00:00",
+    "finished_utc": "2026-10-25T02:28:59.415658+00:00",
+    "label": "baseline-os-nginx",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--entrypoint",
+      "/bin/cat",
+      "sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951",
+      "/etc/os-release"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "eec78e933024eda72eefd580bd40bfce1e1f895535b58a51943c50ec3dcead27",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:29:01.467699+00:00",
+    "finished_utc": "2026-10-25T02:29:01.927346+00:00",
+    "label": "baseline-os-postgres",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--entrypoint",
+      "/bin/cat",
+      "sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d",
+      "/etc/os-release"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e249e69c32d81350fdd6b05ac5575255f14e380ba14b8454acea14e49f088bfa",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:32:51.985998+00:00",
+    "finished_utc": "2026-10-25T02:33:16.778630+00:00",
+    "label": "baseline-retry-scout-alloy",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-alloy.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:8f5666aebb871ba43ee2d65159c5d1c26c903720efafaf2d9ed4e237afc3bc88"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "ada2c4448fcf9658764472b871d06acfa001f006664aa0bffc311c7a12fd5bab"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:33:16.779261+00:00",
+    "finished_utc": "2026-10-25T02:34:02.579246+00:00",
+    "label": "baseline-retry-scout-grafana",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-grafana.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:7d5faae481a4c6f436c99e98af11534f7fd5e8d3e35213552dd1dd02bc393d2e"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "9d4681b6d135102cf7b8909d6f8d95b8d321ff4080092a88725ec1721178c3b7"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:34:02.580205+00:00",
+    "finished_utc": "2026-10-25T02:34:33.041547+00:00",
+    "label": "baseline-retry-scout-kong",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-kong.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:8635e3c97b27cf71ed620bb30f6091dbab1d39aad99a6c54dd9c3cfccb6d1013"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "9f2fffc93a586210e459c8d89a127ed94de92363dc264b99027a22d2961acbc1"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:00:00.082360+00:00",
+    "finished_utc": "2026-10-25T03:00:01.426288+00:00",
+    "label": "baseline-sbom-alloy",
+    "argv": [
+      "docker",
+      "scout",
+      "sbom",
+      "--format",
+      "spdx",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-alloy.spdx.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:8f5666aebb871ba43ee2d65159c5d1c26c903720efafaf2d9ed4e237afc3bc88"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e87ff3ceedb9122003ebdec1b9306724f66638c5226fd7781688a3914e17d661"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:00:01.427254+00:00",
+    "finished_utc": "2026-10-25T03:00:02.745697+00:00",
+    "label": "baseline-sbom-backend",
+    "argv": [
+      "docker",
+      "scout",
+      "sbom",
+      "--format",
+      "spdx",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-backend.spdx.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:a21afcf4d34be085a47f0c1da932589ecd2a1f61e1f2be9fa9cf279bc954fc0e"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "7ec4d332e848c3170195d92f487efdc6d9b64b60dfcde9f6d6ac516cd7a71276"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:00:02.746783+00:00",
+    "finished_utc": "2026-10-25T03:00:04.112981+00:00",
+    "label": "baseline-sbom-grafana",
+    "argv": [
+      "docker",
+      "scout",
+      "sbom",
+      "--format",
+      "spdx",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-grafana.spdx.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:7d5faae481a4c6f436c99e98af11534f7fd5e8d3e35213552dd1dd02bc393d2e"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "8596c3f71e5d424e9cd5a92a150e0a28f0d112badc4499bc3605d81f583d3d4a"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:00:05.372345+00:00",
+    "finished_utc": "2026-10-25T03:00:06.713200+00:00",
+    "label": "baseline-sbom-keycloak",
+    "argv": [
+      "docker",
+      "scout",
+      "sbom",
+      "--format",
+      "spdx",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-keycloak.spdx.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:4883630ef9db14031cde3e60700c9a9a8eaf1b5c24db1589d6a2d43de38ba2a9"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f8dd3d127319c247bcdbc77bc3a5a5dd259071df56758846ed3895e3d3b33ee1"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:00:06.713766+00:00",
+    "finished_utc": "2026-10-25T03:00:07.927578+00:00",
+    "label": "baseline-sbom-kong",
+    "argv": [
+      "docker",
+      "scout",
+      "sbom",
+      "--format",
+      "spdx",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-kong.spdx.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:8635e3c97b27cf71ed620bb30f6091dbab1d39aad99a6c54dd9c3cfccb6d1013"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "252e61025606c1b91e2b5ea603f0dd3ade447f9271434f38622d9a090e55078c"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:00:07.928128+00:00",
+    "finished_utc": "2026-10-25T03:00:09.176391+00:00",
+    "label": "baseline-sbom-loki",
+    "argv": [
+      "docker",
+      "scout",
+      "sbom",
+      "--format",
+      "spdx",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-loki.spdx.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:8b5bd7748d0e4da66cd741ac276e485517514af0bea32167e27c0e1a95bcf8aa"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "31a3b5766eb0741aa0cd7cfd3a21ed3d05e3aabfb1e93dd6f6cf791bfdb6fb40"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:00:04.113640+00:00",
+    "finished_utc": "2026-10-25T03:00:05.371703+00:00",
+    "label": "baseline-sbom-nginx",
+    "argv": [
+      "docker",
+      "scout",
+      "sbom",
+      "--format",
+      "spdx",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-nginx.spdx.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "6eecae9fc568cdaf33896da91b740005d641662f432f597141534d460c6845e4"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:00:09.177370+00:00",
+    "finished_utc": "2026-10-25T03:00:10.471031+00:00",
+    "label": "baseline-sbom-postgres",
+    "argv": [
+      "docker",
+      "scout",
+      "sbom",
+      "--format",
+      "spdx",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-postgres.spdx.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "251ce1c05d4c7924d08f53c9b157822e201e2cada6f568fc74ab47abd46d65c4"
+  },
+  {
+    "exit_code": 1,
+    "started_utc": "2026-10-25T02:29:01.986342+00:00",
+    "finished_utc": "2026-10-25T02:29:29.582484+00:00",
+    "label": "baseline-scout-alloy",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-alloy.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:8f5666aebb871ba43ee2d65159c5d1c26c903720efafaf2d9ed4e237afc3bc88"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "230c1587872384403e934545e0238f7b3b4404aa607e9704f1da4c3a6f01cba6",
+    "stderr_sha256": "9c151935b646fae9436feb05551cf70bc97e4748a218b3c661da0f091ac6575f"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:29:01.987270+00:00",
+    "finished_utc": "2026-10-25T02:29:56.870633+00:00",
+    "label": "baseline-scout-backend",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-backend.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:a21afcf4d34be085a47f0c1da932589ecd2a1f61e1f2be9fa9cf279bc954fc0e"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "d71a9763ad9743d553610cc0ec78ae2af976999cc8e9a3d30fa868bc8b578545"
+  },
+  {
+    "exit_code": 1,
+    "started_utc": "2026-10-25T02:29:29.583541+00:00",
+    "finished_utc": "2026-10-25T02:29:54.761713+00:00",
+    "label": "baseline-scout-grafana",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-grafana.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:7d5faae481a4c6f436c99e98af11534f7fd5e8d3e35213552dd1dd02bc393d2e"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "230c1587872384403e934545e0238f7b3b4404aa607e9704f1da4c3a6f01cba6",
+    "stderr_sha256": "9c151935b646fae9436feb05551cf70bc97e4748a218b3c661da0f091ac6575f"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:29:56.871703+00:00",
+    "finished_utc": "2026-10-25T02:30:50.395587+00:00",
+    "label": "baseline-scout-keycloak",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-keycloak.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:4883630ef9db14031cde3e60700c9a9a8eaf1b5c24db1589d6a2d43de38ba2a9"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "5bdcc8b162b33913da6636f6976d270a09d60b02111349472a98f1a4e0dddb86"
+  },
+  {
+    "exit_code": 1,
+    "started_utc": "2026-10-25T02:30:06.989082+00:00",
+    "finished_utc": "2026-10-25T02:30:45.563092+00:00",
+    "label": "baseline-scout-kong",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-kong.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:8635e3c97b27cf71ed620bb30f6091dbab1d39aad99a6c54dd9c3cfccb6d1013"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "230c1587872384403e934545e0238f7b3b4404aa607e9704f1da4c3a6f01cba6",
+    "stderr_sha256": "9c151935b646fae9436feb05551cf70bc97e4748a218b3c661da0f091ac6575f"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:30:45.564027+00:00",
+    "finished_utc": "2026-10-25T02:31:00.854650+00:00",
+    "label": "baseline-scout-loki",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-loki.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:8b5bd7748d0e4da66cd741ac276e485517514af0bea32167e27c0e1a95bcf8aa"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "c3165461c05166d9b6a79a51f5c35d8d30ce3c1dd91f30bf516c399ecfc2f075"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:29:54.762771+00:00",
+    "finished_utc": "2026-10-25T02:30:06.987730+00:00",
+    "label": "baseline-scout-nginx",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-nginx.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "5d407657d225bb490dcf8b89bc3e7488757f9f18a1add8afd129b679c0cb94df"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:30:50.396755+00:00",
+    "finished_utc": "2026-10-25T02:31:29.482340+00:00",
+    "label": "baseline-scout-postgres",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-postgres.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "bae3ecb0ba5a53526eeb44be0809843d4b091f976287ddc35977173cd7753a8e"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:47:34.132044+00:00",
+    "finished_utc": "2026-10-25T03:47:35.103931+00:00",
+    "label": "bridge-real-dns",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "bridge",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--entrypoint",
+      "python",
+      "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+      "-c",
+      "import socket,json,pathlib,sys\nrows=[]\nfor name in [\"example.com\",\"pypi.org\"]:\n try:\n  rows.append(dict(host=name,error_code=0,addresses=sorted({x[4][0] for x in socket.getaddrinfo(name,None)})))\n except socket.gaierror as e: rows.append(dict(host=name,error_code=e.errno,error=str(e)))\nprint(json.dumps(dict(resolv_conf=pathlib.Path(\"/etc/resolv.conf\").read_text(),results=rows)))\nsys.exit(any(r[\"error_code\"]!=0 for r in rows))"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "03f8606dfe754ecd8a1421bf8a487ea8245ee2204c16a989d6c2eed4daac80bb",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:43:45.057450+00:00",
+    "finished_utc": "2026-10-25T07:43:46.012406+00:00",
+    "label": "candidate-alloy-patch-version",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "sha256:eadfe35ea52b26cbec4d4d780fbcc31edb31108c1c9e537ca59557a5a102c712",
+      "--version"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "011e6dc8539a90edbd6b8babc1c0e814e1f6cbe1e4d57c2cd76ef2069d285270",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:37:24.437281+00:00",
+    "finished_utc": "2026-10-25T02:37:27.044771+00:00",
+    "label": "candidate-alpine-package-policy",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "bridge",
+      "--cap-drop",
+      "ALL",
+      "--entrypoint",
+      "apk",
+      "sha256:dede8895648b461178c3bc604f7eed4423efe5220b2c4d839f5eb3d34ac3f8f7",
+      "policy",
+      "wget",
+      "curl",
+      "brotli",
+      "libxml2"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "8d939e57d11d60742c87f45b194b62513dd5e709e9ca83f0de3000eab0e9ef32",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:54:46.867762+00:00",
+    "finished_utc": "2026-10-25T02:54:47.509285+00:00",
+    "label": "candidate-grafana-version",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--entrypoint",
+      "/usr/share/grafana/bin/grafana",
+      "sha256:a9043254ba16fb10945cc27333963dfd08eccbb43b51f1222d831cc564e3a1f4",
+      "--version"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "740897d01c65ba7722c77530e93dbd78985a2e867d5564d799ea3bdeabbbdbf3",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:54:46.410276+00:00",
+    "finished_utc": "2026-10-25T02:54:46.866486+00:00",
+    "label": "candidate-kong-nginx",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--entrypoint",
+      "/usr/local/openresty/nginx/sbin/nginx",
+      "sha256:92035d16d7ff86b7bc12fb1d0090d29357d924238b1880f78735f3f2fea6b631",
+      "-V"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "625448ed7d81f869889959ad60be8bec0f03fea035ac792d845d064fcce45f87"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:58:36.812498+00:00",
+    "finished_utc": "2026-10-25T02:58:37.588711+00:00",
+    "label": "candidate-kong-version-tmpfs",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--tmpfs",
+      "/tmp:rw,nosuid,nodev",
+      "--cap-drop",
+      "ALL",
+      "--entrypoint",
+      "kong",
+      "sha256:92035d16d7ff86b7bc12fb1d0090d29357d924238b1880f78735f3f2fea6b631",
+      "version"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "a5f3bf7c7d6bb4e38f65f6fd984cf5dabf7dee41e8990ea10e13b6eec5e38724",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 30,
+    "started_utc": "2026-10-25T02:54:45.907319+00:00",
+    "finished_utc": "2026-10-25T02:54:46.409242+00:00",
+    "label": "candidate-kong-version",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--entrypoint",
+      "kong",
+      "sha256:92035d16d7ff86b7bc12fb1d0090d29357d924238b1880f78735f3f2fea6b631",
+      "version"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "c03148362175dc6a83658b48a86f4c92fb7255a550443565cdadbc08e393839a"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:54:47.510285+00:00",
+    "finished_utc": "2026-10-25T02:54:47.979444+00:00",
+    "label": "candidate-loki-version",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--entrypoint",
+      "/usr/bin/loki",
+      "sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04",
+      "-version"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "6c945a7d72206e3f100ef32b6a034173f15004fd1179b232020984e32bde806f",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:35:53.923503+00:00",
+    "finished_utc": "2026-10-25T02:36:04.203198+00:00",
+    "label": "candidate-nginx-packages",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--entrypoint",
+      "apk",
+      "sha256:dede8895648b461178c3bc604f7eed4423efe5220b2c4d839f5eb3d34ac3f8f7",
+      "info",
+      "-v"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "8a1820b7f36dc62fa40a28e3bf5c958213b67cde5ceae2bf78780913d07c2665",
+    "stderr_sha256": "8e15fa535966bcaa51ec9adf136e6ddf6663dc3678babd4eaded3737273ddc2a"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:35:52.896966+00:00",
+    "finished_utc": "2026-10-25T02:35:53.477203+00:00",
+    "label": "candidate-nginx-version",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--entrypoint",
+      "nginx",
+      "sha256:dede8895648b461178c3bc604f7eed4423efe5220b2c4d839f5eb3d34ac3f8f7",
+      "-V"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e26c32aeaee8893de04f5f3bb50ded0efcfd9bab2244a7941584893cb811dc47"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:35:53.478350+00:00",
+    "finished_utc": "2026-10-25T02:35:53.922284+00:00",
+    "label": "candidate-nginx-wget",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--entrypoint",
+      "wget",
+      "sha256:dede8895648b461178c3bc604f7eed4423efe5220b2c4d839f5eb3d34ac3f8f7",
+      "--help"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "aa84d679e630e74706d4b865fbd0c31e35f952aa7f635fdf0c3775f9395eb51e"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:42:31.813914+00:00",
+    "finished_utc": "2026-10-25T07:42:50.328118+00:00",
+    "label": "candidate-pull-alloy-patch",
+    "argv": [
+      "docker",
+      "pull",
+      "--platform",
+      "linux/amd64",
+      "grafana/alloy:v1.14.2"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "1feba5e73d7da69f3a071cfb81d000441de6206fd3fb5112912e5909f54d04a8",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:33:32.867110+00:00",
+    "finished_utc": "2026-10-25T02:34:38.055696+00:00",
+    "label": "candidate-pull-grafana",
+    "argv": [
+      "docker",
+      "pull",
+      "grafana/grafana:10.4.19"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "5ff11b3795205feee6c9123d279e094094d16c1cbc1f8abf587c27dfca007acf",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:10:21.802178+00:00",
+    "finished_utc": "2026-10-25T03:12:28.350555+00:00",
+    "label": "candidate-pull-keycloak",
+    "argv": [
+      "docker",
+      "pull",
+      "quay.io/keycloak/keycloak:26.8.1"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "dc9a42fc81f1e5f95dd550670ba8a02794951410b8aa93c89ecfb9612308ce2b",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:34:38.056947+00:00",
+    "finished_utc": "2026-10-25T02:35:44.695351+00:00",
+    "label": "candidate-pull-kong",
+    "argv": [
+      "docker",
+      "pull",
+      "kong:3.9.3"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "fdf593b7a7b5d49a42dbde3c8d71b21b4d0135e862508dbc3f6a2bcdfb3cdc34",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:33:14.750349+00:00",
+    "finished_utc": "2026-10-25T02:33:32.866378+00:00",
+    "label": "candidate-pull-loki",
+    "argv": [
+      "docker",
+      "pull",
+      "grafana/loki:2.9.17"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "a744390ded879990e8a1be87358a53734d534cab779fb45f1f44bba00ba53eff",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:33:06.365985+00:00",
+    "finished_utc": "2026-10-25T02:33:14.749286+00:00",
+    "label": "candidate-pull-nginx",
+    "argv": [
+      "docker",
+      "pull",
+      "nginx:1.30.6-alpine-slim"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "914482767cfc67d5e9c27a9c5f8b4a64ccdb55b6210ac8f5b2449c78d8bf050f",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:39:07.447264+00:00",
+    "finished_utc": "2026-10-25T03:39:09.285889+00:00",
+    "label": "candidate-sbom-backend",
+    "argv": [
+      "docker",
+      "scout",
+      "sbom",
+      "--format",
+      "spdx",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\candidate-backend.spdx.json",
+      "local://sha256:af9df5fb456a98573237b6a0abcdacbd92a22e45c621da07ea8240a74d151664"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "08eb039f6fea19d42c57cc8132d1ab8d49166348185fad902c449d8b4d2bbd78"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:00:12.979845+00:00",
+    "finished_utc": "2026-10-25T03:00:14.267388+00:00",
+    "label": "candidate-sbom-grafana",
+    "argv": [
+      "docker",
+      "scout",
+      "sbom",
+      "--format",
+      "spdx",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\candidate-grafana.spdx.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:a9043254ba16fb10945cc27333963dfd08eccbb43b51f1222d831cc564e3a1f4"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "5868d0ecc9191520ed02c92a56e64f3a21126daa5025b0ff1507e6c63c99de49"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:00:14.268572+00:00",
+    "finished_utc": "2026-10-25T03:00:15.509414+00:00",
+    "label": "candidate-sbom-kong",
+    "argv": [
+      "docker",
+      "scout",
+      "sbom",
+      "--format",
+      "spdx",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\candidate-kong.spdx.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:92035d16d7ff86b7bc12fb1d0090d29357d924238b1880f78735f3f2fea6b631"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "2ec4f864e3b29ba3a6bf1a7128dc9a33610a2267a1a90a3aa528a392d2586490"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:00:11.709210+00:00",
+    "finished_utc": "2026-10-25T03:00:12.978660+00:00",
+    "label": "candidate-sbom-loki",
+    "argv": [
+      "docker",
+      "scout",
+      "sbom",
+      "--format",
+      "spdx",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\candidate-loki.spdx.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "6c1dd8976b3bdd49308ec2acdfe584ae0f1e3861c272c69e45c07d4c9a6fe055"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:00:10.472775+00:00",
+    "finished_utc": "2026-10-25T03:00:11.708429+00:00",
+    "label": "candidate-sbom-nginx",
+    "argv": [
+      "docker",
+      "scout",
+      "sbom",
+      "--format",
+      "spdx",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\candidate-nginx.spdx.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:dede8895648b461178c3bc604f7eed4423efe5220b2c4d839f5eb3d34ac3f8f7"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "8f4d564037e60d6b2e9148fc3947c10b240a1880cf4f8423b5afdca847165cd6"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:42:50.687676+00:00",
+    "finished_utc": "2026-10-25T07:43:45.055411+00:00",
+    "label": "candidate-scout-alloy-patch",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\candidate-alloy-patch.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:eadfe35ea52b26cbec4d4d780fbcc31edb31108c1c9e537ca59557a5a102c712"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "719712031b3114b961a195bcda26de96d5c2aca400337f7477fab87f79a28e46"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:38:03.372024+00:00",
+    "finished_utc": "2026-10-25T03:39:07.446185+00:00",
+    "label": "candidate-scout-backend",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\candidate-backend.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:af9df5fb456a98573237b6a0abcdacbd92a22e45c621da07ea8240a74d151664"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "5827bfe65d6d50a52d2d4a8c409841ea284501e7946d7fa9cbaaa84ebb6b5732"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:45:48.598152+00:00",
+    "finished_utc": "2026-10-25T02:46:36.685744+00:00",
+    "label": "candidate-scout-grafana",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\candidate-grafana.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:a9043254ba16fb10945cc27333963dfd08eccbb43b51f1222d831cc564e3a1f4"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "0cf027627257166664429f31e5fe47b71349747b106b10458520707e1e98af9c"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:21:18.979939+00:00",
+    "finished_utc": "2026-10-25T03:22:16.174619+00:00",
+    "label": "candidate-scout-keycloak",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\candidate-keycloak.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:a78d6b79572168cb25886b80a8b5b8d4ed4390743e3eecb810538683e209dd6b"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "6be29f55bf316550c8fde5a6499a26fdbe874cee229736f54ca6ff13a25f3bca"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:46:36.686428+00:00",
+    "finished_utc": "2026-10-25T02:47:04.430412+00:00",
+    "label": "candidate-scout-kong",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\candidate-kong.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:92035d16d7ff86b7bc12fb1d0090d29357d924238b1880f78735f3f2fea6b631"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "4d606f7e535d877a9f7687bd58a6c2faa381ddb0d99638ce20a92186977f9715"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:45:34.580805+00:00",
+    "finished_utc": "2026-10-25T02:45:48.597505+00:00",
+    "label": "candidate-scout-loki",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\candidate-loki.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "990d1ab605ba23806f1621085e65509ad5af76b14dc3c1d5999b4df85975dd19"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:35:13.734817+00:00",
+    "finished_utc": "2026-10-25T02:35:22.843272+00:00",
+    "label": "candidate-scout-nginx",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\candidate-nginx.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:dede8895648b461178c3bc604f7eed4423efe5220b2c4d839f5eb3d34ac3f8f7"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "626cf8e29dc975ab79ae0a57460661d0cfa11d2888de4c43dc174a16d6f743fe"
+  },
+  {
+    "exit_code": 1,
+    "started_utc": "2026-10-25T02:37:27.046078+00:00",
+    "finished_utc": "2026-10-25T02:37:27.458994+00:00",
+    "label": "candidate-wget-ca-option-control",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--entrypoint",
+      "wget",
+      "sha256:dede8895648b461178c3bc604f7eed4423efe5220b2c4d839f5eb3d34ac3f8f7",
+      "--spider",
+      "--quiet",
+      "--ca-certificate=/missing-ca.pem",
+      "https://localhost:8443/login"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "cc6b1e7922314c8e2ffc715900e2d2cb3aed204c271463cbffebb9ee5bc16523"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T07:38:28.539982+00:00",
+    "finished_utc": null,
+    "label": "dns-reused-runtime-transport-running",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/reuse_final.py"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 1,
+    "started_utc": "2026-10-25T07:38:28.539982+00:00",
+    "finished_utc": "2026-10-25T07:44:04.080836+00:00",
+    "label": "dns-reused-runtime-transport",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/reuse_final.py"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "975ace000c73edc86fe12308b7abdc62ad85569cb6cdb67741f209d8bd75d189",
+    "stderr_sha256": "4f35bba554946f26a5dc3abd9ad5f9bea4ab611ee1ab2a29f9e6beb66de127f5"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:40:58.116930+00:00",
+    "finished_utc": "2026-10-25T07:40:58.369482+00:00",
+    "label": "dns-runtime-image-match",
+    "argv": [
+      "docker",
+      "inspect",
+      "--format",
+      "{{.Image}} {{.State.Status}}",
+      "cloud-api-p7-bab361c35b7e-backend-1"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "d2e8bf43720bc2aa6423a30a502edb7a099a46e6afde2d1d1580781943f538d9",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T08:05:11.929662+00:00",
+    "finished_utc": "2026-10-25T08:05:12.323981+00:00",
+    "label": "final-accepted-backend-real-dns",
+    "argv": [
+      "docker",
+      "exec",
+      "cloud-api-p7-ec3d3891d696-backend-1",
+      "python",
+      "-c",
+      "import socket,json,pathlib,sys\nrows=[]\nfor name in [\"example.com\",\"pypi.org\"]:\n try:\n  rows.append(dict(host=name,error_code=0,addresses=sorted({x[4][0] for x in socket.getaddrinfo(name,None)})))\n except socket.gaierror as e: rows.append(dict(host=name,error_code=e.errno,error=str(e)))\nprint(json.dumps(dict(resolv_conf=pathlib.Path(\"/etc/resolv.conf\").read_text(),results=rows)))\nsys.exit(any(r[\"error_code\"]!=0 for r in rows))"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "f3fe7f485a072aec63288046fc9e1c298673b3f6e2913144392d810cdaa172e9",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T08:02:30.248196+00:00",
+    "finished_utc": "2026-10-25T08:02:31.182203+00:00",
+    "label": "final-backend-runtime-versions",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--entrypoint",
+      "python",
+      "sha256:d612e8901241e9d46860ba06b37a05d48f29a0feb84bb51ca8ed1cf6b6b1b987",
+      "-c",
+      "import sys,importlib.metadata as m,importlib.util,json; print(json.dumps({\"python\":sys.version,\"pip_present\":importlib.util.find_spec(\"pip\") is not None,\"packages\":{n:m.version(n) for n in [\"fastapi\",\"starlette\",\"pydantic\",\"uvicorn\",\"cryptography\",\"python-jose\",\"sqlalchemy\",\"alembic\",\"psycopg2-binary\"]}}))"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "1e786ecd3ae3942224b0ac0499ce67a3be25cdb1ba69490124ac24a8194637b8",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:39:19.365460+00:00",
+    "finished_utc": "2026-10-25T07:39:20.053626+00:00",
+    "label": "final-kong-runtime-crypto",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--entrypoint",
+      "/bin/sh",
+      "sha256:92035d16d7ff86b7bc12fb1d0090d29357d924238b1880f78735f3f2fea6b631",
+      "-c",
+      "/usr/local/openresty/nginx/sbin/nginx -V; /usr/local/kong/bin/openssl version; /usr/bin/openssl version"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "54668ea977da3703d07ac46186e7c727c114a5243657f46b69a83c69ec005f34",
+    "stderr_sha256": "a5884119b25179444da99102b1b58bbfe2529e8e5479b878cc27740d072b1de0"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:39:09.462791+00:00",
+    "finished_utc": "2026-10-25T07:39:19.363955+00:00",
+    "label": "final-nginx-wget-identity",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--entrypoint",
+      "/bin/sh",
+      "sha256:29f4c8b660a193b17fca16e6d22484a0414d6edb381b2551dcd23e17be895b69",
+      "-c",
+      "wget --version; apk info -a wget; ldd /usr/bin/wget"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "b91cdfd0af9942590b6075b3a64c9efbcc60678ed96c99f8b5c0d2b47c78b894",
+    "stderr_sha256": "8e15fa535966bcaa51ec9adf136e6ddf6663dc3678babd4eaded3737273ddc2a"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T08:02:29.420938+00:00",
+    "finished_utc": "2026-10-25T08:02:30.246920+00:00",
+    "label": "final-postgres-version",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--read-only",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--entrypoint",
+      "postgres",
+      "sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d",
+      "--version"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "598920ba89827ec820d817542fcc8d9036126909f0635bafea7badbc75075379",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:58:57.748463+00:00",
+    "finished_utc": "2026-10-25T07:59:00.379248+00:00",
+    "label": "final-sbom-alloy",
+    "argv": [
+      "docker",
+      "scout",
+      "sbom",
+      "--format",
+      "spdx",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\final-alloy.spdx.json",
+      "local://sha256:eadfe35ea52b26cbec4d4d780fbcc31edb31108c1c9e537ca59557a5a102c712"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "cac117e009ea3d0509f3d595fa67eb526855b2e8b75867256e45680a7d7fa5df"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:57:55.830254+00:00",
+    "finished_utc": "2026-10-25T07:57:58.154298+00:00",
+    "label": "final-sbom-backend",
+    "argv": [
+      "docker",
+      "scout",
+      "sbom",
+      "--format",
+      "spdx",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\final-backend.spdx.json",
+      "local://sha256:d612e8901241e9d46860ba06b37a05d48f29a0feb84bb51ca8ed1cf6b6b1b987"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "79729931c25a4d207118a3d43b685da3c716984c7964535017e7e3e7a9c7c59c"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:58:47.161157+00:00",
+    "finished_utc": "2026-10-25T07:58:49.678221+00:00",
+    "label": "final-sbom-grafana",
+    "argv": [
+      "docker",
+      "scout",
+      "sbom",
+      "--format",
+      "spdx",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\final-grafana.spdx.json",
+      "local://sha256:a9043254ba16fb10945cc27333963dfd08eccbb43b51f1222d831cc564e3a1f4"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "8de1657461966de4c124a8de7129360e440ab25c4f32dc8e835edc58cc54ddb8"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:58:11.829234+00:00",
+    "finished_utc": "2026-10-25T07:58:14.096728+00:00",
+    "label": "final-sbom-keycloak",
+    "argv": [
+      "docker",
+      "scout",
+      "sbom",
+      "--format",
+      "spdx",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\final-keycloak.spdx.json",
+      "local://sha256:a78d6b79572168cb25886b80a8b5b8d4ed4390743e3eecb810538683e209dd6b"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "de42b211f587dd79656076e32f4a77d19c0c32d7533965b93863db6ac5065903"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:58:03.876841+00:00",
+    "finished_utc": "2026-10-25T07:58:06.226827+00:00",
+    "label": "final-sbom-kong",
+    "argv": [
+      "docker",
+      "scout",
+      "sbom",
+      "--format",
+      "spdx",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\final-kong.spdx.json",
+      "local://sha256:92035d16d7ff86b7bc12fb1d0090d29357d924238b1880f78735f3f2fea6b631"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "d6a4864dd1e6389146fa112483a15d5618afc89d87f90a4cd9be8c938e4b86a3"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:58:33.036755+00:00",
+    "finished_utc": "2026-10-25T07:58:35.159020+00:00",
+    "label": "final-sbom-loki",
+    "argv": [
+      "docker",
+      "scout",
+      "sbom",
+      "--format",
+      "spdx",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\final-loki.spdx.json",
+      "local://sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "7b05362aa8d1fe4d450b42c89e2017815c04c16dec3192e68ee95eb90dc69a0d"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:59:11.127291+00:00",
+    "finished_utc": "2026-10-25T07:59:13.539488+00:00",
+    "label": "final-sbom-nginx",
+    "argv": [
+      "docker",
+      "scout",
+      "sbom",
+      "--format",
+      "spdx",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\final-nginx.spdx.json",
+      "local://sha256:1bc331a1680da03025334c86645bed67ff832f5e74985fb629afdc079a9e8510"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "9e35e3db71a35ce3275fcff88a7089aef4c47a64cb64b79b6646dacb8a9378e2"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:58:19.614968+00:00",
+    "finished_utc": "2026-10-25T07:58:22.123100+00:00",
+    "label": "final-sbom-postgres",
+    "argv": [
+      "docker",
+      "scout",
+      "sbom",
+      "--format",
+      "spdx",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\final-postgres.spdx.json",
+      "local://sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "c9bd005990666927b728a0fae35224acd3ee985096cf48d73dc9ffd9ce21b0d7"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:58:49.679454+00:00",
+    "finished_utc": "2026-10-25T07:58:57.747011+00:00",
+    "label": "final-scout-alloy",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\final-alloy.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:eadfe35ea52b26cbec4d4d780fbcc31edb31108c1c9e537ca59557a5a102c712"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "ee07ef6559d32dd46e40d7d2eabc5879727db1d2d532f57e54618cc633c364e6"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:56:37.030344+00:00",
+    "finished_utc": "2026-10-25T07:57:55.828126+00:00",
+    "label": "final-scout-backend",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\final-backend.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:d612e8901241e9d46860ba06b37a05d48f29a0feb84bb51ca8ed1cf6b6b1b987"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "bb71dfaa145ff854f600658c8bca8b60c5ea27cf02be45d2cdcb80871f2b8da3"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:58:35.160056+00:00",
+    "finished_utc": "2026-10-25T07:58:47.160066+00:00",
+    "label": "final-scout-grafana",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\final-grafana.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:a9043254ba16fb10945cc27333963dfd08eccbb43b51f1222d831cc564e3a1f4"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "01139ce0111e280027869172fcacb0e35d45b304acae689eb229264d346815b1"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:58:06.228510+00:00",
+    "finished_utc": "2026-10-25T07:58:11.828075+00:00",
+    "label": "final-scout-keycloak",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\final-keycloak.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:a78d6b79572168cb25886b80a8b5b8d4ed4390743e3eecb810538683e209dd6b"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "8d928f7c22d26d41f45c10d76c6e4e914a61b183d4b3a53937d38d4e867bab6d"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:57:58.156109+00:00",
+    "finished_utc": "2026-10-25T07:58:03.875597+00:00",
+    "label": "final-scout-kong",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\final-kong.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:92035d16d7ff86b7bc12fb1d0090d29357d924238b1880f78735f3f2fea6b631"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "84c21c712fdec6cbf409898f6f12dc9589e1b280f3fba68d3e1c67d974bf4e37"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:58:22.124520+00:00",
+    "finished_utc": "2026-10-25T07:58:33.035505+00:00",
+    "label": "final-scout-loki",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\final-loki.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "7c5a806691603bdbe328729115fb536ed98511dd683c2a8cd51cc07ddd45dfda"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:59:00.380777+00:00",
+    "finished_utc": "2026-10-25T07:59:11.126334+00:00",
+    "label": "final-scout-nginx",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\final-nginx.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:1bc331a1680da03025334c86645bed67ff832f5e74985fb629afdc079a9e8510"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e8461c138d46f77cea688b6e5e3bc2c98ea31ebe89b4a5478b8c854b9133b120"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:58:14.098083+00:00",
+    "finished_utc": "2026-10-25T07:58:19.613080+00:00",
+    "label": "final-scout-postgres",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\final-postgres.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e943a6509c4183ccae3002fc976ee20dab4473434ce3de3b100f06f6f3cb4883"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T07:51:48.031520+00:00",
+    "finished_utc": null,
+    "label": "full-active-final-running",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "active"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:51:48.031520+00:00",
+    "finished_utc": "2026-10-25T08:21:23.547764+00:00",
+    "label": "full-active-final",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "active"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "0eb5d6ebe2b32c4f63f1c5ed6dee1a0fc06cadae09b5197d35a4928a22c4626d",
+    "stderr_sha256": "1cb76fbc7e243ad911f272714630306d497c19dea798d205525ebdac3e227b03"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T03:43:33.935555+00:00",
+    "finished_utc": null,
+    "label": "full-active-v1-running",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "active"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:43:33.935555+00:00",
+    "finished_utc": "2026-10-25T07:30:21.501996+00:00",
+    "label": "full-active-v1",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "active"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "f1e0e03a1213d28ba13de38328d32b5b8163350271f91ce6888b69dcf3de6acc",
+    "stderr_sha256": "d4dc92020aeab285ab0af3bab5248f9b949c15cef300ccb94ebd4d29108bcf04"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T07:52:33.718876+00:00",
+    "finished_utc": null,
+    "label": "full-legacy-final-running",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "legacy"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:52:33.718876+00:00",
+    "finished_utc": "2026-10-25T08:04:35.117530+00:00",
+    "label": "full-legacy-final",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "legacy"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "9c49ded84b6527ff468f0792b03753782bfc8f6a709376b26848b5bc4c3b2a59",
+    "stderr_sha256": "f80528b01d274f20c091c803bf84fc6a98aa3c89c831695830f22d2918857bb2"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T03:43:20.078613+00:00",
+    "finished_utc": null,
+    "label": "full-legacy-v1-running",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "legacy"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:43:20.078613+00:00",
+    "finished_utc": "2026-10-25T03:54:52.928193+00:00",
+    "label": "full-legacy-v1",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "legacy"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "f71f2e7266723625f5644ccb19bad89ad0e3529d6e2715b50f0e381c51cf5d00",
+    "stderr_sha256": "45cb8b5db5c33dc30d24c721ead556ea5a98779617ec96cde6d960b51258bd6b"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T02:46:10.277643+00:00",
+    "finished_utc": null,
+    "label": "grafana-storage-compat-running",
+    "argv": [
+      "python",
+      "tests/p7/image_upgrade.py",
+      "--component",
+      "grafana",
+      "--old-image",
+      "sha256:7d5faae481a4c6f436c99e98af11534f7fd5e8d3e35213552dd1dd02bc393d2e",
+      "--new-image",
+      "sha256:a9043254ba16fb10945cc27333963dfd08eccbb43b51f1222d831cc564e3a1f4",
+      "--output",
+      "tests/p7/artifacts/final-image-review-20261025/storage-upgrades"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:46:10.277643+00:00",
+    "finished_utc": "2026-10-25T02:46:28.039866+00:00",
+    "label": "grafana-storage-compat",
+    "argv": [
+      "python",
+      "tests/p7/image_upgrade.py",
+      "--component",
+      "grafana",
+      "--old-image",
+      "sha256:7d5faae481a4c6f436c99e98af11534f7fd5e8d3e35213552dd1dd02bc393d2e",
+      "--new-image",
+      "sha256:a9043254ba16fb10945cc27333963dfd08eccbb43b51f1222d831cc564e3a1f4",
+      "--output",
+      "tests/p7/artifacts/final-image-review-20261025/storage-upgrades"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "ecd568dbbe3dd12ec64ad073abe9121c809752ef4922467f339508a1d28ff089",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T03:36:22.019034+00:00",
+    "finished_utc": null,
+    "label": "identity-cold-upgrade-prefix-running",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "active",
+      "--focus",
+      "recovery",
+      "--identity-upgrade-from",
+      "quay.io/keycloak/keycloak:26.2.5@sha256:4883630ef9db14031cde3e60700c9a9a8eaf1b5c24db1589d6a2d43de38ba2a9",
+      "--identity-upgrade-to",
+      "quay.io/keycloak/keycloak:26.8.1@sha256:a78d6b79572168cb25886b80a8b5b8d4ed4390743e3eecb810538683e209dd6b"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 1,
+    "started_utc": "2026-10-25T03:36:22.019034+00:00",
+    "finished_utc": "2026-10-25T03:46:05.248402+00:00",
+    "label": "identity-cold-upgrade-prefix",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "active",
+      "--focus",
+      "recovery",
+      "--identity-upgrade-from",
+      "quay.io/keycloak/keycloak:26.2.5@sha256:4883630ef9db14031cde3e60700c9a9a8eaf1b5c24db1589d6a2d43de38ba2a9",
+      "--identity-upgrade-to",
+      "quay.io/keycloak/keycloak:26.8.1@sha256:a78d6b79572168cb25886b80a8b5b8d4ed4390743e3eecb810538683e209dd6b"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "cf249feb53f815340b7d008869f586900dc79f7cbd3963ba07d5ba77b316b810",
+    "stderr_sha256": "d10e38ecafcd26170cbc058b50253cc4ffb6029f3ccf6dbe64a7e290a5f5d7eb"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T03:21:45.978337+00:00",
+    "finished_utc": null,
+    "label": "identity-cold-upgrade-running",
+    "argv": [
+      "env",
+      "CANDIDATE_ROOT=/tmp/florasecure-final-image-identity-upgrade-20261025",
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "active",
+      "--focus",
+      "recovery",
+      "--identity-upgrade-from",
+      "quay.io/keycloak/keycloak:26.2@sha256:4883630ef9db14031cde3e60700c9a9a8eaf1b5c24db1589d6a2d43de38ba2a9",
+      "--identity-upgrade-to",
+      "quay.io/keycloak/keycloak:26.8.1@sha256:a78d6b79572168cb25886b80a8b5b8d4ed4390743e3eecb810538683e209dd6b"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T03:34:09.434531+00:00",
+    "finished_utc": null,
+    "label": "identity-cold-upgrade-uid-running",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "active",
+      "--focus",
+      "recovery",
+      "--identity-upgrade-from",
+      "quay.io/keycloak/keycloak:26.2.5@sha256:4883630ef9db14031cde3e60700c9a9a8eaf1b5c24db1589d6a2d43de38ba2a9",
+      "--identity-upgrade-to",
+      "quay.io/keycloak/keycloak:26.8.1@sha256:a78d6b79572168cb25886b80a8b5b8d4ed4390743e3eecb810538683e209dd6b"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 1,
+    "started_utc": "2026-10-25T03:34:09.434531+00:00",
+    "finished_utc": "2026-10-25T03:35:18.038662+00:00",
+    "label": "identity-cold-upgrade-uid",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "active",
+      "--focus",
+      "recovery",
+      "--identity-upgrade-from",
+      "quay.io/keycloak/keycloak:26.2.5@sha256:4883630ef9db14031cde3e60700c9a9a8eaf1b5c24db1589d6a2d43de38ba2a9",
+      "--identity-upgrade-to",
+      "quay.io/keycloak/keycloak:26.8.1@sha256:a78d6b79572168cb25886b80a8b5b8d4ed4390743e3eecb810538683e209dd6b"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "04229b544e8fe0fd0279cb708e344002e17968a6495d7bc2ad2ac9cc1f933a05",
+    "stderr_sha256": "abc4f87f9c8349426cef656b6f67bec366c609ae8112424310c987a79dee60ad"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T03:24:01.655345+00:00",
+    "finished_utc": null,
+    "label": "identity-cold-upgrade-v2-running",
+    "argv": [
+      "env",
+      "CANDIDATE_ROOT=/tmp/florasecure-final-image-identity-upgrade-v2-20261025",
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "active",
+      "--focus",
+      "recovery",
+      "--identity-upgrade-from",
+      "quay.io/keycloak/keycloak:26.2@sha256:4883630ef9db14031cde3e60700c9a9a8eaf1b5c24db1589d6a2d43de38ba2a9",
+      "--identity-upgrade-to",
+      "quay.io/keycloak/keycloak:26.8.1@sha256:a78d6b79572168cb25886b80a8b5b8d4ed4390743e3eecb810538683e209dd6b"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 1,
+    "started_utc": "2026-10-25T03:24:01.655345+00:00",
+    "finished_utc": "2026-10-25T03:25:09.039331+00:00",
+    "label": "identity-cold-upgrade-v2",
+    "argv": [
+      "env",
+      "CANDIDATE_ROOT=/tmp/florasecure-final-image-identity-upgrade-v2-20261025",
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "active",
+      "--focus",
+      "recovery",
+      "--identity-upgrade-from",
+      "quay.io/keycloak/keycloak:26.2@sha256:4883630ef9db14031cde3e60700c9a9a8eaf1b5c24db1589d6a2d43de38ba2a9",
+      "--identity-upgrade-to",
+      "quay.io/keycloak/keycloak:26.8.1@sha256:a78d6b79572168cb25886b80a8b5b8d4ed4390743e3eecb810538683e209dd6b"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e4fa618e3e18bde05a33c019ff4759cc2beaf3f1c9c5d55b04dda91d94ca2b6e",
+    "stderr_sha256": "92dab733596ca00316a8b58cb100b2afd58294734dc94addb95c362b1b79c198"
+  },
+  {
+    "exit_code": 1,
+    "started_utc": "2026-10-25T03:21:45.978337+00:00",
+    "finished_utc": "2026-10-25T03:22:17.152731+00:00",
+    "label": "identity-cold-upgrade",
+    "argv": [
+      "env",
+      "CANDIDATE_ROOT=/tmp/florasecure-final-image-identity-upgrade-20261025",
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "active",
+      "--focus",
+      "recovery",
+      "--identity-upgrade-from",
+      "quay.io/keycloak/keycloak:26.2@sha256:4883630ef9db14031cde3e60700c9a9a8eaf1b5c24db1589d6a2d43de38ba2a9",
+      "--identity-upgrade-to",
+      "quay.io/keycloak/keycloak:26.8.1@sha256:a78d6b79572168cb25886b80a8b5b8d4ed4390743e3eecb810538683e209dd6b"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "95b1c67a5cdab385f72d961d39460b68ea7c68d6ef8546651a789f59262f9ad8",
+    "stderr_sha256": "3ae1c0125a794e3f405160dc9d67d36f6de4f28f27b89b1eb84e62cd4f5f0733"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:10:01.128048+00:00",
+    "finished_utc": "2026-10-25T03:10:21.801575+00:00",
+    "label": "keycloak-26.8.1-manifest",
+    "argv": [
+      "docker",
+      "manifest",
+      "inspect",
+      "quay.io/keycloak/keycloak:26.8.1"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "8746bb1bf24a0854eaa14f1f58d93d7e5adc8f66a4d8b491f3ba67d25142b1b4",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:17:33.587522+00:00",
+    "finished_utc": "2026-10-25T03:17:35.068958+00:00",
+    "label": "keycloak-durability-config-probe",
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--env",
+      "KC_SPI_CONNECTIONS_JPA__QUARKUS__ASYNC_COMMIT=false",
+      "--env",
+      "KC_FEATURES_DISABLED=scim-api",
+      "--entrypoint",
+      "/opt/keycloak/bin/kc.sh",
+      "quay.io/keycloak/keycloak:26.8.1@sha256:a78d6b79572168cb25886b80a8b5b8d4ed4390743e3eecb810538683e209dd6b",
+      "show-config"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "c2a5bc72ff00e32b824e3e6882f2eb13b81acb134b45b942cc58e8474f663a39",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T03:35:46.832509+00:00",
+    "finished_utc": null,
+    "label": "kong-prefix-transport-focused-running",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "active",
+      "--focus",
+      "transport"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:35:46.832509+00:00",
+    "finished_utc": "2026-10-25T03:41:10.302450+00:00",
+    "label": "kong-prefix-transport-focused",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "active",
+      "--focus",
+      "transport"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "60aad17560d3512e59c8f3c6f49add6d438c495b2ae4a44460e0575557c0fa4b",
+    "stderr_sha256": "ce55ee38e993933231b50b4621ccafd60c957996f8fbddf2d698bf79a9d69ce8"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T03:22:47.321083+00:00",
+    "finished_utc": null,
+    "label": "kong-transport-focused-running",
+    "argv": [
+      "env",
+      "CANDIDATE_ROOT=/tmp/florasecure-final-image-kong-20261025",
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "active",
+      "--focus",
+      "transport"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 1,
+    "started_utc": "2026-10-25T03:22:47.321083+00:00",
+    "finished_utc": "2026-10-25T03:23:53.119685+00:00",
+    "label": "kong-transport-focused",
+    "argv": [
+      "env",
+      "CANDIDATE_ROOT=/tmp/florasecure-final-image-kong-20261025",
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "active",
+      "--focus",
+      "transport"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "4a98d24490448bee432f94491a591f6f280797c047036db9e00f44f6a5b96d0f",
+    "stderr_sha256": "d9c72080529871c28d36439144be236c3311cf712534bfa769e3e4b9041a0c9a"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T03:33:37.493748+00:00",
+    "finished_utc": null,
+    "label": "kong-uid-transport-focused-running",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "active",
+      "--focus",
+      "transport"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 1,
+    "started_utc": "2026-10-25T03:33:37.493748+00:00",
+    "finished_utc": "2026-10-25T03:34:46.735454+00:00",
+    "label": "kong-uid-transport-focused",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "active",
+      "--focus",
+      "transport"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "2471f4a219cea7e44f383804f178f97c78daeb10ae57566c42a0c510f977dfdf",
+    "stderr_sha256": "31de426edc736a7e45f3cb0886bd909f5c7f10dd4658e27946ec844681d2d631"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T08:01:04.879483+00:00",
+    "finished_utc": "2026-10-25T08:01:07.084622+00:00",
+    "label": "legacy-promtail-sbom",
+    "argv": [
+      "docker",
+      "scout",
+      "sbom",
+      "--format",
+      "spdx",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\legacy-promtail.spdx.json",
+      "local://sha256:45d54f0ebd7a19acbcd4693a3227d84d27d98abe1dc7ea3068d31d5d02dbe696"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "eb611bd40743d3644d0b29a3aa38526a66121c01d09c347cc4d0c018e97cf624"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T08:00:34.347188+00:00",
+    "finished_utc": "2026-10-25T08:01:04.876829+00:00",
+    "label": "legacy-promtail-scout",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\legacy-promtail.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:45d54f0ebd7a19acbcd4693a3227d84d27d98abe1dc7ea3068d31d5d02dbe696"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "ebd279902dfb4e65db9898b29d2959a4c1962c59fc09fdb4b03f761b8fcd28dc"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T02:52:43.163628+00:00",
+    "finished_utc": null,
+    "label": "loki-physical-retention-running",
+    "argv": [
+      "env",
+      "CANDIDATE_ROOT=/tmp/florasecure-final-image-loki-20261025",
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_retention.py"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:52:43.163628+00:00",
+    "finished_utc": "2026-10-25T02:54:33.732470+00:00",
+    "label": "loki-physical-retention",
+    "argv": [
+      "env",
+      "CANDIDATE_ROOT=/tmp/florasecure-final-image-loki-20261025",
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_retention.py"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "601057c7a3ea0a0ee4cdee402dcb2a17df69b583469f2625c527cbe9ae58fb42",
+    "stderr_sha256": "50967a2e003a85061f96a342da5956f2b43e8a3cdcba4c0be0260f0a0bd6bbb5"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T02:42:49.414253+00:00",
+    "finished_utc": null,
+    "label": "loki-storage-compat-running",
+    "argv": [
+      "python",
+      "tests/p7/image_upgrade.py",
+      "--component",
+      "loki",
+      "--old-image",
+      "sha256:8b5bd7748d0e4da66cd741ac276e485517514af0bea32167e27c0e1a95bcf8aa",
+      "--new-image",
+      "sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04",
+      "--output",
+      "tests/p7/artifacts/final-image-review-20261025/storage-upgrades"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T02:44:03.057989+00:00",
+    "finished_utc": null,
+    "label": "loki-storage-compat-v2-running",
+    "argv": [
+      "python",
+      "tests/p7/image_upgrade.py",
+      "--component",
+      "loki",
+      "--old-image",
+      "sha256:8b5bd7748d0e4da66cd741ac276e485517514af0bea32167e27c0e1a95bcf8aa",
+      "--new-image",
+      "sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04",
+      "--output",
+      "tests/p7/artifacts/final-image-review-20261025/storage-upgrades"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:44:03.057989+00:00",
+    "finished_utc": "2026-10-25T02:45:43.151534+00:00",
+    "label": "loki-storage-compat-v2",
+    "argv": [
+      "python",
+      "tests/p7/image_upgrade.py",
+      "--component",
+      "loki",
+      "--old-image",
+      "sha256:8b5bd7748d0e4da66cd741ac276e485517514af0bea32167e27c0e1a95bcf8aa",
+      "--new-image",
+      "sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04",
+      "--output",
+      "tests/p7/artifacts/final-image-review-20261025/storage-upgrades"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e72956aeadd3f05ec6a7985cbbff5db8b67f9dee1d6fa29ce4ed4f6fbbafaad3",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 1,
+    "started_utc": "2026-10-25T02:42:49.414253+00:00",
+    "finished_utc": "2026-10-25T02:42:55.391888+00:00",
+    "label": "loki-storage-compat",
+    "argv": [
+      "python",
+      "tests/p7/image_upgrade.py",
+      "--component",
+      "loki",
+      "--old-image",
+      "sha256:8b5bd7748d0e4da66cd741ac276e485517514af0bea32167e27c0e1a95bcf8aa",
+      "--new-image",
+      "sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04",
+      "--output",
+      "tests/p7/artifacts/final-image-review-20261025/storage-upgrades"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "f5e1e4e87d8b611361ac6f9e0996c9bfab1ecd48a5e1d235b2ca057ccd5dc21c",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": null,
+    "finished_utc": null,
+    "label": "manifest-grafana_grafana-10.4.19",
+    "argv": [
+      "docker",
+      "manifest",
+      "inspect",
+      "grafana/grafana:10.4.19"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "7a98d91aead721dc6d401596b1cd874a2fd1a8efb7e9e465c35de4c987205a8e",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": null,
+    "finished_utc": null,
+    "label": "manifest-grafana_loki-2.9.17",
+    "argv": [
+      "docker",
+      "manifest",
+      "inspect",
+      "grafana/loki:2.9.17"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "57d7b773787b8f14ffad8cf7fefd5dd431bf3d786d690e80b730c4f8d16ce2fa",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 1,
+    "started_utc": null,
+    "finished_utc": null,
+    "label": "manifest-kong-3.8.1",
+    "argv": [
+      "docker",
+      "manifest",
+      "inspect",
+      "kong:3.8.1"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "659c55f11427b26478629541696e2f80edc284fb3058326a370a8094c6893277"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": null,
+    "finished_utc": null,
+    "label": "manifest-kong-3.9.3",
+    "argv": [
+      "docker",
+      "manifest",
+      "inspect",
+      "kong:3.9.3"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "df17dbccbb2066fbade3829726ca7637419ae19954f788784d4cda0feba1813c",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": null,
+    "finished_utc": null,
+    "label": "manifest-nginx-1.30.6-alpine-slim",
+    "argv": [
+      "docker",
+      "manifest",
+      "inspect",
+      "nginx:1.30.6-alpine-slim"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "0d3a742f9973fe872d761f6874ea765360617ce0b8a448977b334ec3dba9f3cb",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T02:56:13.868817+00:00",
+    "finished_utc": null,
+    "label": "monitoring-focused-running",
+    "argv": [
+      "env",
+      "CANDIDATE_ROOT=/tmp/florasecure-final-image-monitoring-20261025",
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "active",
+      "--focus",
+      "telemetry"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 1,
+    "started_utc": "2026-10-25T02:56:13.868817+00:00",
+    "finished_utc": "2026-10-25T03:12:26.846142+00:00",
+    "label": "monitoring-focused",
+    "argv": [
+      "env",
+      "CANDIDATE_ROOT=/tmp/florasecure-final-image-monitoring-20261025",
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "active",
+      "--focus",
+      "telemetry"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "f0ff60eb9d0faed43b83f99ca330827a6152bc4800faf0fc87ad9a5d4d77312a",
+    "stderr_sha256": "007c1bfb4b7b72c91caa7f55b48be1693f23e21925087507038587a42107958d"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T02:39:12.711892+00:00",
+    "finished_utc": null,
+    "label": "nginx-browser-focused-running",
+    "argv": [
+      "env",
+      "CANDIDATE_ROOT=/tmp/florasecure-final-image-nginx-20261025",
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "active",
+      "--focus",
+      "browser"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 1,
+    "started_utc": "2026-10-25T02:39:12.711892+00:00",
+    "finished_utc": "2026-10-25T02:48:06.389472+00:00",
+    "label": "nginx-browser-focused",
+    "argv": [
+      "env",
+      "CANDIDATE_ROOT=/tmp/florasecure-final-image-nginx-20261025",
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+      "active",
+      "--focus",
+      "browser"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "066695cd6cd209c2df9c081cb915eb7ddecf528bc705400218888f20be77d215",
+    "stderr_sha256": "b7fe7154be42951a067e08a148c3908fb4759986aaf1ef2de307091a8bcfdbc5"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T02:49:46.815868+00:00",
+    "finished_utc": null,
+    "label": "nginx-p5-browser-focused-running",
+    "argv": [
+      "env",
+      "CANDIDATE_ROOT=/tmp/florasecure-final-image-nginx-20261025",
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/focus_runner.py",
+      "p5",
+      "browser"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:49:46.815868+00:00",
+    "finished_utc": "2026-10-25T02:51:34.844994+00:00",
+    "label": "nginx-p5-browser-focused",
+    "argv": [
+      "env",
+      "CANDIDATE_ROOT=/tmp/florasecure-final-image-nginx-20261025",
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/focus_runner.py",
+      "p5",
+      "browser"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "739f71eb366f717c1bb5cf617fe47611c0e479ba6520f558ee82232aef7bcf93",
+    "stderr_sha256": "ff7f082ebc55cb4f8ed6241bb586b3c94adac4d9c879ccd3eff34dfb1a710b8e"
+  },
+  {
+    "exit_code": 1,
+    "started_utc": "2026-10-25T03:39:46.989647+00:00",
+    "finished_utc": "2026-10-25T03:40:08.243584+00:00",
+    "label": "npm-advisory-receipt",
+    "argv": [
+      "npm.cmd",
+      "audit",
+      "--json"
+    ],
+    "redacted_assignment_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": null,
+    "finished_utc": null,
+    "label": "owned-native-dependency-cache-cleanup",
+    "argv": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "--",
+      "python3",
+      "-c",
+      "from pathlib import Path\nimport shutil,json\nnames=['nginx','loki','monitoring','rate-diagnostic','kong','kong-uid','kong-prefix','identity-upgrade','identity-upgrade-v2','identity-uid','identity-prefix','v1','active-v1','alloy-patch']\nremoved=[]\nfor name in names:\n root=Path('/tmp/florasecure-final-image-'+name+'-20261025')\n assert root.is_absolute() and root.parent==Path('/tmp')\n target=root/'frontend/node_modules'\n if target.exists():\n  absolute=target.resolve();assert absolute.is_relative_to(root.resolve()) and absolute.name=='node_modules'\n  shutil.rmtree(absolute);removed.append(str(absolute))\nprint(json.dumps(dict(removed_only_task_created_temporary_dependency_copies=removed)))"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3e300f0a729258c317df5c302427d3ad9465494cf3993f657f9d2c88ebb7c15",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T03:21:08.550402+00:00",
+    "finished_utc": null,
+    "label": "prepare-identity-upgrade-running",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/prepare_native.py",
+      "/tmp/florasecure-final-image-identity-upgrade-20261025"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T03:23:51.813454+00:00",
+    "finished_utc": null,
+    "label": "prepare-identity-upgrade-v2-running",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/prepare_native.py",
+      "/tmp/florasecure-final-image-identity-upgrade-v2-20261025"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:23:51.813454+00:00",
+    "finished_utc": "2026-10-25T03:23:58.199664+00:00",
+    "label": "prepare-identity-upgrade-v2",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/prepare_native.py",
+      "/tmp/florasecure-final-image-identity-upgrade-v2-20261025"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "9ed4703e5a6a5b7f23a480d70b35ff04da510dcb8d12765009f8142035f6645d",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:21:08.550402+00:00",
+    "finished_utc": "2026-10-25T03:21:15.070953+00:00",
+    "label": "prepare-identity-upgrade",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/prepare_native.py",
+      "/tmp/florasecure-final-image-identity-upgrade-20261025"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "731503325d4e52d95b0e605c9c4209d4e2638bfdff33ebad3f9c90718fb5a473",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T03:22:38.801201+00:00",
+    "finished_utc": null,
+    "label": "prepare-kong-running",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/prepare_native.py",
+      "/tmp/florasecure-final-image-kong-20261025"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:22:38.801201+00:00",
+    "finished_utc": "2026-10-25T03:22:44.141282+00:00",
+    "label": "prepare-kong",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/prepare_native.py",
+      "/tmp/florasecure-final-image-kong-20261025"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "26b5bb95312121f160d893e15453469e3df4355dc463800195929635600e4da7",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T02:52:17.589485+00:00",
+    "finished_utc": null,
+    "label": "prepare-loki-running",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/prepare_native.py",
+      "/tmp/florasecure-final-image-loki-20261025"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:52:17.589485+00:00",
+    "finished_utc": "2026-10-25T02:52:23.655642+00:00",
+    "label": "prepare-loki",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/prepare_native.py",
+      "/tmp/florasecure-final-image-loki-20261025"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "ef6312312aeb272678fd6bf5505b029869830ab635fb78c8a45f06f9dd5ce371",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T02:55:20.687880+00:00",
+    "finished_utc": null,
+    "label": "prepare-monitoring-running",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/prepare_native.py",
+      "/tmp/florasecure-final-image-monitoring-20261025"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:55:20.687880+00:00",
+    "finished_utc": "2026-10-25T02:55:25.614872+00:00",
+    "label": "prepare-monitoring",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/prepare_native.py",
+      "/tmp/florasecure-final-image-monitoring-20261025"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "b06009167bc96d3658f54fc0ded2430ddb8b2e5e8313dd93d5cfe7698c2203d4",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T02:38:41.842191+00:00",
+    "finished_utc": null,
+    "label": "prepare-nginx-running",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/prepare_native.py",
+      "/tmp/florasecure-final-image-nginx-20261025"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:38:41.842191+00:00",
+    "finished_utc": "2026-10-25T02:38:58.263640+00:00",
+    "label": "prepare-nginx",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/prepare_native.py",
+      "/tmp/florasecure-final-image-nginx-20261025"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "f5bffc6a755687c48fdd7cefd79fb9230baa86c5d5412b9cc82d14543c77f308",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T03:04:04.978310+00:00",
+    "finished_utc": null,
+    "label": "prepare-rate-diagnostic-running",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/prepare_native.py",
+      "/tmp/florasecure-final-image-rate-diagnostic-20261025"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:04:04.978310+00:00",
+    "finished_utc": "2026-10-25T03:04:12.011579+00:00",
+    "label": "prepare-rate-diagnostic",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/prepare_native.py",
+      "/tmp/florasecure-final-image-rate-diagnostic-20261025"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "8ee0f02dad1d35465190b34eb9739e079545e030f753067b89d60ab03fca0fce",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T03:39:33.402866+00:00",
+    "finished_utc": null,
+    "label": "python-current-lock-advisory-running",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "-m",
+      "pip_audit",
+      "--strict",
+      "--disable-pip",
+      "--no-deps",
+      "-r",
+      "backend/requirements.lock",
+      "-f",
+      "json",
+      "-o",
+      "tests/p7/artifacts/final-image-review-20261025/python-advisory.json"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 1,
+    "started_utc": "2026-10-25T03:39:33.402866+00:00",
+    "finished_utc": "2026-10-25T03:39:58.449315+00:00",
+    "label": "python-current-lock-advisory",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "-m",
+      "pip_audit",
+      "--strict",
+      "--disable-pip",
+      "--no-deps",
+      "-r",
+      "backend/requirements.lock",
+      "-f",
+      "json",
+      "-o",
+      "tests/p7/artifacts/final-image-review-20261025/python-advisory.json"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "4e69881fad60379db274c34fbee23f3181be621be5219e9c4b14b9b9f95449f1"
+  },
+  {
+    "exit_code": null,
+    "started_utc": "2026-10-25T03:04:15.964526+00:00",
+    "finished_utc": null,
+    "label": "rate-diagnostic-hardening-running",
+    "argv": [
+      "env",
+      "CANDIDATE_ROOT=/tmp/florasecure-final-image-rate-diagnostic-20261025",
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/focus_runner.py",
+      "p5",
+      "hardening"
+    ],
+    "redacted_assignment_count": 0
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:04:15.964526+00:00",
+    "finished_utc": "2026-10-25T03:06:10.383419+00:00",
+    "label": "rate-diagnostic-hardening",
+    "argv": [
+      "env",
+      "CANDIDATE_ROOT=/tmp/florasecure-final-image-rate-diagnostic-20261025",
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "tests/p7/artifacts/final-image-review-20261025/focus_runner.py",
+      "p5",
+      "hardening"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "b1208c3dd844184b9ed12436642e492b1e95e6bc0cf84ba1a7ea5f4b91b9aa24",
+    "stderr_sha256": "16a9d51ade3832931438f74be74c9d9e8c17f8f140081b4060103b367a43437c"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:28:56.521644+00:00",
+    "finished_utc": "2026-10-25T02:28:56.927432+00:00",
+    "label": "scout-version",
+    "argv": [
+      "docker",
+      "scout",
+      "version"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "ab9e70288e0f044574e17732e5ae61601394207a7032b8c9674ef421d8dedd68",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "p0-independent-final",
+    "argv": [
+      "_local_archive/final-remediation-tools-venv/bin/python",
+      "/tmp/florasecure-final-image-p0-final-20261025/tests/p0/run.py"
+    ],
+    "exit_code": 0,
+    "started_utc": "2026-10-25T08:53:29.035782+00:00",
+    "finished_utc": "2026-10-25T08:55:15.497754+00:00"
+  }
+]

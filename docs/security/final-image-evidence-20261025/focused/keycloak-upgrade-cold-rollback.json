@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "old_image": "quay.io/keycloak/keycloak:26.2.5@sha256:4883630ef9db14031cde3e60700c9a9a8eaf1b5c24db1589d6a2d43de38ba2a9",
+  "target_image": "quay.io/keycloak/keycloak:26.8.1@sha256:a78d6b79572168cb25886b80a8b5b8d4ed4390743e3eecb810538683e209dd6b",
+  "cold_copy_only": true,
+  "production_data_used": false,
+  "stages": [
+    {
+      "phase": "new-version",
+      "migrations_before": 152,
+      "migrations_after": 237,
+      "identity_application_policy_and_keys_preserved": true,
+      "real_pkce_rbac_ownership": true
+    },
+    {
+      "phase": "new-version-restarted",
+      "passed": true
+    },
+    {
+      "phase": "old-image-and-original-db-rollback",
+      "passed": true
+    }
+  ],
+  "clone_cleanup_exit": 0,
+  "original_database_restored": true
+}

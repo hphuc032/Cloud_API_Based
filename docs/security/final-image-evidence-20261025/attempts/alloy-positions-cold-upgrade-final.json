@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "_local_archive/final-remediation-tools-venv/bin/python",
+    "/tmp/florasecure-final-image-alloy-final-20261025/tests/p7/alloy_upgrade.py",
+    "--output",
+    "/mnt/d/MatMaHoc/Project_CLOUD_API/tests/p7/artifacts/final-image-review-20261025/alloy-positions-final-evidence"
+  ],
+  "exit_code": 0,
+  "started_utc": "2026-10-25T07:56:04.155417+00:00",
+  "finished_utc": "2026-10-25T07:56:48.837231+00:00"
+}

@@ -1,0 +1,10 @@
+{
+  "argv": [
+    "_local_archive/final-remediation-tools-venv/bin/python",
+    "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+    "legacy"
+  ],
+  "exit_code": 0,
+  "started_utc": "2026-10-25T07:52:33.718876+00:00",
+  "finished_utc": "2026-10-25T08:04:35.117530+00:00"
+}

@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "env",
+    "CANDIDATE_ROOT=/tmp/florasecure-final-image-monitoring-20261025",
+    "_local_archive/final-remediation-tools-venv/bin/python",
+    "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+    "active",
+    "--focus",
+    "telemetry"
+  ],
+  "exit_code": 1,
+  "started_utc": "2026-10-25T02:56:13.868817+00:00",
+  "finished_utc": "2026-10-25T03:12:26.846142+00:00"
+}

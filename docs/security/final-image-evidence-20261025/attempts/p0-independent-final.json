@@ -1,0 +1,9 @@
+{
+  "argv": [
+    "_local_archive/final-remediation-tools-venv/bin/python",
+    "/tmp/florasecure-final-image-p0-final-20261025/tests/p0/run.py"
+  ],
+  "exit_code": 0,
+  "started_utc": "2026-10-25T08:53:29.035782+00:00",
+  "finished_utc": "2026-10-25T08:55:15.497754+00:00"
+}

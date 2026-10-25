@@ -1,0 +1,117 @@
+{
+  "implementation": [
+    {
+      "path": "backend/Dockerfile",
+      "bytes": 427,
+      "working_tree_sha256": "872445a850504a51aa0a478aae25fe4ea6d234eb8b67b344b9cbc08e0cc76f9a"
+    },
+    {
+      "path": "docker/docker-compose.yml",
+      "bytes": 10163,
+      "working_tree_sha256": "2881dd892dfb871e6e51f7e58d5e8f5cf6065c096fcd5b47f6262704fc8432e9"
+    },
+    {
+      "path": "docker/p5-compose.yml",
+      "bytes": 1372,
+      "working_tree_sha256": "280356f393e996297cba0eadf45259a748a48c2259ecc2a16a8e89c5980cf096"
+    },
+    {
+      "path": "docker/p6-compose.yml",
+      "bytes": 3235,
+      "working_tree_sha256": "069bd2c31be418d64ce2869937a990405116d38f373b43461dd13577351e3c64"
+    },
+    {
+      "path": "docker/nginx/Dockerfile",
+      "bytes": 337,
+      "working_tree_sha256": "10d4b7e1e5f40555a5b0e2eb28371db8f4350e5138aa517a9046f1a4ab18a9dc"
+    },
+    {
+      "path": "docker/nginx/.dockerignore",
+      "bytes": 15,
+      "working_tree_sha256": "16150e43ce98c333f93ad82a4991269a89bdd5596c427b4f5066ad266d6f871d"
+    },
+    {
+      "path": "tests/p0/compose.yml",
+      "bytes": 1993,
+      "working_tree_sha256": "045f9c30cb815136240d7a8f01c621a3d58d97e7dc625743a90034062cd89c39"
+    },
+    {
+      "path": "tests/p0/run.py",
+      "bytes": 3471,
+      "working_tree_sha256": "dd66df8d9cad47db7e8f2f71fbc319bf48864c650b5d2b7ce8a20cd57ad8f2e8"
+    },
+    {
+      "path": "tests/p0/transport.py",
+      "bytes": 1377,
+      "working_tree_sha256": "68cae65bce12dc419c0c1e29083983dedde3e8b0eea27b59192c63737fe2d5f9"
+    },
+    {
+      "path": "tests/p2/host_checks.py",
+      "bytes": 22022,
+      "working_tree_sha256": "7b3553eb4037e7868586815fcc407c1a807abe99039206906c153f70eddb0980"
+    },
+    {
+      "path": "tests/p4/test_cutover.py",
+      "bytes": 16698,
+      "working_tree_sha256": "99c8cc79568a7e38400215aed59d9f47c1ea8a223e4776e5f96324ae56464066"
+    },
+    {
+      "path": "tests/p5/browser_host.py",
+      "bytes": 9609,
+      "working_tree_sha256": "f49914210c21d72e41d8928bd6fd9891c573672d2e992cd97229b7c5673aee57"
+    },
+    {
+      "path": "tests/p5/test_gateway.py",
+      "bytes": 5456,
+      "working_tree_sha256": "31cfecad2df4f7064aa5a328d48b3d20cf15694417574b7851996669456d0eb8"
+    },
+    {
+      "path": "tests/p6/retention.py",
+      "bytes": 10412,
+      "working_tree_sha256": "fc48d06ea225d0029c92543eaa0e923215d14ca405f01229a1581b51ecb57214"
+    },
+    {
+      "path": "tests/p6/test_observability.py",
+      "bytes": 16128,
+      "working_tree_sha256": "447f8f149dcf35096c70bc20ee8db131e9d197570d0ef5fb00df54aef4fe14b2"
+    },
+    {
+      "path": "tests/p7/run.py",
+      "bytes": 18397,
+      "working_tree_sha256": "8a8d66fa51f99a69f1a87b7a4c25309f0c824d5be38a3a94561275740b1627fa"
+    },
+    {
+      "path": "tests/p7/image_upgrade.py",
+      "bytes": 10570,
+      "working_tree_sha256": "a731ceef98a867959581f73ccf2d5167c2ffc84efe8e5303a8537ae6fde56e79"
+    },
+    {
+      "path": "tests/p7/identity_upgrade.py",
+      "bytes": 5941,
+      "working_tree_sha256": "15b2a8416d494650d772b4726a69c2cbc128818aa0459ed2bfe59440157051bd"
+    },
+    {
+      "path": "tests/p7/identity_upgrade_probe.py",
+      "bytes": 3599,
+      "working_tree_sha256": "c0a5af5d49149484be2fe3941f4179a734c5088bc2496e33318e85aac518a5ab"
+    },
+    {
+      "path": "tests/p7/alloy_upgrade.py",
+      "bytes": 10403,
+      "working_tree_sha256": "4783dd4df90dfff1504da6d368fb44b1e0aad9ef3e01f0adbe58955c9e82e63b"
+    }
+  ],
+  "documentation": [
+    "README.md",
+    "docs/deployment/p2-tls.md",
+    "docs/deployment/p6-observability.md",
+    "docs/testing/p7-results.md",
+    "docs/security/final-container-image-review.md",
+    "docs/security/final-image-risk-register.md",
+    "docs/security/final-image-risk-register.json",
+    "docs/testing/final-image-remediation-results.md",
+    "docs/deployment/final-image-upgrade-rollback.md"
+  ],
+  "evidence_manifest": "manifest.json",
+  "unrelated_untracked_files": "Preserved; not included or scanned as task changes"
+}

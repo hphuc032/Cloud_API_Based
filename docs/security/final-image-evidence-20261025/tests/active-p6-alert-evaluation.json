@@ -1,0 +1,168 @@
+{
+  "rule": "p6-jwt-rejections",
+  "actual_engine": true,
+  "initial_state": "inactive",
+  "external_delivery_tested": false,
+  "states": [
+    {
+      "state": "inactive",
+      "health": "ok"
+    },
+    {
+      "state": "inactive",
+      "health": "ok"
+    },
+    {
+      "state": "inactive",
+      "health": "ok"
+    },
+    {
+      "state": "inactive",
+      "health": "ok"
+    },
+    {
+      "state": "inactive",
+      "health": "ok"
+    },
+    {
+      "state": "inactive",
+      "health": "ok"
+    },
+    {
+      "state": "inactive",
+      "health": "ok"
+    },
+    {
+      "state": "inactive",
+      "health": "ok"
+    },
+    {
+      "state": "pending",
+      "health": "ok"
+    },
+    {
+      "state": "pending",
+      "health": "ok"
+    },
+    {
+      "state": "pending",
+      "health": "ok"
+    },
+    {
+      "state": "pending",
+      "health": "ok"
+    },
+    {
+      "state": "pending",
+      "health": "ok"
+    },
+    {
+      "state": "pending",
+      "health": "ok"
+    },
+    {
+      "state": "pending",
+      "health": "ok"
+    },
+    {
+      "state": "pending",
+      "health": "ok"
+    },
+    {
+      "state": "pending",
+      "health": "ok"
+    },
+    {
+      "state": "pending",
+      "health": "ok"
+    },
+    {
+      "state": "pending",
+      "health": "ok"
+    },
+    {
+      "state": "pending",
+      "health": "ok"
+    },
+    {
+      "state": "pending",
+      "health": "ok"
+    },
+    {
+      "state": "pending",
+      "health": "ok"
+    },
+    {
+      "state": "pending",
+      "health": "ok"
+    },
+    {
+      "state": "firing",
+      "health": "ok"
+    },
+    {
+      "state": "firing",
+      "health": "ok"
+    },
+    {
+      "state": "firing",
+      "health": "ok"
+    },
+    {
+      "state": "firing",
+      "health": "ok"
+    },
+    {
+      "state": "firing",
+      "health": "ok"
+    },
+    {
+      "state": "firing",
+      "health": "ok"
+    },
+    {
+      "state": "firing",
+      "health": "ok"
+    },
+    {
+      "state": "firing",
+      "health": "ok"
+    },
+    {
+      "state": "firing",
+      "health": "ok"
+    },
+    {
+      "state": "firing",
+      "health": "ok"
+    },
+    {
+      "state": "firing",
+      "health": "ok"
+    },
+    {
+      "state": "firing",
+      "health": "ok"
+    },
+    {
+      "state": "firing",
+      "health": "ok"
+    },
+    {
+      "state": "firing",
+      "health": "ok"
+    },
+    {
+      "state": "firing",
+      "health": "ok"
+    },
+    {
+      "state": "firing",
+      "health": "ok"
+    },
+    {
+      "state": "inactive",
+      "health": "ok"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "service": "db-bootstrap",
+    "id": "sha256:3ce162de68066c28a3ff8092d8e5a0f2d7c5902daeb63c85d7b8b6276c688913",
+    "reference": "cloud-api-p7-ec3d3891d696-db-bootstrap",
+    "scope": "Supporting job with identical rootfs, or disposable test-only image; classify using service name"
+  },
+  {
+    "service": "identity-bootstrap",
+    "id": "sha256:f14deae6347562867ce63ba149c47a9aacb9568414e5909ce0cc7189236bdc6a",
+    "reference": "cloud-api-p7-ec3d3891d696-identity-bootstrap",
+    "scope": "Supporting job with identical rootfs, or disposable test-only image; classify using service name"
+  },
+  {
+    "service": "migrate",
+    "id": "sha256:127d58d5e7ea34d1911bece72f3dc3cb320aa2ae9d4e57db3fd82f29fb5c1110",
+    "reference": "cloud-api-p7-ec3d3891d696-migrate",
+    "scope": "Supporting job with identical rootfs, or disposable test-only image; classify using service name"
+  },
+  {
+    "service": "kong-keys",
+    "id": "sha256:ce1f8323cbad3bd833efe27c6fe59712c162167854129cdbe799fed5d7b7bf65",
+    "reference": "cloud-api-p7-ec3d3891d696-kong-keys",
+    "scope": "Supporting job with identical rootfs, or disposable test-only image; classify using service name"
+  }
+]

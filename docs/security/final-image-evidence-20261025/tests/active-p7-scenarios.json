@@ -1,0 +1,496 @@
+[
+  {
+    "scenario": "AS01",
+    "status": "PASS",
+    "steps": [
+      {
+        "method": "GET",
+        "path": "/api/v1/auth/me",
+        "expected": 401,
+        "actual": 401,
+        "request_id": "3ac1ea8b-d7c4-4464-8f95-b6b0c4e369aa",
+        "observed_event": "token_rejected",
+        "event_service": "kong"
+      }
+    ],
+    "checks": {
+      "rejected_before_upstream": true
+    }
+  },
+  {
+    "scenario": "AS02",
+    "status": "PASS",
+    "steps": [
+      {
+        "method": "GET",
+        "path": "/api/v1/auth/me",
+        "expected": 401,
+        "actual": 401,
+        "request_id": "db7c2d0a-b0fb-4923-8ea5-bbb846f3ab75",
+        "observed_event": "token_rejected",
+        "event_service": "kong"
+      }
+    ],
+    "checks": {
+      "no_legacy_fallback": true
+    }
+  },
+  {
+    "scenario": "AS03",
+    "status": "PASS",
+    "steps": [
+      {
+        "method": "GET",
+        "path": "/api/v1/auth/me",
+        "expected": 401,
+        "actual": 401,
+        "request_id": "fdaf2276-2dc3-413d-853f-1dc05d4ac6c2",
+        "observed_event": "token_rejected",
+        "event_service": "backend"
+      }
+    ],
+    "checks": {
+      "altered_claim": [
+        "aud"
+      ],
+      "backend_independently_rejected": true
+    }
+  },
+  {
+    "scenario": "AS03",
+    "status": "PASS",
+    "steps": [
+      {
+        "method": "GET",
+        "path": "/api/v1/auth/me",
+        "expected": 401,
+        "actual": 401,
+        "request_id": "8f0f3dd7-c30f-41da-87ab-a95577c56593",
+        "observed_event": "token_rejected",
+        "event_service": "backend"
+      }
+    ],
+    "checks": {
+      "altered_claim": [
+        "iss"
+      ],
+      "backend_independently_rejected": true
+    }
+  },
+  {
+    "scenario": "AS04",
+    "status": "PASS",
+    "steps": [
+      {
+        "method": "PATCH",
+        "path": "/api/v1/users/<other-user>",
+        "expected": 403,
+        "actual": 403,
+        "request_id": "70ded2cf-573d-491a-8719-91e03cbf80ea",
+        "observed_event": "rbac_denied",
+        "event_service": "backend"
+      }
+    ],
+    "checks": {
+      "no_role_mutation": true
+    }
+  },
+  {
+    "scenario": "AS05",
+    "status": "PASS",
+    "steps": [
+      {
+        "method": "GET",
+        "path": "/api/v1/orders/<other-order>",
+        "expected": 403,
+        "actual": 403,
+        "request_id": "0d2ca059-def8-4cbd-8e07-9d118e391464",
+        "observed_event": "ownership_denied",
+        "event_service": "backend"
+      }
+    ],
+    "checks": {
+      "no_order_disclosure": true
+    }
+  },
+  {
+    "scenario": "AS06",
+    "status": "PASS",
+    "steps": [
+      {
+        "method": "POST",
+        "path": "/api/v1/webhooks/receive",
+        "expected": 403,
+        "actual": 403,
+        "request_id": "58db177a-c77c-4af8-8395-6351aab980c7",
+        "observed_event": "webhook_rejected",
+        "event_service": "backend"
+      }
+    ],
+    "checks": {
+      "receipt_count": 0
+    }
+  },
+  {
+    "scenario": "AS07",
+    "status": "PASS",
+    "steps": [
+      {
+        "method": "POST",
+        "path": "/api/v1/webhooks/receive",
+        "expected": 200,
+        "actual": 200,
+        "request_id": "45d6b814-8d3b-4e0d-8317-a258e0d63e14",
+        "observed_event": "webhook_replayed",
+        "event_service": "backend"
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/webhooks/receive",
+        "expected": 409,
+        "actual": 409,
+        "request_id": "749f23ab-d5bb-4e26-88eb-ac81d242b404",
+        "observed_event": "webhook_conflict",
+        "event_service": "backend"
+      }
+    ],
+    "checks": {
+      "durable_receipts": 1,
+      "first_replayed": false,
+      "retry_replayed": true,
+      "concurrency_evidence": "P5 test_concurrent_duplicates_real_postgres; no real payment handler"
+    }
+  },
+  {
+    "scenario": "AS08",
+    "status": "PASS",
+    "steps": [
+      {
+        "method": "POST",
+        "path": "/api/v1/security/fetch-url",
+        "expected": 403,
+        "actual": 403,
+        "request_id": "310198f8-287d-46cd-894a-f68b43fafa30",
+        "observed_event": "ssrf_denied",
+        "event_service": "backend"
+      }
+    ],
+    "checks": {
+      "destination": "127.0.0.1",
+      "validates_only_no_outbound_fetch": true
+    }
+  },
+  {
+    "scenario": "AS08",
+    "status": "PASS",
+    "steps": [
+      {
+        "method": "POST",
+        "path": "/api/v1/security/fetch-url",
+        "expected": 403,
+        "actual": 403,
+        "request_id": "9b9d8612-1faa-4953-8bb9-65e29a2189f5",
+        "observed_event": "ssrf_denied",
+        "event_service": "backend"
+      }
+    ],
+    "checks": {
+      "destination": "[::1]",
+      "validates_only_no_outbound_fetch": true
+    }
+  },
+  {
+    "scenario": "AS08",
+    "status": "PASS",
+    "steps": [
+      {
+        "method": "POST",
+        "path": "/api/v1/security/fetch-url",
+        "expected": 403,
+        "actual": 403,
+        "request_id": "923a814c-71b9-4997-8daf-78276ab827a5",
+        "observed_event": "ssrf_denied",
+        "event_service": "backend"
+      }
+    ],
+    "checks": {
+      "destination": "[::ffff:127.0.0.1]",
+      "validates_only_no_outbound_fetch": true
+    }
+  },
+  {
+    "scenario": "AS08",
+    "status": "PASS",
+    "steps": [
+      {
+        "method": "POST",
+        "path": "/api/v1/security/fetch-url",
+        "expected": 403,
+        "actual": 403,
+        "request_id": "abcebf2b-206c-4625-878d-02f3be4496cb",
+        "observed_event": "ssrf_denied",
+        "event_service": "backend"
+      }
+    ],
+    "checks": {
+      "destination": "10.0.0.1",
+      "validates_only_no_outbound_fetch": true
+    }
+  },
+  {
+    "scenario": "AS08",
+    "status": "PASS",
+    "steps": [
+      {
+        "method": "POST",
+        "path": "/api/v1/security/fetch-url",
+        "expected": 403,
+        "actual": 403,
+        "request_id": "5b71527e-6741-4a95-8303-c6a027f3314f",
+        "observed_event": "ssrf_denied",
+        "event_service": "backend"
+      }
+    ],
+    "checks": {
+      "destination": "172.16.0.1",
+      "validates_only_no_outbound_fetch": true
+    }
+  },
+  {
+    "scenario": "AS08",
+    "status": "PASS",
+    "steps": [
+      {
+        "method": "POST",
+        "path": "/api/v1/security/fetch-url",
+        "expected": 403,
+        "actual": 403,
+        "request_id": "e667eb3b-c219-438e-8571-c220de514001",
+        "observed_event": "ssrf_denied",
+        "event_service": "backend"
+      }
+    ],
+    "checks": {
+      "destination": "192.168.0.1",
+      "validates_only_no_outbound_fetch": true
+    }
+  },
+  {
+    "scenario": "AS08",
+    "status": "PASS",
+    "steps": [
+      {
+        "method": "POST",
+        "path": "/api/v1/security/fetch-url",
+        "expected": 403,
+        "actual": 403,
+        "request_id": "517f25a0-a316-42fa-8609-ae1127918634",
+        "observed_event": "ssrf_denied",
+        "event_service": "backend"
+      }
+    ],
+    "checks": {
+      "destination": "169.254.1.1",
+      "validates_only_no_outbound_fetch": true
+    }
+  },
+  {
+    "scenario": "AS08",
+    "status": "PASS",
+    "steps": [
+      {
+        "method": "POST",
+        "path": "/api/v1/security/fetch-url",
+        "expected": 403,
+        "actual": 403,
+        "request_id": "3c015ec7-c2d3-4ad5-8229-6eab69d66a87",
+        "observed_event": "ssrf_denied",
+        "event_service": "backend"
+      }
+    ],
+    "checks": {
+      "destination": "169.254.169.254",
+      "validates_only_no_outbound_fetch": true
+    }
+  },
+  {
+    "scenario": "AS10",
+    "status": "PASS",
+    "steps": [
+      {
+        "method": "GET",
+        "path": "/api/v1/users/<sql-shaped-id>",
+        "expected": 422,
+        "actual": 422,
+        "request_id": "a10435d1-1ab7-464e-8a6a-502bef775ee3",
+        "observed_event": "validation_failed",
+        "event_service": "backend"
+      }
+    ],
+    "checks": {
+      "fixture_user_count": 4,
+      "scope": "UUID input validation; not exhaustive injection certification"
+    }
+  },
+  {
+    "scenario": "AS10",
+    "status": "PASS",
+    "steps": [
+      {
+        "method": "GET",
+        "path": "/api/v1/users/<sql-shaped-id>",
+        "expected": 422,
+        "actual": 422,
+        "request_id": "c9d1dc6e-56fa-4491-81e7-98387972279f",
+        "observed_event": "validation_failed",
+        "event_service": "backend"
+      }
+    ],
+    "checks": {
+      "fixture_user_count": 4,
+      "scope": "UUID input validation; not exhaustive injection certification"
+    }
+  },
+  {
+    "scenario": "AS11",
+    "status": "PASS",
+    "steps": [
+      {
+        "method": "PATCH",
+        "path": "/api/v1/<validated-resource>",
+        "expected": 422,
+        "actual": 422,
+        "request_id": "f9884cd8-7dd5-47ed-8279-61a3650b0512",
+        "observed_event": null,
+        "event_service": null
+      }
+    ],
+    "checks": {
+      "input": "price",
+      "no_partial_mutation": true
+    }
+  },
+  {
+    "scenario": "AS11",
+    "status": "PASS",
+    "steps": [
+      {
+        "method": "PATCH",
+        "path": "/api/v1/<validated-resource>",
+        "expected": 422,
+        "actual": 422,
+        "request_id": "6ae7155b-7851-42d6-82dd-300d43ad0369",
+        "observed_event": null,
+        "event_service": null
+      }
+    ],
+    "checks": {
+      "input": "role",
+      "no_partial_mutation": true
+    }
+  },
+  {
+    "scenario": "AS11",
+    "status": "PASS",
+    "steps": [
+      {
+        "method": "GET",
+        "path": "/api/v1/<validated-resource>",
+        "expected": 422,
+        "actual": 422,
+        "request_id": "1c4cf1e3-2659-49f4-87d4-125031d1bddd",
+        "observed_event": null,
+        "event_service": null
+      }
+    ],
+    "checks": {
+      "input": "uuid",
+      "no_partial_mutation": true
+    }
+  },
+  {
+    "scenario": "AS11",
+    "status": "PASS",
+    "steps": [
+      {
+        "method": "POST",
+        "path": "/api/v1/<validated-resource>",
+        "expected": 400,
+        "actual": 400,
+        "request_id": "6046b316-70fe-4954-82d8-3d31dbe72f6a",
+        "observed_event": null,
+        "event_service": null
+      }
+    ],
+    "checks": {
+      "input": "json",
+      "no_partial_mutation": true
+    }
+  },
+  {
+    "scenario": "E2E-RECOVERY-SEED",
+    "status": "PASS",
+    "steps": [
+      {
+        "method": "GET",
+        "path": "/api/v1/auth/me",
+        "expected": 200,
+        "actual": 200,
+        "request_id": "101a42e8-dccf-4285-802b-99792d5bd41d",
+        "observed_event": null,
+        "event_service": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/auth/me",
+        "expected": 200,
+        "actual": 200,
+        "request_id": "bf352e15-ab5d-434a-8efc-dcc385147870",
+        "observed_event": null,
+        "event_service": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/auth/me",
+        "expected": 200,
+        "actual": 200,
+        "request_id": "c11ad2e5-b759-4e55-896a-514ee5663d25",
+        "observed_event": null,
+        "event_service": null
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/auth/me",
+        "expected": 200,
+        "actual": 200,
+        "request_id": "19d35529-8950-475e-893b-1505c71435c0",
+        "observed_event": null,
+        "event_service": null
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/orders/",
+        "expected": 201,
+        "actual": 201,
+        "request_id": "d65e7449-67e6-46ec-83f5-5bd401dfad2a",
+        "observed_event": "http_request",
+        "event_service": "backend"
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/orders/",
+        "expected": 201,
+        "actual": 201,
+        "request_id": "d0ccd8ef-5f08-4382-85ec-28f349208692",
+        "observed_event": "http_request",
+        "event_service": "backend"
+      }
+    ],
+    "checks": {
+      "four_reviewed_mappings": true,
+      "synthetic_orders": 2,
+      "synthetic_receipts": 1,
+      "positive_tokens": "actual Keycloak code+PKCE S256"
+    }
+  }
+]

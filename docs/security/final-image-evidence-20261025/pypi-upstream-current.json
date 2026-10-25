@@ -1,0 +1,20 @@
+{
+  "at_utc": "2026-10-25T08:02:32.163376+00:00",
+  "packages": {
+    "pip": {
+      "url": "https://pypi.org/pypi/pip/json",
+      "version": "26.2.2",
+      "status": 200
+    },
+    "python-jose": {
+      "url": "https://pypi.org/pypi/python-jose/json",
+      "version": "3.5.0",
+      "status": 200
+    },
+    "ecdsa": {
+      "url": "https://pypi.org/pypi/ecdsa/json",
+      "version": "0.19.2",
+      "status": 200
+    }
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "utc": "2026-10-25T03:47:21.0067342Z",
+  "resolvers": [
+    {
+      "InterfaceAlias": "Ethernet",
+      "AddressFamily": 2,
+      "ServerAddresses": [
+        "8.8.8.8"
+      ]
+    },
+    {
+      "InterfaceAlias": "CloudflareWARP",
+      "AddressFamily": 2,
+      "ServerAddresses": [
+        "127.0.2.2",
+        "127.0.2.3"
+      ]
+    },
+    {
+      "InterfaceAlias": "Wi-Fi",
+      "AddressFamily": 2,
+      "ServerAddresses": [
+        "127.0.2.2",
+        "127.0.2.3"
+      ]
+    },
+    {
+      "InterfaceAlias": "Loopback Pseudo-Interface 1",
+      "AddressFamily": 23,
+      "ServerAddresses": [
+        "fec0:0:0:ffff::1",
+        "fec0:0:0:ffff::2",
+        "fec0:0:0:ffff::3"
+      ]
+    },
+    {
+      "InterfaceAlias": "vEthernet (WSL (Hyper-V firewall))",
+      "AddressFamily": 23,
+      "ServerAddresses": [
+        "fec0:0:0:ffff::1",
+        "fec0:0:0:ffff::2",
+        "fec0:0:0:ffff::3"
+      ]
+    }
+  ],
+  "command": "Resolve-DnsName example.com; Resolve-DnsName pypi.org; Get-DnsClientServerAddress",
+  "results": [
+    {
+      "records": [
+        {
+          "Name": "example.com",
+          "Type": 28,
+          "IPAddress": "2606:4700:10::ac42:93f3",
+          "NameHost": null,
+          "TTL": 142
+        },
+        {
+          "Name": "example.com",
+          "Type": 28,
+          "IPAddress": "2606:4700:10::6814:179a",
+          "NameHost": null,
+          "TTL": 142
+        },
+        {
+          "Name": "example.com",
+          "Type": 1,
+          "IPAddress": "104.20.23.154",
+          "NameHost": null,
+          "TTL": 141
+        },
+        {
+          "Name": "example.com",
+          "Type": 1,
+          "IPAddress": "172.66.147.243",
+          "NameHost": null,
+          "TTL": 141
+        }
+      ],
+      "exit_code": 0,
+      "host": "example.com"
+    },
+    {
+      "records": [
+        {
+          "Name": "pypi.org",
+          "Type": 28,
+          "IPAddress": "2a04:4e42:200::223",
+          "NameHost": null,
+          "TTL": 71559
+        },
+        {
+          "Name": "pypi.org",
+          "Type": 28,
+          "IPAddress": "2a04:4e42:400::223",
+          "NameHost": null,
+          "TTL": 71559
+        },
+        {
+          "Name": "pypi.org",
+          "Type": 28,
+          "IPAddress": "2a04:4e42:600::223",
+          "NameHost": null,
+          "TTL": 71559
+        },
+        {
+          "Name": "pypi.org",
+          "Type": 28,
+          "IPAddress": "2a04:4e42::223",
+          "NameHost": null,
+          "TTL": 71559
+        },
+        {
+          "Name": "pypi.org",
+          "Type": 1,
+          "IPAddress": "151.101.192.223",
+          "NameHost": null,
+          "TTL": 69788
+        },
+        {
+          "Name": "pypi.org",
+          "Type": 1,
+          "IPAddress": "151.101.0.223",
+          "NameHost": null,
+          "TTL": 69788
+        },
+        {
+          "Name": "pypi.org",
+          "Type": 1,
+          "IPAddress": "151.101.64.223",
+          "NameHost": null,
+          "TTL": 69788
+        },
+        {
+          "Name": "pypi.org",
+          "Type": 1,
+          "IPAddress": "151.101.128.223",
+          "NameHost": null,
+          "TTL": 69788
+        }
+      ],
+      "exit_code": 0,
+      "host": "pypi.org"
+    }
+  ]
+}

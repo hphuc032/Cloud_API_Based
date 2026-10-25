@@ -1,0 +1,9 @@
+{
+  "project": "cloud-api-alloy-upgrade-7c8fdf252108",
+  "docker_start_exit": 127,
+  "container_was_created": true,
+  "container_state": "created",
+  "confirmed_cleanup_gap": true,
+  "manual_owned_container_cleanup": 0,
+  "manual_owned_volume_cleanup": 0
+}

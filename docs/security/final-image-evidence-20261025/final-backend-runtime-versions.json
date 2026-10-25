@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "docker",
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--read-only",
+    "--cap-drop",
+    "ALL",
+    "--security-opt",
+    "no-new-privileges",
+    "--entrypoint",
+    "python",
+    "sha256:d612e8901241e9d46860ba06b37a05d48f29a0feb84bb51ca8ed1cf6b6b1b987",
+    "-c",
+    "import sys,importlib.metadata as m,importlib.util,json; print(json.dumps({\"python\":sys.version,\"pip_present\":importlib.util.find_spec(\"pip\") is not None,\"packages\":{n:m.version(n) for n in [\"fastapi\",\"starlette\",\"pydantic\",\"uvicorn\",\"cryptography\",\"python-jose\",\"sqlalchemy\",\"alembic\",\"psycopg2-binary\"]}}))"
+  ],
+  "started_utc": "2026-10-25T08:02:30.248196+00:00",
+  "finished_utc": "2026-10-25T08:02:31.182203+00:00",
+  "exit_code": 0,
+  "stdout": "{\"python\": \"3.11.17 (main, Oct 21 2026, 01:07:38) [GCC 14.2.0]\", \"pip_present\": false, \"packages\": {\"fastapi\": \"0.135.0\", \"starlette\": \"1.3.1\", \"pydantic\": \"2.7.1\", \"uvicorn\": \"0.29.0\", \"cryptography\": \"50.0.2\", \"python-jose\": \"3.5.0\", \"sqlalchemy\": \"2.0.30\", \"alembic\": \"1.13.1\", \"psycopg2-binary\": \"2.9.9\"}}\n",
+  "stderr": ""
+}

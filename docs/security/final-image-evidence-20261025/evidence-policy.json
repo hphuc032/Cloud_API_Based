@@ -1,0 +1,16 @@
+{
+  "created_utc": "2026-10-25T08:27:00.922314+00:00",
+  "starting_commit": "0b86cf04b471662f7731efac8f2cb34066752441",
+  "private_data_excluded": [
+    "raw container environments/inspection",
+    "identity fixtures/credentials",
+    "generated private keys/CA signing keys",
+    "access and refresh tokens",
+    "database dumps and role verifier streams",
+    "browser profiles"
+  ],
+  "raw_scans": "Original SARIF and SPDX bytes; per-file checksums recorded. No severity filters, ignore-base or scanner suppression used.",
+  "original_raw_location": "tests/p7/artifacts/final-image-review-20261025 (gitignored)",
+  "source_provenance_note": "Mandatory suites used the native source snapshot. Two subsequent edits are test-only: standalone Alloy cleanup and P0 installed-package inventory without pip. Their exact final sources were independently executed, including the full89-case P0 fixture and complete Alloy positions/cold rollback/start-failure ownership tests. Runtime backend/gateway/identity/config and mandatory business/security assertions are unchanged.",
+  "normalization": "P0 Compose image-listing trailing empty line normalized; all JSON values retained. Original SARIF/SPDX bytes remain unchanged."
+}

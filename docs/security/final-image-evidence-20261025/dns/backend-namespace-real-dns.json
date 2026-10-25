@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "docker",
+    "exec",
+    "cloud-api-p7-9044956d8c9a-backend-1",
+    "python",
+    "-c",
+    "import socket,json,pathlib,sys\nrows=[]\nfor name in [\"example.com\",\"pypi.org\"]:\n try:\n  rows.append(dict(host=name,error_code=0,addresses=sorted({x[4][0] for x in socket.getaddrinfo(name,None)})))\n except socket.gaierror as e: rows.append(dict(host=name,error_code=e.errno,error=str(e)))\nprint(json.dumps(dict(resolv_conf=pathlib.Path(\"/etc/resolv.conf\").read_text(),results=rows)))\nsys.exit(any(r[\"error_code\"]!=0 for r in rows))"
+  ],
+  "started_utc": "2026-10-25T03:47:35.105352+00:00",
+  "finished_utc": "2026-10-25T03:47:35.284574+00:00",
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Error response from daemon: container 66a98e35922b2fc7bc179a19324e0bf264efaded75ca88aeb3b9a25584364f39 is not running\n"
+}

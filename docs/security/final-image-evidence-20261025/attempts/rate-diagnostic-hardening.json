@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "env",
+    "CANDIDATE_ROOT=/tmp/florasecure-final-image-rate-diagnostic-20261025",
+    "_local_archive/final-remediation-tools-venv/bin/python",
+    "tests/p7/artifacts/final-image-review-20261025/focus_runner.py",
+    "p5",
+    "hardening"
+  ],
+  "exit_code": 0,
+  "started_utc": "2026-10-25T03:04:15.964526+00:00",
+  "finished_utc": "2026-10-25T03:06:10.383419+00:00"
+}

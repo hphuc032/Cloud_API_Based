@@ -1,0 +1,60 @@
+[
+  {
+    "mode": "active",
+    "suite": "p4-focused-junit.xml",
+    "counts": {
+      "pass": 3
+    }
+  },
+  {
+    "mode": "active",
+    "suite": "p4-junit.xml",
+    "counts": {
+      "pass": 145
+    }
+  },
+  {
+    "mode": "active",
+    "suite": "p5-hardening-junit.xml",
+    "counts": {
+      "pass": 110
+    }
+  },
+  {
+    "mode": "active",
+    "suite": "p6-junit.xml",
+    "counts": {
+      "pass": 24
+    }
+  },
+  {
+    "mode": "active",
+    "suite": "p7-junit.xml",
+    "counts": {
+      "pass": 23
+    }
+  },
+  {
+    "mode": "legacy",
+    "suite": "junit.xml",
+    "counts": {
+      "pass": 106,
+      "xfail": 2
+    }
+  },
+  {
+    "mode": "legacy",
+    "suite": "p2-junit.xml",
+    "counts": {
+      "pass": 85,
+      "xfail": 2
+    }
+  },
+  {
+    "mode": "legacy",
+    "suite": "p3-junit.xml",
+    "counts": {
+      "pass": 22
+    }
+  }
+]

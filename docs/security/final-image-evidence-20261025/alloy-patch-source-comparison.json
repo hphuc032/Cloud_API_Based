@@ -1,0 +1,220 @@
+{
+  "url": "https://api.github.com/repos/grafana/alloy/compare/v1.14.1...v1.14.2",
+  "at_utc": "2026-10-25T07:44:19.197559+00:00",
+  "status": "ahead",
+  "files": [
+    {
+      "filename": ".github/workflows/build.yml",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/.github%2Fworkflows%2Fbuild.yml",
+      "sha": "ccb8e0e69575631aa5ae7e008a867313ecef912c"
+    },
+    {
+      "filename": ".github/workflows/check-linux-build-image.yml",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/.github%2Fworkflows%2Fcheck-linux-build-image.yml",
+      "sha": "cc2e8269b34b342157fe06ee2763a6c43dc9ed8f"
+    },
+    {
+      "filename": ".github/workflows/create_build_image.yml",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/.github%2Fworkflows%2Fcreate_build_image.yml",
+      "sha": "2b0d52259035f14adba66a5ed39ba6cfc8a96c25"
+    },
+    {
+      "filename": ".github/workflows/publish-alloy-linux.yml",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/.github%2Fworkflows%2Fpublish-alloy-linux.yml",
+      "sha": "e52b20f022360dc482a520e94b5b8a072a14df54"
+    },
+    {
+      "filename": ".github/workflows/release-publish-alloy-artifacts.yml",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/.github%2Fworkflows%2Frelease-publish-alloy-artifacts.yml",
+      "sha": "6b2990ea0e66b827bf8781dc2cfd4b867b908da9"
+    },
+    {
+      "filename": ".github/workflows/test_full.yml",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/.github%2Fworkflows%2Ftest_full.yml",
+      "sha": "705cb0fce18e938e98cb202a6dfe2a734e17744d"
+    },
+    {
+      "filename": ".github/workflows/test_linux_system_packages.yml",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/.github%2Fworkflows%2Ftest_linux_system_packages.yml",
+      "sha": "909e42170e69d2e31f4c9c5b7547185c53359905"
+    },
+    {
+      "filename": ".github/workflows/test_mac.yml",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/.github%2Fworkflows%2Ftest_mac.yml",
+      "sha": "ac7f88a2bd3abcf66e1cf6ee2fd895c66de9165d"
+    },
+    {
+      "filename": "Dockerfile",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/Dockerfile",
+      "sha": "6f4b34ef4cd78738786f80ad8020aff0b6600125"
+    },
+    {
+      "filename": "Dockerfile.windows",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/Dockerfile.windows",
+      "sha": "fbcb1de46d4cd701ef8395b460da79f04418ec17"
+    },
+    {
+      "filename": "collector/go.mod",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/collector%2Fgo.mod",
+      "sha": "b66f58257663ba65fbe687d80242e07feb32274f"
+    },
+    {
+      "filename": "collector/go.sum",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/collector%2Fgo.sum",
+      "sha": "cceda68959f9cf9ed4ed813048ca37574c41d7e3"
+    },
+    {
+      "filename": "docs/sources/reference/components/mimir/mimir.rules.kubernetes.md",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/docs%2Fsources%2Freference%2Fcomponents%2Fmimir%2Fmimir.rules.kubernetes.md",
+      "sha": "335b6a63f7bb3a5c7af7a15d61d1869f77ad33a4"
+    },
+    {
+      "filename": "docs/sources/reference/components/prometheus/prometheus.exporter.oracledb.md",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/docs%2Fsources%2Freference%2Fcomponents%2Fprometheus%2Fprometheus.exporter.oracledb.md",
+      "sha": "e006bc247bdf180a21533972ed8d412421f77f23"
+    },
+    {
+      "filename": "example/docker-compose/images/grizzly/Dockerfile",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/example%2Fdocker-compose%2Fimages%2Fgrizzly%2FDockerfile",
+      "sha": "95f4e79bd159cb722910f61c74b2ddaa18ab5e0a"
+    },
+    {
+      "filename": "example/docker-compose/images/jb/Dockerfile",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/example%2Fdocker-compose%2Fimages%2Fjb%2FDockerfile",
+      "sha": "dca65b4d979afc540ed0b15f9ced86af1ff54230"
+    },
+    {
+      "filename": "extension/alloyengine/go.mod",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/extension%2Falloyengine%2Fgo.mod",
+      "sha": "603df023ad227134eb5c27564439641c2d84ddf3"
+    },
+    {
+      "filename": "extension/alloyengine/go.sum",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/extension%2Falloyengine%2Fgo.sum",
+      "sha": "b16491f1da0e543153f3a8f55807382c4c69b1f8"
+    },
+    {
+      "filename": "go.mod",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/go.mod",
+      "sha": "bf1cdac8f9ea2493dab94472e44835ba07ffe72c"
+    },
+    {
+      "filename": "go.sum",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/go.sum",
+      "sha": "f73644892089ecd885c4fba0d29374fb33430ae6"
+    },
+    {
+      "filename": "integration-tests/docker/configs/kafka/Dockerfile",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/integration-tests%2Fdocker%2Fconfigs%2Fkafka%2FDockerfile",
+      "sha": "70b5c6e177fb0493d131adc63261caecafe1dad6"
+    },
+    {
+      "filename": "integration-tests/docker/configs/otel-gen/Dockerfile",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/integration-tests%2Fdocker%2Fconfigs%2Fotel-gen%2FDockerfile",
+      "sha": "33a1bc4cb433b2a148cc9949b1f0a6a46e89ce56"
+    },
+    {
+      "filename": "integration-tests/docker/configs/prom-gen/Dockerfile",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/integration-tests%2Fdocker%2Fconfigs%2Fprom-gen%2FDockerfile",
+      "sha": "7b15f939321dbb06398d6bd9ab4f050bc8a24ce8"
+    },
+    {
+      "filename": "internal/tools/packaging_test/testdata/centos-systemd.Dockerfile",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/internal%2Ftools%2Fpackaging_test%2Ftestdata%2Fcentos-systemd.Dockerfile",
+      "sha": "fce5c4a327fab3ad12e3d1c639e7db4d98f2c7a5"
+    },
+    {
+      "filename": "internal/tools/packaging_test/testdata/debian-systemd.Dockerfile",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/internal%2Ftools%2Fpackaging_test%2Ftestdata%2Fdebian-systemd.Dockerfile",
+      "sha": "d339d05c5bcd44ddeaa7640a71e19806628317f6"
+    },
+    {
+      "filename": "internal/web/ui/package-lock.json",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/internal%2Fweb%2Fui%2Fpackage-lock.json",
+      "sha": "3e6529aeff3138e64c8881fd31484b254d38c53b"
+    },
+    {
+      "filename": "internal/web/ui/package.json",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/internal%2Fweb%2Fui%2Fpackage.json",
+      "sha": "af9b2bf0f77d0c11575846e3e0571e37c1bacda5"
+    },
+    {
+      "filename": "syntax/go.mod",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/syntax%2Fgo.mod",
+      "sha": "fe068b1b041e27b2cf6a24617e194d879672eead"
+    },
+    {
+      "filename": "tools/build-image/Dockerfile",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/tools%2Fbuild-image%2FDockerfile",
+      "sha": "2375f00ed32b80f56c22738af294e900799e3a5f"
+    },
+    {
+      "filename": "tools/build-image/windows/Dockerfile",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/tools%2Fbuild-image%2Fwindows%2FDockerfile",
+      "sha": "d02c62cf6c45a90d4e0b317927143830d1e86fca"
+    },
+    {
+      "filename": "tools/generate-module-dependencies/go.mod",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/tools%2Fgenerate-module-dependencies%2Fgo.mod",
+      "sha": "c3e6f520cc1727af8139066a2c1a680e04fe5f78"
+    },
+    {
+      "filename": "tools/go.mod",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/tools%2Fgo.mod",
+      "sha": "c9a08ae4615ee0ae16c303d35ba6d74105667d83"
+    },
+    {
+      "filename": "tools/release/release-please-runner/package-lock.json",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/tools%2Frelease%2Frelease-please-runner%2Fpackage-lock.json",
+      "sha": "906a896a87542a9edbe88531a2516c4d4857cd11"
+    },
+    {
+      "filename": "tools/release/release-please-runner/package.json",
+      "status": "modified",
+      "raw_url": "https://github.com/grafana/alloy/raw/3c53ff8299932f67e18c86a3febba4a46d56b6e6/tools%2Frelease%2Frelease-please-runner%2Fpackage.json",
+      "sha": "8e646e59ba2ba4c84fa2f7f77288a599bd386e31"
+    }
+  ],
+  "commits": [
+    "docs: Update mimir.rules.kubernetes tenant_id info [backport] (#5817)",
+    "docs: Add OracleDB permissions prerequisites to prometheus.exporter.oracledb [backport] (#5820)",
+    "chore: Update to runners to MacOS 15 [backport] (#5840)",
+    "fix(deps): Update module github.com/buger/jsonparser to v1.1.2 [SECURITY] [backport] (#5841)",
+    "fix(deps): Update module google.golang.org/grpc to v1.79.3 [SECURITY] [backport] (#5842)",
+    "fix: Cherry Pick Go Version Updates to v1.14 (#5846)",
+    "chore(deps): Update npm deps across repo [backport] (#5873)"
+  ]
+}

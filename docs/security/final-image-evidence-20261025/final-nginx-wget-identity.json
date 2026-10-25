@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "docker",
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--read-only",
+    "--cap-drop",
+    "ALL",
+    "--security-opt",
+    "no-new-privileges",
+    "--entrypoint",
+    "/bin/sh",
+    "sha256:29f4c8b660a193b17fca16e6d22484a0414d6edb381b2551dcd23e17be895b69",
+    "-c",
+    "wget --version; apk info -a wget; ldd /usr/bin/wget"
+  ],
+  "started_utc": "2026-10-25T07:39:09.462791+00:00",
+  "finished_utc": "2026-10-25T07:39:19.363955+00:00",
+  "exit_code": 0,
+  "stdout": "GNU Wget 1.25.0 built on linux-musl.\n\n-cares +digest -gpgme +https +ipv6 +iri +large-file -metalink -nls \n+ntlm +opie -psl +ssl/openssl \n\nWgetrc: \n    /etc/wgetrc (system)\nCompile: \n    cc -DHAVE_CONFIG_H -DSYSTEM_WGETRC=\"/etc/wgetrc\" \n    -DLOCALEDIR=\"/usr/share/locale\" -I. -I../lib -I../lib -DHAVE_LIBSSL \n    -DNDEBUG -Os -fstack-clash-protection -Wformat \n    -Werror=format-security -fno-plt -flto=auto \nLink: \n    cc -DHAVE_LIBSSL -DNDEBUG -Os -fstack-clash-protection -Wformat \n    -Werror=format-security -fno-plt -flto=auto \n    -Wl,--as-needed,-O1,--sort-common -Wl,-z,pack-relative-relocs \n    -lpcre2-8 -lidn2 -lssl -lcrypto -lz ../lib/libgnu.a \n\nCopyright (C) 2015 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later\n<http://www.gnu.org/licenses/gpl.html>.\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n\nOriginally written by Hrvoje Niksic <hniksic@xemacs.org>.\nPlease send bug reports and questions to <bug-wget@gnu.org>.\nwget-1.25.0-r3 description:\nNetwork utility to retrieve files from the Web\n\nwget-1.25.0-r3 webpage:\nhttps://www.gnu.org/software/wget/wget.html\n\nwget-1.25.0-r3 installed size:\n407 KiB\n\nwget-1.25.0-r3 depends on:\nso:libc.musl-x86_64.so.1\nso:libcrypto.so.3\nso:libidn2.so.0\nso:libpcre2-8.so.0\nso:libssl.so.3\nso:libz.so.1\n\nwget-1.25.0-r3 provides:\ncmd:wget=1.25.0-r3\n\nwget-1.25.0-r3 is required by:\n\nwget-1.25.0-r3 contains:\netc/wgetrc\nusr/bin/wget\n\nwget-1.25.0-r3 triggers:\n\nwget-1.25.0-r3 has auto-install rule:\n\nwget-1.25.0-r3 affects auto-installation of:\n\nwget-1.25.0-r3 replaces:\n\nwget-1.25.0-r3 license:\nGPL-3.0-or-later WITH OpenSSL-Exception\n\n\t/lib/ld-musl-x86_64.so.1 (0x7c80ba2e1000)\n\tlibpcre2-8.so.0 => /usr/lib/libpcre2-8.so.0 (0x7c80ba1b4000)\n\tlibidn2.so.0 => /usr/lib/libidn2.so.0 (0x7c80ba182000)\n\tlibssl.so.3 => /usr/lib/libssl.so.3 (0x7c80ba0b3000)\n\tlibcrypto.so.3 => /usr/lib/libcrypto.so.3 (0x7c80b9bec000)\n\tlibz.so.1 => /usr/lib/libz.so.1 (0x7c80b9bd1000)\n\tlibc.musl-x86_64.so.1 => /lib/ld-musl-x86_64.so.1 (0x7c80ba2e1000)\n\tlibunistring.so.5 => /usr/lib/libunistring.so.5 (0x7c80b99fa000)\n",
+  "stderr": "WARNING: fetching https://dl-cdn.alpinelinux.org/alpine/v3.24/main/x86_64/APKINDEX.tar.gz: DNS: transient error (try again later)\nWARNING: fetching https://dl-cdn.alpinelinux.org/alpine/v3.24/community/x86_64/APKINDEX.tar.gz: DNS: transient error (try again later)\n"
+}

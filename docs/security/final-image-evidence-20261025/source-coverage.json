@@ -1,0 +1,29 @@
+{
+  "active": {
+    "mandatory_runtime_source_matches_current": true,
+    "later_test_only_source_changes": [
+      "tests/p0/run.py",
+      "tests/p7/alloy_upgrade.py"
+    ]
+  },
+  "legacy": {
+    "mandatory_runtime_source_matches_current": true,
+    "later_test_only_source_changes": [
+      "tests/p0/run.py",
+      "tests/p7/alloy_upgrade.py"
+    ]
+  },
+  "final_cleanup_helper": {
+    "sha256": "4783dd4df90dfff1504da6d368fb44b1e0aad9ef3e01f0adbe58955c9e82e63b",
+    "executed_native_source_matches_current": true,
+    "verification": [
+      "alloy-start-failure-cleanup-verified.json",
+      "focused/cloud-api-alloy-upgrade-0287898da493.json"
+    ]
+  },
+  "final_p0_inventory_runner": {
+    "sha256": "dd66df8d9cad47db7e8f2f71fbc319bf48864c650b5d2b7ce8a20cd57ad8f2e8",
+    "executed_native_source_matches_current": true,
+    "result": "87 PASS + 2 repeated historical JWT xfails; original independent fixture, no business assertions changed"
+  }
+}

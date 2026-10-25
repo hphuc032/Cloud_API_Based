@@ -1,0 +1,9 @@
+{
+  "image": "sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04",
+  "source": "Original isolated retention run; same compiled server/config defaults as current Loki",
+  "listener_log_lines": [
+    "loki-1  | level=info ts=2026-10-25T02:52:44.327244537Z caller=server.go:228 msg=\"server listening on addresses\" http=[::]:3100 grpc=[::]:9095",
+    "loki-1  | level=info ts=2026-10-25T02:53:23.491681038Z caller=server.go:228 msg=\"server listening on addresses\" http=[::]:3100 grpc=[::]:9095",
+    "reader-1  | level=info ts=2026-10-25T02:53:24.245827805Z caller=server.go:228 msg=\"server listening on addresses\" http=[::]:3100 grpc=[::]:9095"
+  ]
+}

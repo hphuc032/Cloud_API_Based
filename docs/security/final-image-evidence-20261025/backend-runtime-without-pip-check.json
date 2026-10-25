@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "docker",
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--read-only",
+    "--cap-drop",
+    "ALL",
+    "--security-opt",
+    "no-new-privileges",
+    "--entrypoint",
+    "python",
+    "florasecure-final-image-backend:20261025",
+    "-c",
+    "import importlib.util; import fastapi,starlette,cryptography,psycopg2,alembic,sqlalchemy,jose,passlib; assert importlib.util.find_spec(\"pip\") is None; print(\"Runtime imports PASS; installation tool pip absent\")"
+  ],
+  "started_utc": "2026-10-25T03:38:00.850628+00:00",
+  "finished_utc": "2026-10-25T03:38:03.123160+00:00",
+  "exit_code": 0,
+  "stdout": "Runtime imports PASS; installation tool pip absent\n",
+  "stderr": ""
+}

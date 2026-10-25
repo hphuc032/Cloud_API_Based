@@ -1,0 +1,51 @@
+{
+  "tls_verification": "Chromium verified CA and SAN; no ignoreHTTPSErrors",
+  "private_alias_resolution": "loopback TCP relay to Compose identity-edge; original TLS SNI/hostname",
+  "navigation_readiness": "DOMContentLoaded then application assertions; external font load is not auth readiness",
+  "optional_fonts": "Google typography requests explicitly blocked in test browser only; no IdP/API/DNS assertion substituted",
+  "network_failures": [
+    {
+      "host": "identity-edge",
+      "path": "/realms/florasecure/.well-known/openid-configuration",
+      "error": "net::ERR_CONNECTION_REFUSED"
+    }
+  ],
+  "tests": [
+    {
+      "name": "real browser PKCE login, legacy cleanup and memory-only tokens",
+      "status": "passed"
+    },
+    {
+      "name": "reload recovers identity through Keycloak SSO without persistent tokens",
+      "status": "passed"
+    },
+    {
+      "name": "single-flight refresh with real Keycloak token endpoint",
+      "status": "passed"
+    },
+    {
+      "name": "IdP session expiration clears application authentication on refresh",
+      "status": "passed"
+    },
+    {
+      "name": "logout ends SSO and returns to exact configured redirect",
+      "status": "passed"
+    },
+    {
+      "name": "invalid callback state cannot establish authenticated identity",
+      "status": "passed"
+    },
+    {
+      "name": "cancelled authorization leaves the application signed out",
+      "status": "passed"
+    },
+    {
+      "name": "invalid nonce in one-time SDK transaction rejects a genuine IdP response",
+      "status": "passed"
+    },
+    {
+      "name": "Keycloak unavailable does not fall back to local password login",
+      "status": "passed"
+    }
+  ]
+}

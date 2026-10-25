@@ -1,0 +1,42 @@
+[
+  {
+    "phase": "activate",
+    "target": "https://kong:8443",
+    "key_generation": "old",
+    "status": 200,
+    "wall_clock": 1792916363.287154,
+    "token_exp": 1792916649,
+    "token_iat": 1792916349,
+    "date": "Sun, 25 Oct 2026 08:19:23 GMT"
+  },
+  {
+    "phase": "activate",
+    "target": "https://kong:8443",
+    "key_generation": "new",
+    "status": 200,
+    "wall_clock": 1792916363.3115413,
+    "token_exp": 1792916656,
+    "token_iat": 1792916356,
+    "date": "Sun, 25 Oct 2026 08:19:23 GMT"
+  },
+  {
+    "phase": "activate",
+    "target": "https://backend:8443",
+    "key_generation": "old",
+    "status": 200,
+    "wall_clock": 1792916363.3238454,
+    "token_exp": 1792916649,
+    "token_iat": 1792916349,
+    "date": "Sun, 25 Oct 2026 08:19:23 GMT"
+  },
+  {
+    "phase": "activate",
+    "target": "https://backend:8443",
+    "key_generation": "new",
+    "status": 200,
+    "wall_clock": 1792916363.329465,
+    "token_exp": 1792916656,
+    "token_iat": 1792916356,
+    "date": "Sun, 25 Oct 2026 08:19:23 GMT"
+  }
+]

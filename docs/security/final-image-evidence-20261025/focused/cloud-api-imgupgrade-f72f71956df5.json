@@ -1,0 +1,687 @@
+{
+  "component": "grafana",
+  "project": "cloud-api-imgupgrade-f72f71956df5",
+  "status": "PASS",
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "image",
+        "inspect",
+        "sha256:7d5faae481a4c6f436c99e98af11534f7fd5e8d3e35213552dd1dd02bc393d2e"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "image",
+        "inspect",
+        "sha256:a9043254ba16fb10945cc27333963dfd08eccbb43b51f1222d831cc564e3a1f4"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "create",
+        "--internal",
+        "--label",
+        "florasecure.image-review=cloud-api-imgupgrade-f72f71956df5",
+        "cloud-api-imgupgrade-f72f71956df5-storage"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "create",
+        "--label",
+        "florasecure.image-review=cloud-api-imgupgrade-f72f71956df5",
+        "cloud-api-imgupgrade-f72f71956df5-data"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "create",
+        "--label",
+        "florasecure.image-review=cloud-api-imgupgrade-f72f71956df5",
+        "cloud-api-imgupgrade-f72f71956df5-coldcopy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "cloud-api-imgupgrade-f72f71956df5-server",
+        "--label",
+        "florasecure.image-review=cloud-api-imgupgrade-f72f71956df5",
+        "--network",
+        "cloud-api-imgupgrade-f72f71956df5-storage",
+        "--mount",
+        "type=volume,source=cloud-api-imgupgrade-f72f71956df5-data,target=/var/lib/grafana",
+        "--mount",
+        "type=bind,source=D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\storage-upgrades\\cloud-api-imgupgrade-f72f71956df5-4kten78i\\grafana-password,target=/run/secrets/password,readonly",
+        "--mount",
+        "type=bind,source=D:\\MatMaHoc\\Project_CLOUD_API\\monitoring\\p6-grafana,target=/etc/grafana/provisioning,readonly",
+        "-e",
+        "GF_SECURITY_ADMIN_USER=admin",
+        "-e",
+        "GF_SECURITY_ADMIN_PASSWORD__FILE=/run/secrets/password",
+        "-e",
+        "GF_AUTH_ANONYMOUS_ENABLED=false",
+        "-e",
+        "GF_USERS_ALLOW_SIGN_UP=false",
+        "-e",
+        "GF_ANALYTICS_CHECK_FOR_UPDATES=false",
+        "-e",
+        "GF_ANALYTICS_REPORTING_ENABLED=false",
+        "-e",
+        "GF_LOG_LEVEL=error",
+        "sha256:7d5faae481a4c6f436c99e98af11534f7fd5e8d3e35213552dd1dd02bc393d2e"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "cloud-api-imgupgrade-f72f71956df5-server"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--network",
+        "container:cloud-api-imgupgrade-f72f71956df5-server",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--mount",
+        "type=bind,source=D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\storage-upgrades\\cloud-api-imgupgrade-f72f71956df5-4kten78i\\grafana-password,target=/run/secrets/password,readonly",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim",
+        "-c",
+        "import sys,json,urllib.request,urllib.error,base64,pathlib\nx=json.load(sys.stdin);h={}\nif x['component']=='grafana':h['Authorization']='Basic '+base64.b64encode(('admin:'+pathlib.Path('/run/secrets/password').read_text()).encode()).decode()\nb=json.dumps(x['payload']).encode() if x['payload'] is not None else None\nif b:h['Content-Type']='application/json'\nq=urllib.request.Request('http://127.0.0.1:'+str(x['port'])+x['path'],data=b,headers=h)\nhttp=urllib.request.build_opener(urllib.request.ProxyHandler({}))\ntry:r=http.open(q,timeout=5)\nexcept urllib.error.HTTPError as e:r=e\nexcept OSError as e:print(json.dumps({'status':0,'error':type(e).__name__}));sys.exit(0)\nraw=r.read()\ntry:body=json.loads(raw) if raw else None\nexcept ValueError:body=raw.decode()\nprint(json.dumps({'status':r.status,'body':body}))\n"
+      ],
+      "path": "/api/health",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--network",
+        "container:cloud-api-imgupgrade-f72f71956df5-server",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--mount",
+        "type=bind,source=D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\storage-upgrades\\cloud-api-imgupgrade-f72f71956df5-4kten78i\\grafana-password,target=/run/secrets/password,readonly",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim",
+        "-c",
+        "import sys,json,urllib.request,urllib.error,base64,pathlib\nx=json.load(sys.stdin);h={}\nif x['component']=='grafana':h['Authorization']='Basic '+base64.b64encode(('admin:'+pathlib.Path('/run/secrets/password').read_text()).encode()).decode()\nb=json.dumps(x['payload']).encode() if x['payload'] is not None else None\nif b:h['Content-Type']='application/json'\nq=urllib.request.Request('http://127.0.0.1:'+str(x['port'])+x['path'],data=b,headers=h)\nhttp=urllib.request.build_opener(urllib.request.ProxyHandler({}))\ntry:r=http.open(q,timeout=5)\nexcept urllib.error.HTTPError as e:r=e\nexcept OSError as e:print(json.dumps({'status':0,'error':type(e).__name__}));sys.exit(0)\nraw=r.read()\ntry:body=json.loads(raw) if raw else None\nexcept ValueError:body=raw.decode()\nprint(json.dumps({'status':r.status,'body':body}))\n"
+      ],
+      "path": "/api/health",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--network",
+        "container:cloud-api-imgupgrade-f72f71956df5-server",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--mount",
+        "type=bind,source=D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\storage-upgrades\\cloud-api-imgupgrade-f72f71956df5-4kten78i\\grafana-password,target=/run/secrets/password,readonly",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim",
+        "-c",
+        "import sys,json,urllib.request,urllib.error,base64,pathlib\nx=json.load(sys.stdin);h={}\nif x['component']=='grafana':h['Authorization']='Basic '+base64.b64encode(('admin:'+pathlib.Path('/run/secrets/password').read_text()).encode()).decode()\nb=json.dumps(x['payload']).encode() if x['payload'] is not None else None\nif b:h['Content-Type']='application/json'\nq=urllib.request.Request('http://127.0.0.1:'+str(x['port'])+x['path'],data=b,headers=h)\nhttp=urllib.request.build_opener(urllib.request.ProxyHandler({}))\ntry:r=http.open(q,timeout=5)\nexcept urllib.error.HTTPError as e:r=e\nexcept OSError as e:print(json.dumps({'status':0,'error':type(e).__name__}));sys.exit(0)\nraw=r.read()\ntry:body=json.loads(raw) if raw else None\nexcept ValueError:body=raw.decode()\nprint(json.dumps({'status':r.status,'body':body}))\n"
+      ],
+      "path": "/api/health",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--network",
+        "container:cloud-api-imgupgrade-f72f71956df5-server",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--mount",
+        "type=bind,source=D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\storage-upgrades\\cloud-api-imgupgrade-f72f71956df5-4kten78i\\grafana-password,target=/run/secrets/password,readonly",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim",
+        "-c",
+        "import sys,json,urllib.request,urllib.error,base64,pathlib\nx=json.load(sys.stdin);h={}\nif x['component']=='grafana':h['Authorization']='Basic '+base64.b64encode(('admin:'+pathlib.Path('/run/secrets/password').read_text()).encode()).decode()\nb=json.dumps(x['payload']).encode() if x['payload'] is not None else None\nif b:h['Content-Type']='application/json'\nq=urllib.request.Request('http://127.0.0.1:'+str(x['port'])+x['path'],data=b,headers=h)\nhttp=urllib.request.build_opener(urllib.request.ProxyHandler({}))\ntry:r=http.open(q,timeout=5)\nexcept urllib.error.HTTPError as e:r=e\nexcept OSError as e:print(json.dumps({'status':0,'error':type(e).__name__}));sys.exit(0)\nraw=r.read()\ntry:body=json.loads(raw) if raw else None\nexcept ValueError:body=raw.decode()\nprint(json.dumps({'status':r.status,'body':body}))\n"
+      ],
+      "path": "/api/dashboards/db",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--network",
+        "container:cloud-api-imgupgrade-f72f71956df5-server",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--mount",
+        "type=bind,source=D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\storage-upgrades\\cloud-api-imgupgrade-f72f71956df5-4kten78i\\grafana-password,target=/run/secrets/password,readonly",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim",
+        "-c",
+        "import sys,json,urllib.request,urllib.error,base64,pathlib\nx=json.load(sys.stdin);h={}\nif x['component']=='grafana':h['Authorization']='Basic '+base64.b64encode(('admin:'+pathlib.Path('/run/secrets/password').read_text()).encode()).decode()\nb=json.dumps(x['payload']).encode() if x['payload'] is not None else None\nif b:h['Content-Type']='application/json'\nq=urllib.request.Request('http://127.0.0.1:'+str(x['port'])+x['path'],data=b,headers=h)\nhttp=urllib.request.build_opener(urllib.request.ProxyHandler({}))\ntry:r=http.open(q,timeout=5)\nexcept urllib.error.HTTPError as e:r=e\nexcept OSError as e:print(json.dumps({'status':0,'error':type(e).__name__}));sys.exit(0)\nraw=r.read()\ntry:body=json.loads(raw) if raw else None\nexcept ValueError:body=raw.decode()\nprint(json.dumps({'status':r.status,'body':body}))\n"
+      ],
+      "path": "/api/dashboards/uid/image-review-before",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--network",
+        "container:cloud-api-imgupgrade-f72f71956df5-server",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--mount",
+        "type=bind,source=D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\storage-upgrades\\cloud-api-imgupgrade-f72f71956df5-4kten78i\\grafana-password,target=/run/secrets/password,readonly",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim",
+        "-c",
+        "import sys,json,urllib.request,urllib.error,base64,pathlib\nx=json.load(sys.stdin);h={}\nif x['component']=='grafana':h['Authorization']='Basic '+base64.b64encode(('admin:'+pathlib.Path('/run/secrets/password').read_text()).encode()).decode()\nb=json.dumps(x['payload']).encode() if x['payload'] is not None else None\nif b:h['Content-Type']='application/json'\nq=urllib.request.Request('http://127.0.0.1:'+str(x['port'])+x['path'],data=b,headers=h)\nhttp=urllib.request.build_opener(urllib.request.ProxyHandler({}))\ntry:r=http.open(q,timeout=5)\nexcept urllib.error.HTTPError as e:r=e\nexcept OSError as e:print(json.dumps({'status':0,'error':type(e).__name__}));sys.exit(0)\nraw=r.read()\ntry:body=json.loads(raw) if raw else None\nexcept ValueError:body=raw.decode()\nprint(json.dumps({'status':r.status,'body':body}))\n"
+      ],
+      "path": "/api/dashboards/uid/image-review-before",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "stop",
+        "--time",
+        "40",
+        "cloud-api-imgupgrade-f72f71956df5-server"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "cloud-api-imgupgrade-f72f71956df5-server"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--entrypoint",
+        "python",
+        "--mount",
+        "type=volume,source=cloud-api-imgupgrade-f72f71956df5-data,target=/source,readonly",
+        "--mount",
+        "type=volume,source=cloud-api-imgupgrade-f72f71956df5-coldcopy,target=/backup",
+        "python:3.11-slim",
+        "-c",
+        "import os,shutil,pathlib\nsrc=pathlib.Path('/source');dst=pathlib.Path('/backup')\nshutil.copytree(src,dst,dirs_exist_ok=True)\nfor p in [src,*src.rglob('*')]:\n s=p.stat();q=dst/p.relative_to(src);os.chown(q,s.st_uid,s.st_gid)\n"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "cloud-api-imgupgrade-f72f71956df5-server",
+        "--label",
+        "florasecure.image-review=cloud-api-imgupgrade-f72f71956df5",
+        "--network",
+        "cloud-api-imgupgrade-f72f71956df5-storage",
+        "--mount",
+        "type=volume,source=cloud-api-imgupgrade-f72f71956df5-data,target=/var/lib/grafana",
+        "--mount",
+        "type=bind,source=D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\storage-upgrades\\cloud-api-imgupgrade-f72f71956df5-4kten78i\\grafana-password,target=/run/secrets/password,readonly",
+        "--mount",
+        "type=bind,source=D:\\MatMaHoc\\Project_CLOUD_API\\monitoring\\p6-grafana,target=/etc/grafana/provisioning,readonly",
+        "-e",
+        "GF_SECURITY_ADMIN_USER=admin",
+        "-e",
+        "GF_SECURITY_ADMIN_PASSWORD__FILE=/run/secrets/password",
+        "-e",
+        "GF_AUTH_ANONYMOUS_ENABLED=false",
+        "-e",
+        "GF_USERS_ALLOW_SIGN_UP=false",
+        "-e",
+        "GF_ANALYTICS_CHECK_FOR_UPDATES=false",
+        "-e",
+        "GF_ANALYTICS_REPORTING_ENABLED=false",
+        "-e",
+        "GF_LOG_LEVEL=error",
+        "sha256:a9043254ba16fb10945cc27333963dfd08eccbb43b51f1222d831cc564e3a1f4"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "cloud-api-imgupgrade-f72f71956df5-server"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--network",
+        "container:cloud-api-imgupgrade-f72f71956df5-server",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--mount",
+        "type=bind,source=D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\storage-upgrades\\cloud-api-imgupgrade-f72f71956df5-4kten78i\\grafana-password,target=/run/secrets/password,readonly",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim",
+        "-c",
+        "import sys,json,urllib.request,urllib.error,base64,pathlib\nx=json.load(sys.stdin);h={}\nif x['component']=='grafana':h['Authorization']='Basic '+base64.b64encode(('admin:'+pathlib.Path('/run/secrets/password').read_text()).encode()).decode()\nb=json.dumps(x['payload']).encode() if x['payload'] is not None else None\nif b:h['Content-Type']='application/json'\nq=urllib.request.Request('http://127.0.0.1:'+str(x['port'])+x['path'],data=b,headers=h)\nhttp=urllib.request.build_opener(urllib.request.ProxyHandler({}))\ntry:r=http.open(q,timeout=5)\nexcept urllib.error.HTTPError as e:r=e\nexcept OSError as e:print(json.dumps({'status':0,'error':type(e).__name__}));sys.exit(0)\nraw=r.read()\ntry:body=json.loads(raw) if raw else None\nexcept ValueError:body=raw.decode()\nprint(json.dumps({'status':r.status,'body':body}))\n"
+      ],
+      "path": "/api/health",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--network",
+        "container:cloud-api-imgupgrade-f72f71956df5-server",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--mount",
+        "type=bind,source=D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\storage-upgrades\\cloud-api-imgupgrade-f72f71956df5-4kten78i\\grafana-password,target=/run/secrets/password,readonly",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim",
+        "-c",
+        "import sys,json,urllib.request,urllib.error,base64,pathlib\nx=json.load(sys.stdin);h={}\nif x['component']=='grafana':h['Authorization']='Basic '+base64.b64encode(('admin:'+pathlib.Path('/run/secrets/password').read_text()).encode()).decode()\nb=json.dumps(x['payload']).encode() if x['payload'] is not None else None\nif b:h['Content-Type']='application/json'\nq=urllib.request.Request('http://127.0.0.1:'+str(x['port'])+x['path'],data=b,headers=h)\nhttp=urllib.request.build_opener(urllib.request.ProxyHandler({}))\ntry:r=http.open(q,timeout=5)\nexcept urllib.error.HTTPError as e:r=e\nexcept OSError as e:print(json.dumps({'status':0,'error':type(e).__name__}));sys.exit(0)\nraw=r.read()\ntry:body=json.loads(raw) if raw else None\nexcept ValueError:body=raw.decode()\nprint(json.dumps({'status':r.status,'body':body}))\n"
+      ],
+      "path": "/api/dashboards/uid/image-review-before",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--network",
+        "container:cloud-api-imgupgrade-f72f71956df5-server",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--mount",
+        "type=bind,source=D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\storage-upgrades\\cloud-api-imgupgrade-f72f71956df5-4kten78i\\grafana-password,target=/run/secrets/password,readonly",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim",
+        "-c",
+        "import sys,json,urllib.request,urllib.error,base64,pathlib\nx=json.load(sys.stdin);h={}\nif x['component']=='grafana':h['Authorization']='Basic '+base64.b64encode(('admin:'+pathlib.Path('/run/secrets/password').read_text()).encode()).decode()\nb=json.dumps(x['payload']).encode() if x['payload'] is not None else None\nif b:h['Content-Type']='application/json'\nq=urllib.request.Request('http://127.0.0.1:'+str(x['port'])+x['path'],data=b,headers=h)\nhttp=urllib.request.build_opener(urllib.request.ProxyHandler({}))\ntry:r=http.open(q,timeout=5)\nexcept urllib.error.HTTPError as e:r=e\nexcept OSError as e:print(json.dumps({'status':0,'error':type(e).__name__}));sys.exit(0)\nraw=r.read()\ntry:body=json.loads(raw) if raw else None\nexcept ValueError:body=raw.decode()\nprint(json.dumps({'status':r.status,'body':body}))\n"
+      ],
+      "path": "/api/dashboards/db",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--network",
+        "container:cloud-api-imgupgrade-f72f71956df5-server",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--mount",
+        "type=bind,source=D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\storage-upgrades\\cloud-api-imgupgrade-f72f71956df5-4kten78i\\grafana-password,target=/run/secrets/password,readonly",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim",
+        "-c",
+        "import sys,json,urllib.request,urllib.error,base64,pathlib\nx=json.load(sys.stdin);h={}\nif x['component']=='grafana':h['Authorization']='Basic '+base64.b64encode(('admin:'+pathlib.Path('/run/secrets/password').read_text()).encode()).decode()\nb=json.dumps(x['payload']).encode() if x['payload'] is not None else None\nif b:h['Content-Type']='application/json'\nq=urllib.request.Request('http://127.0.0.1:'+str(x['port'])+x['path'],data=b,headers=h)\nhttp=urllib.request.build_opener(urllib.request.ProxyHandler({}))\ntry:r=http.open(q,timeout=5)\nexcept urllib.error.HTTPError as e:r=e\nexcept OSError as e:print(json.dumps({'status':0,'error':type(e).__name__}));sys.exit(0)\nraw=r.read()\ntry:body=json.loads(raw) if raw else None\nexcept ValueError:body=raw.decode()\nprint(json.dumps({'status':r.status,'body':body}))\n"
+      ],
+      "path": "/api/dashboards/uid/image-review-after",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--network",
+        "container:cloud-api-imgupgrade-f72f71956df5-server",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--mount",
+        "type=bind,source=D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\storage-upgrades\\cloud-api-imgupgrade-f72f71956df5-4kten78i\\grafana-password,target=/run/secrets/password,readonly",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim",
+        "-c",
+        "import sys,json,urllib.request,urllib.error,base64,pathlib\nx=json.load(sys.stdin);h={}\nif x['component']=='grafana':h['Authorization']='Basic '+base64.b64encode(('admin:'+pathlib.Path('/run/secrets/password').read_text()).encode()).decode()\nb=json.dumps(x['payload']).encode() if x['payload'] is not None else None\nif b:h['Content-Type']='application/json'\nq=urllib.request.Request('http://127.0.0.1:'+str(x['port'])+x['path'],data=b,headers=h)\nhttp=urllib.request.build_opener(urllib.request.ProxyHandler({}))\ntry:r=http.open(q,timeout=5)\nexcept urllib.error.HTTPError as e:r=e\nexcept OSError as e:print(json.dumps({'status':0,'error':type(e).__name__}));sys.exit(0)\nraw=r.read()\ntry:body=json.loads(raw) if raw else None\nexcept ValueError:body=raw.decode()\nprint(json.dumps({'status':r.status,'body':body}))\n"
+      ],
+      "path": "/api/dashboards/uid/image-review-before",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--network",
+        "container:cloud-api-imgupgrade-f72f71956df5-server",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--mount",
+        "type=bind,source=D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\storage-upgrades\\cloud-api-imgupgrade-f72f71956df5-4kten78i\\grafana-password,target=/run/secrets/password,readonly",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim",
+        "-c",
+        "import sys,json,urllib.request,urllib.error,base64,pathlib\nx=json.load(sys.stdin);h={}\nif x['component']=='grafana':h['Authorization']='Basic '+base64.b64encode(('admin:'+pathlib.Path('/run/secrets/password').read_text()).encode()).decode()\nb=json.dumps(x['payload']).encode() if x['payload'] is not None else None\nif b:h['Content-Type']='application/json'\nq=urllib.request.Request('http://127.0.0.1:'+str(x['port'])+x['path'],data=b,headers=h)\nhttp=urllib.request.build_opener(urllib.request.ProxyHandler({}))\ntry:r=http.open(q,timeout=5)\nexcept urllib.error.HTTPError as e:r=e\nexcept OSError as e:print(json.dumps({'status':0,'error':type(e).__name__}));sys.exit(0)\nraw=r.read()\ntry:body=json.loads(raw) if raw else None\nexcept ValueError:body=raw.decode()\nprint(json.dumps({'status':r.status,'body':body}))\n"
+      ],
+      "path": "/api/dashboards/uid/image-review-after",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "stop",
+        "--time",
+        "40",
+        "cloud-api-imgupgrade-f72f71956df5-server"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "cloud-api-imgupgrade-f72f71956df5-server"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "cloud-api-imgupgrade-f72f71956df5-server",
+        "--label",
+        "florasecure.image-review=cloud-api-imgupgrade-f72f71956df5",
+        "--network",
+        "cloud-api-imgupgrade-f72f71956df5-storage",
+        "--mount",
+        "type=volume,source=cloud-api-imgupgrade-f72f71956df5-coldcopy,target=/var/lib/grafana",
+        "--mount",
+        "type=bind,source=D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\storage-upgrades\\cloud-api-imgupgrade-f72f71956df5-4kten78i\\grafana-password,target=/run/secrets/password,readonly",
+        "--mount",
+        "type=bind,source=D:\\MatMaHoc\\Project_CLOUD_API\\monitoring\\p6-grafana,target=/etc/grafana/provisioning,readonly",
+        "-e",
+        "GF_SECURITY_ADMIN_USER=admin",
+        "-e",
+        "GF_SECURITY_ADMIN_PASSWORD__FILE=/run/secrets/password",
+        "-e",
+        "GF_AUTH_ANONYMOUS_ENABLED=false",
+        "-e",
+        "GF_USERS_ALLOW_SIGN_UP=false",
+        "-e",
+        "GF_ANALYTICS_CHECK_FOR_UPDATES=false",
+        "-e",
+        "GF_ANALYTICS_REPORTING_ENABLED=false",
+        "-e",
+        "GF_LOG_LEVEL=error",
+        "sha256:7d5faae481a4c6f436c99e98af11534f7fd5e8d3e35213552dd1dd02bc393d2e"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "cloud-api-imgupgrade-f72f71956df5-server"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--network",
+        "container:cloud-api-imgupgrade-f72f71956df5-server",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--mount",
+        "type=bind,source=D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\storage-upgrades\\cloud-api-imgupgrade-f72f71956df5-4kten78i\\grafana-password,target=/run/secrets/password,readonly",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim",
+        "-c",
+        "import sys,json,urllib.request,urllib.error,base64,pathlib\nx=json.load(sys.stdin);h={}\nif x['component']=='grafana':h['Authorization']='Basic '+base64.b64encode(('admin:'+pathlib.Path('/run/secrets/password').read_text()).encode()).decode()\nb=json.dumps(x['payload']).encode() if x['payload'] is not None else None\nif b:h['Content-Type']='application/json'\nq=urllib.request.Request('http://127.0.0.1:'+str(x['port'])+x['path'],data=b,headers=h)\nhttp=urllib.request.build_opener(urllib.request.ProxyHandler({}))\ntry:r=http.open(q,timeout=5)\nexcept urllib.error.HTTPError as e:r=e\nexcept OSError as e:print(json.dumps({'status':0,'error':type(e).__name__}));sys.exit(0)\nraw=r.read()\ntry:body=json.loads(raw) if raw else None\nexcept ValueError:body=raw.decode()\nprint(json.dumps({'status':r.status,'body':body}))\n"
+      ],
+      "path": "/api/health",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--network",
+        "container:cloud-api-imgupgrade-f72f71956df5-server",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--mount",
+        "type=bind,source=D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\storage-upgrades\\cloud-api-imgupgrade-f72f71956df5-4kten78i\\grafana-password,target=/run/secrets/password,readonly",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim",
+        "-c",
+        "import sys,json,urllib.request,urllib.error,base64,pathlib\nx=json.load(sys.stdin);h={}\nif x['component']=='grafana':h['Authorization']='Basic '+base64.b64encode(('admin:'+pathlib.Path('/run/secrets/password').read_text()).encode()).decode()\nb=json.dumps(x['payload']).encode() if x['payload'] is not None else None\nif b:h['Content-Type']='application/json'\nq=urllib.request.Request('http://127.0.0.1:'+str(x['port'])+x['path'],data=b,headers=h)\nhttp=urllib.request.build_opener(urllib.request.ProxyHandler({}))\ntry:r=http.open(q,timeout=5)\nexcept urllib.error.HTTPError as e:r=e\nexcept OSError as e:print(json.dumps({'status':0,'error':type(e).__name__}));sys.exit(0)\nraw=r.read()\ntry:body=json.loads(raw) if raw else None\nexcept ValueError:body=raw.decode()\nprint(json.dumps({'status':r.status,'body':body}))\n"
+      ],
+      "path": "/api/dashboards/uid/image-review-before",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "--network",
+        "container:cloud-api-imgupgrade-f72f71956df5-server",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--mount",
+        "type=bind,source=D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\storage-upgrades\\cloud-api-imgupgrade-f72f71956df5-4kten78i\\grafana-password,target=/run/secrets/password,readonly",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim",
+        "-c",
+        "import sys,json,urllib.request,urllib.error,base64,pathlib\nx=json.load(sys.stdin);h={}\nif x['component']=='grafana':h['Authorization']='Basic '+base64.b64encode(('admin:'+pathlib.Path('/run/secrets/password').read_text()).encode()).decode()\nb=json.dumps(x['payload']).encode() if x['payload'] is not None else None\nif b:h['Content-Type']='application/json'\nq=urllib.request.Request('http://127.0.0.1:'+str(x['port'])+x['path'],data=b,headers=h)\nhttp=urllib.request.build_opener(urllib.request.ProxyHandler({}))\ntry:r=http.open(q,timeout=5)\nexcept urllib.error.HTTPError as e:r=e\nexcept OSError as e:print(json.dumps({'status':0,'error':type(e).__name__}));sys.exit(0)\nraw=r.read()\ntry:body=json.loads(raw) if raw else None\nexcept ValueError:body=raw.decode()\nprint(json.dumps({'status':r.status,'body':body}))\n"
+      ],
+      "path": "/api/dashboards/uid/image-review-after",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "--force",
+        "cloud-api-imgupgrade-f72f71956df5-server"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "rm",
+        "cloud-api-imgupgrade-f72f71956df5-data"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "rm",
+        "cloud-api-imgupgrade-f72f71956df5-coldcopy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "rm",
+        "cloud-api-imgupgrade-f72f71956df5-storage"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "images": [
+    {
+      "reference": "sha256:7d5faae481a4c6f436c99e98af11534f7fd5e8d3e35213552dd1dd02bc393d2e",
+      "id": "sha256:7d5faae481a4c6f436c99e98af11534f7fd5e8d3e35213552dd1dd02bc393d2e",
+      "repo_digests": [
+        "grafana/grafana@sha256:7d5faae481a4c6f436c99e98af11534f7fd5e8d3e35213552dd1dd02bc393d2e"
+      ],
+      "platform": "linux/amd64"
+    },
+    {
+      "reference": "sha256:a9043254ba16fb10945cc27333963dfd08eccbb43b51f1222d831cc564e3a1f4",
+      "id": "sha256:a9043254ba16fb10945cc27333963dfd08eccbb43b51f1222d831cc564e3a1f4",
+      "repo_digests": [
+        "grafana/grafana@sha256:a9043254ba16fb10945cc27333963dfd08eccbb43b51f1222d831cc564e3a1f4"
+      ],
+      "platform": "linux/amd64"
+    }
+  ],
+  "stages": [
+    {
+      "image_id": "sha256:7d5faae481a4c6f436c99e98af11534f7fd5e8d3e35213552dd1dd02bc393d2e",
+      "volume": "cloud-api-imgupgrade-f72f71956df5-data",
+      "ready": true,
+      "user": "472"
+    },
+    {
+      "image_id": "sha256:a9043254ba16fb10945cc27333963dfd08eccbb43b51f1222d831cc564e3a1f4",
+      "volume": "cloud-api-imgupgrade-f72f71956df5-data",
+      "ready": true,
+      "user": "472"
+    },
+    {
+      "image_id": "sha256:7d5faae481a4c6f436c99e98af11534f7fd5e8d3e35213552dd1dd02bc393d2e",
+      "volume": "cloud-api-imgupgrade-f72f71956df5-coldcopy",
+      "ready": true,
+      "user": "472"
+    }
+  ],
+  "old_marker_survives_upgrade": true,
+  "new_write_after_upgrade": true,
+  "cold_copy_rollback_preserves_old_state": true,
+  "reverse_binary_on_upgraded_storage_tested": false,
+  "cleanup_exit_codes": [
+    0,
+    0,
+    0,
+    0
+  ]
+}

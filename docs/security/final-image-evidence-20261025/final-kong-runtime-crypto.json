@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "docker",
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--read-only",
+    "--cap-drop",
+    "ALL",
+    "--security-opt",
+    "no-new-privileges",
+    "--entrypoint",
+    "/bin/sh",
+    "sha256:92035d16d7ff86b7bc12fb1d0090d29357d924238b1880f78735f3f2fea6b631",
+    "-c",
+    "/usr/local/openresty/nginx/sbin/nginx -V; /usr/local/kong/bin/openssl version; /usr/bin/openssl version"
+  ],
+  "started_utc": "2026-10-25T07:39:19.365460+00:00",
+  "finished_utc": "2026-10-25T07:39:20.053626+00:00",
+  "exit_code": 0,
+  "stdout": "OpenSSL 3.0.13 30 Jan 2024 (Library: OpenSSL 3.0.13 30 Jan 2024)\n",
+  "stderr": "nginx version: openresty/1.25.3.2\nbuilt with OpenSSL 3.2.3 3 Sep 2024\nTLS SNI support enabled\nconfigure arguments: --prefix=/github/home/.bazel/execroot/_main/bazel-out/k8-opt/bin/external/openresty/openresty.build_tmpdir/openresty/nginx --with-cc-opt='-O2 -I/github/home/.bazel/execroot/_main/bazel-out/k8-opt/bin/external/openresty/openresty.ext_build_deps/pcre/include -I/github/home/.bazel/execroot/_main/bazel-out/k8-opt/bin/external/openresty/openresty.ext_build_deps/openssl/include -I/github/home/.bazel/execroot/_main/bazel-out/k8-opt/bin/external/openresty/openresty.ext_build_deps/luajit/include -DNGX_WASM_HOST_PROPERTY_NAMESPACE=kong' --add-module=../ngx_devel_kit-0.3.3 --add-module=../echo-nginx-module-0.63 --add-module=../ngx_lua-0.10.26 --add-module=../headers-more-nginx-module-0.37 --add-module=../ngx_stream_lua-0.0.14 --with-ld-opt='-Wl,-rpath,/usr/local/openresty/luajit/lib -L/github/home/.bazel/execroot/_main/bazel-out/k8-opt/bin/external/openresty/openresty.ext_build_deps/pcre/lib -L/github/home/.bazel/execroot/_main/bazel-out/k8-opt/bin/external/openresty/openresty.ext_build_deps/openssl/lib -L/github/home/.bazel/execroot/_main/bazel-out/k8-opt/bin/external/openresty/openresty.ext_build_deps/luajit/lib -L/github/home/.bazel/execroot/_main/bazel-out/k8-opt/bin/external/openresty/openresty.ext_build_deps/lib -Wl,-rpath,/usr/local/kong/lib -Wl,-rpath,/usr/local/openresty/lualib' --with-pcre-jit --with-http_ssl_module --with-http_sub_module --with-http_realip_module --with-http_stub_status_module --with-http_v2_module --with-stream_realip_module --with-stream_ssl_preread_module --add-module=/github/home/.bazel/execroot/_main/external/lua-kong-nginx-module --add-module=/github/home/.bazel/execroot/_main/external/lua-kong-nginx-module/stream --add-module=/github/home/.bazel/execroot/_main/external/lua-resty-lmdb --add-module=/github/home/.bazel/execroot/_main/external/lua-resty-events --add-module=/github/home/.bazel/execroot/_main/external/ngx_brotli --with-compat --add-dynamic-module=/github/home/.bazel/execroot/_main/external/ngx_wasmx_module --with-stream --with-stream_ssl_module\n/bin/sh: 1: /usr/local/kong/bin/openssl: not found\n"
+}

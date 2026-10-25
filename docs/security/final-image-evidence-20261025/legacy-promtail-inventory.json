@@ -1,0 +1,15 @@
+{
+  "Id": "sha256:45d54f0ebd7a19acbcd4693a3227d84d27d98abe1dc7ea3068d31d5d02dbe696",
+  "RepoDigests": [
+    "grafana/promtail@sha256:45d54f0ebd7a19acbcd4693a3227d84d27d98abe1dc7ea3068d31d5d02dbe696"
+  ],
+  "Architecture": "amd64",
+  "Os": "linux",
+  "Created": "2024-05-03T07:52:15.392482638Z",
+  "reference": "grafana/promtail:2.9.8",
+  "scope": "Historical legacy runner/base Compose only; excluded by active P6 profile",
+  "image_user": null,
+  "entrypoint": [
+    "/usr/bin/promtail"
+  ]
+}

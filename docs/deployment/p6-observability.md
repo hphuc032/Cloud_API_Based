@@ -1,5 +1,12 @@
 # P6 deployment, validation and rollback
 
+**2026-10-25 follow-up:** current reviewed pins are Alloy1.14.2, Loki2.9.17 and
+Grafana10.4.19. Final image/positions/storage/retention validation is recorded in
+[the image test report](../testing/final-image-remediation-results.md).
+Release remains BLOCKED by unaccepted security risks; use the
+[current upgrade/rollback guide](final-image-upgrade-rollback.md) for stateful changes.
+Original P6 cloud-executor notes below describe their historical environment.
+
 Use approved P5 `9ebca60bff2947e26b2a91ef0273118d21fd6c05` and reviewed P6 changes. Work only on disposable projects until the acceptance report permits otherwise. Use the existing secrets/PKI procedures; never supply credentials on a logged command line. P6 cannot repair the Agent's platform DNS by overriding application validation.
 
 Compose order: `docker/docker-compose.yml`, `docker/p4-compose.yml`, `docker/p5-compose.yml`, `docker/p6-compose.yml`, then a reviewed collector manifest. Set the existing exact HTTPS issuer/origins, secrets, PKI and built SPA paths. P6 must use new project-scoped `p6_loki_data` and `p6_grafana_data` volumes; it never changes an existing Loki schema/volume in place.
@@ -8,7 +15,7 @@ Start application/identity services and Kong first. Inspect their container IDs/
 
 ```sh
 # Config validation, no production volumes:
-docker run --rm -v "$PWD/monitoring/alloy:/etc/alloy:ro" grafana/alloy:v1.14.1 validate /etc/alloy/config.alloy
+docker run --rm --network none -e LOG_PROJECT=cloud-api-validation -v "$PWD/monitoring/alloy:/etc/alloy:ro" grafana/alloy:v1.14.2@sha256:eadfe35ea52b26cbec4d4d780fbcc31edb31108c1c9e537ca59557a5a102c712 validate /etc/alloy/config.alloy
 python3 tests/p6/run.py --focus hardening
 python3 tests/p6/run.py
 # Legacy regression is isolated and keeps the historical Promtail deployment:
@@ -19,7 +26,7 @@ On this vfs cloud host the same reviewed P5 dependency/source overrides can be u
 
 ## Pipeline operations
 
-Alloy1.14.1 is digest-pinned. The P6 Kong overlay loads the tracked `p6-telemetry` OSS log-phase plugin and a128KiB OpenResty error ring; raw proxy errors remain disabled and only constant TLS reasons are persisted. Existing Loki2.9.8/Grafana10.4.2 versions are retained for bounded compatibility testing; their age/support status requires review before production. A tested version pin is not proof of ongoing vulnerability support. No commercial feature is used. Alloy readiness is internal `:12345/-/ready`; component errors must also be inspected, since process readiness alone does not prove ingestion. Loki readiness is internal `:3100/ready`, Grafana `:3000/api/health`. Loki and Alloy have no host port; Grafana inherits loopback-only port3001. Authentication is enabled and anonymous signup disabled; verified HTTPS management ingress is required for remote use.
+Alloy1.14.2 is digest-pinned. The P6 Kong overlay loads the tracked `p6-telemetry` OSS log-phase plugin and a128KiB OpenResty error ring; raw proxy errors remain disabled and only constant TLS reasons are persisted. Loki2.9.17/Grafana10.4.19 have passed bounded compatibility testing; remaining advisories and support risks still block release. A tested version pin is not proof of ongoing vulnerability support. No commercial feature is used. Alloy readiness is internal `:12345/-/ready`; component errors must also be inspected, since process readiness alone does not prove ingestion. Loki readiness is internal `:3100/ready`, Grafana `:3000/api/health`. Loki and Alloy have no host port; Grafana inherits loopback-only port3001. Authentication is enabled and anonymous signup disabled; verified HTTPS management ingress is required for remote use.
 
 Alloy persists file positions and batches256KiB/1second, with10second request timeout and bounded retry backoff500ms–5s ×10. There is no durable remote-write WAL guarantee here. Prolonged outages, rotated source logs, positions loss, container recreation, disk full or exhausted retries can lose logs. Position replay and Loki deduplication behavior require actual restart testing. Refresh the mount manifest after recreation. No exactly-once delivery claim is made.
 

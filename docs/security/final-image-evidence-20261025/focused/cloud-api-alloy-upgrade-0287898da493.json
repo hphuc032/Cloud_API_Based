@@ -1,0 +1,1086 @@
+{
+  "project": "cloud-api-alloy-upgrade-0287898da493",
+  "status": "PASS",
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "image",
+        "inspect",
+        "grafana/alloy:v1.14.1@sha256:8f5666aebb871ba43ee2d65159c5d1c26c903720efafaf2d9ed4e237afc3bc88"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "image",
+        "inspect",
+        "grafana/alloy:v1.14.2@sha256:eadfe35ea52b26cbec4d4d780fbcc31edb31108c1c9e537ca59557a5a102c712"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "image",
+        "inspect",
+        "grafana/loki:2.9.17@sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "image",
+        "inspect",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "create",
+        "--internal",
+        "--label",
+        "florasecure.alloy-upgrade=cloud-api-alloy-upgrade-0287898da493",
+        "cloud-api-alloy-upgrade-0287898da493-net"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "create",
+        "--label",
+        "florasecure.alloy-upgrade=cloud-api-alloy-upgrade-0287898da493",
+        "cloud-api-alloy-upgrade-0287898da493-positions"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "create",
+        "--label",
+        "florasecure.alloy-upgrade=cloud-api-alloy-upgrade-0287898da493",
+        "cloud-api-alloy-upgrade-0287898da493-cold"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "create",
+        "--label",
+        "florasecure.alloy-upgrade=cloud-api-alloy-upgrade-0287898da493",
+        "cloud-api-alloy-upgrade-0287898da493-data"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "cloud-api-alloy-upgrade-0287898da493-loki",
+        "--label",
+        "florasecure.alloy-upgrade=cloud-api-alloy-upgrade-0287898da493",
+        "--network",
+        "cloud-api-alloy-upgrade-0287898da493-net",
+        "--network-alias",
+        "loki",
+        "--mount",
+        "type=volume,source=cloud-api-alloy-upgrade-0287898da493-data,target=/loki",
+        "--mount",
+        "type=bind,source=/tmp/florasecure-final-image-alloy-final-20261025/monitoring/loki/p6-loki.yml,target=/etc/loki/p6.yml,readonly",
+        "-e",
+        "HTTP_PROXY=",
+        "-e",
+        "HTTPS_PROXY=",
+        "-e",
+        "NO_PROXY=*",
+        "grafana/loki:2.9.17@sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04",
+        "-config.file=/etc/loki/p6.yml"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-loki",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:3100/ready',timeout=5).read().decode())"
+      ],
+      "exit_code": 1
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-loki",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:3100/ready',timeout=5).read().decode())"
+      ],
+      "exit_code": 1
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-loki",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:3100/ready',timeout=5).read().decode())"
+      ],
+      "exit_code": 1
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-loki",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:3100/ready',timeout=5).read().decode())"
+      ],
+      "exit_code": 1
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-loki",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:3100/ready',timeout=5).read().decode())"
+      ],
+      "exit_code": 1
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-loki",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:3100/ready',timeout=5).read().decode())"
+      ],
+      "exit_code": 1
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-loki",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:3100/ready',timeout=5).read().decode())"
+      ],
+      "exit_code": 1
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-loki",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:3100/ready',timeout=5).read().decode())"
+      ],
+      "exit_code": 1
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-loki",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:3100/ready',timeout=5).read().decode())"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "cloud-api-alloy-upgrade-0287898da493-alloy",
+        "--label",
+        "florasecure.alloy-upgrade=cloud-api-alloy-upgrade-0287898da493",
+        "--network",
+        "cloud-api-alloy-upgrade-0287898da493-net",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--tmpfs",
+        "/tmp",
+        "--mount",
+        "type=volume,source=cloud-api-alloy-upgrade-0287898da493-positions,target=/var/lib/alloy,volume-nocopy",
+        "--mount",
+        "type=bind,source=/tmp/cloud-api-alloy-upgrade-0287898da493-v0zifycf/logs,target=/var/log/project,readonly",
+        "--mount",
+        "type=bind,source=/tmp/florasecure-final-image-alloy-final-20261025/monitoring/alloy/config.alloy,target=/etc/alloy/config.alloy,readonly",
+        "-e",
+        "LOG_PROJECT=cloud-api-alloy-upgrade-0287898da493",
+        "grafana/alloy:v1.14.1@sha256:8f5666aebb871ba43ee2d65159c5d1c26c903720efafaf2d9ed4e237afc3bc88",
+        "run",
+        "--server.http.listen-addr=0.0.0.0:12345",
+        "--storage.path=/var/lib/alloy",
+        "/etc/alloy/config.alloy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-alloy",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:12345/-/ready',timeout=5).read().decode())"
+      ],
+      "exit_code": 1
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-alloy",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:12345/-/ready',timeout=5).read().decode())"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "cloud-api-alloy-upgrade-0287898da493-alloy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-loki",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:3100/loki/api/v1/query_range?query=%7Bproject%3D%22cloud-api-alloy-upgrade-0287898da493%22%2Cservice%3D%22backend%22%7D+%7C+json+%7C+marker%3D%22before%22&start=1792911383405465550&end=1792914984405471726',timeout=5).read().decode())"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-alloy",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:12345/metrics',timeout=5).read().decode())"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "stop",
+        "--time",
+        "40",
+        "cloud-api-alloy-upgrade-0287898da493-alloy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "cloud-api-alloy-upgrade-0287898da493-alloy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--entrypoint",
+        "python",
+        "--mount",
+        "type=volume,source=cloud-api-alloy-upgrade-0287898da493-positions,target=/source,readonly",
+        "--mount",
+        "type=volume,source=cloud-api-alloy-upgrade-0287898da493-cold,target=/copy",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import os,shutil,pathlib; s=pathlib.Path('/source'); d=pathlib.Path('/copy'); shutil.copytree(s,d,dirs_exist_ok=True); [(os.chown(d/p.relative_to(s),p.stat().st_uid,p.stat().st_gid)) for p in [s,*s.rglob('*')]]"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "cloud-api-alloy-upgrade-0287898da493-alloy",
+        "--label",
+        "florasecure.alloy-upgrade=cloud-api-alloy-upgrade-0287898da493",
+        "--network",
+        "cloud-api-alloy-upgrade-0287898da493-net",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--tmpfs",
+        "/tmp",
+        "--mount",
+        "type=volume,source=cloud-api-alloy-upgrade-0287898da493-positions,target=/var/lib/alloy,volume-nocopy",
+        "--mount",
+        "type=bind,source=/tmp/cloud-api-alloy-upgrade-0287898da493-v0zifycf/logs,target=/var/log/project,readonly",
+        "--mount",
+        "type=bind,source=/tmp/florasecure-final-image-alloy-final-20261025/monitoring/alloy/config.alloy,target=/etc/alloy/config.alloy,readonly",
+        "-e",
+        "LOG_PROJECT=cloud-api-alloy-upgrade-0287898da493",
+        "grafana/alloy:v1.14.2@sha256:eadfe35ea52b26cbec4d4d780fbcc31edb31108c1c9e537ca59557a5a102c712",
+        "run",
+        "--server.http.listen-addr=0.0.0.0:12345",
+        "--storage.path=/var/lib/alloy",
+        "/etc/alloy/config.alloy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-alloy",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:12345/-/ready',timeout=5).read().decode())"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "cloud-api-alloy-upgrade-0287898da493-alloy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-loki",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:3100/loki/api/v1/query_range?query=%7Bproject%3D%22cloud-api-alloy-upgrade-0287898da493%22%2Cservice%3D%22backend%22%7D+%7C+json+%7C+marker%3D%22after%22&start=1792911388451113505&end=1792914989451119372',timeout=5).read().decode())"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-loki",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:3100/loki/api/v1/query_range?query=%7Bproject%3D%22cloud-api-alloy-upgrade-0287898da493%22%2Cservice%3D%22backend%22%7D+%7C+json+%7C+marker%3D%22after%22&start=1792911390583944213&end=1792914991583949588',timeout=5).read().decode())"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-loki",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:3100/loki/api/v1/query_range?query=%7Bproject%3D%22cloud-api-alloy-upgrade-0287898da493%22%2Cservice%3D%22backend%22%7D+%7C+json+%7C+marker%3D%22before%22&start=1792911391668576680&end=1792914992668580445',timeout=5).read().decode())"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-alloy",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:12345/metrics',timeout=5).read().decode())"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "stop",
+        "--time",
+        "40",
+        "cloud-api-alloy-upgrade-0287898da493-alloy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "cloud-api-alloy-upgrade-0287898da493-alloy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "cloud-api-alloy-upgrade-0287898da493-alloy",
+        "--label",
+        "florasecure.alloy-upgrade=cloud-api-alloy-upgrade-0287898da493",
+        "--network",
+        "cloud-api-alloy-upgrade-0287898da493-net",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--tmpfs",
+        "/tmp",
+        "--mount",
+        "type=volume,source=cloud-api-alloy-upgrade-0287898da493-positions,target=/var/lib/alloy,volume-nocopy",
+        "--mount",
+        "type=bind,source=/tmp/cloud-api-alloy-upgrade-0287898da493-v0zifycf/logs,target=/var/log/project,readonly",
+        "--mount",
+        "type=bind,source=/tmp/florasecure-final-image-alloy-final-20261025/monitoring/alloy/config.alloy,target=/etc/alloy/config.alloy,readonly",
+        "-e",
+        "LOG_PROJECT=cloud-api-alloy-upgrade-0287898da493",
+        "grafana/alloy:v1.14.2@sha256:eadfe35ea52b26cbec4d4d780fbcc31edb31108c1c9e537ca59557a5a102c712",
+        "run",
+        "--server.http.listen-addr=0.0.0.0:12345",
+        "--storage.path=/var/lib/alloy",
+        "/etc/alloy/config.alloy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-alloy",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:12345/-/ready',timeout=5).read().decode())"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "cloud-api-alloy-upgrade-0287898da493-alloy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-loki",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:3100/loki/api/v1/query_range?query=%7Bproject%3D%22cloud-api-alloy-upgrade-0287898da493%22%2Cservice%3D%22backend%22%7D+%7C+json+%7C+marker%3D%22restarted%22&start=1792911396552603007&end=1792914997552605310',timeout=5).read().decode())"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-loki",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:3100/loki/api/v1/query_range?query=%7Bproject%3D%22cloud-api-alloy-upgrade-0287898da493%22%2Cservice%3D%22backend%22%7D+%7C+json+%7C+marker%3D%22restarted%22&start=1792911398507645205&end=1792914999507651739',timeout=5).read().decode())"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-alloy",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:12345/metrics',timeout=5).read().decode())"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "stop",
+        "--time",
+        "40",
+        "cloud-api-alloy-upgrade-0287898da493-alloy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "cloud-api-alloy-upgrade-0287898da493-alloy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "cloud-api-alloy-upgrade-0287898da493-alloy",
+        "--label",
+        "florasecure.alloy-upgrade=cloud-api-alloy-upgrade-0287898da493",
+        "--network",
+        "cloud-api-alloy-upgrade-0287898da493-net",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--tmpfs",
+        "/tmp",
+        "--mount",
+        "type=volume,source=cloud-api-alloy-upgrade-0287898da493-cold,target=/var/lib/alloy,volume-nocopy",
+        "--mount",
+        "type=bind,source=/tmp/cloud-api-alloy-upgrade-0287898da493-v0zifycf/logs,target=/var/log/project,readonly",
+        "--mount",
+        "type=bind,source=/tmp/florasecure-final-image-alloy-final-20261025/monitoring/alloy/config.alloy,target=/etc/alloy/config.alloy,readonly",
+        "-e",
+        "LOG_PROJECT=cloud-api-alloy-upgrade-0287898da493",
+        "grafana/alloy:v1.14.1@sha256:8f5666aebb871ba43ee2d65159c5d1c26c903720efafaf2d9ed4e237afc3bc88",
+        "run",
+        "--server.http.listen-addr=0.0.0.0:12345",
+        "--storage.path=/var/lib/alloy",
+        "/etc/alloy/config.alloy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-alloy",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:12345/-/ready',timeout=5).read().decode())"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "cloud-api-alloy-upgrade-0287898da493-alloy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-loki",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:3100/loki/api/v1/query_range?query=%7Bproject%3D%22cloud-api-alloy-upgrade-0287898da493%22%2Cservice%3D%22backend%22%7D+%7C+json+%7C+marker%3D%22rollback%22&start=1792911403039282238&end=1792915004039286981',timeout=5).read().decode())"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-alloy",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:12345/metrics',timeout=5).read().decode())"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-loki",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:3100/loki/api/v1/query_range?query=%7Bproject%3D%22cloud-api-alloy-upgrade-0287898da493%22%2Cservice%3D%22backend%22%7D+%7C+json+%7C+marker%3D%22before%22&start=1792911405506234106&end=1792915006506240875',timeout=5).read().decode())"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-loki",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:3100/loki/api/v1/query_range?query=%7Bproject%3D%22cloud-api-alloy-upgrade-0287898da493%22%2Cservice%3D%22backend%22%7D+%7C+json+%7C+marker%3D%22after%22&start=1792911406530824804&end=1792915007530828276',timeout=5).read().decode())"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-loki",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:3100/loki/api/v1/query_range?query=%7Bproject%3D%22cloud-api-alloy-upgrade-0287898da493%22%2Cservice%3D%22backend%22%7D+%7C+json+%7C+marker%3D%22restarted%22&start=1792911407491044656&end=1792915008491049932',timeout=5).read().decode())"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "container:cloud-api-alloy-upgrade-0287898da493-loki",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "python",
+        "python:3.11-slim@sha256:b7a9e5f6a93d6d4a31f129bbd4bdee69efccb6ded0fb230d78aafaf37af98377",
+        "-c",
+        "import urllib.request; c=urllib.request.build_opener(urllib.request.ProxyHandler({})); print(c.open('http://127.0.0.1:3100/loki/api/v1/query_range?query=%7Bproject%3D%22cloud-api-alloy-upgrade-0287898da493%22%2Cservice%3D%22backend%22%7D+%7C+json+%7C+marker%3D%22rollback%22&start=1792911406240040340&end=1792915007240044180',timeout=5).read().decode())"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "container",
+        "inspect",
+        "cloud-api-alloy-upgrade-0287898da493-alloy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "container",
+        "rm",
+        "--force",
+        "cloud-api-alloy-upgrade-0287898da493-alloy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "container",
+        "inspect",
+        "cloud-api-alloy-upgrade-0287898da493-loki"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "container",
+        "rm",
+        "--force",
+        "cloud-api-alloy-upgrade-0287898da493-loki"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "inspect",
+        "cloud-api-alloy-upgrade-0287898da493-data"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "rm",
+        "cloud-api-alloy-upgrade-0287898da493-data"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "inspect",
+        "cloud-api-alloy-upgrade-0287898da493-cold"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "rm",
+        "cloud-api-alloy-upgrade-0287898da493-cold"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "inspect",
+        "cloud-api-alloy-upgrade-0287898da493-positions"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "rm",
+        "cloud-api-alloy-upgrade-0287898da493-positions"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "inspect",
+        "cloud-api-alloy-upgrade-0287898da493-net"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "rm",
+        "cloud-api-alloy-upgrade-0287898da493-net"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "stages": [
+    {
+      "image_id": "sha256:8f5666aebb871ba43ee2d65159c5d1c26c903720efafaf2d9ed4e237afc3bc88",
+      "positions_volume": "cloud-api-alloy-upgrade-0287898da493-positions"
+    },
+    {
+      "image_id": "sha256:eadfe35ea52b26cbec4d4d780fbcc31edb31108c1c9e537ca59557a5a102c712",
+      "positions_volume": "cloud-api-alloy-upgrade-0287898da493-positions"
+    },
+    {
+      "image_id": "sha256:eadfe35ea52b26cbec4d4d780fbcc31edb31108c1c9e537ca59557a5a102c712",
+      "positions_volume": "cloud-api-alloy-upgrade-0287898da493-positions"
+    },
+    {
+      "image_id": "sha256:8f5666aebb871ba43ee2d65159c5d1c26c903720efafaf2d9ed4e237afc3bc88",
+      "positions_volume": "cloud-api-alloy-upgrade-0287898da493-cold"
+    }
+  ],
+  "production_data_used": false,
+  "old_image": "grafana/alloy:v1.14.1@sha256:8f5666aebb871ba43ee2d65159c5d1c26c903720efafaf2d9ed4e237afc3bc88",
+  "new_image": "grafana/alloy:v1.14.2@sha256:eadfe35ea52b26cbec4d4d780fbcc31edb31108c1c9e537ca59557a5a102c712",
+  "cold_positions_rollback": true,
+  "real_ingestion": true,
+  "old_input_not_replayed": true,
+  "new_version_restart_preserves_positions": true,
+  "counter_checks": [
+    1,
+    1,
+    1,
+    3
+  ],
+  "reverse_binary_on_upgraded_positions": false,
+  "cleanup_exit_codes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

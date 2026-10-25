@@ -1,0 +1,1064 @@
+{
+  "backend": {
+    "Id": "sha256:d612e8901241e9d46860ba06b37a05d48f29a0feb84bb51ca8ed1cf6b6b1b987",
+    "RepoDigests": [
+      "cloud-api-p7-ec3d3891d696-backend@sha256:d612e8901241e9d46860ba06b37a05d48f29a0feb84bb51ca8ed1cf6b6b1b987"
+    ],
+    "Os": "linux",
+    "Architecture": "amd64",
+    "Variant": null,
+    "Created": "2026-10-25T03:44:02.457305983Z",
+    "Descriptor": {
+      "mediaType": "application/vnd.oci.image.index.v1+json",
+      "digest": "sha256:d612e8901241e9d46860ba06b37a05d48f29a0feb84bb51ca8ed1cf6b6b1b987",
+      "size": 856
+    },
+    "reference": "cloud-api-p7-ec3d3891d696-backend",
+    "image_user": null,
+    "entrypoint": null,
+    "command": [
+      "python",
+      "-m",
+      "deployment.serve"
+    ],
+    "exposed_ports": {
+      "8443/tcp": {}
+    },
+    "rootfs_layers": [
+      "sha256:a70f6272827f64e1427d048ced77491aab5d64ab95725e56920802ff391197d7",
+      "sha256:535a5d38abecfac4fa49da33fa942b53c53c463bd0d39a860967e46eb03faafe",
+      "sha256:6972161a9a77e7c1afb997daac15abc54f5b70c7b40b814601f53e038d8c398c",
+      "sha256:d86e9bd004831a6069b9a02e5caac80b73526315f52719079b4017b099956ed2",
+      "sha256:d25442195e4f7b21db7ad52788011753f3dcfa22466fbda1906f063dd22a3dbe",
+      "sha256:65ff821ae3fcac87fc4f06b11b96ca8696364a541c92033fd5e1b093c4cebda2",
+      "sha256:257687514de6868e34657db0a96832bdf17239702b9206b8c6467bfd53697a30",
+      "sha256:c2b6d2f748fcbc9648acdf4d2397724951902567395e74bb108cc3dcd9d8a38a"
+    ],
+    "runtime_services": [
+      {
+        "service": "backend",
+        "image_id": "sha256:d612e8901241e9d46860ba06b37a05d48f29a0feb84bb51ca8ed1cf6b6b1b987",
+        "reference": "cloud-api-p7-ec3d3891d696-backend",
+        "rootfs_matches_family": true,
+        "configured_user": "",
+        "cap_add": null,
+        "cap_drop": null,
+        "privileged": false,
+        "readonly_rootfs": false,
+        "security_opt": null,
+        "memory": 0,
+        "nano_cpus": 0,
+        "tmpfs": null,
+        "published_ports": {},
+        "networks": [
+          "cloud-api-p7-ec3d3891d696_api_transport",
+          "cloud-api-p7-ec3d3891d696_app_data",
+          "cloud-api-p7-ec3d3891d696_oidc_transport"
+        ],
+        "mounts": [
+          {
+            "type": "bind",
+            "destination": "/run/tls",
+            "read_write": false
+          },
+          {
+            "type": "bind",
+            "destination": "/identity-trust",
+            "read_write": false
+          },
+          {
+            "type": "bind",
+            "destination": "/run/secrets/runtime_password",
+            "read_write": false
+          },
+          {
+            "type": "bind",
+            "destination": "/run/secrets/jwt_secret",
+            "read_write": false
+          },
+          {
+            "type": "bind",
+            "destination": "/run/secrets/webhook_secret",
+            "read_write": false
+          }
+        ],
+        "healthcheck": {
+          "Test": [
+            "CMD",
+            "python",
+            "-m",
+            "deployment.health"
+          ],
+          "Interval": 5000000000,
+          "Timeout": 5000000000,
+          "StartPeriod": 10000000000,
+          "Retries": 12
+        }
+      },
+      {
+        "service": "db-bootstrap",
+        "image_id": "sha256:3ce162de68066c28a3ff8092d8e5a0f2d7c5902daeb63c85d7b8b6276c688913",
+        "reference": "cloud-api-p7-ec3d3891d696-db-bootstrap",
+        "rootfs_matches_family": true,
+        "configured_user": "",
+        "cap_add": null,
+        "cap_drop": null,
+        "privileged": false,
+        "readonly_rootfs": false,
+        "security_opt": null,
+        "memory": 0,
+        "nano_cpus": 0,
+        "tmpfs": null,
+        "published_ports": {},
+        "networks": [
+          "cloud-api-p7-ec3d3891d696_app_data"
+        ],
+        "mounts": [
+          {
+            "type": "bind",
+            "destination": "/run/secrets/migration_password",
+            "read_write": false
+          },
+          {
+            "type": "bind",
+            "destination": "/run/secrets/runtime_password",
+            "read_write": false
+          },
+          {
+            "type": "bind",
+            "destination": "/run/secrets/postgres_password",
+            "read_write": false
+          }
+        ],
+        "healthcheck": null
+      },
+      {
+        "service": "migrate",
+        "image_id": "sha256:127d58d5e7ea34d1911bece72f3dc3cb320aa2ae9d4e57db3fd82f29fb5c1110",
+        "reference": "cloud-api-p7-ec3d3891d696-migrate",
+        "rootfs_matches_family": true,
+        "configured_user": "",
+        "cap_add": null,
+        "cap_drop": null,
+        "privileged": false,
+        "readonly_rootfs": false,
+        "security_opt": null,
+        "memory": 0,
+        "nano_cpus": 0,
+        "tmpfs": null,
+        "published_ports": {},
+        "networks": [
+          "cloud-api-p7-ec3d3891d696_app_data"
+        ],
+        "mounts": [
+          {
+            "type": "bind",
+            "destination": "/run/secrets/migration_password",
+            "read_write": false
+          }
+        ],
+        "healthcheck": null
+      },
+      {
+        "service": "identity-bootstrap",
+        "image_id": "sha256:f14deae6347562867ce63ba149c47a9aacb9568414e5909ce0cc7189236bdc6a",
+        "reference": "cloud-api-p7-ec3d3891d696-identity-bootstrap",
+        "rootfs_matches_family": true,
+        "configured_user": "",
+        "cap_add": null,
+        "cap_drop": null,
+        "privileged": false,
+        "readonly_rootfs": false,
+        "security_opt": null,
+        "memory": 0,
+        "nano_cpus": 0,
+        "tmpfs": null,
+        "published_ports": {},
+        "networks": [
+          "cloud-api-p7-ec3d3891d696_identity_data"
+        ],
+        "mounts": [
+          {
+            "type": "bind",
+            "destination": "/run/secrets/identity_db_password",
+            "read_write": false
+          },
+          {
+            "type": "bind",
+            "destination": "/run/secrets/identity_admin_password",
+            "read_write": false
+          }
+        ],
+        "healthcheck": null
+      },
+      {
+        "service": "kong-keys",
+        "image_id": "sha256:ce1f8323cbad3bd833efe27c6fe59712c162167854129cdbe799fed5d7b7bf65",
+        "reference": "cloud-api-p7-ec3d3891d696-kong-keys",
+        "rootfs_matches_family": true,
+        "configured_user": "",
+        "cap_add": null,
+        "cap_drop": null,
+        "privileged": false,
+        "readonly_rootfs": false,
+        "security_opt": null,
+        "memory": 0,
+        "nano_cpus": 0,
+        "tmpfs": null,
+        "published_ports": {},
+        "networks": [
+          "cloud-api-p7-ec3d3891d696_oidc_transport"
+        ],
+        "mounts": [
+          {
+            "type": "volume",
+            "destination": "/gateway",
+            "read_write": true
+          },
+          {
+            "type": "bind",
+            "destination": "/identity-trust",
+            "read_write": false
+          }
+        ],
+        "healthcheck": null
+      }
+    ],
+    "os_release": {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "/bin/cat",
+        "sha256:d612e8901241e9d46860ba06b37a05d48f29a0feb84bb51ca8ed1cf6b6b1b987",
+        "/etc/os-release"
+      ],
+      "exit_code": 0,
+      "stdout": "PRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\"\nNAME=\"Debian GNU/Linux\"\nVERSION_ID=\"13\"\nVERSION=\"13 (trixie)\"\nVERSION_CODENAME=trixie\nDEBIAN_VERSION_FULL=13.7\nID=debian\nHOME_URL=\"https://www.debian.org/\"\nSUPPORT_URL=\"https://www.debian.org/support\"\nBUG_REPORT_URL=\"https://bugs.debian.org/\"\n",
+      "stderr": ""
+    }
+  },
+  "kong": {
+    "Id": "sha256:92035d16d7ff86b7bc12fb1d0090d29357d924238b1880f78735f3f2fea6b631",
+    "RepoDigests": [
+      "kong@sha256:92035d16d7ff86b7bc12fb1d0090d29357d924238b1880f78735f3f2fea6b631"
+    ],
+    "Os": "linux",
+    "Architecture": "amd64",
+    "Variant": null,
+    "Created": "2026-10-02T01:30:33.034950245Z",
+    "Descriptor": {
+      "mediaType": "application/vnd.oci.image.index.v1+json",
+      "digest": "sha256:92035d16d7ff86b7bc12fb1d0090d29357d924238b1880f78735f3f2fea6b631",
+      "size": 2601
+    },
+    "reference": "kong:3.9.3@sha256:92035d16d7ff86b7bc12fb1d0090d29357d924238b1880f78735f3f2fea6b631",
+    "image_user": "kong",
+    "entrypoint": [
+      "/docker-entrypoint.sh"
+    ],
+    "command": [
+      "kong",
+      "docker-start"
+    ],
+    "exposed_ports": {
+      "8000/tcp": {},
+      "8001/tcp": {},
+      "8443/tcp": {},
+      "8444/tcp": {}
+    },
+    "rootfs_layers": [
+      "sha256:d81fb2a7c6ee3be05fdefaa7fd223be219c1ab172083ec1b994c3ecda33ac0a8",
+      "sha256:f49131daff4510cecaa61e4269a626d236cfe9e9748a1b959be5a48c36cdd691",
+      "sha256:46e347615ec37e839b224f87748f7d9f9565aa53fc73dfa4ea2c86e391c9155c",
+      "sha256:b67f7ee2c03b727edfe4462024347b3df6d99774134cea8c43d4a0ff4f4f26d8"
+    ],
+    "runtime_services": [
+      {
+        "service": "kong",
+        "image_id": "sha256:92035d16d7ff86b7bc12fb1d0090d29357d924238b1880f78735f3f2fea6b631",
+        "reference": "kong:3.9.3@sha256:92035d16d7ff86b7bc12fb1d0090d29357d924238b1880f78735f3f2fea6b631",
+        "rootfs_matches_family": true,
+        "configured_user": "1000:1000",
+        "cap_add": null,
+        "cap_drop": null,
+        "privileged": false,
+        "readonly_rootfs": false,
+        "security_opt": null,
+        "memory": 0,
+        "nano_cpus": 0,
+        "tmpfs": {
+          "/run/kong": "uid=1000,gid=1000,mode=0750,size=256m"
+        },
+        "published_ports": {
+          "8443/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": ""
+            }
+          ]
+        },
+        "networks": [
+          "cloud-api-p7-ec3d3891d696_api_transport",
+          "cloud-api-p7-ec3d3891d696_edge"
+        ],
+        "mounts": [
+          {
+            "type": "bind",
+            "destination": "/opt/kong/kong.yml",
+            "read_write": false
+          },
+          {
+            "type": "bind",
+            "destination": "/run/tls",
+            "read_write": false
+          },
+          {
+            "type": "volume",
+            "destination": "/gateway",
+            "read_write": false
+          },
+          {
+            "type": "bind",
+            "destination": "/usr/local/share/lua/5.1/kong/plugins/p6-telemetry",
+            "read_write": false
+          }
+        ],
+        "healthcheck": {
+          "Test": [
+            "CMD",
+            "kong",
+            "health"
+          ],
+          "Interval": 5000000000,
+          "Timeout": 5000000000,
+          "Retries": 20
+        }
+      }
+    ],
+    "os_release": {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "/bin/cat",
+        "sha256:92035d16d7ff86b7bc12fb1d0090d29357d924238b1880f78735f3f2fea6b631",
+        "/etc/os-release"
+      ],
+      "exit_code": 0,
+      "stdout": "PRETTY_NAME=\"Ubuntu 24.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.5 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n",
+      "stderr": ""
+    }
+  },
+  "keycloak": {
+    "Id": "sha256:a78d6b79572168cb25886b80a8b5b8d4ed4390743e3eecb810538683e209dd6b",
+    "RepoDigests": [
+      "quay.io/keycloak/keycloak@sha256:a78d6b79572168cb25886b80a8b5b8d4ed4390743e3eecb810538683e209dd6b"
+    ],
+    "Os": "linux",
+    "Architecture": "amd64",
+    "Variant": null,
+    "Created": "2026-10-23T09:44:27.644258821Z",
+    "Descriptor": {
+      "mediaType": "application/vnd.oci.image.index.v1+json",
+      "digest": "sha256:a78d6b79572168cb25886b80a8b5b8d4ed4390743e3eecb810538683e209dd6b",
+      "size": 2364
+    },
+    "reference": "quay.io/keycloak/keycloak:26.8.1@sha256:a78d6b79572168cb25886b80a8b5b8d4ed4390743e3eecb810538683e209dd6b",
+    "image_user": "1000",
+    "entrypoint": [
+      "/opt/keycloak/bin/kc.sh"
+    ],
+    "command": null,
+    "exposed_ports": {
+      "8080/tcp": {},
+      "8443/tcp": {},
+      "9000/tcp": {}
+    },
+    "rootfs_layers": [
+      "sha256:76a101b85b66bbdf48f47beed620127a6d2c1c3657c52920db691d63ce81df99",
+      "sha256:00c2bb09e82347eb5a6947347c0d562837f391a5d98d5ddac5360052d0af8c84",
+      "sha256:60dbfd53ed119e5609cdeaa92d9f95cf42438deaa160ed74a97003444f248f7e",
+      "sha256:913a4534f02f7148b559dcf1a802b2c0b92ee4106d48a661e2077f66dd442d27"
+    ],
+    "runtime_services": [
+      {
+        "service": "keycloak",
+        "image_id": "sha256:a78d6b79572168cb25886b80a8b5b8d4ed4390743e3eecb810538683e209dd6b",
+        "reference": "quay.io/keycloak/keycloak:26.8.1@sha256:a78d6b79572168cb25886b80a8b5b8d4ed4390743e3eecb810538683e209dd6b",
+        "rootfs_matches_family": true,
+        "configured_user": "1000",
+        "cap_add": null,
+        "cap_drop": null,
+        "privileged": false,
+        "readonly_rootfs": false,
+        "security_opt": null,
+        "memory": 0,
+        "nano_cpus": 0,
+        "tmpfs": null,
+        "published_ports": {},
+        "networks": [
+          "cloud-api-p7-ec3d3891d696_identity_data",
+          "cloud-api-p7-ec3d3891d696_identity_transport"
+        ],
+        "mounts": [
+          {
+            "type": "bind",
+            "destination": "/opt/p3-entrypoint.sh",
+            "read_write": false
+          },
+          {
+            "type": "bind",
+            "destination": "/opt/HealthProbe.java",
+            "read_write": false
+          },
+          {
+            "type": "bind",
+            "destination": "/opt/keycloak/data/import/florasecure-realm.json",
+            "read_write": false
+          },
+          {
+            "type": "bind",
+            "destination": "/run/tls",
+            "read_write": false
+          },
+          {
+            "type": "bind",
+            "destination": "/run/secrets/identity_db_password",
+            "read_write": false
+          },
+          {
+            "type": "bind",
+            "destination": "/run/secrets/keycloak_admin_password",
+            "read_write": false
+          }
+        ],
+        "healthcheck": {
+          "Test": [
+            "CMD",
+            "java",
+            "/opt/HealthProbe.java"
+          ],
+          "Interval": 10000000000,
+          "Timeout": 5000000000,
+          "StartPeriod": 40000000000,
+          "Retries": 30
+        }
+      }
+    ],
+    "os_release": {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "/bin/cat",
+        "sha256:a78d6b79572168cb25886b80a8b5b8d4ed4390743e3eecb810538683e209dd6b",
+        "/etc/os-release"
+      ],
+      "exit_code": 0,
+      "stdout": "NAME=\"Red Hat Enterprise Linux\"\nVERSION=\"9.8 (Plow)\"\nID=\"rhel\"\nID_LIKE=\"fedora\"\nVERSION_ID=\"9.8\"\nPLATFORM_ID=\"platform:el9\"\nPRETTY_NAME=\"Red Hat Enterprise Linux 9.8 (Plow)\"\nANSI_COLOR=\"0;31\"\nLOGO=\"fedora-logo-icon\"\nCPE_NAME=\"cpe:/o:redhat:enterprise_linux:9::baseos\"\nHOME_URL=\"https://www.redhat.com/\"\nDOCUMENTATION_URL=\"https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9\"\nBUG_REPORT_URL=\"https://issues.redhat.com/\"\n\nREDHAT_BUGZILLA_PRODUCT=\"Red Hat Enterprise Linux 9\"\nREDHAT_BUGZILLA_PRODUCT_VERSION=9.8\nREDHAT_SUPPORT_PRODUCT=\"Red Hat Enterprise Linux\"\nREDHAT_SUPPORT_PRODUCT_VERSION=\"9.8\"\n",
+      "stderr": ""
+    }
+  },
+  "postgres": {
+    "Id": "sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d",
+    "RepoDigests": [
+      "postgres@sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d"
+    ],
+    "Os": "linux",
+    "Architecture": "amd64",
+    "Variant": null,
+    "Created": "2026-10-06T01:33:18.890712895Z",
+    "Descriptor": {
+      "mediaType": "application/vnd.oci.image.index.v1+json",
+      "digest": "sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d",
+      "size": 10237
+    },
+    "reference": "postgres:16@sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d",
+    "image_user": null,
+    "entrypoint": [
+      "docker-entrypoint.sh"
+    ],
+    "command": [
+      "postgres"
+    ],
+    "exposed_ports": {
+      "5432/tcp": {}
+    },
+    "rootfs_layers": [
+      "sha256:15f1c8eb1ab18eae260c7fb6296434cbe1ff0e1e30fd814ae92a80dd54005e62",
+      "sha256:a2aaf9f8ec4fa481e6d5555191319fc36169b88d1f26b32e20086c4646ffaa17",
+      "sha256:107a07e558c4ac5ac958b84cda655442d7d4f24994b8cf79df9ad92397374b5a",
+      "sha256:48d6495e2364e624faad944217595c6664c70a4755a4fdbd6c618e06fc07e8f6",
+      "sha256:5501bd379747e541948565b5d6af1e63106404ccb2ece95c621f16883217a544",
+      "sha256:c99d7ad948a95d054287e4c65d898a99b5da11f350777d0407bab4c3eda8891c",
+      "sha256:97b67cfa7e93ba7b718168b8eb3477a822580dd82ffc097feccc08505f0e8dae",
+      "sha256:3e4c80b15b2fe570859017af60e2d1f7ebc303d9b25bef51d3ae212bdccd8445",
+      "sha256:3c2ecbb88723e523c1c0a6c026721b3a5ffb039f97f1f23e79b6bf2f6ce5337b",
+      "sha256:2f5e9c1f37978de0e5401ce2412a42e52ee30642c5e4fd447528944f16b22fb9",
+      "sha256:3e2cfb88908753c04594e22efe9276265aea568cf58742a381004e27ecfc910e",
+      "sha256:d8f68f9922250f50c611996c9de08395f018defa54b05e56f767d8574e217e41",
+      "sha256:3e0eb748b0eb2b667c223eb4b472ccd0c9c00a99063831911045a12ad4d36708",
+      "sha256:2aaa88d0dc05f2c3715b7bd20aa391d433a2fd106e6abd05cbde9fceaae854b8"
+    ],
+    "runtime_services": [
+      {
+        "service": "postgres",
+        "image_id": "sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d",
+        "reference": "postgres:16@sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d",
+        "rootfs_matches_family": true,
+        "configured_user": "",
+        "cap_add": null,
+        "cap_drop": null,
+        "privileged": false,
+        "readonly_rootfs": false,
+        "security_opt": null,
+        "memory": 0,
+        "nano_cpus": 0,
+        "tmpfs": null,
+        "published_ports": {},
+        "networks": [
+          "cloud-api-p7-ec3d3891d696_app_data"
+        ],
+        "mounts": [
+          {
+            "type": "volume",
+            "destination": "/var/lib/postgresql/data",
+            "read_write": true
+          },
+          {
+            "type": "bind",
+            "destination": "/run/secrets/postgres_password",
+            "read_write": false
+          }
+        ],
+        "healthcheck": {
+          "Test": [
+            "CMD-SHELL",
+            "pg_isready -U postgres -d \"$POSTGRES_DB\""
+          ],
+          "Interval": 5000000000,
+          "Timeout": 5000000000,
+          "Retries": 20
+        }
+      },
+      {
+        "service": "identity-db",
+        "image_id": "sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d",
+        "reference": "postgres:16@sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d",
+        "rootfs_matches_family": true,
+        "configured_user": "",
+        "cap_add": null,
+        "cap_drop": null,
+        "privileged": false,
+        "readonly_rootfs": false,
+        "security_opt": null,
+        "memory": 0,
+        "nano_cpus": 0,
+        "tmpfs": null,
+        "published_ports": {},
+        "networks": [
+          "cloud-api-p7-ec3d3891d696_identity_data"
+        ],
+        "mounts": [
+          {
+            "type": "bind",
+            "destination": "/run/secrets/identity_admin_password",
+            "read_write": false
+          },
+          {
+            "type": "volume",
+            "destination": "/var/lib/postgresql/data",
+            "read_write": true
+          }
+        ],
+        "healthcheck": {
+          "Test": [
+            "CMD-SHELL",
+            "pg_isready -U postgres -d keycloak"
+          ],
+          "Interval": 5000000000,
+          "Timeout": 5000000000,
+          "Retries": 20
+        }
+      }
+    ],
+    "os_release": {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "/bin/cat",
+        "sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d",
+        "/etc/os-release"
+      ],
+      "exit_code": 0,
+      "stdout": "PRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\"\nNAME=\"Debian GNU/Linux\"\nVERSION_ID=\"13\"\nVERSION=\"13 (trixie)\"\nVERSION_CODENAME=trixie\nDEBIAN_VERSION_FULL=13.7\nID=debian\nHOME_URL=\"https://www.debian.org/\"\nSUPPORT_URL=\"https://www.debian.org/support\"\nBUG_REPORT_URL=\"https://bugs.debian.org/\"\n",
+      "stderr": ""
+    }
+  },
+  "loki": {
+    "Id": "sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04",
+    "RepoDigests": [
+      "grafana/loki@sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04"
+    ],
+    "Os": "linux",
+    "Architecture": "amd64",
+    "Variant": null,
+    "Created": "2025-11-07T20:43:06.870399234Z",
+    "Descriptor": {
+      "mediaType": "application/vnd.docker.distribution.manifest.list.v2+json",
+      "digest": "sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04",
+      "size": 1079
+    },
+    "reference": "grafana/loki:2.9.17@sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04",
+    "image_user": "10001",
+    "entrypoint": [
+      "/usr/bin/loki"
+    ],
+    "command": [
+      "-config.file=/etc/loki/local-config.yaml"
+    ],
+    "exposed_ports": {
+      "3100/tcp": {}
+    },
+    "rootfs_layers": [
+      "sha256:256f393e029fa2063d8c93720da36a74a032bed3355a2bc3e313ad12f8bde9d1",
+      "sha256:9c1f79d8c55e027a04bff95f55d877515bcb9319611e649c2aaa90e52cc654b7",
+      "sha256:2000c3f73145a30521ed56ff9c91d1be8d85b3d8393dbd4eab47f00bda822f01",
+      "sha256:72f62695ff5b13d01f5b949685a27a0f46264012f38cbc365797086ca0cadd8f",
+      "sha256:a34d77f1876a08f780c695627f97d21e25bb15f54302a49e8caa80ee36e9a625",
+      "sha256:6142a10a4b5221afcf9e0d39c95e42e4b9a1f99ba4109270f5a972120b14c947"
+    ],
+    "runtime_services": [
+      {
+        "service": "loki",
+        "image_id": "sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04",
+        "reference": "grafana/loki:2.9.17@sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04",
+        "rootfs_matches_family": true,
+        "configured_user": "10001",
+        "cap_add": null,
+        "cap_drop": null,
+        "privileged": false,
+        "readonly_rootfs": false,
+        "security_opt": null,
+        "memory": 0,
+        "nano_cpus": 0,
+        "tmpfs": null,
+        "published_ports": {},
+        "networks": [
+          "cloud-api-p7-ec3d3891d696_observability"
+        ],
+        "mounts": [
+          {
+            "type": "volume",
+            "destination": "/loki",
+            "read_write": true
+          },
+          {
+            "type": "bind",
+            "destination": "/etc/loki/loki-config.yml",
+            "read_write": false
+          }
+        ],
+        "healthcheck": {
+          "Test": [
+            "CMD",
+            "wget",
+            "-q",
+            "-O",
+            "/dev/null",
+            "http://localhost:3100/ready"
+          ],
+          "Interval": 5000000000,
+          "Timeout": 5000000000,
+          "StartPeriod": 20000000000,
+          "Retries": 30
+        }
+      }
+    ],
+    "os_release": {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "/bin/cat",
+        "sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04",
+        "/etc/os-release"
+      ],
+      "exit_code": 0,
+      "stdout": "NAME=\"Alpine Linux\"\nID=alpine\nVERSION_ID=3.22.2\nPRETTY_NAME=\"Alpine Linux v3.22\"\nHOME_URL=\"https://alpinelinux.org/\"\nBUG_REPORT_URL=\"https://gitlab.alpinelinux.org/alpine/aports/-/issues\"\n",
+      "stderr": ""
+    }
+  },
+  "grafana": {
+    "Id": "sha256:a9043254ba16fb10945cc27333963dfd08eccbb43b51f1222d831cc564e3a1f4",
+    "RepoDigests": [
+      "grafana/grafana@sha256:a9043254ba16fb10945cc27333963dfd08eccbb43b51f1222d831cc564e3a1f4"
+    ],
+    "Os": "linux",
+    "Architecture": "amd64",
+    "Variant": null,
+    "Created": "2025-05-22T09:50:50.379607164Z",
+    "Descriptor": {
+      "mediaType": "application/vnd.docker.distribution.manifest.list.v2+json",
+      "digest": "sha256:a9043254ba16fb10945cc27333963dfd08eccbb43b51f1222d831cc564e3a1f4",
+      "size": 1079
+    },
+    "reference": "grafana/grafana:10.4.19@sha256:a9043254ba16fb10945cc27333963dfd08eccbb43b51f1222d831cc564e3a1f4",
+    "image_user": "472",
+    "entrypoint": [
+      "/run.sh"
+    ],
+    "command": null,
+    "exposed_ports": {
+      "3000/tcp": {}
+    },
+    "rootfs_layers": [
+      "sha256:08000c18d16dadf9553d747a58cf44023423a9ab010aab96cf263d2216b8b350",
+      "sha256:36458adee19e9449f7a240542711631baa12cfa37dc66a64053f1284b4e7ee61",
+      "sha256:21bdfd1f7f9cff3c311bd5ee3979bd137dc5b9cccf74e316e8441497ca6b1cb3",
+      "sha256:e4ee6309659c9b0b7939fff5def644007677ba7d5de9a0a2437a845677441d35",
+      "sha256:feaaffd166d42c80bb7efda2feac0e4780a2a9e2aebf25b2931cce70ab0f356c",
+      "sha256:4d7e3595ea8be71cf9281a8c1eaafbbbeb8c88a8b9c79611b9f7a504976ba73d",
+      "sha256:7751e36eba65b89096274edceb3839fa09008fff24c3c50aac6acef99af52a1d",
+      "sha256:cfbae7fdff9d859d11cb5f18700bf0a431fc5cd18a1f6b3f83d58a487159c304",
+      "sha256:fe5684a0fcebe886e2b6fa2bf78a225d4a3be5d9a1f7a5be90d295b8f445ffab",
+      "sha256:dc89a145cc439f481ad1c32aac61b6d8c2fa68bc7041a4df9574f8e89d0a3a35"
+    ],
+    "runtime_services": [
+      {
+        "service": "grafana",
+        "image_id": "sha256:a9043254ba16fb10945cc27333963dfd08eccbb43b51f1222d831cc564e3a1f4",
+        "reference": "grafana/grafana:10.4.19@sha256:a9043254ba16fb10945cc27333963dfd08eccbb43b51f1222d831cc564e3a1f4",
+        "rootfs_matches_family": true,
+        "configured_user": "472",
+        "cap_add": null,
+        "cap_drop": null,
+        "privileged": false,
+        "readonly_rootfs": false,
+        "security_opt": null,
+        "memory": 0,
+        "nano_cpus": 0,
+        "tmpfs": null,
+        "published_ports": {},
+        "networks": [
+          "cloud-api-p7-ec3d3891d696_observability"
+        ],
+        "mounts": [
+          {
+            "type": "volume",
+            "destination": "/var/lib/grafana",
+            "read_write": true
+          },
+          {
+            "type": "bind",
+            "destination": "/etc/grafana/provisioning",
+            "read_write": false
+          },
+          {
+            "type": "bind",
+            "destination": "/run/secrets/grafana_admin_password",
+            "read_write": false
+          }
+        ],
+        "healthcheck": {
+          "Test": [
+            "CMD",
+            "wget",
+            "-q",
+            "-O",
+            "/dev/null",
+            "http://localhost:3000/api/health"
+          ],
+          "Interval": 10000000000,
+          "Timeout": 5000000000,
+          "Retries": 20
+        }
+      }
+    ],
+    "os_release": {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "/bin/cat",
+        "sha256:a9043254ba16fb10945cc27333963dfd08eccbb43b51f1222d831cc564e3a1f4",
+        "/etc/os-release"
+      ],
+      "exit_code": 0,
+      "stdout": "NAME=\"Alpine Linux\"\nID=alpine\nVERSION_ID=3.21.3\nPRETTY_NAME=\"Alpine Linux v3.21\"\nHOME_URL=\"https://alpinelinux.org/\"\nBUG_REPORT_URL=\"https://gitlab.alpinelinux.org/alpine/aports/-/issues\"\n",
+      "stderr": ""
+    }
+  },
+  "alloy": {
+    "Id": "sha256:eadfe35ea52b26cbec4d4d780fbcc31edb31108c1c9e537ca59557a5a102c712",
+    "RepoDigests": [
+      "grafana/alloy@sha256:eadfe35ea52b26cbec4d4d780fbcc31edb31108c1c9e537ca59557a5a102c712"
+    ],
+    "Os": "linux",
+    "Architecture": "amd64",
+    "Variant": null,
+    "Created": "2026-03-24T17:56:12.154153911Z",
+    "Descriptor": {
+      "mediaType": "application/vnd.oci.image.index.v1+json",
+      "digest": "sha256:eadfe35ea52b26cbec4d4d780fbcc31edb31108c1c9e537ca59557a5a102c712",
+      "size": 3117
+    },
+    "reference": "grafana/alloy:v1.14.2@sha256:eadfe35ea52b26cbec4d4d780fbcc31edb31108c1c9e537ca59557a5a102c712",
+    "image_user": null,
+    "entrypoint": [
+      "/bin/alloy"
+    ],
+    "command": [
+      "run",
+      "/etc/alloy/config.alloy",
+      "--storage.path=/var/lib/alloy/data"
+    ],
+    "exposed_ports": null,
+    "rootfs_layers": [
+      "sha256:f2a7f072635332d307212e318e07284948b89f4167fce5c4d7c9cfb7590b74b6",
+      "sha256:6927c42b529311597f2f3c99890635c64d917e109b987b281861ea9f3af561a1",
+      "sha256:4681a4b545642afaa92a0f989b8e25955afdee1038f9048a9267132037d04a0e",
+      "sha256:89c087f01906b9bb388050485b03f7441adddea6319538ef77012a28763f77c6",
+      "sha256:5474932eb6e46a2aac75dbbed1364bf63595454fbb93e6121d0fd26066a33eb3",
+      "sha256:c2491489021f127fe3d2038fa099aceb890f093a11a6a30a4f97ab1fc5e75154",
+      "sha256:ec40a2c73c7a9564fe85745828b8ece8d02df5dd6ce9dce6f062bd733db5921a"
+    ],
+    "runtime_services": [
+      {
+        "service": "alloy",
+        "image_id": "sha256:eadfe35ea52b26cbec4d4d780fbcc31edb31108c1c9e537ca59557a5a102c712",
+        "reference": "grafana/alloy:v1.14.2@sha256:eadfe35ea52b26cbec4d4d780fbcc31edb31108c1c9e537ca59557a5a102c712",
+        "rootfs_matches_family": true,
+        "configured_user": "",
+        "cap_add": null,
+        "cap_drop": [
+          "ALL"
+        ],
+        "privileged": false,
+        "readonly_rootfs": true,
+        "security_opt": [
+          "no-new-privileges:true"
+        ],
+        "memory": 0,
+        "nano_cpus": 0,
+        "tmpfs": {
+          "/tmp": ""
+        },
+        "published_ports": {},
+        "networks": [
+          "cloud-api-p7-ec3d3891d696_observability"
+        ],
+        "mounts": [
+          {
+            "type": "bind",
+            "destination": "/var/log/project/kong",
+            "read_write": false
+          },
+          {
+            "type": "bind",
+            "destination": "/var/log/project/keycloak",
+            "read_write": false
+          },
+          {
+            "type": "bind",
+            "destination": "/var/log/project/backend",
+            "read_write": false
+          },
+          {
+            "type": "bind",
+            "destination": "/etc/alloy/config.alloy",
+            "read_write": false
+          },
+          {
+            "type": "bind",
+            "destination": "/var/log/project",
+            "read_write": false
+          },
+          {
+            "type": "volume",
+            "destination": "/var/lib/alloy",
+            "read_write": true
+          }
+        ],
+        "healthcheck": null
+      }
+    ],
+    "os_release": {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "/bin/cat",
+        "sha256:eadfe35ea52b26cbec4d4d780fbcc31edb31108c1c9e537ca59557a5a102c712",
+        "/etc/os-release"
+      ],
+      "exit_code": 0,
+      "stdout": "PRETTY_NAME=\"Ubuntu 24.04.4 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.4 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n",
+      "stderr": ""
+    }
+  },
+  "nginx": {
+    "Id": "sha256:1bc331a1680da03025334c86645bed67ff832f5e74985fb629afdc079a9e8510",
+    "RepoDigests": [
+      "cloud-api-p7-ec3d3891d696-identity-edge@sha256:1bc331a1680da03025334c86645bed67ff832f5e74985fb629afdc079a9e8510"
+    ],
+    "Os": "linux",
+    "Architecture": "amd64",
+    "Variant": null,
+    "Created": "2026-10-25T02:56:21.234581867Z",
+    "Descriptor": {
+      "mediaType": "application/vnd.oci.image.index.v1+json",
+      "digest": "sha256:1bc331a1680da03025334c86645bed67ff832f5e74985fb629afdc079a9e8510",
+      "size": 856
+    },
+    "reference": "cloud-api-p7-ec3d3891d696-identity-edge",
+    "image_user": null,
+    "entrypoint": [
+      "/docker-entrypoint.sh"
+    ],
+    "command": [
+      "nginx",
+      "-g",
+      "daemon off;"
+    ],
+    "exposed_ports": {
+      "80/tcp": {}
+    },
+    "rootfs_layers": [
+      "sha256:75c137aedfb2760f88629236cb7b797630aed0c3d91d626d1d1bb694878fc2ba",
+      "sha256:5b91dba2fc11b3e6dab4d25e913db11e6e701065af717028e060dfb5ab8532e4",
+      "sha256:a8a09d37d441c540c613402fa23c75308b04f4801e80f6d193316949f3df4b42",
+      "sha256:d87f6628aa86314e48021285bd5dce15a2cf5166c1c80246d2e03dbb674abaf2",
+      "sha256:313dac429378b98567656151706777045067624f9a6678873dd6fdc7ecf35545",
+      "sha256:2ba21653acee34632d9eab26da39a5ff0cac12021817e6a5e9efac9507628575",
+      "sha256:3212502c73d1691bd2b186efdda493ca750fc99795b6b0b85741af01b4e79aa4",
+      "sha256:41c4d0e4c0f6b5ac73384a7c0978e918e89bdf5192f6765e0dac5ad24bd0b3a1"
+    ],
+    "runtime_services": [
+      {
+        "service": "identity-edge",
+        "image_id": "sha256:1bc331a1680da03025334c86645bed67ff832f5e74985fb629afdc079a9e8510",
+        "reference": "cloud-api-p7-ec3d3891d696-identity-edge",
+        "rootfs_matches_family": true,
+        "configured_user": "",
+        "cap_add": null,
+        "cap_drop": null,
+        "privileged": false,
+        "readonly_rootfs": false,
+        "security_opt": null,
+        "memory": 0,
+        "nano_cpus": 0,
+        "tmpfs": null,
+        "published_ports": {},
+        "networks": [
+          "cloud-api-p7-ec3d3891d696_identity_transport",
+          "cloud-api-p7-ec3d3891d696_oidc_transport"
+        ],
+        "mounts": [
+          {
+            "type": "bind",
+            "destination": "/etc/nginx/conf.d/default.conf",
+            "read_write": false
+          },
+          {
+            "type": "bind",
+            "destination": "/run/tls",
+            "read_write": false
+          }
+        ],
+        "healthcheck": {
+          "Test": [
+            "CMD",
+            "wget",
+            "-q",
+            "-O",
+            "/dev/null",
+            "http://127.0.0.1:8081/ready"
+          ],
+          "Interval": 5000000000,
+          "Timeout": 5000000000,
+          "Retries": 20
+        }
+      }
+    ],
+    "os_release": {
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--entrypoint",
+        "/bin/cat",
+        "sha256:1bc331a1680da03025334c86645bed67ff832f5e74985fb629afdc079a9e8510",
+        "/etc/os-release"
+      ],
+      "exit_code": 0,
+      "stdout": "NAME=\"Alpine Linux\"\nID=alpine\nVERSION_ID=3.24.3\nPRETTY_NAME=\"Alpine Linux v3.24\"\nHOME_URL=\"https://alpinelinux.org/\"\nBUG_REPORT_URL=\"https://gitlab.alpinelinux.org/alpine/aports/-/issues\"\n",
+      "stderr": ""
+    }
+  }
+}

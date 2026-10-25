@@ -1,0 +1,21 @@
+{
+  "now": 1792896780550129732,
+  "old": 1792205580550129732,
+  "files": {
+    "chunks/ZmFrZS9hNDIzMDkzZGQwYjU3MzdhOjFhMTQ3YzZlOTA2OjFhMTQ3YzZlOTA3OmExMjZkNjg2": {
+      "bytes": 328,
+      "sha256": "e2b82873193c9c755691761e5d3bdf38f8d2be7929cdcbe5ec3bd48806284e0b"
+    },
+    "chunks/ZmFrZS9jOWZlMGEzNzEwYmUzM2M0OjFhMTcwZjljOTA2OjFhMTcwZjljOTA3OjIxN2UwMmI3": {
+      "bytes": 332,
+      "sha256": "0562eef0e4740041dde68f3134ce4cc27c30b06baad1531f95038b08d6ab5fed"
+    }
+  },
+  "push_status": 204,
+  "writer_logical_visibility": [
+    {
+      "old": 0,
+      "current": 1
+    }
+  ]
+}

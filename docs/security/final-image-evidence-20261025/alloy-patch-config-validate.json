@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "docker",
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--read-only",
+    "--cap-drop",
+    "ALL",
+    "--security-opt",
+    "no-new-privileges",
+    "-e",
+    "LOG_PROJECT=cloud-api-image-review",
+    "--mount",
+    "type=bind,source=D:\\MatMaHoc\\Project_CLOUD_API\\monitoring\\alloy\\config.alloy,target=/etc/alloy/config.alloy,readonly",
+    "grafana/alloy:v1.14.2@sha256:eadfe35ea52b26cbec4d4d780fbcc31edb31108c1c9e537ca59557a5a102c712",
+    "validate",
+    "/etc/alloy/config.alloy"
+  ],
+  "started_utc": "2026-10-25T07:50:08.975346+00:00",
+  "finished_utc": "2026-10-25T07:50:09.889875+00:00",
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": ""
+}

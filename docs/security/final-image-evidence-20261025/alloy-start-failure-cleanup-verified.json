@@ -1,0 +1,67 @@
+{
+  "project": "cloud-api-alloy-upgrade-b0d14b268e63",
+  "docker_start_exit": 127,
+  "created_container_cleanup": 0,
+  "volume_cleanup": 0,
+  "missing_container_cleanup": 0,
+  "foreign_volume_refused": 1,
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "container",
+        "inspect",
+        "cloud-api-alloy-upgrade-b0d14b268e63-alloy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "container",
+        "rm",
+        "--force",
+        "cloud-api-alloy-upgrade-b0d14b268e63-alloy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "inspect",
+        "cloud-api-alloy-upgrade-b0d14b268e63-positions"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "rm",
+        "cloud-api-alloy-upgrade-b0d14b268e63-positions"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "container",
+        "inspect",
+        "cloud-api-alloy-upgrade-b0d14b268e63-alloy"
+      ],
+      "exit_code": 1
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "inspect",
+        "cloud-api-alloy-upgrade-b0d14b268e63-foreign"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "foreign_volume_preserved": true,
+  "separate_control_cleanup": 0
+}

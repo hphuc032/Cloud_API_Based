@@ -88,9 +88,13 @@ Runtime read-only directory mounts expose only:
 - `offline/`: CA signing keys, **no service mount**. `trust/`: public CA exports.
 
 Private file mode is 0600, directories 0700 on Unix. Root-run issuance sets the Kong
-directory/key owner to image UID 1000. Non-root Linux issuance requires an operator
+directory/key owner to deployment UID 1000. Non-root Linux issuance requires an operator
 to make those runtime files readable by UID 1000 without making private keys public.
 Windows bind mounts require restricted host ACLs; chmod is not a Windows ACL.
+The 2026-10-25 image update explicitly runs Kong 3.9.3 as UID/GID 1000 because
+its image default changed to 1001. Its writable prefix is `/run/kong` on tmpfs;
+packaged `/usr/local/kong/lib` remains visible. Key permissions are unchanged.
+See the [current image upgrade/rollback guide](final-image-upgrade-rollback.md).
 Compose bind mounts are not an encrypted secret manager. Protect host/backups and
 offline signing keys; the Docker daemon/host administrator remains trusted.
 Neither backend nor Kong receives PKI through image COPY, environment key contents

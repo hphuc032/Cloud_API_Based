@@ -1,0 +1,26 @@
+[
+  {
+    "service": "db-bootstrap",
+    "image_id": "sha256:4d9451a254527d908920348c7fcd619c4ddf9697fb5698e69463ccbab6c773dd",
+    "reference": "cloud-api-p7-95cbd49eba9a-db-bootstrap",
+    "scope": "Test runner/helper in accepted disposable project; not an active production service"
+  },
+  {
+    "service": "identity-bootstrap",
+    "image_id": "sha256:22ff13b745249221a820ac97ba0fbae7d0e281611fab9b71662bfb8bdaeb75dc",
+    "reference": "cloud-api-p7-95cbd49eba9a-identity-bootstrap",
+    "scope": "Test runner/helper in accepted disposable project; not an active production service"
+  },
+  {
+    "service": "migrate",
+    "image_id": "sha256:7d55355eb69694041ba2235a25f0772cdbb1b0109ac834d06942016091e0698d",
+    "reference": "cloud-api-p7-95cbd49eba9a-migrate",
+    "scope": "Test runner/helper in accepted disposable project; not an active production service"
+  },
+  {
+    "service": "kong-keys",
+    "image_id": "sha256:953ebad05ded05490023ac55bef1432315c8c8ff633bca4e3e257dad1c451f99",
+    "reference": "cloud-api-p7-95cbd49eba9a-kong-keys",
+    "scope": "Test runner/helper in accepted disposable project; not an active production service"
+  }
+]

@@ -1,0 +1,1122 @@
+{
+  "passed": true,
+  "external_delivery_tested": false,
+  "initial": [
+    {
+      "utc_epoch": 1792915556.3803725,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:50Z",
+          "evaluationTime": 0.014613157,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T08:05:30Z",
+              "value": ""
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "queries": {
+    "p6-upstream-errors": {
+      "expr": "sum(count_over_time({service=~\"kong|backend\"} | json | event_type=~\"upstream_error\" [1m])) or vector(0)",
+      "value": 8.0,
+      "threshold": 3,
+      "for": "30s",
+      "window_seconds": 60,
+      "evaluation_interval_seconds": 10
+    }
+  },
+  "firing": [
+    {
+      "utc_epoch": 1792915557.6060584,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:50Z",
+          "evaluationTime": 0.014613157,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T08:05:30Z",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915559.6216345,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:50Z",
+          "evaluationTime": 0.014613157,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T08:05:30Z",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915561.6422846,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:50Z",
+          "evaluationTime": 0.014613157,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T08:05:30Z",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915561.3286605,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:50Z",
+          "evaluationTime": 0.014613157,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T08:05:30Z",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915563.3493788,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:50Z",
+          "evaluationTime": 0.014613157,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T08:05:30Z",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915565.3645864,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:50Z",
+          "evaluationTime": 0.014613157,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T08:05:30Z",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915567.3830764,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:00Z",
+          "evaluationTime": 6.007415402,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:06:00Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915569.4097931,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:00Z",
+          "evaluationTime": 6.007415402,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:06:00Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915571.4379694,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:00Z",
+          "evaluationTime": 6.007415402,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:06:00Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915573.4661958,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:00Z",
+          "evaluationTime": 6.007415402,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:06:00Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915575.4983468,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:00Z",
+          "evaluationTime": 6.007415402,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:06:00Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915577.5297804,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:00Z",
+          "evaluationTime": 6.007415402,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:06:00Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915579.5450754,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:10Z",
+          "evaluationTime": 8.358099875,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:06:00Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915581.5728173,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:10Z",
+          "evaluationTime": 8.358099875,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:06:00Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915583.594877,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:10Z",
+          "evaluationTime": 8.358099875,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:06:00Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915585.620217,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:10Z",
+          "evaluationTime": 8.358099875,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:06:00Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915587.6667292,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:10Z",
+          "evaluationTime": 8.358099875,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:06:00Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915589.6893294,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:20Z",
+          "evaluationTime": 8.352053662,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:06:00Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915589.2278824,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:30Z",
+          "evaluationTime": -0.799372092,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:06:30Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "recovery": [
+    {
+      "utc_epoch": 1792915589.2422853,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:30Z",
+          "evaluationTime": -0.799372092,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:06:30Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915591.2638953,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:30Z",
+          "evaluationTime": -0.799372092,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:06:30Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915593.2845285,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:30Z",
+          "evaluationTime": -0.799372092,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:06:30Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915595.312479,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:30Z",
+          "evaluationTime": -0.799372092,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:06:30Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915597.3294098,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:30Z",
+          "evaluationTime": -0.799372092,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:06:30Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915599.3594115,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:30Z",
+          "evaluationTime": -0.799372092,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:06:30Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915601.3799272,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:30Z",
+          "evaluationTime": -0.799372092,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:06:30Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915603.392743,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:40Z",
+          "evaluationTime": 1.696650012,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:06:30Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915605.4252634,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:40Z",
+          "evaluationTime": 1.696650012,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:06:30Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915607.439334,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:40Z",
+          "evaluationTime": 1.696650012,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:06:30Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915609.4772072,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:40Z",
+          "evaluationTime": 1.696650012,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:06:30Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915611.490914,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:40Z",
+          "evaluationTime": 1.696650012,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:06:30Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915613.5037045,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:50Z",
+          "evaluationTime": 3.355583111,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:06:30Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915615.526262,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:50Z",
+          "evaluationTime": 3.355583111,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:06:30Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915617.540775,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:50Z",
+          "evaluationTime": 3.355583111,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:06:30Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915617.1211603,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:50Z",
+          "evaluationTime": 3.355583111,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:06:30Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915619.1403446,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:06:50Z",
+          "evaluationTime": 3.355583111,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:06:30Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915621.1710212,
+      "rules": {
+        "p6-upstream-errors": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:07:00Z",
+          "evaluationTime": 0.023189025,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 upstream-errors",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T08:07:00Z",
+              "value": ""
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

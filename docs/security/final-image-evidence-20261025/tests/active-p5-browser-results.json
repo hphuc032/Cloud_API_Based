@@ -1,0 +1,38 @@
+{
+  "tests": [
+    {
+      "name": "production HTML has strict CSP and verified HTTPS",
+      "status": "passed"
+    },
+    {
+      "name": "production PKCE login and application identity",
+      "status": "passed"
+    },
+    {
+      "name": "Security Center shows real 401/403/422 without ending the session",
+      "status": "passed"
+    },
+    {
+      "name": "lab BOLA, forged MAC and authenticated retry show actual responses",
+      "status": "passed"
+    },
+    {
+      "name": "production reload preserves SSO without stored bearer tokens",
+      "status": "passed"
+    },
+    {
+      "name": "staff lab metadata validation and real rate rejection",
+      "status": "passed"
+    },
+    {
+      "name": "application documents have no CSP violations",
+      "status": "passed"
+    },
+    {
+      "name": "production Keycloak logout completes",
+      "status": "passed"
+    }
+  ],
+  "csp_violations": [],
+  "tls": "CA/SAN verified; no bypass"
+}

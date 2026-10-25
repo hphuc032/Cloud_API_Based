@@ -1,0 +1,29 @@
+{
+  "project": "cloud-api-p7-ec3d3891d696",
+  "results": {
+    "startup": 0,
+    "parser-boundary": 0,
+    "p7-security": 0,
+    "p7-recovery": 0,
+    "p7-monitoring-recovered": 0,
+    "p6-observability": 0,
+    "p6-lifecycle-initial": 0,
+    "p6-lifecycle-recovered": 0,
+    "p6-controlled-outage": 0,
+    "p5-hardening": 0,
+    "p4-focused": 0,
+    "p4-pytest": 0,
+    "p4-host": 0,
+    "p3-host": 0,
+    "p2-host": 0,
+    "p4-browser": 0,
+    "browser": 0,
+    "key-rotation": 0,
+    "cleanup": 0
+  },
+  "focus": null,
+  "deferred_public_dns": [],
+  "strict_acceptance": "NOT ASSESSED",
+  "started_utc": "2026-10-25T07:51:48.660437+00:00",
+  "finished_utc": "2026-10-25T08:21:22.303812+00:00"
+}

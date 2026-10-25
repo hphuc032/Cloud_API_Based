@@ -1,0 +1,6 @@
+{
+  "image_id": "sha256:1bc331a1680da03025334c86645bed67ff832f5e74985fb629afdc079a9e8510",
+  "verified_ca_exit": 0,
+  "untrusted_ca_exit": 5,
+  "tls_verification_bypassed": false
+}

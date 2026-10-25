@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "docker",
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--read-only",
+    "--cap-drop",
+    "ALL",
+    "--security-opt",
+    "no-new-privileges",
+    "--entrypoint",
+    "postgres",
+    "sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d",
+    "--version"
+  ],
+  "started_utc": "2026-10-25T08:02:29.420938+00:00",
+  "finished_utc": "2026-10-25T08:02:30.246920+00:00",
+  "exit_code": 0,
+  "stdout": "postgres (PostgreSQL) 16.15 (Debian 16.15-1.pgdg13+2)\n",
+  "stderr": ""
+}

@@ -1,0 +1,19 @@
+{
+  "docker_desktop": "4.73.1.226574",
+  "powershell": "7.6.5",
+  "disk": [
+    {
+      "Name": "C",
+      "free_bytes": 1522683904
+    },
+    {
+      "Name": "D",
+      "free_bytes": 67149025280
+    }
+  ],
+  "windows": {
+    "version": "10.0.26300",
+    "build": "26300",
+    "caption": "Microsoft Windows 11 Home Single Language"
+  }
+}

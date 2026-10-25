@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "_local_archive/final-remediation-tools-venv/bin/python",
+    "tests/p7/artifacts/final-image-review-20261025/run_candidate.py",
+    "active",
+    "--focus",
+    "recovery",
+    "--identity-upgrade-from",
+    "quay.io/keycloak/keycloak:26.2.5@sha256:4883630ef9db14031cde3e60700c9a9a8eaf1b5c24db1589d6a2d43de38ba2a9",
+    "--identity-upgrade-to",
+    "quay.io/keycloak/keycloak:26.8.1@sha256:a78d6b79572168cb25886b80a8b5b8d4ed4390743e3eecb810538683e209dd6b"
+  ],
+  "exit_code": 1,
+  "started_utc": "2026-10-25T03:36:22.019034+00:00",
+  "finished_utc": "2026-10-25T03:46:05.248402+00:00"
+}

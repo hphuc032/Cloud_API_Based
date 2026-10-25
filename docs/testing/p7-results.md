@@ -234,3 +234,37 @@ candidate. Public evidence excludes private dumps/role verifiers, passwords,
 access/refresh tokens, codes, private keys and raw container inspection. Pattern
 review plus manual curation has limitations and is not universal absence proof.
 Only local commits and a verified bundle/import are performed. **STOP after P7.**
+
+
+## 2026-10-25 — Final container image security follow-up
+
+This dated follow-up preserves the historical P7 evidence above. The approved
+starting commit was `0b86cf04b471662f7731efac8f2cb34066752441`.
+
+Final disposable runtime validation after compatible image changes:
+
+- Legacy: **213 PASS + 4 historical local-JWT expected-failure executions**;
+  no unexpected failures or required skips.
+- Active OIDC: **305 passing pytest executions / 302 unique nodes**;
+  three existing checks are intentionally repeated by the runner.
+- Both modes: **16/16 TLS/mTLS host methods**; real DNS cases pass.
+- SDK browser9/9, production SPA8/8, key rotation/outage6/6; six real Grafana
+  alerts, Alloy ingestion/recreation, paired restore and backend recreation pass.
+- Loki/Grafana cold upgrade/rollback, Loki physical retention and Alloy
+  cross-version positions/cold rollback pass. Keycloak26.2.5→26.8.1 migration on
+  a separate cold DB copy preserves identities/keys/application mappings; rollback
+  returns to the old image and original DB.
+- Eight exact final image IDs scanned successfully online. Raw HIGH/CRITICAL
+  records409→358; all records and new findings remain visible. The separate
+  historical Promtail reference is not an active collector upgrade.
+
+**Release remains BLOCKED.** Material image/build/lifecycle risks have neither
+been fully remediated/proven inapplicable nor formally accepted by an authorized
+owner. In particular, Kong’s compiled OpenSSL3.2.3 support risk is separate from
+its zero raw HIGH/CRITICAL OS scan. Passing regression is not release approval.
+
+See [final image review](../security/final-container-image-review.md),
+[individual risk register](../security/final-image-risk-register.md),
+[actual commands/results and failed attempts](final-image-remediation-results.md)
+and [stateful rollback guide](../deployment/final-image-upgrade-rollback.md).
+No push, merge, production deployment, history rewrite or global prune was done.

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "stage",
+    "status": "passed"
+  },
+  {
+    "name": "activate",
+    "status": "passed"
+  },
+  {
+    "name": "retire",
+    "status": "passed"
+  },
+  {
+    "name": "verify-retired",
+    "status": "passed"
+  },
+  {
+    "name": "JWKS-outage-and-sync-preserves-config",
+    "status": "passed"
+  },
+  {
+    "name": "verify-retired",
+    "status": "passed"
+  }
+]

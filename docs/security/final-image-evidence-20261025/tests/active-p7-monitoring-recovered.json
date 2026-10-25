@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "request_id": "f690830a-5044-4a9f-8656-11ee0241cb8c",
+  "grafana_container_recreated_same_volume": true,
+  "dashboard_queries": "all provisioned targets executed",
+  "rules": 6,
+  "recreated_backend_new_log_ingested": true,
+  "external_notification_delivery": "NOT EXECUTED"
+}

@@ -1,0 +1,2509 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.1/schema/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "fullName": "Docker Scout",
+          "informationUri": "https://docker.com/products/docker-scout",
+          "name": "docker scout",
+          "rules": [
+            {
+              "id": "CVE-2024-56433",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2024-56433"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2024-56433?s=ubuntu&n=shadow&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "shadow-utils (aka shadow) 4.4 through 4.17.0 establishes a default /etc/subuid behavior (e.g., uid 100000 through 165535 for the first user account) that can realistically conflict with the uids of users defined on locally administered networks, potentially leading to account takeover, e.g., by leveraging newuidmap for access to an NFS home directory (or same-host resources in the case of remote logins by these local network users). NOTE: it may also be argued that system administrators should not have assigned uids, within local networks, that are within the range that can occur in /etc/subuid.\n",
+                "markdown": "> shadow-utils (aka shadow) 4.4 through 4.17.0 establishes a default /etc/subuid behavior (e.g., uid 100000 through 165535 for the first user account) that can realistically conflict with the uids of users defined on locally administered networks, potentially leading to account takeover, e.g., by leveraging newuidmap for access to an NFS home directory (or same-host resources in the case of remote logins by these local network users). NOTE: it may also be argued that system administrators should not have assigned uids, within local networks, that are within the range that can occur in /etc/subuid.\n\n|                                                                                                                   |\n|Package         pkg:deb/ubuntu/shadow@1%3A4.13%2Bdfsg1-4ubuntu3.2?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  >=0                                                                                                |\n|Fixed version   not fixed                                                                                          |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3_severity": "LOW",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/shadow@1%3A4.13%2Bdfsg1-4ubuntu3.2?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "3.1",
+                "tags": [
+                  "LOW"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-86409",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-86409"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-86409?s=ubuntu&n=curl&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3C8.5.0-2ubuntu10.16",
+              "help": {
+                "text": "Setting `CURLOPT_AWS_SIGV4` to NULL does not disable SigV4 authentication, contrary to expectations and documentation. A subsequent transfer on the same handle still sends an `Authorization: AWS4-HMAC-SHA256` header to whatever URL is set next, leaking state information.\n",
+                "markdown": "> Setting `CURLOPT_AWS_SIGV4` to NULL does not disable SigV4 authentication, contrary to expectations and documentation. A subsequent transfer on the same handle still sends an `Authorization: AWS4-HMAC-SHA256` header to whatever URL is set next, leaking state information.\n\n|                                                                                                        |\n|Package         pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  <8.5.0-2ubuntu10.16                                                                     |\n|Fixed version   8.5.0-2ubuntu10.16                                                                      |\n"
+              },
+              "properties": {
+                "affected_version": "<8.5.0-2ubuntu10.16",
+                "cvssV3_severity": "LOW",
+                "fixed_version": "8.5.0-2ubuntu10.16",
+                "purls": [
+                  "pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "3.1",
+                "tags": [
+                  "LOW"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-86414",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-86414"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-86414?s=ubuntu&n=curl&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3C8.5.0-2ubuntu10.16",
+              "help": {
+                "text": "A HTTP proxy can trick libcurl into sending the origin's credentials (Basic password, or a Negotiate/Kerberos ticket) to the proxy itself, by answering the `CONNECT` tunnel request with 401 `WWW-Authenticate:` instead of the expected 407 `Proxy-Authenticate:`.\n",
+                "markdown": "> A HTTP proxy can trick libcurl into sending the origin's credentials (Basic password, or a Negotiate/Kerberos ticket) to the proxy itself, by answering the `CONNECT` tunnel request with 401 `WWW-Authenticate:` instead of the expected 407 `Proxy-Authenticate:`.\n\n|                                                                                                        |\n|Package         pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  <8.5.0-2ubuntu10.16                                                                     |\n|Fixed version   8.5.0-2ubuntu10.16                                                                      |\n"
+              },
+              "properties": {
+                "affected_version": "<8.5.0-2ubuntu10.16",
+                "cvssV3_severity": "LOW",
+                "fixed_version": "8.5.0-2ubuntu10.16",
+                "purls": [
+                  "pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "3.1",
+                "tags": [
+                  "LOW"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-87862",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-87862"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-87862?s=ubuntu&n=curl&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3C8.5.0-2ubuntu10.16",
+              "help": {
+                "text": "Importing a `includeSubDomains` parent HSTS entry before a longer-lived child entry, silently drops the child. Consequently, when the parent expires, the child's valid HSTS policy is lost, causing curl to issue unencrypted HTTP requests rather than upgrading to HTTPS.\n",
+                "markdown": "> Importing a `includeSubDomains` parent HSTS entry before a longer-lived child entry, silently drops the child. Consequently, when the parent expires, the child's valid HSTS policy is lost, causing curl to issue unencrypted HTTP requests rather than upgrading to HTTPS.\n\n|                                                                                                        |\n|Package         pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  <8.5.0-2ubuntu10.16                                                                     |\n|Fixed version   8.5.0-2ubuntu10.16                                                                      |\n"
+              },
+              "properties": {
+                "affected_version": "<8.5.0-2ubuntu10.16",
+                "cvssV3_severity": "LOW",
+                "fixed_version": "8.5.0-2ubuntu10.16",
+                "purls": [
+                  "pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "3.1",
+                "tags": [
+                  "LOW"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-87863",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-87863"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-87863?s=ubuntu&n=curl&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3C8.5.0-2ubuntu10.16",
+              "help": {
+                "text": "An authenticated HTTPS origin can supply an HSTS `max-age` value that the parser accepts, but time serialization later fails to process. On 64-bit systems, extreme max-age values compute an absolute expiry within standard time integer limits that exceeds calendar time structure bounds. During cache saves, the original HSTS file is truncated before writing a temporary replacement; when serialization fails, the temporary file is deleted, leaving an empty or partial cache. Because the save error is silently ignored during cleanup, curl exits successfully despite the data loss.\n",
+                "markdown": "> An authenticated HTTPS origin can supply an HSTS `max-age` value that the parser accepts, but time serialization later fails to process. On 64-bit systems, extreme max-age values compute an absolute expiry within standard time integer limits that exceeds calendar time structure bounds. During cache saves, the original HSTS file is truncated before writing a temporary replacement; when serialization fails, the temporary file is deleted, leaving an empty or partial cache. Because the save error is silently ignored during cleanup, curl exits successfully despite the data loss.\n\n|                                                                                                        |\n|Package         pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  <8.5.0-2ubuntu10.16                                                                     |\n|Fixed version   8.5.0-2ubuntu10.16                                                                      |\n"
+              },
+              "properties": {
+                "affected_version": "<8.5.0-2ubuntu10.16",
+                "cvssV3_severity": "LOW",
+                "fixed_version": "8.5.0-2ubuntu10.16",
+                "purls": [
+                  "pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "3.1",
+                "tags": [
+                  "LOW"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-87864",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-87864"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-87864?s=ubuntu&n=curl&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3C8.5.0-2ubuntu10.16",
+              "help": {
+                "text": "Enabling `CURLOPT_CRLF` causes curl to advertise the raw input byte count in the `IMAP APPEND {N}` literal while transmitting line-ending expanded data. The server reads only N bytes for the payload, causing the remaining overflow bytes to be interpreted and executed as pipelined IMAP commands within the authenticated session.\n",
+                "markdown": "> Enabling `CURLOPT_CRLF` causes curl to advertise the raw input byte count in the `IMAP APPEND {N}` literal while transmitting line-ending expanded data. The server reads only N bytes for the payload, causing the remaining overflow bytes to be interpreted and executed as pipelined IMAP commands within the authenticated session.\n\n|                                                                                                        |\n|Package         pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  <8.5.0-2ubuntu10.16                                                                     |\n|Fixed version   8.5.0-2ubuntu10.16                                                                      |\n"
+              },
+              "properties": {
+                "affected_version": "<8.5.0-2ubuntu10.16",
+                "cvssV3_severity": "LOW",
+                "fixed_version": "8.5.0-2ubuntu10.16",
+                "purls": [
+                  "pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "3.1",
+                "tags": [
+                  "LOW"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-92388",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-92388"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-92388?s=ubuntu&n=curl&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3C8.5.0-2ubuntu10.16",
+              "help": {
+                "text": "When an FTP wildcard `LIST` operation fails, libcurl omits the restoration path meant for successful listings, leaving the write callback set to the internal listing parser and the write callback data pointing directly to the easy handle. Subsequent reuse of this handle triggers an immediate crash, and cloning it via `curl_easy_duphandle()` copies this corrupted state into the duplicate. If the original handle is subsequently freed, executing a transfer on the cloned handle causes a heap use-after-free read against the dangling handle reference; alternatively, reusing the original or cloned handle while reconfiguring only `CURLOPT_WRITEDATA` (and omitting `CURLOPT_WRITEFUNCTION`) results in type confusion, forcing the internal parser to interpret incoming server response bytes into memory at the application-supplied write data pointer.\n",
+                "markdown": "> When an FTP wildcard `LIST` operation fails, libcurl omits the restoration path meant for successful listings, leaving the write callback set to the internal listing parser and the write callback data pointing directly to the easy handle. Subsequent reuse of this handle triggers an immediate crash, and cloning it via `curl_easy_duphandle()` copies this corrupted state into the duplicate. If the original handle is subsequently freed, executing a transfer on the cloned handle causes a heap use-after-free read against the dangling handle reference; alternatively, reusing the original or cloned handle while reconfiguring only `CURLOPT_WRITEDATA` (and omitting `CURLOPT_WRITEFUNCTION`) results in type confusion, forcing the internal parser to interpret incoming server response bytes into memory at the application-supplied write data pointer.\n\n|                                                                                                        |\n|Package         pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  <8.5.0-2ubuntu10.16                                                                     |\n|Fixed version   8.5.0-2ubuntu10.16                                                                      |\n"
+              },
+              "properties": {
+                "affected_version": "<8.5.0-2ubuntu10.16",
+                "cvssV3_severity": "LOW",
+                "fixed_version": "8.5.0-2ubuntu10.16",
+                "purls": [
+                  "pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "3.1",
+                "tags": [
+                  "LOW"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-92389",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-92389"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-92389?s=ubuntu&n=curl&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3C8.5.0-2ubuntu10.16",
+              "help": {
+                "text": "libcurl's TFTP state machine fails to validate state transitions against the requested transfer direction, accepting opening server responses for both reads and writes interchangeably. A malicious TFTP server can respond to a download request in a way that forces the client into transmit mode, prompting libcurl to consume and transmit data from the handle's persistent `CURLOPT_READDATA` pointer - including data remaining from unrelated prior operations, such as an HTTP POST request executed on a reused handle.\n",
+                "markdown": "> libcurl's TFTP state machine fails to validate state transitions against the requested transfer direction, accepting opening server responses for both reads and writes interchangeably. A malicious TFTP server can respond to a download request in a way that forces the client into transmit mode, prompting libcurl to consume and transmit data from the handle's persistent `CURLOPT_READDATA` pointer - including data remaining from unrelated prior operations, such as an HTTP POST request executed on a reused handle.\n\n|                                                                                                        |\n|Package         pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  <8.5.0-2ubuntu10.16                                                                     |\n|Fixed version   8.5.0-2ubuntu10.16                                                                      |\n"
+              },
+              "properties": {
+                "affected_version": "<8.5.0-2ubuntu10.16",
+                "cvssV3_severity": "LOW",
+                "fixed_version": "8.5.0-2ubuntu10.16",
+                "purls": [
+                  "pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "3.1",
+                "tags": [
+                  "LOW"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-92391",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-92391"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-92391?s=ubuntu&n=curl&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3C8.5.0-2ubuntu10.16",
+              "help": {
+                "text": "A deeply nested multipart MIME structure constructed via the public API causes a stack overflow in libcurl during normal cleanup operations. An excessive recursion depth within `curl_mime_free` leads to unbounded stack frame allocation during structure traversal, ultimately crashing the host process.\n",
+                "markdown": "> A deeply nested multipart MIME structure constructed via the public API causes a stack overflow in libcurl during normal cleanup operations. An excessive recursion depth within `curl_mime_free` leads to unbounded stack frame allocation during structure traversal, ultimately crashing the host process.\n\n|                                                                                                        |\n|Package         pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  <8.5.0-2ubuntu10.16                                                                     |\n|Fixed version   8.5.0-2ubuntu10.16                                                                      |\n"
+              },
+              "properties": {
+                "affected_version": "<8.5.0-2ubuntu10.16",
+                "cvssV3_severity": "LOW",
+                "fixed_version": "8.5.0-2ubuntu10.16",
+                "purls": [
+                  "pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "3.1",
+                "tags": [
+                  "LOW"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-94266",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-94266"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-94266?s=ubuntu&n=curl&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3C8.5.0-2ubuntu10.16",
+              "help": {
+                "text": "libcurl could accidentally return a URL for curl_easy_getinfo's `CURLINFO_EFFECTIVE_URL` option containing credentials, even though neither the URL provided to libcurl nor the redirected URL did. The curl tool exposes the same information using the command line option `--write-out '%{url_effective}'`. This credential leak can happen when curl retrieves credentials from a `.netrc` file.\n",
+                "markdown": "> libcurl could accidentally return a URL for curl_easy_getinfo's `CURLINFO_EFFECTIVE_URL` option containing credentials, even though neither the URL provided to libcurl nor the redirected URL did. The curl tool exposes the same information using the command line option `--write-out '%{url_effective}'`. This credential leak can happen when curl retrieves credentials from a `.netrc` file.\n\n|                                                                                                        |\n|Package         pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  <8.5.0-2ubuntu10.16                                                                     |\n|Fixed version   8.5.0-2ubuntu10.16                                                                      |\n"
+              },
+              "properties": {
+                "affected_version": "<8.5.0-2ubuntu10.16",
+                "cvssV3_severity": "LOW",
+                "fixed_version": "8.5.0-2ubuntu10.16",
+                "purls": [
+                  "pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "3.1",
+                "tags": [
+                  "LOW"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-40228",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-40228"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-40228?s=ubuntu&n=systemd&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "In systemd 259, systemd-journald can send ANSI escape sequences to the terminals of arbitrary users when a \"logger -p emerg\" command is executed, if ForwardToWall=yes is set.\n",
+                "markdown": "> In systemd 259, systemd-journald can send ANSI escape sequences to the terminals of arbitrary users when a \"logger -p emerg\" command is executed, if ForwardToWall=yes is set.\n\n|                                                                                                                                                                         |\n|Package                                                                        pkg:deb/ubuntu/systemd@255.4-1ubuntu8.17?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range                                                                 >=0                                                                                       |\n|Fixed version                                                                  not fixed                                                                                 |\n|[[CVSS Score 3.3] [CVSS Vector CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N]]                                                                                            |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3": 3.3,
+                "cvssV3_severity": "LOW",
+                "cvssV3_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/systemd@255.4-1ubuntu8.17?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "3.3",
+                "tags": [
+                  "LOW"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2019-20838",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2019-20838"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2019-20838?s=ubuntu&n=pcre3&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "libpcre in PCRE before 8.43 allows a subject buffer over-read in JIT when UTF is disabled, and \\X or \\R has more than one fixed quantifier, a related issue to CVE-2019-20454.\n",
+                "markdown": "> libpcre in PCRE before 8.43 allows a subject buffer over-read in JIT when UTF is disabled, and \\X or \\R has more than one fixed quantifier, a related issue to CVE-2019-20454.\n\n|                                                                                                                                                                       |\n|Package                                                                        pkg:deb/ubuntu/pcre3@2%3A8.39-15build1?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range                                                                 >=0                                                                                     |\n|Fixed version                                                                  not fixed                                                                               |\n|[[CVSS Score 7.5] [CVSS Vector CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H]]                                                                                          |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3": 7.5,
+                "cvssV3_severity": "LOW",
+                "cvssV3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/pcre3@2%3A8.39-15build1?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "7.5",
+                "tags": [
+                  "LOW"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-102473",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-102473"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-102473?s=ubuntu&n=dash&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "A flaw was found in dash. When built without libc fnmatch, the internal pmatch() matcher implements * by unbounded recursion over candidate positions. A local user who can plant filenames, or otherwise feed that matcher, can make a short multi-star pattern such as *.*.*.*.*.tar.gz consume excessive CPU.\n",
+                "markdown": "> A flaw was found in dash. When built without libc fnmatch, the internal pmatch() matcher implements * by unbounded recursion over candidate positions. A local user who can plant filenames, or otherwise feed that matcher, can make a short multi-star pattern such as *.*.*.*.*.tar.gz consume excessive CPU.\n\n|                                                                                                     |\n|Package         pkg:deb/ubuntu/dash@0.5.12-6ubuntu5?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  >=0                                                                                  |\n|Fixed version   not fixed                                                                            |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3_severity": "MEDIUM",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/dash@0.5.12-6ubuntu5?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "4.1",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-102474",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-102474"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-102474?s=ubuntu&n=dash&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "A flaw was found in dash. The printf builtin reserves four bytes before converting a Unicode \\u or \\U escape, but the multi-byte token can need five or six bytes. A local user who can supply such an escape to dash printf or echo %b, including through dash -c and a positional argument, can write one or two bytes past that reservation.\n",
+                "markdown": "> A flaw was found in dash. The printf builtin reserves four bytes before converting a Unicode \\u or \\U escape, but the multi-byte token can need five or six bytes. A local user who can supply such an escape to dash printf or echo %b, including through dash -c and a positional argument, can write one or two bytes past that reservation.\n\n|                                                                                                     |\n|Package         pkg:deb/ubuntu/dash@0.5.12-6ubuntu5?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  >=0                                                                                  |\n|Fixed version   not fixed                                                                            |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3_severity": "MEDIUM",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/dash@0.5.12-6ubuntu5?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "4.1",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-103111",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-103111"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-103111?s=ubuntu&n=pcre2&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "PCRE2 before 10.49, when there is an attacker-controlled regular expression and certain JIT API usage, allows an out-of-bounds write with arbitrary data.\n",
+                "markdown": "> PCRE2 before 10.49, when there is an attacker-controlled regular expression and certain JIT API usage, allows an out-of-bounds write with arbitrary data.\n\n|                                                                                                       |\n|Package         pkg:deb/ubuntu/pcre2@10.42-4ubuntu2.1?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  >=0                                                                                    |\n|Fixed version   not fixed                                                                              |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3_severity": "MEDIUM",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/pcre2@10.42-4ubuntu2.1?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "4.1",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-107161",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-107161"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-107161?s=ubuntu&n=cyrus-sasl2&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "A heap-based buffer overflow flaw was found in Cyrus SASL. The add_to_challenge() function in the DIGEST-MD5 plugin computes the size of the buffer needed for a challenge/response field before DIGEST-MD5 quoting is applied, but does not recompute that size when quoting (escaping special characters) makes the value longer. The under-sized buffer is then passed to strcat(), causing a heap-based out-of-bounds write whose size depends on attacker-controlled input. A malicious or on-path DIGEST-MD5 (or HTTP Digest) server can trigger this flaw in a connecting client by supplying a crafted challenge field, such as realm or nonce, most likely resulting in a crash of the client application.\n",
+                "markdown": "> A heap-based buffer overflow flaw was found in Cyrus SASL. The add_to_challenge() function in the DIGEST-MD5 plugin computes the size of the buffer needed for a challenge/response field before DIGEST-MD5 quoting is applied, but does not recompute that size when quoting (escaping special characters) makes the value longer. The under-sized buffer is then passed to strcat(), causing a heap-based out-of-bounds write whose size depends on attacker-controlled input. A malicious or on-path DIGEST-MD5 (or HTTP Digest) server can trigger this flaw in a connecting client by supplying a crafted challenge field, such as realm or nonce, most likely resulting in a crash of the client application.\n\n|                                                                                                                      |\n|Package         pkg:deb/ubuntu/cyrus-sasl2@2.1.28%2Bdfsg1-5ubuntu3.1?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  >=0                                                                                                   |\n|Fixed version   not fixed                                                                                             |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3_severity": "MEDIUM",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/cyrus-sasl2@2.1.28%2Bdfsg1-5ubuntu3.1?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "4.1",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-18374",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-18374"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-18374?s=ubuntu&n=glibc&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "Passing an effectively empty string to the `,ccs=` syntax extension of the mode argument in the `fopen` function in the GNU C Library version 2.45 or earlier may result in a heap buffer overflow when the mode string input to the function is attacker controlled.    This usage pattern is not seen in applications in common GNU/Linux distributions and applications that process user-supplied values for `ccs` should not pass them through without validation.\n",
+                "markdown": "> Passing an effectively empty string to the `,ccs=` syntax extension of the mode argument in the `fopen` function in the GNU C Library version 2.45 or earlier may result in a heap buffer overflow when the mode string input to the function is attacker controlled.    This usage pattern is not seen in applications in common GNU/Linux distributions and applications that process user-supplied values for `ccs` should not pass them through without validation.\n\n|                                                                                                      |\n|Package         pkg:deb/ubuntu/glibc@2.39-0ubuntu8.9?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  >=0                                                                                   |\n|Fixed version   not fixed                                                                             |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3_severity": "MEDIUM",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/glibc@2.39-0ubuntu8.9?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "4.1",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-18477",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-18477"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-18477?s=ubuntu&n=tar&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "A TOCTOU (Time-of-Check Time-of-Use) vulnerability in GNU tar's incremental dumpdir 'X' rename handling allows a local attacker with write access to a directory being backed up to influence the restore process if the attacker has access to the system where the restore is being performed. During restoration, files or directories may be created, renamed or overwritten outside the intended extraction directory. This could lead to unauthorized file modification or, in some cases, privilege escalation. Exploitation does not require the attacker to modify or craft the archive, and standard backup and restore workflows—including extracting into a newly created directory without using the -P option do not mitigate the issue.\n",
+                "markdown": "> A TOCTOU (Time-of-Check Time-of-Use) vulnerability in GNU tar's incremental dumpdir 'X' rename handling allows a local attacker with write access to a directory being backed up to influence the restore process if the attacker has access to the system where the restore is being performed. During restoration, files or directories may be created, renamed or overwritten outside the intended extraction directory. This could lead to unauthorized file modification or, in some cases, privilege escalation. Exploitation does not require the attacker to modify or craft the archive, and standard backup and restore workflows—including extracting into a newly created directory without using the -P option do not mitigate the issue.\n\n|                                                                                                           |\n|Package         pkg:deb/ubuntu/tar@1.35%2Bdfsg-3ubuntu0.4?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  >=0                                                                                        |\n|Fixed version   not fixed                                                                                  |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3_severity": "MEDIUM",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/tar@1.35%2Bdfsg-3ubuntu0.4?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "4.1",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-18508",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-18508"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-18508?s=ubuntu&n=tar&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "A flaw was found in GNU tar. When extracting an archive with the --one-top-level option, hardlink targets are not confined to the designated top-level directory and may resolve relative to the extraction working directory. A crafted archive can create hardlinks that escape the intended boundary and, when combined with a preexisting symbolic link under the working directory, may allow writing outside that boundary during a single extraction.\n",
+                "markdown": "> A flaw was found in GNU tar. When extracting an archive with the --one-top-level option, hardlink targets are not confined to the designated top-level directory and may resolve relative to the extraction working directory. A crafted archive can create hardlinks that escape the intended boundary and, when combined with a preexisting symbolic link under the working directory, may allow writing outside that boundary during a single extraction.\n\n|                                                                                                           |\n|Package         pkg:deb/ubuntu/tar@1.35%2Bdfsg-3ubuntu0.4?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  >=0                                                                                        |\n|Fixed version   not fixed                                                                                  |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3_severity": "MEDIUM",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/tar@1.35%2Bdfsg-3ubuntu0.4?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "4.1",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-2219",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-2219"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-2219?s=ubuntu&n=dpkg&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "It was discovered that dpkg-deb (a component of dpkg, the Debian package management system) does not properly validate the end of the data stream when uncompressing a zstd-compressed .deb archive, which may result in denial of service (infinite loop spinning the CPU).\n",
+                "markdown": "> It was discovered that dpkg-deb (a component of dpkg, the Debian package management system) does not properly validate the end of the data stream when uncompressing a zstd-compressed .deb archive, which may result in denial of service (infinite loop spinning the CPU).\n\n|                                                                                                     |\n|Package         pkg:deb/ubuntu/dpkg@1.22.6ubuntu6.6?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  >=0                                                                                  |\n|Fixed version   not fixed                                                                            |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3_severity": "MEDIUM",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/dpkg@1.22.6ubuntu6.6?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "4.1",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-67693",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-67693"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-67693?s=ubuntu&n=gnutls28&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "An issue in gnutls v.3.8.13 allows an attacker to obtain sensitive information via failing to reject end-entity X.509 certificates that contain a contradictory combination of Key Usage (KU) and Extended Key Usage (EKU)\n",
+                "markdown": "> An issue in gnutls v.3.8.13 allows an attacker to obtain sensitive information via failing to reject end-entity X.509 certificates that contain a contradictory combination of Key Usage (KU) and Extended Key Usage (EKU)\n\n|                                                                                                            |\n|Package         pkg:deb/ubuntu/gnutls28@3.8.3-1.1ubuntu3.6?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  >=0                                                                                         |\n|Fixed version   not fixed                                                                                   |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3_severity": "MEDIUM",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/gnutls28@3.8.3-1.1ubuntu3.6?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "4.1",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-85091",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-85091"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-85091?s=ubuntu&n=zlib&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3C1%3A1.3.dfsg-3.1ubuntu2.3",
+              "help": {
+                "text": "zlib versions 1.3.1.2 through 1.3.2 contain a heap buffer overflow vulnerability in the gz_vacate() function when processing non-blocking gzwrite() operations with stale external buffer pointers. Attackers can trigger the overflow by calling gzprintf() or gzvprintf() after a write stall, causing an unchecked memmove() to write beyond the internal input buffer boundary.\n",
+                "markdown": "> zlib versions 1.3.1.2 through 1.3.2 contain a heap buffer overflow vulnerability in the gz_vacate() function when processing non-blocking gzwrite() operations with stale external buffer pointers. Attackers can trigger the overflow by calling gzprintf() or gzvprintf() after a write stall, causing an unchecked memmove() to write beyond the internal input buffer boundary.\n\n|                                                                                                               |\n|Package         pkg:deb/ubuntu/zlib@1%3A1.3.dfsg-3.1ubuntu2.2?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  <1:1.3.dfsg-3.1ubuntu2.3                                                                       |\n|Fixed version   1:1.3.dfsg-3.1ubuntu2.3                                                                        |\n"
+              },
+              "properties": {
+                "affected_version": "<1:1.3.dfsg-3.1ubuntu2.3",
+                "cvssV3_severity": "MEDIUM",
+                "fixed_version": "1:1.3.dfsg-3.1ubuntu2.3",
+                "purls": [
+                  "pkg:deb/ubuntu/zlib@1%3A1.3.dfsg-3.1ubuntu2.2?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "4.1",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-86145",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-86145"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-86145?s=ubuntu&n=pcre2&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "PCRE2 before 10.48 allows a pcre2_dfa_match out-of-bounds write because reuse of a cached workspace block, in a recursive DFA matching workspace, lacks a size check (even though a newly allocated block, for the same purpose, does have a size check). This outcome requires an attacker-controlled regular expression, or a recursive pattern in conjunction with a small heap limit (this can be set through the API).\n",
+                "markdown": "> PCRE2 before 10.48 allows a pcre2_dfa_match out-of-bounds write because reuse of a cached workspace block, in a recursive DFA matching workspace, lacks a size check (even though a newly allocated block, for the same purpose, does have a size check). This outcome requires an attacker-controlled regular expression, or a recursive pattern in conjunction with a small heap limit (this can be set through the API).\n\n|                                                                                                       |\n|Package         pkg:deb/ubuntu/pcre2@10.42-4ubuntu2.1?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  >=0                                                                                    |\n|Fixed version   not fixed                                                                              |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3_severity": "MEDIUM",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/pcre2@10.42-4ubuntu2.1?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "4.1",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-88647",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-88647"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-88647?s=ubuntu&n=gnutls28&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "A hostname verification bypass in GnuTLS v3.8.13 allows attackers to circumvent the Common Name fallback mechanism and eavesdrop on communications via a crafted certificate.\n",
+                "markdown": "> A hostname verification bypass in GnuTLS v3.8.13 allows attackers to circumvent the Common Name fallback mechanism and eavesdrop on communications via a crafted certificate.\n\n|                                                                                                            |\n|Package         pkg:deb/ubuntu/gnutls28@3.8.3-1.1ubuntu3.6?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  >=0                                                                                         |\n|Fixed version   not fixed                                                                                   |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3_severity": "MEDIUM",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/gnutls28@3.8.3-1.1ubuntu3.6?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "4.1",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-88648",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-88648"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-88648?s=ubuntu&n=gnutls28&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "Incomplete X.509 implementation in GnuTLS v3.8.13 allows attackers controlling a subordinate Certificate Authority to bypass cross-domain PKI restrictions and issue unauthorized certificates.\n",
+                "markdown": "> Incomplete X.509 implementation in GnuTLS v3.8.13 allows attackers controlling a subordinate Certificate Authority to bypass cross-domain PKI restrictions and issue unauthorized certificates.\n\n|                                                                                                            |\n|Package         pkg:deb/ubuntu/gnutls28@3.8.3-1.1ubuntu3.6?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  >=0                                                                                         |\n|Fixed version   not fixed                                                                                   |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3_severity": "MEDIUM",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/gnutls28@3.8.3-1.1ubuntu3.6?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "4.1",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-89092",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-89092"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-89092?s=ubuntu&n=glibc&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "The nscd service in the GNU C Library 2.3.4 onwards may crash due to a stack overflow when a malicious DNS server returns too large a response for a DNS query, resulting in degraded DNS resolution for the system.    Exploitation of this bug needs a system that has nscd enabled and using an untrusted DNS server for name resolution, with the compromised DNS server being capable of processing records large enough to result in a stack overflow in an nscd thread stack.  During experimentation, bind 9 was unable to handle large records, but that could change in future or with a different name server.  In typical installations, nscd is executed in an isolated context as its own user without a shell, due to which any compromise of that service is isolated.    There is a remote possibility of nscd cache corruption if an attacker manages to get the stack pointer into a desired point in the heap, potentially resulting in other caches in nscd being overwritten with corrupt data through the stack overflow, until the buggy code path eventually results in a crash.    Finally, a crash in nscd may result in performance degradation when resolving names, but it does not result in a denial of service.\n",
+                "markdown": "> The nscd service in the GNU C Library 2.3.4 onwards may crash due to a stack overflow when a malicious DNS server returns too large a response for a DNS query, resulting in degraded DNS resolution for the system.    Exploitation of this bug needs a system that has nscd enabled and using an untrusted DNS server for name resolution, with the compromised DNS server being capable of processing records large enough to result in a stack overflow in an nscd thread stack.  During experimentation, bind 9 was unable to handle large records, but that could change in future or with a different name server.  In typical installations, nscd is executed in an isolated context as its own user without a shell, due to which any compromise of that service is isolated.    There is a remote possibility of nscd cache corruption if an attacker manages to get the stack pointer into a desired point in the heap, potentially resulting in other caches in nscd being overwritten with corrupt data through the stack overflow, until the buggy code path eventually results in a crash.    Finally, a crash in nscd may result in performance degradation when resolving names, but it does not result in a denial of service.\n\n|                                                                                                      |\n|Package         pkg:deb/ubuntu/glibc@2.39-0ubuntu8.9?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  >=0                                                                                   |\n|Fixed version   not fixed                                                                             |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3_severity": "MEDIUM",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/glibc@2.39-0ubuntu8.9?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "4.1",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-95184",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-95184"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-95184?s=ubuntu&n=gnutls28&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "Improper certificate validation in gnutls v3.8.13 causes the application to reject legitimate certificates for valid users, leading to a Denial of Service (DoS).\n",
+                "markdown": "> Improper certificate validation in gnutls v3.8.13 causes the application to reject legitimate certificates for valid users, leading to a Denial of Service (DoS).\n\n|                                                                                                            |\n|Package         pkg:deb/ubuntu/gnutls28@3.8.3-1.1ubuntu3.6?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  >=0                                                                                         |\n|Fixed version   not fixed                                                                                   |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3_severity": "MEDIUM",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/gnutls28@3.8.3-1.1ubuntu3.6?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "4.1",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-95209",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-95209"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-95209?s=ubuntu&n=gnutls28&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "An issue in gnutls v3.8.13 causes legitimate CA certificates to be rejected, leading to a Denial of Service (DoS).\n",
+                "markdown": "> An issue in gnutls v3.8.13 causes legitimate CA certificates to be rejected, leading to a Denial of Service (DoS).\n\n|                                                                                                            |\n|Package         pkg:deb/ubuntu/gnutls28@3.8.3-1.1ubuntu3.6?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  >=0                                                                                         |\n|Fixed version   not fixed                                                                                   |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3_severity": "MEDIUM",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/gnutls28@3.8.3-1.1ubuntu3.6?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "4.1",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-95210",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-95210"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-95210?s=ubuntu&n=gnutls28&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "Improper certificate validation in gnutls v3.8.13 causes the application to accept certificates containing invalid extensions.\n",
+                "markdown": "> Improper certificate validation in gnutls v3.8.13 causes the application to accept certificates containing invalid extensions.\n\n|                                                                                                            |\n|Package         pkg:deb/ubuntu/gnutls28@3.8.3-1.1ubuntu3.6?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range  >=0                                                                                         |\n|Fixed version   not fixed                                                                                   |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3_severity": "MEDIUM",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/gnutls28@3.8.3-1.1ubuntu3.6?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "4.1",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2025-66382",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2025-66382"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2025-66382?s=ubuntu&n=expat&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "In libexpat through 2.7.3, a crafted file with an approximate size of 2 MiB can lead to dozens of seconds of processing time.\n",
+                "markdown": "> In libexpat through 2.7.3, a crafted file with an approximate size of 2 MiB can lead to dozens of seconds of processing time.\n\n|                                                                                                                                                                      |\n|Package                                                                        pkg:deb/ubuntu/expat@2.6.1-2ubuntu0.6?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range                                                                 >=0                                                                                    |\n|Fixed version                                                                  not fixed                                                                              |\n|[[CVSS Score 5.5] [CVSS Vector CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H]]                                                                                         |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3": 5.5,
+                "cvssV3_severity": "MEDIUM",
+                "cvssV3_vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/expat@2.6.1-2ubuntu0.6?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "5.5",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-89156",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-89156"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-89156?s=ubuntu&n=pcre2&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "PCRE2 before 10.48 has a pcre2_match out-of-bounds read after a JIT fallback when an attacker can provide invalid UTF data.\n",
+                "markdown": "> PCRE2 before 10.48 has a pcre2_match out-of-bounds read after a JIT fallback when an attacker can provide invalid UTF data.\n\n|                                                                                                                                                                      |\n|Package                                                                        pkg:deb/ubuntu/pcre2@10.42-4ubuntu2.1?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range                                                                 >=0                                                                                    |\n|Fixed version                                                                  not fixed                                                                              |\n|[[CVSS Score 5.9] [CVSS Vector CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H]]                                                                                         |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3": 5.9,
+                "cvssV3_severity": "MEDIUM",
+                "cvssV3_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/pcre2@10.42-4ubuntu2.1?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "5.9",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-89158",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-89158"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-89158?s=ubuntu&n=pcre2&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "PCRE2 before 10.48, on 32-bit platforms, has a pcre2_compile_32 integer overflow and resultant out-of-bounds write.\n",
+                "markdown": "> PCRE2 before 10.48, on 32-bit platforms, has a pcre2_compile_32 integer overflow and resultant out-of-bounds write.\n\n|                                                                                                                                                                      |\n|Package                                                                        pkg:deb/ubuntu/pcre2@10.42-4ubuntu2.1?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range                                                                 >=0                                                                                    |\n|Fixed version                                                                  not fixed                                                                              |\n|[[CVSS Score 6.5] [CVSS Vector CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:L]]                                                                                         |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3": 6.5,
+                "cvssV3_severity": "MEDIUM",
+                "cvssV3_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:L",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/pcre2@10.42-4ubuntu2.1?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "6.5",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-89160",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-89160"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-89160?s=ubuntu&n=pcre2&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "PCRE2 before 10.48 has a pcre2_match out-of-bounds read during the PCRE2_MATCH_INVALID_UTF matching of an invalid UTF subject.\n",
+                "markdown": "> PCRE2 before 10.48 has a pcre2_match out-of-bounds read during the PCRE2_MATCH_INVALID_UTF matching of an invalid UTF subject.\n\n|                                                                                                                                                                      |\n|Package                                                                        pkg:deb/ubuntu/pcre2@10.42-4ubuntu2.1?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range                                                                 >=0                                                                                    |\n|Fixed version                                                                  not fixed                                                                              |\n|[[CVSS Score 6.5] [CVSS Vector CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L]]                                                                                         |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3": 6.5,
+                "cvssV3_severity": "MEDIUM",
+                "cvssV3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/pcre2@10.42-4ubuntu2.1?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "6.5",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-89157",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-89157"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-89157?s=ubuntu&n=pcre2&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "PCRE2 before 10.48, on 32-bit platforms, has a pcre2_pattern_convert out-of-bounds write when an attacker can provide a large pattern.\n",
+                "markdown": "> PCRE2 before 10.48, on 32-bit platforms, has a pcre2_pattern_convert out-of-bounds write when an attacker can provide a large pattern.\n\n|                                                                                                                                                                      |\n|Package                                                                        pkg:deb/ubuntu/pcre2@10.42-4ubuntu2.1?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range                                                                 >=0                                                                                    |\n|Fixed version                                                                  not fixed                                                                              |\n|[[CVSS Score 7.4] [CVSS Vector CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H]]                                                                                         |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3": 7.4,
+                "cvssV3_severity": "MEDIUM",
+                "cvssV3_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/pcre2@10.42-4ubuntu2.1?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "7.4",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-89161",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2026-89161"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2026-89161?s=ubuntu&n=pcre2&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "In PCRE2 before 10.48, pcre2_jit_match mishandles a previously copied subject being passed in as a context. An incorrect free operation can occur.\n",
+                "markdown": "> In PCRE2 before 10.48, pcre2_jit_match mishandles a previously copied subject being passed in as a context. An incorrect free operation can occur.\n\n|                                                                                                                                                                      |\n|Package                                                                        pkg:deb/ubuntu/pcre2@10.42-4ubuntu2.1?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range                                                                 >=0                                                                                    |\n|Fixed version                                                                  not fixed                                                                              |\n|[[CVSS Score 7.8] [CVSS Vector CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H]]                                                                                         |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3": 7.8,
+                "cvssV3_severity": "MEDIUM",
+                "cvssV3_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/pcre2@10.42-4ubuntu2.1?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "7.8",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2024-52005",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2024-52005"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2024-52005?s=ubuntu&n=git&ns=ubuntu&t=deb&osn=ubuntu&osv=24.04&vr=%3E%3D0",
+              "help": {
+                "text": "Git is a source code management tool. When cloning from a server (or fetching, or pushing), informational or error messages are transported from the remote Git process to the client via the so-called \"sideband channel\". These messages will be prefixed with \"remote:\" and printed directly to the standard error output. Typically, this standard error output is connected to a terminal that understands ANSI escape sequences, which Git did not protect against. Most modern terminals support control sequences that can be used by a malicious actor to hide and misrepresent information, or to mislead the user into executing untrusted scripts. As requested on the git-security mailing list, the patches are under discussion on the public mailing list. Users are advised to update as soon as possible. Users unable to upgrade should avoid recursive clones unless they are from trusted sources.\n",
+                "markdown": "> Git is a source code management tool. When cloning from a server (or fetching, or pushing), informational or error messages are transported from the remote Git process to the client via the so-called \"sideband channel\". These messages will be prefixed with \"remote:\" and printed directly to the standard error output. Typically, this standard error output is connected to a terminal that understands ANSI escape sequences, which Git did not protect against. Most modern terminals support control sequences that can be used by a malicious actor to hide and misrepresent information, or to mislead the user into executing untrusted scripts. As requested on the git-security mailing list, the patches are under discussion on the public mailing list. Users are advised to update as soon as possible. Users unable to upgrade should avoid recursive clones unless they are from trusted sources.\n\n|                                                                                                                                                                         |\n|Package                                                                        pkg:deb/ubuntu/git@1%3A2.43.0-1ubuntu7.3?os_distro=noble&os_name=ubuntu&os_version=24.04  |\n|Affected range                                                                 >=0                                                                                       |\n|Fixed version                                                                  not fixed                                                                                 |\n|[[CVSS Score 8.8] [CVSS Vector CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H]]                                                                                            |\n"
+              },
+              "properties": {
+                "affected_version": ">=0",
+                "cvssV3": 8.8,
+                "cvssV3_severity": "MEDIUM",
+                "cvssV3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+                "fixed_version": "not fixed",
+                "purls": [
+                  "pkg:deb/ubuntu/git@1%3A2.43.0-1ubuntu7.3?os_distro=noble&os_name=ubuntu&os_version=24.04"
+                ],
+                "security-severity": "8.8",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            }
+          ],
+          "version": "1.20.4"
+        }
+      },
+      "results": [
+        {
+          "ruleId": "CVE-2024-56433",
+          "ruleIndex": 0,
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Vulnerability    :CVE-2024-56433                                                                                     \nSeverity         :LOW                                                                                                \nPackage          :pkg:deb/ubuntu/shadow@1%3A4.13%2Bdfsg1-4ubuntu3.2?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                                \nFixed version    :not fixed                                                                                          \nEPSS Score       :0.004260                                                                                           \nEPSS Percentile  :0.358720                                                                                           \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/login/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/passwd/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/login.conffiles"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/login.list"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/login.md5sums"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/login.postinst"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/login.postrm"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/login.preinst"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/login.prerm"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/passwd.conffiles"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/passwd.list"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/passwd.md5sums"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/passwd.postinst"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/passwd.postrm"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/passwd.preinst"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/passwd.prerm"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/default/useradd"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/login.defs"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/pam.d/chfn"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/pam.d/chpasswd"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/pam.d/chsh"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/pam.d/login"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/pam.d/newusers"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/pam.d/passwd"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-86409",
+          "ruleIndex": 1,
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-86409                                                                          \nSeverity         :LOW                                                                                     \nPackage          :pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :<8.5.0-2ubuntu10.16                                                                     \nFixed version    :8.5.0-2ubuntu10.16                                                                      \nEPSS Score       :0.002480                                                                                \nEPSS Percentile  :0.151680                                                                                \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libcurl3t64-gnutls/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libcurl4t64/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-86414",
+          "ruleIndex": 2,
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-86414                                                                          \nSeverity         :LOW                                                                                     \nPackage          :pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :<8.5.0-2ubuntu10.16                                                                     \nFixed version    :8.5.0-2ubuntu10.16                                                                      \nEPSS Score       :0.002910                                                                                \nEPSS Percentile  :0.205140                                                                                \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libcurl3t64-gnutls/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libcurl4t64/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-87862",
+          "ruleIndex": 3,
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-87862                                                                          \nSeverity         :LOW                                                                                     \nPackage          :pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :<8.5.0-2ubuntu10.16                                                                     \nFixed version    :8.5.0-2ubuntu10.16                                                                      \nEPSS Score       :0.002910                                                                                \nEPSS Percentile  :0.205130                                                                                \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libcurl3t64-gnutls/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libcurl4t64/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-87863",
+          "ruleIndex": 4,
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-87863                                                                          \nSeverity         :LOW                                                                                     \nPackage          :pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :<8.5.0-2ubuntu10.16                                                                     \nFixed version    :8.5.0-2ubuntu10.16                                                                      \nEPSS Score       :0.002910                                                                                \nEPSS Percentile  :0.205130                                                                                \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libcurl3t64-gnutls/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libcurl4t64/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-87864",
+          "ruleIndex": 5,
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-87864                                                                          \nSeverity         :LOW                                                                                     \nPackage          :pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :<8.5.0-2ubuntu10.16                                                                     \nFixed version    :8.5.0-2ubuntu10.16                                                                      \nEPSS Score       :0.002060                                                                                \nEPSS Percentile  :0.101820                                                                                \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libcurl3t64-gnutls/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libcurl4t64/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-92388",
+          "ruleIndex": 6,
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-92388                                                                          \nSeverity         :LOW                                                                                     \nPackage          :pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :<8.5.0-2ubuntu10.16                                                                     \nFixed version    :8.5.0-2ubuntu10.16                                                                      \nEPSS Score       :0.002910                                                                                \nEPSS Percentile  :0.205150                                                                                \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libcurl3t64-gnutls/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libcurl4t64/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-92389",
+          "ruleIndex": 7,
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-92389                                                                          \nSeverity         :LOW                                                                                     \nPackage          :pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :<8.5.0-2ubuntu10.16                                                                     \nFixed version    :8.5.0-2ubuntu10.16                                                                      \nEPSS Score       :0.002910                                                                                \nEPSS Percentile  :0.205140                                                                                \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libcurl3t64-gnutls/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libcurl4t64/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-92391",
+          "ruleIndex": 8,
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-92391                                                                          \nSeverity         :LOW                                                                                     \nPackage          :pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :<8.5.0-2ubuntu10.16                                                                     \nFixed version    :8.5.0-2ubuntu10.16                                                                      \nEPSS Score       :0.002810                                                                                \nEPSS Percentile  :0.194890                                                                                \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libcurl3t64-gnutls/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libcurl4t64/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-94266",
+          "ruleIndex": 9,
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-94266                                                                          \nSeverity         :LOW                                                                                     \nPackage          :pkg:deb/ubuntu/curl@8.5.0-2ubuntu10.15?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :<8.5.0-2ubuntu10.16                                                                     \nFixed version    :8.5.0-2ubuntu10.16                                                                      \nEPSS Score       :0.002750                                                                                \nEPSS Percentile  :0.189430                                                                                \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libcurl3t64-gnutls/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libcurl4t64/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-40228",
+          "ruleIndex": 10,
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-40228                                                                            \nSeverity         :LOW                                                                                       \nPackage          :pkg:deb/ubuntu/systemd@255.4-1ubuntu8.17?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                       \nFixed version    :not fixed                                                                                 \nCVSS Score       :3.3                                                                                       \nCVSS Vector      :CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N                                              \nEPSS Score       :0.001390                                                                                  \nEPSS Percentile  :0.029980                                                                                  \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libsystemd0/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libudev1/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2019-20838",
+          "ruleIndex": 11,
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Vulnerability    :CVE-2019-20838                                                                          \nSeverity         :LOW                                                                                     \nPackage          :pkg:deb/ubuntu/pcre3@2%3A8.39-15build1?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                     \nFixed version    :not fixed                                                                               \nCVSS Score       :7.5                                                                                     \nCVSS Vector      :CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H                                            \nEPSS Score       :0.027700                                                                                \nEPSS Percentile  :0.862300                                                                                \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libpcre3/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-102473",
+          "ruleIndex": 12,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-102473                                                                      \nSeverity         :MEDIUM                                                                               \nPackage          :pkg:deb/ubuntu/dash@0.5.12-6ubuntu5?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                  \nFixed version    :not fixed                                                                            \nEPSS Score       :0.001300                                                                             \nEPSS Percentile  :0.024100                                                                             \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/dash/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/dash.list"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/dash.md5sums"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/dash.postinst"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/dash.postrm"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/dash.prerm"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-102474",
+          "ruleIndex": 13,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-102474                                                                      \nSeverity         :MEDIUM                                                                               \nPackage          :pkg:deb/ubuntu/dash@0.5.12-6ubuntu5?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                  \nFixed version    :not fixed                                                                            \nEPSS Score       :0.001440                                                                             \nEPSS Percentile  :0.033650                                                                             \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/dash/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/dash.list"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/dash.md5sums"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/dash.postinst"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/dash.postrm"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/dash.prerm"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-103111",
+          "ruleIndex": 14,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-103111                                                                        \nSeverity         :MEDIUM                                                                                 \nPackage          :pkg:deb/ubuntu/pcre2@10.42-4ubuntu2.1?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                    \nFixed version    :not fixed                                                                              \nEPSS Score       :0.002140                                                                               \nEPSS Percentile  :0.112050                                                                               \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libpcre2-8-0/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-107161",
+          "ruleIndex": 15,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-107161                                                                                       \nSeverity         :MEDIUM                                                                                                \nPackage          :pkg:deb/ubuntu/cyrus-sasl2@2.1.28%2Bdfsg1-5ubuntu3.1?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                                   \nFixed version    :not fixed                                                                                             \nEPSS Score       :0.002770                                                                                              \nEPSS Percentile  :0.190960                                                                                              \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libsasl2-2/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libsasl2-modules-db/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-18374",
+          "ruleIndex": 16,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-18374                                                                        \nSeverity         :MEDIUM                                                                                \nPackage          :pkg:deb/ubuntu/glibc@2.39-0ubuntu8.9?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                   \nFixed version    :not fixed                                                                             \nEPSS Score       :0.001440                                                                              \nEPSS Percentile  :0.033580                                                                              \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libc-bin/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libc6/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/libc-bin.conffiles"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/libc-bin.list"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/libc-bin.md5sums"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/libc-bin.postinst"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/libc-bin.triggers"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/bindresvport.blacklist"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/gai.conf"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/ld.so.conf"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/ld.so.conf.d/libc.conf"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/ld.so.conf.d/x86_64-linux-gnu.conf"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-18477",
+          "ruleIndex": 17,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-18477                                                                             \nSeverity         :MEDIUM                                                                                     \nPackage          :pkg:deb/ubuntu/tar@1.35%2Bdfsg-3ubuntu0.4?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                        \nFixed version    :not fixed                                                                                  \nEPSS Score       :0.000800                                                                                   \nEPSS Percentile  :0.001480                                                                                   \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/tar/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/tar.list"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/tar.md5sums"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/tar.postinst"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/tar.prerm"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-18508",
+          "ruleIndex": 18,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-18508                                                                             \nSeverity         :MEDIUM                                                                                     \nPackage          :pkg:deb/ubuntu/tar@1.35%2Bdfsg-3ubuntu0.4?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                        \nFixed version    :not fixed                                                                                  \nEPSS Score       :0.001410                                                                                   \nEPSS Percentile  :0.031200                                                                                   \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/tar/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/tar.list"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/tar.md5sums"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/tar.postinst"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/tar.prerm"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-2219",
+          "ruleIndex": 19,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-2219                                                                        \nSeverity         :MEDIUM                                                                               \nPackage          :pkg:deb/ubuntu/dpkg@1.22.6ubuntu6.6?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                  \nFixed version    :not fixed                                                                            \nEPSS Score       :0.004260                                                                             \nEPSS Percentile  :0.357860                                                                             \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/dpkg/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/dpkg.conffiles"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/dpkg.list"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/dpkg.md5sums"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/dpkg.postinst"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/dpkg.postrm"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/alternatives/README"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/cron.daily/dpkg"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/dpkg/dpkg.cfg"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/logrotate.d/alternatives"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/logrotate.d/dpkg"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-67693",
+          "ruleIndex": 20,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-67693                                                                              \nSeverity         :MEDIUM                                                                                      \nPackage          :pkg:deb/ubuntu/gnutls28@3.8.3-1.1ubuntu3.6?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                         \nFixed version    :not fixed                                                                                   \nEPSS Score       :0.001510                                                                                    \nEPSS Percentile  :0.039660                                                                                    \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libgnutls30t64/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/gnutls/config"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-85091",
+          "ruleIndex": 21,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-85091                                                                                 \nSeverity         :MEDIUM                                                                                         \nPackage          :pkg:deb/ubuntu/zlib@1%3A1.3.dfsg-3.1ubuntu2.2?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :<1:1.3.dfsg-3.1ubuntu2.3                                                                       \nFixed version    :1:1.3.dfsg-3.1ubuntu2.3                                                                        \nEPSS Score       :0.003560                                                                                       \nEPSS Percentile  :0.280990                                                                                       \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/zlib1g/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-86145",
+          "ruleIndex": 22,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-86145                                                                         \nSeverity         :MEDIUM                                                                                 \nPackage          :pkg:deb/ubuntu/pcre2@10.42-4ubuntu2.1?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                    \nFixed version    :not fixed                                                                              \nEPSS Score       :0.003940                                                                               \nEPSS Percentile  :0.323900                                                                               \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libpcre2-8-0/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-88647",
+          "ruleIndex": 23,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-88647                                                                              \nSeverity         :MEDIUM                                                                                      \nPackage          :pkg:deb/ubuntu/gnutls28@3.8.3-1.1ubuntu3.6?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                         \nFixed version    :not fixed                                                                                   \nEPSS Score       :0.001600                                                                                    \nEPSS Percentile  :0.047790                                                                                    \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libgnutls30t64/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/gnutls/config"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-88648",
+          "ruleIndex": 24,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-88648                                                                              \nSeverity         :MEDIUM                                                                                      \nPackage          :pkg:deb/ubuntu/gnutls28@3.8.3-1.1ubuntu3.6?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                         \nFixed version    :not fixed                                                                                   \nEPSS Score       :0.002030                                                                                    \nEPSS Percentile  :0.097320                                                                                    \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libgnutls30t64/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/gnutls/config"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-89092",
+          "ruleIndex": 25,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-89092                                                                        \nSeverity         :MEDIUM                                                                                \nPackage          :pkg:deb/ubuntu/glibc@2.39-0ubuntu8.9?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                   \nFixed version    :not fixed                                                                             \nEPSS Score       :0.002400                                                                              \nEPSS Percentile  :0.142720                                                                              \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libc-bin/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libc6/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/libc-bin.conffiles"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/libc-bin.list"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/libc-bin.md5sums"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/libc-bin.postinst"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/libc-bin.triggers"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/bindresvport.blacklist"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/gai.conf"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/ld.so.conf"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/ld.so.conf.d/libc.conf"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/ld.so.conf.d/x86_64-linux-gnu.conf"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-95184",
+          "ruleIndex": 26,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-95184                                                                              \nSeverity         :MEDIUM                                                                                      \nPackage          :pkg:deb/ubuntu/gnutls28@3.8.3-1.1ubuntu3.6?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                         \nFixed version    :not fixed                                                                                   \nEPSS Score       :0.001650                                                                                    \nEPSS Percentile  :0.053900                                                                                    \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libgnutls30t64/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/gnutls/config"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-95209",
+          "ruleIndex": 27,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-95209                                                                              \nSeverity         :MEDIUM                                                                                      \nPackage          :pkg:deb/ubuntu/gnutls28@3.8.3-1.1ubuntu3.6?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                         \nFixed version    :not fixed                                                                                   \nEPSS Score       :0.002030                                                                                    \nEPSS Percentile  :0.097570                                                                                    \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libgnutls30t64/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/gnutls/config"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-95210",
+          "ruleIndex": 28,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-95210                                                                              \nSeverity         :MEDIUM                                                                                      \nPackage          :pkg:deb/ubuntu/gnutls28@3.8.3-1.1ubuntu3.6?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                         \nFixed version    :not fixed                                                                                   \nEPSS Score       :0.001240                                                                                    \nEPSS Percentile  :0.019920                                                                                    \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libgnutls30t64/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/gnutls/config"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2025-66382",
+          "ruleIndex": 29,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability    :CVE-2025-66382                                                                         \nSeverity         :MEDIUM                                                                                 \nPackage          :pkg:deb/ubuntu/expat@2.6.1-2ubuntu0.6?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                    \nFixed version    :not fixed                                                                              \nCVSS Score       :5.5                                                                                    \nCVSS Vector      :CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H                                           \nEPSS Score       :0.002030                                                                               \nEPSS Percentile  :0.097280                                                                               \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libexpat1/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-89156",
+          "ruleIndex": 30,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-89156                                                                         \nSeverity         :MEDIUM                                                                                 \nPackage          :pkg:deb/ubuntu/pcre2@10.42-4ubuntu2.1?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                    \nFixed version    :not fixed                                                                              \nCVSS Score       :5.9                                                                                    \nCVSS Vector      :CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H                                           \nEPSS Score       :0.002940                                                                               \nEPSS Percentile  :0.208820                                                                               \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libpcre2-8-0/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-89158",
+          "ruleIndex": 31,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-89158                                                                         \nSeverity         :MEDIUM                                                                                 \nPackage          :pkg:deb/ubuntu/pcre2@10.42-4ubuntu2.1?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                    \nFixed version    :not fixed                                                                              \nCVSS Score       :6.5                                                                                    \nCVSS Vector      :CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:L                                           \nEPSS Score       :0.002470                                                                               \nEPSS Percentile  :0.150750                                                                               \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libpcre2-8-0/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-89160",
+          "ruleIndex": 32,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-89160                                                                         \nSeverity         :MEDIUM                                                                                 \nPackage          :pkg:deb/ubuntu/pcre2@10.42-4ubuntu2.1?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                    \nFixed version    :not fixed                                                                              \nCVSS Score       :6.5                                                                                    \nCVSS Vector      :CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L                                           \nEPSS Score       :0.002680                                                                               \nEPSS Percentile  :0.179180                                                                               \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libpcre2-8-0/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-89157",
+          "ruleIndex": 33,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-89157                                                                         \nSeverity         :MEDIUM                                                                                 \nPackage          :pkg:deb/ubuntu/pcre2@10.42-4ubuntu2.1?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                    \nFixed version    :not fixed                                                                              \nCVSS Score       :7.4                                                                                    \nCVSS Vector      :CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H                                           \nEPSS Score       :0.002780                                                                               \nEPSS Percentile  :0.192040                                                                               \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libpcre2-8-0/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-89161",
+          "ruleIndex": 34,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability    :CVE-2026-89161                                                                         \nSeverity         :MEDIUM                                                                                 \nPackage          :pkg:deb/ubuntu/pcre2@10.42-4ubuntu2.1?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                    \nFixed version    :not fixed                                                                              \nCVSS Score       :7.8                                                                                    \nCVSS Vector      :CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H                                           \nEPSS Score       :0.001260                                                                               \nEPSS Percentile  :0.021050                                                                               \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/libpcre2-8-0/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2024-52005",
+          "ruleIndex": 35,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Vulnerability    :CVE-2024-52005                                                                            \nSeverity         :MEDIUM                                                                                    \nPackage          :pkg:deb/ubuntu/git@1%3A2.43.0-1ubuntu7.3?os_distro=noble&os_name=ubuntu&os_version=24.04  \nAffected range   :>=0                                                                                       \nFixed version    :not fixed                                                                                 \nCVSS Score       :8.8                                                                                       \nCVSS Vector      :CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H                                              \nEPSS Score       :0.005090                                                                                  \nEPSS Percentile  :0.426100                                                                                  \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/git-man/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/share/doc/git/copyright"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/git-man.list"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/git-man.md5sums"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/git.conffiles"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/git.list"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/git.md5sums"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/git.postinst"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/git.postrm"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/git.preinst"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/info/git.prerm"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/var/lib/dpkg/status"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/etc/bash_completion.d/git-prompt"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

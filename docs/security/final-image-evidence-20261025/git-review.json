@@ -1,0 +1,63 @@
+{
+  "starting_commit": "0b86cf04b471662f7731efac8f2cb34066752441",
+  "branch": "migration/cloud-api-security",
+  "implementation_commits": [
+    {
+      "sha": "b6a4c5533b25596ea120603e612a0eb62ff0d77a",
+      "identity": "Nguyen Hoang Phuc <nhpntd@gmail.com> / Nguyen Hoang Phuc <nhpntd@gmail.com>",
+      "subject": "fix(security): patch pinned images and preserve verified TLS",
+      "files": [
+        "backend/Dockerfile",
+        "docker/docker-compose.yml",
+        "docker/nginx/.dockerignore",
+        "docker/nginx/Dockerfile",
+        "docker/p5-compose.yml",
+        "docker/p6-compose.yml",
+        "tests/p0/compose.yml",
+        "tests/p2/host_checks.py",
+        "tests/p5/browser_host.py",
+        "tests/p6/retention.py"
+      ]
+    },
+    {
+      "sha": "c4ef9c796c65e31c23d0d85d64caffe01d62fb50",
+      "identity": "Nguyen Hoang Phuc <nhpntd@gmail.com> / Nguyen Hoang Phuc <nhpntd@gmail.com>",
+      "subject": "test: verify image upgrades and stabilize acceptance harnesses",
+      "files": [
+        "tests/p0/run.py",
+        "tests/p0/transport.py",
+        "tests/p4/test_cutover.py",
+        "tests/p5/test_gateway.py",
+        "tests/p6/test_observability.py",
+        "tests/p7/alloy_upgrade.py",
+        "tests/p7/identity_upgrade.py",
+        "tests/p7/identity_upgrade_probe.py",
+        "tests/p7/image_upgrade.py",
+        "tests/p7/run.py"
+      ]
+    }
+  ],
+  "implementation_diffstat": "20 files changed, 660 insertions(+), 35 deletions(-)",
+  "unchanged_business_auth_schema_policy_paths": [
+    "backend/app",
+    "backend/deployment",
+    "backend/alembic",
+    "backend/main.py",
+    "frontend/src",
+    "gateway",
+    "monitoring",
+    "docker/keycloak"
+  ],
+  "code_commit_secret_scan": {
+    "scanner": "Gitleaks8.30.1",
+    "exit_code": 0,
+    "commits_scanned": 2,
+    "real_secrets_found": 0
+  },
+  "staged_evidence_secret_matches": "Six source SHA256 values; per-file byte verification in secret-review.json; no suppressions",
+  "diff_check": "PASS",
+  "push_performed": false,
+  "merge_performed": false,
+  "history_rewritten": false,
+  "documentation_commit": "Exact final SHA reported in completion message to avoid a self-referential file"
+}

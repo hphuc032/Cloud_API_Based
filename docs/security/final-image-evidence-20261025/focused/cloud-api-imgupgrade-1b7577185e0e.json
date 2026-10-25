@@ -1,0 +1,157 @@
+{
+  "component": "loki",
+  "project": "cloud-api-imgupgrade-1b7577185e0e",
+  "status": "FAIL",
+  "commands": [
+    {
+      "argv": [
+        "docker",
+        "image",
+        "inspect",
+        "sha256:8b5bd7748d0e4da66cd741ac276e485517514af0bea32167e27c0e1a95bcf8aa"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "image",
+        "inspect",
+        "sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "create",
+        "--internal",
+        "--label",
+        "florasecure.image-review=cloud-api-imgupgrade-1b7577185e0e",
+        "cloud-api-imgupgrade-1b7577185e0e-storage"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "create",
+        "--label",
+        "florasecure.image-review=cloud-api-imgupgrade-1b7577185e0e",
+        "cloud-api-imgupgrade-1b7577185e0e-data"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "create",
+        "--label",
+        "florasecure.image-review=cloud-api-imgupgrade-1b7577185e0e",
+        "cloud-api-imgupgrade-1b7577185e0e-coldcopy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "run",
+        "-d",
+        "--name",
+        "cloud-api-imgupgrade-1b7577185e0e-server",
+        "--label",
+        "florasecure.image-review=cloud-api-imgupgrade-1b7577185e0e",
+        "--network",
+        "cloud-api-imgupgrade-1b7577185e0e-storage",
+        "-p",
+        "127.0.0.1::3100",
+        "--mount",
+        "type=volume,source=cloud-api-imgupgrade-1b7577185e0e-data,target=/loki",
+        "--mount",
+        "type=bind,source=D:\\MatMaHoc\\Project_CLOUD_API\\monitoring\\loki\\p6-loki.yml,target=/etc/loki/p6.yml,readonly",
+        "-e",
+        "HTTP_PROXY=",
+        "-e",
+        "HTTPS_PROXY=",
+        "-e",
+        "NO_PROXY=*",
+        "sha256:8b5bd7748d0e4da66cd741ac276e485517514af0bea32167e27c0e1a95bcf8aa",
+        "-config.file=/etc/loki/p6.yml"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "inspect",
+        "cloud-api-imgupgrade-1b7577185e0e-server"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "rm",
+        "--force",
+        "cloud-api-imgupgrade-1b7577185e0e-server"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "rm",
+        "cloud-api-imgupgrade-1b7577185e0e-data"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "volume",
+        "rm",
+        "cloud-api-imgupgrade-1b7577185e0e-coldcopy"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "docker",
+        "network",
+        "rm",
+        "cloud-api-imgupgrade-1b7577185e0e-storage"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "images": [
+    {
+      "reference": "sha256:8b5bd7748d0e4da66cd741ac276e485517514af0bea32167e27c0e1a95bcf8aa",
+      "id": "sha256:8b5bd7748d0e4da66cd741ac276e485517514af0bea32167e27c0e1a95bcf8aa",
+      "repo_digests": [
+        "grafana/loki@sha256:8b5bd7748d0e4da66cd741ac276e485517514af0bea32167e27c0e1a95bcf8aa"
+      ],
+      "platform": "linux/amd64"
+    },
+    {
+      "reference": "sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04",
+      "id": "sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04",
+      "repo_digests": [
+        "grafana/loki@sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04"
+      ],
+      "platform": "linux/amd64"
+    }
+  ],
+  "error_type": "IndexError",
+  "error": "list index out of range",
+  "cleanup_exit_codes": [
+    0,
+    0,
+    0,
+    0
+  ]
+}

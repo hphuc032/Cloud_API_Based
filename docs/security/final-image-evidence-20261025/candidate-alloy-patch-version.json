@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "docker",
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--read-only",
+    "--cap-drop",
+    "ALL",
+    "--security-opt",
+    "no-new-privileges",
+    "sha256:eadfe35ea52b26cbec4d4d780fbcc31edb31108c1c9e537ca59557a5a102c712",
+    "--version"
+  ],
+  "started_utc": "2026-10-25T07:43:45.057450+00:00",
+  "finished_utc": "2026-10-25T07:43:46.012406+00:00",
+  "exit_code": 0,
+  "stdout": "alloy, version v1.14.2 (branch: HEAD, revision: 3c53ff8)\n  build user:       root@buildkitsandbox\n  build date:       2026-03-24T17:38:01Z\n  go version:       go1.25.8\n  platform:         linux/amd64\n  tags:             netgo,embedalloyui,promtail_journal_enabled\n",
+  "stderr": ""
+}

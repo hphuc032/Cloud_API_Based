@@ -1,0 +1,583 @@
+[
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:32:51.985998+00:00",
+    "finished_utc": "2026-10-25T02:33:16.778630+00:00",
+    "label": "baseline-retry-scout-alloy",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-alloy.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:8f5666aebb871ba43ee2d65159c5d1c26c903720efafaf2d9ed4e237afc3bc88"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "ada2c4448fcf9658764472b871d06acfa001f006664aa0bffc311c7a12fd5bab"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:33:16.779261+00:00",
+    "finished_utc": "2026-10-25T02:34:02.579246+00:00",
+    "label": "baseline-retry-scout-grafana",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-grafana.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:7d5faae481a4c6f436c99e98af11534f7fd5e8d3e35213552dd1dd02bc393d2e"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "9d4681b6d135102cf7b8909d6f8d95b8d321ff4080092a88725ec1721178c3b7"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:34:02.580205+00:00",
+    "finished_utc": "2026-10-25T02:34:33.041547+00:00",
+    "label": "baseline-retry-scout-kong",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-kong.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:8635e3c97b27cf71ed620bb30f6091dbab1d39aad99a6c54dd9c3cfccb6d1013"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "9f2fffc93a586210e459c8d89a127ed94de92363dc264b99027a22d2961acbc1"
+  },
+  {
+    "exit_code": 1,
+    "started_utc": "2026-10-25T02:29:01.986342+00:00",
+    "finished_utc": "2026-10-25T02:29:29.582484+00:00",
+    "label": "baseline-scout-alloy",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-alloy.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:8f5666aebb871ba43ee2d65159c5d1c26c903720efafaf2d9ed4e237afc3bc88"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "230c1587872384403e934545e0238f7b3b4404aa607e9704f1da4c3a6f01cba6",
+    "stderr_sha256": "9c151935b646fae9436feb05551cf70bc97e4748a218b3c661da0f091ac6575f"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:29:01.987270+00:00",
+    "finished_utc": "2026-10-25T02:29:56.870633+00:00",
+    "label": "baseline-scout-backend",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-backend.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:a21afcf4d34be085a47f0c1da932589ecd2a1f61e1f2be9fa9cf279bc954fc0e"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "d71a9763ad9743d553610cc0ec78ae2af976999cc8e9a3d30fa868bc8b578545"
+  },
+  {
+    "exit_code": 1,
+    "started_utc": "2026-10-25T02:29:29.583541+00:00",
+    "finished_utc": "2026-10-25T02:29:54.761713+00:00",
+    "label": "baseline-scout-grafana",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-grafana.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:7d5faae481a4c6f436c99e98af11534f7fd5e8d3e35213552dd1dd02bc393d2e"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "230c1587872384403e934545e0238f7b3b4404aa607e9704f1da4c3a6f01cba6",
+    "stderr_sha256": "9c151935b646fae9436feb05551cf70bc97e4748a218b3c661da0f091ac6575f"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:29:56.871703+00:00",
+    "finished_utc": "2026-10-25T02:30:50.395587+00:00",
+    "label": "baseline-scout-keycloak",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-keycloak.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:4883630ef9db14031cde3e60700c9a9a8eaf1b5c24db1589d6a2d43de38ba2a9"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "5bdcc8b162b33913da6636f6976d270a09d60b02111349472a98f1a4e0dddb86"
+  },
+  {
+    "exit_code": 1,
+    "started_utc": "2026-10-25T02:30:06.989082+00:00",
+    "finished_utc": "2026-10-25T02:30:45.563092+00:00",
+    "label": "baseline-scout-kong",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-kong.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:8635e3c97b27cf71ed620bb30f6091dbab1d39aad99a6c54dd9c3cfccb6d1013"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "230c1587872384403e934545e0238f7b3b4404aa607e9704f1da4c3a6f01cba6",
+    "stderr_sha256": "9c151935b646fae9436feb05551cf70bc97e4748a218b3c661da0f091ac6575f"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:30:45.564027+00:00",
+    "finished_utc": "2026-10-25T02:31:00.854650+00:00",
+    "label": "baseline-scout-loki",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-loki.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:8b5bd7748d0e4da66cd741ac276e485517514af0bea32167e27c0e1a95bcf8aa"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "c3165461c05166d9b6a79a51f5c35d8d30ce3c1dd91f30bf516c399ecfc2f075"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:29:54.762771+00:00",
+    "finished_utc": "2026-10-25T02:30:06.987730+00:00",
+    "label": "baseline-scout-nginx",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-nginx.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "5d407657d225bb490dcf8b89bc3e7488757f9f18a1add8afd129b679c0cb94df"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:30:50.396755+00:00",
+    "finished_utc": "2026-10-25T02:31:29.482340+00:00",
+    "label": "baseline-scout-postgres",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\baseline-postgres.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "bae3ecb0ba5a53526eeb44be0809843d4b091f976287ddc35977173cd7753a8e"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:42:50.687676+00:00",
+    "finished_utc": "2026-10-25T07:43:45.055411+00:00",
+    "label": "candidate-scout-alloy-patch",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\candidate-alloy-patch.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:eadfe35ea52b26cbec4d4d780fbcc31edb31108c1c9e537ca59557a5a102c712"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "719712031b3114b961a195bcda26de96d5c2aca400337f7477fab87f79a28e46"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:38:03.372024+00:00",
+    "finished_utc": "2026-10-25T03:39:07.446185+00:00",
+    "label": "candidate-scout-backend",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\candidate-backend.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:af9df5fb456a98573237b6a0abcdacbd92a22e45c621da07ea8240a74d151664"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "5827bfe65d6d50a52d2d4a8c409841ea284501e7946d7fa9cbaaa84ebb6b5732"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:45:48.598152+00:00",
+    "finished_utc": "2026-10-25T02:46:36.685744+00:00",
+    "label": "candidate-scout-grafana",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\candidate-grafana.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:a9043254ba16fb10945cc27333963dfd08eccbb43b51f1222d831cc564e3a1f4"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "0cf027627257166664429f31e5fe47b71349747b106b10458520707e1e98af9c"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T03:21:18.979939+00:00",
+    "finished_utc": "2026-10-25T03:22:16.174619+00:00",
+    "label": "candidate-scout-keycloak",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\candidate-keycloak.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:a78d6b79572168cb25886b80a8b5b8d4ed4390743e3eecb810538683e209dd6b"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "6be29f55bf316550c8fde5a6499a26fdbe874cee229736f54ca6ff13a25f3bca"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:46:36.686428+00:00",
+    "finished_utc": "2026-10-25T02:47:04.430412+00:00",
+    "label": "candidate-scout-kong",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\candidate-kong.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:92035d16d7ff86b7bc12fb1d0090d29357d924238b1880f78735f3f2fea6b631"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "4d606f7e535d877a9f7687bd58a6c2faa381ddb0d99638ce20a92186977f9715"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:45:34.580805+00:00",
+    "finished_utc": "2026-10-25T02:45:48.597505+00:00",
+    "label": "candidate-scout-loki",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\candidate-loki.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "990d1ab605ba23806f1621085e65509ad5af76b14dc3c1d5999b4df85975dd19"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:35:13.734817+00:00",
+    "finished_utc": "2026-10-25T02:35:22.843272+00:00",
+    "label": "candidate-scout-nginx",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\candidate-nginx.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:dede8895648b461178c3bc604f7eed4423efe5220b2c4d839f5eb3d34ac3f8f7"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "626cf8e29dc975ab79ae0a57460661d0cfa11d2888de4c43dc174a16d6f743fe"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:58:49.679454+00:00",
+    "finished_utc": "2026-10-25T07:58:57.747011+00:00",
+    "label": "final-scout-alloy",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\final-alloy.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:eadfe35ea52b26cbec4d4d780fbcc31edb31108c1c9e537ca59557a5a102c712"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "ee07ef6559d32dd46e40d7d2eabc5879727db1d2d532f57e54618cc633c364e6"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:56:37.030344+00:00",
+    "finished_utc": "2026-10-25T07:57:55.828126+00:00",
+    "label": "final-scout-backend",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\final-backend.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:d612e8901241e9d46860ba06b37a05d48f29a0feb84bb51ca8ed1cf6b6b1b987"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "bb71dfaa145ff854f600658c8bca8b60c5ea27cf02be45d2cdcb80871f2b8da3"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:58:35.160056+00:00",
+    "finished_utc": "2026-10-25T07:58:47.160066+00:00",
+    "label": "final-scout-grafana",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\final-grafana.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:a9043254ba16fb10945cc27333963dfd08eccbb43b51f1222d831cc564e3a1f4"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "01139ce0111e280027869172fcacb0e35d45b304acae689eb229264d346815b1"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:58:06.228510+00:00",
+    "finished_utc": "2026-10-25T07:58:11.828075+00:00",
+    "label": "final-scout-keycloak",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\final-keycloak.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:a78d6b79572168cb25886b80a8b5b8d4ed4390743e3eecb810538683e209dd6b"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "8d928f7c22d26d41f45c10d76c6e4e914a61b183d4b3a53937d38d4e867bab6d"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:57:58.156109+00:00",
+    "finished_utc": "2026-10-25T07:58:03.875597+00:00",
+    "label": "final-scout-kong",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\final-kong.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:92035d16d7ff86b7bc12fb1d0090d29357d924238b1880f78735f3f2fea6b631"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "84c21c712fdec6cbf409898f6f12dc9589e1b280f3fba68d3e1c67d974bf4e37"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:58:22.124520+00:00",
+    "finished_utc": "2026-10-25T07:58:33.035505+00:00",
+    "label": "final-scout-loki",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\final-loki.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "7c5a806691603bdbe328729115fb536ed98511dd683c2a8cd51cc07ddd45dfda"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:59:00.380777+00:00",
+    "finished_utc": "2026-10-25T07:59:11.126334+00:00",
+    "label": "final-scout-nginx",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\final-nginx.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:1bc331a1680da03025334c86645bed67ff832f5e74985fb629afdc079a9e8510"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e8461c138d46f77cea688b6e5e3bc2c98ea31ebe89b4a5478b8c854b9133b120"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T07:58:14.098083+00:00",
+    "finished_utc": "2026-10-25T07:58:19.613080+00:00",
+    "label": "final-scout-postgres",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\final-postgres.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e943a6509c4183ccae3002fc976ee20dab4473434ce3de3b100f06f6f3cb4883"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T08:00:34.347188+00:00",
+    "finished_utc": "2026-10-25T08:01:04.876829+00:00",
+    "label": "legacy-promtail-scout",
+    "argv": [
+      "docker",
+      "scout",
+      "cves",
+      "--format",
+      "sarif",
+      "--output",
+      "D:\\MatMaHoc\\Project_CLOUD_API\\tests\\p7\\artifacts\\final-image-review-20261025\\legacy-promtail.sarif.json",
+      "--platform",
+      "linux/amd64",
+      "local://sha256:45d54f0ebd7a19acbcd4693a3227d84d27d98abe1dc7ea3068d31d5d02dbe696"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "ebd279902dfb4e65db9898b29d2959a4c1962c59fc09fdb4b03f761b8fcd28dc"
+  },
+  {
+    "exit_code": 0,
+    "started_utc": "2026-10-25T02:28:56.521644+00:00",
+    "finished_utc": "2026-10-25T02:28:56.927432+00:00",
+    "label": "scout-version",
+    "argv": [
+      "docker",
+      "scout",
+      "version"
+    ],
+    "redacted_assignment_count": 0,
+    "stdout_sha256": "ab9e70288e0f044574e17732e5ae61601394207a7032b8c9674ef421d8dedd68",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

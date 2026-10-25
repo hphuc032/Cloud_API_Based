@@ -1,0 +1,4590 @@
+{
+  "passed": true,
+  "external_delivery_tested": false,
+  "initial": [
+    {
+      "utc_epoch": 1792915423.2124572,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:03:30Z",
+          "evaluationTime": 0.020078908,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:54:10Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:03:30Z",
+          "evaluationTime": 1.6799462539999999,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:54:10Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:03:30Z",
+          "evaluationTime": 3.365886126,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:59:20Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:03:30Z",
+          "evaluationTime": 5.019434496,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:54:10Z",
+              "value": ""
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "queries": {
+    "p6-webhook-attacks": {
+      "expr": "sum(count_over_time({service=~\"kong|backend\"} | json | event_type=~\"webhook_rejected|webhook_conflict\" [1m])) or vector(0)",
+      "value": 9.0,
+      "threshold": 3,
+      "for": "30s",
+      "window_seconds": 60,
+      "evaluation_interval_seconds": 10
+    },
+    "p6-ownership-denials": {
+      "expr": "sum(count_over_time({service=~\"kong|backend\"} | json | event_type=~\"ownership_denied\" [1m])) or vector(0)",
+      "value": 8.0,
+      "threshold": 3,
+      "for": "30s",
+      "window_seconds": 60,
+      "evaluation_interval_seconds": 10
+    },
+    "p6-ssrf-denials": {
+      "expr": "sum(count_over_time({service=~\"kong|backend\"} | json | event_type=~\"ssrf_denied\" [1m])) or vector(0)",
+      "value": 8.0,
+      "threshold": 3,
+      "for": "30s",
+      "window_seconds": 60,
+      "evaluation_interval_seconds": 10
+    },
+    "p6-rate-limits": {
+      "expr": "sum(count_over_time({service=~\"kong|backend\"} | json | event_type=~\"rate_limited\" [1m])) or vector(0)",
+      "value": 12.0,
+      "threshold": 5,
+      "for": "30s",
+      "window_seconds": 60,
+      "evaluation_interval_seconds": 10
+    }
+  },
+  "firing": [
+    {
+      "utc_epoch": 1792915443.7644756,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:00Z",
+          "evaluationTime": 1.685664415,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:54:10Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:00Z",
+          "evaluationTime": 3.359899691,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:54:10Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:03:50Z",
+          "evaluationTime": 3.345535617,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:59:20Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:03:50Z",
+          "evaluationTime": 5.028500965,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:54:10Z",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915445.7778156,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:00Z",
+          "evaluationTime": 1.685664415,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:54:10Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:00Z",
+          "evaluationTime": 3.359899691,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:54:10Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:00Z",
+          "evaluationTime": 5.011776707,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:59:20Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:03:50Z",
+          "evaluationTime": 5.028500965,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:54:10Z",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915447.7933583,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:00Z",
+          "evaluationTime": 1.685664415,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:54:10Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:00Z",
+          "evaluationTime": 3.359899691,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:54:10Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:00Z",
+          "evaluationTime": 5.011776707,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:59:20Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:00Z",
+          "evaluationTime": 6.68652734,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:54:10Z",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915449.8058252,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:00Z",
+          "evaluationTime": 1.685664415,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:54:10Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:00Z",
+          "evaluationTime": 3.359899691,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:54:10Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:00Z",
+          "evaluationTime": 5.011776707,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:59:20Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:00Z",
+          "evaluationTime": 6.68652734,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:54:10Z",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915451.2434607,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 1.086444027,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:00Z",
+          "evaluationTime": 3.359899691,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:54:10Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:00Z",
+          "evaluationTime": 5.011776707,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:59:20Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:00Z",
+          "evaluationTime": 6.68652734,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:54:10Z",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915451.584044,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 1.086444027,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 1.075737077,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:00Z",
+          "evaluationTime": 5.011776707,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:59:20Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:00Z",
+          "evaluationTime": 6.68652734,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:54:10Z",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915453.5999055,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 1.086444027,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 1.075737077,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 2.740727708,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:00Z",
+          "evaluationTime": 6.68652734,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T07:54:10Z",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915455.6126523,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 1.086444027,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 1.075737077,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 2.740727708,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 4.410211383,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915457.6256814,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 1.086444027,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 1.075737077,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 2.740727708,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 4.410211383,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915459.6382804,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 1.086444027,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 1.075737077,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 2.740727708,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 4.410211383,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915461.6546967,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 1.086444027,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 1.075737077,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 2.740727708,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 4.410211383,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915463.6683953,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:20Z",
+          "evaluationTime": 1.683687943,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:20Z",
+          "evaluationTime": 3.351295005,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 2.740727708,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 4.410211383,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915465.6841455,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:20Z",
+          "evaluationTime": 1.683687943,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:20Z",
+          "evaluationTime": 3.351295005,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:20Z",
+          "evaluationTime": 5.013365958,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:10Z",
+          "evaluationTime": 4.410211383,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915467.6993542,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:20Z",
+          "evaluationTime": 1.683687943,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:20Z",
+          "evaluationTime": 3.351295005,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:20Z",
+          "evaluationTime": 5.013365958,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:20Z",
+          "evaluationTime": 6.679762993,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915469.7274027,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:20Z",
+          "evaluationTime": 1.683687943,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:20Z",
+          "evaluationTime": 3.351295005,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:20Z",
+          "evaluationTime": 5.013365958,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:20Z",
+          "evaluationTime": 6.679762993,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915471.7450254,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:20Z",
+          "evaluationTime": 1.683687943,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:20Z",
+          "evaluationTime": 3.351295005,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:20Z",
+          "evaluationTime": 5.013365958,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:30Z",
+          "evaluationTime": 0.017521022,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915473.7646508,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:20Z",
+          "evaluationTime": 1.683687943,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:20Z",
+          "evaluationTime": 3.351295005,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:20Z",
+          "evaluationTime": 5.013365958,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:30Z",
+          "evaluationTime": 0.017521022,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915475.7890918,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:30Z",
+          "evaluationTime": 5.016994228,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:20Z",
+          "evaluationTime": 3.351295005,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:20Z",
+          "evaluationTime": 5.013365958,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:30Z",
+          "evaluationTime": 0.017521022,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915477.8118587,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:30Z",
+          "evaluationTime": 5.016994228,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:30Z",
+          "evaluationTime": 6.6824860390000005,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:20Z",
+          "evaluationTime": 5.013365958,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:30Z",
+          "evaluationTime": 0.017521022,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915477.5080433,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:30Z",
+          "evaluationTime": 5.016994228,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:30Z",
+          "evaluationTime": 6.6824860390000005,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:30Z",
+          "evaluationTime": 8.37007211,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:30Z",
+          "evaluationTime": 0.017521022,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915479.5347106,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:30Z",
+          "evaluationTime": 5.016994228,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:30Z",
+          "evaluationTime": 6.6824860390000005,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:30Z",
+          "evaluationTime": 8.37007211,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:30Z",
+          "evaluationTime": 0.017521022,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915481.5648408,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:40Z",
+          "evaluationTime": 0.011642424,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:30Z",
+          "evaluationTime": 6.6824860390000005,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:30Z",
+          "evaluationTime": 8.37007211,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:30Z",
+          "evaluationTime": 0.017521022,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915483.5871494,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:40Z",
+          "evaluationTime": 0.011642424,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:40Z",
+          "evaluationTime": 1.683396948,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:40Z",
+          "evaluationTime": 3.356476614,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "pending",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:30Z",
+          "evaluationTime": 0.017521022,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Pending",
+              "activeAt": "2026-10-25T08:04:10Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915485.6001482,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:40Z",
+          "evaluationTime": 0.011642424,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:40Z",
+          "evaluationTime": 1.683396948,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:40Z",
+          "evaluationTime": 3.356476614,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:40Z",
+          "evaluationTime": 5.011468819,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "recovery": [
+    {
+      "utc_epoch": 1792915485.6102355,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:40Z",
+          "evaluationTime": 0.011642424,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:40Z",
+          "evaluationTime": 1.683396948,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:40Z",
+          "evaluationTime": 3.356476614,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:40Z",
+          "evaluationTime": 5.011468819,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915487.6367893,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:40Z",
+          "evaluationTime": 0.011642424,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:40Z",
+          "evaluationTime": 1.683396948,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:40Z",
+          "evaluationTime": 3.356476614,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:40Z",
+          "evaluationTime": 5.011468819,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915489.6534476,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:40Z",
+          "evaluationTime": 0.011642424,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:40Z",
+          "evaluationTime": 1.683396948,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:40Z",
+          "evaluationTime": 3.356476614,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:40Z",
+          "evaluationTime": 5.011468819,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915491.6693141,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:50Z",
+          "evaluationTime": 0.020469036,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:40Z",
+          "evaluationTime": 1.683396948,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:40Z",
+          "evaluationTime": 3.356476614,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:40Z",
+          "evaluationTime": 5.011468819,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915493.6873522,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:50Z",
+          "evaluationTime": 0.020469036,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:50Z",
+          "evaluationTime": 1.679033028,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:50Z",
+          "evaluationTime": 3.356012506,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:40Z",
+          "evaluationTime": 5.011468819,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915495.700343,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:50Z",
+          "evaluationTime": 0.020469036,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:50Z",
+          "evaluationTime": 1.679033028,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:50Z",
+          "evaluationTime": 3.356012506,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:50Z",
+          "evaluationTime": 5.013678496,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915497.7263415,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:50Z",
+          "evaluationTime": 0.020469036,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:50Z",
+          "evaluationTime": 1.679033028,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:50Z",
+          "evaluationTime": 3.356012506,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:50Z",
+          "evaluationTime": 5.013678496,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915499.740442,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:50Z",
+          "evaluationTime": 0.020469036,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:50Z",
+          "evaluationTime": 1.679033028,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:50Z",
+          "evaluationTime": 3.356012506,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:50Z",
+          "evaluationTime": 5.013678496,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915501.7557688,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 1.678792847,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:50Z",
+          "evaluationTime": 1.679033028,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:50Z",
+          "evaluationTime": 3.356012506,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:50Z",
+          "evaluationTime": 5.013678496,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915503.787812,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 1.678792847,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 3.3623888539999998,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:50Z",
+          "evaluationTime": 3.356012506,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:50Z",
+          "evaluationTime": 5.013678496,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915505.814042,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 1.678792847,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 3.3623888539999998,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 5.018038426,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:04:50Z",
+          "evaluationTime": 5.013678496,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915505.5823445,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 1.678792847,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 3.3623888539999998,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 5.018038426,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 6.677764164,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915507.599863,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 1.678792847,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 3.3623888539999998,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 5.018038426,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 6.677764164,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915509.61887,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 1.678792847,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 3.3623888539999998,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 5.018038426,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 6.677764164,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915511.632327,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 1.678792847,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 3.3623888539999998,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 5.018038426,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 6.677764164,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915513.6444116,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:10Z",
+          "evaluationTime": 3.358651761,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T08:05:10Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 3.3623888539999998,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 5.018038426,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 6.677764164,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915515.6568038,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:10Z",
+          "evaluationTime": 3.358651761,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T08:05:10Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:10Z",
+          "evaluationTime": 5.017115395,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T08:05:10Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 5.018038426,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 6.677764164,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915517.6705098,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:10Z",
+          "evaluationTime": 3.358651761,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T08:05:10Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:10Z",
+          "evaluationTime": 5.017115395,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T08:05:10Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:10Z",
+          "evaluationTime": 6.687387579,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T08:05:10Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "firing",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:00Z",
+          "evaluationTime": 6.677764164,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Alerting",
+              "activeAt": "2026-10-25T08:04:40Z",
+              "value": "1e+00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "utc_epoch": 1792915519.6885726,
+      "rules": {
+        "p6-webhook-attacks": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:10Z",
+          "evaluationTime": 3.358651761,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 webhook-attacks",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T08:05:10Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-ownership-denials": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:10Z",
+          "evaluationTime": 5.017115395,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ownership-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T08:05:10Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-ssrf-denials": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:10Z",
+          "evaluationTime": 6.687387579,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 ssrf-denials",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T08:05:10Z",
+              "value": ""
+            }
+          ]
+        },
+        "p6-rate-limits": {
+          "state": "inactive",
+          "health": "ok",
+          "lastEvaluation": "2026-10-25T08:05:10Z",
+          "evaluationTime": 8.351159643999999,
+          "alerts": [
+            {
+              "labels": {
+                "alertname": "P6 rate-limits",
+                "environment": "lab",
+                "grafana_folder": "Security",
+                "phase": "p6",
+                "severity": "warning"
+              },
+              "annotations": {
+                "runbook_url": "docs/monitoring/alert-response.md",
+                "summary": "Security event threshold exceeded; inspect request IDs without exporting credentials."
+              },
+              "state": "Normal",
+              "activeAt": "2026-10-25T08:05:10Z",
+              "value": ""
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "real_request_ids": [
+    [
+      "webhook_rejected",
+      "3d37f8eb-90e8-426b-b101-f21293a81681"
+    ],
+    [
+      "ownership_denied",
+      "83d138d3-3c59-462d-bb76-c45659a1282b"
+    ],
+    [
+      "ssrf_denied",
+      "f58e1335-a4b0-4a1f-b0ad-cf838263828b"
+    ],
+    [
+      "webhook_rejected",
+      "31662b98-c323-4037-9534-47cad8364833"
+    ],
+    [
+      "ownership_denied",
+      "5a087820-b705-4d93-b3f2-8b7e54e810cd"
+    ],
+    [
+      "ssrf_denied",
+      "b79ec81a-cc79-4cec-b1ce-ef63b0929764"
+    ],
+    [
+      "webhook_rejected",
+      "8d035c34-b0ba-4e47-8e2c-d0f7dfdd5b87"
+    ],
+    [
+      "ownership_denied",
+      "a08b50c2-4158-4367-995d-188d866eaf13"
+    ],
+    [
+      "ssrf_denied",
+      "61e410db-7a29-4afe-be7e-7accf38a376e"
+    ],
+    [
+      "webhook_rejected",
+      "d72ea169-94be-43b0-bdaf-63d2239f62c5"
+    ],
+    [
+      "ownership_denied",
+      "7bea84ab-b4dd-4e2d-894a-1476093853b4"
+    ],
+    [
+      "ssrf_denied",
+      "a7124ae9-9f69-452b-a91e-7b6b85a40b7f"
+    ],
+    [
+      "webhook_rejected",
+      "e6b0adb6-4f71-4310-885e-3951489de682"
+    ],
+    [
+      "ownership_denied",
+      "013d68da-beb8-4a9b-8db9-01af65e63085"
+    ],
+    [
+      "ssrf_denied",
+      "64b2a0ad-4631-4920-b935-3d467531d592"
+    ],
+    [
+      "webhook_rejected",
+      "4790b48c-1a17-4bd5-8a96-be90993d35e0"
+    ],
+    [
+      "ownership_denied",
+      "cb170d1a-c6cc-4510-b8a1-3ff46e4fc2eb"
+    ],
+    [
+      "ssrf_denied",
+      "4797c553-3082-441f-9644-62691da96cfd"
+    ],
+    [
+      "webhook_rejected",
+      "b64f1b71-ca59-4da8-91bb-c1d03bd9c66b"
+    ],
+    [
+      "ownership_denied",
+      "2510c3ba-9877-44ee-8ecd-11eb9c534cdd"
+    ],
+    [
+      "ssrf_denied",
+      "0e6df159-53cd-4721-a79f-47a00adf3461"
+    ],
+    [
+      "webhook_rejected",
+      "e81f091b-6df5-462f-9b50-d2cb156e3361"
+    ],
+    [
+      "ownership_denied",
+      "1098afa6-696e-4890-b6ae-f52418a4f000"
+    ],
+    [
+      "ssrf_denied",
+      "ccb30e9b-f5bb-4858-ba3c-331d75a98362"
+    ],
+    [
+      "webhook_conflict",
+      "ca2ed767-5a80-41cb-aa30-b5789c5f21e8"
+    ]
+  ]
+}

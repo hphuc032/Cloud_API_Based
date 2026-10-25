@@ -1,0 +1,560 @@
+{
+  "passed": true,
+  "writer_queries_after_deletion": {
+    "old": 0,
+    "current": 1
+  },
+  "target_retention_hours": 168,
+  "synthetic_old_age_days": 8,
+  "accelerated_delete_delay_seconds": 1,
+  "initial_visibility": [
+    {
+      "old": 1,
+      "current": 1
+    }
+  ],
+  "accepted_push_status": 204,
+  "received_metrics": [],
+  "seed": {
+    "now": 1792896780550129732,
+    "old": 1792205580550129732,
+    "files": {
+      "chunks/ZmFrZS9hNDIzMDkzZGQwYjU3MzdhOjFhMTQ3YzZlOTA2OjFhMTQ3YzZlOTA3OmExMjZkNjg2": {
+        "bytes": 328,
+        "sha256": "e2b82873193c9c755691761e5d3bdf38f8d2be7929cdcbe5ec3bd48806284e0b"
+      },
+      "chunks/ZmFrZS9jOWZlMGEzNzEwYmUzM2M0OjFhMTcwZjljOTA2OjFhMTcwZjljOTA3OjIxN2UwMmI3": {
+        "bytes": 332,
+        "sha256": "0562eef0e4740041dde68f3134ce4cc27c30b06baad1531f95038b08d6ab5fed"
+      }
+    },
+    "push_status": 204,
+    "writer_logical_visibility": [
+      {
+        "old": 0,
+        "current": 1
+      }
+    ]
+  },
+  "old_files": [
+    "chunks/ZmFrZS9hNDIzMDkzZGQwYjU3MzdhOjFhMTQ3YzZlOTA2OjFhMTQ3YzZlOTA3OmExMjZkNjg2"
+  ],
+  "current_files": [
+    "chunks/ZmFrZS9jOWZlMGEzNzEwYmUzM2M0OjFhMTcwZjljOTA2OjFhMTcwZjljOTA3OjIxN2UwMmI3"
+  ],
+  "snapshots": [
+    {
+      "old_count": 1,
+      "current_count": 1,
+      "retention_metrics": [
+        "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+      ],
+      "files": {
+        "chunks/ZmFrZS9hNDIzMDkzZGQwYjU3MzdhOjFhMTQ3YzZlOTA2OjFhMTQ3YzZlOTA3OmExMjZkNjg2": {
+          "bytes": 328,
+          "sha256": "e2b82873193c9c755691761e5d3bdf38f8d2be7929cdcbe5ec3bd48806284e0b"
+        },
+        "chunks/ZmFrZS9jOWZlMGEzNzEwYmUzM2M0OjFhMTcwZjljOTA2OjFhMTcwZjljOTA3OjIxN2UwMmI3": {
+          "bytes": 332,
+          "sha256": "0562eef0e4740041dde68f3134ce4cc27c30b06baad1531f95038b08d6ab5fed"
+        }
+      },
+      "elapsed_seconds": 0.006419836000077339
+    },
+    {
+      "old_count": 1,
+      "current_count": 1,
+      "retention_metrics": [
+        "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+      ],
+      "files": {
+        "chunks/ZmFrZS9hNDIzMDkzZGQwYjU3MzdhOjFhMTQ3YzZlOTA2OjFhMTQ3YzZlOTA3OmExMjZkNjg2": {
+          "bytes": 328,
+          "sha256": "e2b82873193c9c755691761e5d3bdf38f8d2be7929cdcbe5ec3bd48806284e0b"
+        },
+        "chunks/ZmFrZS9jOWZlMGEzNzEwYmUzM2M0OjFhMTcwZjljOTA2OjFhMTcwZjljOTA3OjIxN2UwMmI3": {
+          "bytes": 332,
+          "sha256": "0562eef0e4740041dde68f3134ce4cc27c30b06baad1531f95038b08d6ab5fed"
+        }
+      },
+      "elapsed_seconds": 5.023112414000025
+    },
+    {
+      "old_count": 1,
+      "current_count": 1,
+      "retention_metrics": [
+        "loki_boltdb_shipper_retention_marker_count_total{object_store=\"filesystem\",table=\"index_20743\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"2.5\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"5\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"10\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"20\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"40\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"90\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"360\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"600\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1800\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"+Inf\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_sum{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 0.009952784",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_count{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_total{action=\"deleted\",object_store=\"filesystem\",table=\"index_20743\",user_id=\"\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+      ],
+      "files": {
+        "chunks/ZmFrZS9hNDIzMDkzZGQwYjU3MzdhOjFhMTQ3YzZlOTA2OjFhMTQ3YzZlOTA3OmExMjZkNjg2": {
+          "bytes": 328,
+          "sha256": "e2b82873193c9c755691761e5d3bdf38f8d2be7929cdcbe5ec3bd48806284e0b"
+        },
+        "chunks/ZmFrZS9jOWZlMGEzNzEwYmUzM2M0OjFhMTcwZjljOTA2OjFhMTcwZjljOTA3OjIxN2UwMmI3": {
+          "bytes": 332,
+          "sha256": "0562eef0e4740041dde68f3134ce4cc27c30b06baad1531f95038b08d6ab5fed"
+        }
+      },
+      "elapsed_seconds": 10.043728723999948
+    },
+    {
+      "old_count": 1,
+      "current_count": 1,
+      "retention_metrics": [
+        "loki_boltdb_shipper_retention_marker_count_total{object_store=\"filesystem\",table=\"index_20743\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"2.5\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"5\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"10\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"20\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"40\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"90\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"360\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"600\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1800\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"+Inf\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_sum{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 0.009952784",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_count{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_total{action=\"deleted\",object_store=\"filesystem\",table=\"index_20743\",user_id=\"\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 0",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+      ],
+      "files": {
+        "chunks/ZmFrZS9hNDIzMDkzZGQwYjU3MzdhOjFhMTQ3YzZlOTA2OjFhMTQ3YzZlOTA3OmExMjZkNjg2": {
+          "bytes": 328,
+          "sha256": "e2b82873193c9c755691761e5d3bdf38f8d2be7929cdcbe5ec3bd48806284e0b"
+        },
+        "chunks/ZmFrZS9jOWZlMGEzNzEwYmUzM2M0OjFhMTcwZjljOTA2OjFhMTcwZjljOTA3OjIxN2UwMmI3": {
+          "bytes": 332,
+          "sha256": "0562eef0e4740041dde68f3134ce4cc27c30b06baad1531f95038b08d6ab5fed"
+        }
+      },
+      "elapsed_seconds": 15.062075628000002
+    },
+    {
+      "old_count": 1,
+      "current_count": 1,
+      "retention_metrics": [
+        "loki_boltdb_shipper_retention_marker_count_total{object_store=\"filesystem\",table=\"index_20743\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"2.5\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"5\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"10\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"20\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"40\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"90\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"360\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"600\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1800\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"+Inf\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_sum{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 0.009952784",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_count{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_total{action=\"deleted\",object_store=\"filesystem\",table=\"index_20743\",user_id=\"\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+      ],
+      "files": {
+        "chunks/ZmFrZS9hNDIzMDkzZGQwYjU3MzdhOjFhMTQ3YzZlOTA2OjFhMTQ3YzZlOTA3OmExMjZkNjg2": {
+          "bytes": 328,
+          "sha256": "e2b82873193c9c755691761e5d3bdf38f8d2be7929cdcbe5ec3bd48806284e0b"
+        },
+        "chunks/ZmFrZS9jOWZlMGEzNzEwYmUzM2M0OjFhMTcwZjljOTA2OjFhMTcwZjljOTA3OjIxN2UwMmI3": {
+          "bytes": 332,
+          "sha256": "0562eef0e4740041dde68f3134ce4cc27c30b06baad1531f95038b08d6ab5fed"
+        }
+      },
+      "elapsed_seconds": 20.095597635000104
+    },
+    {
+      "old_count": 1,
+      "current_count": 1,
+      "retention_metrics": [
+        "loki_boltdb_shipper_retention_marker_count_total{object_store=\"filesystem\",table=\"index_20743\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"2.5\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"5\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"10\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"20\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"40\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"90\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"360\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"600\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1800\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"+Inf\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_sum{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 0.009952784",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_count{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_total{action=\"deleted\",object_store=\"filesystem\",table=\"index_20743\",user_id=\"\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+      ],
+      "files": {
+        "chunks/ZmFrZS9hNDIzMDkzZGQwYjU3MzdhOjFhMTQ3YzZlOTA2OjFhMTQ3YzZlOTA3OmExMjZkNjg2": {
+          "bytes": 328,
+          "sha256": "e2b82873193c9c755691761e5d3bdf38f8d2be7929cdcbe5ec3bd48806284e0b"
+        },
+        "chunks/ZmFrZS9jOWZlMGEzNzEwYmUzM2M0OjFhMTcwZjljOTA2OjFhMTcwZjljOTA3OjIxN2UwMmI3": {
+          "bytes": 332,
+          "sha256": "0562eef0e4740041dde68f3134ce4cc27c30b06baad1531f95038b08d6ab5fed"
+        }
+      },
+      "elapsed_seconds": 25.131860679000056
+    },
+    {
+      "old_count": 1,
+      "current_count": 1,
+      "retention_metrics": [
+        "loki_boltdb_shipper_retention_marker_count_total{object_store=\"filesystem\",table=\"index_20743\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"2.5\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"5\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"10\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"20\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"40\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"90\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"360\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"600\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1800\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"+Inf\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_sum{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 0.009952784",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_count{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_total{action=\"deleted\",object_store=\"filesystem\",table=\"index_20743\",user_id=\"\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+      ],
+      "files": {
+        "chunks/ZmFrZS9hNDIzMDkzZGQwYjU3MzdhOjFhMTQ3YzZlOTA2OjFhMTQ3YzZlOTA3OmExMjZkNjg2": {
+          "bytes": 328,
+          "sha256": "e2b82873193c9c755691761e5d3bdf38f8d2be7929cdcbe5ec3bd48806284e0b"
+        },
+        "chunks/ZmFrZS9jOWZlMGEzNzEwYmUzM2M0OjFhMTcwZjljOTA2OjFhMTcwZjljOTA3OjIxN2UwMmI3": {
+          "bytes": 332,
+          "sha256": "0562eef0e4740041dde68f3134ce4cc27c30b06baad1531f95038b08d6ab5fed"
+        }
+      },
+      "elapsed_seconds": 30.182504452000103
+    },
+    {
+      "old_count": 1,
+      "current_count": 1,
+      "retention_metrics": [
+        "loki_boltdb_shipper_retention_marker_count_total{object_store=\"filesystem\",table=\"index_20743\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"2.5\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"5\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"10\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"20\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"40\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"90\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"360\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"600\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1800\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"+Inf\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_sum{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 0.009952784",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_count{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_total{action=\"deleted\",object_store=\"filesystem\",table=\"index_20743\",user_id=\"\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+      ],
+      "files": {
+        "chunks/ZmFrZS9hNDIzMDkzZGQwYjU3MzdhOjFhMTQ3YzZlOTA2OjFhMTQ3YzZlOTA3OmExMjZkNjg2": {
+          "bytes": 328,
+          "sha256": "e2b82873193c9c755691761e5d3bdf38f8d2be7929cdcbe5ec3bd48806284e0b"
+        },
+        "chunks/ZmFrZS9jOWZlMGEzNzEwYmUzM2M0OjFhMTcwZjljOTA2OjFhMTcwZjljOTA3OjIxN2UwMmI3": {
+          "bytes": 332,
+          "sha256": "0562eef0e4740041dde68f3134ce4cc27c30b06baad1531f95038b08d6ab5fed"
+        }
+      },
+      "elapsed_seconds": 35.203876874000116
+    },
+    {
+      "old_count": 1,
+      "current_count": 1,
+      "retention_metrics": [
+        "loki_boltdb_shipper_retention_marker_count_total{object_store=\"filesystem\",table=\"index_20743\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"2.5\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"5\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"10\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"20\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"40\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"90\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"360\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"600\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1800\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"+Inf\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_sum{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 0.009952784",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_count{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_total{action=\"deleted\",object_store=\"filesystem\",table=\"index_20743\",user_id=\"\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+      ],
+      "files": {
+        "chunks/ZmFrZS9hNDIzMDkzZGQwYjU3MzdhOjFhMTQ3YzZlOTA2OjFhMTQ3YzZlOTA3OmExMjZkNjg2": {
+          "bytes": 328,
+          "sha256": "e2b82873193c9c755691761e5d3bdf38f8d2be7929cdcbe5ec3bd48806284e0b"
+        },
+        "chunks/ZmFrZS9jOWZlMGEzNzEwYmUzM2M0OjFhMTcwZjljOTA2OjFhMTcwZjljOTA3OjIxN2UwMmI3": {
+          "bytes": 332,
+          "sha256": "0562eef0e4740041dde68f3134ce4cc27c30b06baad1531f95038b08d6ab5fed"
+        }
+      },
+      "elapsed_seconds": 40.220637990000114
+    },
+    {
+      "old_count": 1,
+      "current_count": 1,
+      "retention_metrics": [
+        "loki_boltdb_shipper_retention_marker_count_total{object_store=\"filesystem\",table=\"index_20743\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"2.5\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"5\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"10\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"20\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"40\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"90\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"360\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"600\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1800\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"+Inf\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_sum{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 0.009952784",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_count{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_total{action=\"deleted\",object_store=\"filesystem\",table=\"index_20743\",user_id=\"\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+      ],
+      "files": {
+        "chunks/ZmFrZS9hNDIzMDkzZGQwYjU3MzdhOjFhMTQ3YzZlOTA2OjFhMTQ3YzZlOTA3OmExMjZkNjg2": {
+          "bytes": 328,
+          "sha256": "e2b82873193c9c755691761e5d3bdf38f8d2be7929cdcbe5ec3bd48806284e0b"
+        },
+        "chunks/ZmFrZS9jOWZlMGEzNzEwYmUzM2M0OjFhMTcwZjljOTA2OjFhMTcwZjljOTA3OjIxN2UwMmI3": {
+          "bytes": 332,
+          "sha256": "0562eef0e4740041dde68f3134ce4cc27c30b06baad1531f95038b08d6ab5fed"
+        }
+      },
+      "elapsed_seconds": 45.29699989699998
+    },
+    {
+      "old_count": 1,
+      "current_count": 1,
+      "retention_metrics": [
+        "loki_boltdb_shipper_retention_marker_count_total{object_store=\"filesystem\",table=\"index_20743\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"2.5\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"5\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"10\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"20\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"40\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"90\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"360\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"600\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1800\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"+Inf\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_sum{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 0.009952784",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_count{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_total{action=\"deleted\",object_store=\"filesystem\",table=\"index_20743\",user_id=\"\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+      ],
+      "files": {
+        "chunks/ZmFrZS9hNDIzMDkzZGQwYjU3MzdhOjFhMTQ3YzZlOTA2OjFhMTQ3YzZlOTA3OmExMjZkNjg2": {
+          "bytes": 328,
+          "sha256": "e2b82873193c9c755691761e5d3bdf38f8d2be7929cdcbe5ec3bd48806284e0b"
+        },
+        "chunks/ZmFrZS9jOWZlMGEzNzEwYmUzM2M0OjFhMTcwZjljOTA2OjFhMTcwZjljOTA3OjIxN2UwMmI3": {
+          "bytes": 332,
+          "sha256": "0562eef0e4740041dde68f3134ce4cc27c30b06baad1531f95038b08d6ab5fed"
+        }
+      },
+      "elapsed_seconds": 50.30873451499997
+    },
+    {
+      "old_count": 1,
+      "current_count": 1,
+      "retention_metrics": [
+        "loki_boltdb_shipper_retention_marker_count_total{object_store=\"filesystem\",table=\"index_20743\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"2.5\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"5\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"10\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"20\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"40\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"90\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"360\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"600\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1800\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"+Inf\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_sum{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 0.009952784",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_count{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 1",
+        "loki_boltdb_shipper_retention_marker_table_processed_total{action=\"deleted\",object_store=\"filesystem\",table=\"index_20743\",user_id=\"\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+      ],
+      "files": {
+        "chunks/ZmFrZS9hNDIzMDkzZGQwYjU3MzdhOjFhMTQ3YzZlOTA2OjFhMTQ3YzZlOTA3OmExMjZkNjg2": {
+          "bytes": 328,
+          "sha256": "e2b82873193c9c755691761e5d3bdf38f8d2be7929cdcbe5ec3bd48806284e0b"
+        },
+        "chunks/ZmFrZS9jOWZlMGEzNzEwYmUzM2M0OjFhMTcwZjljOTA2OjFhMTcwZjljOTA3OjIxN2UwMmI3": {
+          "bytes": 332,
+          "sha256": "0562eef0e4740041dde68f3134ce4cc27c30b06baad1531f95038b08d6ab5fed"
+        }
+      },
+      "elapsed_seconds": 55.34542291599996
+    },
+    {
+      "old_count": 1,
+      "current_count": 1,
+      "retention_metrics": [
+        "loki_boltdb_shipper_retention_marker_count_total{object_store=\"filesystem\",table=\"index_20743\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"2.5\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"5\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"10\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"20\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"40\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"90\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"360\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"600\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1800\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"+Inf\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_sum{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 0.018477730999999997",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_count{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_total{action=\"deleted\",object_store=\"filesystem\",table=\"index_20743\",user_id=\"\"} 2",
+        "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+      ],
+      "files": {
+        "chunks/ZmFrZS9hNDIzMDkzZGQwYjU3MzdhOjFhMTQ3YzZlOTA2OjFhMTQ3YzZlOTA3OmExMjZkNjg2": {
+          "bytes": 328,
+          "sha256": "e2b82873193c9c755691761e5d3bdf38f8d2be7929cdcbe5ec3bd48806284e0b"
+        },
+        "chunks/ZmFrZS9jOWZlMGEzNzEwYmUzM2M0OjFhMTcwZjljOTA2OjFhMTcwZjljOTA3OjIxN2UwMmI3": {
+          "bytes": 332,
+          "sha256": "0562eef0e4740041dde68f3134ce4cc27c30b06baad1531f95038b08d6ab5fed"
+        }
+      },
+      "elapsed_seconds": 60.35459819300013
+    },
+    {
+      "old_count": 1,
+      "current_count": 1,
+      "retention_metrics": [
+        "loki_boltdb_shipper_retention_marker_count_total{object_store=\"filesystem\",table=\"index_20743\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"2.5\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"5\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"10\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"20\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"40\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"90\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"360\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"600\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1800\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"+Inf\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_sum{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 0.018477730999999997",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_count{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_total{action=\"deleted\",object_store=\"filesystem\",table=\"index_20743\",user_id=\"\"} 2",
+        "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 0",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 0"
+      ],
+      "files": {
+        "chunks/ZmFrZS9hNDIzMDkzZGQwYjU3MzdhOjFhMTQ3YzZlOTA2OjFhMTQ3YzZlOTA3OmExMjZkNjg2": {
+          "bytes": 328,
+          "sha256": "e2b82873193c9c755691761e5d3bdf38f8d2be7929cdcbe5ec3bd48806284e0b"
+        },
+        "chunks/ZmFrZS9jOWZlMGEzNzEwYmUzM2M0OjFhMTcwZjljOTA2OjFhMTcwZjljOTA3OjIxN2UwMmI3": {
+          "bytes": 332,
+          "sha256": "0562eef0e4740041dde68f3134ce4cc27c30b06baad1531f95038b08d6ab5fed"
+        }
+      },
+      "elapsed_seconds": 65.37422461599999
+    },
+    {
+      "old_count": 0,
+      "current_count": 1,
+      "retention_metrics": [
+        "loki_boltdb_shipper_retention_marker_count_total{object_store=\"filesystem\",table=\"index_20743\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"2.5\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"5\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"10\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"20\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"40\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"90\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"360\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"600\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"1800\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",table=\"index_20743\",le=\"+Inf\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_sum{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 0.018477730999999997",
+        "loki_boltdb_shipper_retention_marker_table_processed_duration_seconds_count{object_store=\"filesystem\",status=\"success\",table=\"index_20743\"} 2",
+        "loki_boltdb_shipper_retention_marker_table_processed_total{action=\"deleted\",object_store=\"filesystem\",table=\"index_20743\",user_id=\"\"} 2",
+        "loki_boltdb_shipper_retention_sweeper_chunk_deleted_duration_seconds_bucket{object_store=\"filesystem\",status=\"notfound\",le=\"0.1\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_chunk_deleted_duration_seconds_bucket{object_store=\"filesystem\",status=\"notfound\",le=\"0.2\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_chunk_deleted_duration_seconds_bucket{object_store=\"filesystem\",status=\"notfound\",le=\"0.4\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_chunk_deleted_duration_seconds_bucket{object_store=\"filesystem\",status=\"notfound\",le=\"0.8\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_chunk_deleted_duration_seconds_bucket{object_store=\"filesystem\",status=\"notfound\",le=\"1.6\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_chunk_deleted_duration_seconds_bucket{object_store=\"filesystem\",status=\"notfound\",le=\"3.2\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_chunk_deleted_duration_seconds_bucket{object_store=\"filesystem\",status=\"notfound\",le=\"6.4\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_chunk_deleted_duration_seconds_bucket{object_store=\"filesystem\",status=\"notfound\",le=\"12.8\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_chunk_deleted_duration_seconds_bucket{object_store=\"filesystem\",status=\"notfound\",le=\"+Inf\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_chunk_deleted_duration_seconds_sum{object_store=\"filesystem\",status=\"notfound\"} 6.6568e-05",
+        "loki_boltdb_shipper_retention_sweeper_chunk_deleted_duration_seconds_count{object_store=\"filesystem\",status=\"notfound\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_chunk_deleted_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",le=\"0.1\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_chunk_deleted_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",le=\"0.2\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_chunk_deleted_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",le=\"0.4\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_chunk_deleted_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",le=\"0.8\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_chunk_deleted_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",le=\"1.6\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_chunk_deleted_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",le=\"3.2\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_chunk_deleted_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",le=\"6.4\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_chunk_deleted_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",le=\"12.8\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_chunk_deleted_duration_seconds_bucket{object_store=\"filesystem\",status=\"success\",le=\"+Inf\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_chunk_deleted_duration_seconds_sum{object_store=\"filesystem\",status=\"success\"} 0.000201302",
+        "loki_boltdb_shipper_retention_sweeper_chunk_deleted_duration_seconds_count{object_store=\"filesystem\",status=\"success\"} 1",
+        "loki_boltdb_shipper_retention_sweeper_marker_file_processing_current_time{object_store=\"filesystem\"} 1.792896861000839e+09",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_current{object_store=\"filesystem\"} 2",
+        "loki_boltdb_shipper_retention_sweeper_marker_files_deleted_total{object_store=\"filesystem\"} 2"
+      ],
+      "files": {
+        "chunks/ZmFrZS9jOWZlMGEzNzEwYmUzM2M0OjFhMTcwZjljOTA2OjFhMTcwZjljOTA3OjIxN2UwMmI3": {
+          "bytes": 332,
+          "sha256": "0562eef0e4740041dde68f3134ce4cc27c30b06baad1531f95038b08d6ab5fed"
+        }
+      },
+      "elapsed_seconds": 70.40196556599994
+    }
+  ]
+}

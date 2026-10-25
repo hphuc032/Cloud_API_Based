@@ -1,0 +1,28 @@
+{
+  "utc": "2026-10-25T09:01:32.512926+00:00",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/grafana/loki/v2.9.17/pkg/loghttp/query.go",
+      "status": 200,
+      "source_file": "loki-pkg_loghttp_query.go.source.txt",
+      "query_parse_calls": []
+    },
+    {
+      "url": "https://raw.githubusercontent.com/grafana/loki/v2.9.17/pkg/loghttp/params.go",
+      "status": 200,
+      "source_file": "loki-pkg_loghttp_params.go.source.txt",
+      "query_parse_calls": []
+    },
+    {
+      "url": "https://raw.githubusercontent.com/grafana/loki/v2.9.17/pkg/querier/queryrange/codec.go",
+      "status": 200,
+      "source_file": "loki-pkg_querier_queryrange_codec.go.source.txt",
+      "query_parse_calls": [
+        {
+          "line": 210,
+          "text": "if err := r.ParseForm(); err != nil {"
+        }
+      ]
+    }
+  ]
+}
