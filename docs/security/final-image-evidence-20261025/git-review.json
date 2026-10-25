@@ -59,5 +59,14 @@
   "push_performed": false,
   "merge_performed": false,
   "history_rewritten": false,
-  "documentation_commit": "Exact final SHA reported in completion message to avoid a self-referential file"
+  "documentation_commit": "Exact final SHA reported in completion message to avoid a self-referential file",
+  "secret_history_followup": {
+    "initial_documentation_commit_short": "ac193d2",
+    "matches": 778,
+    "verified_checksum_metadata": 778,
+    "real_credentials_found": 0,
+    "proof": "git-checksum-dispositions.json",
+    "history_amended": false,
+    "additional_commit_scope": "Documentation/evidence only; no runtime or test changes"
+  }
 }

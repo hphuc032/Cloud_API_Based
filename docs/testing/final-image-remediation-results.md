@@ -188,3 +188,31 @@ in its own content. Git diff checks pass. Gitleaks scanned both implementation
 commits with zero findings; staged evidence matches are the six verified source
 hashes described above. No real secret was found in the reviewed changes.
 There was no push, merge, reset/rebase/amend or production deployment.
+
+## Git-history secret-scan follow-up
+
+The post-commit Git scan examines a different input context from directory/staged
+file scanning. Gitleaks8.30.1 returned778 findings: six generic-key matches in
+source-integrity SHA256 fields,716 Sourcegraph-rule matches in SPDX file SHA1
+checksums, and56 in SPDX package-verification fields. Its
+[official rule](https://github.com/gitleaks/gitleaks/blob/v8.30.1/cmd/generate/config/rules/sourcegraph.go)
+accepts unprefixed40-hex strings when its keyword is present; the Alloy SBOM
+contains a Sourcegraph module name. Do not mistake the nonzero scanner exit for
+778 confirmed credentials, or report it as a zero-finding scan.
+
+All716 file values were recomputed from stopped containers created from the
+exact original/final Alloy images, using streamed Docker exports without mounts,
+extraction, service execution or production data. All56 package-verification
+codes were independently reproduced by Scout for those same exact images after
+removing Sourcegraph-named environment inputs. These package codes are reproduced
+metadata, not a claim that the complete package-owned-file SPDX verification
+formula was reconstructed from the partial evident-file relationships. The six
+source SHA256 values match source bytes. No real credential was found and no
+scanner suppression/allowlist or raw SBOM edit was added.
+
+[Per-match verification](../security/final-image-evidence-20261025/git-checksum-dispositions.json)
+and [the secret review](../security/final-image-evidence-20261025/secret-review.json)
+retain the classification, exact image IDs/commands and individual locations.
+Only labelled disposable verification containers were created and removed.
+This evidence is a separate documentation-only follow-up commit; existing commits
+were not amended. Release risk and every runtime/test result remain unchanged.

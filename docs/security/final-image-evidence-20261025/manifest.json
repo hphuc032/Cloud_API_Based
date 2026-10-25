@@ -237,9 +237,14 @@
       "sha256": "103b578af4fe2313f681d1c34fb1657c0852160317487ad9ecc51a6d95b9a1d5"
     },
     {
+      "path": "git-checksum-dispositions.json",
+      "bytes": 210124,
+      "sha256": "8f235c628d5efb0ddd2563d425614ea1c983e9d40135fcd1effc6f36c4524ca3"
+    },
+    {
       "path": "git-review.json",
-      "bytes": 2255,
-      "sha256": "ce2f635e5994822a20fb0049d2716d9459355c4d00b0dd5854afeec45baea796"
+      "bytes": 2611,
+      "sha256": "6629b22acd2d200f54b58e98610fb30c1681c54534778751e36c209625583496"
     },
     {
       "path": "legacy-promtail-inventory.json",
@@ -478,8 +483,8 @@
     },
     {
       "path": "secret-review.json",
-      "bytes": 5328,
-      "sha256": "7656f7fa303d18d70c599a1d9dc3eeccfc564a62fbb3334ae41d6ea626f4420a"
+      "bytes": 6041,
+      "sha256": "139e5d79878d0c95611dbff6c5d22052fa27e91d92c0f4dc25e840a568d5123f"
     },
     {
       "path": "source-coverage.json",

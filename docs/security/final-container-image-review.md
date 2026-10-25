@@ -127,6 +127,16 @@ Dependency inputs use pinned base/artifact digests, exact apk versions and Pytho
 
 The WSL frontend builder uses Node18.19/npm9.2, while Windows has Node24.14/npm11.9. [Node18 is EOL](https://nodejs.org/en/about/previous-releases), a build-tool lifecycle limitation rather than a Node process shipped in nginx. Do not infer builder security from passing browser behavior. Python advisory scan completed with five raw entries representing three unique advisories; npm completed with five moderate affected-package entries and no HIGH/CRITICAL. No automatic major dependency upgrade was performed. See the detailed testing report.
 
+## Post-commit secret-scan context
+
+Directory/staged scanning reported six source hashes. Git-history scanning also
+flagged716 SPDX file SHA1s and56 package-verification codes through the legacy
+Sourcegraph detector. Actual image-byte hashing reproduced all716 file checksums;
+independent Scout runs reproduced all56 package codes, and source bytes reproduce
+the six SHA256 values. No credential was identified; raw scan/SBOM data and
+nonzero scanner results remain intact. See [the per-match proof](final-image-evidence-20261025/git-checksum-dispositions.json)
+and [testing follow-up](../testing/final-image-remediation-results.md#git-history-secret-scan-follow-up).
+
 ## Acceptance and next decisions
 
 [Regression results](../testing/final-image-remediation-results.md) and [upgrade/rollback procedures](../deployment/final-image-upgrade-rollback.md) provide commands, counts, failed attempts, TLS evidence and storage drills. Functional gates pass for the final runtime artifacts. Material image/build/lifecycle risks remain open, and no authorized owner supplied a scoped, mitigated, accountable, dated exception. **Release remains BLOCKED.** Stop here; do not merge, push or deploy production.
