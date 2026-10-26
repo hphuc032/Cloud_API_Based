@@ -1,0 +1,260 @@
+{
+  "checked_date": "2026-10-26",
+  "tool": "GitHub connector fetch (GET only)",
+  "sources": [
+    {
+      "url": "https://api.github.com/repos/Kong/kong/releases?per_page=30",
+      "releases": [
+        {
+          "tag": "3.9.4",
+          "published_at": "2026-10-12T07:27:48Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/3.9.4"
+        },
+        {
+          "tag": "3.9.3",
+          "published_at": "2026-06-17T06:02:19Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/3.9.3"
+        },
+        {
+          "tag": "3.9.2",
+          "published_at": "2026-06-04T07:12:53Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/3.9.2"
+        },
+        {
+          "tag": "3.9.1",
+          "published_at": "2025-06-04T09:20:05Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/3.9.1"
+        },
+        {
+          "tag": "3.9.0",
+          "published_at": "2024-12-13T04:17:54Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/3.9.0"
+        },
+        {
+          "tag": "3.8.1",
+          "published_at": "2024-11-18T20:52:27Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/3.8.1"
+        },
+        {
+          "tag": "3.8.0",
+          "published_at": "2024-09-11T09:19:15Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/3.8.0"
+        },
+        {
+          "tag": "2.8.5",
+          "published_at": "2024-06-24T14:54:52Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/2.8.5"
+        },
+        {
+          "tag": "3.7.1",
+          "published_at": "2024-06-21T09:38:32Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/3.7.1"
+        },
+        {
+          "tag": "3.7.0",
+          "published_at": "2024-05-28T16:00:45Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/3.7.0"
+        },
+        {
+          "tag": "3.6.1",
+          "published_at": "2024-03-04T14:19:57Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/3.6.1"
+        },
+        {
+          "tag": "3.6.0",
+          "published_at": "2024-02-09T22:08:50Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/3.6.0"
+        },
+        {
+          "tag": "3.5.0",
+          "published_at": "2023-11-08T09:50:40Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/3.5.0"
+        },
+        {
+          "tag": "3.4.2",
+          "published_at": "2023-10-12T10:50:05Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/3.4.2"
+        },
+        {
+          "tag": "3.4.1",
+          "published_at": "2023-10-03T10:33:19Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/3.4.1"
+        },
+        {
+          "tag": "2.8.4",
+          "published_at": "2023-09-20T23:03:15Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/2.8.4"
+        },
+        {
+          "tag": "3.4.0",
+          "published_at": "2023-08-09T15:57:37Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/3.4.0"
+        },
+        {
+          "tag": "3.3.1",
+          "published_at": "2023-07-11T08:58:57Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/3.3.1"
+        },
+        {
+          "tag": "3.3.0",
+          "published_at": "2023-05-18T17:19:41Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/3.3.0"
+        },
+        {
+          "tag": "3.2.2",
+          "published_at": "2023-03-16T12:24:30Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/3.2.2"
+        },
+        {
+          "tag": "3.2.1",
+          "published_at": "2023-03-01T09:04:00Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/3.2.1"
+        },
+        {
+          "tag": "3.2.0",
+          "published_at": "2023-02-21T05:27:51Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/3.2.0"
+        },
+        {
+          "tag": "3.0.2",
+          "published_at": "2022-12-09T21:27:36Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/3.0.2"
+        },
+        {
+          "tag": "3.1.0",
+          "published_at": "2022-12-06T06:05:44Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/3.1.0"
+        },
+        {
+          "tag": "3.0.1",
+          "published_at": "2022-11-08T13:22:08Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/3.0.1"
+        },
+        {
+          "tag": "2.8.3",
+          "published_at": "2022-11-03T13:25:24Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/2.8.3"
+        },
+        {
+          "tag": "3.0.0",
+          "published_at": "2022-09-12T12:39:09Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/3.0.0"
+        },
+        {
+          "tag": "2.4.2",
+          "published_at": "2022-05-23T14:43:19Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/2.4.2"
+        },
+        {
+          "tag": "2.3.4",
+          "published_at": "2022-05-23T15:57:38Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/2.3.4"
+        },
+        {
+          "tag": "2.5.2",
+          "published_at": "2022-04-25T20:39:32Z",
+          "prerelease": false,
+          "draft": false,
+          "url": "https://github.com/Kong/kong/releases/tag/2.5.2"
+        }
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/docker-library/official-images/master/library/kong",
+      "content": "Maintainers: Kong Docker Maintainers <team-gateway@konghq.com> (@team-gateway-bot)\nGitRepo: https://github.com/Kong/docker-kong.git\n\nTags: 3.9.4-ubuntu, 3.9-ubuntu, 3.9.4, 3.9, 3, latest, ubuntu\nGitCommit: 8b2c2238ca0607e210cada8223407c13fedec943\nGitFetch: refs/tags/3.9.4\nDirectory: ubuntu\nArchitectures: amd64, arm64v8\n\nTags: 3.8.0-ubuntu, 3.8-ubuntu, 3.8.0, 3.8\nGitCommit: 1f5199f7da45c17f4344b811397e89899a160040\nGitFetch: refs/tags/3.8.0\nDirectory: ubuntu\nArchitectures: amd64, arm64v8\n\nTags: 3.4.2-ubuntu, 3.4-ubuntu, 3.4.2, 3.4\nGitCommit: e07de903edf213445a0540172d51529ac344b448\nGitFetch: refs/tags/3.4.2\nDirectory: ubuntu\nArchitectures: amd64, arm64v8\n"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Kong/kong/3.9.4/LICENSE",
+      "license": "Apache-2.0",
+      "note": "Repository license reviewed; not an Enterprise support entitlement"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Kong/kong/3.9.4/CHANGELOG.md",
+      "findings": [
+        "3.9.4 clustering SQL injection CVE-2026-1907 fix",
+        "3.9.3 nginx CVE-2026-49975 patch",
+        "3.9.0 OpenSSL 3.2.3 dependency update; no 3.5 upgrade claimed for 3.9.4"
+      ]
+    },
+    {
+      "url": "https://developer.konghq.com/gateway/changelog/",
+      "scope": "Explicitly Enterprise",
+      "findings": [
+        "3.10.0.12 declares OpenSSL 3.5.6",
+        "3.16.0.0 declares OpenSSL 3.5.8",
+        "Neither is evidence of matching OSS artifact; neither downloaded or selected"
+      ]
+    },
+    {
+      "url": "https://openssl-library.org/roadmap/",
+      "findings": [
+        "OpenSSL 3.2 public EOL 2025-11-23",
+        "OpenSSL 3.5 LTS supported until 2030-04-08"
+      ]
+    },
+    {
+      "url": "https://openssl-library.org/source/",
+      "findings": [
+        "3.5.9 security patch release listed 2026-09-29; LTS branch membership alone is not patch currency"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "recorded_utc": "2026-10-26T09:22:57.316016+00:00",
+  "starting_head": "e7d1c12b04c72c6d21db694a35472dac9d14d953",
+  "tracked_runtime_source_changes": false,
+  "protected_untracked_unchanged": 59,
+  "local_markdown_links_checked": 14,
+  "historical_manifest": {
+    "target": "735886eda27119b539f49e1e141b475d5e4d39ed",
+    "byte_source": "git-blob-content",
+    "entries": 149,
+    "valid": 149,
+    "failed": []
+  },
+  "gitleaks": {
+    "version": "8.30.1",
+    "result": {
+      "exit_code": 0,
+      "findings": 0,
+      "scanned_files": 6,
+      "stderr": "4:22PM INF scanned ~53246 bytes (53.25 KB) in 164ms\n4:22PM INF no leaks found\n"
+    },
+    "command": "gitleaks stdin --no-banner --no-color --redact=100 --ignore-gitleaks-allow --gitleaks-ignore-path <ignored-work-dir>/no-ignore-file --report-format json --report-path -",
+    "suppression_added": false
+  },
+  "privacy_review": "No credentials, private keys, access tokens or user home paths. Public vendor /github/home build paths retained as binary provenance; ASLR addresses omitted. No new scan dumps or PKI. No findings suppressed.",
+  "followup": "This receipt is scanned with all new files before staging; exact staged blobs scanned again before commit."
+}
