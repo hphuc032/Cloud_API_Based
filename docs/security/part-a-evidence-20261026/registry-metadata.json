@@ -1,0 +1,179 @@
+{
+  "scope": "Registry metadata read only; no image signature verification or advisory scan implied",
+  "records": [
+    {
+      "argv": [
+        "docker",
+        "buildx",
+        "imagetools",
+        "inspect",
+        "--raw",
+        "kong:3.9.4@sha256:aa4a4687b1330e427ad0d3b27a0606b833894297c78abf1a212edc9ba73c8620"
+      ],
+      "recorded_utc": "2026-10-26T08:18:59.406799+00:00",
+      "exit_code": 0,
+      "stderr": "",
+      "mediaType": "application/vnd.oci.image.index.v1+json",
+      "platform_manifests": [
+        {
+          "annotations": {
+            "com.docker.official-images.bashbrew.arch": "amd64",
+            "org.opencontainers.image.base.digest": "sha256:a2d43bffc46670d7108bb3c0468c67c5557c4c92e83e1e34cbff1322ad1b94dc",
+            "org.opencontainers.image.base.name": "ubuntu:noble",
+            "org.opencontainers.image.created": "2026-10-17T00:30:54Z",
+            "org.opencontainers.image.revision": "8b2c2238ca0607e210cada8223407c13fedec943",
+            "org.opencontainers.image.source": "https://github.com/Kong/docker-kong.git#8b2c2238ca0607e210cada8223407c13fedec943:ubuntu",
+            "org.opencontainers.image.url": "https://hub.docker.com/_/kong",
+            "org.opencontainers.image.version": "3.9.4-ubuntu"
+          },
+          "digest": "sha256:45993f7e2c77036e52e553419553f58eb06b7dd87513e3350e230dc04b5ebe6c",
+          "mediaType": "application/vnd.oci.image.manifest.v1+json",
+          "platform": {
+            "architecture": "amd64",
+            "os": "linux"
+          },
+          "size": 1713
+        },
+        {
+          "annotations": {
+            "com.docker.official-images.bashbrew.arch": "amd64",
+            "vnd.docker.reference.digest": "sha256:45993f7e2c77036e52e553419553f58eb06b7dd87513e3350e230dc04b5ebe6c",
+            "vnd.docker.reference.type": "attestation-manifest"
+          },
+          "digest": "sha256:21a2526274994081c8909db7d37ddab053b06c011b350a46f56f97981088c097",
+          "mediaType": "application/vnd.oci.image.manifest.v1+json",
+          "platform": {
+            "architecture": "unknown",
+            "os": "unknown"
+          },
+          "size": 841
+        },
+        {
+          "annotations": {
+            "com.docker.official-images.bashbrew.arch": "arm64v8",
+            "org.opencontainers.image.base.digest": "sha256:18b33ff3829707f31ada654a963b9ee35f2e6f0241b964bd17a22a9b330cb63d",
+            "org.opencontainers.image.base.name": "ubuntu:noble",
+            "org.opencontainers.image.created": "2026-10-17T00:30:39Z",
+            "org.opencontainers.image.revision": "8b2c2238ca0607e210cada8223407c13fedec943",
+            "org.opencontainers.image.source": "https://github.com/Kong/docker-kong.git#8b2c2238ca0607e210cada8223407c13fedec943:ubuntu",
+            "org.opencontainers.image.url": "https://hub.docker.com/_/kong",
+            "org.opencontainers.image.version": "3.9.4-ubuntu"
+          },
+          "digest": "sha256:5e8ad63d52c02dc31745e4f577c73c4f702dd491d74f6da21a9c9abd77a3c4d8",
+          "mediaType": "application/vnd.oci.image.manifest.v1+json",
+          "platform": {
+            "architecture": "arm64",
+            "os": "linux",
+            "variant": "v8"
+          },
+          "size": 1715
+        },
+        {
+          "annotations": {
+            "com.docker.official-images.bashbrew.arch": "arm64v8",
+            "vnd.docker.reference.digest": "sha256:5e8ad63d52c02dc31745e4f577c73c4f702dd491d74f6da21a9c9abd77a3c4d8",
+            "vnd.docker.reference.type": "attestation-manifest"
+          },
+          "digest": "sha256:3f6e55eca0481a13c3b521a238b7fc0790ffa37eecf216e621018782ccc1f04b",
+          "mediaType": "application/vnd.oci.image.manifest.v1+json",
+          "platform": {
+            "architecture": "unknown",
+            "os": "unknown"
+          },
+          "size": 841
+        }
+      ],
+      "stdout_sha256": "aa4a4687b1330e427ad0d3b27a0606b833894297c78abf1a212edc9ba73c8620"
+    },
+    {
+      "argv": [
+        "docker",
+        "buildx",
+        "imagetools",
+        "inspect",
+        "--raw",
+        "grafana/loki:3.7.8@sha256:1107dd5274e0ada47e42472b7a7e71f3b2a2fe878878108f3e2f9e51528f0193"
+      ],
+      "recorded_utc": "2026-10-26T08:19:02.283298+00:00",
+      "exit_code": 0,
+      "stderr": "",
+      "mediaType": "application/vnd.docker.distribution.manifest.list.v2+json",
+      "platform_manifests": [
+        {
+          "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+          "size": 4062,
+          "digest": "sha256:81a6802ec4bd1b88c564494f06376889ed022998a188826190d26d2754ac2aae",
+          "platform": {
+            "architecture": "amd64",
+            "os": "linux"
+          }
+        },
+        {
+          "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+          "size": 4062,
+          "digest": "sha256:6f043292552634eaf5285dcaa14b9a72096a8e8f6ae828909afafc0ca722db7b",
+          "platform": {
+            "architecture": "arm",
+            "os": "linux",
+            "variant": "v7"
+          }
+        },
+        {
+          "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+          "size": 4062,
+          "digest": "sha256:a2753977b07471e0bb271f421677036fb1c84a2fd409e14fa19dfc7cc3b789b5",
+          "platform": {
+            "architecture": "arm64",
+            "os": "linux"
+          }
+        }
+      ],
+      "stdout_sha256": "1107dd5274e0ada47e42472b7a7e71f3b2a2fe878878108f3e2f9e51528f0193"
+    },
+    {
+      "argv": [
+        "docker",
+        "buildx",
+        "imagetools",
+        "inspect",
+        "--raw",
+        "grafana/loki:3.6.17@sha256:cd5471d6ae439eb0a7a9055b9b2fb3fd3c5485934dd576473a6289d3936b8b27"
+      ],
+      "recorded_utc": "2026-10-26T08:19:05.271755+00:00",
+      "exit_code": 0,
+      "stderr": "",
+      "mediaType": "application/vnd.docker.distribution.manifest.list.v2+json",
+      "platform_manifests": [
+        {
+          "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+          "size": 4061,
+          "digest": "sha256:f6eebd7cda5b34f08346ba3d7947f4e8b4ffaaeb6cdb95dc7c3977a79f86e215",
+          "platform": {
+            "architecture": "amd64",
+            "os": "linux"
+          }
+        },
+        {
+          "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+          "size": 4061,
+          "digest": "sha256:e30fd9036fd70a677c74830cd88ff1f123ca6f2f082653a145d14f78123383b6",
+          "platform": {
+            "architecture": "arm",
+            "os": "linux",
+            "variant": "v7"
+          }
+        },
+        {
+          "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+          "size": 4061,
+          "digest": "sha256:12d9719cd8007643ce22b0ef870a4a889bcca65a5305fceb37c4f11f202a47c9",
+          "platform": {
+            "architecture": "arm64",
+            "os": "linux"
+          }
+        }
+      ],
+      "stdout_sha256": "cd5471d6ae439eb0a7a9055b9b2fb3fd3c5485934dd576473a6289d3936b8b27"
+    }
+  ]
+}

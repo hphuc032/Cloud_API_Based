@@ -1,0 +1,178 @@
+{
+  "recorded_utc": "2026-10-26T08:26:19.958545+00:00",
+  "scope": "Pre-stage documentation verification; this report generated after content scan, then included in staged final scan before commit",
+  "files_scanned": [
+    "docs/deployment/part-a-upgrade-rollback.md",
+    "docs/security/part-a-controlled-remediation.md",
+    "docs/security/part-a-kong-openssl-assessment.md",
+    "docs/security/part-a-loki-vulnerability-assessment.md",
+    "docs/security/part-a-risk-status.json",
+    "docs/testing/part-a-regression-results.md",
+    "docs/security/part-a-evidence-20261026/kong-crypto-inspection.json",
+    "docs/security/part-a-evidence-20261026/loki-binary-inspection.json",
+    "docs/security/part-a-evidence-20261026/loki-config-validation.json",
+    "docs/security/part-a-evidence-20261026/preflight.json",
+    "docs/security/part-a-evidence-20261026/registry-metadata.json"
+  ],
+  "protected_preexisting_untracked": {
+    "expected": 59,
+    "unchanged": 59
+  },
+  "source_worktree_hashes_unchanged": 13,
+  "historical_manifest": {
+    "target": "97d2882da40880f72b8cc190e6fb9b94827f24da",
+    "byte_source": "git-blob-content",
+    "entries": 149,
+    "valid": 149,
+    "failed": []
+  },
+  "local_markdown_links": {
+    "checked": 28,
+    "failed": []
+  },
+  "manual_privacy_review": "No credentials, tokens, private keys, personal home paths or persistent host identifiers found. Disposable task container IDs retained for create/copy/remove provenance. SHA256 values identify public images/binaries/source files; no scanner finding suppressed.",
+  "gitleaks_findings": 0,
+  "scanner_suppressions_added": false,
+  "records": [
+    {
+      "label": "tracked-working-tree-unchanged",
+      "argv": [
+        "git",
+        "-c",
+        "safe.directory=D:/MatMaHoc/Project_CLOUD_API",
+        "diff",
+        "--exit-code"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "label": "index-unchanged",
+      "argv": [
+        "git",
+        "-c",
+        "safe.directory=D:/MatMaHoc/Project_CLOUD_API",
+        "diff",
+        "--cached",
+        "--exit-code"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "label": "diff-whitespace",
+      "argv": [
+        "git",
+        "-c",
+        "safe.directory=D:/MatMaHoc/Project_CLOUD_API",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "label": "historical-manifest",
+      "argv": [
+        "python",
+        "tests/p7/verify_manifest.py",
+        "--revision",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "{\r\n  \"target\": \"97d2882da40880f72b8cc190e6fb9b94827f24da\",\r\n  \"byte_source\": \"git-blob-content\",\r\n  \"entries\": 149,\r\n  \"valid\": 149,\r\n  \"failed\": []\r\n}\r\n",
+      "stderr": ""
+    },
+    {
+      "label": "gitleaks-version",
+      "argv": [
+        "<repository-root>\\tests\\p7\\artifacts\\final-remediation-20261024\\push-secret-review\\gitleaks.exe",
+        "version"
+      ],
+      "exit_code": 0,
+      "stdout": "8.30.1\n",
+      "stderr": ""
+    },
+    {
+      "label": "gitleaks-new-report-content",
+      "argv": [
+        "<repository-root>\\tests\\p7\\artifacts\\final-remediation-20261024\\push-secret-review\\gitleaks.exe",
+        "stdin",
+        "--no-banner",
+        "--no-color",
+        "--redact=100",
+        "--ignore-gitleaks-allow",
+        "--gitleaks-ignore-path",
+        "<repository-root>\\tests\\p7\\artifacts\\part-a-20261026-t0poeiog\\no-ignore-file",
+        "--report-format",
+        "json",
+        "--report-path",
+        "-"
+      ],
+      "exit_code": 0,
+      "stdout": "[]\n",
+      "stderr": "3:26PM INF scanned ~75222 bytes (75.22 KB) in 169ms\n3:26PM INF no leaks found\n"
+    }
+  ],
+  "docker_final_checks": {
+    "recorded_utc": "2026-10-26T08:27:24.077038+00:00",
+    "records": [
+      {
+        "argv": [
+          "docker",
+          "ps",
+          "-a",
+          "--filter",
+          "label=florasecure.task=part-a-20261026",
+          "--format",
+          "{{.Names}}"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "docker",
+          "ps",
+          "--format",
+          "{{.Image}} {{.Status}}"
+        ],
+        "exit_code": 0,
+        "stdout": "postgres:17.6 Up 3 hours\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "docker",
+          "image",
+          "inspect",
+          "--format",
+          "{{.Id}} {{.Architecture}} {{json .RepoDigests}}",
+          "sha256:aa4a4687b1330e427ad0d3b27a0606b833894297c78abf1a212edc9ba73c8620",
+          "sha256:1107dd5274e0ada47e42472b7a7e71f3b2a2fe878878108f3e2f9e51528f0193"
+        ],
+        "exit_code": 0,
+        "stdout": "sha256:aa4a4687b1330e427ad0d3b27a0606b833894297c78abf1a212edc9ba73c8620 amd64 [\"kong@sha256:aa4a4687b1330e427ad0d3b27a0606b833894297c78abf1a212edc9ba73c8620\"]\nsha256:1107dd5274e0ada47e42472b7a7e71f3b2a2fe878878108f3e2f9e51528f0193 amd64 [\"grafana/loki@sha256:1107dd5274e0ada47e42472b7a7e71f3b2a2fe878878108f3e2f9e51528f0193\"]\n",
+        "stderr": ""
+      }
+    ],
+    "exploratory_failure": {
+      "argv": [
+        "docker",
+        "image",
+        "inspect",
+        "--format",
+        "{{.Id}} {{.Architecture}} {{json .RepoDigests}}",
+        "kong:3.9.4",
+        "grafana/loki:3.7.8"
+      ],
+      "exit_code": 1,
+      "reason": "Digest-pinned pulls did not create mutable tag aliases; No such image for tag-only names. Exact digests successfully inspected above."
+    }
+  },
+  "command_sanitization": "Python executable path recorded as python; repository path as <repository-root>; no executable version/output changed."
+}

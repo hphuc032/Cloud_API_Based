@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "assessment_date": "2026-10-26",
+  "branch": "migration/cloud-api-security",
+  "starting_commit": "d79cb6060e95ba58cd797b6ef24b3b938ae80b8a",
+  "scope": "Part A research and bounded artifact/config inspection only",
+  "part_a_status": "BLOCKED",
+  "production_release_status": "BLOCKED",
+  "fresh_clean_baseline": "NOT_EXECUTED",
+  "resource_gate": "Insufficient demonstrated physical host RAM headroom; full-stack/build/scans withheld",
+  "runtime_configuration_changed": false,
+  "historical_risk_register_modified": false,
+  "owner_risk_acceptances": [],
+  "historical_scan": {
+    "date": "2026-10-25",
+    "core_high_critical_rows": 358,
+    "critical": 65,
+    "high": 293,
+    "kong_high_critical": 0,
+    "loki_high_critical": 96,
+    "remaining_runtime_rows_from_prior_assessment": 267,
+    "build_only_unresolved": 5
+  },
+  "after_scan": {
+    "status": "NOT_SCANNED",
+    "high_critical_rows": null
+  },
+  "risks": [
+    {
+      "id": "REL-001",
+      "baseline_artifact": "kong:3.9.3@sha256:92035d16d7ff86b7bc12fb1d0090d29357d924238b1880f78735f3f2fea6b631",
+      "inspected_candidate": "kong:3.9.4@sha256:aa4a4687b1330e427ad0d3b27a0606b833894297c78abf1a212edc9ba73c8620",
+      "baseline_runtime": "OpenSSL 3.2.3, dynamic Kong libssl/libcrypto",
+      "candidate_runtime": "OpenSSL 3.2.3, dynamic Kong libssl/libcrypto",
+      "cause": "Public OpenSSL 3.2 support ended 2025-11-23; exact-artifact extended maintenance not established",
+      "candidate_patch_floor_met": false,
+      "official_sources": [
+        "https://openssl-library.org/post/2025-11-25-eol-32/",
+        "https://github.com/Kong/kong/releases/tag/3.9.4",
+        "https://raw.githubusercontent.com/Kong/kong/3.9.4/CHANGELOG.md"
+      ],
+      "evidence": [
+        "docs/security/part-a-evidence-20261026/kong-crypto-inspection.json"
+      ],
+      "exposure": "Gateway client HTTPS and upstream mTLS; lifecycle concern, not proof of RCE",
+      "blocker": "No qualified supported crypto artifact/maintenance strategy; TLS and full regression not executed",
+      "status": "BLOCKED",
+      "selected_for_deployment": false,
+      "runtime_changes": [],
+      "fresh_image_scan": "NOT_EXECUTED",
+      "mandatory_regression": "NOT_EXECUTED",
+      "owner_acceptance": null
+    },
+    {
+      "id": "REL-002",
+      "advisories": [
+        "CVE-2025-61726",
+        "GO-2026-4341"
+      ],
+      "baseline_artifact": "grafana/loki:2.9.17@sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04",
+      "inspected_candidate": "grafana/loki:3.7.8@sha256:1107dd5274e0ada47e42472b7a7e71f3b2a2fe878878108f3e2f9e51528f0193",
+      "baseline_runtime": "Go 1.23.12",
+      "candidate_runtime": "Go 1.26.6",
+      "candidate_patch_floor_met": true,
+      "official_sources": [
+        "https://pkg.go.dev/vuln/GO-2026-4341"
+      ],
+      "evidence": [
+        "docs/security/part-a-evidence-20261026/loki-binary-inspection.json",
+        "docs/security/part-a-evidence-20261026/loki-config-validation.json"
+      ],
+      "exposure": "Previously traced ParseForm/ParseQuery path; no new exploit or amplification measurement",
+      "blocker": "Candidate remains affected-version for REL-004, unchanged config fails, no runtime/HTTP/storage acceptance or fresh image scan",
+      "status": "BLOCKED",
+      "selected_for_deployment": false,
+      "runtime_changes": [],
+      "fresh_image_scan": "NOT_EXECUTED",
+      "mandatory_regression": "NOT_EXECUTED",
+      "owner_acceptance": null
+    },
+    {
+      "id": "REL-003",
+      "advisories": [
+        "CVE-2026-84304",
+        "GHSA-vp52-pcj8-j9qc"
+      ],
+      "baseline_artifact": "grafana/loki:2.9.17@sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04",
+      "inspected_candidate": "grafana/loki:3.7.8@sha256:1107dd5274e0ada47e42472b7a7e71f3b2a2fe878878108f3e2f9e51528f0193",
+      "baseline_runtime": "grpc-go 1.59.0",
+      "candidate_runtime": "grpc-go 1.83.2",
+      "candidate_patch_floor_met": true,
+      "official_sources": [
+        "https://github.com/grpc/grpc-go/security/advisories/GHSA-vp52-pcj8-j9qc"
+      ],
+      "evidence": [
+        "docs/security/part-a-evidence-20261026/loki-binary-inspection.json"
+      ],
+      "exposure": "Default internal gRPC 9095, no host publication; reachable observability peers remain relevant",
+      "blocker": "No accepted candidate deployment, effective receive compaction/RPC/full regression unverified; REL-004 and config blocker",
+      "status": "BLOCKED",
+      "selected_for_deployment": false,
+      "runtime_changes": [],
+      "fresh_image_scan": "NOT_EXECUTED",
+      "mandatory_regression": "NOT_EXECUTED",
+      "owner_acceptance": null
+    },
+    {
+      "id": "REL-004",
+      "advisories": [
+        "CVE-2026-78663",
+        "GO-2026-6612"
+      ],
+      "baseline_artifact": "grafana/loki:2.9.17@sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04",
+      "inspected_candidate": "grafana/loki:3.7.8@sha256:1107dd5274e0ada47e42472b7a7e71f3b2a2fe878878108f3e2f9e51528f0193",
+      "baseline_runtime": "Go 1.23.12 / x/net 0.42.0",
+      "candidate_runtime": "Go 1.26.6 / x/net 0.58.0",
+      "candidate_patch_floor_met": false,
+      "official_sources": [
+        "https://pkg.go.dev/vuln/GO-2026-6612"
+      ],
+      "evidence": [
+        "docs/security/part-a-evidence-20261026/loki-binary-inspection.json"
+      ],
+      "exposure": "Affected-version HTTP2 components; exact runtime function reachability not newly demonstrated",
+      "blocker": "Go 1.26.9 (or 1.27.2 branch) / x/net 0.60.0 fixes not present in inspected candidate",
+      "status": "BLOCKED",
+      "selected_for_deployment": false,
+      "runtime_changes": [],
+      "fresh_image_scan": "NOT_EXECUTED",
+      "mandatory_regression": "NOT_EXECUTED",
+      "owner_acceptance": null
+    }
+  ],
+  "remaining_limits": [
+    "No final candidate selected",
+    "No fresh full P0-P7/TLS/browser/DNS/observability/retention/rollback runs",
+    "No image signature verification claimed",
+    "Only linux/amd64 version/config execution",
+    "Compiled version evidence is not function-reachability or end-to-end patch acceptance"
+  ],
+  "next_decisions": [
+    "Establish maintained Kong OSS crypto artifact/support or separately authorize another edition/gateway proposal",
+    "Find qualifying Loki artifact including REL-004 and validate config/storage migration",
+    "Provide adequate safe test capacity without stopping user services"
+  ]
+}

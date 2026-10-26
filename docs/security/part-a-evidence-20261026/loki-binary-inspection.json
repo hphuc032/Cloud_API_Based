@@ -1,0 +1,236 @@
+{
+  "results": [
+    {
+      "version": "2.9.17",
+      "image_descriptor_digest": "sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04",
+      "binary_path_in_image": "/usr/bin/loki",
+      "binary_sha256": "5762179096df5a52e53b3320200740e42221bde0015cca1c9bc53d285d7d9e19",
+      "binary_bytes": 65347736,
+      "go_toolchain": "go1.23.12",
+      "buildinfo_file_offset": 64413696,
+      "inline_format": true,
+      "selected_compiled_modules": {
+        "google.golang.org/grpc": "v1.59.0",
+        "golang.org/x/net": "v0.42.0",
+        "golang.org/x/crypto": "v0.40.0",
+        "github.com/grafana/dskit": "v0.0.0-20230925094553-c4a1874aadb0",
+        "github.com/grafana/loki/pkg/push": "v0.0.0-20230127102416-571f88bc5765"
+      }
+    },
+    {
+      "version": "3.7.8",
+      "image_descriptor_digest": "sha256:1107dd5274e0ada47e42472b7a7e71f3b2a2fe878878108f3e2f9e51528f0193",
+      "binary_path_in_image": "/usr/bin/loki",
+      "binary_sha256": "9d8f12e264f7cec550b989eefc6fd646c039112c6fff3d130a99e2a63257c901",
+      "binary_bytes": 156651682,
+      "go_toolchain": "go1.26.6",
+      "buildinfo_file_offset": 154509312,
+      "inline_format": true,
+      "selected_compiled_modules": {
+        "google.golang.org/grpc": "v1.83.2",
+        "golang.org/x/net": "v0.58.0",
+        "golang.org/x/crypto": "v0.56.0",
+        "github.com/grafana/dskit": "v0.0.0-20260209132809-8d1c6d34bb5a",
+        "github.com/grafana/loki/pkg/push": "v0.0.0-20250630054201-94c0ba7b0952"
+      }
+    }
+  ],
+  "records": [
+    {
+      "label": "2.9.17-version",
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--name",
+        "florasecure-parta-6ada2bde2fd2",
+        "--label",
+        "florasecure.task=part-a-20261026",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--memory",
+        "128m",
+        "--memory-swap",
+        "128m",
+        "--cpus",
+        "0.5",
+        "--pids-limit",
+        "48",
+        "--entrypoint",
+        "/usr/bin/loki",
+        "sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04",
+        "-version"
+      ],
+      "started_utc": "2026-10-26T08:02:16.910551+00:00",
+      "finished_utc": "2026-10-26T08:02:17.873717+00:00",
+      "exit_code": 0,
+      "stdout": "loki, version release-2.9.x-ffcd570 (branch: release-2.9.x, revision: ffcd570)\n  build user:       root@buildkitsandbox\n  build date:       2025-11-07T20:41:59Z\n  go version:       go1.23.12\n  platform:         linux/amd64\n  tags:             netgo\n",
+      "stderr": ""
+    },
+    {
+      "label": "2.9.17-create-unstarted",
+      "argv": [
+        "docker",
+        "create",
+        "--name",
+        "florasecure-parta-copy-cef71db02467",
+        "--label",
+        "florasecure.task=part-a-20261026",
+        "--network",
+        "none",
+        "sha256:c4a25af6f2709fa625d88ee5df494a332a85f30e9575854031667823ecc5be04"
+      ],
+      "started_utc": "2026-10-26T08:02:17.873717+00:00",
+      "finished_utc": "2026-10-26T08:02:18.088154+00:00",
+      "exit_code": 0,
+      "stdout": "ddbbed2dc81aae974200ae4582ea9de3d39228c68c87ec3e2a56d6a8839aba3c\n",
+      "stderr": ""
+    },
+    {
+      "label": "2.9.17-copy-binary",
+      "argv": [
+        "docker",
+        "cp",
+        "florasecure-parta-copy-cef71db02467:/usr/bin/loki",
+        "<ignored-work-dir>\\loki-2.9.17"
+      ],
+      "started_utc": "2026-10-26T08:02:18.089154+00:00",
+      "finished_utc": "2026-10-26T08:02:18.924488+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "label": "2.9.17-ownership",
+      "argv": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{index .Config.Labels \"florasecure.task\"}}",
+        "florasecure-parta-copy-cef71db02467"
+      ],
+      "started_utc": "2026-10-26T08:02:18.924488+00:00",
+      "finished_utc": "2026-10-26T08:02:19.129101+00:00",
+      "exit_code": 0,
+      "stdout": "part-a-20261026\n",
+      "stderr": ""
+    },
+    {
+      "label": "2.9.17-remove-own-unstarted",
+      "argv": [
+        "docker",
+        "rm",
+        "florasecure-parta-copy-cef71db02467"
+      ],
+      "started_utc": "2026-10-26T08:02:19.129101+00:00",
+      "finished_utc": "2026-10-26T08:02:19.364153+00:00",
+      "exit_code": 0,
+      "stdout": "florasecure-parta-copy-cef71db02467\n",
+      "stderr": ""
+    },
+    {
+      "label": "3.7.8-version",
+      "argv": [
+        "docker",
+        "run",
+        "--rm",
+        "--name",
+        "florasecure-parta-9c459df9b578",
+        "--label",
+        "florasecure.task=part-a-20261026",
+        "--network",
+        "none",
+        "--read-only",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges",
+        "--memory",
+        "128m",
+        "--memory-swap",
+        "128m",
+        "--cpus",
+        "0.5",
+        "--pids-limit",
+        "48",
+        "--entrypoint",
+        "/usr/bin/loki",
+        "sha256:1107dd5274e0ada47e42472b7a7e71f3b2a2fe878878108f3e2f9e51528f0193",
+        "-version"
+      ],
+      "started_utc": "2026-10-26T08:02:19.550458+00:00",
+      "finished_utc": "2026-10-26T08:02:20.333481+00:00",
+      "exit_code": 0,
+      "stdout": "loki, version 3.7.8 (branch: release-3.7.x, revision: 09e6ce2f)\n  build user:       root@buildkitsandbox\n  build date:       2026-09-17T13:46:29Z\n  go version:       go1.26.6\n  platform:         linux/amd64\n  tags:             netgo\n",
+      "stderr": ""
+    },
+    {
+      "label": "3.7.8-create-unstarted",
+      "argv": [
+        "docker",
+        "create",
+        "--name",
+        "florasecure-parta-copy-0628da6139cf",
+        "--label",
+        "florasecure.task=part-a-20261026",
+        "--network",
+        "none",
+        "sha256:1107dd5274e0ada47e42472b7a7e71f3b2a2fe878878108f3e2f9e51528f0193"
+      ],
+      "started_utc": "2026-10-26T08:02:20.333481+00:00",
+      "finished_utc": "2026-10-26T08:02:20.569455+00:00",
+      "exit_code": 0,
+      "stdout": "a7ea08ab4976b448f3c1fa81ff3bb0825f132cc8c26cb382d3d86023dc45fcc5\n",
+      "stderr": ""
+    },
+    {
+      "label": "3.7.8-copy-binary",
+      "argv": [
+        "docker",
+        "cp",
+        "florasecure-parta-copy-0628da6139cf:/usr/bin/loki",
+        "<ignored-work-dir>\\loki-3.7.8"
+      ],
+      "started_utc": "2026-10-26T08:02:20.569455+00:00",
+      "finished_utc": "2026-10-26T08:02:22.426571+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "label": "3.7.8-ownership",
+      "argv": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{index .Config.Labels \"florasecure.task\"}}",
+        "florasecure-parta-copy-0628da6139cf"
+      ],
+      "started_utc": "2026-10-26T08:02:22.426571+00:00",
+      "finished_utc": "2026-10-26T08:02:22.619769+00:00",
+      "exit_code": 0,
+      "stdout": "part-a-20261026\n",
+      "stderr": ""
+    },
+    {
+      "label": "3.7.8-remove-own-unstarted",
+      "argv": [
+        "docker",
+        "rm",
+        "florasecure-parta-copy-0628da6139cf"
+      ],
+      "started_utc": "2026-10-26T08:02:22.620678+00:00",
+      "finished_utc": "2026-10-26T08:02:22.867042+00:00",
+      "exit_code": 0,
+      "stdout": "florasecure-parta-copy-0628da6139cf\n",
+      "stderr": ""
+    }
+  ],
+  "scope": "Version-only container execution and offline build-info inspection; no Loki server, data volume or candidate config activated",
+  "parser_reference": "https://go.dev/src/debug/buildinfo/buildinfo.go"
+}

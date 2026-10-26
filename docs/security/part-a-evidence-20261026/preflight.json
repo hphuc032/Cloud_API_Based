@@ -1,0 +1,163 @@
+{
+  "recorded_utc": "2026-10-26T08:05:58.409161+00:00",
+  "baseline_commit": "d79cb6060e95ba58cd797b6ef24b3b938ae80b8a",
+  "platform": "Windows11 / Docker Desktop WSL2 / linux-amd64",
+  "initial_resource_samples_KiB": [
+    {
+      "TotalVisibleMemorySize": 16474168,
+      "FreePhysicalMemory": 1011360
+    },
+    {
+      "TotalVisibleMemorySize": 16474168,
+      "FreePhysicalMemory": 985368
+    },
+    {
+      "TotalVisibleMemorySize": 16474168,
+      "FreePhysicalMemory": 928408
+    }
+  ],
+  "latest_host_memory_KiB": {
+    "Caption": "Microsoft Windows 11 Home Single Language",
+    "Version": "10.0.26300",
+    "TotalVisibleMemorySize": 16474168,
+    "FreePhysicalMemory": 1464608
+  },
+  "resource_gate": "Full stack/build/scanner work withheld due insufficient demonstrated Windows physical RAM headroom; small network-none128MiB inspections only. Guest MemAvailable does not establish host headroom.",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "-c",
+        "safe.directory=D:/MatMaHoc/Project_CLOUD_API",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "d79cb6060e95ba58cd797b6ef24b3b938ae80b8a",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "safe.directory=D:/MatMaHoc/Project_CLOUD_API",
+        "branch",
+        "--show-current"
+      ],
+      "exit_code": 0,
+      "stdout": "migration/cloud-api-security",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "safe.directory=D:/MatMaHoc/Project_CLOUD_API",
+        "merge-base",
+        "--is-ancestor",
+        "d79cb6060e95ba58cd797b6ef24b3b938ae80b8a",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "version",
+        "--format",
+        "Client={{.Client.Version}} Server={{.Server.Version}}"
+      ],
+      "exit_code": 0,
+      "stdout": "Client=29.4.3 Server=29.4.3",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "compose",
+        "version"
+      ],
+      "exit_code": 0,
+      "stdout": "Docker Compose version v5.1.3",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "docker",
+        "info",
+        "--format",
+        "Engine={{.ServerVersion}} CPUs={{.NCPU}} RAMBytes={{.MemTotal}} Running={{.ContainersRunning}}"
+      ],
+      "exit_code": 0,
+      "stdout": "Engine=29.4.3 CPUs=20 RAMBytes=8171716608 Running=1",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "wsl.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "WSL version: 2.5.9.0\r\nKernel version: 6.6.87.2-1\r\nWSLg version: 1.0.66\r\nMSRDC version: 1.2.6074\r\nDirect3D version: 1.611.1-81528511\r\nDXCore version: 10.0.26100.1-240331-1435.ge-release\r\nWindows version: 10.0.26300.9711",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "wsl.exe",
+        "-d",
+        "Ubuntu",
+        "--",
+        "sh",
+        "-c",
+        "python3 --version; node --version; npm --version; sed -n \"/^MemTotal:/p;/^MemAvailable:/p;/^SwapTotal:/p;/^SwapFree:/p\" /proc/meminfo"
+      ],
+      "exit_code": 0,
+      "stdout": "Python 3.12.3\nv18.19.1\n9.2.0\nMemTotal:        7980192 kB\nMemAvailable:    7003436 kB\nSwapTotal:       2097152 kB\nSwapFree:        2097152 kB",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "powershell",
+        "-NoProfile",
+        "-Command",
+        "Get-CimInstance Win32_OperatingSystem | Select-Object Caption,Version,TotalVisibleMemorySize,FreePhysicalMemory | ConvertTo-Json -Compress"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"Caption\":\"Microsoft Windows 11 Home Single Language\",\"Version\":\"10.0.26300\",\"TotalVisibleMemorySize\":16474168,\"FreePhysicalMemory\":1464608}",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "powershell",
+        "-NoProfile",
+        "-Command",
+        "Get-PSDrive C,D | Select-Object Name,Free | ConvertTo-Json -Compress"
+      ],
+      "exit_code": 0,
+      "stdout": "[{\"Name\":\"C\",\"Free\":21002252288},{\"Name\":\"D\",\"Free\":47320580096}]",
+      "stderr": ""
+    }
+  ],
+  "existing_untracked_files_preserved": 59,
+  "new_inspection_images_retained_not_active": true,
+  "protected_user_services_started_stopped_or_modified": false,
+  "runtime_configuration_modified": false,
+  "starting_source_sha256_worktree": {
+    "docker/docker-compose.yml": "2881dd892dfb871e6e51f7e58d5e8f5cf6065c096fcd5b47f6262704fc8432e9",
+    "docker/p4-compose.yml": "93891b0250dafed52cd95a06f8b054e6eca8f93475db7d57f299f6a7570846f6",
+    "docker/p5-compose.yml": "280356f393e996297cba0eadf45259a748a48c2259ecc2a16a8e89c5980cf096",
+    "docker/p6-compose.yml": "069bd2c31be418d64ce2869937a990405116d38f373b43461dd13577351e3c64",
+    "gateway/kong.yml": "8d716db86c013df9b1f1885bd395e6cff63f9e1817713ccd01d64e47d321620b",
+    "backend/deployment/kong_jwks.py": "4330279227dd5e75ac75ba4131d99b5d4bc079c882b1ffd09b2523d551fa06bc",
+    "backend/app/auth/oidc.py": "15ae7c872d08b8edc74c7493e71d1fd26e76d4d53a3306615aab8f02b80d9d28",
+    "monitoring/loki/p6-loki.yml": "e2ca692f6e04e446c53da8740654e72a9fd28cde8370cbf107cae9379bdbdf05",
+    "monitoring/alloy/config.alloy": "e666dbd2475116bc1b1175f9c9fd071c5b8147a4f9e799878cf7ab73a5f1b133",
+    "tests/p3/run.py": "d2155402fb7bded18d37b6519447ac6ae38d6b14d56a8e240171c8af0dd6099d",
+    "tests/p7/run.py": "8a8d66fa51f99a69f1a87b7a4c25309f0c824d5be38a3a94561275740b1627fa",
+    "tests/p6/retention.py": "fc48d06ea225d0029c92543eaa0e923215d14ca405f01229a1581b51ecb57214",
+    "tests/p7/image_upgrade.py": "a731ceef98a867959581f73ccf2d5167c2ffc84efe8e5303a8537ae6fde56e79"
+  },
+  "reproduction_note": "Native WSL clean source snapshot; original tests/p3/run.py and tests/p7/run.py sequential, never inherited COMPOSE/PYTEST selectors; see regression report for Desktop adapters and disabled global pruning."
+}
